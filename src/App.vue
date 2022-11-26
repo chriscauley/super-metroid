@@ -1,5 +1,5 @@
 <template>
-  <div>woo</div>
+  <router-view />
 </template>
 
 <script>
