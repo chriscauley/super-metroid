@@ -1,11 +1,8 @@
 <template>
-  <div>
-    woo
-  </div>
+  <div>woo</div>
 </template>
 
 <script>
-
 export default {
   name: 'App',
 }
