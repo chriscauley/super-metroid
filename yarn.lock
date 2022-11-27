@@ -1336,6 +1336,22 @@
     eslint-plugin-vue "^9.1.1"
     prettier "^2.7.0"
 
+"@unrest/vue-mousetrap@^0.0.12":
+  version "0.0.12"
+  resolved "https://registry.yarnpkg.com/@unrest/vue-mousetrap/-/vue-mousetrap-0.0.12.tgz#a038757c1b87173a8d5938ee01e298acac654c83"
+  integrity sha512-exhfoIBaio4o4veLUn/EXZtnod6jr0fCXyazHtRVQUyyPooBYOcNp/05IiLq88WEYIlvfiUGAsRziiYyKq9aRA==
+  dependencies:
+    mousetrap "^1.6.5"
+
+"@unrest/vue-openseadragon@^0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@unrest/vue-openseadragon/-/vue-openseadragon-0.0.2.tgz#992046005aa1b3e78690eafab8b98ffa5139202e"
+  integrity sha512-4LUoJuw8R4PGaWvBfqMJ+7t53aRSmyFKkT0NuqrA6JlMtIyST+JpjWmCxgrfZfBU/AlX53nlXZcLRDZzzOQM1g==
+  dependencies:
+    "@unrest/vue-mousetrap" "^0.0.12"
+    openseadragon "^2.4.2"
+    vue "^3.2.41"
+
 "@vue/babel-helper-vue-jsx-merge-props@^1.4.0":
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/@vue/babel-helper-vue-jsx-merge-props/-/babel-helper-vue-jsx-merge-props-1.4.0.tgz#8d53a1e21347db8edbe54d339902583176de09f2"
@@ -4330,6 +4346,11 @@ module-alias@^2.2.2:
   resolved "https://registry.yarnpkg.com/module-alias/-/module-alias-2.2.2.tgz#151cdcecc24e25739ff0aa6e51e1c5716974c0e0"
   integrity sha512-A/78XjoX2EmNvppVWEhM2oGk3x4lLxnkEA4jTbaK97QKSDjkIoOsKQlfylt/d3kKKi596Qy3NP5XrXJ6fZIC9Q==
 
+mousetrap@^1.6.5:
+  version "1.6.5"
+  resolved "https://registry.yarnpkg.com/mousetrap/-/mousetrap-1.6.5.tgz#8a766d8c272b08393d5f56074e0b5ec183485bf9"
+  integrity sha512-QNo4kEepaIBwiT8CDhP98umTetp+JNfQYBWvC1pc6/OAibuXtRcxZ58Qz8skvEHYvURne/7R8T5VoOI7rDsEUA==
+
 mrmime@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/mrmime/-/mrmime-1.0.1.tgz#5f90c825fad4bdd41dc914eff5d1a8cfdaf24f27"
@@ -4544,6 +4565,11 @@ opener@^1.5.2:
   version "1.5.2"
   resolved "https://registry.yarnpkg.com/opener/-/opener-1.5.2.tgz#5d37e1f35077b9dcac4301372271afdeb2a13598"
   integrity sha512-ur5UIdyw5Y7yEj9wLzhqXiy6GZ3Mwx0yGI+5sMn2r0N0v3cKJvUmFH5yPP+WXh9e0xfyzyJX95D8l088DNFj7A==
+
+openseadragon@^2.4.2:
+  version "2.4.2"
+  resolved "https://registry.yarnpkg.com/openseadragon/-/openseadragon-2.4.2.tgz#f25d833d0ab9941599d65a3e2b44bec546c9f15c"
+  integrity sha512-398KbZwRtOYA6OmeWRY4Q0737NTacQ9Q6whmr9Lp1MNQO3p0eBz5LIASRne+4gwequcSM1vcHcjfy3dIndQziw==
 
 optionator@^0.9.1:
   version "0.9.1"
@@ -6007,7 +6033,7 @@ vue-template-es2015-compiler@^1.9.0:
   resolved "https://registry.yarnpkg.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.9.1.tgz#1ee3bc9a16ecbf5118be334bb15f9c46f82f5825"
   integrity sha512-4gDntzrifFnCEvyoO8PqyJDmguXgVPxKiIxrBKjIowvL9l+N66196+72XVYR8BBf1Uv1Fgt3bGevJ+sEmxfZzw==
 
-vue@^3.2.13:
+vue@^3.2.13, vue@^3.2.41:
   version "3.2.45"
   resolved "https://registry.yarnpkg.com/vue/-/vue-3.2.45.tgz#94a116784447eb7dbd892167784619fef379b3c8"
   integrity sha512-9Nx/Mg2b2xWlXykmCwiTUCWHbWIj53bnkizBxKai1g61f2Xit700A1ljowpTIM11e3uipOeiPcSqnmBg6gyiaA==
