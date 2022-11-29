@@ -6,13 +6,37 @@
     "height": 502,
     "x": 290.4435833333334,
     "y": 11.978694444444445,
-    "_doors": [
-      "lowerMushroomsLeft",
-      "moatRight",
-      "greenPiratesShaftBottomRight",
-      "keyhunterRoomBottom",
-      "morphBallRoomLeft",
-      "climbBottomLeft"
+    "warps": [
+      [
+        "lowerMushroomsLeft",
+        -1.3935833333334244,
+        125.79630555555556
+      ],
+      [
+        "moatRight",
+        444.5564166666666,
+        65.64630555555556
+      ],
+      [
+        "greenPiratesShaftBottomRight",
+        75.40641666666664,
+        126.62130555555555
+      ],
+      [
+        "keyhunterRoomBottom",
+        386.65641666666664,
+        115.52130555555557
+      ],
+      [
+        "morphBallRoomLeft",
+        155.5064166666666,
+        475.89630555555556
+      ],
+      [
+        "climbBottomLeft",
+        157.0064166666666,
+        264.39630555555556
+      ]
     ]
   },
   {
@@ -22,8 +46,12 @@
     "height": 133,
     "x": 159.82651196827197,
     "y": 305.5364078344849,
-    "_doors": [
-      "crocomireRoomTop"
+    "warps": [
+      [
+        "crocomireRoomTop",
+        164.92348803172803,
+        305.038592165515
+      ]
     ]
   },
   {
@@ -33,8 +61,12 @@
     "height": 40,
     "x": 1384.648918487189,
     "y": 174.48535618785164,
-    "_doors": [
-      "draygonRoomIn"
+    "warps": [
+      [
+        "draygonRoomIn",
+        38.55108151281115,
+        174.78964381214834
+      ]
     ]
   },
   {
@@ -44,12 +76,32 @@
     "height": 299,
     "x": 1132.4514224269485,
     "y": 84.71074704255993,
-    "_doors": [
-      "westSandHallLeft",
-      "belowBotwoonEnergyTankRight",
-      "leCoudeRight",
-      "aqueductTopLeft",
-      "draygonRoomOut"
+    "warps": [
+      [
+        "westSandHallLeft",
+        -1.4514224269485112,
+        354.86425295744004
+      ],
+      [
+        "belowBotwoonEnergyTankRight",
+        171.19857757305135,
+        264.56425295744003
+      ],
+      [
+        "leCoudeRight",
+        245.59857757305167,
+        85.53925295744004
+      ],
+      [
+        "aqueductTopLeft",
+        24.648577573051398,
+        259.76425295744
+      ],
+      [
+        "draygonRoomOut",
+        322.3985775730514,
+        247.08925295744007
+      ]
     ]
   },
   {
@@ -59,11 +111,27 @@
     "height": 298,
     "x": 7.216539924731037,
     "y": 145.97216394143248,
-    "_doors": [
-      "greenBrinstarElevator",
-      "greenHillZoneTopRight",
-      "noobBridgeRight",
-  "greenBrinstarMainShaftTopLeft"
+    "warps": [
+      [
+        "greenBrinstarElevator",
+        68.08346007526896,
+        146.3028360585675
+      ],
+      [
+        "greenHillZoneTopRight",
+        225.583460075269,
+        369.57783605856747
+      ],
+      [
+        "noobBridgeRight",
+        394.333460075269,
+        415.5528360585675
+      ],
+      [
+        "greenBrinstarMainShaftTopLeft",
+        49.03346007526896,
+        276.1278360585675
+      ]
     ]
   },
   {
@@ -73,8 +141,12 @@
     "height": 37,
     "x": 973.3333333333333,
     "y": 254.57055555555556,
-    "_doors": [
-      "kraidRoomIn"
+    "warps": [
+      [
+        "kraidRoomIn",
+        -1.633333333333212,
+        262.55444444444447
+      ]
     ]
   },
   {
@@ -84,9 +156,17 @@
     "height": 70,
     "x": 756.6296944444445,
     "y": 243.89433333333332,
-    "_doors": [
-      "warehouseZeelaRoomLeft",
-      "kraidRoomOut"
+    "warps": [
+      [
+        "warehouseZeelaRoomLeft",
+        10.77030555555541,
+        247.95566666666664
+      ],
+      [
+        "kraidRoomOut",
+        173.22030555555557,
+        263.78066666666666
+      ]
     ]
   },
   {
@@ -96,10 +176,22 @@
     "height": 229,
     "x": 1073.9117222222224,
     "y": 238.35616666666667,
-    "_doors": [
-      "lavaDiveRight",
-      "threeMuskateersRoomLeft",
-      "ridleyRoomOut"
+    "warps": [
+      [
+        "lavaDiveRight",
+        150.53827777777747,
+        342.96883333333335
+      ],
+      [
+        "threeMuskateersRoomLeft",
+        202.7382777777775,
+        238.41883333333337
+      ],
+      [
+        "ridleyRoomOut",
+        117.23827777777751,
+        437.1688333333333
+      ]
     ]
   },
   {
@@ -109,8 +201,12 @@
     "height": 28,
     "x": 1167.8972394461405,
     "y": 78.17155065057742,
-    "_doors": [
-      "phantoonRoomIn"
+    "warps": [
+      [
+        "phantoonRoomIn",
+        -3.7472394461403837,
+        78.6534493494226
+      ]
     ]
   },
   {
@@ -120,13 +216,37 @@
     "height": 275,
     "x": 642.7375555555556,
     "y": 105.7903888888889,
-    "_doors": [
-      "eastTunnelRight",
-      "eastTunnelTopRight",
-      "glassTunnelTop",
-      "redTowerTopLeft",
-      "caterpillarRoomTopRight",
-      "redBrinstarElevator"
+    "warps": [
+      [
+        "eastTunnelRight",
+        252.91244444444442,
+        343.2346111111111
+      ],
+      [
+        "eastTunnelTopRight",
+        288.76244444444444,
+        328.23461111111106
+      ],
+      [
+        "glassTunnelTop",
+        220.51244444444444,
+        319.53461111111113
+      ],
+      [
+        "redTowerTopLeft",
+        127.0624444444444,
+        267.2596111111111
+      ],
+      [
+        "caterpillarRoomTopRight",
+        236.41244444444442,
+        176.1346111111111
+      ],
+      [
+        "redBrinstarElevator",
+        192.76244444444455,
+        104.0596111111111
+      ]
     ]
   },
   {
@@ -136,8 +256,12 @@
     "height": 40,
     "x": 1133.8486666666665,
     "y": 350,
-    "_doors": [
-      "ridleyRoomIn"
+    "warps": [
+      [
+        "ridleyRoomIn",
+        28.80133333333356,
+        351.70000000000005
+      ]
     ]
   },
   {
@@ -147,9 +271,17 @@
     "height": 221,
     "x": 300.2522222222222,
     "y": 85.6295,
-    "_doors": [
-      "goldenFour",
-      "tourianEscapeRoom4TopRight"
+    "warps": [
+      [
+        "goldenFour",
+        43.2477777777778,
+        87.02049999999998
+      ],
+      [
+        "tourianEscapeRoom4TopRight",
+        133.6977777777778,
+        225.6205
+      ]
     ]
   },
   {
@@ -159,13 +291,37 @@
     "height": 214,
     "x": 535.6381141390226,
     "y": 263.34737743043405,
-    "_doors": [
-      "crocomireSpeedwayBottom",
-      "kronicBoostRoomBottomLeft",
-      "singleChamberTopRight",
-      "warehouseEntranceLeft",
-      "warehouseEntranceRight",
-      "businessCenterMidLeft"
+    "warps": [
+      [
+        "crocomireSpeedwayBottom",
+        177.16188586097746,
+        451.02762256956595
+      ],
+      [
+        "kronicBoostRoomBottomLeft",
+        333.91188586097735,
+        448.627622569566
+      ],
+      [
+        "singleChamberTopRight",
+        395.7118858609774,
+        341.752622569566
+      ],
+      [
+        "warehouseEntranceLeft",
+        100.3618858609774,
+        263.3026225695659
+      ],
+      [
+        "warehouseEntranceRight",
+        151.81188586097733,
+        264.127622569566
+      ],
+      [
+        "businessCenterMidLeft",
+        107.41188586097735,
+        356.002622569566
+      ]
     ]
   },
   {
@@ -175,13 +331,37 @@
     "height": 241,
     "x": 989.3063888888888,
     "y": 119.66733333333333,
-    "_doors": [
-      "mainStreetBottom",
-      "crabHoleBottomLeft",
-      "redFishRoomLeft",
-      "westSandHallTunnelRight",
-      "crabShaftRight",
-      "crabHoleBottomRight"
+    "warps": [
+      [
+        "mainStreetBottom",
+        6.99361111111125,
+        335.73266666666666
+      ],
+      [
+        "crabHoleBottomLeft",
+        71.19361111111118,
+        332.5826666666667
+      ],
+      [
+        "redFishRoomLeft",
+        15.693611111111295,
+        182.8826666666667
+      ],
+      [
+        "westSandHallTunnelRight",
+        110.79361111111132,
+        319.90766666666667
+      ],
+      [
+        "crabShaftRight",
+        137.64361111111123,
+        226.45766666666668
+      ],
+      [
+        "crabHoleBottomRight",
+        92.49361111111136,
+        333.3326666666667
+      ]
     ]
   },
   {
@@ -191,11 +371,27 @@
     "height": 159,
     "x": 907.2348333333333,
     "y": 13.121333333333332,
-    "_doors": [
-      "westOceanLeft",
-      "crabMazeLeft",
-      "phantoonRoomOut",
-      "basementLeft"
+    "warps": [
+      [
+        "westOceanLeft",
+        -1.234833333333313,
+        66.90366666666668
+      ],
+      [
+        "crabMazeLeft",
+        313.1651666666668,
+        143.7036666666667
+      ],
+      [
+        "phantoonRoomOut",
+        223.7651666666667,
+        142.87866666666667
+      ],
+      [
+        "basementLeft",
+        148.46516666666673,
+        142.87866666666667
+      ]
     ]
   }
 ]
