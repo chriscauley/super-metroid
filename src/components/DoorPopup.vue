@@ -28,7 +28,7 @@ export default {
     return { door_colors }
   },
   methods: {
-    updateDoorColor: todo('DoorPopu.updateDoorColor'),
+    updateDoorColor: todo.method('DoorPopu.updateDoorColor'),
   },
 }
 </script>

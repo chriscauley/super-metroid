@@ -1,0 +1,21 @@
+@import './tailwind.css';
+
+body {
+  margin: 0;
+}
+
+html, body, #app {
+  @apply h-full;
+}
+
+#app {
+
+}
+
+.tracker-view {
+  height: 100%;
+  #openseadragon-viewer {
+    @apply h-full w-full;
+    background: black;
+  }
+}
