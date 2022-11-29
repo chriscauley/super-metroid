@@ -2,136 +2,200 @@
   {
     "slug": "crater",
     "items": [],
-    "name": "Crater",
     "width": 462,
     "height": 502,
     "x": 290.4435833333334,
-    "y": 11.978694444444445
+    "y": 11.978694444444445,
+    "_doors": [
+      "lowerMushroomsLeft",
+      "moatRight",
+      "greenPiratesShaftBottomRight",
+      "keyhunterRoomBottom",
+      "morphBallRoomLeft",
+      "climbBottomLeft"
+    ]
   },
   {
     "slug": "crocomire",
     "items": [],
-    "name": "Crocomire",
     "width": 259,
     "height": 133,
     "x": 159.82651196827197,
-    "y": 305.5364078344849
+    "y": 305.5364078344849,
+    "_doors": [
+      "crocomireRoomTop"
+    ]
   },
   {
     "slug": "draygon",
     "items": [],
-    "name": "Draygon",
     "width": 58,
     "height": 40,
     "x": 1384.648918487189,
-    "y": 174.48535618785164
+    "y": 174.48535618785164,
+    "_doors": [
+      "draygonRoomIn"
+    ]
   },
   {
     "slug": "east-maridia",
     "items": [],
-    "name": "East Maridia",
     "width": 368,
     "height": 299,
     "x": 1132.4514224269485,
-    "y": 84.71074704255993
+    "y": 84.71074704255993,
+    "_doors": [
+      "westSandHallLeft",
+      "belowBotwoonEnergyTankRight",
+      "leCoudeRight",
+      "aqueductTopLeft",
+      "draygonRoomOut"
+    ]
   },
   {
     "slug": "green-brinstar",
     "items": [],
-    "name": "Green Brinstar",
     "width": 411,
     "height": 298,
     "x": 7.216539924731037,
-    "y": 145.97216394143248
+    "y": 145.97216394143248,
+    "_doors": [
+      "greenBrinstarElevator",
+      "greenHillZoneTopRight",
+      "noobBridgeRight",
+  "greenBrinstarMainShaftTopLeft"
+    ]
   },
   {
     "slug": "kraid",
     "items": [],
-    "name": "Kraid",
     "width": 56,
     "height": 37,
     "x": 973.3333333333333,
-    "y": 254.57055555555556
+    "y": 254.57055555555556,
+    "_doors": [
+      "kraidRoomIn"
+    ]
   },
   {
     "slug": "kraids-lair",
     "items": [],
-    "name": "Kraids Lair",
     "width": 191,
     "height": 70,
     "x": 756.6296944444445,
-    "y": 243.89433333333332
+    "y": 243.89433333333332,
+    "_doors": [
+      "warehouseZeelaRoomLeft",
+      "kraidRoomOut"
+    ]
   },
   {
     "slug": "lower-norfair",
     "items": [],
-    "name": "Lower Norfair",
     "width": 330,
     "height": 229,
     "x": 1073.9117222222224,
-    "y": 238.35616666666667
+    "y": 238.35616666666667,
+    "_doors": [
+      "lavaDiveRight",
+      "threeMuskateersRoomLeft",
+      "ridleyRoomOut"
+    ]
   },
   {
     "slug": "phantoon",
     "items": [],
-    "name": "Phantoon",
     "width": 30,
     "height": 28,
     "x": 1167.8972394461405,
-    "y": 78.17155065057742
+    "y": 78.17155065057742,
+    "_doors": [
+      "phantoonRoomIn"
+    ]
   },
   {
     "slug": "red-brinstar",
     "items": [],
-    "name": "Red Brinstar",
     "width": 305,
     "height": 275,
     "x": 642.7375555555556,
-    "y": 105.7903888888889
+    "y": 105.7903888888889,
+    "_doors": [
+      "eastTunnelRight",
+      "eastTunnelTopRight",
+      "glassTunnelTop",
+      "redTowerTopLeft",
+      "caterpillarRoomTopRight",
+      "redBrinstarElevator"
+    ]
   },
   {
     "slug": "ridley",
     "items": [],
-    "name": "Ridley",
     "width": 43,
     "height": 40,
     "x": 1133.8486666666665,
-    "y": 350
+    "y": 350,
+    "_doors": [
+      "ridleyRoomIn"
+    ]
   },
   {
     "slug": "tourian",
     "items": [],
-    "name": "Tourian",
     "width": 157,
     "height": 221,
     "x": 300.2522222222222,
-    "y": 85.6295
+    "y": 85.6295,
+    "_doors": [
+      "goldenFour",
+      "tourianEscapeRoom4TopRight"
+    ]
   },
   {
     "slug": "upper-norfair",
     "items": [],
-    "name": "Upper Norfair",
     "width": 515,
     "height": 214,
     "x": 535.6381141390226,
-    "y": 263.34737743043405
+    "y": 263.34737743043405,
+    "_doors": [
+      "crocomireSpeedwayBottom",
+      "kronicBoostRoomBottomLeft",
+      "singleChamberTopRight",
+      "warehouseEntranceLeft",
+      "warehouseEntranceRight",
+      "businessCenterMidLeft"
+    ]
   },
   {
     "slug": "west-maridia",
     "items": [],
-    "name": "West Maridia",
     "width": 172,
     "height": 241,
     "x": 989.3063888888888,
-    "y": 119.66733333333333
+    "y": 119.66733333333333,
+    "_doors": [
+      "mainStreetBottom",
+      "crabHoleBottomLeft",
+      "redFishRoomLeft",
+      "westSandHallTunnelRight",
+      "crabShaftRight",
+      "crabHoleBottomRight"
+    ]
   },
   {
     "slug": "wrecked-ship",
     "items": [],
-    "name": "Wrecked Ship",
     "width": 384,
     "height": 159,
     "x": 907.2348333333333,
-    "y": 13.121333333333332
+    "y": 13.121333333333332,
+    "_doors": [
+      "westOceanLeft",
+      "crabMazeLeft",
+      "phantoonRoomOut",
+      "basementLeft"
+    ]
   }
 ]
