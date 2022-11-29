@@ -1,6 +1,7 @@
 <template>
   <unrest-draggable :style="style" @drag="drag" @dragend="dragend">
     <img :src="`/areas/${area.slug}.png`" style="width: 100%" />
+    <div v-for="warp in warps" v-bind="warp" :key="warp.id" @click="(e) => clickWarp(e, warp)" />
   </unrest-draggable>
 </template>
 
@@ -30,6 +31,17 @@ export default {
         filter: invert ? 'invert(1)' : null,
       }
     },
+    warps() {
+      return this.area.warps.map(({ slug, name, x, y, type, rotated }) => ({
+        id: slug,
+        title: name,
+        class: [`area-warp -${type}`, rotated && '-rotated'],
+        style: {
+          left: `${(100 * x) / this.area.width}%`,
+          top: `${(100 * y) / this.area.height}%`,
+        },
+      }))
+    },
   },
   methods: {
     drag(e) {
@@ -43,6 +55,18 @@ export default {
       const { dx, dy } = this
       this.$emit('move-area', { dx, dy })
       this.dx = this.dy = 0
+    },
+    clickWarp(e, { id }) {
+      const { width, height } = e.target.getBoundingClientRect()
+      const warp = this.area.warps.find((w) => w.slug === id)
+      const dx = e.offsetX / width - 0.5
+      const dy = e.offsetY / height - 0.5
+      if (Math.abs(dx) > 0.25) {
+        warp.x += Math.sign(dx) * 0.5
+      }
+      if (Math.abs(dy) > 0.25) {
+        warp.y += Math.sign(dy) * 0.5
+      }
     },
   },
 }

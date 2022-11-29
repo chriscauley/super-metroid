@@ -1,5 +1,5 @@
 <template>
-  <div class="tracker-view">
+  <div class="tracker-view" :style="`--zoom: ${osd_store.state.zoom}`">
     <osd-viewer :osd_store="osd_store" @viewer-bound="addCorners" :editor_mode="true" />
     <template v-if="osd_store.viewer">
       <osd-html-overlay :viewer="osd_store.viewer">
@@ -20,7 +20,8 @@
 </template>
 
 <script>
-import areas from '@/data/areas.json'
+import { saveFile } from '@/data/legacy'
+import { areas } from '@/data'
 import osd from '@unrest/vue-openseadragon'
 import openseadragon from 'openseadragon'
 import AreaOverlay from '@/components/AreaOverlay'
@@ -40,15 +41,6 @@ areas.forEach((area) => {
   img.src = `/areas/${area.slug}.png`
 })
 
-function saveFile(text, filename) {
-  const anchor = document.createElement('a')
-  anchor.href = 'data:' + 'text/plain' + 'charset=utf-8,' + escape(text)
-  anchor.setAttribute('download', filename)
-  document.body.appendChild(anchor)
-  anchor.click()
-  document.body.removeChild(anchor)
-}
-
 export default {
   components: { AreaOverlay },
   data() {
@@ -66,6 +58,7 @@ export default {
   },
   methods: {
     addCorners() {
+      window.OSDS = this.osd_store
       this.osd_store.viewer.addOnceHandler('tile-loaded', this.addImages)
       if (this.skin === 'jpg' && this.$route.query.debug) {
         const url = '/areas/area_map.png'

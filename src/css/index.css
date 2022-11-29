@@ -19,3 +19,18 @@ html, body, #app {
     background: black;
   }
 }
+
+.area-warp {
+  @apply absolute cursor-pointer;
+  --height: calc(28em / 16);
+  --width: 1em;
+  font-size: calc(var(--zoom) * 15px);
+  background: rgba(255, 0, 255, 0.5);
+  height: var(--height);
+  width: var(--width);
+  transform: translate(-50%, -50%);
+  &.-rotated {
+    height: var(--width);
+    width: var(--height);
+  }
+}

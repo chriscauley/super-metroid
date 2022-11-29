@@ -62,6 +62,9 @@ export const access_points = [
   'goldenFour',
   'crocomireSpeedwayBottom',
   'crocomireRoomTop',
+]
+
+export const sand_doors = [
   'westSandHallLeft',
   'belowBotwoonEnergyTankRight',
   'westSandHallTunnelRight',
