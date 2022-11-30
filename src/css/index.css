@@ -42,3 +42,7 @@ html, body, #app {
     @apply max-w-none pointer-events-none;
   }
 }
+
+.dirty-layout {
+  @apply fixed right-0 bottom-0;
+}

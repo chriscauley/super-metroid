@@ -16,30 +16,19 @@
       <!--   <img :src="`/areas/${area.slug}.png`" /> -->
       <!-- </div> -->
     </template>
+    <div v-if="$store.layout.state.dirty" class="dirty-layout" @click="$store.layout.saveAreas">
+      <div class="btn -primary">Save Areas</div>
+    </div>
   </div>
 </template>
 
 <script>
 import { saveFile } from '@/data/legacy'
-import { areas } from '@/data'
 import osd from '@unrest/vue-openseadragon'
 import openseadragon from 'openseadragon'
 import AreaOverlay from '@/components/AreaOverlay'
 
 const { Rect } = openseadragon
-
-areas.forEach((area) => {
-  if (area.width) {
-    return
-  }
-  const img = document.createElement('img')
-  img.onload = () => {
-    area.height = img.height
-    area.width = img.width
-    resolve(true)
-  }
-  img.src = `/areas/${area.slug}.png`
-})
 
 export default {
   components: { AreaOverlay },
@@ -49,9 +38,12 @@ export default {
       width: 1500,
       height: 750,
     }
-    return { areas, osd_store: osd.Store(), parent }
+    return { osd_store: osd.Store(), parent }
   },
   computed: {
+    areas() {
+      return this.$store.layout.getAreas()
+    },
     skin() {
       return this.$route.query.skin || 'jpg'
     },
@@ -100,8 +92,7 @@ export default {
       // })
     },
     moveArea(area, { dx, dy }) {
-      area.x = (area.x || 0) + dx
-      area.y = (area.y || 0) + dy
+      this.$store.layout.moveArea(area.slug, dx, dy)
     },
   },
 }

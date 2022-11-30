@@ -67,13 +67,12 @@ export default {
     clickWarp(e, { id }) {
       const { width, height } = e.target.getBoundingClientRect()
       const warp = this.area.warps.find((w) => w.slug === id)
-      const dx = e.offsetX / width - 0.5
-      const dy = e.offsetY / height - 0.5
-      if (Math.abs(dx) > 0.25) {
-        warp.x += Math.sign(dx) * 0.5
-      }
-      if (Math.abs(dy) > 0.25) {
-        warp.y += Math.sign(dy) * 0.5
+      const click_x = e.offsetX / width - 0.5
+      const click_y = e.offsetY / height - 0.5
+      const dx = Math.abs(click_x) > 0.25 ? Math.sign(click_x) * 0.5 : 0
+      const dy = Math.abs(click_y) > 0.25 ? Math.sign(click_y) * 0.5 : 0
+      if (dx || dy) {
+        this.$store.layout.moveWarp(warp.slug, dx, dy)
       }
     },
   },
