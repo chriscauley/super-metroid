@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@popperjs/core": "^2.11.6",
+    "@unrest/tailwind": "^0.1.21",
     "@unrest/vue": "^0.2.15",
     "@unrest/vue-openseadragon": "^0.0.2",
     "@unrest/vue-storage": "^0.0.19",

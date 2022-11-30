@@ -2,13 +2,16 @@ import { createApp } from 'vue'
 import osd from '@unrest/vue-openseadragon'
 
 import App from '@/App.vue'
+import store from '@/store'
 import router from '@/router'
 import components from '@/components'
 import unrest from '@unrest/vue'
 
 import '@/css/index.css'
+import '@unrest/tailwind/dist.css'
 
 const app = createApp(App)
+app.use(store)
 app.use(router)
 app.use(osd)
 app.use(unrest.plugin)

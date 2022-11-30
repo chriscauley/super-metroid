@@ -1341,6 +1341,11 @@
     eslint-plugin-vue "^9.1.1"
     prettier "^2.7.0"
 
+"@unrest/tailwind@^0.1.21":
+  version "0.1.21"
+  resolved "https://registry.yarnpkg.com/@unrest/tailwind/-/tailwind-0.1.21.tgz#01bea67bab3adeb117eef9a10c15db47f928309d"
+  integrity sha512-iZc2+cMJlFxgK4TVNR+/Pa6Fq/WwMqaLtguxe3CMmTJUwNI+n8Sm9plFHNq1IcrJacEyjCHNTP/PyaOth/kaEw==
+
 "@unrest/vue-mousetrap@^0.0.12":
   version "0.0.12"
   resolved "https://registry.yarnpkg.com/@unrest/vue-mousetrap/-/vue-mousetrap-0.0.12.tgz#a038757c1b87173a8d5938ee01e298acac654c83"
