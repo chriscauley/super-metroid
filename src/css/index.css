@@ -46,3 +46,7 @@ html, body, #app {
 .dirty-layout {
   @apply fixed right-0 bottom-0;
 }
+
+.beam-chooser {
+  @apply flex gap-4 items-center;
+}
