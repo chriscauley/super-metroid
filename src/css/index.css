@@ -21,10 +21,10 @@ html, body, #app {
 }
 
 .area-warp {
+  /* base size is 75px */
+  --height: 38.666%; /* 29 / 75 px */
+  --width: 21.333%; /* 16 / 75 px */
   @apply absolute cursor-pointer;
-  --height: calc(28em / 16);
-  --width: 1em;
-  font-size: calc(var(--zoom) * 15px);
   background: rgba(255, 0, 255, 0.5);
   height: var(--height);
   width: var(--width);
@@ -32,5 +32,13 @@ html, body, #app {
   &.-rotated {
     height: var(--width);
     width: var(--height);
+  }
+}
+
+.area-overlay {
+  @apply absolute;
+  outline: 1px solid white;
+  img {
+    @apply max-w-none pointer-events-none;
   }
 }

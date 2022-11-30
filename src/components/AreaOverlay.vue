@@ -1,11 +1,13 @@
 <template>
-  <unrest-draggable :style="style" @drag="drag" @dragend="dragend">
-    <img :src="`/areas/${area.slug}.png`" style="width: 100%" />
+  <unrest-draggable :style="style.wrapper" @drag="drag" @dragend="dragend" class="area-overlay">
+    <img :src="`/areas/${area.slug}.png`" :style="style.img" class="area-overlay__img" />
     <div v-for="warp in warps" v-bind="warp" :key="warp.id" @click="(e) => clickWarp(e, warp)" />
   </unrest-draggable>
 </template>
 
 <script>
+const size = 75 // size of anchor box. All internal sizings are a multiple of this
+
 export default {
   props: {
     area: Object,
@@ -21,14 +23,20 @@ export default {
       const invert = !!this.$route.query.debug
       const { width, x = 0, y = 0 } = this.area
       const { dx, dy } = this
-      const _ = (a, b) => `${(Math.round(a) / b) * 100}%`
+      const _ = (a, b) => `${(100 * a) / b}%`
       return {
-        position: 'absolute',
-        left: _(x + dx, this.parent.width),
-        top: _(y + dy, this.parent.height),
-        width: _(width, this.parent.width),
-        opacity: invert ? 0.5 : null,
-        filter: invert ? 'invert(1)' : null,
+        wrapper: {
+          left: _(x + dx, this.parent.width),
+          top: _(y + dy, this.parent.height),
+          width: _(size, this.parent.width),
+          height: _(size, this.parent.width),
+          '--anchor-size': size,
+        },
+        img: {
+          width: `${(100 * width) / size}%`,
+          opacity: invert ? 0.5 : null,
+          filter: invert ? 'invert(1)' : null,
+        },
       }
     },
     warps() {
@@ -37,8 +45,8 @@ export default {
         title: name,
         class: [`area-warp -${type}`, rotated && '-rotated'],
         style: {
-          left: `${(100 * x) / this.area.width}%`,
-          top: `${(100 * y) / this.area.height}%`,
+          left: `${(100 * x) / size}%`,
+          top: `${(100 * y) / size}%`,
         },
       }))
     },
