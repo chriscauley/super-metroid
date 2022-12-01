@@ -31,12 +31,12 @@ const damages = {
   'ice-wave-plasma': 300,
 }
 
-Object.keys(damages).forEach(key => {
+Object.keys(damages).forEach((key) => {
   const prefix = key ? 'charge-' : 'charge'
   damages[prefix + key] = damages[key] * 3
 })
 
-const slugs = beams.map(b => b.replace('-beam', ''))
+const slugs = beams.map((b) => b.replace('-beam', ''))
 
 export default {
   data() {
@@ -44,14 +44,14 @@ export default {
   },
   computed: {
     beams() {
-      return slugs.map(slug => ({
+      return slugs.map((slug) => ({
         slug,
         name: startCase(slug),
         class: ['btn', this.selected[slug] ? '-primary' : '-secondary'],
       }))
     },
     damage() {
-      const key = slugs.filter(slug => this.selected[slug]).join('-')
+      const key = slugs.filter((slug) => this.selected[slug]).join('-')
       return damages[key]
     },
   },
@@ -65,6 +65,6 @@ export default {
       }
       selected[beam] = !selected[beam]
     },
-  }
+  },
 }
 </script>

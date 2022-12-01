@@ -50,3 +50,14 @@ html, body, #app {
 .beam-chooser {
   @apply flex gap-4 items-center;
 }
+
+.cheat-sheet {
+  &__portrait {
+    @apply flex items-center justify-center;
+    height: 60px;
+    width: 60px;
+    img {
+      max-height: 100%;
+    }
+  }
+}

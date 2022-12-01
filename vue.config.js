@@ -6,5 +6,6 @@ module.exports = defineConfig({
     port: 8079,
     allowedHosts: ['.localhost'],
     host: 'vclient.localhost',
+    proxy: 'http://varia.localhost:8000/'
   },
 })

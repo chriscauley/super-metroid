@@ -9,11 +9,11 @@
 
 <script>
 const formatTime = (dt) => {
-const seconds = dt / 1000
-      const m = Math.floor(seconds / 60)
-      const s = Math.floor(seconds % 60)
-      const ms = Math.floor((seconds - s) * 1000)
-      return `${m}:${s.toString().padStart(2, '0')}.${ms.toString().padStart(3, '0')}`
+  const seconds = dt / 1000
+  const m = Math.floor(seconds / 60)
+  const s = Math.floor(seconds % 60)
+  const ms = Math.floor((seconds - s) * 1000)
+  return `${m}:${s.toString().padStart(2, '0')}.${ms.toString().padStart(3, '0')}`
 }
 
 export default {
@@ -30,13 +30,11 @@ export default {
     },
     icons() {
       return {
-        toggle: `fa fa-${this.start ? 'stop' : 'play' } btn -${this.start ? 'error' : 'secondary'}`
+        toggle: `fa fa-${this.start ? 'stop' : 'play'} btn -${this.start ? 'error' : 'secondary'}`,
       }
     },
   },
-  unmounted() {
-    
-  },
+  unmounted() {},
   mounted() {
     this.tick()
   },
@@ -60,6 +58,6 @@ export default {
       this.start = null
       this.frame = null
     },
-  }
+  },
 }
 </script>
