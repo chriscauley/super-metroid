@@ -1,31 +1,29 @@
 <template>
   <div class="cheat-sheet">
-    <beam-chooser />
+    <beam-chooser :storage="storage" />
     <stop-watch />
     <table class="table">
       <thead>
         <tr>
           <td></td>
           <td>hp</td>
-          <td title="hit points and missiles compared to super missile">
-            hp:m:sm
-            <i class="fa fa-info-circle" />
-          </td>
+          <td>missiles</td>
+          <td>supers</td>
+          <td>beams</td>
         </tr>
       </thead>
       <tbody>
         <tr v-for="row in rows" :key="row.name">
           <td>
             <div class="cheat-sheet__portrait" :title="row.name">
-              <img :src="`/solver/static/images/tracker/inventory/${row.name}.png`" />
+              <img :src="row.src" />
             </div>
           </td>
           <td>
             {{ row.hp }}
           </td>
-          <td>
-            <span v-if="row.weakness === 'super-missile'">600:6:1</span>
-            <span v-else>300:3:1</span>
+          <td v-for="item in row.items" :key="item.icon">
+            {{ item.count }}
           </td>
         </tr>
       </tbody>
@@ -36,6 +34,7 @@
 <script>
 import BeamChooser from './BeamChooser.vue'
 import StopWatch from './StopWatch.vue'
+import Storage from './Storage'
 
 const microwave_beam = { href: 'https://wiki.supermetroid.run/X-Plasma', text: 'Microwave Beam' }
 
@@ -59,18 +58,6 @@ const bosses = [
   //   hp: 'n/a',
   //   weak: { icon: 'grappling-beam', title: ':troll-face' },
   //   fastest: 'charge+plasma',
-  // },
-  // {
-  //   name: 'Botwoon',
-  //   hp: 3000,
-  //   weak: 'n/a',
-  //   fastest: [microwave_beam, { 'super-missile': 10 }],
-  // },
-  // {
-  //   name: 'Golden Torizo',
-  //   hp: 13500,
-  //   weak: 'super-missile',
-  //   fastest: 'charge+ice+wave+plasma',
   // },
   {
     name: 'Kraid',
@@ -105,14 +92,59 @@ const bosses = [
     weak: 'super-missile',
     fastest: { 'super-missile': 30 },
   },
+  {
+    name: 'Botwoon',
+    hp: 3000,
+    weak: 'n/a',
+    fastest: [microwave_beam, { 'super-missile': 10 }],
+  },
+  {
+    name: 'Golden Torizo',
+    hp: 13500,
+    weak: 'super-missile',
+    fastest: 'charge+ice+wave+plasma',
+  },
+  {
+    name: 'Mother Brain',
+    hp: 18000,
+  },
 ]
 
 export default {
   name: 'CheatSheet',
   components: { BeamChooser, StopWatch },
+  data() {
+    return { storage: Storage() }
+  },
   computed: {
     rows() {
-      return bosses.map((b) => b)
+      return bosses.map((b) => ({
+        ...b,
+        src: `/solver/static/images/tracker/inventory/${b.name.replace(' ', '')}.png`,
+        items: this.getItems(b),
+      }))
+    },
+  },
+  methods: {
+    getBeamHitCount(hp) {
+      return Math.ceil(hp / this.storage.getDamage())
+    },
+    getItems(b) {
+      const { hp, weak } = b
+      return [
+        {
+          icon: 'missiles',
+          count: Math.ceil(hp / 100),
+        },
+        {
+          icon: 'super-missiles',
+          count: Math.ceil(hp / (weak === 'super-missile' ? 600 : 300)),
+        },
+        {
+          icon: 'beams',
+          count: this.getBeamHitCount(hp),
+        },
+      ]
     },
   },
 }
