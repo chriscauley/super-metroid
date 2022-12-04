@@ -55,7 +55,7 @@ export default {
       return this.area.items.map(({ slug, name, x, y }) => ({
         id: slug,
         title: name,
-        class: ['area-item'],
+        class: ['area-item', this.$store.layout.getWorld().extra_classes[slug]],
         style: {
           left: `${(100 * x) / size}%`,
           top: `${(100 * y) / size}%`,

@@ -11,6 +11,9 @@ const initial = {
 
 export default () => {
   const storage = ReactiveLocalStorage({ LS_KEY, initial })
+  storage.getWorld = () => {
+    return layouts[storage.state.selected]
+  }
   storage.getAreas = () => {
     storage.watch()
     return layouts.getAreas(storage.state.selected)

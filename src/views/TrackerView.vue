@@ -1,5 +1,5 @@
 <template>
-  <div class="tracker-view" :style="`--zoom: ${osd_store.state.zoom}`">
+  <div :class="wrapper_class" :style="`--zoom: ${osd_store.state.zoom}`">
     <osd-viewer :osd_store="osd_store" @viewer-bound="addCorners" :editor_mode="true" />
     <template v-if="osd_store.viewer">
       <osd-html-overlay :viewer="osd_store.viewer">
@@ -46,6 +46,9 @@ export default {
     },
     skin() {
       return this.$route.query.skin || 'jpg'
+    },
+    wrapper_class() {
+      return `tracker-view -layout-${this.$store.layout.state.selected} -large-items`
     },
   },
   methods: {
