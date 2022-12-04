@@ -23,6 +23,10 @@ export default () => {
     layouts.moveWarp(storage.state.selected, warp_slug, dx, dy)
     storage.markDirty()
   }
+  storage.moveItem = (item_slug, dx, dy) => {
+    layouts.moveItem(storage.state.selected, item_slug, dx, dy)
+    storage.markDirty()
+  }
   storage.moveArea = (area_slug, dx, dy) => {
     layouts.moveArea(storage.state.selected, area_slug, dx, dy)
     storage.markDirty()

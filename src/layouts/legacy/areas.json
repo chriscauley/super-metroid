@@ -1,7 +1,25 @@
 [
   {
     "slug": "crater",
-    "items": [],
+    "items": [
+      ["EnergyTankGauntlet", 158.02041666666668, 38.070611111111106],
+      ["Bomb", 272.12041666666664, 98.47061111111111],
+      ["EnergyTankTerminator", 90.32041666666663, 97.97061111111111],
+      ["MorphingBall", 231.37041666666664, 479.2206111111111],
+      ["EnergyTankBrinstarCeiling", 314.97041666666655, 478.7206111111111],
+      ["PowerBombCrateriasurface", 387.3204166666666, 22.495611111111106],
+      ["MissileCrateriamoat", 431.2704166666666, 69.14561111111111],
+      ["MissileCrateriabottom", 201.12041666666659, 280.7206111111111],
+      ["MissileCrateriagauntletright", 77.97041666666661, 52.64561111111111],
+      ["MissileCrateriagauntletleft", 62.97041666666661, 52.64561111111111],
+      ["SuperMissileCrateria", 258.12041666666664, 143.37061111111112],
+      ["MissileCrateriamiddle", 144.02041666666668, 113.2956111111111],
+      ["PowerBombblueBrinstar", 201.12041666666659, 479.2206111111111],
+      ["MissileblueBrinstarmiddle", 329.22041666666667, 478.7206111111111],
+      ["MissileblueBrinstarbottom", 272.72041666666667, 494.72061111111117],
+      ["MissileblueBrinstartop", 285.72041666666655, 441.44561111111113],
+      ["MissileblueBrinstarbehindmissile", 285.72041666666655, 456.52061111111107]
+    ],
     "width": 462,
     "height": 502,
     "x": 289.9795833333334,
@@ -17,7 +35,13 @@
   },
   {
     "slug": "crocomire",
-    "items": [],
+    "items": [
+      ["EnergyTankCrocomire", 234.69148803172803, 17.277184331030185],
+      ["GrappleBeam", 7.541488031728022, 108.15218433103018],
+      ["PowerBombCrocomire", 93.19148803172803, 17.60218433103023],
+      ["MissilebelowCrocomire", 164.19148803172803, 93.65218433103018],
+      ["MissileGrappleBeam", 78.591488031728, 93.72718433103012]
+    ],
     "width": 259,
     "height": 133,
     "x": 160.05851196827197,
@@ -26,7 +50,7 @@
   },
   {
     "slug": "draygon",
-    "items": [],
+    "items": [["SpaceJump", 7.637081512811164, 31.757287624296737]],
     "width": 58,
     "height": 40,
     "x": 1385.1129184871888,
@@ -35,7 +59,19 @@
   },
   {
     "slug": "east-maridia",
-    "items": [],
+    "items": [
+      ["EnergyTankMamaturtle", -20.603422426948555, 221.61750591488013],
+      ["PlasmaBeam", 157.0965775730515, 68.44250591488017],
+      ["ReserveTankMaridia", 57.09657757305149, 267.8425059148801],
+      ["SpringBall", 229.64657757305145, 283.0925059148801],
+      ["EnergyTankBotwoon", 172.74657757305158, 161.8925059148801],
+      ["MissileleftMaridiasandpitroom", 43.89657757305167, 253.29250591488008],
+      ["MissilerightMaridiasandpitroom", 86.64657757305145, 253.29250591488008],
+      ["PowerBombrightMaridiasandpitroom", 100.14657757305145, 267.0175059148801],
+      ["MissilepinkMaridia", 101.14657757305145, 177.29250591488014],
+      ["SuperMissilepinkMaridia", 115.14657757305145, 177.29250591488014],
+      ["MissileDraygon", 357.39657757305145, 145.89250591488016]
+    ],
     "width": 368,
     "height": 299,
     "x": 1132.1034224269486,
@@ -50,7 +86,24 @@
   },
   {
     "slug": "green-brinstar",
-    "items": [],
+    "items": [
+      ["ReserveTankBrinstar", 121.96546007526895, 147.198672117135],
+      ["ChargeBeam", 179.16546007526898, 254.64867211713505],
+      ["EnergyTankEtecoons", 25.36546007526896, 238.823672117135],
+      ["EnergyTankWaterway", 50.315460075268966, 284.473672117135],
+      ["EnergyTankBrinstarGate", 236.76546007526898, 208.49867211713502],
+      ["SuperMissilepinkBrinstar", 279.265460075269, 223.99867211713507],
+      ["MissilegreenBrinstarbelowsupermissile", 92.16546007526897, 147.198672117135],
+      ["SuperMissilegreenBrinstartop", 79.06546007526896, 131.948672117135],
+      ["MissilegreenBrinstarbehindmissile", 137.61546007526897, 138.74867211713507],
+      ["MissilegreenBrinstarbehindreservetank", 137.715460075269, 152.823672117135],
+      ["MissilepinkBrinstartop", 179.41546007526898, 193.42367211713503],
+      ["MissilepinkBrinstarbottom", 179.16546007526898, 238.74867211713496],
+      ["PowerBombpinkBrinstar", 150.91546007526898, 208.17367211713503],
+      ["MissilegreenBrinstarpipe", 250.76546007526898, 254.72367211713498],
+      ["SuperMissilegreenBrinstarbottom", 8.065460075268962, 238.823672117135],
+      ["PowerBombgreenBrinstarbottom", 108.25, 193.75]
+    ],
     "width": 411,
     "height": 298,
     "x": 6.984539924731037,
@@ -64,7 +117,7 @@
   },
   {
     "slug": "kraid",
-    "items": [],
+    "items": [["VariaSuit", 46.298666666666804, 22.683888888888987]],
     "width": 56,
     "height": 37,
     "x": 973.1013333333333,
@@ -73,7 +126,10 @@
   },
   {
     "slug": "kraids-lair",
-    "items": [],
+    "items": [
+      ["EnergyTankKraid", 12.756305555555628, 34.029333333333284],
+      ["MissileKraid", 69.40630555555549, 18.454333333333352]
+    ],
     "width": 191,
     "height": 70,
     "x": 757.0936944444445,
@@ -85,7 +141,16 @@
   },
   {
     "slug": "lower-norfair",
-    "items": [],
+    "items": [
+      ["ScrewAttack", 78.72227777777766, 211.05866666666662],
+      ["MissileGoldTorizo", 50.22227777777766, 195.9836666666667],
+      ["SuperMissileGoldTorizo", 65.22227777777766, 195.9836666666667],
+      ["MissileMickeyMouseroom", 194.22227777777766, 120.93366666666674],
+      ["MissilelowerNorfairabovefireflearoom", 293.97227777777766, 44.708666666666716],
+      ["PowerBomblowerNorfairabovefireflearoom", 321.72227777777766, 58.958666666666716],
+      ["PowerBombPowerBombsofshame", 251.22227777777766, 180.90866666666665],
+      ["MissilelowerNorfairnearWaveBeam", 207.72227777777766, 43.958666666666716]
+    ],
     "width": 330,
     "height": 229,
     "x": 1074.0277222222223,
@@ -107,7 +172,13 @@
   },
   {
     "slug": "red-brinstar",
-    "items": [],
+    "items": [
+      ["XRayScope", 4.212444444444486, 206.16922222222215],
+      ["Spazer", 220.6624444444443, 237.31922222222224],
+      ["PowerBombredBrinstarsidehopperroom", 177.3124444444445, 99.2942222222222],
+      ["PowerBombredBrinstarspikeroom", 177.3124444444445, 145.19422222222218],
+      ["MissileredBrinstarspikeroom", 161.5624444444445, 145.19422222222218]
+    ],
     "width": 305,
     "height": 275,
     "x": 642.7375555555556,
@@ -123,7 +194,7 @@
   },
   {
     "slug": "ridley",
-    "items": [],
+    "items": [["EnergyTankRidley", 7.16933333333327, 30.649999999999977]],
     "width": 43,
     "height": 40,
     "x": 1134.0806666666665,
@@ -144,11 +215,28 @@
   },
   {
     "slug": "upper-norfair",
-    "items": [],
+    "items": [
+      ["IceBeam", 48.44788586097741, 77.9012451391319],
+      ["HiJumpBoots", 78.89788586097734, 138.87624513913192],
+      ["ReserveTankNorfair", 236.09788586097727, 77.9012451391319],
+      ["SpeedBooster", 507.14788586097734, 78.07624513913197],
+      ["WaveBeam", 392.64788586097734, 108.72624513913195],
+      ["EnergyTankFirefleas", 858.3978858609773, 86.70124513913186],
+      ["MissileNorfairReserveTank", 250.14788586097734, 77.9012451391319],
+      ["MissilebubbleNorfairgreendoor", 277.6478858609772, 77.9012451391319],
+      ["MissilebubbleNorfair", 307.14788586097745, 123.72624513913195],
+      ["MissileSpeedBooster", 492.6478858609772, 78.07624513913197],
+      ["MissileWaveBeam", 349.89788586097734, 109.30124513913188],
+      ["Missilelavaroom", 192.64788586097734, 107.90124513913202],
+      ["MissilebelowIceBeam", 6.147885860977453, 107.97624513913183],
+      ["MissileaboveCrocomire", 149.64788586097734, 139.87624513913192],
+      ["MissileHiJumpBoots", 93.14788586097734, 123.80124513913188],
+      ["EnergyTankHiJumpBoots", 106.64788586097734, 123.80124513913188]
+    ],
     "width": 515,
     "height": 214,
     "x": 536.1021141390227,
-    "y": 262.99937743043404,
+    "y": 262.69173842061656,
     "warps": [
       ["crocomireSpeedwayBottom", 191.66188586097746, 196.6802451391319],
       ["kronicBoostRoomBottomLeft", 343.91188586097735, 199.28024513913192],
@@ -160,7 +248,14 @@
   },
   {
     "slug": "west-maridia",
-    "items": [],
+    "items": [
+      ["MissilegreenMaridiashinespark", 7.675611111111152, 148.46933333333334],
+      ["SuperMissilegreenMaridia", 21.175611111111266, 134.21933333333334],
+      ["MissilegreenMaridiatatori", 135.67561111111115, 164.29433333333333],
+      ["SuperMissileyellowMaridia", 28.22561111111122, 56.59433333333334],
+      ["MissileyellowMaridiasupermissile", 43.225611111111334, 56.59433333333334],
+      ["MissileyellowMaridiafalsewall", 150.17561111111115, 59.09433333333334]
+    ],
     "width": 172,
     "height": 241,
     "x": 989.0743888888888,
@@ -176,7 +271,19 @@
   },
   {
     "slug": "wrecked-ship",
-    "items": [],
+    "items": [
+      ["ReserveTankWreckedShip", 175.88116666666667, 37.739333333333335],
+      ["EnergyTankWreckedShip", 221.28116666666676, 53.56433333333334],
+      ["RightSuperWreckedShip", 261.6311666666667, 113.78933333333332],
+      ["GravitySuit", 104.38116666666667, 53.31433333333332],
+      ["MissileoutsideWreckedShipbottom", 19.881166666666786, 83.63933333333333],
+      ["MissileoutsideWreckedShiptop", 31.131166666666672, 7.664333333333335],
+      ["MissileoutsideWreckedShipmiddle", 19.881166666666786, 37.239333333333335],
+      ["MissileWreckedShipmiddle", 133.63116666666667, 98.96433333333333],
+      ["MissileGravitySuit", 148.13116666666667, 53.31433333333332],
+      ["MissileWreckedShiptop", 262.1311666666667, 7.839333333333332],
+      ["SuperMissileWreckedShipleft", 176.63116666666667, 113.78933333333332]
+    ],
     "width": 384,
     "height": 159,
     "x": 907.1188333333333,

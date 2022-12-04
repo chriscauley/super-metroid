@@ -1,5 +1,8 @@
 import cssfile from '!raw-loader!./t_style.html'
+import { items_by_area } from '@/data/old'
 const chunks = {}
+
+const parent = { width: 1500, height: 750, door_w: 16, door_h: 27 }
 
 export const saveFile = (text, filename) => {
   const anchor = document.createElement('a')
@@ -10,14 +13,20 @@ export const saveFile = (text, filename) => {
   document.body.removeChild(anchor)
 }
 
-export const buildLegacy = (areas_json) => {
-  const parent = { width: 1500, height: 750, door_w: 16, door_h: 27 }
+const parseChuncks = () => {
+  if (Object.keys(chunks).length) {
+    return
+  }
   cssfile.split('// SPLIT').forEach((text) => {
     if (text.startsWith(':')) {
       const slug = text.match(/:(.*)\n/)[1].trim()
       chunks[slug] = text
     }
   })
+}
+
+export const positionLegacyDoors = (areas_json) => {
+  parseChuncks()
   const coords_by_door = {}
   chunks.warp
     .replace('\n', '')
@@ -32,7 +41,6 @@ export const buildLegacy = (areas_json) => {
       const top = Number(rule.match(/top:([\d\.]+)%/)[1])
       coords_by_door[door] = [left, top]
     })
-
   areas_json.forEach((area) => {
     if (!area._doors) {
       return
@@ -58,5 +66,44 @@ export const buildLegacy = (areas_json) => {
     })
     delete area._doors
   })
-  window.SL = () => saveFile(JSON.stringify(areas_json, null, 2), 'areas.json')
+}
+
+export const positionLegacyItems = (areas_json) => {
+  parseChuncks()
+  const coords_by_item = {}
+  chunks.items
+    .replace('\n', '')
+    .replace(/\s+/g, '')
+    .split('#')
+    .forEach((rule) => {
+      const item = rule.match(/^\w+/)?.[0]
+      if (!item) {
+        return
+      }
+      const left = Number(rule.match(/left:([\d\.]+)%/)[1])
+      const top = Number(rule.match(/top:([\d\.]+)%/)[1])
+      coords_by_item[item] = [left, top]
+    })
+
+  areas_json.forEach((area) => {
+    if (area.items?.length) {
+      return
+    }
+
+    const items = items_by_area[area.slug]
+    if (!items) {
+      return
+    }
+    area.items = items.map((item) => {
+      const [left, top] = coords_by_item[item]
+
+      let x = parent.width * (left / 100) - area.x
+      let y = parent.height * (top / 100) - (area.y * parent.width) / parent.height
+      return [item, x, y]
+    })
+  })
+}
+
+export const buildLegacy = (areas_json) => {
+  positionLegacyItems(areas_json)
 }

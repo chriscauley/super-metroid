@@ -2,11 +2,12 @@
   <unrest-draggable :style="style.wrapper" @drag="drag" @dragend="dragend" class="area-overlay">
     <img :src="`/areas/${area.slug}.png`" :style="style.img" class="area-overlay__img" />
     <div v-for="warp in warps" v-bind="warp" :key="warp.id" @click="(e) => clickWarp(e, warp)" />
+    <div v-for="item in items" v-bind="item" :key="item.id" @click="(e) => clickItem(e, item)" />
   </unrest-draggable>
 </template>
 
 <script>
-const size = 75 // size of anchor box. All internal sizings are a multiple of this
+const size = 13.5 // size of anchor box. All internal sizings are a multiple of this
 
 export default {
   props: {
@@ -50,6 +51,17 @@ export default {
         },
       }))
     },
+    items() {
+      return this.area.items.map(({ slug, name, x, y }) => ({
+        id: slug,
+        title: name,
+        class: ['area-item'],
+        style: {
+          left: `${(100 * x) / size}%`,
+          top: `${(100 * y) / size}%`,
+        },
+      }))
+    },
   },
   methods: {
     drag(e) {
@@ -73,6 +85,17 @@ export default {
       const dy = Math.abs(click_y) > 0.25 ? Math.sign(click_y) * 0.5 : 0
       if (dx || dy) {
         this.$store.layout.moveWarp(warp.slug, dx, dy)
+      }
+    },
+    clickItem(e, { id }) {
+      const { width, height } = e.target.getBoundingClientRect()
+      const item = this.area.items.find((w) => w.slug === id)
+      const click_x = e.offsetX / width - 0.5
+      const click_y = e.offsetY / height - 0.5
+      const dx = Math.abs(click_x) > 0.25 ? Math.sign(click_x) * 0.5 : 0
+      const dy = Math.abs(click_y) > 0.25 ? Math.sign(click_y) * 0.5 : 0
+      if (dx || dy) {
+        this.$store.layout.moveItem(item.slug, dx, dy)
       }
     },
   },

@@ -23,6 +23,7 @@ const prepArea = (area) => {
   area = cloneDeep(area)
   const isRotated = (slug) => slug.match(rotated_door_regexp)
   area.name = startCase(area.slug)
+
   area.warps = area.warps.map(([slug, x, y]) => ({
     slug,
     name: startCase(slug),
@@ -31,6 +32,14 @@ const prepArea = (area) => {
     rotated: isRotated(slug),
     type: warp_types[slug],
   }))
+
+  area.items = area.items.map(([slug, x, y]) => ({
+    slug,
+    name: startCase(slug),
+    x,
+    y,
+  }))
+
   return area
 }
 
@@ -52,6 +61,19 @@ export default {
     }
     warp[1] += dx
     warp[2] += dy
+  },
+  moveItem(layout_slug, item_slug, dx, dy) {
+    const layout = this[layout_slug]
+    let item
+    layout.areas.find((area) => {
+      item = area.items.find((item) => item[0] === item_slug)
+      return item
+    })
+    if (!item) {
+      throw `Unable to locate item: ${item_slug}`
+    }
+    item[1] += dx
+    item[2] += dy
   },
   moveArea(layout_slug, area_slug, dx, dy) {
     const area = this[layout_slug].areas.find((area) => area.slug === area_slug)
