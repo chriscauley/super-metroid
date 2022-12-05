@@ -261,13 +261,146 @@ const area_by_bosses = {
   Kraid: 'kraids-layer',
   Crocomire: 'crocomize',
   SporeSpawn: 'green-brinstar',
-  Draygon: 'dragon',
+  Draygon: 'draygon',
   Botwoon: 'east-maridia',
   Ridley: 'ridley',
   GoldenTorizo: 'lower-norfair',
   Phantoon: 'wrecked-ship',
   MotherBrain: 'tourian',
 }
+
+// this is used to calculate items in an area
+export const subarea_by_area = {
+  'east-maridia': 'draygon',
+  'wrecked-ship': 'phantoon',
+  'kraids-lair': 'kraid',
+  'lower-norfair': 'ridley',
+}
+
+export const special_items = {
+  _major: [
+    // crater
+    'EnergyTankGauntlet',
+    'EnergyTankTerminator',
+    'Bomb',
+    'MorphingBall',
+    'EnergyTankBrinstarCeiling',
+    // green-brinstar
+    'ReserveTankBrinstar',
+    'EnergyTankEtecoons',
+    'ChargeBeam',
+    'EnergyTankWaterway',
+    // red-brinstar
+    'XRayScope',
+    'Spazer',
+    // crocomize
+    'EnergyTankCrocomire',
+    'GrappleBeam',
+    // upper-norfair
+    'IceBeam',
+    'EnergyTankHiJumpBoots',
+    'HiJumpBoots',
+    'ReserveTankNorfair',
+    'SpeedBooster',
+    'WaveBeam',
+    // lower-norfair
+    'ScrewAttack',
+    'EnergyTankFirefleas',
+    'EnergyTankRidley',
+    // kraids-lair
+    'EnergyTankKraid',
+    'VariaSuit',
+    // wrecked-ship
+    'GravitySuit',
+    'ReserveTankWreckedShip',
+    'EnergyTankWreckedShip',
+    'RightSuperWreckedShip',
+    // east-maridia
+    'PlasmaBeam',
+    'EnergyTankBotwoon',
+    'SpaceJump',
+    'SpringBall',
+    'ReserveTankMaridia',
+    // west-maridia
+    'EnergyTankMamaturtle',
+  ],
+  _chozo: [
+    // crater
+    'EnergyTankGauntlet',
+    'Bomb',
+    'MissileCrateriamiddle',
+    'MorphingBall',
+    'MissileblueBrinstarbottom',
+    // green-brinstar
+    'ReserveTankBrinstar',
+    'ChargeBeam',
+    'SuperMissilepinkBrinstar',
+    // red-brinstar
+    'XRayScope',
+    'Spazer',
+    'PowerBombredBrinstarspikeroom',
+    // crocomize
+    'GrappleBeam',
+    // upper-norfair
+    'IceBeam',
+    'HiJumpBoots',
+    'SpeedBooster',
+    'WaveBeam',
+    // lower-norfair
+    'ScrewAttack',
+    'EnergyTankRidley',
+    // kraids-lair
+    'VariaSuit',
+    // wrecked-ship
+    'GravitySuit',
+    'EnergyTankWreckedShip',
+    'RightSuperWreckedShip',
+    // east-maridia
+    'PlasmaBeam',
+    'SpaceJump',
+    'SpringBall',
+    // west-maridia
+  ],
+  _scavenger: [
+    // crater
+    'Bomb',
+    'MorphingBall',
+    // green-brinstar
+    'ChargeBeam',
+    // red-brinstar
+    'XRayScope',
+    'Spazer',
+    // crocomize
+    'GrappleBeam',
+    // upper-norfair
+    'IceBeam',
+    'HiJumpBoots',
+    'SpeedBooster',
+    'WaveBeam',
+    // lower-norfair
+    'ScrewAttack',
+    'EnergyTankRidley',
+    // kraids-lair
+    'VariaSuit',
+    // wrecked-ship
+    'GravitySuit',
+    'EnergyTankWreckedShip',
+    'RightSuperWreckedShip',
+    // east-maridia
+    'PlasmaBeam',
+    'SpaceJump',
+    'SpringBall',
+    // west-maridia
+  ],
+}
+
+// I prefer this to be a map for performance purposes
+Object.entries(special_items).forEach(([_key, items]) => {
+  delete special_items[_key]
+  const key = _key.slice(1)
+  special_items[key] = {}
+  items.forEach((item) => (special_items[key][item] = true))
+})
 
 export const all_item_locs = flatten([...Object.values(items_by_area), Object.keys(area_by_bosses)])
 

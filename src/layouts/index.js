@@ -1,6 +1,6 @@
 import { startCase, cloneDeep } from 'lodash'
 
-import { access_points, boss_doors, escape_doors, sand_doors } from '@/data/old'
+import { access_points, boss_doors, escape_doors, sand_doors, special_items } from '@/data/old'
 import legacy from './legacy'
 
 const rotated_door_regexp = /(Top|Bottom|redBrinstarElevator)$/
@@ -38,6 +38,9 @@ const prepArea = (area) => {
     name: startCase(slug),
     x,
     y,
+    chozo: special_items.chozo[slug],
+    major: special_items.major[slug],
+    scavenger: special_items.scavenger[slug],
   }))
 
   return area

@@ -52,10 +52,16 @@ export default {
       }))
     },
     items() {
-      return this.area.items.map(({ slug, name, x, y }) => ({
+      return this.area.items.map(({ slug, name, x, y, chozo, major, scavenger }) => ({
         id: slug,
         title: name,
-        class: ['area-item', this.$store.layout.getWorld().extra_classes[slug]],
+        class: [
+          'area-item',
+          this.$store.layout.getWorld().extra_classes[slug],
+          chozo && '-chozo',
+          major && '-major',
+          scavenger && '-scavenger',
+        ],
         style: {
           left: `${(100 * x) / size}%`,
           top: `${(100 * y) / size}%`,
@@ -88,15 +94,17 @@ export default {
       }
     },
     clickItem(e, { id }) {
-      const { width, height } = e.target.getBoundingClientRect()
-      const item = this.area.items.find((w) => w.slug === id)
-      const click_x = e.offsetX / width - 0.5
-      const click_y = e.offsetY / height - 0.5
-      const dx = Math.abs(click_x) > 0.25 ? Math.sign(click_x) * 0.5 : 0
-      const dy = Math.abs(click_y) > 0.25 ? Math.sign(click_y) * 0.5 : 0
-      if (dx || dy) {
-        this.$store.layout.moveItem(item.slug, dx, dy)
-      }
+      navigator.clipboard.writeText(id)
+      return
+      // const { width, height } = e.target.getBoundingClientRect()
+      // const item = this.area.items.find((i) => i.slug === id)
+      // const click_x = e.offsetX / width - 0.5
+      // const click_y = e.offsetY / height - 0.5
+      // const dx = Math.abs(click_x) > 0.25 ? Math.sign(click_x) * 0.5 : 0
+      // const dy = Math.abs(click_y) > 0.25 ? Math.sign(click_y) * 0.5 : 0
+      // if (dx || dy) {
+      //   this.$store.layout.moveItem(item.slug, dx, dy)
+      // }
     },
   },
 }

@@ -60,7 +60,6 @@
   {
     "slug": "east-maridia",
     "items": [
-      ["EnergyTankMamaturtle", -20.603422426948555, 221.61750591488013],
       ["PlasmaBeam", 157.0965775730515, 68.44250591488017],
       ["ReserveTankMaridia", 57.09657757305149, 267.8425059148801],
       ["SpringBall", 229.64657757305145, 283.0925059148801],
@@ -146,6 +145,7 @@
       ["MissileGoldTorizo", 50.22227777777766, 195.9836666666667],
       ["SuperMissileGoldTorizo", 65.22227777777766, 195.9836666666667],
       ["MissileMickeyMouseroom", 194.22227777777766, 120.93366666666674],
+      ["EnergyTankFirefleas", 320.22227777777766, 136.45866666666672],
       ["MissilelowerNorfairabovefireflearoom", 293.97227777777766, 44.708666666666716],
       ["PowerBomblowerNorfairabovefireflearoom", 321.72227777777766, 58.958666666666716],
       ["PowerBombPowerBombsofshame", 251.22227777777766, 180.90866666666665],
@@ -221,7 +221,6 @@
       ["ReserveTankNorfair", 236.09788586097727, 77.9012451391319],
       ["SpeedBooster", 507.14788586097734, 78.07624513913197],
       ["WaveBeam", 392.64788586097734, 108.72624513913195],
-      ["EnergyTankFirefleas", 858.3978858609773, 86.70124513913186],
       ["MissileNorfairReserveTank", 250.14788586097734, 77.9012451391319],
       ["MissilebubbleNorfairgreendoor", 277.6478858609772, 77.9012451391319],
       ["MissilebubbleNorfair", 307.14788586097745, 123.72624513913195],
@@ -251,7 +250,8 @@
     "items": [
       ["MissilegreenMaridiashinespark", 7.675611111111152, 148.46933333333334],
       ["SuperMissilegreenMaridia", 21.175611111111266, 134.21933333333334],
-      ["MissilegreenMaridiatatori", 135.67561111111115, 164.29433333333333],
+      ["EnergyTankMamaturtle", 123.17561111111115, 150.29433333333333],
+      ["MissilegreenMaridiatatori", 136.67561111111115, 164.29433333333333],
       ["SuperMissileyellowMaridia", 28.22561111111122, 56.59433333333334],
       ["MissileyellowMaridiasupermissile", 43.225611111111334, 56.59433333333334],
       ["MissileyellowMaridiafalsewall", 150.17561111111115, 59.09433333333334]
