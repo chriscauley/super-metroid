@@ -11,7 +11,7 @@ export default (_component) => {
     ]
     if (true) {
       // if (component.$auth.user?.is_superuser) {
-      tools.push({ slug: 'move_all', icon: 'fa fa-arrows' })
+      tools.push({ slug: 'admin_move', icon: 'fa fa-arrows' })
     }
     return tools
   }

@@ -11,6 +11,7 @@
           :parent="parent"
           @move-area="(data) => moveArea(area, data)"
           :osd_store="osd_store"
+          :tool_storage="tool_storage"
         />
       </osd-html-overlay>
       <!-- <div v-for="area in areas" :key="area.slug"> -->

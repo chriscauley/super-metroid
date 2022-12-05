@@ -93,6 +93,9 @@ html, body, #app {
   img {
     @apply max-w-none pointer-events-none;
   }
+  &__move {
+    @apply cursor-pointer text-white;
+  }
 }
 
 .dirty-layout {

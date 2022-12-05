@@ -1,9 +1,10 @@
 <template>
-  <unrest-draggable :style="style.wrapper" @drag="drag" @dragend="dragend" class="area-overlay">
+  <div :style="style.wrapper" class="area-overlay">
+    <unrest-draggable @drag="drag" @dragend="dragend" class="fa fa-arrows area-overlay__move" />
     <img :src="`/areas/${area.slug}.png`" :style="style.img" class="area-overlay__img" />
     <div v-for="warp in warps" v-bind="warp" :key="warp.id" @click="(e) => clickWarp(e, warp)" />
     <div v-for="item in items" v-bind="item" :key="item.id" @click="(e) => clickItem(e, item)" />
-  </unrest-draggable>
+  </div>
 </template>
 
 <script>
@@ -14,6 +15,7 @@ export default {
     area: Object,
     parent: Object,
     osd_store: Object,
+    tool_storage: Object,
   },
   emits: ['move-area'],
   data() {
@@ -78,33 +80,44 @@ export default {
       this.dy = (y1 - y0) / zoom
     },
     dragend() {
+      const { tool } = this.tool_storage.state.selected
       const { dx, dy } = this
-      this.$emit('move-area', { dx, dy })
+      if (tool === 'admin_move') {
+        this.$emit('move-area', { dx, dy })
+      } else {
+        console.warn('TODO: moving marker should add an override to moving the area')
+      }
       this.dx = this.dy = 0
     },
     clickWarp(e, { id }) {
-      const { width, height } = e.target.getBoundingClientRect()
-      const warp = this.area.warps.find((w) => w.slug === id)
-      const click_x = e.offsetX / width - 0.5
-      const click_y = e.offsetY / height - 0.5
-      const dx = Math.abs(click_x) > 0.25 ? Math.sign(click_x) * 0.5 : 0
-      const dy = Math.abs(click_y) > 0.25 ? Math.sign(click_y) * 0.5 : 0
-      if (dx || dy) {
-        this.$store.layout.moveWarp(warp.slug, dx, dy)
+      const { tool } = this.tool_storage.state.selected
+      if (tool === 'admin_move') {
+        const { width, height } = e.target.getBoundingClientRect()
+        const warp = this.area.warps.find((w) => w.slug === id)
+        const click_x = e.offsetX / width - 0.5
+        const click_y = e.offsetY / height - 0.5
+        const dx = Math.abs(click_x) > 0.25 ? Math.sign(click_x) * 0.5 : 0
+        const dy = Math.abs(click_y) > 0.25 ? Math.sign(click_y) * 0.5 : 0
+        if (dx || dy) {
+          this.$store.layout.moveWarp(warp.slug, dx, dy)
+        }
       }
     },
     clickItem(e, { id }) {
-      navigator.clipboard.writeText(id)
-      return
-      // const { width, height } = e.target.getBoundingClientRect()
-      // const item = this.area.items.find((i) => i.slug === id)
-      // const click_x = e.offsetX / width - 0.5
-      // const click_y = e.offsetY / height - 0.5
-      // const dx = Math.abs(click_x) > 0.25 ? Math.sign(click_x) * 0.5 : 0
-      // const dy = Math.abs(click_y) > 0.25 ? Math.sign(click_y) * 0.5 : 0
-      // if (dx || dy) {
-      //   this.$store.layout.moveItem(item.slug, dx, dy)
-      // }
+      const { tool } = this.tool_storage.state.selected
+      if (tool === 'admin_move') {
+        const { width, height } = e.target.getBoundingClientRect()
+        const item = this.area.items.find((i) => i.slug === id)
+        const click_x = e.offsetX / width - 0.5
+        const click_y = e.offsetY / height - 0.5
+        const dx = Math.abs(click_x) > 0.25 ? Math.sign(click_x) * 0.5 : 0
+        const dy = Math.abs(click_y) > 0.25 ? Math.sign(click_y) * 0.5 : 0
+        if (dx || dy) {
+          this.$store.layout.moveItem(item.slug, dx, dy)
+        }
+      } else {
+        console.warn('TODO', id)
+      }
     },
   },
 }
