@@ -1,0 +1,8 @@
+.area-item {
+  /* items that need any z-index to put them on top of neighbors */
+  z-index: 1;
+}
+
+.tracker-toolbar {
+  z-index: 10;
+}

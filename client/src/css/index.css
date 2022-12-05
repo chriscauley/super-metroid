@@ -1,4 +1,5 @@
 @import './tailwind.css';
+@import './z-index.css';
 
 body {
   margin: 0;
@@ -18,6 +19,10 @@ html, body, #app {
     @apply h-full w-full;
     background: black;
   }
+}
+
+.tracker-toolbar {
+  @apply fixed;
 }
 
 .area-warp {
@@ -40,7 +45,6 @@ html, body, #app {
   width: 100%;
   height: 100%;
   transform: translate(-50%, -50%);
-  z-index: 1;
   &:before {
     @apply absolute block inset-0;
     background: rgba(0, 255, 0, 0.5);
@@ -112,4 +116,8 @@ html, body, #app {
       max-width: 200%;
     }
   }
+}
+
+.wrapper-toolbar {
+  @apply fixed;
 }

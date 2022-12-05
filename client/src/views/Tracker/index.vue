@@ -1,5 +1,6 @@
 <template>
   <div :class="wrapper_class" :style="`--zoom: ${osd_store.state.zoom}`">
+    <unrest-toolbar :storage="tool_storage" class="tracker-toolbar" />
     <osd-viewer :osd_store="osd_store" @viewer-bound="addCorners" :editor_mode="true" />
     <template v-if="osd_store.viewer">
       <osd-html-overlay :viewer="osd_store.viewer">
@@ -23,10 +24,12 @@
 </template>
 
 <script>
-import { saveFile } from '@/data/legacy'
 import osd from '@unrest/vue-openseadragon'
 import openseadragon from 'openseadragon'
+
+import { saveFile } from '@/data/legacy'
 import AreaOverlay from '@/components/AreaOverlay'
+import ToolStorage from './ToolStorage'
 
 const { Rect } = openseadragon
 
@@ -39,7 +42,9 @@ export default {
       width: 1500,
       height: 750,
     }
-    return { osd_store: osd.Store(), parent }
+    const tool_storage = ToolStorage(this)
+    const osd_store = osd.Store()
+    return { osd_store, parent, tool_storage }
   },
   computed: {
     areas() {
