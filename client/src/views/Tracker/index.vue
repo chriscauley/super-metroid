@@ -31,6 +31,7 @@ import AreaOverlay from '@/components/AreaOverlay'
 const { Rect } = openseadragon
 
 export default {
+  name: 'TrackerView',
   components: { AreaOverlay },
   data() {
     window._S = () => saveFile(`${JSON.stringify(this.areas, null, 2)}`, 'areas.json')
