@@ -1,6 +1,19 @@
 <template>
   <div :class="wrapper_class" :style="`--zoom: ${osd_store.state.zoom}`">
-    <unrest-toolbar :storage="tool_storage" class="tracker-toolbar" />
+    <unrest-toolbar :storage="tool_storage" class="tracker-toolbar">
+      <template #right>
+        <unrest-dropdown>
+          <button class="btn -primary">
+            <i class="fa fa-gear" />
+          </button>
+          <template #content>
+            <div class="dropdown-items" @click.stop>
+              <unrest-form :schema="tool_storage.schema" :state="tool_storage.state" />
+            </div>
+          </template>
+        </unrest-dropdown>
+      </template>
+    </unrest-toolbar>
     <osd-viewer :osd_store="osd_store" @viewer-bound="addCorners" :editor_mode="true" />
     <template v-if="osd_store.viewer">
       <osd-html-overlay :viewer="osd_store.viewer">
@@ -55,7 +68,10 @@ export default {
       return this.$route.query.skin || 'jpg'
     },
     wrapper_class() {
-      return `tracker-view -layout-${this.$store.layout.state.selected} -large-items`
+      return [
+        `tracker-view -layout-${this.$store.layout.state.selected}`,
+        this.tool_storage.state.large_icons && '-large-icons',
+      ]
     },
   },
   methods: {

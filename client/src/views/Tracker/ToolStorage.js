@@ -16,5 +16,12 @@ export default (_component) => {
     return tools
   }
   const initial = { selected: { tool: 'play' } }
-  return toolbar.ToolStorage('tools__tracker', { tools: getTools, initial })
+  const storage = toolbar.ToolStorage('tools__tracker', { tools: getTools, initial })
+  storage.schema = {
+    type: 'object',
+    properties: {
+      large_icons: { type: 'boolean' },
+    },
+  }
+  return storage
 }

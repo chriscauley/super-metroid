@@ -30,13 +30,30 @@ html, body, #app {
   --height: 214.8148%; /* 29 / 13.5 px */
   --width: 118.5185185%; /* 16 / 13.5 px */
   @apply absolute cursor-pointer;
-  background: rgba(255, 0, 255, 0.5);
   height: var(--height);
   width: var(--width);
   transform: translate(-50%, -50%);
   &.-rotated {
     height: var(--width);
     width: var(--height);
+  }
+  &:before {
+    @apply absolute block inset-0;
+    background: radial-gradient(farthest-side, #000, #000 33%, #7001ce 75%, #FF00FF);
+    border-radius: 100%;
+    content: '';
+    .-large-icons & {
+      inset: -25%;
+    }
+  }
+  &.-boss:before {
+    filter: hue-rotate(45deg);
+  }
+  &.-sand:before {
+    background: radial-gradient(farthest-side, #000, #000 33%, #008888 75%, #00FFFF);
+  }
+  &.-escape:before {
+    background: radial-gradient(farthest-side, #000, #000 33%, #008800 75%, #00FF00);
   }
 }
 
@@ -52,7 +69,7 @@ html, body, #app {
   }
 }
 
-.-layout-legacy.-large-items {
+.-layout-legacy.-large-icons {
   .area-item:before {
     height: 200%;
     transform: translate(-25%, -25%);
@@ -89,12 +106,11 @@ html, body, #app {
 
 .area-overlay {
   @apply absolute;
-  outline: 1px solid white;
   img {
     @apply max-w-none pointer-events-none;
   }
   &__move {
-    @apply cursor-pointer text-white;
+    @apply absolute cursor-pointer text-white;
   }
 }
 
@@ -123,4 +139,8 @@ html, body, #app {
 
 .wrapper-toolbar {
   @apply fixed;
+}
+
+.ur-toolbar__row {
+  @apply flex gap-2;
 }

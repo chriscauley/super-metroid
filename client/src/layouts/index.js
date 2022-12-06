@@ -1,9 +1,18 @@
-import { startCase, cloneDeep } from 'lodash'
+import { startCase, cloneDeep, memoize } from 'lodash'
 
 import { access_points, boss_doors, escape_doors, sand_doors, special_items } from '@/data/old'
 import legacy from './legacy'
 
 const rotated_door_regexp = /(Top|Bottom|redBrinstarElevator)$/
+
+const parseName = memoize((name) => {
+  const old = name
+  name = name.replace(
+    /(super|missile|outside|yellow|middle|above|false|wall|tatori|turtle|shine|spark|bubble|door|surface|gauntlet|hunter|spike|side|hopper|moat|pink|green|sand|room|bottom|top|left|right|behind|reserve|tank|of|fire|flea)/g,
+    (c) => `${c[0].toUpperCase()}${c.slice(1)}`,
+  )
+  return startCase(name)
+})
 
 const warp_types = {}
 access_points.forEach((w) => {
@@ -26,7 +35,7 @@ const prepArea = (area) => {
 
   area.warps = area.warps.map(([slug, x, y]) => ({
     slug,
-    name: startCase(slug),
+    name: parseName(slug),
     x,
     y,
     rotated: isRotated(slug),
@@ -35,7 +44,7 @@ const prepArea = (area) => {
 
   area.items = area.items.map(([slug, x, y]) => ({
     slug,
-    name: startCase(slug),
+    name: parseName(slug),
     x,
     y,
     chozo: special_items.chozo[slug],
