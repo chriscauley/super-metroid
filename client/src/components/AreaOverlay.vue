@@ -78,7 +78,12 @@ export default {
       if (!['admin_move_item', 'play'].includes(tool)) {
         return []
       }
-      return this.area.items.map(({ slug, name, x, y, chozo, major, scavenger }) => ({
+      const { split } = this.tool_storage.state
+      let items = this.area.items
+      if (['major', 'chozo', 'scavenger'].includes(split)) {
+        items = items.filter((i) => i[split])
+      }
+      return items.map(({ slug, name, x, y, chozo, major, scavenger }) => ({
         id: slug,
         title: name,
         type: 'item',

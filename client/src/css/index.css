@@ -79,11 +79,14 @@ html, body, #app {
   transform: translate(-50%, -50%);
   &:before {
     @apply absolute block inset-0;
-    background: rgba(0, 255, 0, 0.5);
+    background: url('../../public/egg.png') center no-repeat;
+    background-size: contain;
+    image-rendering: pixelated;
     content: '';
   }
   &.-completed:before {
-    background: rgba(64, 64, 255, 0.75);
+    filter: brightness(0.75) grayscale(1);
+    background-size: 60%;
   }
 }
 
@@ -226,5 +229,15 @@ body {
     &kraids-lair, &crocomire, &kraid {
       fill: var(--color-warehouse);
     }
+  }
+}
+
+.dropdown-items .form-group {
+  @apply border-b flex  items-center gap-4 m-0 p-4;
+  &:last-child {
+    @apply border-0;
+  }
+  &____root {
+    @apply border-0 block p-0;
   }
 }

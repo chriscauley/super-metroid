@@ -50,6 +50,11 @@ export default (_component) => {
     type: 'object',
     properties: {
       large_icons: { type: 'boolean' },
+      split: {
+        type: 'string',
+        enum: ['full', 'major', 'chozo', 'scavenger'],
+        default: 'full',
+      },
     },
   }
 
