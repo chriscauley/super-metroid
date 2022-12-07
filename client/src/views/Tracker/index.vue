@@ -2,6 +2,17 @@
   <div :class="wrapper_class" :style="`--zoom: ${osd_store.state.zoom}`">
     <unrest-toolbar :storage="tool_storage" class="tracker-toolbar">
       <template #right>
+        <div class="btn-group">
+          <button class="btn -secondary" @click="resetZoom">
+            <i class="fa fa-arrows-alt" />
+          </button>
+          <button
+            :class="`btn -${osd_options.mouseNavEnabled ? 'secondary' : 'primary'}`"
+            @click="osd_options.mouseNavEnabled = !osd_options.mouseNavEnabled"
+          >
+            <i :class="`fa fa-${osd_options.mouseNavEnabled ? 'un' : ''}lock`" />
+          </button>
+        </div>
         <unrest-dropdown>
           <button class="btn -primary">
             <i class="fa fa-gear" />
@@ -21,7 +32,7 @@
     <osd-viewer
       :osd_store="osd_store"
       @viewer-bound="addCorners"
-      :editor_mode="true"
+      :editor_mode="!!tool_storage.state.editor_mode"
       :osd_options="osd_options"
     />
     <template v-if="osd_store.viewer">
@@ -70,7 +81,7 @@ export default {
     }
     const tool_storage = ToolStorage(this)
     const osd_store = osd.Store()
-    const osd_options = { showNavigator: false }
+    const osd_options = { showNavigator: false, mouseNavEnabled: false }
     return { osd_store, parent, tool_storage, osd_options }
   },
   computed: {
@@ -148,13 +159,16 @@ export default {
       }
     },
     addImages() {
-      const { width, height } = this.parent
-      const H = height / width
-      this.osd_store.viewer.viewport.fitBounds(new Rect(0, 0, 1, H), true)
       // this.areas.forEach(area => {
       //   const url = `/areas/${area.slug}.png`
       //   this.osd_store.viewer.addSimpleImage({ url })
       // })
+      this.resetZoom()
+    },
+    resetZoom() {
+      const { width, height } = this.parent
+      const H = height / width
+      this.osd_store.viewer.viewport.fitBounds(new Rect(0, 0, 1, H), true)
     },
     moveArea(area, { dx, dy }) {
       this.$store.layout.moveArea(area.slug, dx, dy)

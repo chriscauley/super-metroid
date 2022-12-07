@@ -6,7 +6,26 @@
 </template>
 
 <script>
-const colors = ['grey', 'lime', 'pink',  'fuchsia', 'orange', 'yellow', 'purple', 'aqua', 'red', '#bfef45', 'white', 'cyan', 'magenta', 'olive', 'green', 'blue', 'maroon', 'teal'];
+const colors = [
+  'grey',
+  'lime',
+  'pink',
+  'fuchsia',
+  'orange',
+  'yellow',
+  'purple',
+  'aqua',
+  'red',
+  '#bfef45',
+  'white',
+  'cyan',
+  'magenta',
+  'olive',
+  'green',
+  'blue',
+  'maroon',
+  'teal',
+]
 export default {
   props: {
     game_state: Object,
