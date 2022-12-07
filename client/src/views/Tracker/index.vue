@@ -8,7 +8,11 @@
           </button>
           <template #content>
             <div class="dropdown-items" @click.stop>
-              <unrest-form :schema="tool_storage.schema" :state="tool_storage.state" />
+              <unrest-form
+                :schema="tool_storage.schema"
+                :state="tool_storage.state"
+                @change="tool_storage.save()"
+              />
             </div>
           </template>
         </unrest-dropdown>
@@ -77,9 +81,10 @@ export default {
       return this.$route.query.skin || 'jpg'
     },
     wrapper_class() {
+      const { large_warps, large_items } = this.tool_storage.state
       return [
         `tracker-view -layout-${this.$store.layout.state.selected}`,
-        this.tool_storage.state.large_icons && '-large-icons',
+        { large_items, large_warps },
       ]
     },
     game_state() {

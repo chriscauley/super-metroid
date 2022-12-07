@@ -49,7 +49,8 @@ export default (_component) => {
   storage.schema = {
     type: 'object',
     properties: {
-      large_icons: { type: 'boolean' },
+      large_items: { type: 'boolean' },
+      large_warps: { type: 'boolean' },
       split: {
         type: 'string',
         enum: ['full', 'major', 'chozo', 'scavenger'],

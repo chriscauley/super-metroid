@@ -42,7 +42,7 @@ html, body, #app {
     background: radial-gradient(farthest-side, #000, #000 33%, #7001ce 75%, #FF00FF);
     border-radius: 100%;
     content: '';
-    .-large-icons & {
+    .large_warps & {
       inset: -25%;
     }
   }
@@ -66,7 +66,7 @@ html, body, #app {
     content: "";
     display: block;
     border: 3px dashed white;
-    .-large-icons & {
+    .large_items & {
       inset: -25%;
     }
   }
@@ -90,7 +90,7 @@ html, body, #app {
   }
 }
 
-.-layout-legacy.-large-icons {
+.-layout-legacy.large_items {
   .area-item:before {
     height: 200%;
     transform: translate(-25%, -25%);
@@ -175,7 +175,7 @@ body {
   --color-crateria: #F99;
   --color-norfair: #F44;
   --color-maridia: #44F;
-  --color-wrecked-ship: #F4F;
+  --color-wrecked-ship: #FF4;
   --color-warehouse: #888;
 }
 
