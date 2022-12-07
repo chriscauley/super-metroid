@@ -3,10 +3,11 @@
     <unrest-toolbar :storage="tool_storage" class="tracker-toolbar">
       <template #right>
         <div class="btn-group">
-          <button class="btn -secondary" @click="resetZoom">
+          <button title="Reset Viewer" class="btn -secondary" @click="resetZoom">
             <i class="fa fa-arrows-alt" />
           </button>
           <button
+            title="Lock viewer"
             :class="`btn -${osd_options.mouseNavEnabled ? 'secondary' : 'primary'}`"
             @click="osd_options.mouseNavEnabled = !osd_options.mouseNavEnabled"
           >

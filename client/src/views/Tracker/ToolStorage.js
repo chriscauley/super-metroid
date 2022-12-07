@@ -92,7 +92,7 @@ export default (_component) => {
       }
     } else if (type === 'sand') {
       unrest.ui.alert({
-        text: 'Sand Hall warps connections are set by the area rando setting. If area randomization is on, the left sand pit connects to the door below botwoon (A). If not, the left sand hall door connects to the vanilla exit (V) in West Maridia.',
+        text: 'Sand Hall warps connections are set by the area rando setting. If area randomization is on, the left sand pit connects to the door below botwoon. If not, the left sand hall door connects to the vanilla exit in West Maridia.',
         class: '-sm',
       })
     }
