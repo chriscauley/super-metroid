@@ -22,12 +22,8 @@ export default () => {
   storage.markDirty = () => {
     storage.state.dirty = Math.random() // creates a watcher
   }
-  storage.moveWarp = (warp_slug, dx, dy) => {
-    layouts.moveWarp(storage.state.selected, warp_slug, dx, dy)
-    storage.markDirty()
-  }
-  storage.moveItem = (item_slug, dx, dy) => {
-    layouts.moveItem(storage.state.selected, item_slug, dx, dy)
+  storage.moveEntity = (entity, dx, dy) => {
+    layouts.moveEntity(storage.state.selected, entity, dx, dy)
     storage.markDirty()
   }
   storage.moveArea = (area_slug, dx, dy) => {

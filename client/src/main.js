@@ -19,6 +19,7 @@ app.use(osd)
 app.use(form)
 app.use(toolbar)
 app.use(unrest.plugin)
+app.use(unrest.ui)
 
 Object.entries(components).forEach(([name, component]) => app.component(name, component))
 

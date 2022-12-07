@@ -6,11 +6,13 @@ import legacy from './legacy'
 const rotated_door_regexp = /(Top|Bottom|redBrinstarElevator)$/
 
 const parseName = memoize((name) => {
-  const old = name
   name = name.replace(
-    /(super|missile|outside|yellow|middle|above|false|wall|tatori|turtle|shine|spark|bubble|door|surface|gauntlet|hunter|spike|side|hopper|moat|pink|green|sand|room|bottom|top|left|right|behind|reserve|tank|of|fire|flea)/g,
-    (c) => `${c[0].toUpperCase()}${c.slice(1)}`,
+    /(super|missile|outside|yellow|middle|above|false|wall|tatori|turtle|shine|spark|bubble|door|surface|gauntlet|hunter|spike|side|hopper|moat|pink|green|sand|bottom|top|left|right|behind|reserve|tank|of|fire|flea)/g,
+    (c) => ` ${c}`,
   )
+  if (name.includes('room') && !name.includes('Mushrooms')) {
+    name = name.replace('room', ' room')
+  }
   return startCase(name)
 })
 
@@ -61,31 +63,18 @@ export default {
   getAreas(slug) {
     return this[slug].areas.map(prepArea)
   },
-  moveWarp(layout_slug, warp_slug, dx, dy) {
+  moveEntity(layout_slug, { type, id }, dx, dy) {
     const layout = this[layout_slug]
-    let warp
+    let entity
     layout.areas.find((area) => {
-      warp = area.warps.find((warp) => warp[0] === warp_slug)
-      return warp
+      entity = area[type + 's'].find((entity) => entity[0] === id)
+      return entity
     })
-    if (!warp) {
-      throw `Unable to locate warp: ${warp_slug}`
+    if (!entity) {
+      throw `Unable to locate ${type}: ${id}`
     }
-    warp[1] += dx
-    warp[2] += dy
-  },
-  moveItem(layout_slug, item_slug, dx, dy) {
-    const layout = this[layout_slug]
-    let item
-    layout.areas.find((area) => {
-      item = area.items.find((item) => item[0] === item_slug)
-      return item
-    })
-    if (!item) {
-      throw `Unable to locate item: ${item_slug}`
-    }
-    item[1] += dx
-    item[2] += dy
+    entity[1] += dx
+    entity[2] += dy
   },
   moveArea(layout_slug, area_slug, dx, dy) {
     const area = this[layout_slug].areas.find((area) => area.slug === area_slug)

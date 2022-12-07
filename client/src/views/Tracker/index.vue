@@ -14,7 +14,12 @@
         </unrest-dropdown>
       </template>
     </unrest-toolbar>
-    <osd-viewer :osd_store="osd_store" @viewer-bound="addCorners" :editor_mode="true" />
+    <osd-viewer
+      :osd_store="osd_store"
+      @viewer-bound="addCorners"
+      :editor_mode="true"
+      :osd_options="osd_options"
+    />
     <template v-if="osd_store.viewer">
       <osd-html-overlay :viewer="osd_store.viewer">
         <area-overlay
@@ -25,7 +30,9 @@
           @move-area="(data) => moveArea(area, data)"
           :osd_store="osd_store"
           :tool_storage="tool_storage"
+          :game_state="game_state"
         />
+        <warp-connections :areas="areas" :game_state="game_state" />
       </osd-html-overlay>
       <!-- <div v-for="area in areas" :key="area.slug"> -->
       <!--   <img :src="`/areas/${area.slug}.png`" /> -->
@@ -44,12 +51,13 @@ import openseadragon from 'openseadragon'
 import { saveFile } from '@/data/legacy'
 import AreaOverlay from '@/components/AreaOverlay'
 import ToolStorage from './ToolStorage'
+import WarpConnections from './WarpConnections.vue'
 
 const { Rect } = openseadragon
 
 export default {
   name: 'TrackerView',
-  components: { AreaOverlay },
+  components: { AreaOverlay, WarpConnections },
   data() {
     window._S = () => saveFile(`${JSON.stringify(this.areas, null, 2)}`, 'areas.json')
     const parent = {
@@ -58,7 +66,8 @@ export default {
     }
     const tool_storage = ToolStorage(this)
     const osd_store = osd.Store()
-    return { osd_store, parent, tool_storage }
+    const osd_options = { showNavigator: false }
+    return { osd_store, parent, tool_storage, osd_options }
   },
   computed: {
     areas() {
@@ -73,10 +82,35 @@ export default {
         this.tool_storage.state.large_icons && '-large-icons',
       ]
     },
+    game_state() {
+      const state = {
+        items: {},
+        warps: {},
+      }
+      const type_map = {}
+      this.areas.forEach((area) => {
+        area.items.forEach((i) => (type_map[i.slug] = 'item'))
+        area.warps.forEach((w) => (type_map[w.slug] = 'warp'))
+      })
+      this.tool_storage.state.actions.forEach(([action_type, id, arg2]) => {
+        if (action_type === 'connect-warp') {
+          state.warps[id] = arg2
+          state.warps[arg2] = id
+        } else if (action_type === 'disconnect-warp') {
+          delete state.warps[id]
+          delete state.warps[arg2]
+        } else if (action_type === 'click-item') {
+          state.items[id] = !state.items[id]
+        } else {
+          console.warn('Unknown action:', action_type, id, arg2)
+        }
+      })
+      window.GS = state
+      return state
+    },
   },
   methods: {
     addCorners() {
-      window.OSDS = this.osd_store
       this.osd_store.viewer.addOnceHandler('tile-loaded', this.addImages)
       if (this.skin === 'jpg' && this.$route.query.debug) {
         const url = '/areas/area_map.png'

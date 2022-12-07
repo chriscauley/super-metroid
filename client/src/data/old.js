@@ -31,6 +31,7 @@ export const varia_item_groups = Object.entries(items_by_group).map(([slug, item
   }),
 }))
 
+// TODO rename to warps
 export const access_points = [
   'lowerMushroomsLeft',
   'moatRight',
@@ -403,6 +404,12 @@ Object.entries(special_items).forEach(([_key, items]) => {
 })
 
 export const all_item_locs = flatten([...Object.values(items_by_area), Object.keys(area_by_bosses)])
+
+export const type_map = {}
+all_item_locs.forEach((loc) => (type_map[loc] = 'item'))
+boss_doors.forEach((door) => (type_map[door] = 'boss'))
+access_points.forEach((door) => (type_map[door] = 'warp'))
+sand_doors.forEach((door) => (type_map[door] = 'sand'))
 
 export const golden_four = ['kraid', 'phantoon', 'draygon', 'ridley']
 

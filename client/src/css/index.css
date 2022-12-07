@@ -38,7 +38,7 @@ html, body, #app {
     width: var(--height);
   }
   &:before {
-    @apply absolute block inset-0;
+    @apply absolute inset-0;
     background: radial-gradient(farthest-side, #000, #000 33%, #7001ce 75%, #FF00FF);
     border-radius: 100%;
     content: '';
@@ -46,6 +46,12 @@ html, body, #app {
       inset: -25%;
     }
   }
+  /* #westSandHallTunnelRight&:before { */
+  /*   content: 'V'; */
+  /* } */
+  /* #belowBotwoonEnergyTankRight&:before { */
+  /*   content: 'A'; */
+  /* } */
   &.-boss:before {
     filter: hue-rotate(45deg);
   }
@@ -54,6 +60,15 @@ html, body, #app {
   }
   &.-escape:before {
     background: radial-gradient(farthest-side, #000, #000 33%, #008800 75%, #00FF00);
+  }
+  &.-selected:after {
+    @apply absolute block inset-0;
+    content: "";
+    display: block;
+    border: 3px dashed white;
+    .-large-icons & {
+      inset: -25%;
+    }
   }
 }
 
@@ -66,6 +81,9 @@ html, body, #app {
     @apply absolute block inset-0;
     background: rgba(0, 255, 0, 0.5);
     content: '';
+  }
+  &.-completed:before {
+    background: rgba(64, 64, 255, 0.75);
   }
 }
 
@@ -143,4 +161,70 @@ html, body, #app {
 
 .ur-toolbar__row {
   @apply flex gap-2;
+}
+
+.warp-connections {
+  @apply absolute inset-0 pointer-events-none h-full w-full;
+}
+
+body {
+  --color-brinstar: #4F4;
+  --color-crateria: #F99;
+  --color-norfair: #F44;
+  --color-maridia: #44F;
+  --color-wrecked-ship: #F4F;
+  --color-warehouse: #888;
+}
+
+.warp-connections__line {
+  stroke-width: 0.002;
+  &.-area- {
+    &green-brinstar, &red-brinstar {
+      stroke: var(--color-brinstar);
+    }
+    &crater, &tourian {
+      stroke: var(--color-crateria);
+    }
+    &upper-norfair, &lower-norfair, &ridley {
+      stroke: var(--color-norfair);
+    }
+    &east-maridia, &west-maridia, &draygon {
+      stroke: var(--color-maridia);
+    }
+    &wrecked-ship, &phantoon {
+      stroke: var(--color-wrecked-ship);
+    }
+    &kraids-lair, &crocomire, &kraid {
+      stroke: var(--color-warehouse);
+    }
+    &red-brinstar, &tourian, &lower-norfair, &east-maridia, &kraids-lair {
+      stroke-dasharray: 0 0.005 0;
+    }
+    &phantoon, &ridley, &draygon, &kraid {
+      stroke-dasharray: 0 0.002 0;
+    }
+  }
+}
+
+.warp-connections__circle {
+  &.-area- {
+    &green-brinstar, &red-brinstar {
+      fill: var(--color-brinstar);
+    }
+    &crater, &tourian {
+      fill: var(--color-crateria);
+    }
+    &upper-norfair, &lower-norfair, &ridley {
+      fill: var(--color-norfair);
+    }
+    &east-maridia, &west-maridia, &draygon {
+      fill: var(--color-maridia);
+    }
+    &wrecked-ship, &phantoon {
+      fill: var(--color-wrecked-ship);
+    }
+    &kraids-lair, &crocomire, &kraid {
+      fill: var(--color-warehouse);
+    }
+  }
 }

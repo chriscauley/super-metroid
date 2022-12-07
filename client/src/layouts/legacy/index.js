@@ -32,8 +32,8 @@ export default {
     // west-maridia
     MissilegreenMaridiashinespark: '-align-top-right',
     SuperMissilegreenMaridia: '-align-bottom-left',
-    SuperMissileyellowMaridia: '-align-right',
-    MissileyellowMaridiasupermissile: '-align-left',
+    SuperMissileyellowMaridia: '-align-bottom-right',
+    MissileyellowMaridiasupermissile: '-align-bottom-left',
     MissilepinkMaridia: '-align-right',
     SuperMissilepinkMaridia: '-align-left',
     EnergyTankMamaturtle: '-align-bottom-right',
@@ -53,6 +53,11 @@ export default {
     ReserveTankMaridia: '-align-top-left',
     MissilerightMaridiasandpitroom: '-align-bottom-right',
     PowerBombrightMaridiasandpitroom: '-align-top-left',
+    EnergyTankBrinstarGate: '-align-bottom',
+    MissilegreenBrinstarpipe: '-align-left',
+    MissileoutsideWreckedShipbottom: '-align-top-left',
+    EnergyTankKraid: '-align-top-right',
+    Spazer: '-align-top',
   },
   areas,
 }

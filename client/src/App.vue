@@ -1,5 +1,6 @@
 <template>
   <router-view />
+  <unrest-ui />
 </template>
 
 <script>
