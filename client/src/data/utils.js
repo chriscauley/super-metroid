@@ -1,3 +1,5 @@
+import { getStaticUrl } from '@/utils'
+
 // I wrote a bunch of functions to automate importing data from varia's web interface
 // this is a record of those functions
 // caveat emptor
@@ -13,5 +15,5 @@ export const setAreaSize = (area, callback) => {
     area.width = img.width
     callback()
   }
-  img.src = `/areas/${area.slug}.png`
+  img.src = getStaticUrl(`/areas/${area.slug}.png`)
 }

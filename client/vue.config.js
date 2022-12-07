@@ -9,3 +9,7 @@ module.exports = defineConfig({
     proxy: 'http://varia.localhost:8000/'
   },
 })
+
+if (process.env.NODE_ENV === 'production') {
+  module.exports.publicPath = '/super-metroid'
+}

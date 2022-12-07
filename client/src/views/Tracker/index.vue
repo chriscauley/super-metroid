@@ -50,9 +50,6 @@
         />
         <warp-connections :areas="areas" :game_state="game_state" :tool_storage="tool_storage" />
       </osd-html-overlay>
-      <!-- <div v-for="area in areas" :key="area.slug"> -->
-      <!--   <img :src="`/areas/${area.slug}.png`" /> -->
-      <!-- </div> -->
     </template>
     <div v-if="$store.layout.state.dirty" class="dirty-layout" @click="$store.layout.saveAreas">
       <div class="btn -primary">Save Areas</div>
@@ -68,6 +65,7 @@ import { saveFile } from '@/data/legacy'
 import AreaOverlay from '@/components/AreaOverlay'
 import ToolStorage from './ToolStorage'
 import WarpConnections from './WarpConnections.vue'
+import { getStaticUrl } from '@/utils'
 
 const { Rect } = openseadragon
 
@@ -130,7 +128,7 @@ export default {
     addCorners() {
       this.osd_store.viewer.addOnceHandler('tile-loaded', this.addImages)
       if (this.skin === 'jpg' && this.$route.query.debug) {
-        const url = '/areas/area_map.png'
+        const url = getStaticUrl('/areas/area_map.png')
         this.osd_store.viewer.addSimpleImage({ url })
       } else {
         const canvas = document.createElement('canvas')

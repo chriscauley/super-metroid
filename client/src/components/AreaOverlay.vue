@@ -6,7 +6,7 @@
       @dragend="dragend"
       class="fa fa-arrows area-overlay__move"
     />
-    <img :src="`/areas/${area.slug}.png`" :style="style.img" class="area-overlay__img" />
+    <img :src="src" :style="style.img" class="area-overlay__img" />
     <div
       v-for="entity in entities"
       v-bind="entity"
@@ -17,6 +17,7 @@
 </template>
 
 <script>
+import { getStaticUrl } from '@/utils'
 const size = 13.5 // size of anchor box. All internal sizings are a multiple of this
 
 export default {
@@ -32,6 +33,9 @@ export default {
     return { dx: 0, dy: 0 }
   },
   computed: {
+    src() {
+      return getStaticUrl(`/areas/${this.area.slug}.png`)
+    },
     style() {
       const invert = !!this.$route.query.debug
       const { width, x = 0, y = 0 } = this.area
