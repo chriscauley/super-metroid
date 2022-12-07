@@ -56,6 +56,18 @@ export default (_component) => {
         enum: ['full', 'major', 'chozo', 'scavenger'],
         default: 'full',
       },
+      warp_lines: {
+        type: 'string',
+        enum: ['area', 'legacy'],
+        default: 'area',
+      },
+      editor_mode: {
+        title: 'Controls',
+        type: 'string',
+        enum: ['', 'true'],
+        enumNames: ['Google Maps', 'Photo Shop'],
+        default: '',
+      },
     },
   }
 

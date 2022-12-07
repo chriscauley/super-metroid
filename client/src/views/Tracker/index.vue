@@ -36,7 +36,7 @@
           :tool_storage="tool_storage"
           :game_state="game_state"
         />
-        <warp-connections :areas="areas" :game_state="game_state" />
+        <warp-connections :areas="areas" :game_state="game_state" :tool_storage="tool_storage" />
       </osd-html-overlay>
       <!-- <div v-for="area in areas" :key="area.slug"> -->
       <!--   <img :src="`/areas/${area.slug}.png`" /> -->
