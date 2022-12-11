@@ -28,6 +28,7 @@
             </div>
           </template>
         </unrest-dropdown>
+        <item-counter :game_state="game_state" :areas="areas" :tool_storage="tool_storage" />
       </template>
     </unrest-toolbar>
     <osd-viewer
@@ -63,6 +64,7 @@ import openseadragon from 'openseadragon'
 
 import { saveFile } from '@/data/legacy'
 import AreaOverlay from './AreaOverlay.vue'
+import ItemCounter from './ItemCounter.vue'
 import ToolStorage from './ToolStorage'
 import WarpConnections from './WarpConnections.vue'
 import { getStaticUrl } from '@/utils'
@@ -71,7 +73,7 @@ const { Rect } = openseadragon
 
 export default {
   name: 'TrackerView',
-  components: { AreaOverlay, WarpConnections },
+  components: { AreaOverlay, ItemCounter, WarpConnections },
   data() {
     window._S = () => saveFile(`${JSON.stringify(this.areas, null, 2)}`, 'areas.json')
     const parent = {

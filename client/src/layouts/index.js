@@ -21,7 +21,7 @@ const SHORT_NAMES = {
   'lower-norfair': 'Lo No',
 }
 
-const prepName = memoize((name) => {
+export const prepName = memoize((name) => {
   if (SHORT_NAMES[name]) {
     return SHORT_NAMES[name]
   }

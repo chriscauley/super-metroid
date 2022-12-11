@@ -272,10 +272,10 @@ const area_by_bosses = {
 
 // this is used to calculate items in an area
 export const subarea_by_area = {
-  'east-maridia': 'draygon',
-  'wrecked-ship': 'phantoon',
-  'kraids-lair': 'kraid',
-  'lower-norfair': 'ridley',
+  draygon: 'east-maridia',
+  phantoon: 'wrecked-ship',
+  kraid: 'kraids-lair',
+  ridley: 'lower-norfair',
 }
 
 export const special_items = {
