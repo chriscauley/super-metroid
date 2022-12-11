@@ -30,6 +30,10 @@ export default () => {
     layouts.moveArea(storage.state.selected, area_slug, dx, dy)
     storage.markDirty()
   }
+  storage.moveTitle = (area_slug, dx, dy) => {
+    layouts.moveTitle(storage.state.selected, area_slug, dx, dy)
+    storage.markDirty()
+  }
   storage.saveAreas = () => {
     const { areas } = layouts[storage.state.selected]
     saveFile(JSON.stringify(areas, null, 2), 'areas.json')

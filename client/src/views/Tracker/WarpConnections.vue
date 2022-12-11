@@ -1,5 +1,5 @@
 <template>
-  <svg class="warp-connections" viewBox="0 0 1 1">
+  <svg class="warp-connections" viewBox="0 0 1 1" v-show="zshow">
     <line v-for="line in shapes.lines" :key="line.id" v-bind="line" />
     <circle v-for="circle in shapes.circles" :key="circle.id" v-bind="circle" />
   </svg>
@@ -33,6 +33,10 @@ export default {
     areas: Array,
   },
   computed: {
+    zshow() {
+      const { tool } = this.tool_storage.state.selected
+      return tool !== 'admin_move_item'
+    },
     warp_area_xys() {
       const out = {}
       this.areas.forEach((area) => {

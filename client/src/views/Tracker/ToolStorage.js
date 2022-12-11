@@ -37,7 +37,8 @@ export default (_component) => {
     if (true) {
       // if (component.$auth.user?.is_superuser) {
       tools.push({ slug: 'admin_move_area', icon: 'fa fa-arrows' })
-      tools.push({ slug: 'admin_move_item', icon: 'fa fa-step-forward' })
+      tools.push({ slug: 'admin_move_item', icon: 'fa fa-archive' })
+      tools.push({ slug: 'admin_move_title', icon: 'fa fa-i-cursor' })
     }
     return tools
   }

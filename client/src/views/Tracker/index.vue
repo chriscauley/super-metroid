@@ -62,7 +62,7 @@ import osd from '@unrest/vue-openseadragon'
 import openseadragon from 'openseadragon'
 
 import { saveFile } from '@/data/legacy'
-import AreaOverlay from '@/components/AreaOverlay'
+import AreaOverlay from './AreaOverlay.vue'
 import ToolStorage from './ToolStorage'
 import WarpConnections from './WarpConnections.vue'
 import { getStaticUrl } from '@/utils'

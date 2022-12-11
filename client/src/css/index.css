@@ -130,8 +130,13 @@ html, body, #app {
   img {
     @apply max-w-none pointer-events-none;
   }
-  &__move {
-    @apply absolute cursor-pointer text-white;
+  &__title {
+    @apply absolute text-white;
+    text-transform: uppercase;
+    white-space: nowrap;
+    .drag-anchor {
+      transform: translate(-100%, 0);
+    }
   }
 }
 
@@ -240,4 +245,9 @@ body {
   &____root {
     @apply border-0 block p-0;
   }
+}
+
+
+.drag-anchor {
+  @apply absolute cursor-pointer text-white;
 }

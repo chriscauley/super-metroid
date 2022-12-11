@@ -1,26 +1,45 @@
 <template>
   <div :style="style.wrapper" class="area-overlay">
-    <unrest-draggable
-      v-if="is_moveable"
-      @drag="drag"
-      @dragend="dragend"
-      class="fa fa-arrows area-overlay__move"
-    />
+    <div class="area-overlay__title" :style="style.title">
+      <drag-anchor
+        v-if="moving_area"
+        v-model="dxys.__root"
+        :osd_store="osd_store"
+        @done="moveArea"
+      />
+      <drag-anchor
+        v-if="moving_title"
+        v-model="dxys.__title"
+        :osd_store="osd_store"
+        @done="moveTitle"
+      />
+      {{ area.name }}
+    </div>
     <img :src="src" :style="style.img" class="area-overlay__img" />
     <div
       v-for="entity in entities"
       v-bind="entity"
       :key="entity.id"
       @click="(e) => clickEntity(e, entity)"
-    />
+    >
+      <drag-anchor
+        v-if="moving_items"
+        v-model="dxys[entity.id]"
+        :osd_store="osd_store"
+        @done="(xy) => moveEntity(entity, xy)"
+      />
+    </div>
   </div>
 </template>
 
 <script>
+import DragAnchor from './DragAnchor.vue'
+
 import { getStaticUrl } from '@/utils'
 const size = 13.5 // size of anchor box. All internal sizings are a multiple of this
 
 export default {
+  components: { DragAnchor },
   props: {
     area: Object,
     parent: Object,
@@ -30,7 +49,7 @@ export default {
   },
   emits: ['move-area'],
   data() {
-    return { dx: 0, dy: 0 }
+    return { dxys: {} }
   },
   computed: {
     src() {
@@ -39,7 +58,8 @@ export default {
     style() {
       const invert = !!this.$route.query.debug
       const { width, x = 0, y = 0 } = this.area
-      const { dx, dy } = this
+      const [title_x, title_y] = this.area.title_dxy || [0, 0]
+      const [dx, dy] = this.dxys.__root || [0, 0]
       const _ = (a, b) => `${(100 * a) / b}%`
       return {
         wrapper: {
@@ -54,34 +74,32 @@ export default {
           opacity: invert ? 0.5 : null,
           filter: invert ? 'invert(1)' : null,
         },
+        title: this.getEntityStyle('__title', title_x, title_y),
       }
     },
-    is_moveable() {
+    moving_area() {
       const { tool } = this.tool_storage.state.selected
-      return ['admin_move_area'].includes(tool)
+      return 'admin_move_area' === tool
+    },
+    moving_items() {
+      const { tool } = this.tool_storage.state.selected
+      return 'admin_move_item' === tool
+    },
+    moving_title() {
+      const { tool } = this.tool_storage.state.selected
+      return 'admin_move_title' === tool
     },
     warps() {
-      const { tool } = this.tool_storage.state.selected
       const { selected_warp } = this.tool_storage.state
-      if (!['admin_move_item', 'play'].includes(tool)) {
-        return []
-      }
       return this.area.warps.map(({ slug, name, x, y, type, rotated }) => ({
         id: slug,
         title: name,
         class: [`area-warp -${type}`, rotated && '-rotated', selected_warp === slug && '-selected'],
         type: 'warp',
-        style: {
-          left: `${(100 * x) / size}%`,
-          top: `${(100 * y) / size}%`,
-        },
+        style: this.getEntityStyle(slug, x, y),
       }))
     },
     items() {
-      const { tool } = this.tool_storage.state.selected
-      if (!['admin_move_item', 'play'].includes(tool)) {
-        return []
-      }
       const { split } = this.tool_storage.state
       let items = this.area.items
       if (['major', 'chozo', 'scavenger'].includes(split)) {
@@ -99,33 +117,29 @@ export default {
           scavenger && '-scavenger',
           this.game_state.items[slug] && '-completed',
         ],
-        style: {
-          left: `${(100 * x) / size}%`,
-          top: `${(100 * y) / size}%`,
-        },
+        style: this.getEntityStyle(slug, x, y),
       }))
     },
     entities() {
-      return [...this.warps, ...this.items]
+      return this.moving_area || this.moving_title ? [] : [...this.warps, ...this.items]
     },
   },
   methods: {
-    drag(e) {
-      const [x0, y0] = e._drag.xy_start
-      const [x1, y1] = e._drag.xy
-      const zoom = this.osd_store.viewer.viewport.getZoom()
-      this.dx = (x1 - x0) / zoom
-      this.dy = (y1 - y0) / zoom
-    },
-    dragend() {
-      const { tool } = this.tool_storage.state.selected
-      const { dx, dy } = this
-      if (tool === 'admin_move_area') {
-        this.$emit('move-area', { dx, dy })
-      } else {
-        console.warn('TODO: moving marker should add an override to moving the area')
+    getEntityStyle(id, x, y) {
+      const [dx, dy] = this.dxys[id] || [0, 0]
+      return {
+        left: `${(100 * (x + dx)) / size}%`,
+        top: `${(100 * (y + dy)) / size}%`,
       }
-      this.dx = this.dy = 0
+    },
+    moveEntity({ id, type }, [dx, dy]) {
+      this.$store.layout.moveEntity({ id, type }, dx, dy)
+    },
+    moveArea([dx, dy]) {
+      this.$store.layout.moveArea(this.area.slug, dx, dy)
+    },
+    moveTitle([dx, dy]) {
+      this.$store.layout.moveTitle(this.area.slug, dx, dy)
     },
     clickEntity(e, { id, type }) {
       const { tool } = this.tool_storage.state.selected
