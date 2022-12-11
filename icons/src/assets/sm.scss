@@ -24,7 +24,7 @@ $cre-hex: respawn block exit;
 
 .sm-cre-hex {
   &:before {
-    background-image: url("/static/sm/cre-hex.png");
+    background-image: url("./images/cre-hex.png");
   }
   @for $i from 0 to length($cre-hex) {
     $name: nth($cre-hex, $i + 1);
@@ -38,7 +38,7 @@ $cre-hex: respawn block exit;
   @for $i from 0 to length($block) {
     $name: nth($block, $i + 1);
     &.-#{"" + $name}:before {
-      background-image: url("/static/sm/block.png");
+      background-image: url("./images/block.png");
       background-position: 0 $i * -100%;
     }
   }
@@ -48,7 +48,7 @@ $cre-hex: respawn block exit;
   @for $i from 0 to length($block-alt) {
     $name: nth($block-alt, $i + 1);
     &.-#{"" + $name}:before {
-      background-image: url("/static/sm/block-alt.png");
+      background-image: url("./images/block-alt.png");
       background-position: 0 $i * -100%;
     }
   }
@@ -56,10 +56,10 @@ $cre-hex: respawn block exit;
 
 .sm-ui {
   &:before {
-    background-image: url("/static/sm/ui.png");
+    background-image: url("./images/ui.png");
   }
   &.-active:before {
-    background-image: url("/static/sm/ui-active.png");
+    background-image: url("./images/ui-active.png");
   }
   @for $i from 0 to length($ui_items) {
     $name: nth($ui_items, $i + 1);
@@ -71,7 +71,7 @@ $cre-hex: respawn block exit;
 
 .sm-item {
   &:before {
-    background-image: url("/static/sm/items.png");
+    background-image: url("./images/items.png");
   }
   @for $i from 0 to length($items) {
     $name: nth($items, $i + 1);
@@ -79,7 +79,7 @@ $cre-hex: respawn block exit;
       background-position: 0 $i * -100%;
     }
     &.-alt:before {
-      background-image: url("/static/sm/items-alt.png");
+      background-image: url("./images/items-alt.png");
     }
   }
 }
@@ -88,11 +88,11 @@ $cre-hex: respawn block exit;
   @for $i from 0 to length($custom-items) {
     $name: nth($custom-items, $i + 1);
     &.-#{"" + $name}:before {
-      background-image: url("/static/sm/custom-items.png");
+      background-image: url("./images/custom-items.png");
       background-position: 0 $i * -100%;
     }
     &.-alt:before {
-      background-image: url("/static/sm/custom-items-alt.png");
+      background-image: url("./images/custom-items-alt.png");
     }
   }
 }
@@ -102,7 +102,7 @@ $ascent-items: weapons-tank shinespark boost-ball;
   @for $i from 0 to length($ascent-items) {
     $name: nth($ascent-items, $i + 1);
     &.-#{"" + $name}:before {
-      background-image: url("/static/sm/ascent-items.png");
+      background-image: url("./images/ascent-items.png");
       background-position: 0 $i * -100%;
     }
   }

@@ -1,5 +1,8 @@
 <template>
-  <div>Woo</div>
+  <div>
+    Woo
+    <div class="sm-item -missile" />
+  </div>
 </template>
 
 <script>
