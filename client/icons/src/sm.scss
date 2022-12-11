@@ -1,0 +1,109 @@
+@use "sass:math";
+@use "sass:color";
+@use "sass:list";
+@use "sass:string";
+@import "./variables.scss";
+
+.sm-item, .sm-block, .sm-cre-hex, .sm-ui, .sm-link {
+  @apply relative inline-block;
+  height: 1em;
+  width: 1em;
+  &:before, ._before {
+    @apply absolute inset-0;
+    background-size: 100% auto;
+    content: "";
+    image-rendering: pixelated;
+  }
+  &.-has-not {
+    opacity: 0.75;
+    filter: grayscale(1);
+  }
+}
+
+$cre-hex: respawn block exit;
+
+.sm-cre-hex {
+  &:before {
+    background-image: url("/static/sm/cre-hex.png");
+  }
+  @for $i from 0 to length($cre-hex) {
+    $name: nth($cre-hex, $i + 1);
+    &.-#{"" + $name}:before {
+      background-position: 0 $i * -100%;
+    }
+  }
+}
+
+.sm-block {
+  @for $i from 0 to length($block) {
+    $name: nth($block, $i + 1);
+    &.-#{"" + $name}:before {
+      background-image: url("/static/sm/block.png");
+      background-position: 0 $i * -100%;
+    }
+  }
+}
+
+.sm-block {
+  @for $i from 0 to length($block-alt) {
+    $name: nth($block-alt, $i + 1);
+    &.-#{"" + $name}:before {
+      background-image: url("/static/sm/block-alt.png");
+      background-position: 0 $i * -100%;
+    }
+  }
+}
+
+.sm-ui {
+  &:before {
+    background-image: url("/static/sm/ui.png");
+  }
+  &.-active:before {
+    background-image: url("/static/sm/ui-active.png");
+  }
+  @for $i from 0 to length($ui_items) {
+    $name: nth($ui_items, $i + 1);
+    &.-#{"" + $name}:before {
+      background-position: 0 $i * -100%;
+    }
+  }
+}
+
+.sm-item {
+  &:before {
+    background-image: url("/static/sm/items.png");
+  }
+  @for $i from 0 to length($items) {
+    $name: nth($items, $i + 1);
+    &.-#{"" + $name}:before {
+      background-position: 0 $i * -100%;
+    }
+    &.-alt:before {
+      background-image: url("/static/sm/items-alt.png");
+    }
+  }
+}
+
+.sm-item {
+  @for $i from 0 to length($custom-items) {
+    $name: nth($custom-items, $i + 1);
+    &.-#{"" + $name}:before {
+      background-image: url("/static/sm/custom-items.png");
+      background-position: 0 $i * -100%;
+    }
+    &.-alt:before {
+      background-image: url("/static/sm/custom-items-alt.png");
+    }
+  }
+}
+
+$ascent-items: weapons-tank shinespark boost-ball;
+.sm-item {
+  @for $i from 0 to length($ascent-items) {
+    $name: nth($ascent-items, $i + 1);
+    &.-#{"" + $name}:before {
+      background-image: url("/static/sm/ascent-items.png");
+      background-position: 0 $i * -100%;
+    }
+  }
+}

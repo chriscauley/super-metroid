@@ -1,0 +1,11 @@
+{
+  "name": "@unrest/super-metroid-icons",
+  "version": "0.0.1",
+  "description": "icons from the game super metroid",
+  "main": "index.js",
+  "author": "chriscauley",
+  "license": "MIT",
+  "dependencies": {
+    "sass": "^1.56.1"
+  }
+}
