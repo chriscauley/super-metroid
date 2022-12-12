@@ -20,6 +20,7 @@
 .sm-boss:before {
   background: no-repeat center;
   background-size: contain;
+  image-rendering: unset;
 }
 .sm-boss.-botwoon:before {
   background-image: url(./images/bosses/botwoon.png);

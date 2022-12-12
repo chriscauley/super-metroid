@@ -153,12 +153,9 @@ html, body, #app {
     @apply text-center;
   }
   &__portrait {
-    @apply flex items-center justify-center;
-    height: 1em;
-    width: 1em;
-    img {
-      max-height: 200%;
-      max-width: 200%;
+    @apply flex items-center gap-4;
+    .sm-boss:before {
+      inset: -50%;
     }
   }
 }

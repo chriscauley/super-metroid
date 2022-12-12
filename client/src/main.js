@@ -11,6 +11,7 @@ import form from '@unrest/vue-form'
 
 import '@/css/index.css'
 import '@unrest/tailwind/dist.css'
+import '../../icons/build/super-metroid.css'
 
 const app = createApp(App)
 app.use(store)

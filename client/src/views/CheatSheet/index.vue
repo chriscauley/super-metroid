@@ -16,7 +16,8 @@
         <tr v-for="row in rows" :key="row.name">
           <td>
             <div class="cheat-sheet__portrait" :title="row.name">
-              <img :src="row.src" />
+              <i :class="row.icon" />
+              {{ row.name }}
             </div>
           </td>
           <td>
@@ -32,6 +33,8 @@
 </template>
 
 <script>
+import { kebabCase } from 'lodash'
+
 import BeamChooser from './BeamChooser.vue'
 import StopWatch from './StopWatch.vue'
 import Storage from './Storage'
@@ -120,7 +123,7 @@ export default {
     rows() {
       return bosses.map((b) => ({
         ...b,
-        src: `/solver/static/images/tracker/inventory/${b.name.replace(' ', '')}.png`,
+        icon: `sm-boss -${kebabCase(b.name)} -head`,
         items: this.getItems(b),
       }))
     },
