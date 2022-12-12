@@ -4,7 +4,10 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build:client": "vue-cli-service build",
+    "build:css": "sass src/assets/sm.scss > build/super-metroid.css",
+    "build:images": "rsync -a src/assets/images build/",
+    "build": "yarn build:client && yarn build:css && yarn build:images",
     "lint": "eslint \"src/**/*\""
   },
   "dependencies": {

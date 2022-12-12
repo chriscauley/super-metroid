@@ -4,19 +4,39 @@
 @use "sass:string";
 @import "./variables.scss";
 
-.sm-item, .sm-block, .sm-cre-hex, .sm-ui, .sm-link {
-  @apply relative inline-block;
+.sm-item, .sm-block, .sm-cre-hex, .sm-ui, .sm-link, .sm-boss {
+  display: inline-block;
+  position: relative;
   height: 1em;
   width: 1em;
   &:before, ._before {
-    @apply absolute inset-0;
     background-size: 100% auto;
     content: "";
     image-rendering: pixelated;
+    inset: 0;
+    position: absolute;
   }
   &.-has-not {
     opacity: 0.75;
     filter: grayscale(1);
+  }
+}
+
+.sm-boss {
+  &:before {
+    background: no-repeat center;
+    background-size: contain;
+    image-rendering: unset;
+  }
+  @each $name in $bosses {
+    &.-#{""+$name}:before {
+      background-image: url(./images/bosses/#{$name}.png);
+    }
+  }
+  @each $name in $bosses {
+    &.-head.-#{""+$name}:before {
+      background-image: url(./images/bosses/#{$name}_head.png);
+    }
   }
 }
 
