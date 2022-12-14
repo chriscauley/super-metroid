@@ -181,8 +181,13 @@ export default {
       this.$store.layout.moveArea(area.slug, dx, dy)
     },
     keyPress(e) {
+      if (e.ctrlKey) {
+        if (['z', 'Z'].includes(e.key)) {
+          this.tool_storage[e.shiftKey ? 'redo' : 'undo']()
+        }
+        return
+      }
       // TOOD WIP
-      console.log(e.key) // eslint-disable-line
     },
   },
 }

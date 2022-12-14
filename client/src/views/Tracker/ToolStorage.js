@@ -4,9 +4,17 @@ import unrest from '@unrest/vue'
 
 import { type_map, default_area_keys } from '@/data/old'
 
-const TODO = () => console.warn('TOOD')
-
 export default (_component) => {
+  const redo_stack = []
+
+  const addAction = (action) => {
+    storage.state.actions.push(action)
+    while (redo_stack.length) {
+      redo_stack.pop()
+    }
+    storage.save()
+  }
+
   const clearGame = () => {
     const close = () => unrest.ui.alert(null)
     unrest.ui.alert({
@@ -32,7 +40,7 @@ export default (_component) => {
   const getTools = () => {
     const tools = [
       { slug: 'play', icon: 'fa fa-gamepad' },
-      { slug: 'undo', icon: 'fa fa-undo', select: TODO },
+      { slug: 'undo', icon: 'fa fa-undo', select: () => storage.undo() },
       { slug: 'clear', icon: 'fa fa-trash', select: clearGame },
     ]
     if (true) {
@@ -77,7 +85,7 @@ export default (_component) => {
   storage.click = (id, game_state) => {
     const type = type_map[id]
     if (type === 'item') {
-      storage.state.actions.push(['click-item', id])
+      addAction(['click-item', id])
     } else if (type === 'warp' || type === 'boss') {
       const { selected_warp } = storage.state
       const { warps } = game_state
@@ -85,10 +93,10 @@ export default (_component) => {
         storage.state.selected_warp = null
       } else if (selected_warp && warps[id] === selected_warp) {
         // user clicked an alreayd connected pair, disconnect them
-        storage.state.actions.push(['disconnect-warp', id, selected_warp])
+        addAction(['disconnect-warp', id, selected_warp])
         storage.state.selected_warp = null
       } else if (selected_warp && !warps[id] && !warps[selected_warp]) {
-        storage.state.actions.push(['connect-warp', id, selected_warp])
+        addAction(['connect-warp', id, selected_warp])
         storage.state.selected_warp = null
       } else {
         storage.state.selected_warp = id
@@ -103,8 +111,15 @@ export default (_component) => {
   }
 
   storage.undo = () => {
-    storage.state.actions.pop()
+    redo_stack.push(storage.state.actions.pop())
     storage.save()
+  }
+
+  storage.redo = () => {
+    if (redo_stack.length) {
+      storage.state.actions.push(redo_stack.pop())
+      storage.save()
+    }
   }
 
   storage.clear = () => {
