@@ -2,9 +2,9 @@ import { cloneDeep } from 'lodash'
 import toolbar from '@unrest/vue-toolbar'
 import unrest from '@unrest/vue'
 
-import { type_map, default_area_keys } from '@/data/old'
+import { type_map, default_area_keys, subarea_by_area } from '@/data/old'
 
-export default (_component) => {
+export default (component) => {
   const redo_stack = []
 
   const addAction = (action) => {
@@ -55,6 +55,7 @@ export default (_component) => {
     selected: { tool: 'play' },
     actions: [],
     area_keys: cloneDeep(default_area_keys),
+    key_stack: [],
   }
   const storage = toolbar.ToolStorage('tools__tracker', { tools: getTools, initial })
   storage.schema = {
@@ -123,10 +124,43 @@ export default (_component) => {
   }
 
   storage.clear = () => {
-    // this doesn't save, and that's intentional
-    // Gives the user a hidden chance to reset to undo the clear
     storage.state.actions = []
-    storage.save()
   }
+
+  storage.getCodeMap = () => {
+    const map = {}
+    const { area_keys } = storage.state
+    const { areas } = component
+    areas.forEach((area) => {
+      area.warps.forEach((warp, index) => {
+        if (['escape', 'sand'].includes(warp.type)) {
+          return
+        }
+        const slug = subarea_by_area[area.slug] || area.slug
+        if (warp.slug.endsWith('RoomOut')) {
+          index = 9
+        } else if (slug !== area.slug) {
+          index = 0
+        } else {
+          index += 1
+        }
+        const code = `${area_keys[slug]}${index}`
+        map[code] = warp.slug
+        map[warp.slug] = code
+      })
+    })
+    return map
+  }
+
+  storage.getWarpAreaXys = () => {
+    const out = {}
+    component.areas.forEach((area) => {
+      area.warps.forEach((warp) => {
+        out[warp.slug] = [area.slug, area.x + warp.x, area.y + warp.y]
+      })
+    })
+    return out
+  }
+
   return storage
 }

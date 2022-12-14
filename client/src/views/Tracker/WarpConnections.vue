@@ -17,8 +17,6 @@
 </template>
 
 <script>
-import { subarea_by_area } from '@/data/old'
-
 const w = 0.002 // also used in css file
 const colors = [
   'grey',
@@ -43,32 +41,25 @@ const colors = [
 
 export default {
   props: {
+    areas: Array,
+    code_map: Object,
     game_state: Object,
     tool_storage: Object,
-    areas: Array,
   },
   computed: {
     texts() {
-      const { area_keys } = this.tool_storage.state
+      const code_map = this.tool_storage.getCodeMap()
       const out = []
       this.areas.forEach((area) => {
-        area.warps.forEach((warp, index) => {
+        area.warps.forEach((warp) => {
           if (['escape', 'sand'].includes(warp.type)) {
             return
           }
           const [_, x, y] = this.warp_area_xys[warp.slug]
-          const slug = subarea_by_area[area.slug] || area.slug
-          if (warp.slug.endsWith('RoomOut')) {
-            index = 9
-          } else if (slug !== area.slug) {
-            index = 0
-          } else {
-            index += 1
-          }
           out.push({
-            content: `${area_keys[slug]}${index}`,
+            content: code_map[warp.slug],
             attrs: {
-              id: `warp-text-${slug}_${index}`,
+              id: `warp-text_code-map[warp.slug]`,
               x: this.scale(x),
               y: this.scale(y),
               class: `warp-connections__text`,
@@ -83,13 +74,7 @@ export default {
       return tool !== 'admin_move_item'
     },
     warp_area_xys() {
-      const out = {}
-      this.areas.forEach((area) => {
-        area.warps.forEach((warp) => {
-          out[warp.slug] = [area.slug, area.x + warp.x, area.y + warp.y]
-        })
-      })
-      return out
+      return this.tool_storage.getWarpAreaXys()
     },
     shapes() {
       const used = {}

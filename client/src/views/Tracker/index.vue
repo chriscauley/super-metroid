@@ -55,6 +55,9 @@
     <div v-if="$store.layout.state.dirty" class="dirty-layout" @click="$store.layout.saveAreas">
       <div class="btn -primary">Save Areas</div>
     </div>
+    <div class="tracker-view__key-stack">
+      {{ tool_storage.state.key_stack.join(" ") }}
+    </div>
   </div>
 </template>
 
@@ -86,6 +89,9 @@ export default {
     return { osd_store, parent, tool_storage, osd_options }
   },
   computed: {
+    code_map() {
+      return this.tool_storage.getCodeMap()
+    },
     areas() {
       return this.$store.layout.getAreas()
     },
@@ -127,10 +133,10 @@ export default {
     },
   },
   mounted() {
-    document.addEventListener('keypress', this.keyPress)
+    document.addEventListener('keydown', this.keyPress)
   },
   unmounted() {
-    document.removeEventListener('keypress', this.keyPress)
+    document.removeEventListener('keydown', this.keyPress)
   },
   methods: {
     addCorners() {
@@ -181,13 +187,43 @@ export default {
       this.$store.layout.moveArea(area.slug, dx, dy)
     },
     keyPress(e) {
+      const { area_keys, key_stack } = this.tool_storage.state
+      const reverse_keys = {}
+      Object.entries(area_keys).forEach(([area, key]) => {
+        reverse_keys[key] = area
+      })
+
+      const last_key = key_stack[key_stack.length - 1]
+      const penultimate_key = key_stack[key_stack.length - 2]
+      const isDigit = (k) => '1234567890'.includes(k)
+      const isArea = (k) => !!reverse_keys[k]
+
+      const can_press_area = !isArea(last_key)
+      const can_press_digit = isArea(last_key) || isArea(penultimate_key)
+
       if (e.ctrlKey) {
         if (['z', 'Z'].includes(e.key)) {
           this.tool_storage[e.shiftKey ? 'redo' : 'undo']()
         }
-        return
+      } else if (e.key === 'Enter') {
+        const code1 = key_stack.slice(0, 2).join('')
+        const code2 = key_stack.slice(2, 4).join('')
+        const warp1 = this.code_map[code1]
+        const warp2 = this.code_map[code2]
+        if (warp1 && warp2) {
+          this.tool_storage.state.selected_warp = warp1
+          this.tool_storage.click(warp2, this.game_state)
+        }
+        this.tool_storage.state.key_stack = []
+      } else if (e.key === 'Backspace') {
+        this.tool_storage.state.key_stack.pop()
+      } else if (isDigit(e.key) && can_press_digit) {
+        key_stack.push(e.key)
+      } else if (isArea(e.key) && can_press_area) {
+        key_stack.push(e.key)
       }
-      // TOOD WIP
+
+      this.tool_storage.save()
     },
   },
 }

@@ -261,3 +261,10 @@ body {
 .drag-anchor {
   @apply absolute cursor-pointer text-white;
 }
+
+.tracker-view__key-stack {
+  @apply absolute bottom-0 text-center text-white w-full;
+  font-size: 3rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
