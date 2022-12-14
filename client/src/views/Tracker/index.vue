@@ -126,6 +126,12 @@ export default {
       return state
     },
   },
+  mounted() {
+    document.addEventListener('keypress', this.keyPress)
+  },
+  unmounted() {
+    document.removeEventListener('keypress', this.keyPress)
+  },
   methods: {
     addCorners() {
       this.osd_store.viewer.addOnceHandler('tile-loaded', this.addImages)
@@ -173,6 +179,10 @@ export default {
     },
     moveArea(area, { dx, dy }) {
       this.$store.layout.moveArea(area.slug, dx, dy)
+    },
+    keyPress(e) {
+      // TOOD WIP
+      console.log(e.key) // eslint-disable-line
     },
   },
 }

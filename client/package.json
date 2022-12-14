@@ -17,6 +17,7 @@
     "core-js": "^3.8.3",
     "postcss-for": "^2.1.1",
     "postcss-import": "^15.0.0",
+    "postcss-simple-vars": "^7.0.1",
     "raw-loader": "^4.0.2",
     "url": "^0.11.0",
     "vue": "^3.2.13",

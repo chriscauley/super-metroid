@@ -2,10 +2,24 @@
   <svg class="warp-connections" viewBox="0 0 1 1" v-show="zshow">
     <line v-for="line in shapes.lines" :key="line.id" v-bind="line" />
     <circle v-for="circle in shapes.circles" :key="circle.id" v-bind="circle" />
+    <text v-for="text in texts" :key="text.attrs.id" v-bind="text.attrs">
+      {{ text.content }}
+    </text>
+    <!--   x="110" -->
+    <!--   y="110" -->
+    <!--   text-anchor="middle" -->
+    <!--   stroke="red" -->
+    <!--   stroke-width="1px" -->
+    <!--   alignment-baseline="middle" -->
+    <!--   > -->
+    <!-- </text> -->
   </svg>
 </template>
 
 <script>
+import { subarea_by_area } from '@/data/old'
+
+const w = 0.002 // also used in css file
 const colors = [
   'grey',
   'lime',
@@ -26,6 +40,7 @@ const colors = [
   'maroon',
   'teal',
 ]
+
 export default {
   props: {
     game_state: Object,
@@ -33,6 +48,36 @@ export default {
     areas: Array,
   },
   computed: {
+    texts() {
+      const { area_keys } = this.tool_storage.state
+      const out = []
+      this.areas.forEach((area) => {
+        area.warps.forEach((warp, index) => {
+          if (['escape', 'sand'].includes(warp.type)) {
+            return
+          }
+          const [_, x, y] = this.warp_area_xys[warp.slug]
+          const slug = subarea_by_area[area.slug] || area.slug
+          if (warp.slug.endsWith('RoomOut')) {
+            index = 9
+          } else if (slug !== area.slug) {
+            index = 0
+          } else {
+            index += 1
+          }
+          out.push({
+            content: `${area_keys[slug]}${index}`,
+            attrs: {
+              id: `warp-text-${slug}_${index}`,
+              x: this.scale(x),
+              y: this.scale(y),
+              class: `warp-connections__text`,
+            },
+          })
+        })
+      })
+      return out
+    },
     zshow() {
       const { tool } = this.tool_storage.state.selected
       return tool !== 'admin_move_item'
@@ -58,11 +103,11 @@ export default {
       })
       const lines = []
       const circles = []
+      const s = this.scale
       pairs.forEach(([warp1, warp2], index) => {
         const [area1, x1, y1] = this.warp_area_xys[warp1]
         const [area2, x2, y2] = this.warp_area_xys[warp2]
-        const s = (number) => (1 * number) / 1500
-        const w = 0.002 // also used in css file
+        const r = w * 6
         if (warp_lines === 'area') {
           lines.push({
             id: `${warp1}-${warp2}`,
@@ -86,14 +131,14 @@ export default {
             id: `warp-anchor-${warp1}`,
             cx: s(x1),
             cy: s(y1),
-            r: w * 3,
+            r,
             class: `warp-connections__circle -area-${area2}`,
           })
           circles.push({
             id: `warp-anchor-${warp2}`,
             cx: s(x2),
             cy: s(y2),
-            r: w * 3,
+            r,
             class: `warp-connections__circle -area-${area1}`,
           })
         } else {
@@ -113,7 +158,7 @@ export default {
             id: `warp-anchor-${warp1}`,
             cx: s(x1),
             cy: s(y1),
-            r: w * 3,
+            r,
             fill: color,
             class: 'warp-connections__circle',
           })
@@ -121,13 +166,18 @@ export default {
             id: `warp-anchor-${warp2}`,
             cx: s(x2),
             cy: s(y2),
-            r: w * 3,
+            r,
             fill: color,
             class: 'warp-connections__circle',
           })
         }
       })
       return { lines, circles }
+    },
+  },
+  methods: {
+    scale(number) {
+      return (1 * number) / 1500
     },
   },
 }

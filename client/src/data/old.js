@@ -258,8 +258,22 @@ export const items_by_area = {
   tourian: [],
 }
 
+export const default_area_keys = {
+  crater: 'c',
+  crocomire: 'o',
+  'east-maridia': 'd', // for "Draygon"
+  'green-brinstar': 's', // for "Spospo"
+  'kraids-lair': 'k',
+  'lower-norfair': 'r', // for "ridley"
+  'red-brinstar': 'b', // for "brinstar"
+  'upper-norfair': 'n',
+  'west-maridia': 'm',
+  'wrecked-ship': 'p', // for "phantoon"
+  tourian: 't',
+}
+
 const area_by_bosses = {
-  Kraid: 'kraids-layer',
+  Kraid: 'kraids-lair',
   Crocomire: 'crocomize',
   SporeSpawn: 'green-brinstar',
   Draygon: 'draygon',

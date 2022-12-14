@@ -1,7 +1,8 @@
+import { cloneDeep } from 'lodash'
 import toolbar from '@unrest/vue-toolbar'
 import unrest from '@unrest/vue'
 
-import { type_map } from '@/data/old'
+import { type_map, default_area_keys } from '@/data/old'
 
 const TODO = () => console.warn('TOOD')
 
@@ -45,6 +46,7 @@ export default (_component) => {
   const initial = {
     selected: { tool: 'play' },
     actions: [],
+    area_keys: cloneDeep(default_area_keys),
   }
   const storage = toolbar.ToolStorage('tools__tracker', { tools: getTools, initial })
   storage.schema = {

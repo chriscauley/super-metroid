@@ -211,26 +211,39 @@ body {
   }
 }
 
+.warp-connections__text {
+  alignment-baseline: central;
+  fill: white;
+  font-size: 0.02px;
+  stroke: white;
+  stroke-width: 0;
+  text-anchor: middle;
+  text-transform: uppercase;
+}
+
 .warp-connections__circle {
+  fill: black;
+  stroke: white;
+  stroke-width: 0.0005px;
   &.-area- {
-    &green-brinstar, &red-brinstar {
-      fill: var(--color-brinstar);
-    }
-    &crater, &tourian {
-      fill: var(--color-crateria);
-    }
-    &upper-norfair, &lower-norfair, &ridley {
-      fill: var(--color-norfair);
-    }
-    &east-maridia, &west-maridia, &draygon {
-      fill: var(--color-maridia);
-    }
-    &wrecked-ship, &phantoon {
-      fill: var(--color-wrecked-ship);
-    }
-    &kraids-lair, &crocomire, &kraid {
-      fill: var(--color-warehouse);
-    }
+    /* &green-brinstar, &red-brinstar { */
+    /*   fill: var(--color-brinstar); */
+    /* } */
+    /* &crater, &tourian { */
+    /*   fill: var(--color-crateria); */
+    /* } */
+    /* &upper-norfair, &lower-norfair, &ridley { */
+    /*   fill: var(--color-norfair); */
+    /* } */
+    /* &east-maridia, &west-maridia, &draygon { */
+    /*   fill: var(--color-maridia); */
+    /* } */
+    /* &wrecked-ship, &phantoon { */
+    /*   fill: var(--color-wrecked-ship); */
+    /* } */
+    /* &kraids-lair, &crocomire, &kraid { */
+    /*   fill: var(--color-warehouse); */
+    /* } */
   }
 }
 
