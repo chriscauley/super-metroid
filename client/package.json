@@ -1,10 +1,10 @@
 {
   "name": "varia-client",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "MIT",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service build --dest ../docs",
     "lint": "eslint \"src/**/*\""
   },
   "dependencies": {
