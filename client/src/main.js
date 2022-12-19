@@ -3,6 +3,7 @@ import osd from '@unrest/vue-openseadragon'
 import toolbar from '@unrest/vue-toolbar'
 
 import App from '@/App.vue'
+import site from '@/site'
 import store from '@/store'
 import router from '@/router'
 import components from '@/components'
@@ -14,6 +15,7 @@ import '@unrest/tailwind/dist.css'
 import '../../icons/build/super-metroid.css'
 
 const app = createApp(App)
+app.use(site)
 app.use(store)
 app.use(router)
 app.use(osd)

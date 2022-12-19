@@ -56,7 +56,7 @@
       <div class="btn -primary">Save Areas</div>
     </div>
     <div class="tracker-view__key-stack">
-      {{ tool_storage.state.key_stack.join(" ") }}
+      {{ tool_storage.state.key_stack.join(' ') }}
     </div>
   </div>
 </template>
