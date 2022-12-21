@@ -1,0 +1,3 @@
+docs/* binary
+docs/**/* binary
+yarn.lock binary

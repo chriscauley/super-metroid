@@ -1,4 +1,6 @@
 const { defineConfig } = require('@vue/cli-service')
+const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
+
 module.exports = defineConfig({
   transpileDependencies: true,
   lintOnSave: false,
@@ -8,8 +10,17 @@ module.exports = defineConfig({
     host: 'vclient.localhost',
     proxy: 'http://varia.localhost:8000/'
   },
+  configureWebpack: {
+    plugins: [
+      new WebpackManifestPlugin(),
+    ]
+  }
 })
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports.publicPath = '/super-metroid'
+  if (process.env.VUE_APP_SITE === 'varia') {
+    module.exports.publicPath = '/solver/static/client/'
+  } else {
+    module.exports.publicPath = '/super-metroid'
+  }
 }

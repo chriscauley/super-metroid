@@ -1,4 +1,3 @@
-export const getStaticUrl = (url) => {
-  const root = process.env.NODE_ENV === 'production' ? '.' : ''
-  return root + url
-}
+import site from '@/site'
+
+export const getStaticUrl = (url) => site.root + url

@@ -5,6 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --dest ../docs",
+    "build:varia": "VUE_APP_SITE=varia vue-cli-service build --dest ../docs",
     "lint": "eslint \"src/**/*\""
   },
   "dependencies": {
@@ -21,7 +22,8 @@
     "raw-loader": "^4.0.2",
     "url": "^0.11.0",
     "vue": "^3.2.13",
-    "vue-router": "^4.1.6"
+    "vue-router": "^4.1.6",
+    "webpack-manifest-plugin": "^5.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
