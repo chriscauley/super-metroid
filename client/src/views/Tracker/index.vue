@@ -28,7 +28,6 @@
             </div>
           </template>
         </unrest-dropdown>
-        <item-counter :game_state="game_state" :areas="areas" :tool_storage="tool_storage" />
       </template>
     </unrest-toolbar>
     <osd-viewer
@@ -58,6 +57,7 @@
     <div class="tracker-view__key-stack">
       {{ tool_storage.state.key_stack.join(' ') }}
     </div>
+    <item-counter :game_state="game_state" :areas="areas" :tool_storage="tool_storage" />
   </div>
 </template>
 

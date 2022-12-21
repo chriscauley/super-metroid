@@ -268,3 +268,11 @@ body {
   font-weight: bold;
   text-transform: uppercase;
 }
+
+.item-counter {
+  @apply absolute text-white;
+  text-shadow: 0 0 2px black;
+  .-complete {
+    text-decoration: line-through;
+  }
+}

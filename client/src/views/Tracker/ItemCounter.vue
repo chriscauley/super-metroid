@@ -1,14 +1,7 @@
 <template>
-  <unrest-dropdown>
-    <button class="btn -primary">
-      <i class="fa fa-hashtag" />
-    </button>
-    <template #content>
-      <div class="dropdown-items" @click.stop>
-        <div v-for="row in rows" :key="row[0]" class="dropdown-item">{{ row[1] }} {{ row[0] }}</div>
-      </div>
-    </template>
-  </unrest-dropdown>
+  <div class="item-counter" :style="style">
+    <div v-for="row in rows" :key="row[0]" :class="row[2]">{{ row[1] }} {{ row[0] }}</div>
+  </div>
 </template>
 
 <script>
@@ -38,8 +31,18 @@ export default {
         })
       })
       return Object.entries(counts).map(([area, count]) => {
-        return [prepName(area), count - hits[area]]
+        const cls = ['item-counter__row', count - hits[area] === 0 && '-complete']
+        return [prepName(area), count - hits[area], cls]
       })
+    },
+    style() {
+      let [top, left] = [0, 0]
+      top = Math.max(top, 40)
+      left = Math.max(left, 0)
+      return {
+        top: `${top}px`,
+        left: `${left}px`,
+      }
     },
   },
 }
