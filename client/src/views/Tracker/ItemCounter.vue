@@ -14,6 +14,7 @@
 <script>
 import { subarea_by_area } from '@/data/old'
 import { prepName } from '@/layouts'
+import { filterSplitItems } from '@/utils'
 
 export default {
   props: {
@@ -25,12 +26,8 @@ export default {
     rows() {
       const counts = {}
       const hits = {}
-      const { split } = this.tool_storage.state
       this.areas.forEach((area) => {
-        let items = area.items
-        if (['major', 'chozo', 'scavenger'].includes(split)) {
-          items = items.filter((i) => i[split])
-        }
+        const items = filterSplitItems(area.items, this.tool_storage.state.split)
         const target_area = subarea_by_area[area.slug] || area.slug
         items.forEach((item) => {
           counts[target_area] = (counts[target_area] || 0) + 1

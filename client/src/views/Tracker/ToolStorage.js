@@ -162,5 +162,9 @@ export default (component) => {
     return out
   }
 
+  storage.clearArea = (area) => {
+    addAction(['clear-area', area.slug])
+  }
+
   return storage
 }

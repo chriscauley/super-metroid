@@ -305,6 +305,7 @@ export const special_items = {
     'EnergyTankEtecoons',
     'ChargeBeam',
     'EnergyTankWaterway',
+    'EnergyTankBrinstarGate',
     // red-brinstar
     'XRayScope',
     'Spazer',
