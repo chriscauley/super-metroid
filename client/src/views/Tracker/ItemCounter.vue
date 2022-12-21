@@ -1,5 +1,5 @@
 <template>
-  <div class="item-counter" :style="style">
+  <div class="item-counter" :style="style" v-if="show">
     <div v-for="row in rows" :key="row[0]" :class="row[2]">{{ row[1] }} {{ row[0] }}</div>
   </div>
 </template>
@@ -16,6 +16,9 @@ export default {
     areas: Array,
   },
   computed: {
+    show() {
+      return this.tool_storage.state.show_item_counts
+    },
     rows() {
       const counts = {}
       const hits = {}

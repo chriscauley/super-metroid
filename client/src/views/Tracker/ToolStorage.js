@@ -58,11 +58,12 @@ export default (component) => {
     key_stack: [],
   }
   const storage = toolbar.ToolStorage('tools__tracker', { tools: getTools, initial })
+  const bool = { type: 'boolean', default: true }
   storage.schema = {
     type: 'object',
     properties: {
-      large_items: { type: 'boolean' },
-      large_warps: { type: 'boolean' },
+      large_items: bool,
+      large_warps: bool,
       split: {
         type: 'string',
         enum: ['full', 'major', 'chozo', 'scavenger'],
@@ -80,6 +81,7 @@ export default (component) => {
         enumNames: ['Google Maps', 'Photo Shop'],
         default: '',
       },
+      show_item_counts: bool,
     },
   }
 

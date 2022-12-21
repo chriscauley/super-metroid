@@ -271,7 +271,9 @@ body {
 
 .item-counter {
   @apply absolute text-white;
+  pointer-events: none;
   text-shadow: 0 0 2px black;
+  user-select: none;
   .-complete {
     text-decoration: line-through;
   }
