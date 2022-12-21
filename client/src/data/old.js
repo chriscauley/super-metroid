@@ -260,15 +260,15 @@ export const items_by_area = {
 
 export const default_area_keys = {
   crater: 'c',
-  crocomire: 'o',
-  'east-maridia': 'd', // for "Draygon"
-  'green-brinstar': 's', // for "Spospo"
+  crocomire: 'o', // crOc
+  'east-maridia': 'e',
+  'green-brinstar': 'g',
   'kraids-lair': 'k',
-  'lower-norfair': 'r', // for "ridley"
-  'red-brinstar': 'b', // for "brinstar"
-  'upper-norfair': 'n',
-  'west-maridia': 'm',
-  'wrecked-ship': 'p', // for "phantoon"
+  'lower-norfair': 'l',
+  'red-brinstar': 'r',
+  'upper-norfair': 'u',
+  'west-maridia': 'w',
+  'wrecked-ship': 's', // wrecked Ship
   tourian: 't',
 }
 

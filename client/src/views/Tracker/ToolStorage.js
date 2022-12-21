@@ -2,6 +2,8 @@ import { cloneDeep } from 'lodash'
 import toolbar from '@unrest/vue-toolbar'
 import unrest from '@unrest/vue'
 
+import HelpPopup from './HelpPopup.vue'
+
 import { type_map, default_area_keys, subarea_by_area } from '@/data/old'
 
 export default (component) => {
@@ -39,12 +41,13 @@ export default (component) => {
 
   const getTools = () => {
     const tools = [
-      { slug: 'play', icon: 'fa fa-gamepad' },
       { slug: 'undo', icon: 'fa fa-undo', select: () => storage.undo() },
       { slug: 'clear', icon: 'fa fa-trash', select: clearGame },
+      { slug: 'help', icon: 'fa fa-question-circle', select: () => unrest.ui.alert(HelpPopup) },
     ]
-    if (true) {
+    if (component.admin_mode) {
       // if (component.$auth.user?.is_superuser) {
+      tools.unshift({ slug: 'play', icon: 'fa fa-gamepad' })
       tools.push({ slug: 'admin_move_area', icon: 'fa fa-arrows' })
       tools.push({ slug: 'admin_move_item', icon: 'fa fa-archive' })
       tools.push({ slug: 'admin_move_title', icon: 'fa fa-i-cursor' })
@@ -57,7 +60,7 @@ export default (component) => {
     area_keys: cloneDeep(default_area_keys),
     key_stack: [],
   }
-  const storage = toolbar.ToolStorage('tools__tracker', { tools: getTools, initial })
+  const storage = toolbar.ToolStorage('tools__tracker_v2', { tools: getTools, initial })
   const bool = { type: 'boolean', default: true }
   storage.schema = {
     type: 'object',
@@ -71,16 +74,16 @@ export default (component) => {
       },
       warp_lines: {
         type: 'string',
-        enum: ['area', 'legacy'],
-        default: 'area',
+        enum: ['legacy', 'area'],
+        default: 'legacy',
       },
-      editor_mode: {
-        title: 'Controls',
-        type: 'string',
-        enum: ['', 'true'],
-        enumNames: ['Google Maps', 'Photo Shop'],
-        default: '',
-      },
+      // editor_mode: {
+      //   title: 'Controls',
+      //   type: 'string',
+      //   enum: ['', 'true'],
+      //   enumNames: ['Google Maps', 'Photo Shop'],
+      //   default: '',
+      // },
       show_item_counts: bool,
     },
   }

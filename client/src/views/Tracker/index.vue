@@ -2,7 +2,7 @@
   <div :class="wrapper_class" :style="`--zoom: ${osd_store.state.zoom}`">
     <unrest-toolbar :storage="tool_storage" class="tracker-toolbar">
       <template #right>
-        <div class="btn-group">
+        <div class="btn-group" v-if="admin_mode">
           <button title="Reset Viewer" class="btn -secondary" @click="resetZoom">
             <i class="fa fa-arrows-alt" />
           </button>
@@ -89,6 +89,10 @@ export default {
     return { osd_store, parent, tool_storage, osd_options }
   },
   computed: {
+    admin_mode() {
+      // this.$auth.user?.is_superuser
+      return process.env.NODE_ENV !== 'production'
+    },
     code_map() {
       return this.tool_storage.getCodeMap()
     },
