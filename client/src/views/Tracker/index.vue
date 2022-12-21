@@ -66,11 +66,12 @@ import osd from '@unrest/vue-openseadragon'
 import openseadragon from 'openseadragon'
 
 import { saveFile } from '@/data/legacy'
+import { subarea_by_area } from '@/data/old'
 import AreaOverlay from './AreaOverlay.vue'
 import ItemCounter from './ItemCounter.vue'
 import ToolStorage from './ToolStorage'
 import WarpConnections from './WarpConnections.vue'
-import { getStaticUrl, filterSplitItems } from '@/utils'
+import { getStaticUrl } from '@/utils'
 
 const { Rect } = openseadragon
 
@@ -115,8 +116,14 @@ export default {
         warps: {},
       }
       const type_map = {}
+      const area_items = {}
       this.areas.forEach((area) => {
-        area.items.forEach((i) => (type_map[i.slug] = 'item'))
+        const target_area = subarea_by_area[area.slug] || area.slug
+        area_items[target_area] = area_items[target_area] || []
+        area.items.forEach((i) => {
+          type_map[i.slug] = 'item'
+          area_items[target_area].push(i.slug)
+        })
         area.warps.forEach((w) => (type_map[w.slug] = 'warp'))
       })
       this.tool_storage.state.actions.forEach(([action_type, id, arg2]) => {
@@ -129,11 +136,9 @@ export default {
         } else if (action_type === 'click-item') {
           state.items[id] = !state.items[id]
         } else if (action_type === 'clear-area') {
-          const area = this.areas.find((a) => a.slug === id)
-          const split_items = filterSplitItems(area.items, this.tool_storage.state.split)
-          const captured_items = split_items.filter((i) => state.items[i.slug])
-          const items_remaining = split_items.length - captured_items.length
-          area.items.forEach((i) => (state.items[i.slug] = items_remaining !== 0))
+          const item_slugs = area_items[id] || []
+          const remaining_items = item_slugs.filter((i) => !state.items[i]).length
+          item_slugs.forEach((i) => (state.items[i] = remaining_items !== 0))
         } else {
           console.warn('Unknown action:', action_type, id, arg2)
         }
