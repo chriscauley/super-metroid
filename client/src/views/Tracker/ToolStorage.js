@@ -59,23 +59,25 @@ export default (component) => {
     actions: [],
     area_keys: cloneDeep(default_area_keys),
     key_stack: [],
+    split: 'full',
+    warp_lines: 'legacy',
+    large_items: true,
+    large_warp: true,
+    show_item_counts: true,
   }
   const storage = toolbar.ToolStorage('tools__tracker_v2', { tools: getTools, initial })
-  const bool = { type: 'boolean', default: true }
   storage.schema = {
     type: 'object',
     properties: {
-      large_items: bool,
-      large_warps: bool,
+      large_items: { type: 'boolean' },
+      large_warps: { type: 'boolean' },
       split: {
         type: 'string',
         enum: ['full', 'major', 'chozo', 'scavenger'],
-        default: 'full',
       },
       warp_lines: {
         type: 'string',
         enum: ['legacy', 'area'],
-        default: 'legacy',
       },
       // editor_mode: {
       //   title: 'Controls',
@@ -84,7 +86,7 @@ export default (component) => {
       //   enumNames: ['Google Maps', 'Photo Shop'],
       //   default: '',
       // },
-      show_item_counts: bool,
+      show_item_counts: { type: 'boolean' },
     },
   }
 

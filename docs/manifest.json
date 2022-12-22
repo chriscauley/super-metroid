@@ -1,6 +1,6 @@
 {
   "app.css": "/super-metroid/css/app.9fcb664c.css",
-  "app.js": "/super-metroid/js/app.bad1a189.js",
+  "app.js": "/super-metroid/js/app.929f8f88.js",
   "chunk-vendors.js": "/super-metroid/js/chunk-vendors.08318a51.js",
   "areas/area_map.png": "/super-metroid/areas/area_map.png",
   "areas/upper-norfair.png": "/super-metroid/areas/upper-norfair.png",
@@ -27,6 +27,6 @@
   "areas/phantoon.png": "/super-metroid/areas/phantoon.png",
   "index.html": "/super-metroid/index.html",
   "egg.png": "/super-metroid/egg.png",
-  "app.bad1a189.js.map": "/super-metroid/js/app.bad1a189.js.map",
+  "app.929f8f88.js.map": "/super-metroid/js/app.929f8f88.js.map",
   "chunk-vendors.08318a51.js.map": "/super-metroid/js/chunk-vendors.08318a51.js.map"
 }

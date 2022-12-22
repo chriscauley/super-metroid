@@ -1,7 +1,10 @@
 <template>
-  <div class="item-counter" :style="style" v-if="show">
-    <div v-for="row in rows" :key="row[0]" :class="row[2]">{{ row[1] }} {{ row[0] }}</div>
-  </div>
+  <table class="item-counter" :style="style" v-if="show">
+    <tr v-for="row in rows" :key="row[0]" :class="row[2]">
+      <td>{{ row[1] }}</td>
+      <td>{{ row[0] }}</td>
+    </tr>
+  </table>
 </template>
 
 <script>

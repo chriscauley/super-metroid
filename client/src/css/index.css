@@ -270,11 +270,18 @@ body {
 }
 
 .item-counter {
-  @apply absolute text-white;
+  @apply absolute font-bold text-white;
   pointer-events: none;
   text-shadow: 0 0 2px black;
   user-select: none;
   .-complete {
-    text-decoration: line-through;
+    opacity: 0.5;
+  }
+  td {
+    @apply pl-2;
+  }
+  td:first-child {
+    @apply border-r pr-2;
+    text-align: right;
   }
 }

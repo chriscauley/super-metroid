@@ -1,6 +1,7 @@
 // data scraped from the t_main.html template fragment. Currently used only for reference
 
 import { startCase, flatten } from 'lodash'
+
 export const door_colors = ['red', 'green', 'yellow', 'gray', 'wave', 'spazer', 'plasma', 'ice']
 
 const ammo = ['missile', 'super-missile', 'power-bomb']
@@ -26,8 +27,7 @@ export const varia_item_groups = Object.entries(items_by_group).map(([slug, item
     const name = startCase(
       item_slug.replace(/(-beam|-boots|-missile)/, '').replace('x-ray', 'x-ray-scope'),
     )
-    const src = `/solver/static/images/tracker/inventory/${name.replace(' ', '')}`
-    return { name, item_slug, src }
+    return { name, item_slug }
   }),
 }))
 
