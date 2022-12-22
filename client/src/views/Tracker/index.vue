@@ -157,7 +157,7 @@ export default {
     addCorners() {
       this.osd_store.viewer.addOnceHandler('tile-loaded', this.addImages)
       if (this.skin === 'jpg' && this.$route.query.debug) {
-        const url = getStaticUrl('/areas/area_map.png')
+        const url = getStaticUrl(`/${this.$store.layout.state.selected}/area_map.png`)
         this.osd_store.viewer.addSimpleImage({ url })
       } else {
         const canvas = document.createElement('canvas')

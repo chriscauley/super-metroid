@@ -53,7 +53,8 @@ export default {
   },
   computed: {
     src() {
-      return getStaticUrl(`/areas/${this.area.slug}.png`)
+      const { selected } = this.$store.layout.state
+      return getStaticUrl(`/${selected}/${this.area.slug}.png`)
     },
     style() {
       const invert = !!this.$route.query.debug
