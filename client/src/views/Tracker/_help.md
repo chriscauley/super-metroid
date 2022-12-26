@@ -15,8 +15,9 @@ Click the gear button at the far right to view the settings:
 
 ### Keyboard shortcuts
 
-* `cx↵`: clear all items in area c (crater). If all items are already cleared, reset all items in crater. (see area hotkeys for full list of area letters)
-* `s1c5↵`: connect warps c5 (left of morph) and s1 (green brinstar elevator). If already connected it will disconnect the two. If either warp is connected to a different warp, command is ignored.
+* `cx`: clear all items in area c (crater). If all items are already cleared, reset all items in crater. (see area hotkeys for full list of area letters)
+* `g1`: Click the g1 warp (green brinstar elevator)
+* `g1c5`: connect warps c5 (left of morph) and g1 (green brinstar elevator). If already connected it will disconnect the two. If either warp is connected to a different warp, command is ignored.
 * `ctrl+z`: undo
 * `ctrl+shift+z`: redo
 

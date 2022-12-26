@@ -220,27 +220,22 @@ export default {
         if (['z', 'Z'].includes(e.key)) {
           this.tool_storage[e.shiftKey ? 'redo' : 'undo']()
         }
-      } else if (e.key === 'Enter') {
-        const code1 = key_stack.slice(0, 2).join('').toLowerCase()
-        const code2 = key_stack.slice(2, 4).join('').toLowerCase()
-        const warp1 = this.code_map[code1]
-        const warp2 = this.code_map[code2]
-        if (code1[1] === 'x') {
-          const area = this.areas.find((a) => a.slug === reverse_keys[code1[0]])
-          this.tool_storage.clearArea(area)
-        } else if (warp1 && warp2) {
-          this.tool_storage.state.selected_warp = warp1
-          this.tool_storage.click(warp2, this.game_state)
-        }
-        this.tool_storage.state.key_stack = []
       } else if (e.key === 'Backspace') {
         this.tool_storage.state.key_stack.pop()
       } else if (isDigit(e.key) && can_press_digit) {
         key_stack.push(e.key)
+        const code1 = key_stack.slice(0, 2).join('').toLowerCase()
+        const warp1 = this.$el.querySelector('#' + this.code_map[code1])
+        if (warp1) {
+          warp1.click()
+        }
+        this.tool_storage.state.key_stack = []
       } else if (isArea(e.key) && can_press_area) {
         key_stack.push(e.key)
       } else if (e.key === 'x' && key_stack.length === 1) {
-        key_stack.push(e.key)
+        const area = this.areas.find((a) => a.slug === reverse_keys[code1[0]])
+        this.tool_storage.clearArea(area)
+        this.tool_storage.state.key_stack = []
       }
       this.tool_storage.save()
     },
