@@ -2,9 +2,14 @@
   <svg class="warp-connections" viewBox="0 0 1 1" v-show="zshow">
     <line v-for="line in shapes.lines" :key="line.id" v-bind="line" />
     <circle v-for="circle in shapes.circles" :key="circle.id" v-bind="circle" />
-    <text v-for="text in texts" :key="text.attrs.id" v-bind="text.attrs">
-      {{ text.content }}
-    </text>
+    <template v-for="text in texts" :key="text.attrs.id">
+      <text v-bind="text.attrs">
+        {{ text.content }}
+      </text>
+      <text v-if="text.subtext" class="warp-connections__subtext" v-bind="text.subtext_attrs">
+        {{ text.subtext }}
+      </text>
+    </template>
     <!--   x="110" -->
     <!--   y="110" -->
     <!--   text-anchor="middle" -->
@@ -56,9 +61,25 @@ export default {
             return
           }
           const [_, x, y] = this.warp_area_xys[warp.slug]
+          let content = code_map[warp.slug]
+          let title = warp.slug
+          let subtext, subtext_attrs
+          const target_slug = this.game_state.warps[warp.slug]
+          if (target_slug) {
+            subtext = content
+            content = code_map[target_slug]
+            title += ' -> ' + target_slug
+            subtext_attrs = {
+              x: this.scale(x),
+              y: this.scale(y + 30),
+            }
+          }
           out.push({
-            content: code_map[warp.slug],
+            content,
+            subtext,
+            subtext_attrs,
             attrs: {
+              title,
               id: `warp-text_code-map[warp.slug]`,
               x: this.scale(x),
               y: this.scale(y),
@@ -92,7 +113,7 @@ export default {
       pairs.forEach(([warp1, warp2], index) => {
         const [area1, x1, y1] = this.warp_area_xys[warp1]
         const [area2, x2, y2] = this.warp_area_xys[warp2]
-        const r = w * 6
+        const r = w * 7.5
         if (warp_lines === 'area') {
           lines.push({
             id: `${warp1}-${warp2}`,
