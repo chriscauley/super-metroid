@@ -1,0 +1,313 @@
+[
+  {
+    "slug": "crater",
+    "items": [
+      ["EnergyTankGauntlet", 0, 0],
+      ["Bomb", 1, 0],
+      ["EnergyTankTerminator", 2, 0],
+      ["MorphingBall", 3, 0],
+      ["EnergyTankBrinstarCeiling", 4, 0],
+      ["PowerBombCrateriasurface", 5, 0],
+      ["MissileCrateriamoat", 6, 0],
+      ["MissileCrateriabottom", 7, 0],
+      ["MissileCrateriagauntletright", 8, 0],
+      ["MissileCrateriagauntletleft", 9, 0],
+      ["SuperMissileCrateria", 10, 0],
+      ["MissileCrateriamiddle", 11, 0],
+      ["PowerBombblueBrinstar", 12, 0],
+      ["MissileblueBrinstarmiddle", 13, 0],
+      ["MissileblueBrinstarbottom", 14, 0],
+      ["MissileblueBrinstartop", 15, 0],
+      ["MissileblueBrinstarbehindmissile", 16, 0]
+    ],
+    "width": 31,
+    "height": 31,
+    "x": 0,
+    "y": 0,
+    "warps": [
+      ["lowerMushroomsLeft", 0, 1],
+      ["greenPiratesShaftBottomRight", 1, 1],
+      ["keyhunterRoomBottom", 2, 1],
+      ["moatRight", 3, 1],
+      ["morphBallRoomLeft", 4, 1],
+      ["climbBottomLeft", 5, 1]
+    ],
+    "title_dxy": [0, -1]
+  },
+  {
+    "slug": "crocomire",
+    "items": [
+      ["EnergyTankCrocomire", 0, 0],
+      ["GrappleBeam", 1, 0],
+      ["PowerBombCrocomire", 2, 0],
+      ["MissilebelowCrocomire", 3, 0],
+      ["MissileGrappleBeam", 4, 0]
+    ],
+    "width": 17,
+    "height": 8,
+    "x": 0,
+    "y": 0,
+    "warps": [["crocomireRoomTop", 0, 1]],
+    "title_dxy": [0, -1]
+  },
+  {
+    "slug": "draygon",
+    "items": [["SpaceJump", 0, 0]],
+    "width": 3,
+    "height": 2,
+    "x": 0,
+    "y": 0,
+    "warps": [["draygonRoomIn", 0, 1]],
+    "title_dxy": [0, -1]
+  },
+  {
+    "slug": "east-maridia",
+    "items": [
+      ["PlasmaBeam", 0, 0],
+      ["ReserveTankMaridia", 1, 0],
+      ["SpringBall", 2, 0],
+      ["EnergyTankBotwoon", 3, 0],
+      ["MissileleftMaridiasandpitroom", 4, 0],
+      ["MissilerightMaridiasandpitroom", 5, 0],
+      ["PowerBombrightMaridiasandpitroom", 6, 0],
+      ["MissilepinkMaridia", 7, 0],
+      ["SuperMissilepinkMaridia", 8, 0],
+      ["MissileDraygon", 9, 0]
+    ],
+    "width": 25,
+    "height": 20,
+    "x": 0,
+    "y": 0,
+    "warps": [
+      ["leCoudeRight", 0, 1],
+      ["aqueductTopLeft", 1, 1],
+      ["draygonRoomOut", 2, 1],
+      ["westSandHallLeft", 3, 1],
+      ["belowBotwoonEnergyTankRight", 4, 1]
+    ],
+    "title_dxy": [0, -1]
+  },
+  {
+    "slug": "green-brinstar",
+    "items": [
+      ["ReserveTankBrinstar", 0, 0],
+      ["ChargeBeam", 1, 0],
+      ["EnergyTankEtecoons", 2, 0],
+      ["EnergyTankWaterway", 3, 0],
+      ["EnergyTankBrinstarGate", 4, 0],
+      ["SuperMissilepinkBrinstar", 5, 0],
+      ["MissilegreenBrinstarbelowsupermissile", 6, 0],
+      ["SuperMissilegreenBrinstartop", 7, 0],
+      ["MissilegreenBrinstarbehindmissile", 8, 0],
+      ["MissilegreenBrinstarbehindreservetank", 9, 0],
+      ["MissilepinkBrinstartop", 10, 0],
+      ["MissilepinkBrinstarbottom", 11, 0],
+      ["PowerBombpinkBrinstar", 12, 0],
+      ["MissilegreenBrinstarpipe", 13, 0],
+      ["SuperMissilegreenBrinstarbottom", 14, 0],
+      ["PowerBombgreenBrinstarbottom", 15, 0]
+    ],
+    "width": 28,
+    "height": 16,
+    "x": 0,
+    "y": 0,
+    "warps": [
+      ["greenBrinstarElevator", 0, 1],
+      ["greenHillZoneTopRight", 1, 1],
+      ["noobBridgeRight", 2, 1],
+      ["greenBrinstarMainShaftTopLeft", 3, 1]
+    ],
+    "title_dxy": [0, -1]
+  },
+  {
+    "slug": "kraid",
+    "items": [["VariaSuit", 0, 0]],
+    "width": 3,
+    "height": 2,
+    "x": 0,
+    "y": 0,
+    "warps": [["kraidRoomIn", 0, 1]],
+    "title_dxy": [0, -1]
+  },
+  {
+    "slug": "kraids-lair",
+    "items": [
+      ["EnergyTankKraid", 0, 0],
+      ["MissileKraid", 1, 0]
+    ],
+    "width": 12,
+    "height": 2,
+    "x": 0,
+    "y": 0,
+    "warps": [
+      ["warehouseZeelaRoomLeft", 0, 1],
+      ["kraidRoomOut", 1, 1]
+    ],
+    "title_dxy": [0, -1]
+  },
+  {
+    "slug": "lower-norfair",
+    "items": [
+      ["ScrewAttack", 0, 0],
+      ["MissileGoldTorizo", 1, 0],
+      ["SuperMissileGoldTorizo", 2, 0],
+      ["MissileMickeyMouseroom", 3, 0],
+      ["EnergyTankFirefleas", 4, 0],
+      ["MissilelowerNorfairabovefireflearoom", 5, 0],
+      ["PowerBomblowerNorfairabovefireflearoom", 6, 0],
+      ["PowerBombPowerBombsofshame", 7, 0],
+      ["MissilelowerNorfairnearWaveBeam", 8, 0]
+    ],
+    "width": 23,
+    "height": 14,
+    "x": 0,
+    "y": 0,
+    "warps": [
+      ["threeMuskateersRoomLeft", 0, 1],
+      ["lavaDiveRight", 1, 1],
+      ["ridleyRoomOut", 2, 1]
+    ],
+    "title_dxy": [0, -1]
+  },
+  {
+    "slug": "phantoon",
+    "items": [],
+    "width": 1,
+    "height": 1,
+    "x": 0,
+    "y": 0,
+    "warps": [["phantoonRoomIn", 0, 1]],
+    "title_dxy": [0, -1]
+  },
+  {
+    "slug": "red-brinstar",
+    "items": [
+      ["XRayScope", 0, 0],
+      ["Spazer", 1, 0],
+      ["PowerBombredBrinstarsidehopperroom", 2, 0],
+      ["PowerBombredBrinstarspikeroom", 3, 0],
+      ["MissileredBrinstarspikeroom", 4, 0]
+    ],
+    "width": 21,
+    "height": 18,
+    "x": 0,
+    "y": 0,
+    "warps": [
+      ["redBrinstarElevator", 0, 1],
+      ["caterpillarRoomTopRight", 1, 1],
+      ["redTowerTopLeft", 2, 1],
+      ["glassTunnelTop", 3, 1],
+      ["eastTunnelRight", 4, 1],
+      ["eastTunnelTopRight", 5, 1]
+    ],
+    "title_dxy": [0, -1]
+  },
+  {
+    "slug": "ridley",
+    "items": [["EnergyTankRidley", 0, 0]],
+    "width": 2,
+    "height": 2,
+    "x": 0,
+    "y": 0,
+    "warps": [["ridleyRoomIn", 0, 1]],
+    "title_dxy": [0, -1]
+  },
+  {
+    "slug": "tourian",
+    "items": [],
+    "width": 11,
+    "height": 14,
+    "x": 0,
+    "y": 0,
+    "warps": [
+      ["goldenFour", 0, 1],
+      ["tourianEscapeRoom4TopRight", 1, 1]
+    ],
+    "title_dxy": [0, -1]
+  },
+  {
+    "slug": "upper-norfair",
+    "items": [
+      ["IceBeam", 0, 0],
+      ["HiJumpBoots", 1, 0],
+      ["ReserveTankNorfair", 2, 0],
+      ["SpeedBooster", 3, 0],
+      ["WaveBeam", 4, 0],
+      ["MissileNorfairReserveTank", 5, 0],
+      ["MissilebubbleNorfairgreendoor", 6, 0],
+      ["MissilebubbleNorfair", 7, 0],
+      ["MissileSpeedBooster", 8, 0],
+      ["MissileWaveBeam", 9, 0],
+      ["Missilelavaroom", 10, 0],
+      ["MissilebelowIceBeam", 11, 0],
+      ["MissileaboveCrocomire", 12, 0],
+      ["MissileHiJumpBoots", 13, 0],
+      ["EnergyTankHiJumpBoots", 14, 0]
+    ],
+    "width": 36,
+    "height": 13,
+    "x": 0,
+    "y": 0,
+    "warps": [
+      ["warehouseEntranceLeft", 0, 1],
+      ["warehouseEntranceRight", 1, 1],
+      ["singleChamberTopRight", 2, 1],
+      ["crocomireSpeedwayBottom", 3, 1],
+      ["kronicBoostRoomBottomLeft", 4, 1],
+      ["businessCenterMidLeft", 5, 1]
+    ],
+    "title_dxy": [0, -1]
+  },
+  {
+    "slug": "west-maridia",
+    "items": [
+      ["MissilegreenMaridiashinespark", 0, 0],
+      ["SuperMissilegreenMaridia", 1, 0],
+      ["EnergyTankMamaturtle", 2, 0],
+      ["MissilegreenMaridiatatori", 3, 0],
+      ["SuperMissileyellowMaridia", 4, 0],
+      ["MissileyellowMaridiasupermissile", 5, 0],
+      ["MissileyellowMaridiafalsewall", 6, 0]
+    ],
+    "width": 12,
+    "height": 14,
+    "x": 0,
+    "y": 0,
+    "warps": [
+      ["redFishRoomLeft", 0, 1],
+      ["crabShaftRight", 1, 1],
+      ["mainStreetBottom", 2, 1],
+      ["crabHoleBottomLeft", 3, 1],
+      ["westSandHallTunnelRight", 4, 1],
+      ["crabHoleBottomRight", 5, 1]
+    ],
+    "title_dxy": [0, -1]
+  },
+  {
+    "slug": "wrecked-ship",
+    "items": [
+      ["ReserveTankWreckedShip", 0, 0],
+      ["EnergyTankWreckedShip", 1, 0],
+      ["RightSuperWreckedShip", 2, 0],
+      ["GravitySuit", 3, 0],
+      ["MissileoutsideWreckedShipbottom", 4, 0],
+      ["MissileoutsideWreckedShiptop", 5, 0],
+      ["MissileoutsideWreckedShipmiddle", 6, 0],
+      ["MissileWreckedShipmiddle", 7, 0],
+      ["MissileGravitySuit", 8, 0],
+      ["MissileWreckedShiptop", 9, 0],
+      ["SuperMissileWreckedShipleft", 10, 0]
+    ],
+    "width": 26,
+    "height": 10,
+    "x": 0,
+    "y": 0,
+    "warps": [
+      ["westOceanLeft", 0, 1],
+      ["crabMazeLeft", 1, 1],
+      ["phantoonRoomOut", 2, 1],
+      ["basementLeft", 3, 1]
+    ],
+    "title_dxy": [0, -1]
+  }
+]

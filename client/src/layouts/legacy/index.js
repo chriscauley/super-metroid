@@ -1,7 +1,4 @@
 import areas from './areas.json'
-import { positionLegacyItems } from '@/data/legacy'
-
-positionLegacyItems(areas)
 
 export default {
   root: {
