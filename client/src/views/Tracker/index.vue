@@ -47,7 +47,6 @@
           v-for="area in areas"
           :key="area.slug"
           :area="area"
-          :parent="parent"
           @move-area="(data) => moveArea(area, data)"
           :osd_store="osd_store"
           :tool_storage="tool_storage"
@@ -85,14 +84,10 @@ export default {
   components: { AreaOverlay, ItemCounter, WarpConnections },
   data() {
     window._S = () => saveFile(`${JSON.stringify(this.areas, null, 2)}`, 'areas.json')
-    const parent = {
-      width: 1500,
-      height: 750,
-    }
     const tool_storage = ToolStorage(this)
     const osd_store = osd.Store()
     const osd_options = { showNavigator: false, mouseNavEnabled: false }
-    return { osd_store, parent, tool_storage, osd_options }
+    return { osd_store, tool_storage, osd_options }
   },
   computed: {
     admin_mode() {
@@ -161,8 +156,8 @@ export default {
   methods: {
     addCorners() {
       this.osd_store.viewer.addOnceHandler('tile-loaded', this.addImages)
-      if (this.skin === 'jpg' && this.$route.query.debug) {
-        const url = getStaticUrl(`/${this.$store.layout.state.selected}/area_map.png`)
+      if (this.$route.query.debug) {
+        const url = getStaticUrl(`/legacy/area_map.png`)
         this.osd_store.viewer.addSimpleImage({ url })
       } else {
         const canvas = document.createElement('canvas')
@@ -172,7 +167,7 @@ export default {
         ctx.fillStyle = 'black'
         ctx.fillRect(0, 0, scale, scale)
         const url = canvas.toDataURL()
-        const { width: x_max, height: y_max } = this.parent
+        const { width: x_max, height: y_max } = this.$store.layout.getWorld().root
         const corners = [
           [0, 0, 0],
           [0, (y_max - scale) / x_max, 270],
@@ -199,7 +194,7 @@ export default {
       this.resetZoom()
     },
     resetZoom() {
-      const { width, height } = this.parent
+      const { width, height } = this.$store.layout.getWorld().root
       const H = height / width
       this.osd_store.viewer.viewport.fitBounds(new Rect(0, 0, 1, H), true)
     },

@@ -14,7 +14,10 @@ export default {
       const [x0, y0] = e._drag.xy_start
       const [x1, y1] = e._drag.xy
       const zoom = this.osd_store.viewer.viewport.getZoom()
-      this.$emit('update:modelValue', [(x1 - x0) / zoom, (y1 - y0) / zoom])
+      this.$emit('update:modelValue', [
+        ((2500 / 1500) * (x1 - x0)) / zoom,
+        ((2500 / 1500) * (y1 - y0)) / zoom,
+      ])
     },
     dragend() {
       this.$emit('done', this.modelValue)

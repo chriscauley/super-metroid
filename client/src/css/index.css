@@ -90,7 +90,7 @@ html, body, #app {
   }
 }
 
-.-layout-legacy.large_items {
+.large_items {
   .area-item:before {
     height: 200%;
     transform: translate(-25%, -25%);

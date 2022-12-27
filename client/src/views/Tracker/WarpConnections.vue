@@ -62,7 +62,6 @@ export default {
             return
           }
           const [_, x, y] = this.warp_area_xys[warp.slug]
-          let content = code_map[warp.slug]
           let subtext, subtext_attrs
           const target_slug = this.game_state.warps[warp.slug]
           const attrs = {
@@ -73,8 +72,7 @@ export default {
             class: `warp-connections__text`,
           }
           if (target_slug) {
-            subtext = content
-            content = code_map[target_slug]
+            subtext = code_map[target_slug]
             attrs.title += ' -> ' + target_slug
             attrs.class += ' -linked'
             attrs.y -= this.scale(0.5)
@@ -84,7 +82,7 @@ export default {
             }
           }
           out.push({
-            content,
+            content: code_map[warp.slug],
             subtext,
             subtext_attrs,
             attrs,

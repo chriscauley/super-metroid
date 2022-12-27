@@ -36,7 +36,6 @@
 import DragAnchor from './DragAnchor.vue'
 
 import { getStaticUrl } from '@/utils'
-const size = 13.5 // size of anchor box. All internal sizings are a multiple of this
 
 export default {
   components: { DragAnchor },
@@ -60,7 +59,7 @@ export default {
     },
     style() {
       const invert = !!this.$route.query.debug
-      const { slug, width, x = 0, y = 0 } = this.area
+      const { width, x = 0, y = 0 } = this.area
       const { root } = this
       const [title_x, title_y] = this.area.title_dxy || [0, 0]
       const [dx, dy] = this.dxys.__root || [0, 0]
@@ -137,13 +136,16 @@ export default {
       }
     },
     moveEntity({ id, type }, [dx, dy]) {
-      this.$store.layout.moveEntity({ id, type }, dx, dy)
+      const { scale } = this.root
+      this.$store.layout.moveEntity({ id, type }, dx / scale, dy / scale)
     },
     moveArea([dx, dy]) {
-      this.$store.layout.moveArea(this.area.slug, dx, dy)
+      const { scale } = this.root
+      this.$store.layout.moveArea(this.area.slug, dx / scale, dy / scale)
     },
     moveTitle([dx, dy]) {
-      this.$store.layout.moveTitle(this.area.slug, dx, dy)
+      const { scale } = this.root
+      this.$store.layout.moveTitle(this.area.slug, dx / scale, dy / scale)
     },
     clickEntity(e, { id, type }) {
       const { tool } = this.tool_storage.state.selected
