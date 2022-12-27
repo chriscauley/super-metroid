@@ -2,6 +2,7 @@
   <svg class="warp-connections" viewBox="0 0 1 1" v-show="zshow">
     <line v-for="line in shapes.lines" :key="line.id" v-bind="line" />
     <circle v-for="circle in shapes.circles" :key="circle.id" v-bind="circle" />
+    <rect v-for="rect in shapes.rects" :key="rect.id" v-bind="rect" />
     <template v-for="text in texts" :key="text.attrs.id">
       <text v-bind="text.attrs">
         {{ text.content }}
@@ -10,19 +11,15 @@
         {{ text.subtext }}
       </text>
     </template>
-    <!--   x="110" -->
-    <!--   y="110" -->
-    <!--   text-anchor="middle" -->
-    <!--   stroke="red" -->
-    <!--   stroke-width="1px" -->
-    <!--   alignment-baseline="middle" -->
-    <!--   > -->
-    <!-- </text> -->
   </svg>
 </template>
 
 <script>
 const w = 0.002 // also used in css file
+const r = w * 4
+const w_rect = w * 9.8
+const h_rect = w * 11.8
+
 const colors = [
   'grey',
   'lime',
@@ -53,6 +50,10 @@ export default {
   },
   computed: {
     texts() {
+      if (this.tool_storage.state.warp_display !== 'codes') {
+        return []
+      }
+
       const code_map = this.tool_storage.getCodeMap()
       const out = []
       this.areas.forEach((area) => {
@@ -62,29 +63,31 @@ export default {
           }
           const [_, x, y] = this.warp_area_xys[warp.slug]
           let content = code_map[warp.slug]
-          let title = warp.slug
           let subtext, subtext_attrs
           const target_slug = this.game_state.warps[warp.slug]
+          const attrs = {
+            title: warp.slug,
+            id: `warp-text_code-map[warp.slug]`,
+            x: this.scale(x),
+            y: this.scale(y),
+            class: `warp-connections__text`,
+          }
           if (target_slug) {
             subtext = content
             content = code_map[target_slug]
-            title += ' -> ' + target_slug
+            attrs.title += ' -> ' + target_slug
+            attrs.class += ' -linked'
+            attrs.y -= this.scale(6)
             subtext_attrs = {
               x: this.scale(x),
-              y: this.scale(y + 30),
+              y: this.scale(y + 9),
             }
           }
           out.push({
             content,
             subtext,
             subtext_attrs,
-            attrs: {
-              title,
-              id: `warp-text_code-map[warp.slug]`,
-              x: this.scale(x),
-              y: this.scale(y),
-              class: `warp-connections__text`,
-            },
+            attrs,
           })
         })
       })
@@ -99,7 +102,7 @@ export default {
     },
     shapes() {
       const used = {}
-      const { warp_lines } = this.tool_storage.state
+      const { warp_display } = this.tool_storage.state
       const pairs = Object.entries(this.game_state.warps).filter(([a, b]) => {
         if (used[a] || used[b]) {
           return false
@@ -109,81 +112,64 @@ export default {
       })
       const lines = []
       const circles = []
+      const rects = []
       const s = this.scale
       pairs.forEach(([warp1, warp2], index) => {
-        const [area1, x1, y1] = this.warp_area_xys[warp1]
-        const [area2, x2, y2] = this.warp_area_xys[warp2]
-        const r = w * 7.5
-        if (warp_lines === 'area') {
-          lines.push({
-            id: `${warp1}-${warp2}`,
-            x1: s(x1),
-            y1: s(y1) + w / 2,
-            x2: s(x2),
-            y2: s(y2) + w / 2,
-            'stroke-width': w,
-            class: `warp-connections__line -area-${area1}`,
-          })
-          lines.push({
-            id: `${warp1}-${warp2}`,
-            x1: s(x1),
-            y1: s(y1) - w / 2,
-            x2: s(x2),
-            y2: s(y2) - w / 2,
-            'stroke-width': w,
-            class: `warp-connections__line -area-${area2}`,
-          })
+        const [_area1, x1, y1] = this.warp_area_xys[warp1]
+        const [_area2, x2, y2] = this.warp_area_xys[warp2]
+        const color = colors[index % colors.length]
+        lines.push({
+          id: `${warp1}-${warp2}`,
+          x1: s(x1),
+          y1: s(y1),
+          x2: s(x2),
+          y2: s(y2),
+          'stroke-width': w,
+          stroke: color,
+          class: `warp-connections__line`,
+        })
+        if (warp_display === 'legacy') {
           circles.push({
             id: `warp-anchor-${warp1}`,
             cx: s(x1),
             cy: s(y1),
             r,
-            class: `warp-connections__circle -area-${area2}`,
+            class: 'warp-connections__circle',
+            fill: color,
           })
           circles.push({
             id: `warp-anchor-${warp2}`,
             cx: s(x2),
             cy: s(y2),
             r,
-            class: `warp-connections__circle -area-${area1}`,
+            class: 'warp-connections__circle',
+            fill: color,
           })
         } else {
-          const color = colors[index % colors.length]
-          // warp_lines === 'legacy'
-          lines.push({
-            id: `${warp1}-${warp2}`,
-            x1: s(x1),
-            y1: s(y1),
-            x2: s(x2),
-            y2: s(y2),
-            'stroke-width': w,
-            stroke: color,
-            class: `warp-connections__line`,
-          })
-          circles.push({
-            id: `warp-anchor-${warp1}`,
-            cx: s(x1),
-            cy: s(y1),
-            r,
-            fill: color,
-            class: 'warp-connections__circle',
-          })
-          circles.push({
-            id: `warp-anchor-${warp2}`,
-            cx: s(x2),
-            cy: s(y2),
-            r,
-            fill: color,
-            class: 'warp-connections__circle',
-          })
+          // warp_display === 'codes'
+          rects.push(this.getRect(warp1, x1, y1, color))
+          rects.push(this.getRect(warp2, x2, y2, color))
         }
       })
-      return { lines, circles }
+      return { lines, circles, rects }
     },
   },
   methods: {
     scale(number) {
       return (1 * number) / 1500
+    },
+    getRect(id, x, y, stroke) {
+      return {
+        id: `warp-rect-${id}`,
+        class: 'warp-connections__rect',
+        stroke,
+        x: this.scale(x) - w_rect / 2,
+        y: this.scale(y) - h_rect / 2,
+        width: w_rect,
+        height: h_rect,
+        rx: 2 * w,
+        ry: 2 * w,
+      }
     },
   },
 }

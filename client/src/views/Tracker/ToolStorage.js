@@ -60,7 +60,7 @@ export default (component) => {
     area_keys: cloneDeep(default_area_keys),
     key_stack: [],
     split: 'full',
-    warp_lines: 'legacy',
+    warp_display: 'codes',
     large_items: true,
     large_warp: true,
     show_item_counts: true,
@@ -75,9 +75,9 @@ export default (component) => {
         type: 'string',
         enum: ['full', 'major', 'chozo', 'scavenger'],
       },
-      warp_lines: {
+      warp_display: {
         type: 'string',
-        enum: ['legacy', 'area'],
+        enum: ['legacy', 'codes'],
       },
       // editor_mode: {
       //   title: 'Controls',

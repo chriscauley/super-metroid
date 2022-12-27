@@ -59,7 +59,7 @@ def draw_square(image, color, x, y, scale):
     image[y*scale:(y+1)*scale,x*scale:(x+1)*scale] = color
 
 
-class JsonCache:
+class Swapper:
     def __init__(self, image, goal):
         self.image = cv2.imread(image, cv2.IMREAD_UNCHANGED)
         self.goal = cv2.imread(goal, cv2.IMREAD_UNCHANGED)
@@ -115,11 +115,11 @@ def write_text(image, text, pos):
 
 
 def main(image, goal):
-    data = JsonCache(image, goal)
+    swapper = Swapper(image, goal)
     rows = 7
     bs = 64
     buff = 2
-    cols = max(len(data.image_palette), len(data.goal_palettes[0]))+buff
+    cols = max(len(swapper.image_palette), len(swapper.goal_palettes[0]))+buff
     bg = get_transparent_bg((bs*rows, bs*cols))
 
     print('type "h + <enter>" for help')
@@ -129,20 +129,20 @@ def main(image, goal):
         urcv.text.write(menu, 'c_out', color=(0,0,0,255), pos=(0, bs*2.25), font_scale=1.5)
         urcv.text.write(menu, 'goal', color=(0,0,0,255), pos=(0, bs*4.25), font_scale=1.5)
 
-        for i, color in enumerate(data.image_palette):
+        for i, color in enumerate(swapper.image_palette):
             key = numalpha[i]
-            target = data.get_remap_index(key)
+            target = swapper.get_remap_index(key)
             text = f' {key}>{target or "?"}'
             write_text(menu, text, (bs*(buff+i), 0.9*bs))
-            write_text(menu, data.image_counts[i], (bs*(buff+i), 0.4*bs))
+            write_text(menu, swapper.image_counts[i], (bs*(buff+i), 0.4*bs))
             if target:
-                target_color = data.goal_palettes[0][numalpha.index(target)]
+                target_color = swapper.goal_palettes[0][numalpha.index(target)]
                 draw_square(menu, target_color, i+buff, 2, bs)
 
             draw_square(menu, color, i+buff, 1, bs)
 
-        for ig in range(len(data.goal_palettes)):
-            for i, color in enumerate(data.goal_palettes[ig]):
+        for ig in range(len(swapper.goal_palettes)):
+            for i, color in enumerate(swapper.goal_palettes[ig]):
                 if ig == 0:
                     key = numalpha[i]
                     write_text(menu, '   '+key, (bs*(buff+i), 3.9*bs))
@@ -151,12 +151,13 @@ def main(image, goal):
         cv2.imshow('menu', menu)
         _input = ""
         display = np.vstack([
-            data.image,
-            data.get_repalette(0),
-            data.get_repalette(1),
-            data.get_repalette(2),
+            swapper.image,
+            swapper.get_repalette(0),
+            swapper.get_repalette(1),
+            swapper.get_repalette(2),
         ])
         bg2 = get_transparent_bg(display.shape, scale=2)
+        bg2[:] = 0
         urcv.draw.paste_alpha(bg2, display, 0, 0)
         cv2.imshow('before/after', urcv.transform.scale(bg2, 4))
 
@@ -187,15 +188,15 @@ done   write re-paletted image to disk and exit
 """)
         elif len(_input) == 3 and _input[1] == ' ':
             a, b = _input.split(' ')
-            data.set_remap(a, b)
+            swapper.set_remap(a, b)
         elif _input == 'done':
             dest = 'out.png'
-            cv2.imwrite(dest, data.get_repalette(0))
+            cv2.imwrite(dest, swapper.get_repalette(0))
             print('wrote to ', dest)
             break
         elif _input == 'cancel':
-            print('data reset to start of session')
-            data.reset()
+            print('swapper reset to start of session')
+            swapper.reset()
         else:
             print('unknown input: ', _input)
             print("enter ? or h for help")

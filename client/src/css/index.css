@@ -214,7 +214,7 @@ body {
 .warp-connections__text, .warp-connections__subtext {
   alignment-baseline: central;
   fill: white;
-  font-size: 0.02px;
+  font-size: 0.015px;
   stroke: white;
   stroke-width: 0;
   text-anchor: middle;
@@ -225,30 +225,9 @@ body {
   font-size: 0.01px;
 }
 
-.warp-connections__circle {
+.warp-connections__rect {
+  stroke-width: 0.002px;
   fill: black;
-  stroke: white;
-  stroke-width: 0.0005px;
-  &.-area- {
-    /* &green-brinstar, &red-brinstar { */
-    /*   fill: var(--color-brinstar); */
-    /* } */
-    /* &crater, &tourian { */
-    /*   fill: var(--color-crateria); */
-    /* } */
-    /* &upper-norfair, &lower-norfair, &ridley { */
-    /*   fill: var(--color-norfair); */
-    /* } */
-    /* &east-maridia, &west-maridia, &draygon { */
-    /*   fill: var(--color-maridia); */
-    /* } */
-    /* &wrecked-ship, &phantoon { */
-    /*   fill: var(--color-wrecked-ship); */
-    /* } */
-    /* &kraids-lair, &crocomire, &kraid { */
-    /*   fill: var(--color-warehouse); */
-    /* } */
-  }
 }
 
 .dropdown-items .form-group {
