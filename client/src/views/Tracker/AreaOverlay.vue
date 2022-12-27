@@ -42,7 +42,6 @@ export default {
   components: { DragAnchor },
   props: {
     area: Object,
-    parent: Object,
     osd_store: Object,
     tool_storage: Object,
     game_state: Object,
@@ -56,22 +55,26 @@ export default {
       const { selected } = this.$store.layout.state
       return getStaticUrl(`/${selected}/${this.area.slug}.png`)
     },
+    root() {
+      return this.$store.layout.getWorld().root
+    },
     style() {
       const invert = !!this.$route.query.debug
-      const { width, x = 0, y = 0 } = this.area
+      const { slug, width, x = 0, y = 0 } = this.area
+      const { root } = this
       const [title_x, title_y] = this.area.title_dxy || [0, 0]
       const [dx, dy] = this.dxys.__root || [0, 0]
-      const _ = (a, b) => `${(100 * a) / b}%`
+      const _ = (a) => `${(root.scale * (100 * a)) / root.width}%`
       return {
         wrapper: {
-          left: _(x + dx, this.parent.width),
-          top: _(y + dy, this.parent.width),
-          width: _(size, this.parent.width),
-          height: _(size, this.parent.width),
-          '--anchor-size': size,
+          left: _(x + dx / root.scale),
+          top: _(y + dy / root.scale),
+          width: _(1),
+          height: _(1),
+          '--anchor-size': root.scale,
         },
         img: {
-          width: `${(100 * width) / size}%`,
+          width: `${100 * width}%`,
           opacity: invert ? 0.5 : null,
           filter: invert ? 'invert(1)' : null,
         },
@@ -129,8 +132,8 @@ export default {
     getEntityStyle(id, x, y) {
       const [dx, dy] = this.dxys[id] || [0, 0]
       return {
-        left: `${(100 * (x + dx)) / size}%`,
-        top: `${(100 * (y + dy)) / size}%`,
+        left: `${100 * (x + dx / this.root.scale)}%`,
+        top: `${100 * (y + dy / this.root.scale)}%`,
       }
     },
     moveEntity({ id, type }, [dx, dy]) {

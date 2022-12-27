@@ -39,5 +39,13 @@ export default () => {
     saveFile(JSON.stringify(areas, null, 2), 'areas.json')
     storage.state.dirty = null
   }
+  storage.getItems = () => {
+    return ['nordub', 'legacy'].map((id) => ({
+      id,
+      text: id,
+      click: () => storage.save({ selected: id }),
+    }))
+  }
+  storage.getIcon = () => 'sm-icon -' + storage.state.selected
   return storage
 }

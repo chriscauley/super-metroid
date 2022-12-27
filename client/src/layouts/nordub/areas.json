@@ -32,7 +32,7 @@
       ["morphBallRoomLeft", 4, 1],
       ["climbBottomLeft", 5, 1]
     ],
-    "title_dxy": [0, -1]
+    "title_dxy": [1, 0]
   },
   {
     "slug": "crocomire",
@@ -48,7 +48,7 @@
     "x": 0,
     "y": 0,
     "warps": [["crocomireRoomTop", 0, 1]],
-    "title_dxy": [0, -1]
+    "title_dxy": [1, 1]
   },
   {
     "slug": "draygon",
@@ -58,7 +58,7 @@
     "x": 0,
     "y": 0,
     "warps": [["draygonRoomIn", 0, 1]],
-    "title_dxy": [0, -1]
+    "title_dxy": [1, 2]
   },
   {
     "slug": "east-maridia",
@@ -85,7 +85,7 @@
       ["westSandHallLeft", 3, 1],
       ["belowBotwoonEnergyTankRight", 4, 1]
     ],
-    "title_dxy": [0, -1]
+    "title_dxy": [1, 3]
   },
   {
     "slug": "green-brinstar",
@@ -117,7 +117,7 @@
       ["noobBridgeRight", 2, 1],
       ["greenBrinstarMainShaftTopLeft", 3, 1]
     ],
-    "title_dxy": [0, -1]
+    "title_dxy": [1, 4]
   },
   {
     "slug": "kraid",
@@ -127,7 +127,7 @@
     "x": 0,
     "y": 0,
     "warps": [["kraidRoomIn", 0, 1]],
-    "title_dxy": [0, -1]
+    "title_dxy": [1, 5]
   },
   {
     "slug": "kraids-lair",
@@ -143,7 +143,7 @@
       ["warehouseZeelaRoomLeft", 0, 1],
       ["kraidRoomOut", 1, 1]
     ],
-    "title_dxy": [0, -1]
+    "title_dxy": [1, 6]
   },
   {
     "slug": "lower-norfair",
@@ -167,7 +167,7 @@
       ["lavaDiveRight", 1, 1],
       ["ridleyRoomOut", 2, 1]
     ],
-    "title_dxy": [0, -1]
+    "title_dxy": [1, 7]
   },
   {
     "slug": "phantoon",
@@ -177,7 +177,7 @@
     "x": 0,
     "y": 0,
     "warps": [["phantoonRoomIn", 0, 1]],
-    "title_dxy": [0, -1]
+    "title_dxy": [1, 8]
   },
   {
     "slug": "red-brinstar",
@@ -200,7 +200,7 @@
       ["eastTunnelRight", 4, 1],
       ["eastTunnelTopRight", 5, 1]
     ],
-    "title_dxy": [0, -1]
+    "title_dxy": [1, 9]
   },
   {
     "slug": "ridley",
@@ -210,7 +210,7 @@
     "x": 0,
     "y": 0,
     "warps": [["ridleyRoomIn", 0, 1]],
-    "title_dxy": [0, -1]
+    "title_dxy": [1, 10]
   },
   {
     "slug": "tourian",
@@ -223,7 +223,7 @@
       ["goldenFour", 0, 1],
       ["tourianEscapeRoom4TopRight", 1, 1]
     ],
-    "title_dxy": [0, -1]
+    "title_dxy": [1, 11]
   },
   {
     "slug": "upper-norfair",
@@ -256,7 +256,7 @@
       ["kronicBoostRoomBottomLeft", 4, 1],
       ["businessCenterMidLeft", 5, 1]
     ],
-    "title_dxy": [0, -1]
+    "title_dxy": [1, 12]
   },
   {
     "slug": "west-maridia",
@@ -281,7 +281,7 @@
       ["westSandHallTunnelRight", 4, 1],
       ["crabHoleBottomRight", 5, 1]
     ],
-    "title_dxy": [0, -1]
+    "title_dxy": [1, 13]
   },
   {
     "slug": "wrecked-ship",
@@ -308,6 +308,6 @@
       ["phantoonRoomOut", 2, 1],
       ["basementLeft", 3, 1]
     ],
-    "title_dxy": [0, -1]
+    "title_dxy": [1, 14]
   }
 ]

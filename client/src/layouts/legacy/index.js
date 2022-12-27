@@ -2,8 +2,9 @@ import areas from './areas.json'
 
 export default {
   root: {
-    width: 1500,
+    scale: 13.5,
     height: 750,
+    width: 1500,
   },
   extra_classes: {
     // crater

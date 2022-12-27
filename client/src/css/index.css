@@ -268,3 +268,11 @@ body {
     text-align: right;
   }
 }
+
+.ur-toolbar .sm-icon{
+  @apply my-1;
+  &:before {
+    inset: -20%;
+    image-rendering: unset;
+  }
+}

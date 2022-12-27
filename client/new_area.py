@@ -24,6 +24,7 @@ def main(layout, scale):
         h, w = get_image(layout, area['slug']).shape[:2]
         area['height'] = h // scale
         area['width'] = w // scale
+        area['title_dxy'] = [1, area_index]
         area['x'] = area['y'] = 0
         for item_index, item in enumerate(area['items']):
             item[1] = item_index
@@ -31,7 +32,6 @@ def main(layout, scale):
         for warp_index, warp in enumerate(area['warps']):
             warp[1] = warp_index
             warp[2] = 1
-        area['title_dxy'] = [0, -1]
     with open(f'src/layouts/{layout}/areas.json', 'w') as f:
         f.write(json.dumps(areas, indent=4))
     os.system('yarn lint --fix')

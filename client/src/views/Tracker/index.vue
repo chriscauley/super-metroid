@@ -28,6 +28,11 @@
             </div>
           </template>
         </unrest-dropdown>
+        <unrest-dropdown :items="$store.layout.getItems()">
+          <button class="btn -primary">
+            <i :class="$store.layout.getIcon()" />
+          </button>
+        </unrest-dropdown>
       </template>
     </unrest-toolbar>
     <osd-viewer

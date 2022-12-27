@@ -4,7 +4,7 @@
 @use "sass:string";
 @import "./variables.scss";
 
-.sm-item, .sm-block, .sm-cre-hex, .sm-ui, .sm-link, .sm-boss {
+.sm-item, .sm-block, .sm-cre-hex, .sm-ui, .sm-link, .sm-boss, .sm-icon {
   display: inline-block;
   position: relative;
   height: 1em;
@@ -22,6 +22,18 @@
   }
 }
 
+.sm-icon {
+  &:before {
+    background: no-repeat center;
+    background-size: 100% auto;
+  }
+  &.-legacy:before {
+    background-image: url(./images/legacy-icon.png);
+  }
+  &.-nordub:before {
+    background-image: url(./images/nordub-icon.png);
+  }
+}
 .sm-boss {
   &:before {
     background: no-repeat center;

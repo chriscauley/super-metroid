@@ -3,7 +3,7 @@
     <line v-for="line in shapes.lines" :key="line.id" v-bind="line" />
     <circle v-for="circle in shapes.circles" :key="circle.id" v-bind="circle" />
     <rect v-for="rect in shapes.rects" :key="rect.id" v-bind="rect" />
-    <template v-for="text in texts" :key="text.attrs.id">
+    <template v-for="text in shapes.texts" :key="text.attrs.id">
       <text v-bind="text.attrs">
         {{ text.content }}
       </text>
@@ -77,10 +77,10 @@ export default {
             content = code_map[target_slug]
             attrs.title += ' -> ' + target_slug
             attrs.class += ' -linked'
-            attrs.y -= this.scale(6)
+            attrs.y -= this.scale(0.5)
             subtext_attrs = {
               x: this.scale(x),
-              y: this.scale(y + 9),
+              y: this.scale(y + 0.7),
             }
           }
           out.push({
@@ -128,7 +128,7 @@ export default {
           stroke: color,
           class: `warp-connections__line`,
         })
-        if (warp_display === 'legacy') {
+        if (warp_display === 'dot') {
           circles.push({
             id: `warp-anchor-${warp1}`,
             cx: s(x1),
@@ -151,12 +151,13 @@ export default {
           rects.push(this.getRect(warp2, x2, y2, color))
         }
       })
-      return { lines, circles, rects }
+      return { lines, circles, rects, texts: this.texts }
     },
   },
   methods: {
     scale(number) {
-      return (1 * number) / 1500
+      const { root } = this.$store.layout.getWorld()
+      return (root.scale * (1 * number)) / root.width
     },
     getRect(id, x, y, stroke) {
       return {

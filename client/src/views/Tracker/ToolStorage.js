@@ -77,7 +77,7 @@ export default (component) => {
       },
       warp_display: {
         type: 'string',
-        enum: ['legacy', 'codes'],
+        enum: ['dot', 'codes'],
       },
       // editor_mode: {
       //   title: 'Controls',

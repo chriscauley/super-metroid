@@ -2,6 +2,7 @@ import { startCase, cloneDeep, memoize } from 'lodash'
 
 import { access_points, boss_doors, escape_doors, sand_doors, special_items } from '@/data/old'
 import legacy from './legacy'
+import nordub from './nordub'
 
 const rotated_door_regexp = /(Top|Bottom|redBrinstarElevator)$/
 
@@ -79,8 +80,10 @@ const prepArea = (area) => {
 export default {
   prepArea,
   legacy,
+  nordub,
   getAreas(slug) {
-    return this[slug].areas.map(prepArea)
+    const areas = this[slug].areas.map(prepArea)
+    return areas
   },
   moveEntity(layout_slug, { type, id }, dx, dy) {
     const layout = this[layout_slug]
