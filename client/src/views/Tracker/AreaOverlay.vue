@@ -130,9 +130,10 @@ export default {
   methods: {
     getEntityStyle(id, x, y) {
       const [dx, dy] = this.dxys[id] || [0, 0]
+      const _ = (a, b) => Math.round(2 * (a + b / this.root.scale)) / 2 - 0.5
       return {
-        left: `${100 * (x + dx / this.root.scale)}%`,
-        top: `${100 * (y + dy / this.root.scale)}%`,
+        left: `${100 * _(x, dx)}%`,
+        top: `${100 * _(y, dy)}%`,
       }
     },
     moveEntity({ id, type }, [dx, dy]) {
