@@ -161,9 +161,32 @@ export default (component) => {
 
   storage.getWarpAreaXys = () => {
     const out = {}
+    const offset = component.$store.layout.getWorld().root.offset
     component.areas.forEach((area) => {
       area.warps.forEach((warp) => {
-        out[warp.slug] = [area.slug, area.x + warp.x, area.y + warp.y]
+        out[warp.slug] = [area.slug, area.x + warp.x + offset, area.y + warp.y + offset]
+      })
+    })
+    return out
+  }
+
+  storage.getEntityXys = () => {
+    const out = {}
+    const { offset, round } = component.$store.layout.getWorld().root
+    const _ = (a) => Math.round(round * a) / round + offset
+    const checkUnique = (slug) => {
+      if (out[slug]) {
+        console.warn('Duplicate slug detected: ' + slug)
+      }
+    }
+    component.areas.forEach((area) => {
+      area.warps.forEach((w) => {
+        checkUnique(w.slug)
+        out[w.slug] = [area.slug, area.x + _(w.x), area.y + _(w.y)]
+      })
+      area.items.forEach((i) => {
+        checkUnique(i.slug)
+        out[i.slug] = [area.slug, area.x + _(i.x), area.y + _(i.y)]
       })
     })
     return out

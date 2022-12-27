@@ -61,7 +61,7 @@ export default {
           if (['escape', 'sand'].includes(warp.type)) {
             return
           }
-          const [_, x, y] = this.warp_area_xys[warp.slug]
+          const [_, x, y] = this.entity_xys[warp.slug]
           let subtext, subtext_attrs
           const target_slug = this.game_state.warps[warp.slug]
           const attrs = {
@@ -95,8 +95,8 @@ export default {
       const { tool } = this.tool_storage.state.selected
       return tool !== 'admin_move_item'
     },
-    warp_area_xys() {
-      return this.tool_storage.getWarpAreaXys()
+    entity_xys() {
+      return this.tool_storage.getEntityXys()
     },
     shapes() {
       const used = {}
@@ -113,8 +113,8 @@ export default {
       const rects = []
       const s = this.scale
       pairs.forEach(([warp1, warp2], index) => {
-        const [_area1, x1, y1] = this.warp_area_xys[warp1]
-        const [_area2, x2, y2] = this.warp_area_xys[warp2]
+        const [_area1, x1, y1] = this.entity_xys[warp1]
+        const [_area2, x2, y2] = this.entity_xys[warp2]
         const color = colors[index % colors.length]
         lines.push({
           id: `${warp1}-${warp2}`,
@@ -155,7 +155,7 @@ export default {
   methods: {
     scale(number) {
       const { root } = this.$store.layout.getWorld()
-      return (root.scale * (1 * number)) / root.width
+      return (root.scale * number) / root.width
     },
     getRect(id, x, y, stroke) {
       return {

@@ -5,6 +5,8 @@ export default {
     scale: 13.5,
     height: 750,
     width: 1500,
+    round: 1000,
+    offset: 0,
   },
   extra_classes: {
     // crater
