@@ -1341,10 +1341,10 @@
     eslint-plugin-vue "^9.1.1"
     prettier "^2.7.0"
 
-"@unrest/tailwind@^0.1.21":
-  version "0.1.21"
-  resolved "https://registry.yarnpkg.com/@unrest/tailwind/-/tailwind-0.1.21.tgz#01bea67bab3adeb117eef9a10c15db47f928309d"
-  integrity sha512-iZc2+cMJlFxgK4TVNR+/Pa6Fq/WwMqaLtguxe3CMmTJUwNI+n8Sm9plFHNq1IcrJacEyjCHNTP/PyaOth/kaEw==
+"@unrest/tailwind@0.1.22":
+  version "0.1.22"
+  resolved "https://registry.yarnpkg.com/@unrest/tailwind/-/tailwind-0.1.22.tgz#cc1b99007333d73b383843563f7f30da2d40fd0a"
+  integrity sha512-jAGDqlGxvYwREMHrHS+w5hMdNXLdUSqGaGllaVXByR+3oe4Hah94gHwS1mdow1XbJ+75b34YuycNYYovU5KmnQ==
 
 "@unrest/vue-form@^0.0.18":
   version "0.0.18"
@@ -1362,10 +1362,10 @@
   dependencies:
     mousetrap "^1.6.5"
 
-"@unrest/vue-openseadragon@^0.0.2":
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/@unrest/vue-openseadragon/-/vue-openseadragon-0.0.2.tgz#992046005aa1b3e78690eafab8b98ffa5139202e"
-  integrity sha512-4LUoJuw8R4PGaWvBfqMJ+7t53aRSmyFKkT0NuqrA6JlMtIyST+JpjWmCxgrfZfBU/AlX53nlXZcLRDZzzOQM1g==
+"@unrest/vue-openseadragon@0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@unrest/vue-openseadragon/-/vue-openseadragon-0.0.4.tgz#36007e45e136eeff469904c74fb8281f1df0a959"
+  integrity sha512-uSjuMHzXeSf/gB/6dgORBjmpwI5B+zhHbEEGbS+xquoSUwL173CjMP0WmPJItlST64Xdacde8QjXEtITe+v84g==
   dependencies:
     "@unrest/vue-mousetrap" "^0.0.12"
     openseadragon "^2.4.2"
@@ -1382,15 +1382,15 @@
     lodash.debounce "^4.0.8"
     querystring "^0.2.1"
 
-"@unrest/vue@^0.2.15":
-  version "0.2.15"
-  resolved "https://registry.yarnpkg.com/@unrest/vue/-/vue-0.2.15.tgz#d463bf06ac20ecf637a406b2c033f8eb1c1f4299"
-  integrity sha512-BMWM5DHOoz/ddo8NokeVMMdZSY5nbeig3Y3tHJqInG6SorBhIqdOp0YxHWxKEFq+PRkGcPpXCvYBjkdqWuluVg==
+"@unrest/vue@0.2.16":
+  version "0.2.16"
+  resolved "https://registry.yarnpkg.com/@unrest/vue/-/vue-0.2.16.tgz#afb770974d87875e73fe8af2bfdae11cf1aa7ff5"
+  integrity sha512-yfhGkue+QtPevwWHxfIkC6TTc2fl+nYklEi0LvXe04J0xgNbt4E3m1SMmZ8869OA3IJtRb3achVW2wmqA3HS7Q==
   dependencies:
     dedent "^0.7.0"
     lodash.clonedeep "^4.5.0"
     lodash.startcase "^4.4.0"
-    marked "^4.0.17"
+    marked "^4.2.4"
 
 "@vue/babel-helper-vue-jsx-merge-props@^1.4.0":
   version "1.4.0"
@@ -4414,10 +4414,10 @@ make-dir@^3.0.2, make-dir@^3.1.0:
   dependencies:
     semver "^6.0.0"
 
-marked@^4.0.17:
-  version "4.2.4"
-  resolved "https://registry.yarnpkg.com/marked/-/marked-4.2.4.tgz#5a4ce6c7a1ae0c952601fce46376ee4cf1797e1c"
-  integrity sha512-Wcc9ikX7Q5E4BYDPvh1C6QNSxrjC9tBgz+A/vAhp59KXUgachw++uMvMKiSW8oA85nopmPZcEvBoex/YLMsiyA==
+marked@^4.2.4:
+  version "4.2.5"
+  resolved "https://registry.yarnpkg.com/marked/-/marked-4.2.5.tgz#979813dfc1252cc123a79b71b095759a32f42a5d"
+  integrity sha512-jPueVhumq7idETHkb203WDD4fMA3yV9emQ5vLwop58lu8bTclMghBWcYAavlDqIEMaisADinV1TooIFCfqOsYQ==
 
 mdn-data@2.0.14:
   version "2.0.14"

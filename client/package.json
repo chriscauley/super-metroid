@@ -10,10 +10,10 @@
   },
   "dependencies": {
     "@popperjs/core": "^2.11.6",
-    "@unrest/tailwind": "^0.1.21",
-    "@unrest/vue": "^0.2.15",
+    "@unrest/tailwind": "0.1.22",
+    "@unrest/vue": "0.2.16",
     "@unrest/vue-form": "^0.0.18",
-    "@unrest/vue-openseadragon": "^0.0.2",
+    "@unrest/vue-openseadragon": "0.0.4",
     "@unrest/vue-storage": "^0.0.19",
     "core-js": "^3.8.3",
     "postcss-for": "^2.1.1",
