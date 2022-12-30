@@ -54,7 +54,7 @@ export default {
         ...this.item_groups,
         ...this.pack_controls,
       ]
-      if (this.inventory.reserve) {
+      if (this.inventory['reserve-tank']) {
         out.push(soloGroup('auto'))
         out.push(soloGroup('reserve_text'))
       }
@@ -99,11 +99,11 @@ export default {
       return [energyTanks(Math.min(count, 7)), energyTanks(Math.max(count - 7, 0), '-top')]
     },
     reserve_tanks() {
-      const { reserve } = this.inventory
-      const tanks = range(Math.floor(reserve / 100)).map(() => css.item('smi -ireserve'))
+      const amount = this.inventory['reserve-tank']
+      const tanks = range(Math.floor(amount)).map(() => css.item('smi -ireserve'))
       const children = [...tanks, css.separator]
-      if (reserve > 0) {
-        const chars = reserve.toString().split('')
+      if (amount > 0) {
+        const chars = (100 * amount).toString().split('')
         chars.forEach((i) => children.push(css.item(`smi-reserve-number -number-${i}`)))
       }
       return {

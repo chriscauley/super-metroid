@@ -1,0 +1,21 @@
+.item-tracker {
+  font-size: 64px;
+  padding: 0.5em;
+  width: 7em;
+  &__row {
+    @apply flex;
+    gap: 0.2em;
+    padding-bottom: 0.2em;
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+  .sm-item {
+    --inventory-px: 0.05em;
+    @apply relative;
+    .item-tracker__numbers {
+      @apply absolute flex right-0;
+      bottom: -0.05em;
+    }
+  }
+}
