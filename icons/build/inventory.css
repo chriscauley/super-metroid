@@ -267,3 +267,11 @@ body {
 .smi-pause-screen.-seedless {
   background-image: url("./images/inventory/background_seedless.png");
 }
+
+.smi-tracker {
+  background-size: 100% auto, 100% auto, 100% auto;
+  background-image: url("./images/inventory/background_tracker_top.png"), url("./images/inventory/background_tracker_bottom.png"), url("./images/inventory/background_tracker_middle.png");
+  background-repeat: no-repeat, no-repeat, repeat;
+  background-position: left top, left bottom, left center;
+  image-rendering: pixelated;
+}

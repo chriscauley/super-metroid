@@ -1,5 +1,5 @@
 <template>
-  <div style="background: black" class="-pixelated">
+  <div class="smi-tracker">
     <div class="sm-item -missile" />
     <div>
       <div v-for="icon in inventory_icons" :key="icon" :class="icon" />
@@ -18,6 +18,10 @@ const inventory_icons = [
   'smi -isuper',
   'smi -ireserve',
 ]
+
+const bosses = ['ridley', 'draygon', 'phantoon', 'kraid']
+bosses.forEach(b => inventory_icons.push('sm-item -'+b))
+bosses.forEach(b => inventory_icons.push('sm-item -inactive -'+b))
 
 let i = 0
 while (i < 10) {

@@ -4,7 +4,7 @@
 @use "sass:string";
 @import "./variables.scss";
 
-.sm-item, .sm-block, .sm-cre-hex, .sm-ui, .sm-link, .sm-boss, .sm-icon {
+.sm-item, .sm-block, .sm-cre-hex, .sm-ui, .sm-link, .sm-boss, .sm-icon, .sm-g4-head {
   display: inline-block;
   position: relative;
   height: 1em;
@@ -19,6 +19,24 @@
   &.-has-not {
     opacity: 0.75;
     filter: grayscale(1);
+  }
+  &.-inactive {
+    filter: grayscale(1);
+  }
+}
+
+.sm-g4-head, .sm-item {
+  /* these can be g4-head or item so that they work easily with trackers */
+  $bosses: ridley draygon phantoon kraid;
+  @for $i from 0 to length($bosses) {
+    $name: nth($bosses, $i + 1);
+    &.-#{"" + $name}:before {
+      background-image: url(./images/g4-head.png);
+      background-position: 0 $i * -100%;
+    }
+    &.-inactive.-#{"" + $name}:before {
+      background-position: 0 ($i+4) * -100%;
+    }
   }
 }
 
