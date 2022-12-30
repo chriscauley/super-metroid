@@ -1,0 +1,82 @@
+@use "sass:math";
+@use "sass:list";
+
+@mixin single-icon($name, $w, $h) {
+  .smi.-#{$name} {
+    background: url('./inventory/#{$name}.png') center no-repeat;
+    background-size: contain;
+    width: px($w);
+    &:before {
+      content: "";
+      display: block;
+      padding-top: 100% * math.div($h, $w);
+    }
+  }
+}
+
+@include single-icon(auto, 13, 22);
+@include single-icon(energy, 32, 7);
+@include single-icon(ietank, 6, 5);
+@include single-icon(igrapple, 16, 16);
+@include single-icon(ixray, 16, 16);
+@include single-icon(imissile, 24, 16);
+@include single-icon(isuper-missile, 16, 16);
+@include single-icon(ipower-bomb, 16, 16);
+@include single-icon(ireserve, 9, 6);
+@include single-icon(reserve_text, 66, 16);
+
+.smi-number {
+  background: url('./inventory/numbers.png');
+}
+
+.smi-reserve-number {
+  background: url('./inventory/reserve_numbers.png');
+}
+
+.smi-menu-item, .smi-number, .smi-reserve-number {
+  background-size: 100% auto;
+  image-rendering: pixelated;
+}
+
+.smi-number, .smi-reserve-number {
+  height: px(8);
+  width: px(8);
+}
+
+
+.smi-number, .smi-reserve-number {
+  @for $i from 0 through 9 {
+    &.-number-#{$i} {
+      background-position: 0 $i * -100%;
+    }
+  }
+}
+
+$beams: charge-beam ice-beam wave-beam spazer-beam plasma-beam;
+$other_items: varia-suit gravity-suit morph-ball bomb spring-ball screw-attack hi-jump-boots space-jump speed-booster;
+$items: list.join($beams, $other_items);
+
+.smi-pause-item {
+  background: url('./inventory/menu-items_active.png');
+  height: px(8);
+  background-size: px(72) auto;
+  &.-inactive {
+    background-image: url('./inventory/menu-items_inactive.png');
+  }
+  @for $i from 0 to length($items) {
+    $name: nth($items, $i + 1);
+    &.-#{$name} {
+      background-position: 0 $i * -100%;
+    }
+  }
+  @each $item in $beams {
+    &.-#{$item} {
+      width: px(40);
+    }
+  }
+  @each $item in $other_items {
+    &.-#{$item} {
+      width: px(72);
+    }
+  }
+}

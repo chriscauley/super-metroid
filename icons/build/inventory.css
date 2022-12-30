@@ -1,0 +1,251 @@
+.smi.-auto {
+  background: url("./inventory/auto.png") center no-repeat;
+  background-size: contain;
+  width: px(13);
+}
+.smi.-auto:before {
+  content: "";
+  display: block;
+  padding-top: 169.2307692308%;
+}
+
+.smi.-energy {
+  background: url("./inventory/energy.png") center no-repeat;
+  background-size: contain;
+  width: px(32);
+}
+.smi.-energy:before {
+  content: "";
+  display: block;
+  padding-top: 21.875%;
+}
+
+.smi.-ietank {
+  background: url("./inventory/ietank.png") center no-repeat;
+  background-size: contain;
+  width: px(6);
+}
+.smi.-ietank:before {
+  content: "";
+  display: block;
+  padding-top: 83.3333333333%;
+}
+
+.smi.-igrapple {
+  background: url("./inventory/igrapple.png") center no-repeat;
+  background-size: contain;
+  width: px(16);
+}
+.smi.-igrapple:before {
+  content: "";
+  display: block;
+  padding-top: 100%;
+}
+
+.smi.-ixray {
+  background: url("./inventory/ixray.png") center no-repeat;
+  background-size: contain;
+  width: px(16);
+}
+.smi.-ixray:before {
+  content: "";
+  display: block;
+  padding-top: 100%;
+}
+
+.smi.-imissile {
+  background: url("./inventory/imissile.png") center no-repeat;
+  background-size: contain;
+  width: px(24);
+}
+.smi.-imissile:before {
+  content: "";
+  display: block;
+  padding-top: 66.6666666667%;
+}
+
+.smi.-isuper-missile {
+  background: url("./inventory/isuper-missile.png") center no-repeat;
+  background-size: contain;
+  width: px(16);
+}
+.smi.-isuper-missile:before {
+  content: "";
+  display: block;
+  padding-top: 100%;
+}
+
+.smi.-ipower-bomb {
+  background: url("./inventory/ipower-bomb.png") center no-repeat;
+  background-size: contain;
+  width: px(16);
+}
+.smi.-ipower-bomb:before {
+  content: "";
+  display: block;
+  padding-top: 100%;
+}
+
+.smi.-ireserve {
+  background: url("./inventory/ireserve.png") center no-repeat;
+  background-size: contain;
+  width: px(9);
+}
+.smi.-ireserve:before {
+  content: "";
+  display: block;
+  padding-top: 66.6666666667%;
+}
+
+.smi.-reserve_text {
+  background: url("./inventory/reserve_text.png") center no-repeat;
+  background-size: contain;
+  width: px(66);
+}
+.smi.-reserve_text:before {
+  content: "";
+  display: block;
+  padding-top: 24.2424242424%;
+}
+
+.smi-number {
+  background: url("./inventory/numbers.png");
+}
+
+.smi-reserve-number {
+  background: url("./inventory/reserve_numbers.png");
+}
+
+.smi-menu-item, .smi-number, .smi-reserve-number {
+  background-size: 100% auto;
+  image-rendering: pixelated;
+}
+
+.smi-number, .smi-reserve-number {
+  height: px(8);
+  width: px(8);
+}
+
+.smi-number.-number-0, .smi-reserve-number.-number-0 {
+  background-position: 0 0%;
+}
+.smi-number.-number-1, .smi-reserve-number.-number-1 {
+  background-position: 0 -100%;
+}
+.smi-number.-number-2, .smi-reserve-number.-number-2 {
+  background-position: 0 -200%;
+}
+.smi-number.-number-3, .smi-reserve-number.-number-3 {
+  background-position: 0 -300%;
+}
+.smi-number.-number-4, .smi-reserve-number.-number-4 {
+  background-position: 0 -400%;
+}
+.smi-number.-number-5, .smi-reserve-number.-number-5 {
+  background-position: 0 -500%;
+}
+.smi-number.-number-6, .smi-reserve-number.-number-6 {
+  background-position: 0 -600%;
+}
+.smi-number.-number-7, .smi-reserve-number.-number-7 {
+  background-position: 0 -700%;
+}
+.smi-number.-number-8, .smi-reserve-number.-number-8 {
+  background-position: 0 -800%;
+}
+.smi-number.-number-9, .smi-reserve-number.-number-9 {
+  background-position: 0 -900%;
+}
+
+.smi-pause-item {
+  background: url("./inventory/menu-items_active.png");
+  height: px(8);
+  background-size: px(72) auto;
+}
+.smi-pause-item.-inactive {
+  background-image: url("./inventory/menu-items_inactive.png");
+}
+.smi-pause-item.-charge-beam {
+  background-position: 0 0%;
+}
+.smi-pause-item.-ice-beam {
+  background-position: 0 -100%;
+}
+.smi-pause-item.-wave-beam {
+  background-position: 0 -200%;
+}
+.smi-pause-item.-spazer-beam {
+  background-position: 0 -300%;
+}
+.smi-pause-item.-plasma-beam {
+  background-position: 0 -400%;
+}
+.smi-pause-item.-varia-suit {
+  background-position: 0 -500%;
+}
+.smi-pause-item.-gravity-suit {
+  background-position: 0 -600%;
+}
+.smi-pause-item.-morph-ball {
+  background-position: 0 -700%;
+}
+.smi-pause-item.-bomb {
+  background-position: 0 -800%;
+}
+.smi-pause-item.-spring-ball {
+  background-position: 0 -900%;
+}
+.smi-pause-item.-screw-attack {
+  background-position: 0 -1000%;
+}
+.smi-pause-item.-hi-jump-boots {
+  background-position: 0 -1100%;
+}
+.smi-pause-item.-space-jump {
+  background-position: 0 -1200%;
+}
+.smi-pause-item.-speed-booster {
+  background-position: 0 -1300%;
+}
+.smi-pause-item.-charge-beam {
+  width: px(40);
+}
+.smi-pause-item.-ice-beam {
+  width: px(40);
+}
+.smi-pause-item.-wave-beam {
+  width: px(40);
+}
+.smi-pause-item.-spazer-beam {
+  width: px(40);
+}
+.smi-pause-item.-plasma-beam {
+  width: px(40);
+}
+.smi-pause-item.-varia-suit {
+  width: px(72);
+}
+.smi-pause-item.-gravity-suit {
+  width: px(72);
+}
+.smi-pause-item.-morph-ball {
+  width: px(72);
+}
+.smi-pause-item.-bomb {
+  width: px(72);
+}
+.smi-pause-item.-spring-ball {
+  width: px(72);
+}
+.smi-pause-item.-screw-attack {
+  width: px(72);
+}
+.smi-pause-item.-hi-jump-boots {
+  width: px(72);
+}
+.smi-pause-item.-space-jump {
+  width: px(72);
+}
+.smi-pause-item.-speed-booster {
+  width: px(72);
+}

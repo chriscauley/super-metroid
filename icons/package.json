@@ -5,7 +5,9 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build:client": "vue-cli-service build --dest build",
-    "build:css": "sass src/assets/sm.scss > build/super-metroid.css",
+    "build:css": "yarn build:sm && yarn build:smi",
+    "build:sm": "sass src/assets/sm.scss > build/super-metroid.css",
+    "build:smi": "sass src/assets/inventory.scss > build/inventory.css",
     "build:images": "rsync -a src/assets/images build/",
     "build": "yarn build:client && yarn build:css && yarn build:images",
     "lint": "eslint \"src/**/*\""

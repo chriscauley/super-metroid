@@ -1,0 +1,14 @@
+body {
+  --inventory-px: 5.515px;
+  --inventory-px: 4px;
+}
+
+$px: var(--inventory-px);
+
+@function px($number) {
+  @return calc($number * var(--inventory-px));
+}
+
+.-pixelated {
+  image-rendering: pixelated;
+}

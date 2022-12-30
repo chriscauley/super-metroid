@@ -1,0 +1,141 @@
+.pause-inventory {
+  background: url('inventory/background_seedless.png') no-repeat center;
+  background-size: cover;
+  height: px(198);
+  width: px(256);
+  .-imissile, .-isuper-missile, .-ipower-bomb {
+    opacity: 0;
+  }
+}
+
+.pause-inventory.-controlled {
+  background-image: url('inventory/background.png');
+  pointer-events: none;
+  .smi-pause-item.-inactive {
+    opacity: 0;
+  }
+  .-imissile, .-isuper-missile, .-ipower-bomb {
+    opacity: 1;
+  }
+}
+
+.pause-inventory__group {
+  @apply absolute flex;
+  &.-group-energy-tanks {
+    gap: px(2);
+    left: px(9);
+    top: px(17);
+    &.-top {
+      top: px(9);
+    }
+  }
+  &.-group-energy-text {
+    @apply items-center;
+    left: px(8);
+    top: px(23.5);
+    width: px(56);
+  }
+  &.-group-reserve-tanks {
+    left: px(24);
+    top: px(97);
+    width: px(64);
+    .smi.-ireserve {
+      margin-left: px(-1);
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  }
+  &.-group-missile {
+    top: px(24);
+    left: px(81);
+  }
+  &.-group-super-missile {
+    top: px(24);
+    left: px(114);
+  }
+  &.-group-power-bomb {
+    top: px(24);
+    left: px(137);
+  }
+  &.-group-beams, &.-group-suits, &.-group-misc, &.-group-boots {
+    @apply flex-col;
+    .smi-pause-item {
+      @apply cursor-pointer;
+    }
+  }
+  &.-group-beams {
+    top: px(128);
+    left: px(32);
+  }
+  &.-group-suits, &.-group-misc, &.-group-boots {
+    left: px(168);
+  }
+  &.-group-suits {
+    top: px(72);
+  }
+  &.-group-misc {
+    top: px(104);
+  }
+  &.-group-boots {
+    top: px(152);
+  }
+  &.-group-auto {
+    left: px(67);
+    top: px(7);
+  }
+  &.-group-reserve_text {
+    left: px(22);
+    top: px(80);
+  }
+  &.-group-hud-items {
+    gap: px(7);
+    left: px(83);
+    top: px(6);
+    .-igrapple, .-ixray {
+      @apply cursor-pointer;
+    }
+    .-imissile, .-isuper-missile, .-ipower-bomb {
+      pointer-events: none;
+    }
+    .-inactive {
+      opacity: 0;
+    }
+  }
+}
+
+.pause-inventory {
+  ._plus, ._minus {
+    @apply cursor-pointer;
+    height: px(16);
+    width: px(10);
+  }
+  .-group-missile-controls,
+  .-group-super-missile-controls,
+  .-group-power-bomb-controls,
+  .-group-energy-tank-controls,
+  .-group-reserve-tank-controls {
+    gap: px(1);
+    top: px(3);
+  }
+  .-group-missile-controls {
+    gap: px(1);
+    top: px(3);
+    left: px(81.5);
+    ._plus, ._minus {
+      width: px(12);
+    }
+  }
+  .-group-super-missile-controls {
+    left: px(111);
+  }
+  .-group-power-bomb-controls {
+    left: px(135);
+  }
+  .-group-energy-tank-controls {
+    left: px(201);
+  }
+  .-group-reserve-tank-controls {
+    left: px(226);
+  }
+}
