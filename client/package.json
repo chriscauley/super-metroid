@@ -5,7 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --dest ../docs",
-    "build:varia": "VUE_APP_SITE=varia vue-cli-service build --dest ../docs",
+    "build:varia": "VUE_APP_SITE=varia vue-cli-service build --dest ../../web/client",
+    "watch:varia": "yarn build:varia --watch --mode production",
     "lint": "eslint \"src/**/*\""
   },
   "dependencies": {
@@ -15,8 +16,10 @@
     "@unrest/vue-form": "^0.0.18",
     "@unrest/vue-openseadragon": "0.0.4",
     "@unrest/vue-storage": "^0.0.19",
+    "@unrest/vue-toolbar": "^0.0.4",
     "core-js": "^3.8.3",
     "postcss-for": "^2.1.1",
+    "postcss-functions": "^4.0.2",
     "postcss-import": "^15.0.0",
     "postcss-simple-vars": "^7.0.1",
     "raw-loader": "^4.0.2",

@@ -1,7 +1,16 @@
+body {
+  --inventory-px: 5.515px;
+  --inventory-px: 4px;
+}
+
+.-pixelated {
+  image-rendering: pixelated;
+}
+
 .smi.-auto {
-  background: url("./inventory/auto.png") center no-repeat;
+  background: url("./images/inventory/auto.png") center no-repeat;
   background-size: contain;
-  width: px(13);
+  width: calc(13 * var(--inventory-px));
 }
 .smi.-auto:before {
   content: "";
@@ -10,9 +19,9 @@
 }
 
 .smi.-energy {
-  background: url("./inventory/energy.png") center no-repeat;
+  background: url("./images/inventory/energy.png") center no-repeat;
   background-size: contain;
-  width: px(32);
+  width: calc(32 * var(--inventory-px));
 }
 .smi.-energy:before {
   content: "";
@@ -21,9 +30,9 @@
 }
 
 .smi.-ietank {
-  background: url("./inventory/ietank.png") center no-repeat;
+  background: url("./images/inventory/ietank.png") center no-repeat;
   background-size: contain;
-  width: px(6);
+  width: calc(6 * var(--inventory-px));
 }
 .smi.-ietank:before {
   content: "";
@@ -32,9 +41,9 @@
 }
 
 .smi.-igrapple {
-  background: url("./inventory/igrapple.png") center no-repeat;
+  background: url("./images/inventory/igrapple.png") center no-repeat;
   background-size: contain;
-  width: px(16);
+  width: calc(16 * var(--inventory-px));
 }
 .smi.-igrapple:before {
   content: "";
@@ -43,9 +52,9 @@
 }
 
 .smi.-ixray {
-  background: url("./inventory/ixray.png") center no-repeat;
+  background: url("./images/inventory/ixray.png") center no-repeat;
   background-size: contain;
-  width: px(16);
+  width: calc(16 * var(--inventory-px));
 }
 .smi.-ixray:before {
   content: "";
@@ -54,9 +63,9 @@
 }
 
 .smi.-imissile {
-  background: url("./inventory/imissile.png") center no-repeat;
+  background: url("./images/inventory/imissile.png") center no-repeat;
   background-size: contain;
-  width: px(24);
+  width: calc(24 * var(--inventory-px));
 }
 .smi.-imissile:before {
   content: "";
@@ -65,9 +74,9 @@
 }
 
 .smi.-isuper-missile {
-  background: url("./inventory/isuper-missile.png") center no-repeat;
+  background: url("./images/inventory/isuper-missile.png") center no-repeat;
   background-size: contain;
-  width: px(16);
+  width: calc(16 * var(--inventory-px));
 }
 .smi.-isuper-missile:before {
   content: "";
@@ -76,9 +85,9 @@
 }
 
 .smi.-ipower-bomb {
-  background: url("./inventory/ipower-bomb.png") center no-repeat;
+  background: url("./images/inventory/ipower-bomb.png") center no-repeat;
   background-size: contain;
-  width: px(16);
+  width: calc(16 * var(--inventory-px));
 }
 .smi.-ipower-bomb:before {
   content: "";
@@ -87,9 +96,9 @@
 }
 
 .smi.-ireserve {
-  background: url("./inventory/ireserve.png") center no-repeat;
+  background: url("./images/inventory/ireserve.png") center no-repeat;
   background-size: contain;
-  width: px(9);
+  width: calc(9 * var(--inventory-px));
 }
 .smi.-ireserve:before {
   content: "";
@@ -98,9 +107,9 @@
 }
 
 .smi.-reserve_text {
-  background: url("./inventory/reserve_text.png") center no-repeat;
+  background: url("./images/inventory/reserve_text.png") center no-repeat;
   background-size: contain;
-  width: px(66);
+  width: calc(66 * var(--inventory-px));
 }
 .smi.-reserve_text:before {
   content: "";
@@ -109,11 +118,11 @@
 }
 
 .smi-number {
-  background: url("./inventory/numbers.png");
+  background: url("./images/inventory/numbers.png");
 }
 
 .smi-reserve-number {
-  background: url("./inventory/reserve_numbers.png");
+  background: url("./images/inventory/reserve_numbers.png");
 }
 
 .smi-menu-item, .smi-number, .smi-reserve-number {
@@ -122,8 +131,8 @@
 }
 
 .smi-number, .smi-reserve-number {
-  height: px(8);
-  width: px(8);
+  height: calc(8 * var(--inventory-px));
+  width: calc(8 * var(--inventory-px));
 }
 
 .smi-number.-number-0, .smi-reserve-number.-number-0 {
@@ -158,12 +167,12 @@
 }
 
 .smi-pause-item {
-  background: url("./inventory/menu-items_active.png");
-  height: px(8);
-  background-size: px(72) auto;
+  background: url("./images/inventory/menu-items_active.png");
+  height: calc(8 * var(--inventory-px));
+  background-size: calc(72 * var(--inventory-px)) auto;
 }
 .smi-pause-item.-inactive {
-  background-image: url("./inventory/menu-items_inactive.png");
+  background-image: url("./images/inventory/menu-items_inactive.png");
 }
 .smi-pause-item.-charge-beam {
   background-position: 0 0%;
@@ -208,44 +217,53 @@
   background-position: 0 -1300%;
 }
 .smi-pause-item.-charge-beam {
-  width: px(40);
+  width: calc(40 * var(--inventory-px));
 }
 .smi-pause-item.-ice-beam {
-  width: px(40);
+  width: calc(40 * var(--inventory-px));
 }
 .smi-pause-item.-wave-beam {
-  width: px(40);
+  width: calc(40 * var(--inventory-px));
 }
 .smi-pause-item.-spazer-beam {
-  width: px(40);
+  width: calc(40 * var(--inventory-px));
 }
 .smi-pause-item.-plasma-beam {
-  width: px(40);
+  width: calc(40 * var(--inventory-px));
 }
 .smi-pause-item.-varia-suit {
-  width: px(72);
+  width: calc(72 * var(--inventory-px));
 }
 .smi-pause-item.-gravity-suit {
-  width: px(72);
+  width: calc(72 * var(--inventory-px));
 }
 .smi-pause-item.-morph-ball {
-  width: px(72);
+  width: calc(72 * var(--inventory-px));
 }
 .smi-pause-item.-bomb {
-  width: px(72);
+  width: calc(72 * var(--inventory-px));
 }
 .smi-pause-item.-spring-ball {
-  width: px(72);
+  width: calc(72 * var(--inventory-px));
 }
 .smi-pause-item.-screw-attack {
-  width: px(72);
+  width: calc(72 * var(--inventory-px));
 }
 .smi-pause-item.-hi-jump-boots {
-  width: px(72);
+  width: calc(72 * var(--inventory-px));
 }
 .smi-pause-item.-space-jump {
-  width: px(72);
+  width: calc(72 * var(--inventory-px));
 }
 .smi-pause-item.-speed-booster {
-  width: px(72);
+  width: calc(72 * var(--inventory-px));
+}
+
+.smi-pause-screen {
+  background-image: url("./images/inventory/background.png");
+  image-rendering: pixelated;
+  position: relative;
+}
+.smi-pause-screen.-seedless {
+  background-image: url("./images/inventory/background_seedless.png");
 }

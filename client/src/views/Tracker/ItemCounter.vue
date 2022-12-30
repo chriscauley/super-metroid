@@ -1,5 +1,5 @@
 <template>
-  <table class="item-counter" :style="style" v-if="show">
+  <table class="item-counter" v-if="show">
     <tr v-for="row in rows" :key="row[0]" :class="row[2]">
       <td>{{ row[1] }}</td>
       <td>{{ row[0] }}</td>
@@ -40,15 +40,6 @@ export default {
         const cls = ['item-counter__row', count - hits[area] === 0 && '-complete']
         return [prepName(area), count - hits[area], cls]
       })
-    },
-    style() {
-      let [top, left] = [0, 0]
-      top = Math.max(top, 40)
-      left = Math.max(left, 0)
-      return {
-        top: `${top}px`,
-        left: `${left}px`,
-      }
     },
   },
 }

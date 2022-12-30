@@ -1,5 +1,4 @@
 .pause-inventory {
-  background: url('inventory/background_seedless.png') no-repeat center;
   background-size: cover;
   height: px(198);
   width: px(256);
@@ -9,7 +8,6 @@
 }
 
 .pause-inventory.-controlled {
-  background-image: url('inventory/background.png');
   pointer-events: none;
   .smi-pause-item.-inactive {
     opacity: 0;

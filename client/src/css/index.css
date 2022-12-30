@@ -1,4 +1,8 @@
+@import './item-counter.css';
+@import './pause-inventory.css';
+@import './seed-settings.css';
 @import './tailwind.css';
+@import './varia-site.css';
 @import './z-index.css';
 
 body {

@@ -1,0 +1,14 @@
+/* overrides for varia site styling. Should be able to be removed before launch */
+
+body.-site-varia {
+  .main {
+    @apply bg-black p-0 mb-0;
+    margin-top: 24px;
+    #_classic_map, > .white, #cur_seed, #cur_preset {
+      display: none !important;
+    }
+  }
+  #app {
+    height: calc(100vh - 84px); /* topnav=24px, footer=60px */
+  }
+}

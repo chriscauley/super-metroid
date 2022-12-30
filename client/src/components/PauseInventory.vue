@@ -1,5 +1,5 @@
 <template>
-  <div :class="['pause-inventory', controlled && '-controlled']">
+  <div :class="['pause-inventory smi-pause-screen', !controlled && '-seedless']">
     <div v-for="group in groups" :key="group.name" :class="group.class">
       <div v-for="(child, i) in group.children" :key="i" v-bind="child" />
     </div>

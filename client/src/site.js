@@ -3,6 +3,9 @@ const site = {
   root: process.env.NODE_ENV === 'production' ? '.' : '',
   install(app) {
     app.config.globalProperties.$site = site
+    if (typeof document !== 'undefined' && document.body) {
+      document.body.classList.add('-site-' + site.name)
+    }
   },
 }
 

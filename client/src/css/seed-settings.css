@@ -1,0 +1,6 @@
+.seed-settings {
+  @apply absolute bg-black bottom-0 text-white flex gap-4;
+  ._col {
+    @apply flex gap-4;
+  }
+}

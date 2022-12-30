@@ -62,6 +62,7 @@
       {{ tool_storage.state.key_stack.join(' ') }}
     </div>
     <item-counter :game_state="game_state" :areas="areas" :tool_storage="tool_storage" />
+    <seed-settings />
   </div>
 </template>
 
@@ -76,18 +77,20 @@ import ItemCounter from './ItemCounter.vue'
 import ToolStorage from './ToolStorage'
 import WarpConnections from './WarpConnections.vue'
 import { getStaticUrl } from '@/utils'
+import SeedSettings from './SeedSettings.vue'
 
 const { Rect } = openseadragon
 
 export default {
   name: 'TrackerView',
-  components: { AreaOverlay, ItemCounter, WarpConnections },
+  components: { AreaOverlay, ItemCounter, SeedSettings, WarpConnections },
   data() {
     window._S = () => saveFile(`${JSON.stringify(this.areas, null, 2)}`, 'areas.json')
     const tool_storage = ToolStorage(this)
     const osd_store = osd.Store()
     const osd_options = { showNavigator: false, mouseNavEnabled: false }
-    return { osd_store, tool_storage, osd_options }
+    const inventory = {}
+    return { inventory, osd_store, tool_storage, osd_options }
   },
   computed: {
     admin_mode() {
@@ -143,11 +146,11 @@ export default {
           console.warn('Unknown action:', action_type, id, arg2)
         }
       })
-      window.GS = state
       return state
     },
   },
   mounted() {
+    window.$tracker = this
     document.addEventListener('keydown', this.keyPress)
   },
   unmounted() {

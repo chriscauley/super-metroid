@@ -1,9 +1,10 @@
 @use "sass:math";
 @use "sass:list";
+@import "./mixins.scss";
 
 @mixin single-icon($name, $w, $h) {
   .smi.-#{$name} {
-    background: url('./inventory/#{$name}.png') center no-repeat;
+    background: url('./images/inventory/#{$name}.png') center no-repeat;
     background-size: contain;
     width: px($w);
     &:before {
@@ -26,11 +27,11 @@
 @include single-icon(reserve_text, 66, 16);
 
 .smi-number {
-  background: url('./inventory/numbers.png');
+  background: url('./images/inventory/numbers.png');
 }
 
 .smi-reserve-number {
-  background: url('./inventory/reserve_numbers.png');
+  background: url('./images/inventory/reserve_numbers.png');
 }
 
 .smi-menu-item, .smi-number, .smi-reserve-number {
@@ -57,11 +58,11 @@ $other_items: varia-suit gravity-suit morph-ball bomb spring-ball screw-attack h
 $items: list.join($beams, $other_items);
 
 .smi-pause-item {
-  background: url('./inventory/menu-items_active.png');
+  background: url('./images/inventory/menu-items_active.png');
   height: px(8);
   background-size: px(72) auto;
   &.-inactive {
-    background-image: url('./inventory/menu-items_inactive.png');
+    background-image: url('./images/inventory/menu-items_inactive.png');
   }
   @for $i from 0 to length($items) {
     $name: nth($items, $i + 1);
@@ -78,5 +79,14 @@ $items: list.join($beams, $other_items);
     &.-#{$item} {
       width: px(72);
     }
+  }
+}
+
+.smi-pause-screen {
+  background-image: url('./images/inventory/background.png');
+  image-rendering: pixelated;
+  position: relative;
+  &.-seedless {
+    background-image: url('./images/inventory/background_seedless.png');
   }
 }

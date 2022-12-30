@@ -1382,6 +1382,15 @@
     lodash.debounce "^4.0.8"
     querystring "^0.2.1"
 
+"@unrest/vue-toolbar@^0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@unrest/vue-toolbar/-/vue-toolbar-0.0.4.tgz#1aa442a0103ec6c9d698533a01f68283c7df032c"
+  integrity sha512-aZYan9qDHTNAw80DtSV4DfLSDh64zBu8wazJ/ja1Zgml1QpV2sBa/arlxD9sNXoMWKktOOAWL0en47eW1lbn1A==
+  dependencies:
+    "@unrest/vue-storage" "^0.0.19"
+    lodash.startcase "^4.4.0"
+    vue "^3.2.41"
+
 "@unrest/vue@0.2.16":
   version "0.2.16"
   resolved "https://registry.yarnpkg.com/@unrest/vue/-/vue-0.2.16.tgz#afb770974d87875e73fe8af2bfdae11cf1aa7ff5"
@@ -5023,6 +5032,13 @@ postcss-for@^2.1.1:
   dependencies:
     postcss "^5.0.0"
     postcss-simple-vars "^2.0.0"
+
+postcss-functions@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/postcss-functions/-/postcss-functions-4.0.2.tgz#23a7d100f507890042fbd0305f963554e6d1ce6a"
+  integrity sha512-htDZN6t97uW4GBXquTsz/DVaNVAHtHx5tLCALquVM2u58UwHki+RwHbANKiiI0ImA8T7Iml2MnvLUM7aGtlpqA==
+  dependencies:
+    postcss-value-parser "^4.0.0"
 
 postcss-import@^14.1.0:
   version "14.1.0"

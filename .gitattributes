@@ -1,3 +1,5 @@
 docs/* binary
 docs/**/* binary
+icons/build/* binary
+icons/build/**/* binary
 yarn.lock binary

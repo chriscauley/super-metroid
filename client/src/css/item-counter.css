@@ -1,0 +1,26 @@
+body {
+  --settings-height: 21px;
+}
+
+.item-counter {
+  @apply absolute font-bold text-white;
+  pointer-events: none;
+  text-shadow: 0 0 2px black;
+  top: 40px;
+  left: 0;
+  user-select: none;
+  .-complete {
+    opacity: 0.5;
+  }
+  td {
+    @apply pl-2;
+  }
+  td:first-child {
+    @apply border-r pr-2;
+    text-align: right;
+  }
+  body.-site-varia & {
+    bottom: var(--settings-height);
+    top: unset;
+  }
+}
