@@ -44,6 +44,7 @@ export default (component) => {
       { slug: 'undo', icon: 'fa fa-undo', select: () => storage.undo() },
       { slug: 'clear', icon: 'fa fa-trash', select: clearGame },
       { slug: 'help', icon: 'fa fa-question-circle', select: () => unrest.ui.alert(HelpPopup) },
+      component.$store.layout.getButton(),
     ]
     if (component.admin_mode) {
       // if (component.$auth.user?.is_superuser) {

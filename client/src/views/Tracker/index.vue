@@ -28,11 +28,6 @@
             </div>
           </template>
         </unrest-dropdown>
-        <unrest-dropdown :items="$store.layout.getItems()">
-          <button class="btn -primary">
-            <i :class="$store.layout.getIcon()" />
-          </button>
-        </unrest-dropdown>
       </template>
     </unrest-toolbar>
     <osd-viewer
@@ -236,7 +231,7 @@ export default {
       } else if (isArea(e.key) && can_press_area) {
         key_stack.push(e.key)
       } else if (e.key === 'x' && key_stack.length === 1) {
-        const area = this.areas.find((a) => a.slug === reverse_keys[code1[0]])
+        const area = this.areas.find((a) => a.slug === reverse_keys[key_stack[0]])
         this.tool_storage.clearArea(area)
         this.tool_storage.state.key_stack = []
       }

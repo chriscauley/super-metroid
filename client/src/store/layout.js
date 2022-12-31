@@ -39,13 +39,22 @@ export default () => {
     saveFile(JSON.stringify(areas, null, 2), 'areas.json')
     storage.state.dirty = null
   }
-  storage.getItems = () => {
-    return ['nordub', 'legacy'].map((id) => ({
-      id,
-      text: id,
-      click: () => storage.save({ selected: id }),
-    }))
+  storage.getButton = () => {
+    const { selected } = storage.state
+    return {
+      slug: 'layout',
+      name: 'Layout Skin: ' + selected,
+      icon: 'sm-icon -' + selected,
+      select: () => {
+        let { selected } = storage.state
+        if (selected === 'legacy') {
+          selected = 'nordub'
+        } else if (selected === 'nordub') {
+          selected = 'legacy'
+        }
+        storage.save({ selected })
+      },
+    }
   }
-  storage.getIcon = () => 'sm-icon -' + storage.state.selected
   return storage
 }
