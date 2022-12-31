@@ -46,13 +46,10 @@ export default () => {
       name: 'Layout Skin: ' + selected,
       icon: 'sm-icon -' + selected,
       select: () => {
-        let { selected } = storage.state
-        if (selected === 'legacy') {
-          selected = 'nordub'
-        } else if (selected === 'nordub') {
-          selected = 'legacy'
-        }
-        storage.save({ selected })
+        const { selected } = storage.state
+        const index = (layouts.slugs.indexOf(selected) + 1) % layouts.slugs.length
+        const next = layouts.slugs[index]
+        storage.save({ selected: next })
       },
     }
   }

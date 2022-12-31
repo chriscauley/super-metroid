@@ -58,7 +58,7 @@ html, body, #app {
   /*   content: 'A'; */
   /* } */
   &.-boss:before {
-    filter: hue-rotate(45deg);
+    background: radial-gradient(farthest-side, #000, #000 33%, #ce0001 75%, #FF0000);
   }
   &.-sand:before {
     background: radial-gradient(farthest-side, #000, #000 33%, #008888 75%, #00FFFF);
@@ -279,5 +279,38 @@ body {
   &:before {
     inset: -20%;
     image-rendering: unset;
+  }
+}
+
+.-layout-streaming .area-warp {
+  --width: 130%;
+  --height: 130%; /* make it square */
+}
+
+.-layout-alt-streaming .area-warp {
+  --width: 100%;
+  --height: 100%; /* make it square */
+}
+
+.-layout-streaming, .-layout-alt-streaming {
+  .area-warp {
+    &:before {
+      background: radial-gradient(#000, #000 50%, #0FF 60%, #0FF 90%, #000 100%);
+    }
+    .-tool-admin_move_item& {
+      @apply flex items-center justify-center;
+      outline: 2px solid white;
+    }
+    &.-escape, &.-sand {
+      display: none;
+    }
+  }
+
+  svg.warp-connections {
+    /* see note about svg_scale in src/layouts/streaming/index.js */
+    right: unset;
+    left: unset;
+    height: 200%;
+    width: 200%;
   }
 }

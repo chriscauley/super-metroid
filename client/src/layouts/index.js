@@ -1,8 +1,10 @@
 import { startCase, cloneDeep, memoize } from 'lodash'
 
 import { access_points, boss_doors, escape_doors, sand_doors, special_items } from '@/data/old'
+import alt_streaming from './alt-streaming'
 import legacy from './legacy'
 import nordub from './nordub'
+import streaming from './streaming'
 
 const rotated_door_regexp = /(Top|Bottom|redBrinstarElevator)$/
 
@@ -81,6 +83,9 @@ export default {
   prepArea,
   legacy,
   nordub,
+  streaming,
+  'alt-streaming': alt_streaming,
+  slugs: ['legacy', 'nordub', 'streaming', 'alt-streaming'],
   getAreas(slug) {
     const areas = this[slug].areas.map(prepArea)
     return areas

@@ -103,8 +103,9 @@ export default {
     },
     wrapper_class() {
       const { large_warps, large_items } = this.tool_storage.state
+      const { tool } = this.tool_storage.state.selected
       return [
-        `tracker-view -layout-${this.$store.layout.state.selected}`,
+        `tracker-view -layout-${this.$store.layout.state.selected} -tool-${tool}`,
         { large_items, large_warps },
       ]
     },
@@ -154,8 +155,12 @@ export default {
   methods: {
     addCorners() {
       this.osd_store.viewer.addOnceHandler('tile-loaded', this.addImages)
+      const { selected } = this.$store.layout.state
       if (this.$route.query.debug) {
-        const url = getStaticUrl(`/legacy/area_map.png`)
+        const url = getStaticUrl(`/${selected}/area_map.png`)
+        this.osd_store.viewer.addSimpleImage({ url })
+      } else if (selected === 'streaming') {
+        const url = getStaticUrl(`/${selected}/background.png`)
         this.osd_store.viewer.addSimpleImage({ url })
       } else {
         const canvas = document.createElement('canvas')

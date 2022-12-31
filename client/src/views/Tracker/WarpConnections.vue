@@ -56,6 +56,8 @@ export default {
 
       const code_map = this.tool_storage.getCodeMap()
       const out = []
+      const { root } = this.$store.layout.getWorld()
+      const { text_gap_scale = 1 } = root
       this.areas.forEach((area) => {
         area.warps.forEach((warp) => {
           if (['escape', 'sand'].includes(warp.type)) {
@@ -75,10 +77,10 @@ export default {
             subtext = code_map[target_slug]
             attrs.title += ' -> ' + target_slug
             attrs.class += ' -linked'
-            attrs.y -= this.scale(0.5)
+            attrs.y -= this.scale(0.5 * text_gap_scale)
             subtext_attrs = {
               x: this.scale(x),
-              y: this.scale(y + 0.7),
+              y: this.scale(y + 0.7 * text_gap_scale),
             }
           }
           out.push({
@@ -155,7 +157,8 @@ export default {
   methods: {
     scale(number) {
       const { root } = this.$store.layout.getWorld()
-      return (root.scale * number) / root.width
+      const { svg_scale = 1 } = root
+      return (svg_scale * (root.scale * number)) / root.width
     },
     getRect(id, x, y, stroke) {
       return {

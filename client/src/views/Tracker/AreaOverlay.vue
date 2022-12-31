@@ -103,6 +103,9 @@ export default {
       }))
     },
     items() {
+      if (this.$store.layout.getWorld().hide_items) {
+        return []
+      }
       const { split } = this.tool_storage.state
       let items = this.area.items
       if (['major', 'chozo', 'scavenger'].includes(split)) {
