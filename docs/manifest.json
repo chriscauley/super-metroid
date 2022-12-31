@@ -1,6 +1,6 @@
 {
   "app.css": "/super-metroid/css/app.03217f7a.css",
-  "app.js": "/super-metroid/js/app.a232004b.js",
+  "app.js": "/super-metroid/js/app.e49e8a39.js",
   "chunk-vendors.css": "/super-metroid/css/chunk-vendors.6d81774c.css",
   "chunk-vendors.js": "/super-metroid/js/chunk-vendors.3f394bd4.js",
   "nordub/original_map.png": "/super-metroid/nordub/original_map.png",
@@ -79,6 +79,6 @@
   "streaming/kraids-lair.png": "/super-metroid/streaming/kraids-lair.png",
   "index.html": "/super-metroid/index.html",
   "egg.png": "/super-metroid/egg.png",
-  "app.a232004b.js.map": "/super-metroid/js/app.a232004b.js.map",
+  "app.e49e8a39.js.map": "/super-metroid/js/app.e49e8a39.js.map",
   "chunk-vendors.3f394bd4.js.map": "/super-metroid/js/chunk-vendors.3f394bd4.js.map"
 }
