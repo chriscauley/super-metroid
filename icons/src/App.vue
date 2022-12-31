@@ -20,8 +20,8 @@ const inventory_icons = [
 ]
 
 const bosses = ['ridley', 'draygon', 'phantoon', 'kraid']
-bosses.forEach(b => inventory_icons.push('sm-item -'+b))
-bosses.forEach(b => inventory_icons.push('sm-item -inactive -'+b))
+bosses.forEach((b) => inventory_icons.push('sm-item -' + b))
+bosses.forEach((b) => inventory_icons.push('sm-item -inactive -' + b))
 
 let i = 0
 while (i < 10) {

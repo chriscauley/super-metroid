@@ -62,6 +62,12 @@
 .sm-icon.-nordub:before {
   background-image: url(./images/nordub-icon.png);
 }
+.sm-icon.-streaming:before {
+  background-image: url(./images/streaming-icon.png);
+}
+.sm-icon.-alt-streaming:before {
+  background-image: url(./images/alt-streaming-icon.png);
+}
 
 .sm-boss:before {
   background: no-repeat center;

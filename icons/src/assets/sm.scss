@@ -45,11 +45,10 @@
     background: no-repeat center;
     background-size: 100% auto;
   }
-  &.-legacy:before {
-    background-image: url(./images/legacy-icon.png);
-  }
-  &.-nordub:before {
-    background-image: url(./images/nordub-icon.png);
+  @each $name in legacy nordub streaming alt-streaming {
+    &.-#{$name}:before {
+      background-image: url(./images/#{$name}-icon.png);
+    }
   }
 }
 .sm-boss {
