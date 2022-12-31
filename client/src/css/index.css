@@ -295,7 +295,7 @@ body {
 .-layout-streaming, .-layout-alt-streaming {
   .area-warp {
     &:before {
-      background: radial-gradient(#000, #000 50%, #0FF 60%, #0FF 90%, #000 100%);
+      background: radial-gradient(#000, #000 50%, #a0f8f8 60%, #a0f8f8 90%, #000 100%);
     }
     .-tool-admin_move_item& {
       @apply flex items-center justify-center;
