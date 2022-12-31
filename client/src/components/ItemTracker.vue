@@ -31,6 +31,13 @@ const getNumbers = (value) => {
     .map((n) => `smi-number -number-${n}`)
 }
 
+const getIcon = (slug, value) => {
+  if (['ridley', 'draygon', 'phantoon', 'kraid'].includes(slug)) {
+    return [`sm-g4-head -${slug}`, value && '-inactive']
+  }
+  return [`sm-item -${slug}`, !value && '-has-not']
+}
+
 export default {
   props: {
     inventory: Object,
@@ -55,15 +62,12 @@ export default {
     prepped_rows() {
       return this.row_slugs.map((row) =>
         row.map((slug) => {
-          let value = this.inventory[slug]
-          if (['ridley', 'draygon', 'phantoon', 'kraid'].includes(slug)) {
-            value = !value
-          }
+          const value = this.inventory[slug]
           return {
             slug,
             numbers: getNumbers(value),
             attrs: {
-              class: [`sm-item -${slug}`, !value && '-inactive'],
+              class: getIcon(slug, value),
               id: `item-tracker__${slug}`,
             },
           }

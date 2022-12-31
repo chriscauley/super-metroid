@@ -11,11 +11,11 @@
     }
   }
   .sm-item {
-    --inventory-px: 0.05em;
+    --inventory-px: 0.04em;
     @apply relative;
     .item-tracker__numbers {
       @apply absolute flex right-0;
-      bottom: -0.05em;
+      bottom: -0.04em;
     }
   }
 }
