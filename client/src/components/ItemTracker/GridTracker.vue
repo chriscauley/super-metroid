@@ -1,8 +1,8 @@
 <template>
-  <div class="item-tracker smi-tracker">
-    <div v-for="(row, i) in prepped_rows" :key="i" class="item-tracker__row">
+  <div class="grid-tracker smi-tracker">
+    <div v-for="(row, i) in prepped_rows" :key="i" class="grid-tracker__row">
       <div v-for="col in row" :key="col.id" v-bind="col.attrs" @click="(e) => click(e, col)">
-        <div v-if="col.numbers" class="item-tracker__numbers">
+        <div v-if="col.numbers" class="grid-tracker__numbers">
           <div v-for="(cls, j) in col.numbers" :key="j" :class="cls" />
         </div>
       </div>
@@ -68,7 +68,7 @@ export default {
             numbers: getNumbers(value),
             attrs: {
               class: getIcon(slug, value),
-              id: `item-tracker__${slug}`,
+              id: `grid-tracker__${slug}`,
             },
           }
         }),

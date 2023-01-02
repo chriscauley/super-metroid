@@ -6,7 +6,7 @@
       @add-item="addItem"
       :controlled="state.controlled"
     />
-    <item-tracker
+    <grid-tracker
       :inventory="inventory"
       @toggle-item="toggleItem"
       @add-item="addItem"

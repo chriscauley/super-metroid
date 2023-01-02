@@ -1,5 +1,7 @@
-.item-tracker {
-  font-size: 64px;
+/* TODO rename to grid-tracker */
+
+.grid-tracker {
+  font-size: 39px;
   padding: 0.5em;
   width: 7em;
   &__row {
@@ -10,10 +12,13 @@
       padding-bottom: 0;
     }
   }
+  .sm-item, .sm-g4-head {
+    cursor: pointer;
+  }
   .sm-item {
-    --inventory-px: 0.04em;
     @apply relative;
-    .item-tracker__numbers {
+    .grid-tracker__numbers {
+      --inventory-px: 0.04em;
       @apply absolute flex right-0;
       bottom: -0.04em;
     }

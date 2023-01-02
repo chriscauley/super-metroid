@@ -36,7 +36,7 @@
 import { kebabCase } from 'lodash'
 
 import BeamChooser from './BeamChooser.vue'
-import StopWatch from './StopWatch.vue'
+import StopWatch from '@/components/StopWatch.vue'
 import Storage from './Storage'
 
 const microwave_beam = { href: 'https://wiki.supermetroid.run/X-Plasma', text: 'Microwave Beam' }
