@@ -102,8 +102,9 @@ html, body, #app {
   height: 100%;
   transform: translate(-50%, -50%);
   &.-completed:before {
-    filter: brightness(0.75) grayscale(1);
-    background-size: 60%;
+    opacity: 0.75;
+    filter:grayscale(1);
+    inset: 10%;
   }
 }
 
