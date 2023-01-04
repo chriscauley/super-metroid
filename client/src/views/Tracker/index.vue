@@ -14,7 +14,7 @@
             <i :class="`fa fa-${osd_options.mouseNavEnabled ? 'un' : ''}lock`" />
           </button>
         </div>
-        <unrest-dropdown>
+        <unrest-dropdown class="tracker-view__config">
           <button class="btn -primary">
             <i class="fa fa-gear" />
           </button>
@@ -54,14 +54,22 @@
       <div class="btn -primary">Save Areas</div>
     </div>
     <div class="tracker-view__key-stack">
+      <span v-if="selected_key"> {{ selected_key }} + </span>
       {{ tool_storage.state.key_stack.join(' ') }}
     </div>
     <item-counter :game_state="game_state" :areas="areas" :tool_storage="tool_storage" />
-    <seed-settings />
+    <item-tracker
+      :tool_storage="tool_storage"
+      :inventory="game_state.inventory"
+      @add-item="addItem"
+      @toggle-item="toggleItem"
+    />
+    <seed-settings :json_data="json_data" />
   </div>
 </template>
 
 <script>
+import { debounce } from 'lodash'
 import osd from '@unrest/vue-openseadragon'
 import openseadragon from 'openseadragon'
 
@@ -69,25 +77,33 @@ import { saveFile } from '@/data/legacy'
 import { subarea_by_area } from '@/data/old'
 import AreaOverlay from './AreaOverlay.vue'
 import ItemCounter from './ItemCounter.vue'
+import ItemTracker from './ItemTracker.vue'
 import ToolStorage from './ToolStorage'
 import WarpConnections from './WarpConnections.vue'
 import { getStaticUrl } from '@/utils'
+import varia from '@/varia'
 import SeedSettings from './SeedSettings.vue'
 
 const { Rect } = openseadragon
 
 export default {
   name: 'TrackerView',
-  components: { AreaOverlay, ItemCounter, SeedSettings, WarpConnections },
+  components: { AreaOverlay, ItemCounter, ItemTracker, SeedSettings, WarpConnections },
   data() {
     window._S = () => saveFile(`${JSON.stringify(this.areas, null, 2)}`, 'areas.json')
-    const tool_storage = ToolStorage(this)
-    const osd_store = osd.Store()
-    const osd_options = { showNavigator: false, mouseNavEnabled: false }
-    const inventory = {}
-    return { inventory, osd_store, tool_storage, osd_options }
+    return {
+      inventory: {},
+      osd_store: osd.Store(),
+      tool_storage: ToolStorage(this),
+      osd_options: { showNavigator: false, mouseNavEnabled: false },
+      json_data: null,
+    }
   },
   computed: {
+    selected_key() {
+      const { selected_warp } = this.tool_storage.state
+      return selected_warp && this.code_map[selected_warp]
+    },
     admin_mode() {
       // this.$auth.user?.is_superuser
       return process.env.NODE_ENV !== 'production'
@@ -110,9 +126,14 @@ export default {
       ]
     },
     game_state() {
+      const varia_state = varia.getGameState(this.json_data)
+      if (varia_state) {
+        return varia_state
+      }
       const state = {
         items: {},
         warps: {},
+        inventory: this.inventory,
       }
       const type_map = {}
       const area_items = {}
@@ -148,9 +169,11 @@ export default {
   mounted() {
     window.$tracker = this
     document.addEventListener('keydown', this.keyPress)
+    window.addEventListener('resize', this.resize)
   },
   unmounted() {
     document.removeEventListener('keydown', this.keyPress)
+    window.removeEventListener('resize', this.resize)
   },
   methods: {
     addCorners() {
@@ -228,7 +251,7 @@ export default {
       } else if (isDigit(e.key) && can_press_digit) {
         key_stack.push(e.key)
         const code1 = key_stack.slice(0, 2).join('').toLowerCase()
-        const warp1 = this.$el.querySelector('#' + this.code_map[code1])
+        const warp1 = this.$el.querySelector('#warp__' + this.code_map[code1])
         if (warp1) {
           warp1.click()
         }
@@ -241,6 +264,29 @@ export default {
         this.tool_storage.state.key_stack = []
       }
       this.tool_storage.save()
+    },
+    addItem(name, amount) {
+      const max_items = {
+        missile: 995,
+        'super-missile': 255,
+        'power-bomb': 255,
+        'reserve-tank': 4,
+        'energy-tank': 14,
+      }
+      if (['missile', 'super-missile', 'power-bomb'].includes(name)) {
+        amount = amount * 5
+      }
+      this.inventory[name] = Math.max(0, (this.inventory[name] || 0) + amount)
+      this.inventory[name] = Math.min(this.inventory[name], max_items[name])
+    },
+    toggleItem(name) {
+      this.inventory[name] = !this.inventory[name]
+    },
+    resize: debounce(function () {
+      this.resetZoom()
+    }, 200),
+    setJsonData(json_data) {
+      this.json_data = json_data
     },
   },
 }

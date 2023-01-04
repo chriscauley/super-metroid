@@ -1,11 +1,8 @@
-/* TODO rename to grid-tracker */
-
 .grid-tracker {
-  font-size: 39px;
-  padding: 0.5em;
-  width: 7em;
+  padding: 0.3em;
+  /* width: 7em; */
   &__row {
-    @apply flex;
+    @apply flex justify-center;
     gap: 0.2em;
     padding-bottom: 0.2em;
     &:last-child {
@@ -22,5 +19,8 @@
       @apply absolute flex right-0;
       bottom: -0.04em;
     }
+  }
+  *, *:before {
+    /* image-rendering: initial !important; */
   }
 }

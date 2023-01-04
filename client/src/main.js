@@ -10,10 +10,10 @@ import components from '@/components'
 import unrest from '@unrest/vue'
 import form from '@unrest/vue-form'
 
-import '@/css/index.css'
 import '@unrest/tailwind/dist.css'
 import '../../icons/build/super-metroid.css'
 import '../../icons/build/inventory.css'
+import '@/css/index.css'
 
 const app = createApp(App)
 app.use(site)

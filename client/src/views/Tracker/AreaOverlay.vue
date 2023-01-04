@@ -95,7 +95,7 @@ export default {
     warps() {
       const { selected_warp } = this.tool_storage.state
       return this.area.warps.map(({ slug, name, x, y, type, rotated }) => ({
-        id: slug,
+        id: `warp__${slug}`,
         title: name,
         class: [`area-warp -${type}`, rotated && '-rotated', selected_warp === slug && '-selected'],
         type: 'warp',
@@ -112,7 +112,7 @@ export default {
         items = items.filter((i) => i[split])
       }
       return items.map(({ slug, name, x, y, chozo, major, scavenger }) => ({
-        id: slug,
+        id: `item__${slug}`,
         title: name,
         type: 'item',
         class: [

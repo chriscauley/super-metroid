@@ -20,7 +20,7 @@ export default {
   },
   computed: {
     show() {
-      return this.tool_storage.state.show_item_counts
+      return this.tool_storage.state.item_tracker === 'area-counter'
     },
     rows() {
       const counts = {}

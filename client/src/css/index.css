@@ -19,16 +19,35 @@ html, body, #app {
 }
 
 .tracker-view {
+  @apply relative;
   height: 100%;
   #openseadragon-viewer {
     @apply h-full w-full;
     background: black;
+  }
+  &__config .dropdown-items {
+    width: 17rem;
+  }
+  .ur-toolbar {
+    @apply absolute;
   }
 }
 
 .tracker-toolbar {
   @apply fixed;
 }
+
+.tracker-view .item-tracker__wrapper {
+  @apply absolute left-0;
+  top: 40px;
+  .grid-tracker {
+    font-size: 2.5vw;
+  }
+  .pause-inventory {
+    --inventory-px: 1px;
+  }
+}
+
 
 .area-warp {
   /* base size is 13.5px */

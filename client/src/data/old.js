@@ -4,8 +4,8 @@ import { startCase, flatten } from 'lodash'
 
 export const door_colors = ['red', 'green', 'yellow', 'gray', 'wave', 'spazer', 'plasma', 'ice']
 
-const ammo = ['missile', 'super-missile', 'power-bomb']
-const energy = ['energy', 'reserve-tank']
+export const ammo = ['missile', 'super-missile', 'power-bomb']
+export const energy = ['energy', 'reserve-tank']
 export const beams = ['charge-beam', 'ice-beam', 'wave-beam', 'spazer-beam', 'plasma-beam']
 const suits = ['varia', 'gravity']
 const items = [
@@ -30,6 +30,8 @@ export const varia_item_groups = Object.entries(items_by_group).map(([slug, item
     return { name, item_slug }
   }),
 }))
+
+export const all_items = [...ammo, ...energy, ...beams, ...suits, ...items]
 
 // TODO rename to warps
 export const access_points = [
@@ -283,6 +285,9 @@ const area_by_bosses = {
   Phantoon: 'wrecked-ship',
   MotherBrain: 'tourian',
 }
+
+export const bosses = ['kraid', 'phantoon', 'draygon', 'ridley', 'mother-brain']
+export const minibosses = ['crocomire', 'spore-spawn', 'botwoon', 'golden-torizo', 'bomb-torizo']
 
 // this is used to calculate items in an area
 export const subarea_by_area = {

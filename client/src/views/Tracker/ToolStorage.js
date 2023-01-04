@@ -44,7 +44,7 @@ export default (component) => {
       { slug: 'undo', icon: 'fa fa-undo', select: () => storage.undo() },
       { slug: 'clear', icon: 'fa fa-trash', select: clearGame },
       { slug: 'help', icon: 'fa fa-question-circle', select: () => unrest.ui.alert(HelpPopup) },
-      component.$store.layout.getButton(),
+      component.$store.layout.getButton(component),
     ]
     if (component.admin_mode) {
       // if (component.$auth.user?.is_superuser) {
@@ -64,7 +64,7 @@ export default (component) => {
     warp_display: 'codes',
     large_items: true,
     large_warp: true,
-    show_item_counts: true,
+    item_tracker: 'pause-inventory',
   }
   const storage = toolbar.ToolStorage('tools__tracker_v2', { tools: getTools, initial })
   storage.schema = {
@@ -73,6 +73,7 @@ export default (component) => {
       large_items: { type: 'boolean' },
       large_warps: { type: 'boolean' },
       split: {
+        name: 'Majors Split',
         type: 'string',
         enum: ['full', 'major', 'chozo', 'scavenger'],
       },
@@ -87,7 +88,11 @@ export default (component) => {
       //   enumNames: ['Google Maps', 'Photo Shop'],
       //   default: '',
       // },
-      show_item_counts: { type: 'boolean' },
+      item_tracker: {
+        type: 'string',
+        enum: ['', 'area-counter', 'pause-menu', 'grid', 'compact'],
+        enumNames: ['None', 'Area Counter', 'Pause Menu', 'Grid', 'Grid (compact)'],
+      },
     },
   }
 

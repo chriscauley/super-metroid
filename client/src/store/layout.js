@@ -39,7 +39,7 @@ export default () => {
     saveFile(JSON.stringify(areas, null, 2), 'areas.json')
     storage.state.dirty = null
   }
-  storage.getButton = () => {
+  storage.getButton = (component) => {
     const { selected } = storage.state
     return {
       slug: 'layout',
@@ -50,6 +50,7 @@ export default () => {
         const index = (layouts.slugs.indexOf(selected) + 1) % layouts.slugs.length
         const next = layouts.slugs[index]
         storage.save({ selected: next })
+        component.resetZoom()
       },
     }
   }

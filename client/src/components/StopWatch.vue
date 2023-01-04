@@ -7,7 +7,7 @@
 </template>
 
 <script>
-const pad2 = n => n.toString().padStart(2, '0')
+const pad2 = (n) => n.toString().padStart(2, '0')
 const formatTime = (dt) => {
   const seconds = dt / 1000
   const h = Math.floor(seconds / 3600)
