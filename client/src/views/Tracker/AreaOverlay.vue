@@ -16,22 +16,22 @@
       {{ area.name }}
     </div>
     <img :src="src" :style="style.img" class="area-overlay__img" />
-    <item-marker
-      v-for="item in items"
-      :key="item.slug"
-      @click="(e) => clickItem(e, item)"
+    <location-marker
+      v-for="location in locations"
+      :key="location.slug"
+      @click="(e) => clickLocation(e, location)"
       :game_state="game_state"
       :json_data="json_data"
-      :item="item"
-      :style="getEntityStyle(item.slug, item.x, item.y)"
+      :location="location"
+      :style="getEntityStyle(location.slug, location.x, location.y)"
     >
       <drag-anchor
-        v-if="moving_items"
-        v-model="dxys[item]"
+        v-if="moving_locations"
+        v-model="dxys[location.slug]"
         :osd_store="osd_store"
-        @done="(xy) => moveItem(item, xy)"
+        @done="(xy) => moveLocation(location, xy)"
       />
-    </item-marker>
+    </location-marker>
     <div
       v-for="entity in entities"
       v-bind="entity"
@@ -39,7 +39,7 @@
       @click="(e) => clickEntity(e, entity)"
     >
       <drag-anchor
-        v-if="moving_items"
+        v-if="moving_locations"
         v-model="dxys[entity.id]"
         :osd_store="osd_store"
         @done="(xy) => moveEntity(entity, xy)"
@@ -49,13 +49,13 @@
 </template>
 
 <script>
-import ItemMarker from './ItemMarker.vue'
+import LocationMarker from './LocationMarker.vue'
 import DragAnchor from './DragAnchor.vue'
 
 import { getStaticUrl } from '@/utils'
 
 export default {
-  components: { DragAnchor, ItemMarker },
+  components: { DragAnchor, LocationMarker },
   props: {
     area: Object,
     osd_store: Object,
@@ -102,9 +102,9 @@ export default {
       const { tool } = this.tool_storage.state.selected
       return 'admin_move_area' === tool
     },
-    moving_items() {
+    moving_locations() {
       const { tool } = this.tool_storage.state.selected
-      return 'admin_move_item' === tool
+      return 'admin_move_location' === tool
     },
     moving_title() {
       const { tool } = this.tool_storage.state.selected
@@ -113,23 +113,23 @@ export default {
     warps() {
       const { selected_warp } = this.tool_storage.state
       return this.area.warps.map(({ slug, name, x, y, type, rotated }) => ({
-        id: `warp__${slug}`,
+        id: slug,
         title: name,
         class: [`area-warp -${type}`, rotated && '-rotated', selected_warp === slug && '-selected'],
         type: 'warp',
         style: this.getEntityStyle(slug, x, y),
       }))
     },
-    items() {
-      if (this.$store.layout.getWorld().hide_items || this.moving_area || this.moving_title) {
+    locations() {
+      if (this.$store.layout.getWorld().hide_locations || this.moving_area || this.moving_title) {
         return []
       }
       const { split } = this.tool_storage.state
-      let items = this.area.items
+      let locations = this.area.locations
       if (['major', 'chozo', 'scavenger'].includes(split)) {
-        items = items.filter((i) => i[split])
+        locations = locations.filter((i) => i[split])
       }
-      return items
+      return locations
     },
     entities() {
       return this.moving_area || this.moving_title ? [] : this.warps
@@ -154,11 +154,11 @@ export default {
       const { scale } = this.root
       this.$store.layout.moveTitle(this.area.slug, dx / scale, dy / scale)
     },
-    moveItem(item, dxy) {
-      return this.moveEntity({ id: item.slug, type: 'item' }, dxy)
+    moveLocation(location, dxy) {
+      return this.moveEntity({ id: location.slug, type: 'location' }, dxy)
     },
-    clickItem(e, item) {
-      return this.clickEntity(e, { id: item.slug, type: 'item' })
+    clickLocation(e, location) {
+      return this.clickEntity(e, { id: location.slug, type: 'location' })
     },
     moveEntity({ id, type }, [dx, dy]) {
       const { scale } = this.root
@@ -166,7 +166,7 @@ export default {
     },
     clickEntity(e, { id, type }) {
       const { tool } = this.tool_storage.state.selected
-      if (tool === 'admin_move_item') {
+      if (tool === 'admin_move_location') {
         const { width, height } = e.target.getBoundingClientRect()
         const click_x = e.offsetX / width - 0.5
         const click_y = e.offsetY / height - 0.5

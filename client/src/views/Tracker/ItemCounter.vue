@@ -10,7 +10,7 @@
 <script>
 import { subarea_by_area } from '@/data/old'
 import { prepName } from '@/layouts'
-import { filterSplitItems } from '@/utils'
+import { filterSplitLocations } from '@/utils'
 
 export default {
   props: {
@@ -26,12 +26,12 @@ export default {
       const counts = {}
       const hits = {}
       this.areas.forEach((area) => {
-        const items = filterSplitItems(area.items, this.tool_storage.state.split)
+        const locations = filterSplitLocations(area.locations, this.tool_storage.state.split)
         const target_area = subarea_by_area[area.slug] || area.slug
-        items.forEach((item) => {
+        locations.forEach((location) => {
           counts[target_area] = (counts[target_area] || 0) + 1
           hits[target_area] = hits[target_area] || 0
-          if (this.game_state.items[item.slug]) {
+          if (this.game_state.locations[location.slug]) {
             hits[target_area] += 1
           }
         })

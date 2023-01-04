@@ -95,7 +95,7 @@ export default {
     },
     zshow() {
       const { tool } = this.tool_storage.state.selected
-      return tool !== 'admin_move_item'
+      return tool !== 'admin_move_location'
     },
     entity_xys() {
       return this.tool_storage.getEntityXys()

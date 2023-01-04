@@ -4,7 +4,7 @@ import unrest from '@unrest/vue'
 
 import HelpPopup from './HelpPopup.vue'
 
-import { type_map, default_area_keys, subarea_by_area } from '@/data/old'
+import { warp_type_map, default_area_keys, subarea_by_area } from '@/data/old'
 
 export default (component) => {
   const redo_stack = []
@@ -50,7 +50,7 @@ export default (component) => {
       // if (component.$auth.user?.is_superuser) {
       tools.unshift({ slug: 'play', icon: 'fa fa-gamepad' })
       tools.push({ slug: 'admin_move_area', icon: 'fa fa-arrows' })
-      tools.push({ slug: 'admin_move_item', icon: 'fa fa-archive' })
+      tools.push({ slug: 'admin_move_location', icon: 'fa fa-archive' })
       tools.push({ slug: 'admin_move_title', icon: 'fa fa-i-cursor' })
     }
     return tools
@@ -62,7 +62,7 @@ export default (component) => {
     key_stack: [],
     split: 'full',
     warp_display: 'codes',
-    large_items: true,
+    large_locations: true,
     large_warp: true,
     item_tracker: 'pause-inventory',
   }
@@ -70,7 +70,7 @@ export default (component) => {
   storage.schema = {
     type: 'object',
     properties: {
-      large_items: { type: 'boolean' },
+      large_locations: { type: 'boolean' },
       large_warps: { type: 'boolean' },
       split: {
         name: 'Majors Split',
@@ -97,9 +97,9 @@ export default (component) => {
   }
 
   storage.click = (id, game_state) => {
-    const type = type_map[id]
-    if (type === 'item') {
-      addAction(['click-item', id])
+    const type = warp_type_map[id]
+    if (type === 'location') {
+      addAction(['click-location', id])
     } else if (type === 'warp' || type === 'boss') {
       const { selected_warp } = storage.state
       const { warps } = game_state
@@ -190,7 +190,7 @@ export default (component) => {
         checkUnique(w.slug)
         out[w.slug] = [area.slug, area.x + _(w.x), area.y + _(w.y)]
       })
-      area.items.forEach((i) => {
+      area.locations.forEach((i) => {
         checkUnique(i.slug)
         out[i.slug] = [area.slug, area.x + _(i.x), area.y + _(i.y)]
       })

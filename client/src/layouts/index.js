@@ -1,6 +1,6 @@
 import { startCase, cloneDeep, memoize } from 'lodash'
 
-import { access_points, boss_doors, escape_doors, sand_doors, special_items } from '@/data/old'
+import { access_points, boss_doors, escape_doors, sand_doors, special_locations } from '@/data/old'
 import alt_streaming from './alt-streaming'
 import legacy from './legacy'
 import nordub from './nordub'
@@ -67,14 +67,14 @@ const prepArea = (area) => {
     type: warp_types[slug],
   }))
 
-  area.items = area.items.map(([slug, x, y]) => ({
+  area.locations = area.locations.map(([slug, x, y]) => ({
     slug,
     name: prepName(slug),
     x,
     y,
-    chozo: special_items.chozo[slug],
-    major: special_items.major[slug],
-    scavenger: special_items.scavenger[slug],
+    chozo: special_locations.chozo[slug],
+    major: special_locations.major[slug],
+    scavenger: special_locations.scavenger[slug],
   }))
 
   return area

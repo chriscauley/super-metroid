@@ -1,8 +1,9 @@
 <template>
   <div v-bind="attrs" @mouseover="mouseover" @mouseleave="mouseout">
-    <unrest-popper v-if="hover" class="area-item__popper" offset="0,10" placement="bottom">
+    <slot />
+    <unrest-popper v-if="hover" class="area-location__popper" offset="0,10" placement="bottom">
       <div data-popper-arrow />
-      <div class="area-item__popper-inner">
+      <div class="area-location__popper-inner">
         {{ display_name }}
         <div v-if="boss">Boss: {{ boss }}</div>
         <div v-else-if="visited">Item: {{ item_name }}</div>
@@ -26,9 +27,11 @@
 </template>
 
 <script>
+import { location_type_map } from '@/data/old'
+
 export default {
   props: {
-    item: Object,
+    location: Object,
     json_data: Object,
     game_state: Object,
   },
@@ -37,31 +40,36 @@ export default {
   },
   computed: {
     locData() {
-      return this.json_data?.availableLocations[this.item.slug]
+      return this.json_data?.availableLocations[this.location.slug]
     },
     display_name() {
-      return this.locData?.name || this.item.name
+      return this.locData?.name || this.location.name
     },
-    item_name() {
+    location_name() {
       return 'TODO'
     },
     visited() {
-      return this.json_data?.visitedLocations[this.item.slug]
+      return this.json_data?.visitedLocations[this.location.slug]
     },
     boss() {
-      return window.locsInfo?.[this.item.slug]?.boss
+      return window.locsInfo?.[this.location.slug]?.boss
+    },
+    icon() {
+      const type = location_type_map[this.location.slug]
+      return 'sm-map -' + (type === 'item' ? 'egg' : type)
     },
     attrs() {
-      const { slug, chozo, major, scavenger } = this.item
+      const { slug, chozo, major, scavenger } = this.location
       return {
-        id: `item__${slug}`,
+        id: `location__${slug}`,
         class: [
-          'area-item',
+          'area-location',
           this.$store.layout.getWorld().extra_classes[slug],
           chozo && '-chozo',
           major && '-major',
           scavenger && '-scavenger',
-          this.game_state.items[slug] && '-completed',
+          this.game_state.locations[slug] && '-completed',
+          this.icon,
         ],
       }
     },

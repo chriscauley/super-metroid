@@ -1,7 +1,7 @@
 [
   {
     "slug": "crater",
-    "items": [],
+    "locations": [],
     "width": 462,
     "height": 502,
     "x": 290.4435833333334,
@@ -17,7 +17,7 @@
   },
   {
     "slug": "crocomire",
-    "items": [],
+    "locations": [],
     "width": 259,
     "height": 133,
     "x": 159.82651196827197,
@@ -26,7 +26,7 @@
   },
   {
     "slug": "draygon",
-    "items": [],
+    "locations": [],
     "width": 58,
     "height": 40,
     "x": 1384.648918487189,
@@ -35,7 +35,7 @@
   },
   {
     "slug": "east-maridia",
-    "items": [],
+    "locations": [],
     "width": 368,
     "height": 299,
     "x": 1132.4514224269485,
@@ -50,7 +50,7 @@
   },
   {
     "slug": "green-brinstar",
-    "items": [],
+    "locations": [],
     "width": 411,
     "height": 298,
     "x": 7.216539924731037,
@@ -64,7 +64,7 @@
   },
   {
     "slug": "kraid",
-    "items": [],
+    "locations": [],
     "width": 56,
     "height": 37,
     "x": 973.3333333333333,
@@ -73,7 +73,7 @@
   },
   {
     "slug": "kraids-lair",
-    "items": [],
+    "locations": [],
     "width": 191,
     "height": 70,
     "x": 756.6296944444445,
@@ -85,7 +85,7 @@
   },
   {
     "slug": "lower-norfair",
-    "items": [],
+    "locations": [],
     "width": 330,
     "height": 229,
     "x": 1073.9117222222224,
@@ -98,7 +98,7 @@
   },
   {
     "slug": "phantoon",
-    "items": [],
+    "locations": [],
     "width": 30,
     "height": 28,
     "x": 1167.8972394461405,
@@ -107,7 +107,7 @@
   },
   {
     "slug": "red-brinstar",
-    "items": [],
+    "locations": [],
     "width": 305,
     "height": 275,
     "x": 642.7375555555556,
@@ -123,7 +123,7 @@
   },
   {
     "slug": "ridley",
-    "items": [],
+    "locations": [],
     "width": 43,
     "height": 40,
     "x": 1133.8486666666665,
@@ -132,7 +132,7 @@
   },
   {
     "slug": "tourian",
-    "items": [],
+    "locations": [],
     "width": 157,
     "height": 221,
     "x": 300.2522222222222,
@@ -144,7 +144,7 @@
   },
   {
     "slug": "upper-norfair",
-    "items": [],
+    "locations": [],
     "width": 515,
     "height": 214,
     "x": 535.6381141390226,
@@ -160,7 +160,7 @@
   },
   {
     "slug": "west-maridia",
-    "items": [],
+    "locations": [],
     "width": 172,
     "height": 241,
     "x": 989.3063888888888,
@@ -176,7 +176,7 @@
   },
   {
     "slug": "wrecked-ship",
-    "items": [],
+    "locations": [],
     "width": 384,
     "height": 159,
     "x": 907.2348333333333,

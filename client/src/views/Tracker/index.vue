@@ -119,11 +119,11 @@ export default {
       return this.$route.query.skin || 'jpg'
     },
     wrapper_class() {
-      const { large_warps, large_items } = this.tool_storage.state
+      const { large_warps, large_locations } = this.tool_storage.state
       const { tool } = this.tool_storage.state.selected
       return [
         `tracker-view -layout-${this.$store.layout.state.selected} -tool-${tool}`,
-        { large_items, large_warps },
+        { large_locations, large_warps },
       ]
     },
     game_state() {
@@ -132,18 +132,18 @@ export default {
         return varia_state
       }
       const state = {
-        items: {},
+        locations: {},
         warps: {},
         inventory: this.inventory,
       }
       const type_map = {}
-      const area_items = {}
+      const area_locations = {}
       this.areas.forEach((area) => {
         const target_area = subarea_by_area[area.slug] || area.slug
-        area_items[target_area] = area_items[target_area] || []
-        area.items.forEach((i) => {
-          type_map[i.slug] = 'item'
-          area_items[target_area].push(i.slug)
+        area_locations[target_area] = area_locations[target_area] || []
+        area.locations.forEach((i) => {
+          type_map[i.slug] = 'location'
+          area_locations[target_area].push(i.slug)
         })
         area.warps.forEach((w) => (type_map[w.slug] = 'warp'))
       })
@@ -154,12 +154,12 @@ export default {
         } else if (action_type === 'disconnect-warp') {
           delete state.warps[id]
           delete state.warps[arg2]
-        } else if (action_type === 'click-item') {
-          state.items[id] = !state.items[id]
+        } else if (action_type === 'click-location') {
+          state.locations[id] = !state.locations[id]
         } else if (action_type === 'clear-area') {
-          const item_slugs = area_items[id] || []
-          const remaining_items = item_slugs.filter((i) => !state.items[i]).length
-          item_slugs.forEach((i) => (state.items[i] = remaining_items !== 0))
+          const location_slugs = area_locations[id] || []
+          const remaining_locations = location_slugs.filter((i) => !state.locations[i]).length
+          location_slugs.forEach((i) => (state.locations[i] = remaining_locations !== 0))
         } else {
           console.warn('Unknown action:', action_type, id, arg2)
         }

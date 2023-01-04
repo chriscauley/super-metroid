@@ -1,5 +1,5 @@
 import cssfile from '!raw-loader!./t_style.html'
-import { items_by_area } from '@/data/old'
+import { locations_by_area } from '@/data/old'
 const chunks = {}
 
 const parent = { width: 1500, height: 750, door_w: 16, door_h: 27 }
@@ -68,10 +68,10 @@ export const positionLegacyDoors = (areas_json) => {
   })
 }
 
-export const positionLegacyItems = (areas_json) => {
+export const positionLegacyLocations = (areas_json) => {
   parseChuncks()
   const coords_by_item = {}
-  chunks.items
+  chunks.locations
     .replace('\n', '')
     .replace(/\s+/g, '')
     .split('#')
@@ -86,15 +86,15 @@ export const positionLegacyItems = (areas_json) => {
     })
 
   areas_json.forEach((area) => {
-    if (area.items?.length) {
+    if (area.locations?.length) {
       return
     }
 
-    const items = items_by_area[area.slug]
-    if (!items) {
+    const locations = locations_by_area[area.slug]
+    if (!locations) {
       return
     }
-    area.items = items.map((item) => {
+    area.locations = locations.map((item) => {
       const [left, top] = coords_by_item[item]
 
       let x = parent.width * (left / 100) - area.x
@@ -105,5 +105,5 @@ export const positionLegacyItems = (areas_json) => {
 }
 
 export const buildLegacy = (areas_json) => {
-  positionLegacyItems(areas_json)
+  positionLegacyLocations(areas_json)
 }

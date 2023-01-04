@@ -138,7 +138,7 @@ export const escape_doors = [
   'crabHoleBottomRight',
 ]
 
-export const items_by_area = {
+export const locations_by_area = {
   crater: [
     'EnergyTankGauntlet',
     'Bomb',
@@ -289,7 +289,7 @@ const area_by_bosses = {
 export const bosses = ['kraid', 'phantoon', 'draygon', 'ridley', 'mother-brain']
 export const minibosses = ['crocomire', 'spore-spawn', 'botwoon', 'golden-torizo', 'bomb-torizo']
 
-// this is used to calculate items in an area
+// this is used to calculate locations in an area
 export const subarea_by_area = {
   draygon: 'east-maridia',
   phantoon: 'wrecked-ship',
@@ -297,7 +297,7 @@ export const subarea_by_area = {
   ridley: 'lower-norfair',
 }
 
-export const special_items = {
+export const special_locations = {
   _major: [
     // crater
     'EnergyTankGauntlet',
@@ -416,22 +416,33 @@ export const special_items = {
 }
 
 // I prefer this to be a map for performance purposes
-Object.entries(special_items).forEach(([_key, items]) => {
-  delete special_items[_key]
+Object.entries(special_locations).forEach(([_key, locations]) => {
+  delete special_locations[_key]
   const key = _key.slice(1)
-  special_items[key] = {}
-  items.forEach((item) => (special_items[key][item] = true))
+  special_locations[key] = {}
+  locations.forEach((location) => (special_locations[key][location] = true))
 })
 
-export const all_item_locs = flatten([...Object.values(items_by_area), Object.keys(area_by_bosses)])
+export const all_locations = flatten([
+  ...Object.values(locations_by_area),
+  Object.keys(area_by_bosses),
+])
 
-export const type_map = {}
-all_item_locs.forEach((loc) => (type_map[loc] = 'item'))
-boss_doors.forEach((door) => (type_map[door] = 'boss'))
-access_points.forEach((door) => (type_map[door] = 'warp'))
-sand_doors.forEach((door) => (type_map[door] = 'sand'))
+export const warp_type_map = {}
+all_locations.forEach((loc) => (warp_type_map[loc] = 'location'))
+boss_doors.forEach((door) => (warp_type_map[door] = 'boss'))
+access_points.forEach((door) => (warp_type_map[door] = 'warp'))
+sand_doors.forEach((door) => (warp_type_map[door] = 'sand'))
 
 export const golden_four = ['kraid', 'phantoon', 'draygon', 'ridley']
+
+export const location_type_map = {
+  GoldTorizo: 'boss', // Varia has this as gold in some places, golden in others
+}
+all_locations.forEach((l) => (location_type_map[l] = 'item'))
+const _v = (s) => startCase(s).replace(' ', '')
+minibosses.forEach((b) => (location_type_map[_v(b)] = 'miniboss'))
+bosses.forEach((b) => (location_type_map[_v(b)] = 'boss'))
 
 export const doors = [
   'LandingSiteRight',

@@ -13,6 +13,6 @@ export default {
     text_gap_scale: 0.3,
   },
   areas,
-  hide_items: true,
+  hide_locations: true,
   extra_classes: {},
 }

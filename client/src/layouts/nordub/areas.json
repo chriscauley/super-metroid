@@ -1,7 +1,7 @@
 [
   {
     "slug": "crater",
-    "items": [
+    "locations": [
       ["EnergyTankGauntlet", 11.111731953801733, 2.810721126082772],
       ["Bomb", 19.21093968559512, 6.966057186397177],
       ["EnergyTankTerminator", 5.94273861084376, 7.018140519730511],
@@ -36,7 +36,7 @@
   },
   {
     "slug": "crocomire",
-    "items": [
+    "locations": [
       ["EnergyTankCrocomire", 17.016799887712548, 0.9413864292589029],
       ["GrappleBeam", 1.011549727301893, 6.975340792428617],
       ["PowerBombCrocomire", 7.084795075393006, 1.1651559191530318],
@@ -52,7 +52,7 @@
   },
   {
     "slug": "draygon",
-    "items": [["SpaceJump", 1.1770833333333335, 2.03125]],
+    "locations": [["SpaceJump", 1.1770833333333335, 2.03125]],
     "width": 3,
     "height": 2,
     "x": 89.83139215057213,
@@ -62,7 +62,7 @@
   },
   {
     "slug": "east-maridia",
-    "items": [
+    "locations": [
       ["PlasmaBeam", 10.989583333333334, 5.937500000000001],
       ["ReserveTankMaridia", 4.125, 17.96875],
       ["SpringBall", 16.1875, 19.96875],
@@ -89,7 +89,7 @@
   },
   {
     "slug": "green-brinstar",
-    "items": [
+    "locations": [
       ["ReserveTankBrinstar", 9.059161373115174, 7.226473853063843],
       ["ChargeBeam", 12.858332771896055, 14.113461822265],
       ["EnergyTankEtecoons", 1.9228192171960206, 13.027375120307989],
@@ -121,7 +121,7 @@
   },
   {
     "slug": "kraid",
-    "items": [["VariaSuit", 2.8875242220083415, 2.1779482675649664]],
+    "locations": [["VariaSuit", 2.8875242220083415, 2.1779482675649664]],
     "width": 3,
     "height": 2,
     "x": 62.31611580757851,
@@ -131,7 +131,7 @@
   },
   {
     "slug": "kraids-lair",
-    "items": [
+    "locations": [
       ["EnergyTankKraid", 1.057480510105871, 1.9140228585178056],
       ["MissileKraid", 5.457797080526148, 1.7018030959255697]
     ],
@@ -147,7 +147,7 @@
   },
   {
     "slug": "lower-norfair",
-    "items": [
+    "locations": [
       ["ScrewAttack", 5.885416666666667, 13.90625],
       ["MissileGoldTorizo", 3.8645833333333335, 12.885416666666668],
       ["SuperMissileGoldTorizo", 5.177083333333334, 12.864583333333334],
@@ -171,7 +171,7 @@
   },
   {
     "slug": "phantoon",
-    "items": [],
+    "locations": [],
     "width": 1,
     "height": 1,
     "x": 79.70427266898533,
@@ -181,7 +181,7 @@
   },
   {
     "slug": "red-brinstar",
-    "items": [
+    "locations": [
       ["XRayScope", 1.0480332050048125, 13.883861084376003],
       ["Spazer", 15.57081689124158, 15.97104226820661],
       ["PowerBombredBrinstarsidehopperroom", 13.39941626564004, 10.120343038177737],
@@ -204,7 +204,7 @@
   },
   {
     "slug": "ridley",
-    "items": [["EnergyTankRidley", 0.96875, 2.072916666666667]],
+    "locations": [["EnergyTankRidley", 0.96875, 2.072916666666667]],
     "width": 2,
     "height": 2,
     "x": 75.56487540760689,
@@ -214,7 +214,7 @@
   },
   {
     "slug": "tourian",
-    "items": [],
+    "locations": [],
     "width": 11,
     "height": 14,
     "x": 17.41354786830286,
@@ -227,7 +227,7 @@
   },
   {
     "slug": "upper-norfair",
-    "items": [
+    "locations": [
       ["IceBeam", 4.20309367982034, 4.860773981392366],
       ["HiJumpBoots", 6.059133702277832, 9.08810579082451],
       ["ReserveTankNorfair", 16.97311790182868, 5.080511228745589],
@@ -260,7 +260,7 @@
   },
   {
     "slug": "west-maridia",
-    "items": [
+    "locations": [
       ["MissilegreenMaridiashinespark", 1.16360378569137, 8.873950112287456],
       ["SuperMissilegreenMaridia", 1.8089940648059035, 7.885354026307347],
       ["EnergyTankMamaturtle", 9.040173724735324, 9.09161172601861],
@@ -285,7 +285,7 @@
   },
   {
     "slug": "wrecked-ship",
-    "items": [
+    "locations": [
       ["ReserveTankWreckedShip", 11.848763233878731, 1.8704056785370557],
       ["EnergyTankWreckedShip", 15.13287383702278, 4.180285851780559],
       ["RightSuperWreckedShip", 18.023125601539945, 7.963751122874561],

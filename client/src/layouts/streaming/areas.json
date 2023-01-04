@@ -1,7 +1,7 @@
 [
   {
     "slug": "crater",
-    "items": [
+    "locations": [
       ["EnergyTankGauntlet", 0, 0],
       ["Bomb", 1, 0],
       ["EnergyTankTerminator", 2, 0],
@@ -36,7 +36,7 @@
   },
   {
     "slug": "crocomire",
-    "items": [
+    "locations": [
       ["EnergyTankCrocomire", 0, 0],
       ["GrappleBeam", 1, 0],
       ["PowerBombCrocomire", 2, 0],
@@ -52,7 +52,7 @@
   },
   {
     "slug": "draygon",
-    "items": [["SpaceJump", 0, 0]],
+    "locations": [["SpaceJump", 0, 0]],
     "width": 2,
     "height": 2,
     "x": 22.329064792189907,
@@ -62,7 +62,7 @@
   },
   {
     "slug": "east-maridia",
-    "items": [
+    "locations": [
       ["PlasmaBeam", 0, 0],
       ["ReserveTankMaridia", 1, 0],
       ["SpringBall", 2, 0],
@@ -89,7 +89,7 @@
   },
   {
     "slug": "green-brinstar",
-    "items": [
+    "locations": [
       ["ReserveTankBrinstar", 0, 0],
       ["ChargeBeam", 1, 0],
       ["EnergyTankEtecoons", 2, 0],
@@ -121,7 +121,7 @@
   },
   {
     "slug": "kraid",
-    "items": [["VariaSuit", 0, 0]],
+    "locations": [["VariaSuit", 0, 0]],
     "width": 2,
     "height": 2,
     "x": 21.7997519233395,
@@ -131,7 +131,7 @@
   },
   {
     "slug": "kraids-lair",
-    "items": [
+    "locations": [
       ["EnergyTankKraid", 0, 0],
       ["MissileKraid", 1, 0]
     ],
@@ -147,7 +147,7 @@
   },
   {
     "slug": "lower-norfair",
-    "items": [
+    "locations": [
       ["ScrewAttack", 0, 0],
       ["MissileGoldTorizo", 1, 0],
       ["SuperMissileGoldTorizo", 2, 0],
@@ -171,7 +171,7 @@
   },
   {
     "slug": "phantoon",
-    "items": [],
+    "locations": [],
     "width": 2,
     "height": 2,
     "x": 20.055729080078944,
@@ -181,7 +181,7 @@
   },
   {
     "slug": "red-brinstar",
-    "items": [
+    "locations": [
       ["XRayScope", 0, 0],
       ["Spazer", 1, 0],
       ["PowerBombredBrinstarsidehopperroom", 2, 0],
@@ -204,7 +204,7 @@
   },
   {
     "slug": "ridley",
-    "items": [["EnergyTankRidley", 0, 0]],
+    "locations": [["EnergyTankRidley", 0, 0]],
     "width": 2,
     "height": 2,
     "x": 19.89601118701274,
@@ -214,7 +214,7 @@
   },
   {
     "slug": "tourian",
-    "items": [],
+    "locations": [],
     "width": 5,
     "height": 6,
     "x": 17.393040669317294,
@@ -227,7 +227,7 @@
   },
   {
     "slug": "upper-norfair",
-    "items": [
+    "locations": [
       ["IceBeam", 0, 0],
       ["HiJumpBoots", 1, 0],
       ["ReserveTankNorfair", 2, 0],
@@ -260,7 +260,7 @@
   },
   {
     "slug": "west-maridia",
-    "items": [
+    "locations": [
       ["MissilegreenMaridiashinespark", 0, 0],
       ["SuperMissilegreenMaridia", 1, 0],
       ["EnergyTankMamaturtle", 2, 0],
@@ -285,7 +285,7 @@
   },
   {
     "slug": "wrecked-ship",
-    "items": [
+    "locations": [
       ["ReserveTankWreckedShip", 0, 0],
       ["EnergyTankWreckedShip", 1, 0],
       ["RightSuperWreckedShip", 2, 0],
