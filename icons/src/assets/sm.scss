@@ -4,7 +4,7 @@
 @use "sass:string";
 @import "./variables.scss";
 
-.sm-item, .sm-block, .sm-cre-hex, .sm-ui, .sm-link, .sm-boss, .sm-icon, .sm-g4-head {
+.sm-item, .sm-block, .sm-cre-hex, .sm-ui, .sm-link, .sm-boss, .sm-icon, .sm-g4-head, .sm-map {
   display: inline-block;
   position: relative;
   height: 1em;
@@ -22,6 +22,19 @@
   }
   &.-inactive {
     filter: grayscale(1) brightness(0.75);
+  }
+}
+
+.sm-map {
+  &:before {
+    background-image: url(./images/map-icons.png);
+  }
+  $icons: boss miniboss egg energy missile;
+  @for $i from 0 to length($icons) {
+    $name: nth($icons, $i + 1);
+    &.-#{"" + $name}:before {
+      background-position: 0 $i * -100%;
+    }
   }
 }
 

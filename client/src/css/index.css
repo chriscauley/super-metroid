@@ -90,32 +90,25 @@ html, body, #app {
     content: "";
     display: block;
     border: 3px dashed white;
-    .large_items & {
+    .large_locations & {
       inset: -25%;
     }
   }
 }
 
-.area-item {
+.area-location {
   @apply absolute cursor-pointer;
   width: 100%;
   height: 100%;
   transform: translate(-50%, -50%);
-  &:before {
-    @apply absolute block inset-0;
-    background: url('../../public/egg.png') center no-repeat;
-    background-size: contain;
-    image-rendering: pixelated;
-    content: '';
-  }
   &.-completed:before {
     filter: brightness(0.75) grayscale(1);
     background-size: 60%;
   }
 }
 
-.large_items {
-  .area-item:before {
+.large_locations {
+  .area-location:before {
     height: 200%;
     transform: translate(-25%, -25%);
     width: 200%;
@@ -316,7 +309,7 @@ body {
     &:before {
       background: radial-gradient(#000, #000 50%, #a0f8f8 60%, #a0f8f8 90%, #000 100%);
     }
-    .-tool-admin_move_item& {
+    .-tool-admin_move_location& {
       @apply flex items-center justify-center;
       outline: 2px solid white;
     }
@@ -334,7 +327,7 @@ body {
   }
 }
 
-.area-item__popper  {
+.area-location__popper  {
   font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 12px;
   letter-spacing: normal;
