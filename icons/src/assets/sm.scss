@@ -18,10 +18,10 @@
   }
   &.-has-not {
     opacity: 0.75;
-    filter: grayscale(1);
+    filter: grayscale(1) brightness(0.75);
   }
   &.-inactive {
-    filter: grayscale(1);
+    filter: grayscale(1) brightness(0.75);
   }
 }
 

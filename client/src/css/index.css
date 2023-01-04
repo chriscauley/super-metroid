@@ -333,3 +333,43 @@ body {
     width: 200%;
   }
 }
+
+.area-item__popper  {
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  letter-spacing: normal;
+  line-height: 1.42857143;
+  opacity: 0.9;
+  overflow: hidden;
+  pointer-events: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  [data-popper-arrow] {
+    width: 10px;
+    height: 10px;
+    &:before {
+      background-color: #3e3f3a;
+      content: "";
+      display: block;
+      height: 10px;
+      width: 10px;
+      transform: rotate(45deg);
+    }
+  }
+  &-inner {
+    background-color:#3e3f3a;
+    border-radius: 4px;
+    color: white;
+    position: relative;
+    padding: 3px 5px;
+  }
+  &[data-popper-placement^='left'] &-inner, &[data-popper-placement^='right'] &-inner {
+    margin: 0 5px;
+  }
+  &[data-popper-placement^='bottom'] &-inner, &[data-popper-placement^='top'] &-inner {
+    margin: 5px 0;
+  }
+  &[data-popper-placement^='top'] [data-popper-arrow] {
+    top: calc(100% - 10px); /* popper js places this arrow wrong */
+  }
+}

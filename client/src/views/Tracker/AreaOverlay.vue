@@ -16,6 +16,22 @@
       {{ area.name }}
     </div>
     <img :src="src" :style="style.img" class="area-overlay__img" />
+    <item-marker
+      v-for="item in items"
+      :key="item.slug"
+      @click="(e) => clickItem(e, item)"
+      :game_state="game_state"
+      :json_data="json_data"
+      :item="item"
+      :style="getEntityStyle(item.slug, item.x, item.y)"
+    >
+      <drag-anchor
+        v-if="moving_items"
+        v-model="dxys[item]"
+        :osd_store="osd_store"
+        @done="(xy) => moveItem(item, xy)"
+      />
+    </item-marker>
     <div
       v-for="entity in entities"
       v-bind="entity"
@@ -33,17 +49,19 @@
 </template>
 
 <script>
+import ItemMarker from './ItemMarker.vue'
 import DragAnchor from './DragAnchor.vue'
 
 import { getStaticUrl } from '@/utils'
 
 export default {
-  components: { DragAnchor },
+  components: { DragAnchor, ItemMarker },
   props: {
     area: Object,
     osd_store: Object,
     tool_storage: Object,
     game_state: Object,
+    json_data: Object,
   },
   emits: ['move-area'],
   data() {
@@ -103,7 +121,7 @@ export default {
       }))
     },
     items() {
-      if (this.$store.layout.getWorld().hide_items) {
+      if (this.$store.layout.getWorld().hide_items || this.moving_area || this.moving_title) {
         return []
       }
       const { split } = this.tool_storage.state
@@ -111,23 +129,10 @@ export default {
       if (['major', 'chozo', 'scavenger'].includes(split)) {
         items = items.filter((i) => i[split])
       }
-      return items.map(({ slug, name, x, y, chozo, major, scavenger }) => ({
-        id: `item__${slug}`,
-        title: name,
-        type: 'item',
-        class: [
-          'area-item',
-          this.$store.layout.getWorld().extra_classes[slug],
-          chozo && '-chozo',
-          major && '-major',
-          scavenger && '-scavenger',
-          this.game_state.items[slug] && '-completed',
-        ],
-        style: this.getEntityStyle(slug, x, y),
-      }))
+      return items
     },
     entities() {
-      return this.moving_area || this.moving_title ? [] : [...this.warps, ...this.items]
+      return this.moving_area || this.moving_title ? [] : this.warps
     },
   },
   methods: {
@@ -141,10 +146,6 @@ export default {
         top: `${100 * _(y, dy)}%`,
       }
     },
-    moveEntity({ id, type }, [dx, dy]) {
-      const { scale } = this.root
-      this.$store.layout.moveEntity({ id, type }, dx / scale, dy / scale)
-    },
     moveArea([dx, dy]) {
       const { scale } = this.root
       this.$store.layout.moveArea(this.area.slug, dx / scale, dy / scale)
@@ -152,6 +153,16 @@ export default {
     moveTitle([dx, dy]) {
       const { scale } = this.root
       this.$store.layout.moveTitle(this.area.slug, dx / scale, dy / scale)
+    },
+    moveItem(item, dxy) {
+      return this.moveEntity({ id: item.slug, type: 'item' }, dxy)
+    },
+    clickItem(e, item) {
+      return this.clickEntity(e, { id: item.slug, type: 'item' })
+    },
+    moveEntity({ id, type }, [dx, dy]) {
+      const { scale } = this.root
+      this.$store.layout.moveEntity({ id, type }, dx / scale, dy / scale)
     },
     clickEntity(e, { id, type }) {
       const { tool } = this.tool_storage.state.selected

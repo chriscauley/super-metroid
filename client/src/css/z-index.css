@@ -1,6 +1,9 @@
 .area-item {
   /* items that need any z-index to put them on top of neighbors */
   z-index: 1;
+  &:hover {
+    z-index: 2;
+  }
 }
 
 .tracker-toolbar {
