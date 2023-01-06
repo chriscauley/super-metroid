@@ -1,0 +1,85 @@
+.smv-boss {
+  display: inline-block;
+  position: relative;
+  height: 1em;
+  width: 1em;
+}
+.smv-boss:before, .smv-boss ._before {
+  background-size: 100% auto;
+  content: "";
+  image-rendering: pixelated;
+  inset: 0;
+  position: absolute;
+}
+.smv-boss.-inactive {
+  opacity: 0.75;
+  filter: grayscale(1) brightness(0.75);
+}
+
+.smv-boss:before {
+  background-image: url(./images/varia/boss-icons.png);
+}
+.smv-boss.-kraid:before {
+  background-position: 0 0%;
+}
+.smv-boss.-phantoon:before {
+  background-position: 0 -100%;
+}
+.smv-boss.-draygon:before {
+  background-position: 0 -200%;
+}
+.smv-boss.-ridley:before {
+  background-position: 0 -300%;
+}
+.smv-boss.-mother-brain:before {
+  background-position: 0 -400%;
+}
+.smv-boss.-spore-spawn:before {
+  background-position: 0 -500%;
+}
+.smv-boss.-crocomire:before {
+  background-position: 0 -600%;
+}
+.smv-boss.-botwoon:before {
+  background-position: 0 -700%;
+}
+.smv-boss.-golden-torizo:before {
+  background-position: 0 -800%;
+}
+
+.smva-difficulty:before {
+  z-index: 2;
+}
+.smva-difficulty:after { /* these use :after so they can go behind the :before icons */
+  background-size: 100% auto;
+  content: "";
+  image-rendering: pixelated;
+  inset: 0;
+  position: absolute;
+  z-index: 1;
+}
+
+.smva-difficulty:after {
+  background-image: url(./images/varia/difficulty-boxes.png);
+}
+.smva-difficulty.-difficulty-break:after {
+  background-position: 0 0%;
+}
+.smva-difficulty.-difficulty-easy:after {
+  background-position: 0 -100%;
+}
+.smva-difficulty.-difficulty-medium:after {
+  background-position: 0 -200%;
+}
+.smva-difficulty.-difficulty-hard:after {
+  background-position: 0 -300%;
+}
+.smva-difficulty.-difficulty-harder:after {
+  background-position: 0 -400%;
+}
+.smva-difficulty.-difficulty-hardcore:after {
+  background-position: 0 -500%;
+}
+.smva-difficulty.-difficulty-mania:after {
+  background-position: 0 -600%;
+}

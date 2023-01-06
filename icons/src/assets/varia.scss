@@ -1,0 +1,61 @@
+@use "sass:math";
+@use "sass:list";
+
+.smv-boss {
+  display: inline-block;
+  position: relative;
+  height: 1em;
+  width: 1em;
+  &:before, ._before {
+    background-size: 100% auto;
+    content: "";
+    image-rendering: pixelated;
+    inset: 0;
+    position: absolute;
+  }
+  &.-inactive {
+    opacity: 0.75;
+    filter: grayscale(1) brightness(0.75);
+  }
+}
+
+.smv-boss {
+  $bosses: kraid phantoon draygon ridley mother-brain spore-spawn crocomire botwoon golden-torizo;
+  &:before {
+    background-image: url(./images/varia/boss-icons.png);
+  }
+  @for $i from 0 to length($bosses) {
+    $name: nth($bosses, $i + 1);
+    &.-#{""+$name}:before {
+      background-position: 0 $i * -100%;
+    }
+  }
+}
+
+.smva-difficulty {
+  &:before {
+    z-index: 2;
+  }
+  &:after { /* these use :after so they can go behind the :before icons */
+    background-size: 100% auto;
+    content: "";
+    image-rendering: pixelated;
+    inset: 0;
+    position: absolute;
+    z-index: 1;
+  }
+}
+
+.smva-difficulty {
+  $levels: break easy medium hard harder hardcore mania;
+  &:after {
+    background-image: url(./images/varia/difficulty-boxes.png);
+  }
+  @for $i from 0 to length($levels) {
+    $name: nth($levels, $i + 1);
+    &.-difficulty-#{""+$name}:after {
+      background-position: 0 $i * -100%;
+    }
+  }
+}
+

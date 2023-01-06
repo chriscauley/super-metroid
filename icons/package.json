@@ -8,8 +8,9 @@
     "build:css": "yarn build:sm && yarn build:smi",
     "build:sm": "sass src/assets/sm.scss > build/super-metroid.css",
     "build:smi": "sass src/assets/inventory.scss > build/inventory.css",
+    "build:smv": "sass src/assets/varia.scss > build/varia.css",
     "build:images": "rsync -a src/assets/images build/",
-    "build": "yarn build:client && yarn build:css && yarn build:images",
+    "build": "yarn build:client && yarn build:css && yarn build:images && yarn build:smv",
     "lint": "eslint \"src/**/*\""
   },
   "dependencies": {
