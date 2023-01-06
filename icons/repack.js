@@ -14,6 +14,7 @@ const bosses = [
   'botwoon',
   'crocomire',
   'draygon',
+  'bomb-torizo',
   'golden-torizo',
   'kraid',
   'mother-brain',

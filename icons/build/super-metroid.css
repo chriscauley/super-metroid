@@ -102,6 +102,9 @@
 .sm-boss.-draygon:before {
   background-image: url(./images/bosses/draygon.png);
 }
+.sm-boss.-bomb-torizo:before {
+  background-image: url(./images/bosses/bomb-torizo.png);
+}
 .sm-boss.-golden-torizo:before {
   background-image: url(./images/bosses/golden-torizo.png);
 }
@@ -128,6 +131,9 @@
 }
 .sm-boss.-head.-draygon:before {
   background-image: url(./images/bosses/draygon_head.png);
+}
+.sm-boss.-head.-bomb-torizo:before {
+  background-image: url(./images/bosses/bomb-torizo_head.png);
 }
 .sm-boss.-head.-golden-torizo:before {
   background-image: url(./images/bosses/golden-torizo_head.png);
