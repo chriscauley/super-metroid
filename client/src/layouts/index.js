@@ -91,7 +91,7 @@ export default {
     const areas = this[slug].areas.map(prepArea)
     return areas
   },
-  moveEntity(layout_slug, { type, id }, dx, dy) {
+  moveEntity(layout_slug, { type, id }, x, y) {
     const layout = this[layout_slug]
     let entity
     layout.areas.find((area) => {
@@ -101,8 +101,8 @@ export default {
     if (!entity) {
       throw `Unable to locate ${type}: ${id}`
     }
-    entity[1] += dx
-    entity[2] += dy
+    entity[1] = x
+    entity[2] = y
   },
   moveArea(layout_slug, area_slug, dx, dy) {
     const area = this[layout_slug].areas.find((area) => area.slug === area_slug)

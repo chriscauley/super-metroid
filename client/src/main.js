@@ -26,6 +26,8 @@ app.use(toolbar)
 app.use(unrest.plugin)
 app.use(unrest.ui)
 
+app.config.unwrapInjectedRef = true
+
 Object.entries(components).forEach(([name, component]) => app.component(name, component))
 
 app.mount('#app')

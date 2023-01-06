@@ -178,8 +178,6 @@ export default (component) => {
 
   storage.getEntityXys = () => {
     const out = {}
-    const { offset, round } = component.$store.layout.getWorld().root
-    const _ = (a) => Math.round(round * a) / round + offset
     const checkUnique = (slug) => {
       if (out[slug]) {
         console.warn('Duplicate slug detected: ' + slug)

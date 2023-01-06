@@ -67,9 +67,11 @@
     />
     <seed-settings :json_data="json_data" />
   </div>
+  <edit-area :area="editing_area" :tool_storage="tool_storage" />
 </template>
 
 <script>
+import { computed } from 'vue'
 import { debounce } from 'lodash'
 import osd from '@unrest/vue-openseadragon'
 import openseadragon from 'openseadragon'
@@ -77,11 +79,12 @@ import openseadragon from 'openseadragon'
 import { saveFile } from '@/data/legacy'
 import { subarea_by_area } from '@/data/old'
 import AreaOverlay from './AreaOverlay.vue'
+import EditArea from './EditArea.vue'
 import ItemCounter from './ItemCounter.vue'
 import ItemTracker from './ItemTracker.vue'
 import ToolStorage from './ToolStorage'
 import WarpConnections from './WarpConnections.vue'
-import { getStaticUrl } from '@/utils'
+import { getStaticUrl, getGridUrl } from '@/utils'
 import varia from '@/varia'
 import SeedSettings from './SeedSettings.vue'
 
@@ -89,7 +92,16 @@ const { Rect } = openseadragon
 
 export default {
   name: 'TrackerView',
-  components: { AreaOverlay, ItemCounter, ItemTracker, SeedSettings, WarpConnections },
+  components: { AreaOverlay, EditArea, ItemCounter, ItemTracker, SeedSettings, WarpConnections },
+  provide() {
+    return {
+      game_state: computed(() => this.game_state),
+      game_state: computed(() => this.game_state),
+      json_data: computed(() => this.json_data),
+      osd_store: computed(() => this.osd_store), // TODO osd_storage, not osd_store
+      tool_storage: computed(() => this.tool_storage),
+    }
+  },
   data() {
     window._S = () => saveFile(`${JSON.stringify(this.areas, null, 2)}`, 'areas.json')
     return {
@@ -101,6 +113,10 @@ export default {
     }
   },
   computed: {
+    editing_area() {
+      const { editing } = this.tool_storage.state
+      return editing && this.areas.find((a) => a.slug === editing)
+    },
     selected_key() {
       const { selected_warp } = this.tool_storage.state
       return selected_warp && this.code_map[selected_warp]
@@ -192,14 +208,8 @@ export default {
         const url = getStaticUrl(`/${selected}/background.png`)
         this.osd_store.viewer.addSimpleImage({ url })
       } else {
-        const canvas = document.createElement('canvas')
-        const scale = 16
-        canvas.width = canvas.height = scale
-        const ctx = canvas.getContext('2d')
-        ctx.fillStyle = 'black'
-        ctx.fillRect(0, 0, scale, scale)
-        const url = canvas.toDataURL()
-        const { width: x_max, height: y_max } = this.$store.layout.getWorld().root
+        const { scale, width: x_max, height: y_max } = this.$store.layout.getWorld().root
+        const url = getGridUrl(1, 1, scale)
         const corners = [
           [0, 0, 0],
           [0, (y_max - scale) / x_max, 270],
@@ -212,17 +222,24 @@ export default {
             x,
             y,
             width: scale / x_max,
-            opacity: 1,
             degrees,
           })
         })
       }
     },
     addImages() {
-      // this.areas.forEach(area => {
-      //   const url = `/areas/${area.slug}.png`
-      //   this.osd_store.viewer.addSimpleImage({ url })
-      // })
+      const { selected } = this.$store.layout.state
+      this.areas.forEach((area) => {
+        const { width: max_width, scale } = this.$store.layout.getWorld().root
+        let { width, x, y } = area
+        const url = `/${selected}/${area.slug}.png`
+        this.osd_store.viewer.addSimpleImage({
+          url,
+          x: (x * scale) / max_width,
+          y: (y * scale) / max_width,
+          width: (width * scale) / max_width,
+        })
+      })
       this.resetZoom()
     },
     resetZoom() {

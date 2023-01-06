@@ -10,37 +10,45 @@
   }
 }
 
-.large_locations {
-  .location-marker {
+.tracker-view {
+  &.large_locations .location-marker,
+  .location-marker:hover {
     width: 200%;
     height: 200%;
   }
-  .-align-right {
-    transform: translate(-50%, -25%);
+}
+
+.large_locations .location-marker {
+  &:hover {
+    width: 300%;
+    height: 300%
   }
-  .-align-double-right {
-    transform: translate(-75%, -25%);
+  &.-align-right {
+    transform: translate(-75%, -50%);
   }
-  .-align-left {
-    transform: translate(0%, -25%);
+  &.-align-double-right {
+    transform: translate(-75%, -50%);
   }
-  .-align-top {
-    transform: translate(-25%, 0%);
-  }
-  .-align-bottom {
+  &.-align-left {
     transform: translate(-25%, -50%);
   }
-  .-align-top-right {
-    transform: translate(-50%, 0);
+  &.-align-top {
+    transform: translate(-50%, -25%);
   }
-  .-align-top-left {
-    transform: translate(0%, 0%);
+  &.-align-bottom {
+    transform: translate(-50%, -75%);
   }
-  .-align-bottom-right {
-    transform: translate(-50%, -50%);
+  &.-align-top-right {
+    transform: translate(-75%, -25%);
   }
-  .-align-bottom-left {
-    transform: translate(0%, -50%);
+  &.-align-top-left {
+    transform: translate(-25%, -25%);
+  }
+  &.-align-bottom-right {
+    transform: translate(-75%, -75%);
+  }
+  &.-align-bottom-left {
+    transform: translate(-25%, -75%);
   }
 }
 

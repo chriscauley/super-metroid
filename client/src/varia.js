@@ -78,6 +78,9 @@ const varia = {
     return startCase(varia.variaToSm(varia_slug))
   },
   getIcon(varia_slug) {
+    if (varia_slug === 'GoldTorizo') {
+      return `sm-boss -map-icon -golden-torizo`
+    }
     const item_slug = varia.variaToSm(varia_slug)
     const type = location_type_map[varia_slug]
     if (type === 'boss' || type === 'miniboss') {

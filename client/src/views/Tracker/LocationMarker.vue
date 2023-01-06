@@ -35,10 +35,9 @@ import { location_type_map } from '@/data/old'
 import varia from '@/varia'
 
 export default {
+  inject: ['json_data', 'game_state'],
   props: {
     location: Object,
-    json_data: Object,
-    game_state: Object,
   },
   data() {
     return { hover: false }
@@ -79,6 +78,8 @@ export default {
       const { slug, chozo, major, scavenger } = this.location
       return {
         id: `location__${slug}`,
+        'data-id': slug,
+        'data-type': 'location',
         class: [
           'location-marker',
           this.$store.layout.getWorld().extra_classes[slug],

@@ -1,5 +1,6 @@
 <template>
   <div :style="style.wrapper" class="area-overlay">
+    <area-box :area="area" size="100%" @click-location="clickEntity" @click-warp="clickEntity" />
     <div class="area-overlay__title" :style="style.title">
       <drag-anchor
         v-if="moving_area"
@@ -14,63 +15,54 @@
         @done="moveTitle"
       />
       {{ area.name }}
-    </div>
-    <img :src="src" :style="style.img" class="area-overlay__img" />
-    <location-marker
-      v-for="location in locations"
-      :key="location.slug"
-      @click="(e) => clickLocation(e, location)"
-      :game_state="game_state"
-      :json_data="json_data"
-      :location="location"
-      :style="getEntityStyle(location.slug, location.x, location.y)"
-    >
-      <drag-anchor
-        v-if="moving_locations"
-        v-model="dxys[location.slug]"
-        :osd_store="osd_store"
-        @done="(xy) => moveLocation(location, xy)"
-      />
-    </location-marker>
-    <div
-      v-for="entity in entities"
-      v-bind="entity"
-      :key="entity.id"
-      @click="(e) => clickEntity(e, entity)"
-    >
-      <drag-anchor
-        v-if="moving_locations"
-        v-model="dxys[entity.id]"
-        :osd_store="osd_store"
-        @done="(xy) => moveEntity(entity, xy)"
+      <i
+        v-if="is_admin"
+        class="fa fa-edit link"
+        @click="tool_storage.save({ editing: area.slug })"
       />
     </div>
   </div>
 </template>
 
 <script>
-import LocationMarker from './LocationMarker.vue'
+import AreaBox from './AreaBox.vue'
 import DragAnchor from './DragAnchor.vue'
 
-import { getStaticUrl } from '@/utils'
+import { getStaticUrl, getGridUrl } from '@/utils'
 
 export default {
-  components: { DragAnchor, LocationMarker },
+  components: { AreaBox, DragAnchor },
+  inject: ['osd_store', 'tool_storage', 'json_data', 'game_state'],
   props: {
     area: Object,
-    osd_store: Object,
-    tool_storage: Object,
-    game_state: Object,
-    json_data: Object,
+    show_image: Boolean,
   },
   emits: ['move-area'],
   data() {
     return { dxys: {} }
   },
   computed: {
+    is_admin() {
+      return this.$route.query.is_admin
+    },
     src() {
       const { selected } = this.$store.layout.state
       return getStaticUrl(`/${selected}/${this.area.slug}.png`)
+    },
+    grid_style() {
+      const { width, height } = this.area
+      const { scale } = this.root
+      return {
+        width: `${100 * width}%`,
+        height: `${100 * height}%`,
+        backgroundImage: `url(${getGridUrl(width, height, scale)})`,
+        backgroundSize: 'contain',
+        backgroundRepeat: 'no-repeat',
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        pointerEvents: 'none',
+      }
     },
     root() {
       return this.$store.layout.getWorld().root
@@ -83,6 +75,7 @@ export default {
       const [dx, dy] = this.dxys.__root || [0, 0]
       const _ = (a) => `${(root.scale * (100 * a)) / root.width}%`
       return {
+        size: _(1),
         wrapper: {
           left: _(x + dx / root.scale),
           top: _(y + dy / root.scale),
@@ -110,30 +103,6 @@ export default {
       const { tool } = this.tool_storage.state.selected
       return 'admin_move_title' === tool
     },
-    warps() {
-      const { selected_warp } = this.tool_storage.state
-      return this.area.warps.map(({ slug, name, x, y, type, rotated }) => ({
-        id: slug,
-        title: name,
-        class: [`area-warp -${type}`, rotated && '-rotated', selected_warp === slug && '-selected'],
-        type: 'warp',
-        style: this.getEntityStyle(slug, x, y),
-      }))
-    },
-    locations() {
-      if (this.$store.layout.getWorld().hide_locations || this.moving_area || this.moving_title) {
-        return []
-      }
-      const { split } = this.tool_storage.state
-      let locations = this.area.locations
-      if (['major', 'chozo', 'scavenger'].includes(split)) {
-        locations = locations.filter((i) => i[split])
-      }
-      return locations
-    },
-    entities() {
-      return this.moving_area || this.moving_title ? [] : this.warps
-    },
   },
   methods: {
     getEntityStyle(id, x, y) {
@@ -154,30 +123,11 @@ export default {
       const { scale } = this.root
       this.$store.layout.moveTitle(this.area.slug, dx / scale, dy / scale)
     },
-    moveLocation(location, dxy) {
-      return this.moveEntity({ id: location.slug, type: 'location' }, dxy)
-    },
     clickLocation(e, location) {
-      return this.clickEntity(e, { id: location.slug, type: 'location' })
+      return this.clickEntity(e, { id: location, type: 'location' })
     },
-    moveEntity({ id, type }, [dx, dy]) {
-      const { scale } = this.root
-      this.$store.layout.moveEntity({ id, type }, dx / scale, dy / scale)
-    },
-    clickEntity(e, { id, type }) {
-      const { tool } = this.tool_storage.state.selected
-      if (tool === 'admin_move_location') {
-        const { width, height } = e.target.getBoundingClientRect()
-        const click_x = e.offsetX / width - 0.5
-        const click_y = e.offsetY / height - 0.5
-        const dx = Math.abs(click_x) > 0.25 ? Math.sign(click_x) * 0.5 : 0
-        const dy = Math.abs(click_y) > 0.25 ? Math.sign(click_y) * 0.5 : 0
-        if (dx || dy) {
-          this.$store.layout.moveEntity({ id, type }, dx, dy)
-        }
-      } else if (tool === 'play') {
-        this.tool_storage.click(id, this.game_state)
-      }
+    clickEntity(id) {
+      this.tool_storage.click(id, this.game_state)
     },
   },
 }

@@ -27,8 +27,8 @@ export default {
     ChargeBeam: '-align-top',
     MissilepinkBrinstarbottom: '-align-bottom',
     // red-brinstar
-    MissileredBrinstarspikeroom: '-align-right',
-    PowerBombredBrinstarspikeroom: '-align-left',
+    MissileredBrinstarspikeroom: '-align-left',
+    PowerBombredBrinstarspikeroom: '-align-right',
     // west-maridia
     MissilegreenMaridiashinespark: '-align-top-right',
     SuperMissilegreenMaridia: '-align-bottom-left',
@@ -42,16 +42,19 @@ export default {
     MissileHiJumpBoots: '-align-bottom-right',
     EnergyTankHiJumpBoots: '-align-bottom-left',
     HiJumpBoots: '-align-top',
-    ReserveTankNorfair: '-align-double-right',
+    ReserveTankNorfair: '-align-right',
     MissileSpeedBooster: '-align-right',
     SpeedBooster: '-align-left',
+    // lower-norfair
     MissileGoldTorizo: '-align-bottom-right',
     SuperMissileGoldTorizo: '-align-bottom-left',
     ScrewAttack: '-align-top',
+    GoldenTorizo: '-align-top-right',
+    Ridley: '-align-top-left',
     // east-maridia
     MissileleftMaridiasandpitroom: '-align-bottom-right',
     ReserveTankMaridia: '-align-top-left',
-    MissilerightMaridiasandpitroom: '-align-bottom-right',
+    MissilerightMaridiasandpitroom: '-align-bottom',
     PowerBombrightMaridiasandpitroom: '-align-top-left',
     EnergyTankBrinstarGate: '-align-bottom',
     MissilegreenBrinstarpipe: '-align-left',
