@@ -1,6 +1,6 @@
 // library for converting from varia.run data structures to data structures for this app
 import { invert, startCase } from 'lodash'
-import { all_items, bosses, minibosses, ammo, energy } from '@/data/old'
+import { all_items, bosses, minibosses, ammo, energy, location_type_map } from '@/data/old'
 
 //   Morph: 'morph-ball',
 //   Super: 'super-missile',
@@ -40,36 +40,51 @@ to_convert.forEach((set) =>
   }),
 )
 
-const varia = {
-  sm_to_varia,
-  varia_to_sm: invert(sm_to_varia),
-}
-
 const packs = {}
 
 ammo.forEach((i) => (packs[i] = 5))
 energy.forEach((i) => (packs[i] = 1))
-varia.getGameState = (json_data) => {
-  if (!json_data) {
-    return null
-  }
-  const state = {
-    inventory: {},
-    items: {},
-    warps: json_data.lines,
-  }
-  json_data.collectedItems.forEach((item_) => {
-    const item = varia.varia_to_sm[item_]
-    if (!item) {
-      console.error(`Unknown Item ${item_}`)
+
+const varia = {
+  sm_to_varia,
+  varia_to_sm: invert(sm_to_varia),
+  getGameState: (json_data) => {
+    if (!json_data) {
+      return null
     }
-    if (packs[item]) {
-      state.inventory[item] = (state.inventory[item] || 0) + packs[item]
-    } else {
-      state.inventory[item] = true
+    const state = {
+      inventory: {},
+      locations: {},
+      warps: json_data.lines,
     }
-  })
-  return state
+    json_data.collectedItems.forEach((varia_slug) => {
+      const item_slug = varia.variaToSm(varia_slug)
+      if (packs[item_slug]) {
+        state.inventory[item_slug] = (state.inventory[item_slug] || 0) + packs[item_slug]
+      } else {
+        state.inventory[item_slug] = true
+      }
+    })
+    return state
+  },
+  variaToSm(varia_slug) {
+    const slug = varia.varia_to_sm[varia_slug]
+    if (!slug) {
+      console.error(`Unknown varia_slug: ${varia_slug}`)
+    }
+    return slug || varia_slug
+  },
+  variaToDisplay(varia_slug) {
+    return startCase(varia.variaToSm(varia_slug))
+  },
+  getIcon(varia_slug) {
+    const item_slug = varia.variaToSm(varia_slug)
+    const type = location_type_map[varia_slug]
+    if (type === 'boss' || type === 'miniboss') {
+      return `sm-boss -map-icon -${item_slug}`
+    }
+    return `sm-item -${item_slug}`
+  },
 }
 
 export default varia

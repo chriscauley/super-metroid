@@ -171,6 +171,11 @@ export default {
     window.$tracker = this
     document.addEventListener('keydown', this.keyPress)
     window.addEventListener('resize', this.resize)
+    if (this.$route.query.dummy) {
+      this.$store.getDummyData().then((d) => {
+        this.json_data = d
+      })
+    }
   },
   unmounted() {
     document.removeEventListener('keydown', this.keyPress)
@@ -252,7 +257,7 @@ export default {
       } else if (isDigit(e.key) && can_press_digit) {
         key_stack.push(e.key)
         const code1 = key_stack.slice(0, 2).join('').toLowerCase()
-        const warp1 = this.$el.querySelector('#warp__' + this.code_map[code1])
+        const warp1 = this.$el.querySelector('#' + this.code_map[code1])
         if (warp1) {
           warp1.click()
         }

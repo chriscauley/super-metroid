@@ -1,15 +1,19 @@
 <template>
   <div v-bind="attrs" @mouseover="mouseover" @mouseleave="mouseout">
     <slot />
-    <unrest-popper v-if="hover" class="area-location__popper" offset="0,10" placement="bottom">
+    <unrest-popper v-if="hover" class="location-marker__popper" offset="0,10" placement="bottom">
       <div data-popper-arrow />
-      <div class="area-location__popper-inner">
+      <div class="location-marker__popper-inner">
         {{ display_name }}
         <div v-if="boss">Boss: {{ boss }}</div>
         <div v-else-if="visited">Item: {{ item_name }}</div>
         <template v-if="locData && !visited">
           <div>Techniques: {{ locData.knows[0] || 'None' }}</div>
-          <div>Items: {{ locData.items || None }}</div>
+          <div>
+            Items:
+            <div v-for="(item, i) in items" :key="i" :class="item" />
+            {{ items.length === 0 ? 'None' : '' }}
+          </div>
           <div v-if="locData.comeBack === false">
             {{ "WARNING: Can't come back" }}
           </div>
@@ -28,6 +32,7 @@
 
 <script>
 import { location_type_map } from '@/data/old'
+import varia from '@/varia'
 
 export default {
   props: {
@@ -45,8 +50,9 @@ export default {
     display_name() {
       return this.locData?.name || this.location.name
     },
-    location_name() {
-      return 'TODO'
+    item_name() {
+      const data = this.json_data?.visitedLocations[this.location.slug]
+      return varia.variaToDisplay(data.item)
     },
     visited() {
       return this.json_data?.visitedLocations[this.location.slug]
@@ -55,15 +61,26 @@ export default {
       return window.locsInfo?.[this.location.slug]?.boss
     },
     icon() {
+      const data = this.json_data?.visitedLocations[this.location.slug]
+      if (data) {
+        return [
+          varia.getIcon(data.item),
+          `smva-difficulty -difficulty-${data.difficulty[0]}`,
+          data.major && '-major',
+        ]
+      }
       const type = location_type_map[this.location.slug]
       return 'sm-map -' + (type === 'item' ? 'egg' : type)
+    },
+    items() {
+      return (this.locData.items || []).map((i) => varia.getIcon(i))
     },
     attrs() {
       const { slug, chozo, major, scavenger } = this.location
       return {
         id: `location__${slug}`,
         class: [
-          'area-location',
+          'location-marker',
           this.$store.layout.getWorld().extra_classes[slug],
           chozo && '-chozo',
           major && '-major',

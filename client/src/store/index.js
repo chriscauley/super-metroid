@@ -1,4 +1,5 @@
 import layout from './layout'
+import axios from 'axios'
 
 const modules = { layout }
 
@@ -10,6 +11,9 @@ const store = {
     Object.entries(modules).forEach(([name, module]) => {
       store[name] = module({ store })
     })
+  },
+  getDummyData() {
+    return axios.get('/dummy_data.json').then((r) => r.data)
   },
 }
 

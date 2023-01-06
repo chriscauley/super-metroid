@@ -1,16 +1,15 @@
 <template>
-  <div class="smi-tracker text-white p-8" style="font-size: 32px;">
-    <div v-for="icons, name in icon_groups" class="mb-8">
+  <div class="smi-tracker text-white p-8" style="font-size: 32px">
+    <div v-for="(icons, name) in icon_groups" :key="name" class="mb-8">
       <h2>{{ name }}</h2>
-      <div  class="flex">
-      <div v-for="icon in icons" :key="icon" :class="icon" :title="icon" />
-    </div>
+      <div class="flex">
+        <div v-for="icon in icons" :key="icon" :class="icon" :title="icon" />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-
 const icon_groups = {
   sm: [],
   smv: [],
@@ -28,7 +27,6 @@ const icon_groups = {
   reserve_numbers: [],
 }
 
-
 const bosses = ['ridley', 'draygon', 'phantoon', 'kraid']
 const minibosses = ['spore-spawn', 'botwoon', 'crocomire', 'golden-torizo']
 bosses.forEach((b) => icon_groups.sm.push('sm-item -' + b))
@@ -36,10 +34,8 @@ bosses.forEach((b) => icon_groups.sm.push('sm-item -inactive -' + b))
 
 const all_bosses = [...bosses, ...minibosses, 'mother-brain']
 const levels = ['break', 'easy', 'medium', 'hard', 'harder', 'hardcore', 'mania']
-all_bosses.forEach(
-  (b, i) => icon_groups.smv.push(
-    `smv-boss -${b} smva-difficulty -difficulty-${levels[i%levels.length]}`
-  )
+all_bosses.forEach((b, i) =>
+  icon_groups.smv.push(`smv-boss -${b} smva-difficulty -difficulty-${levels[i % levels.length]}`),
 )
 
 let i = 0

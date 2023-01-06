@@ -437,7 +437,7 @@ sand_doors.forEach((door) => (warp_type_map[door] = 'sand'))
 export const golden_four = ['kraid', 'phantoon', 'draygon', 'ridley']
 
 export const location_type_map = {
-  GoldTorizo: 'boss', // Varia has this as gold in some places, golden in others
+  GoldTorizo: 'miniboss', // Varia has this as gold in some places, golden in others
 }
 all_locations.forEach((l) => (location_type_map[l] = 'item'))
 const _v = (s) => startCase(s).replace(' ', '')

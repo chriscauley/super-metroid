@@ -1,5 +1,6 @@
 @import './item-counter.css';
 @import './grid-tracker.css';
+@import './location-marker.css';
 @import './pause-inventory.css';
 @import './seed-settings.css';
 @import './tailwind.css';
@@ -93,53 +94,6 @@ html, body, #app {
     .large_locations & {
       inset: -25%;
     }
-  }
-}
-
-.area-location {
-  @apply absolute cursor-pointer;
-  width: 100%;
-  height: 100%;
-  transform: translate(-50%, -50%);
-  &.-completed:before {
-    opacity: 0.75;
-    filter:grayscale(1);
-    inset: 10%;
-  }
-}
-
-.large_locations {
-  .area-location:before {
-    height: 200%;
-    transform: translate(-25%, -25%);
-    width: 200%;
-  }
-  .-align-right:before {
-    transform: translate(-50%, -25%);
-  }
-  .-align-double-right:before {
-    transform: translate(-75%, -25%);
-  }
-  .-align-left:before {
-    transform: translate(0%, -25%);
-  }
-  .-align-top:before {
-    transform: translate(-25%, 0%);
-  }
-  .-align-bottom:before {
-    transform: translate(-25%, -50%);
-  }
-  .-align-top-right:before {
-    transform: translate(-50%, 0);
-  }
-  .-align-top-left:before {
-    transform: translate(0%, 0%);
-  }
-  .-align-bottom-right:before {
-    transform: translate(-50%, -50%);
-  }
-  .-align-bottom-left:before {
-    transform: translate(0%, -50%);
   }
 }
 
@@ -325,45 +279,5 @@ body {
     left: unset;
     height: 200%;
     width: 200%;
-  }
-}
-
-.area-location__popper  {
-  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 12px;
-  letter-spacing: normal;
-  line-height: 1.42857143;
-  opacity: 0.9;
-  overflow: hidden;
-  pointer-events: none;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  [data-popper-arrow] {
-    width: 10px;
-    height: 10px;
-    &:before {
-      background-color: #3e3f3a;
-      content: "";
-      display: block;
-      height: 10px;
-      width: 10px;
-      transform: rotate(45deg);
-    }
-  }
-  &-inner {
-    background-color:#3e3f3a;
-    border-radius: 4px;
-    color: white;
-    position: relative;
-    padding: 3px 5px;
-  }
-  &[data-popper-placement^='left'] &-inner, &[data-popper-placement^='right'] &-inner {
-    margin: 0 5px;
-  }
-  &[data-popper-placement^='bottom'] &-inner, &[data-popper-placement^='top'] &-inner {
-    margin: 5px 0;
-  }
-  &[data-popper-placement^='top'] [data-popper-arrow] {
-    top: calc(100% - 10px); /* popper js places this arrow wrong */
   }
 }
