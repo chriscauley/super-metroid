@@ -135,11 +135,11 @@ export default {
       return this.$route.query.skin || 'jpg'
     },
     wrapper_class() {
-      const { large_warps, large_locations } = this.tool_storage.state
+      const { large_warps, large_locations, large_doors } = this.tool_storage.state
       const { tool } = this.tool_storage.state.selected
       return [
         `tracker-view -layout-${this.$store.layout.state.selected} -tool-${tool}`,
-        { large_locations, large_warps },
+        { large_locations, large_warps, large_doors },
       ]
     },
     game_state() {

@@ -27,8 +27,8 @@
     "y": 1.4588689444979135,
     "warps": [
       ["lowerMushroomsLeft", -0.5, 8.5],
-      ["greenPiratesShaftBottomRight", 5.5, 8.5],
-      ["keyhunterRoomBottom", 27.5, 7.5],
+      ["greenPiratesShaftBottomRight", 6.5, 8.5],
+      ["keyhunterRoomBottom", 27.5, 8],
       ["moatRight", 31.5, 4.5],
       ["morphBallRoomLeft", 10.5, 29.5],
       ["climbBottomLeft", 10.5, 17.5]
@@ -144,7 +144,7 @@
     "y": 22.660260667308318,
     "warps": [
       ["greenBrinstarElevator", 5.5, 0.5],
-      ["greenHillZoneTopRight", 16.5, 12.5],
+      ["greenHillZoneTopRight", 17, 12.5],
       ["noobBridgeRight", 28.5, 15.5],
       ["greenBrinstarMainShaftTopLeft", 3.5, 6.5]
     ],
@@ -251,7 +251,7 @@
     "warps": [
       ["redBrinstarElevator", 14.5, 0.5],
       ["caterpillarRoomTopRight", 17.5, 5.5],
-      ["redTowerTopLeft", 9.5, 11.5],
+      ["redTowerTopLeft", 8.5, 11.5],
       ["glassTunnelTop", 16.5, 14.5],
       ["eastTunnelRight", 18.5, 16.5],
       ["eastTunnelTopRight", 21.5, 15.5]
@@ -323,8 +323,8 @@
       ["warehouseEntranceLeft", 7.5, 0.5],
       ["warehouseEntranceRight", 11.5, 0.5],
       ["singleChamberTopRight", 28.5, 5.5],
-      ["crocomireSpeedwayBottom", 13.5, 12.5],
-      ["kronicBoostRoomBottomLeft", 23.5, 12.5],
+      ["crocomireSpeedwayBottom", 13.5, 13],
+      ["kronicBoostRoomBottomLeft", 23, 12.5],
       ["businessCenterMidLeft", 7.5, 6.5]
     ],
     "title_dxy": [10.904010587102984, 3.4486246390760336],

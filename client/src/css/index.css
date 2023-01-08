@@ -276,18 +276,26 @@ body {
 }
 
 .area-door {
-  --door-blue: #3870e0;
-  --door-red: #cf2f8f;
-  --door-green: #80e00f;
+  --door-blue: #3870ff;
+  --door-red: #ff2f8f;
+  --door-green: #80ff0f;
   --door-yellow: #f0af00;
   --door-brown: #6f404f;
   @apply absolute cursor-pointer;
-  height: 150%;
+  height: 100%;
   width: 40%;
   transform: translate(-50%, -50%);
   &.-rotated {
     height: 40%;
-    width: 150%;
+    width: 100%;
+  }
+  .large_doors & {
+    height: 150%;
+    width: 60%;
+    &.-rotated {
+      height: 60%;
+      width: 150%;
+    }
   }
   &.-ice, &.-blue {
     background-color: var(--door-blue);

@@ -62,6 +62,7 @@ export default (component) => {
     key_stack: [],
     split: 'full',
     warp_display: 'codes',
+    large_doors: true,
     large_locations: true,
     large_warp: true,
     item_tracker: 'pause-inventory',
@@ -70,6 +71,7 @@ export default (component) => {
   storage.schema = {
     type: 'object',
     properties: {
+      large_doors: { type: 'boolean' },
       large_locations: { type: 'boolean' },
       large_warps: { type: 'boolean' },
       split: {

@@ -1,8 +1,18 @@
+.warp-connections {
+  z-index: 10;
+}
+
+.area-warp, .area-door {
+  z-index: 9;
+  &.-escape, &.-sand {
+    z-index: 8;
+  }
+}
+
 .location-marker {
-  /* items that need any z-index to put them on top of neighbors */
-  z-index: 1;
+  z-index: 11;
   &:hover {
-    z-index: 2;
+    z-index: 12;
   }
 }
 
