@@ -33,7 +33,17 @@
       ["morphBallRoomLeft", 4.5, 5.7],
       ["climbBottomLeft", 4.9, 2.5]
     ],
-    "title_dxy": [3.6493033314171526, -0.6807044017409876]
+    "title_dxy": [3.6493033314171526, -0.6807044017409876],
+    "doors": [
+      ["ConstructionZoneRight", 0, 0],
+      ["LandingSiteRight", 0, 0],
+      ["GreenPiratesShaftBottomRight", 0, 0],
+      ["ClimbRight", 0, 0],
+      ["KihunterBottom", 0, 0],
+      ["FlywayRight", 0, 0],
+      ["KihunterRight", 0, 0],
+      ["LandingSiteTopRight", 0, 0]
+    ]
   },
   {
     "slug": "crocomire",
@@ -50,7 +60,11 @@
     "x": 1.678335708338368,
     "y": 29.326550331993538,
     "warps": [["crocomireRoomTop", 2.3000000000000003, 0.5]],
-    "title_dxy": [3.8415723278528153, -0.19472503181852785]
+    "title_dxy": [3.8415723278528153, -0.19472503181852785],
+    "doors": [
+      ["PostCrocomireShaftRight", 0, 0],
+      ["PostCrocomireUpperLeft", 0, 0]
+    ]
   },
   {
     "slug": "draygon",
@@ -63,7 +77,8 @@
     "x": 22.329064792189907,
     "y": 22.57423162283703,
     "warps": [["draygonRoomIn", 1.3, 1.4000000000000001]],
-    "title_dxy": [0.8615159231012889, 2.0692420384493557]
+    "title_dxy": [0.8615159231012889, 2.0692420384493557],
+    "doors": []
   },
   {
     "slug": "east-maridia",
@@ -91,7 +106,16 @@
       ["westSandHallLeft", 1.9000000000000001, 4],
       ["belowBotwoonEnergyTankRight", 3.3000000000000003, 2.3000000000000003]
     ],
-    "title_dxy": [1, 3]
+    "title_dxy": [1, 3],
+    "doors": [
+      ["ForgottenHighwaySaveStation", 0, 0],
+      ["LeCoudeBottom", 0, 0],
+      ["MaridiaAqueductSaveStation", 0, 0],
+      ["OasisTop", 0, 0],
+      ["ColosseumBottomRight", 0, 0],
+      ["DraygonSaveRefillStation", 0, 0],
+      ["PlasmaSparkBottom", 0, 0]
+    ]
   },
   {
     "slug": "green-brinstar",
@@ -124,7 +148,21 @@
       ["noobBridgeRight", 7.1000000000000005, 8.4],
       ["greenBrinstarMainShaftTopLeft", 0.5, 3.5]
     ],
-    "title_dxy": [0.5762444909802633, 6.499183227943391]
+    "title_dxy": [0.5762444909802633, 6.499183227943391],
+    "doors": [
+      ["BigPinkBottomRight", 0, 0],
+      ["BigPinkBottomLeft", 0, 0],
+      ["MainShaftRight", 0, 0],
+      ["GreenHillZoneTopRight", 0, 0],
+      ["NoobBridgeRight", 0, 0],
+      ["EarlySupersRight", 0, 0],
+      ["GreenBrinstarSaveStation", 0, 0],
+      ["BigPinkTopRight", 0, 0],
+      ["MainShaftBottomRight", 0, 0],
+      ["EtecoonEnergyTankLeft", 0, 0],
+      ["GreenBrinstarMissileRefill", 0, 0],
+      ["BigPinkRight", 0, 0]
+    ]
   },
   {
     "slug": "kraid",
@@ -137,7 +175,8 @@
     "x": 21.7997519233395,
     "y": 13.51595515185532,
     "warps": [["kraidRoomIn", 1.4000000000000001, 1.4000000000000001]],
-    "title_dxy": [0.8765432098765432, 2.4074074074074074]
+    "title_dxy": [0.8765432098765432, 2.4074074074074074],
+    "doors": []
   },
   {
     "slug": "kraids-lair",
@@ -153,7 +192,8 @@
       ["warehouseZeelaRoomLeft", 0.5, 0.5],
       ["kraidRoomOut", 5.5, 0.5]
     ],
-    "title_dxy": [1.520643238122913, 0.8722680624103385]
+    "title_dxy": [1.520643238122913, 0.8722680624103385],
+    "doors": [["KraidRefillStation", 0, 0]]
   },
   {
     "slug": "lower-norfair",
@@ -178,7 +218,11 @@
       ["lavaDiveRight", 1.5, 0.5],
       ["ridleyRoomOut", 2.9000000000000004, 4]
     ],
-    "title_dxy": [1.744124852864691, 1.0040024225999833]
+    "title_dxy": [1.744124852864691, 1.0040024225999833],
+    "doors": [
+      ["RedKihunterShaftBottom", 0, 0],
+      ["WastelandLeft", 0, 0]
+    ]
   },
   {
     "slug": "phantoon",
@@ -188,7 +232,8 @@
     "x": 20.055729080078944,
     "y": 10.306341801654924,
     "warps": [["phantoonRoomIn", 1.4000000000000001, 1.4000000000000001]],
-    "title_dxy": [0.9198339283426371, 2.5779367456289646]
+    "title_dxy": [0.9198339283426371, 2.5779367456289646],
+    "doors": []
   },
   {
     "slug": "red-brinstar",
@@ -211,7 +256,17 @@
       ["eastTunnelRight", 7.5, 7.300000000000001],
       ["eastTunnelTopRight", 7.5, 5.7]
     ],
-    "title_dxy": [2.4416253272702217, -1.2527460714814325]
+    "title_dxy": [2.4416253272702217, -1.2527460714814325],
+    "doors": [
+      ["MaridiaBottomSaveStation", 0, 0],
+      ["RedTowerElevatorTopLeft", 0, 0],
+      ["RedTowerElevatorBottomLeft", 0, 0],
+      ["RedTowerElevatorLeft", 0, 0],
+      ["RedBrinstarFirefleaLeft", 0, 0],
+      ["RedTowerLeft", 0, 0],
+      ["RedBrinstarEnergyRefill", 0, 0],
+      ["BelowSpazerTopRight", 0, 0]
+    ]
   },
   {
     "slug": "ridley",
@@ -224,7 +279,8 @@
     "x": 19.89601118701274,
     "y": 32.53085626394174,
     "warps": [["ridleyRoomIn", 1.4000000000000001, 1.4000000000000001]],
-    "title_dxy": [0.7530864197530864, 1.9753086419753085]
+    "title_dxy": [0.7530864197530864, 1.9753086419753085],
+    "doors": []
   },
   {
     "slug": "tourian",
@@ -237,7 +293,8 @@
       ["goldenFour", 4.9, 0.7000000000000001],
       ["tourianEscapeRoom4TopRight", 5.5, 3.5]
     ],
-    "title_dxy": [-3.7552249998724094, 2.6033829406090674]
+    "title_dxy": [-3.7552249998724094, 2.6033829406090674],
+    "doors": []
   },
   {
     "slug": "upper-norfair",
@@ -270,7 +327,20 @@
       ["kronicBoostRoomBottomLeft", 6.67585922787194, 5.894864441229158],
       ["businessCenterMidLeft", 5, 1]
     ],
-    "title_dxy": [3.4724614026443295, 6.6913580246913575]
+    "title_dxy": [3.4724614026443295, 6.6913580246913575],
+    "doors": [
+      ["BubbleMountainTopRight", 0, 0],
+      ["BusinessCenterBottomLeft", 0, 0],
+      ["BubbleMountainTopLeft", 0, 0],
+      ["BusinessCenterTopLeft", 0, 0],
+      ["KronicBoostBottomLeft", 0, 0],
+      ["SpeedBoosterHallRight", 0, 0],
+      ["CathedralRight", 0, 0],
+      ["CathedralEntranceRight", 0, 0],
+      ["DoubleChamberRight", 0, 0],
+      ["CrocomireSpeedwayBottom", 0, 0],
+      ["SingleChamberRight", 0, 0]
+    ]
   },
   {
     "slug": "west-maridia",
@@ -295,7 +365,12 @@
       ["westSandHallTunnelRight", 7.2, 5],
       ["crabHoleBottomRight", 7.300000000000001, 6.2]
     ],
-    "title_dxy": [4.215188342220863, 1.1342860542047521]
+    "title_dxy": [4.215188342220863, 1.1342860542047521],
+    "doors": [
+      ["CrabShaftRight", 0, 0],
+      ["FishTankRight", 0, 0],
+      ["MainStreetBottomRight", 0, 0]
+    ]
   },
   {
     "slug": "wrecked-ship",
@@ -322,6 +397,11 @@
       ["phantoonRoomOut", 3.6, 2],
       ["basementLeft", 2.1, 2]
     ],
-    "title_dxy": [-0.039324373113409195, 1.631029533989207]
+    "title_dxy": [-0.039324373113409195, 1.631029533989207],
+    "doors": [
+      ["WestOceanRight", 0, 0],
+      ["ElectricDeathRoomTopLeft", 0, 0],
+      ["WreckedShipMainShaftBottom", 0, 0]
+    ]
   }
 ]

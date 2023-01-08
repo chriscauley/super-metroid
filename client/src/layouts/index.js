@@ -6,7 +6,7 @@ import legacy from './legacy'
 import nordub from './nordub'
 import streaming from './streaming'
 
-const rotated_door_regexp = /(Top|Bottom|redBrinstarElevator)$/
+const rotated_warp_regexp = /(Top|Bottom|redBrinstarElevator)$/
 
 const SHORT_NAMES = {
   'green-brinstar': 'Gr Brin',
@@ -29,7 +29,7 @@ export const prepName = memoize((name) => {
     return SHORT_NAMES[name]
   }
   name = name.replace(
-    /(super|missile|outside|yellow|middle|above|false|wall|tatori|turtle|shine|spark|bubble|door|surface|gauntlet|hunter|spike|side|hopper|moat|pink|green|sand|bottom|top|left|right|behind|reserve|tank|of|fire|flea|norfair|blue|shame|lower)/g,
+    /(super|missile|outside|yellow|middle|above|false|wall|tatori|turtle|shine|spark|bubble|door|surface|gauntlet|spike|side|hopper|moat|pink|green|sand|bottom|top|left|right|behind|reserve|tank|of|fire|flea|norfair|blue|shame|lower)/g,
     (c) => ` ${c}`,
   )
   name = name.replace('Bombred', 'Bomb red')
@@ -38,6 +38,16 @@ export const prepName = memoize((name) => {
   }
   return startCase(name)
 })
+
+const rotated_doors = {
+  CrocomireSpeedwayBottom: true,
+  RedKihunterShaftBottom: true,
+  PlasmaSparkBottom: true,
+  OasisTop: true,
+  LeCoudeBottom: true,
+  WreckedShipMainShaftBottom: true,
+  KihunterBottom: true,
+}
 
 const warp_types = {}
 access_points.forEach((w) => {
@@ -55,27 +65,28 @@ sand_doors.forEach((w) => {
 
 const prepArea = (area) => {
   area = cloneDeep(area)
-  const isRotated = (slug) => slug.match(rotated_door_regexp)
+  const isRotated = (slug) => slug.match(rotated_warp_regexp)
   area.name = prepName(area.slug)
 
-  area.warps = area.warps.map(([slug, x, y]) => ({
-    slug,
-    name: prepName(slug),
-    x,
-    y,
-    rotated: isRotated(slug),
-    type: warp_types[slug],
-  }))
+  area.warps = area.warps.map(([slug, x, y]) => {
+    const name = prepName(slug)
+    const rotated = isRotated(slug)
+    const type = warp_types[slug]
+    return { slug, x, y, name, rotated, type }
+  })
 
-  area.locations = area.locations.map(([slug, x, y]) => ({
-    slug,
-    name: prepName(slug),
-    x,
-    y,
-    chozo: special_locations.chozo[slug],
-    major: special_locations.major[slug],
-    scavenger: special_locations.scavenger[slug],
-  }))
+  area.locations = area.locations.map(([slug, x, y]) => {
+    const name = prepName(slug)
+    const chozo = special_locations.chozo[slug]
+    const major = special_locations.major[slug]
+    const scavenger = special_locations.scavenger[slug]
+    return { slug, x, y, name, chozo, major, scavenger }
+  })
+
+  area.doors = area.doors.map(([slug, x, y]) => {
+    const name = prepName(slug)
+    return { slug, name, x, y, rotated: rotated_doors[slug] }
+  })
 
   return area
 }

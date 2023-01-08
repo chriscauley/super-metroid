@@ -1,6 +1,9 @@
 // data scraped from the t_main.html template fragment. Currently used only for reference
 
 import { startCase, flatten } from 'lodash'
+import default_door_colors from './door_colors'
+
+export { default_door_colors }
 
 export const door_colors = ['red', 'green', 'yellow', 'gray', 'wave', 'spazer', 'plasma', 'ice']
 

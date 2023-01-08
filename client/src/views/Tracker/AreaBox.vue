@@ -1,5 +1,6 @@
 <template>
   <div class="area-box" :style="style">
+    <div v-for="door in doors" :key="door.id" v-bind="door" />
     <div v-for="warp in warps" :key="warp.id" v-bind="warp" />
     <location-marker
       v-for="location in locations"
@@ -12,6 +13,7 @@
 </template>
 
 <script>
+import { default_door_colors } from '@/data/old'
 import LocationMarker from './LocationMarker.vue'
 
 export default {
@@ -22,7 +24,7 @@ export default {
     hide: Array,
     size: null,
   },
-  emits: ['click-location', 'click-warp'],
+  emits: ['click-door', 'click-location', 'click-warp'],
   computed: {
     root() {
       return this.$store.layout.getWorld().root
@@ -60,6 +62,20 @@ export default {
       }
       return locations
     },
+    doors() {
+      if (this.$store.layout.getWorld().hide_locations) {
+        return []
+      }
+      return this.area.doors.map(({ slug, name, x, y, rotated }) => ({
+        id: slug,
+        title: name,
+        class: [`area-door -${this.getDoorColor(slug)}`, rotated && '-rotated'],
+        style: this.getEntityStyle(x, y),
+        'data-type': 'door',
+        'data-id': slug,
+        onclick: () => this.$emit('click-door', slug),
+      }))
+    },
   },
   methods: {
     getEntityStyle(x, y) {
@@ -67,6 +83,9 @@ export default {
         left: `${100 * x}%`,
         top: `${100 * y}%`,
       }
+    },
+    getDoorColor(slug) {
+      return default_door_colors[slug]
     },
   },
 }

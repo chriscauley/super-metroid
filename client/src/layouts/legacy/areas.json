@@ -33,7 +33,17 @@
       ["morphBallRoomLeft", 12.0, 25.25],
       ["climbBottomLeft", 12.25, 19.75]
     ],
-    "title_dxy": [14.5, 0.5]
+    "title_dxy": [14.5, 0.5],
+    "doors": [
+      ["LandingSiteRight", 0, 0],
+      ["LandingSiteTopRight", 0, 0],
+      ["KihunterBottom", 0, 0],
+      ["KihunterRight", 0, 0],
+      ["FlywayRight", 0, 0],
+      ["GreenPiratesShaftBottomRight", 0, 0],
+      ["ClimbRight", 0, 0],
+      ["ConstructionZoneRight", 0, 0]
+    ]
   },
   {
     "slug": "crocomire",
@@ -50,10 +60,15 @@
     "x": 11.75,
     "y": 45.25,
     "warps": [["crocomireRoomTop", 13.25, 0.25]],
-    "title_dxy": [9.0, 3.0]
+    "title_dxy": [9.0, 3.0],
+    "doors": [
+      ["PostCrocomireUpperLeft", 0, 0],
+      ["PostCrocomireShaftRight", 0, 0]
+    ]
   },
   {
     "slug": "draygon",
+    "_doors": [],
     "locations": [
       ["SpaceJump", 0.5, 2.25],
       ["Draygon", 2.25, 1.75]
@@ -63,7 +78,8 @@
     "x": 102.5,
     "y": 25.75,
     "warps": [["draygonRoomIn", 3.75, 1.25]],
-    "title_dxy": [1.5, 2.75]
+    "title_dxy": [1.5, 2.75],
+    "doors": []
   },
   {
     "slug": "east-maridia",
@@ -91,7 +107,16 @@
       ["westSandHallLeft", 0.5, 21.0],
       ["belowBotwoonEnergyTankRight", 13.25, 14.25]
     ],
-    "title_dxy": [9.5, 6.0]
+    "title_dxy": [9.5, 6.0],
+    "doors": [
+      ["ColosseumBottomRight", 0, 0],
+      ["PlasmaSparkBottom", 0, 0],
+      ["OasisTop", 0, 0],
+      ["ForgottenHighwaySaveStation", 0, 0],
+      ["DraygonSaveRefillStation", 0, 0],
+      ["MaridiaAqueductSaveStation", 0, 0],
+      ["LeCoudeBottom", 0, 0]
+    ]
   },
   {
     "slug": "green-brinstar",
@@ -124,7 +149,21 @@
       ["noobBridgeRight", 29.75, 21.0],
       ["greenBrinstarMainShaftTopLeft", 4.25, 11.0]
     ],
-    "title_dxy": [11.0, 7.5]
+    "title_dxy": [11.0, 7.5],
+    "doors": [
+      ["GreenHillZoneTopRight", 0, 0],
+      ["NoobBridgeRight", 0, 0],
+      ["MainShaftRight", 0, 0],
+      ["MainShaftBottomRight", 0, 0],
+      ["EarlySupersRight", 0, 0],
+      ["EtecoonEnergyTankLeft", 0, 0],
+      ["BigPinkTopRight", 0, 0],
+      ["BigPinkRight", 0, 0],
+      ["BigPinkBottomRight", 0, 0],
+      ["BigPinkBottomLeft", 0, 0],
+      ["GreenBrinstarMissileRefill", 0, 0],
+      ["GreenBrinstarSaveStation", 0, 0]
+    ]
   },
   {
     "slug": "kraid",
@@ -137,10 +176,12 @@
     "x": 72.0,
     "y": 37.75,
     "warps": [["kraidRoomIn", 0.25, 1.75]],
-    "title_dxy": [1.5, 2.0]
+    "title_dxy": [1.5, 2.0],
+    "doors": []
   },
   {
     "slug": "kraids-lair",
+    "doors": [["KraidRefillStation", 0, 0]],
     "locations": [
       ["EnergyTankKraid", 1.0, 2.5],
       ["MissileKraid", 5.25, 1.25]
@@ -178,17 +219,23 @@
       ["lavaDiveRight", 11.75, 8.75],
       ["ridleyRoomOut", 9.25, 15.75]
     ],
-    "title_dxy": [17.25, 1.0]
+    "title_dxy": [17.25, 1.0],
+    "doors": [
+      ["RedKihunterShaftBottom", 0, 0],
+      ["WastelandLeft", 0, 0]
+    ]
   },
   {
     "slug": "phantoon",
+    "_doors": [],
     "locations": [["Phantoon", 1.5, 1.0]],
     "width": 2.2222222222222223,
     "height": 2.074074074074074,
     "x": 86.5,
     "y": 11.5,
     "warps": [["phantoonRoomIn", 0.25, 1.0]],
-    "title_dxy": [1.5, 1.5]
+    "title_dxy": [1.5, 1.5],
+    "doors": []
   },
   {
     "slug": "red-brinstar",
@@ -211,10 +258,21 @@
       ["eastTunnelRight", 19.25, 18.5],
       ["eastTunnelTopRight", 22.0, 17.5]
     ],
-    "title_dxy": [8.5, 3.75]
+    "title_dxy": [8.5, 3.75],
+    "doors": [
+      ["RedTowerLeft", 0, 0],
+      ["RedBrinstarFirefleaLeft", 0, 0],
+      ["RedTowerElevatorTopLeft", 0, 0],
+      ["RedTowerElevatorLeft", 0, 0],
+      ["RedTowerElevatorBottomLeft", 0, 0],
+      ["BelowSpazerTopRight", 0, 0],
+      ["RedBrinstarEnergyRefill", 0, 0],
+      ["MaridiaBottomSaveStation", 0, 0]
+    ]
   },
   {
     "slug": "ridley",
+    "_doors": [],
     "locations": [
       ["EnergyTankRidley", 0.5, 2.25],
       ["Ridley", 1.75, 1.5]
@@ -224,10 +282,12 @@
     "x": 84.0,
     "y": 51.75,
     "warps": [["ridleyRoomIn", 3.0, 1.25]],
-    "title_dxy": [0.75, 2.75]
+    "title_dxy": [0.75, 2.75],
+    "doors": []
   },
   {
     "slug": "tourian",
+    "_doors": [],
     "locations": [["MotherBrain", 3.0, 12.25]],
     "width": 11.62962962962963,
     "height": 16.37037037037037,
@@ -237,7 +297,8 @@
       ["goldenFour", 4.0, 1.0],
       ["tourianEscapeRoom4TopRight", 10.5, 11.25]
     ],
-    "title_dxy": [3.5, 3.25]
+    "title_dxy": [3.5, 3.25],
+    "doors": []
   },
   {
     "slug": "upper-norfair",
@@ -270,7 +331,20 @@
       ["kronicBoostRoomBottomLeft", 25.5, 14.75],
       ["businessCenterMidLeft", 8.5, 7.75]
     ],
-    "title_dxy": [10.0, 4.0]
+    "title_dxy": [10.0, 4.0],
+    "doors": [
+      ["BusinessCenterTopLeft", 0, 0],
+      ["BusinessCenterBottomLeft", 0, 0],
+      ["CathedralEntranceRight", 0, 0],
+      ["CathedralRight", 0, 0],
+      ["BubbleMountainTopRight", 0, 0],
+      ["BubbleMountainTopLeft", 0, 0],
+      ["SpeedBoosterHallRight", 0, 0],
+      ["SingleChamberRight", 0, 0],
+      ["DoubleChamberRight", 0, 0],
+      ["KronicBoostBottomLeft", 0, 0],
+      ["CrocomireSpeedwayBottom", 0, 0]
+    ]
   },
   {
     "slug": "west-maridia",
@@ -295,7 +369,12 @@
       ["westSandHallTunnelRight", 8.75, 15.75],
       ["crabHoleBottomRight", 7.5, 16.75]
     ],
-    "title_dxy": [3.25, -0.5]
+    "title_dxy": [3.25, -0.5],
+    "doors": [
+      ["MainStreetBottomRight", 0, 0],
+      ["FishTankRight", 0, 0],
+      ["CrabShaftRight", 0, 0]
+    ]
   },
   {
     "slug": "wrecked-ship",
@@ -322,6 +401,11 @@
       ["phantoonRoomOut", 17.25, 10.75],
       ["basementLeft", 11.75, 10.75]
     ],
-    "title_dxy": [3.75, 6.75]
+    "title_dxy": [3.75, 6.75],
+    "doors": [
+      ["WestOceanRight", 0, 0],
+      ["WreckedShipMainShaftBottom", 0, 0],
+      ["ElectricDeathRoomTopLeft", 0, 0]
+    ]
   }
 ]

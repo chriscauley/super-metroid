@@ -34,6 +34,9 @@ export default {
       this.tool_storage.save({ editing: null })
     },
     drag(e) {
+      if (!this.dragging) {
+        return
+      }
       const { scale, round } = this.$store.layout.getWorld().root
       const { x, y, type, id } = this.dragging
       const [x1, y1] = e._drag.xy
@@ -45,6 +48,9 @@ export default {
     },
     dragstart(e) {
       const { type, id } = e.target.dataset
+      if (!(type && id)) {
+        return
+      }
       const { x, y } = this.area[type + 's'].find((l) => l.slug === id)
       this.dragging = { type, id, x, y }
     },
