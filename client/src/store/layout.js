@@ -27,8 +27,9 @@ export default () => {
     storage.markDirty()
   }
   storage.moveArea = (area_slug, dx, dy) => {
-    layouts.moveArea(storage.state.selected, area_slug, dx, dy)
+    const xy = layouts.moveArea(storage.state.selected, area_slug, dx, dy)
     storage.markDirty()
+    return xy
   }
   storage.moveTitle = (area_slug, dx, dy) => {
     layouts.moveTitle(storage.state.selected, area_slug, dx, dy)

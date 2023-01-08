@@ -1,9 +1,12 @@
 <template>
-  <unrest-modal v-if="area" :hide_actions="true" @close="close">
+  <unrest-modal v-if="area" @close="close">
     <unrest-draggable class="edit-area" @drag="drag" @dragstart="dragstart" @dragend="dragend">
       <img :src="src" />
       <area-box :area="area" />
     </unrest-draggable>
+    <template #actions>
+      <button class="btn -primary" @click="nextArea"><i class="fa fa-chevron-right" /></button>
+    </template>
   </unrest-modal>
 </template>
 
@@ -47,6 +50,12 @@ export default {
     },
     dragend() {
       this.dragging = null
+    },
+    nextArea() {
+      const { areas } = this.$store.layout.getWorld()
+      const index = areas.findIndex((a) => a.slug === this.area.slug)
+      const next_area = areas[(index + 1) % areas.length]
+      this.tool_storage.save({ editing: next_area.slug })
     },
   },
 }

@@ -25,6 +25,7 @@
 </template>
 
 <script>
+import OSD from 'openseadragon'
 import AreaBox from './AreaBox.vue'
 import DragAnchor from './DragAnchor.vue'
 
@@ -108,16 +109,19 @@ export default {
     getEntityStyle(id, x, y) {
       const [dx, dy] = this.dxys[id] || [0, 0]
       const r = this.root.round
-      const offset = this.root.offset || 0
-      const _ = (a, b) => Math.round(r * (a + b / this.root.scale)) / r + offset
+      const _ = (a, b) => Math.round(r * (a + b / this.root.scale)) / r
       return {
         left: `${100 * _(x, dx)}%`,
         top: `${100 * _(y, dy)}%`,
       }
     },
     moveArea([dx, dy]) {
-      const { scale } = this.root
-      this.$store.layout.moveArea(this.area.slug, dx / scale, dy / scale)
+      const { width: max_width, scale } = this.$store.layout.getWorld().root
+      const [x, y] = this.$store.layout.moveArea(this.area.slug, dx / scale, dy / scale)
+      const fname = this.area.slug + '.png'
+      const item = this.osd_store.viewer.world._items.find((i) => i.source.url?.includes(fname))
+      const point = new OSD.Point((x * scale) / max_width, (y * scale) / max_width)
+      item.setPosition(point, true)
     },
     moveTitle([dx, dy]) {
       const { scale } = this.root

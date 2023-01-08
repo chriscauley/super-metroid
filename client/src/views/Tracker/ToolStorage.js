@@ -165,17 +165,6 @@ export default (component) => {
     return map
   }
 
-  storage.getWarpAreaXys = () => {
-    const out = {}
-    const offset = component.$store.layout.getWorld().root.offset
-    component.areas.forEach((area) => {
-      area.warps.forEach((warp) => {
-        out[warp.slug] = [area.slug, area.x + warp.x + offset, area.y + warp.y + offset]
-      })
-    })
-    return out
-  }
-
   storage.getEntityXys = () => {
     const out = {}
     const checkUnique = (slug) => {

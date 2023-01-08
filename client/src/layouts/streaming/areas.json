@@ -18,19 +18,20 @@
       ["MissileblueBrinstarmiddle", 13, 0],
       ["MissileblueBrinstarbottom", 14, 0],
       ["MissileblueBrinstartop", 15, 0],
-      ["MissileblueBrinstarbehindmissile", 16, 0]
+      ["MissileblueBrinstarbehindmissile", 16, 0],
+      ["BombTorizo", 0, 0]
     ],
-    "width": 9,
-    "height": 6,
+    "width": 9.733333333333333,
+    "height": 6.2,
     "x": 1.9203053851895517,
     "y": 3.2119133893580534,
     "warps": [
-      ["lowerMushroomsLeft", 0.39158915529833266, 2.762151198842497],
-      ["greenPiratesShaftBottomRight", 2.109502606678609, 2.762151198842497],
-      ["keyhunterRoomBottom", 7.547513033393046, 1.3915891552983326],
-      ["moatRight", 8.547513033393045, 0.4126162670525011],
-      ["morphBallRoomLeft", 4.195794577649166, 5.307480708281659],
-      ["climbBottomLeft", 5, 1]
+      ["lowerMushroomsLeft", 0.5, 3],
+      ["greenPiratesShaftBottomRight", 2.3000000000000003, 3],
+      ["keyhunterRoomBottom", 8.200000000000001, 1.5],
+      ["moatRight", 9.3, 0.4],
+      ["morphBallRoomLeft", 4.5, 5.7],
+      ["climbBottomLeft", 4.9, 2.5]
     ],
     "title_dxy": [3.6493033314171526, -0.6807044017409876]
   },
@@ -41,23 +42,27 @@
       ["GrappleBeam", 1, 0],
       ["PowerBombCrocomire", 2, 0],
       ["MissilebelowCrocomire", 3, 0],
-      ["MissileGrappleBeam", 4, 0]
+      ["MissileGrappleBeam", 4, 0],
+      ["Crocomire", 0, 0]
     ],
-    "width": 8,
-    "height": 5,
+    "width": 8.533333333333333,
+    "height": 5.4,
     "x": 1.678335708338368,
     "y": 29.326550331993538,
-    "warps": [["crocomireRoomTop", 2.1537403541408295, 0.4126162670525011]],
+    "warps": [["crocomireRoomTop", 2.3000000000000003, 0.5]],
     "title_dxy": [3.8415723278528153, -0.19472503181852785]
   },
   {
     "slug": "draygon",
-    "locations": [["SpaceJump", 0, 0]],
-    "width": 2,
-    "height": 2,
+    "locations": [
+      ["SpaceJump", 0, 0],
+      ["Draygon", 0, 0]
+    ],
+    "width": 2.6666666666666665,
+    "height": 2.6666666666666665,
     "x": 22.329064792189907,
     "y": 22.57423162283703,
-    "warps": [["draygonRoomIn", 1.0442377474622204, 1.0652648592163887]],
+    "warps": [["draygonRoomIn", 1.3, 1.4000000000000001]],
     "title_dxy": [0.8615159231012889, 2.0692420384493557]
   },
   {
@@ -72,18 +77,19 @@
       ["PowerBombrightMaridiasandpitroom", 6, 0],
       ["MissilepinkMaridia", 7, 0],
       ["SuperMissilepinkMaridia", 8, 0],
-      ["MissileDraygon", 9, 0]
+      ["MissileDraygon", 9, 0],
+      ["Botwoon", 0, 0]
     ],
-    "width": 7,
-    "height": 3,
+    "width": 7.133333333333334,
+    "height": 3.8,
     "x": 15.657586579952397,
     "y": 20.28686374463479,
     "warps": [
-      ["leCoudeRight", 6.526485921638877, 0.4126162670525011],
-      ["aqueductTopLeft", 0.4778811262688898, 3.284270072573607],
-      ["draygonRoomOut", 5.850626693766938, 3.3495349317899956],
-      ["westSandHallLeft", 3, 1],
-      ["belowBotwoonEnergyTankRight", 4, 1]
+      ["leCoudeRight", 6.6000000000000005, 0.5],
+      ["aqueductTopLeft", 0.5, 3.4000000000000004],
+      ["draygonRoomOut", 6, 3.4000000000000004],
+      ["westSandHallLeft", 1.9000000000000001, 4],
+      ["belowBotwoonEnergyTankRight", 3.3000000000000003, 2.3000000000000003]
     ],
     "title_dxy": [1, 3]
   },
@@ -105,28 +111,32 @@
       ["PowerBombpinkBrinstar", 12, 0],
       ["MissilegreenBrinstarpipe", 13, 0],
       ["SuperMissilegreenBrinstarbottom", 14, 0],
-      ["PowerBombgreenBrinstarbottom", 15, 0]
+      ["PowerBombgreenBrinstarbottom", 15, 0],
+      ["SporeSpawn", 0, 0]
     ],
-    "width": 7,
-    "height": 8,
+    "width": 7.6,
+    "height": 8.866666666666667,
     "x": 0.021670761702804242,
     "y": 9.980534051544131,
     "warps": [
-      ["greenBrinstarElevator", 2.284270072573607, 0.4778811262688898],
-      ["greenHillZoneTopRight", 4.589567256901383, 5.8295995820127695],
-      ["noobBridgeRight", 6.568540145147214, 7.787545358504433],
-      ["greenBrinstarMainShaftTopLeft", 3, 1]
+      ["greenBrinstarElevator", 2.4000000000000004, 0.5],
+      ["greenHillZoneTopRight", 5, 6.300000000000001],
+      ["noobBridgeRight", 7.1000000000000005, 8.4],
+      ["greenBrinstarMainShaftTopLeft", 0.5, 3.5]
     ],
     "title_dxy": [0.5762444909802633, 6.499183227943391]
   },
   {
     "slug": "kraid",
-    "locations": [["VariaSuit", 0, 0]],
-    "width": 2,
-    "height": 2,
+    "locations": [
+      ["VariaSuit", 0, 0],
+      ["Kraid", 0, 0]
+    ],
+    "width": 2.6666666666666665,
+    "height": 2.6,
     "x": 21.7997519233395,
     "y": 13.51595515185532,
-    "warps": [["kraidRoomIn", 1.0442377474622204, 1]],
+    "warps": [["kraidRoomIn", 1.4000000000000001, 1.4000000000000001]],
     "title_dxy": [0.8765432098765432, 2.4074074074074074]
   },
   {
@@ -135,13 +145,13 @@
       ["EnergyTankKraid", 0, 0],
       ["MissileKraid", 1, 0]
     ],
-    "width": 5,
-    "height": 1,
+    "width": 5.933333333333334,
+    "height": 1.0,
     "x": 16.416302140356347,
     "y": 14.218174384077791,
     "warps": [
-      ["warehouseZeelaRoomLeft", 0.41370802902944287, 0.4557622525377796],
-      ["kraidRoomOut", 4.524302397684994, 0.4778811262688898]
+      ["warehouseZeelaRoomLeft", 0.5, 0.5],
+      ["kraidRoomOut", 5.5, 0.5]
     ],
     "title_dxy": [1.520643238122913, 0.8722680624103385]
   },
@@ -156,27 +166,28 @@
       ["MissilelowerNorfairabovefireflearoom", 5, 0],
       ["PowerBomblowerNorfairabovefireflearoom", 6, 0],
       ["PowerBombPowerBombsofshame", 7, 0],
-      ["MissilelowerNorfairnearWaveBeam", 8, 0]
+      ["MissilelowerNorfairnearWaveBeam", 8, 0],
+      ["GoldenTorizo", 0, 0]
     ],
-    "width": 5,
-    "height": 4,
+    "width": 5.8,
+    "height": 4.533333333333333,
     "x": 18.357159928395657,
     "y": 28.241549967705176,
     "warps": [
-      ["threeMuskateersRoomLeft", 3.654832116117771, 0.4126162670525011],
-      ["lavaDiveRight", 1.3263242960819444, 0.4778811262688898],
-      ["ridleyRoomOut", 2.52211887373111, 3.5453295094391617]
+      ["threeMuskateersRoomLeft", 4.3, 0.5],
+      ["lavaDiveRight", 1.5, 0.5],
+      ["ridleyRoomOut", 2.9000000000000004, 4]
     ],
     "title_dxy": [1.744124852864691, 1.0040024225999833]
   },
   {
     "slug": "phantoon",
-    "locations": [],
-    "width": 2,
-    "height": 2,
+    "locations": [["Phantoon", 0, 0]],
+    "width": 2.6666666666666665,
+    "height": 2.6666666666666665,
     "x": 20.055729080078944,
     "y": 10.306341801654924,
-    "warps": [["phantoonRoomIn", 1.0442377474622204, 1.0652648592163887]],
+    "warps": [["phantoonRoomIn", 1.4000000000000001, 1.4000000000000001]],
     "title_dxy": [0.9198339283426371, 2.5779367456289646]
   },
   {
@@ -188,40 +199,43 @@
       ["PowerBombredBrinstarspikeroom", 3, 0],
       ["MissileredBrinstarspikeroom", 4, 0]
     ],
-    "width": 7,
-    "height": 7,
+    "width": 7.933333333333334,
+    "height": 7.733333333333333,
     "x": 8.36232593836389,
     "y": 15.275891001156904,
     "warps": [
-      ["redBrinstarElevator", 2.67585922787194, 0.4778811262688898],
-      ["caterpillarRoomTopRight", 3.8716538055211056, 1.5221188737311102],
-      ["redTowerTopLeft", 0.43364337880666937, 3.871653805521106],
-      ["glassTunnelTop", 3.9137080290294426, 5.633805004363603],
-      ["eastTunnelRight", 6.610594368655551, 6.35171845574388],
-      ["eastTunnelTopRight", 6.56635662119333, 5.111686130632493]
+      ["redBrinstarElevator", 3.1, 0.5],
+      ["caterpillarRoomTopRight", 4.4, 1.7000000000000002],
+      ["redTowerTopLeft", 0.5, 4.4],
+      ["glassTunnelTop", 4.5, 6.4],
+      ["eastTunnelRight", 7.5, 7.300000000000001],
+      ["eastTunnelTopRight", 7.5, 5.7]
     ],
     "title_dxy": [2.4416253272702217, -1.2527460714814325]
   },
   {
     "slug": "ridley",
-    "locations": [["EnergyTankRidley", 0, 0]],
-    "width": 2,
-    "height": 2,
+    "locations": [
+      ["EnergyTankRidley", 0, 0],
+      ["Ridley", 0, 0]
+    ],
+    "width": 2.7333333333333334,
+    "height": 2.6666666666666665,
     "x": 19.89601118701274,
     "y": 32.53085626394174,
-    "warps": [["ridleyRoomIn", 0.935826902760553, 1]],
+    "warps": [["ridleyRoomIn", 1.4000000000000001, 1.4000000000000001]],
     "title_dxy": [0.7530864197530864, 1.9753086419753085]
   },
   {
     "slug": "tourian",
-    "locations": [],
-    "width": 5,
-    "height": 6,
+    "locations": [["MotherBrain", 0, 0]],
+    "width": 5.933333333333334,
+    "height": 6.266666666666667,
     "x": 17.393040669317294,
     "y": 1.476330004237841,
     "warps": [
-      ["goldenFour", 4.111686130632493, 0.6084108447016674],
-      ["tourianEscapeRoom4TopRight", 1, 1]
+      ["goldenFour", 4.9, 0.7000000000000001],
+      ["tourianEscapeRoom4TopRight", 5.5, 3.5]
     ],
     "title_dxy": [-3.7552249998724094, 2.6033829406090674]
   },
@@ -244,8 +258,8 @@
       ["MissileHiJumpBoots", 13, 0],
       ["EnergyTankHiJumpBoots", 14, 0]
     ],
-    "width": 10,
-    "height": 6,
+    "width": 10.066666666666666,
+    "height": 6.333333333333333,
     "x": 7.980189284568491,
     "y": 25.056165463804142,
     "warps": [
@@ -269,17 +283,17 @@
       ["MissileyellowMaridiasupermissile", 5, 0],
       ["MissileyellowMaridiafalsewall", 6, 0]
     ],
-    "width": 8,
-    "height": 6,
+    "width": 8.533333333333333,
+    "height": 6.666666666666667,
     "x": 0.819209846814609,
     "y": 19.819503466144074,
     "warps": [
-      ["redFishRoomLeft", 2.0232106357080517, 1.3915891552983326],
-      ["crabShaftRight", 6.025394159661936, 2.8926809172752743],
-      ["mainStreetBottom", 2.4568540145147213, 5.699069863579991],
-      ["crabHoleBottomLeft", 5.741124087088329, 5.8295995820127695],
-      ["westSandHallTunnelRight", 4, 1],
-      ["crabHoleBottomRight", 5, 1]
+      ["redFishRoomLeft", 2.1, 1.5],
+      ["crabShaftRight", 6.5, 3.1],
+      ["mainStreetBottom", 2.7, 6.1000000000000005],
+      ["crabHoleBottomLeft", 6.2, 6.2],
+      ["westSandHallTunnelRight", 7.2, 5],
+      ["crabHoleBottomRight", 7.300000000000001, 6.2]
     ],
     "title_dxy": [4.215188342220863, 1.1342860542047521]
   },
@@ -298,15 +312,15 @@
       ["MissileWreckedShiptop", 9, 0],
       ["SuperMissileWreckedShipleft", 10, 0]
     ],
-    "width": 7,
-    "height": 2,
+    "width": 7.2,
+    "height": 2.466666666666667,
     "x": 17.701427300515356,
     "y": 7.296165126496215,
     "warps": [
       ["westOceanLeft", 0.41370802902944304, 0.49890823802305817],
-      ["crabMazeLeft", 6.482248174176657, 0.4778811262688898],
-      ["phantoonRoomOut", 3.5010917619769417, 1.9137080290294428],
-      ["basementLeft", 3, 1]
+      ["crabMazeLeft", 6.7, 0.5],
+      ["phantoonRoomOut", 3.6, 2],
+      ["basementLeft", 2.1, 2]
     ],
     "title_dxy": [-0.039324373113409195, 1.631029533989207]
   }

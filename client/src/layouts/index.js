@@ -111,6 +111,7 @@ export default {
     }
     area.x += dx
     area.y += dy
+    return [area.x, area.y]
   },
   moveTitle(layout_slug, area_slug, dx, dy) {
     const area = this[layout_slug].areas.find((area) => area.slug === area_slug)

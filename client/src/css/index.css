@@ -251,12 +251,7 @@ body {
   }
 }
 
-.-layout-streaming .area-warp {
-  --width: 130%;
-  --height: 130%; /* make it square */
-}
-
-.-layout-alt-streaming .area-warp {
+.-layout-alt-streaming .area-warp,.-layout-streaming .area-warp {
   --width: 100%;
   --height: 100%; /* make it square */
 }
@@ -265,10 +260,6 @@ body {
   .area-warp {
     &:before {
       background: radial-gradient(#000, #000 50%, #a0f8f8 60%, #a0f8f8 90%, #000 100%);
-    }
-    .-tool-admin_move_location& {
-      @apply flex items-center justify-center;
-      outline: 2px solid white;
     }
     &.-escape, &.-sand {
       display: none;

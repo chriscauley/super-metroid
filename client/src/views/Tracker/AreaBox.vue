@@ -50,7 +50,7 @@ export default {
       }))
     },
     locations() {
-      if (this.hide?.includes('locations')) {
+      if (this.$store.layout.getWorld().hide_locations) {
         return []
       }
       const { split } = this.tool_storage.state
