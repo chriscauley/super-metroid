@@ -60,7 +60,7 @@
     "x": 10.368949069618225,
     "y": 41.38706729226822,
     "warps": [["crocomireRoomTop", 12.5, -0.5]],
-    "title_dxy": [12.02291867179981, 1.715531761308951],
+    "title_dxy": [12.08541867179981, 1.340531761308951],
     "doors": [
       ["PostCrocomireShaftRight", 8, 5.5],
       ["PostCrocomireUpperLeft", 7, 0.5]
@@ -148,7 +148,7 @@
       ["noobBridgeRight", 28.5, 15.5],
       ["greenBrinstarMainShaftTopLeft", 3.5, 6.5]
     ],
-    "title_dxy": [7.583333333333334, 2.75],
+    "title_dxy": [11.302083333333334, 3.65625],
     "doors": [
       ["BigPinkBottomRight", 14, 12.5],
       ["BigPinkBottomLeft", 10, 15.5],
@@ -192,7 +192,7 @@
       ["warehouseZeelaRoomLeft", 0.5, 0.5],
       ["kraidRoomOut", 12.5, 1.5]
     ],
-    "title_dxy": [3.6483185755534167, 3.072697545717036],
+    "title_dxy": [3.6170685755534167, 2.635197545717036],
     "doors": [["KraidRefillStation", 11, 0.5]]
   },
   {
@@ -218,7 +218,7 @@
       ["lavaDiveRight", 11.5, 7.5],
       ["ridleyRoomOut", 8.5, 13.5]
     ],
-    "title_dxy": [7.552083333333334, 4.364583333333333],
+    "title_dxy": [13.833333333333334, 4.177083333333333],
     "doors": [
       ["RedKihunterShaftBottom", 22.5, 11],
       ["WastelandLeft", 18, 13.5]
@@ -256,7 +256,7 @@
       ["eastTunnelRight", 18.5, 16.5],
       ["eastTunnelTopRight", 21.5, 15.5]
     ],
-    "title_dxy": [7.392707811998719, 2.7837301892845687],
+    "title_dxy": [7.392707811998719, 3.3462301892845687],
     "doors": [
       ["MaridiaBottomSaveStation", 17, 17.5],
       ["RedTowerElevatorTopLeft", 14, 5.5],
@@ -327,7 +327,7 @@
       ["kronicBoostRoomBottomLeft", 23, 12.5],
       ["businessCenterMidLeft", 7.5, 6.5]
     ],
-    "title_dxy": [10.904010587102984, 3.4486246390760336],
+    "title_dxy": [10.935260587102984, 2.9173746390760336],
     "doors": [
       ["BubbleMountainTopRight", 22, 4.5],
       ["BusinessCenterBottomLeft", 8, 7.5],
@@ -397,7 +397,7 @@
       ["phantoonRoomOut", 15.5, 9.5],
       ["basementLeft", 9.5, 9.5]
     ],
-    "title_dxy": [3.3541810234199545, 7.233139797882579],
+    "title_dxy": [3.3541810234199545, 6.483139797882579],
     "doors": [
       ["WestOceanRight", 8, 4.5],
       ["ElectricDeathRoomTopLeft", 17, 3.5],

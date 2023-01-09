@@ -18,7 +18,7 @@ import LocationMarker from './LocationMarker.vue'
 
 export default {
   components: { LocationMarker },
-  inject: ['tool_storage'],
+  inject: ['json_data', 'tool_storage'],
   props: {
     area: Object,
     hide: Array,
@@ -85,6 +85,10 @@ export default {
       }
     },
     getDoorColor(slug) {
+      const json_door = this.json_data?.doors[slug]
+      if (json_door) {
+        return json_door[0]
+      }
       return default_door_colors[slug]
     },
   },
