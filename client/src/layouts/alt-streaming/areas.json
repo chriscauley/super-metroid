@@ -55,8 +55,8 @@
       ["MissileGrappleBeam", 4, 0],
       ["Crocomire", 0, 0]
     ],
-    "width": 6.0,
-    "height": 6.0,
+    "width": 3.0,
+    "height": 3.0,
     "x": 4.440892098500626e-16,
     "y": 21.6,
     "warps": [["crocomireRoomTop", 3.1, -0.5]],
@@ -72,8 +72,8 @@
       ["SpaceJump", 0, 0],
       ["Draygon", 0, 0]
     ],
-    "width": 6.0,
-    "height": 6.0,
+    "width": 3.0,
+    "height": 3.0,
     "x": 8.447528690821375,
     "y": 21.6,
     "warps": [["draygonRoomIn", 2.9000000000000004, -0.5]],
@@ -170,8 +170,8 @@
       ["VariaSuit", 0, 0],
       ["Kraid", 0, 0]
     ],
-    "width": 6.0,
-    "height": 6.0,
+    "width": 3.0,
+    "height": 3.0,
     "x": 5.747089191296508,
     "y": 21.6,
     "warps": [["kraidRoomIn", 3, -0.4]],
@@ -227,8 +227,8 @@
   {
     "slug": "phantoon",
     "locations": [["Phantoon", 0, 0]],
-    "width": 6.0,
-    "height": 6.0,
+    "width": 3.0,
+    "height": 3.0,
     "x": 2.8389235764235745,
     "y": 21.6,
     "warps": [["phantoonRoomIn", 3, -0.4]],
@@ -274,8 +274,8 @@
       ["EnergyTankRidley", 0, 0],
       ["Ridley", 0, 0]
     ],
-    "width": 6.0,
-    "height": 6.0,
+    "width": 3.0,
+    "height": 3.0,
     "x": 11.355694305694307,
     "y": 21.6,
     "warps": [["ridleyRoomIn", 3, -0.4]],
@@ -285,8 +285,8 @@
   {
     "slug": "tourian",
     "locations": [["MotherBrain", 0, 0]],
-    "width": 6.0,
-    "height": 6.0,
+    "width": 3.0,
+    "height": 3.0,
     "x": 14.402343997465946,
     "y": 21.6,
     "warps": [

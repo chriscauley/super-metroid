@@ -40,6 +40,10 @@ export default () => {
     saveFile(JSON.stringify(areas, null, 2), 'areas.json')
     storage.state.dirty = null
   }
+  window.savePaths = () => {
+    const svg_coords = layouts[storage.state.selected].svg_coords
+    saveFile('export default ' + JSON.stringify(svg_coords, null, 2), 'svg_coords.js')
+  }
   storage.getButton = (component) => {
     const { selected } = storage.state
     return {
@@ -54,6 +58,11 @@ export default () => {
         component.resetZoom()
       },
     }
+  }
+  storage.savePath = (area_slug, path_id, path) => {
+    const { selected } = storage.state
+    layouts.savePath(selected, area_slug, path_id, path)
+    storage.markDirty()
   }
   return storage
 }

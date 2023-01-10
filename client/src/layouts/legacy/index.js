@@ -1,6 +1,8 @@
 import areas from './areas.json'
+import svg_coords from './svg_coords'
 
 export default {
+  svg_coords,
   root: {
     scale: 13.5,
     height: 750,

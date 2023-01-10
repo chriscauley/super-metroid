@@ -63,7 +63,7 @@ sand_doors.forEach((w) => {
   warp_types[w] = 'sand'
 })
 
-const prepArea = (area) => {
+const prepArea = (area, layout) => {
   area = cloneDeep(area)
   const isRotated = (slug) => slug.match(rotated_warp_regexp)
   area.name = prepName(area.slug)
@@ -88,18 +88,21 @@ const prepArea = (area) => {
     return { slug, name, x, y, rotated: rotated_doors[slug] }
   })
 
+  if (layout.svg_coords) {
+    area.svg_coords = layout.svg_coords[area.slug]
+  }
+
   return area
 }
 
 export default {
-  prepArea,
   legacy,
   nordub,
   streaming,
   'alt-streaming': alt_streaming,
   slugs: ['legacy', 'nordub', 'streaming', 'alt-streaming'],
   getAreas(slug) {
-    const areas = this[slug].areas.map(prepArea)
+    const areas = this[slug].areas.map((a) => prepArea(a, this[slug]))
     return areas
   },
   moveEntity(layout_slug, { type, id }, x, y) {
@@ -132,5 +135,8 @@ export default {
     area.title_dxy = area.title_dxy || [0, 0]
     area.title_dxy[0] += dx
     area.title_dxy[1] += dy
+  },
+  savePath(layout_slug, area_slug, path_id, path) {
+    this[layout_slug].svg_coords[area_slug][path_id] = path
   },
 }

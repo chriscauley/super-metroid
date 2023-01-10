@@ -1,7 +1,9 @@
 import areas from './areas.json'
 import legacy from '../legacy'
+import svg_coords from './svg_coords'
 
 export default {
+  svg_coords,
   root: {
     scale: 32,
     width: 3200,

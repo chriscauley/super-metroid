@@ -16,6 +16,14 @@
   }
 }
 
-.tracker-toolbar {
+.edit-area__click-mask {
+  z-index: 20; /* above locations, warps, and doors */
+}
+
+.ur-toolbar {
   z-index: 100;
+}
+
+.modal {
+  z-index: 200;
 }

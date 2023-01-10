@@ -9,20 +9,22 @@
       :style="getEntityStyle(location.x, location.y)"
       @click="$emit('click-location', location.slug)"
     />
+    <area-svg :area="area" :extra_path="extra_path" />
   </div>
 </template>
 
 <script>
 import { default_door_colors } from '@/data/old'
+import AreaSvg from './AreaSvg.vue'
 import LocationMarker from './LocationMarker.vue'
 
 export default {
-  components: { LocationMarker },
+  components: { AreaSvg, LocationMarker },
   inject: ['json_data', 'tool_storage'],
   props: {
     area: Object,
-    hide: Array,
     size: null,
+    extra_path: Array,
   },
   emits: ['click-door', 'click-location', 'click-warp'],
   computed: {
