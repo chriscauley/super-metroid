@@ -83,3 +83,11 @@
 .smva-difficulty.-difficulty-mania:after {
   background-position: 0 -600%;
 }
+
+.smva-difficulty.-nothing:before {
+  display: none;
+}
+.smva-difficulty.-nothing:after {
+  background-image: url(./images/varia/visited-boxes.png);
+  image-rendering: unset;
+}

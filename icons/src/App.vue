@@ -37,6 +37,9 @@ const levels = ['break', 'easy', 'medium', 'hard', 'harder', 'hardcore', 'mania'
 all_bosses.forEach((b, i) =>
   icon_groups.smv.push(`smv-boss -${b} smva-difficulty -difficulty-${levels[i % levels.length]}`),
 )
+levels.forEach((level) =>
+  icon_groups.smv.push(`smv-boss -nothing smva-difficulty -difficulty-${level}`),
+)
 
 let i = 0
 while (i < 10) {
