@@ -14,8 +14,22 @@ body.-site-varia {
     margin-top: 24px; /* topnav */
     margin-bottom: 60px; /* push old tracker below footer */
   }
+  .footer {
+    position: static;
+  }
+  .btn-default {
+    color: #ffffff;
+    background-color: #3e3f3a;
+    border-color: transparent;
+  }
+  tr:last-child {
+    td {
+      border: 0;
+    }
+  }
 }
 
 .tooltip {
+  /* current varia tooltips have flicker issues */
   pointer-events: none;
 }

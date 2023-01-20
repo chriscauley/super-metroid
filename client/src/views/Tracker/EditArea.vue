@@ -31,6 +31,7 @@
 <script>
 import { sortBy } from 'lodash'
 
+import { getStaticUrl } from '@/utils'
 import AreaStorage from './AreaStorage'
 import AreaBox from './AreaBox.vue'
 
@@ -53,7 +54,7 @@ export default {
   computed: {
     src() {
       const { selected } = this.$store.layout.state
-      return `/${selected}/${this.area.slug}.png`
+      return getStaticUrl(`/${selected}/${this.area.slug}.png`)
     },
     wrapper_class() {
       return ['edit-area -tool-' + this.area_storage.state.selected.tool]
@@ -93,7 +94,7 @@ export default {
       const _ = this.getRoundedPoint
       const dx = x1 - x2
       const dy = y1 - y2
-      this.$store.layout.moveEntity({ type, id }, _(x + dx), _(y + dy))
+      this.$store.layout.moveEntity({ type, id }, x + _(dx), y + _(dy))
     },
     dragstart(e) {
       const { type, id } = e.target.dataset
@@ -129,8 +130,11 @@ export default {
     },
     getRoundedPoint(e) {
       const { scale, round } = this.$store.layout.getWorld().root
-      const rect = e.target.getBoundingClientRect()
       const _ = (i) => round * Math.round(i / scale / round)
+      if (typeof e === 'number') {
+        return _(e)
+      }
+      const rect = e.target.getBoundingClientRect()
       return [_(e.clientX - rect.x), _(e.clientY - rect.y)]
     },
     savePath() {

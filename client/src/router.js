@@ -10,7 +10,7 @@ const routes = [
   { path: '/cheat-sheet/', component: CheatSheet },
 ]
 
-const history = (process.env.NODE_ENV === 'production' ? createWebHashHistory : createWebHistory)()
+const history = (process.env.VUE_APP_SITE === 'github' ? createWebHashHistory : createWebHistory)()
 
 const router = createRouter({ history, routes })
 

@@ -10,7 +10,7 @@ export const door_colors = ['red', 'green', 'yellow', 'gray', 'wave', 'spazer', 
 export const ammo = ['missile', 'super-missile', 'power-bomb']
 export const energy = ['energy', 'reserve-tank']
 export const beams = ['charge-beam', 'ice-beam', 'wave-beam', 'spazer-beam', 'plasma-beam']
-const suits = ['varia', 'gravity']
+const suits = ['varia-suit', 'gravity-suit']
 const items = [
   'morph-ball',
   'bomb',

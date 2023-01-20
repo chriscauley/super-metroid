@@ -66,8 +66,10 @@
       @toggle-item="toggleItem"
     />
     <seed-settings :json_data="json_data" />
+    <Teleport to="body">
+      <edit-area :area="editing_area" :tool_storage="tool_storage" />
+    </Teleport>
   </div>
-  <edit-area :area="editing_area" :tool_storage="tool_storage" />
 </template>
 
 <script>
@@ -232,7 +234,7 @@ export default {
       this.areas.forEach((area) => {
         const { width: max_width, scale } = this.$store.layout.getWorld().root
         let { width, x, y } = area
-        const url = `/${selected}/${area.slug}.png`
+        const url = getStaticUrl(`/${selected}/${area.slug}.png`)
         this.osd_store.viewer.addSimpleImage({
           url,
           x: (x * scale) / max_width,
@@ -309,6 +311,10 @@ export default {
       this.resetZoom()
     }, 200),
     setJsonData(json_data) {
+      if (json_data) {
+        json_data.svg_rooms = { unknownSvg: true }
+        json_data.roomsVisibility.forEach((s) => (json_data.svg_rooms[s] = true))
+      }
       this.json_data = json_data
     },
   },

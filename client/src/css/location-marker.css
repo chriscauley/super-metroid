@@ -8,6 +8,9 @@
     filter:grayscale(1);
     inset: 10%;
   }
+  &.-nothing:before {
+    display: none;
+  }
 }
 
 .tracker-view {

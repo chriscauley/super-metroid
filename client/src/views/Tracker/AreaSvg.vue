@@ -5,14 +5,6 @@
 </template>
 
 <script>
-const toPath = (array) => {
-  const coords = array.map((a) => a.join(' '))
-  if (coords[0] !== coords[coords.length - 1]) {
-    coords.push(coords[0])
-  }
-  return array.length ? `M ${coords.join(' L ')} z` : ''
-}
-
 export default {
   inject: ['json_data'],
   props: {
@@ -32,16 +24,22 @@ export default {
       }
     },
     paths() {
+      const svg_rooms = this.json_data?.svg_rooms || {}
       const entries = Object.entries(this.area.svg_coords || {})
       if (this.extra_path) {
         entries.push(['unknownSvg', this.extra_path])
       }
-      return entries
-        .map(([key, coords]) => ({
-          d: toPath(coords),
-          id: key,
-        }))
-        .filter((p) => p.d)
+      const prep = ([id, coords]) => {
+        if (!coords?.length || !svg_rooms[id]) {
+          return null
+        }
+        coords = coords.map((a) => a.join(' '))
+        if (coords[0] !== coords[coords.length - 1]) {
+          coords.push(coords[0])
+        }
+        return { id, d: `M ${coords.join(' L ')} z` }
+      }
+      return entries.map(prep).filter(Boolean)
     },
   },
 }

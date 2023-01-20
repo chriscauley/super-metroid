@@ -1,6 +1,6 @@
 <template>
   <div :style="style.wrapper" class="area-overlay">
-    <area-box :area="area" size="100%" @click-location="clickEntity" @click-warp="clickEntity" />
+    <area-box :area="area" size="100%" @click-location="clickLocation" @click-warp="clickWarp" />
     <div class="area-overlay__title" :style="style.title">
       <drag-anchor
         v-if="moving_area"
@@ -127,11 +127,19 @@ export default {
       const { scale } = this.root
       this.$store.layout.moveTitle(this.area.slug, dx / scale, dy / scale)
     },
-    clickLocation(e, location) {
-      return this.clickEntity(e, { id: location, type: 'location' })
+    clickLocation(id) {
+      if (this.json_data) {
+        window.clickLoc({ id })
+      } else {
+        this.tool_storage.click(id, this.game_state)
+      }
     },
-    clickEntity(id) {
-      this.tool_storage.click(id, this.game_state)
+    clickWarp(id) {
+      if (this.json_data) {
+        window.clickPortal(id)
+      } else {
+        this.tool_storage.click(id, this.game_state)
+      }
     },
   },
 }
