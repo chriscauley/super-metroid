@@ -50,7 +50,7 @@ export default {
           id: `gps__${slug}`,
           style: this.getEntityStyle(x, y),
           title: name,
-          class: [`area-box__gps fa smv-gps`, lastAP === slug && '-visible'],
+          class: [`area-box__gps smv-gps`, lastAP === slug && '-visible'],
           'data-id': slug,
           'data-type': 'gps',
         })

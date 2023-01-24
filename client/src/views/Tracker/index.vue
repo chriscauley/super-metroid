@@ -28,9 +28,6 @@
             </div>
           </template>
         </unrest-dropdown>
-        <button v-if="is_varia" class="btn -info" @click="startTheTour">
-          <i class="fa fa-question" />
-        </button>
       </template>
     </unrest-toolbar>
     <osd-viewer

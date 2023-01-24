@@ -61,7 +61,8 @@ export default (component) => {
       tools.push({ slug: 'admin_move_title', icon: 'fa fa-i-cursor' })
     }
     if (component.is_varia) {
-      tools.unshift({ slug: 'play', click: window.displayPopup(component.is_plando) })
+      const click = () => window.displayPopup(component.is_plando)
+      tools.unshift({ slug: 'play', click, icon: 'fa fa-play' })
     }
     return tools
   }
@@ -108,6 +109,30 @@ export default (component) => {
     },
   }
 
+  const connectWarp = (id, selected_warp) => {
+    const { json_data } = component
+    if (json_data) {
+      window.clickPortal(id, selected_warp)
+    } else {
+      addAction(['connect-warp', id, selected_warp])
+    }
+    storage.state.selected_warp = null
+  }
+
+  const disconnectWarp = (id, selected_warp) => {
+    const { json_data, game_state } = component
+    if (json_data) {
+      if (game_state[id]) {
+        window.removePortal(id)
+      } else {
+        window.addPortal(id, selected_warp)
+      }
+    } else {
+      addAction(['disconnect-warp', id, selected_warp])
+    }
+    storage.state.selected_warp = null
+  }
+
   storage.click = (id, game_state) => {
     const type = warp_type_map[id]
     if (type === 'location') {
@@ -119,11 +144,8 @@ export default (component) => {
         storage.state.selected_warp = null
       } else if (selected_warp && warps[id] === selected_warp) {
         // user clicked an alreayd connected pair, disconnect them
-        addAction(['disconnect-warp', id, selected_warp])
-        storage.state.selected_warp = null
       } else if (selected_warp && !warps[id] && !warps[selected_warp]) {
-        addAction(['connect-warp', id, selected_warp])
-        storage.state.selected_warp = null
+        connectWarp(id, selected_warp)
       } else {
         storage.state.selected_warp = id
       }

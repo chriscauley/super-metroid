@@ -35,6 +35,20 @@ body.-site-varia {
     /* dropdown button for setting menu is smaller */
     @apply flex;
   }
+  #doorPopup, #solverPopup, #itemPopup {
+    z-index: 200;
+  }
+  #solverPopup {
+    width: unset;
+    left: 50%;
+    transform: translate(-50%, 0);
+    input {
+      flex-shrink: 1;
+    }
+    .input-td {
+      @apply flex items-center justify-between;
+    }
+  }
 }
 
 .tooltip {

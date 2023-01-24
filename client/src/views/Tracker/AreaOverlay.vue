@@ -135,11 +135,7 @@ export default {
       }
     },
     clickWarp(id) {
-      if (this.json_data) {
-        window.clickPortal(id)
-      } else {
-        this.tool_storage.click(id, this.game_state)
-      }
+      this.tool_storage.click(id, this.game_state)
     },
   },
 }

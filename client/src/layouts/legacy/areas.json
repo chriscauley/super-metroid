@@ -45,10 +45,10 @@
       ["ConstructionZoneRight", 21.75, 25.25]
     ],
     "gpss": [
-      ["landingSite", 21.5, 3.25],
-      ["blueBrinstarElevatorBottom", 17.5, 24.75],
-      ["gauntletTop", 5, 2.25],
-      ["moatLeft", 31, 3.5]
+      ["landingSite", 22.0, 3.75],
+      ["blueBrinstarElevatorBottom", 18.0, 25.25],
+      ["gauntletTop", 5.5, 2.75],
+      ["moatLeft", 31.5, 4.0]
     ]
   },
   {
@@ -86,7 +86,7 @@
     "warps": [["draygonRoomIn", 3.75, 1.25]],
     "title_dxy": [1.5, 2.75],
     "doors": [],
-    "gpss": [["draygonRoomBottom", 1.25, -0.25]]
+    "gpss": [["draygonRoomBottom", 1.75, 0.25]]
   },
   {
     "slug": "east-maridia",
@@ -125,15 +125,15 @@
       ["LeCoudeBottom", 18, 1.75]
     ],
     "gpss": [
-      ["preciousRoomTop", 25, 10.25],
-      ["aqueduct", 6, 12.75],
-      ["aqueductBottom", 3, 14.75],
-      ["toiletTop", 5, 6.75],
-      ["leftSandpit", 3.75, 18.25],
-      ["oasisBottom", 5, 20.5],
-      ["postBotwoon", 9.25, 11.5],
-      ["colosseumTopRight", 24, 9.25],
-      ["rightSandpit", 7, 18.25]
+      ["preciousRoomTop", 25.5, 10.75],
+      ["aqueduct", 6.5, 13.25],
+      ["aqueductBottom", 3.5, 15.25],
+      ["toiletTop", 5.5, 7.25],
+      ["leftSandpit", 4.25, 18.75],
+      ["oasisBottom", 5.5, 21.0],
+      ["postBotwoon", 9.75, 12.0],
+      ["colosseumTopRight", 24.5, 9.75],
+      ["rightSandpit", 7.5, 18.75]
     ]
   },
   {
@@ -183,9 +183,9 @@
       ["GreenBrinstarSaveStation", 4.25, 12.25]
     ],
     "gpss": [
-      ["bigPink", 13, 10.5],
-      ["etecoonsSupers", 0, 16.25],
-      ["etecoonsBottom", 1.5, 16.25]
+      ["bigPink", 13.5, 11.0],
+      ["etecoonsSupers", 0.5, 16.75],
+      ["etecoonsBottom", 2.0, 16.75]
     ]
   },
   {
@@ -250,13 +250,13 @@
       ["WastelandLeft", 19.25, 15.75]
     ],
     "gpss": [
-      ["lNEntrance", 6.5, 11.75],
-      ["lNAboveGT", 2, 14],
-      ["screwAttackBottom", 5.25, 14.25],
-      ["firefleas", 22.25, 7.25],
-      ["firefleasTop", 23.25, 2.75],
-      ["ridleyZone", 10, 15.25],
-      ["wasteland", 19.75, 13]
+      ["lNEntrance", 7.0, 12.25],
+      ["lNAboveGT", 2.5, 14.5],
+      ["screwAttackBottom", 5.75, 14.75],
+      ["firefleas", 22.75, 7.75],
+      ["firefleasTop", 23.75, 3.25],
+      ["ridleyZone", 10.5, 15.75],
+      ["wasteland", 20.25, 13.5]
     ]
   },
   {
@@ -381,12 +381,12 @@
       ["CrocomireSpeedwayBottom", 14.25, 14]
     ],
     "gpss": [
-      ["bubbleMountain", 21.5, 7.5],
-      ["bubbleMountainTop", 22, 5.25],
-      ["bubbleMountainBottom", 21.5, 8.75],
-      ["businessCenter", 8.5, 5.25],
-      ["cathedral", 13.75, 5.5],
-      ["grappleEscape", 11.5, 9.75]
+      ["bubbleMountain", 22.0, 8.0],
+      ["bubbleMountainTop", 22.5, 5.75],
+      ["bubbleMountainBottom", 22.0, 9.25],
+      ["businessCenter", 9.0, 5.75],
+      ["cathedral", 14.25, 6.0],
+      ["grappleEscape", 12.0, 10.25]
     ]
   },
   {
@@ -419,12 +419,12 @@
       ["CrabShaftRight", 10, 9]
     ],
     "gpss": [
-      ["beach", 8.75, 3.75],
-      ["crabShaftLeft", 8.5, 7.25],
-      ["mamaTurtle", 8.75, 14],
-      ["wateringHole", 5.25, 2.75],
-      ["wateringHoleBottom", 2, 3.75],
-      ["redFishRoomBottom", 4.25, 6]
+      ["beach", 9.25, 4.25],
+      ["crabShaftLeft", 9.0, 7.75],
+      ["mamaTurtle", 9.25, 14.5],
+      ["wateringHole", 5.75, 3.25],
+      ["wateringHoleBottom", 2.5, 4.25],
+      ["redFishRoomBottom", 4.75, 6.5]
     ]
   },
   {
@@ -459,9 +459,9 @@
       ["ElectricDeathRoomTopLeft", 19, 4]
     ],
     "gpss": [
-      ["wreckedShipMain", 13.5, 3.5],
-      ["wreckedShipBack", 19, 3.5],
-      ["bowling", 7.5, 2.25]
+      ["wreckedShipMain", 14.0, 4.0],
+      ["wreckedShipBack", 19.5, 4.0],
+      ["bowling", 8.0, 2.75]
     ]
   }
 ]
