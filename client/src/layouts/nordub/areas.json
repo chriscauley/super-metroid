@@ -43,6 +43,12 @@
       ["FlywayRight", 18, 6.5],
       ["KihunterRight", 29, 4.5],
       ["LandingSiteTopRight", 25, 1.5]
+    ],
+    "gpss": [
+      ["gauntletTop", 4, 2],
+      ["landingSite", 20, 3.5],
+      ["blueBrinstarElevatorBottom", 16, 29],
+      ["moatLeft", 29, 3]
     ]
   },
   {
@@ -64,7 +70,8 @@
     "doors": [
       ["PostCrocomireShaftRight", 8, 5.5],
       ["PostCrocomireUpperLeft", 7, 0.5]
-    ]
+    ],
+    "gpss": []
   },
   {
     "slug": "draygon",
@@ -78,7 +85,8 @@
     "y": 23.676071070830215,
     "warps": [["draygonRoomIn", 3.5, 0.5]],
     "title_dxy": [1.8333333333333335, 2.5208333333333335],
-    "doors": []
+    "doors": [],
+    "gpss": [["draygonRoomBottom", 1.5, -1]]
   },
   {
     "slug": "east-maridia",
@@ -115,6 +123,17 @@
       ["ColosseumBottomRight", 23, 10.5],
       ["DraygonSaveRefillStation", 23, 9.5],
       ["PlasmaSparkBottom", 4.5, 8]
+    ],
+    "gpss": [
+      ["preciousRoomTop", 23, 10],
+      ["colosseumTopRight", 22, 9],
+      ["oasisBottom", 4, 19],
+      ["toiletTop", 4, 7],
+      ["aqueductBottom", 3, 13.5],
+      ["leftSandpit", 2, 16],
+      ["postBotwoon", 8, 11],
+      ["rightSandpit", 6, 16],
+      ["aqueduct", 5, 12]
     ]
   },
   {
@@ -162,6 +181,11 @@
       ["EtecoonEnergyTankLeft", 1, 12.5],
       ["GreenBrinstarMissileRefill", 4, 8.5],
       ["BigPinkRight", 14, 10.5]
+    ],
+    "gpss": [
+      ["etecoonsBottom", 4, 11],
+      ["bigPink", 12, 6],
+      ["etecoonsSupers", 0, 11]
     ]
   },
   {
@@ -176,7 +200,8 @@
     "y": 30.17760554129683,
     "warps": [["kraidRoomIn", -0.5, 1.5]],
     "title_dxy": [1.3645833333333335, 2.4479166666666665],
-    "doors": []
+    "doors": [],
+    "gpss": []
   },
   {
     "slug": "kraids-lair",
@@ -193,7 +218,8 @@
       ["kraidRoomOut", 12.5, 1.5]
     ],
     "title_dxy": [3.6170685755534167, 2.635197545717036],
-    "doors": [["KraidRefillStation", 11, 0.5]]
+    "doors": [["KraidRefillStation", 11, 0.5]],
+    "gpss": []
   },
   {
     "slug": "lower-norfair",
@@ -222,6 +248,15 @@
     "doors": [
       ["RedKihunterShaftBottom", 22.5, 11],
       ["WastelandLeft", 18, 13.5]
+    ],
+    "gpss": [
+      ["ridleyZone", 9.5, 13],
+      ["firefleasTop", 22, 2],
+      ["screwAttackBottom", 5, 12],
+      ["lNEntrance", 6, 10],
+      ["lNAboveGT", 2, 12],
+      ["firefleas", 22, 6],
+      ["wasteland", 18, 11]
     ]
   },
   {
@@ -233,7 +268,8 @@
     "y": 10.926283273952226,
     "warps": [["phantoonRoomIn", -0.5, 0.5]],
     "title_dxy": [1.0958256336220724, 1.9360311998716708],
-    "doors": []
+    "doors": [],
+    "gpss": []
   },
   {
     "slug": "red-brinstar",
@@ -266,7 +302,8 @@
       ["RedTowerLeft", 10, 11.5],
       ["RedBrinstarEnergyRefill", 10, 16.5],
       ["BelowSpazerTopRight", 15, 15.5]
-    ]
+    ],
+    "gpss": []
   },
   {
     "slug": "ridley",
@@ -280,7 +317,8 @@
     "y": 47.23103864871689,
     "warps": [["ridleyRoomIn", 2.5, 0.5]],
     "title_dxy": [1.253948989412897, 2.318043070259864],
-    "doors": []
+    "doors": [],
+    "gpss": []
   },
   {
     "slug": "tourian",
@@ -294,7 +332,8 @@
       ["tourianEscapeRoom4TopRight", 10.5, 9.5]
     ],
     "title_dxy": [4.501352181584857, 2.89377478344562],
-    "doors": []
+    "doors": [],
+    "gpss": []
   },
   {
     "slug": "upper-norfair",
@@ -340,6 +379,14 @@
       ["DoubleChamberRight", 27, 6.5],
       ["CrocomireSpeedwayBottom", 13.5, 12],
       ["SingleChamberRight", 23, 6.5]
+    ],
+    "gpss": [
+      ["bubbleMountainBottom", 20, 7],
+      ["cathedral", 13, 4],
+      ["bubbleMountain", 20, 5.5],
+      ["bubbleMountainTop", 21, 4],
+      ["businessCenter", 8, 3.5],
+      ["grappleEscape", 12, 8]
     ]
   },
   {
@@ -370,6 +417,14 @@
       ["CrabShaftRight", 10, 6.5],
       ["FishTankRight", 7, 11.5],
       ["MainStreetBottomRight", 2, 12.5]
+    ],
+    "gpss": [
+      ["wateringHoleBottom", 2, 1],
+      ["wateringHole", 3, 0],
+      ["crabShaftLeft", 8, 5],
+      ["redFishRoomBottom", 4, 4],
+      ["beach", 8, 2],
+      ["mamaTurtle", 8.5, 11]
     ]
   },
   {
@@ -402,6 +457,11 @@
       ["WestOceanRight", 8, 4.5],
       ["ElectricDeathRoomTopLeft", 17, 3.5],
       ["WreckedShipMainShaftBottom", 12.5, 9]
+    ],
+    "gpss": [
+      ["bowling", 10, 2],
+      ["wreckedShipMain", 12, 4],
+      ["wreckedShipBack", 18, 4]
     ]
   }
 ]

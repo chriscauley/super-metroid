@@ -64,10 +64,6 @@ sand_doors.forEach((w) => {
 })
 
 const prepArea = (area, layout) => {
-  if (area._gps) {
-    area.gpss = area._gps.map((s) => [s, 0, 0])
-    delete area._gps
-  }
   area = cloneDeep(area)
   const isRotated = (slug) => slug.match(rotated_warp_regexp)
   area.name = prepName(area.slug)
@@ -87,7 +83,7 @@ const prepArea = (area, layout) => {
     return { slug, x, y, name, chozo, major, scavenger }
   })
 
-  area.gpss = area.gpss.map(([slug, x, y]) => ({ slug, x, y, name: prepName(slug) }))
+  area.gpss = (area.gpss || []).map(([slug, x, y]) => ({ slug, x, y, name: prepName(slug) }))
 
   area.doors = area.doors.map(([slug, x, y]) => {
     const name = prepName(slug)
