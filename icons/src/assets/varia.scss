@@ -1,7 +1,7 @@
 @use "sass:math";
 @use "sass:list";
 
-.smv-boss {
+.smv-boss, .smv-gps, .smv-gps-number {
   display: inline-block;
   position: relative;
   height: 1em;
@@ -69,3 +69,19 @@ $varia-levels: break easy medium hard harder hardcore mania;
   }
 }
 
+.smv-gps:before {
+  background-image: url(./images/varia/gps.png);
+  image-rendering: initial;
+}
+
+.smv-gps-number {
+  &:before {
+    background-image: url(./images/varia/gps-numbers.png);
+    image-rendering: initial;
+  }
+  @for $i from 0 to 32 {
+    &.-number-#{$i+1}:before {
+      background-position: 0 $i * -100%;
+    }
+  }
+}

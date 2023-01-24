@@ -28,6 +28,9 @@
             </div>
           </template>
         </unrest-dropdown>
+        <button v-if="is_varia" class="btn -info" @click="startTheTour">
+          <i class="fa fa-question" />
+        </button>
       </template>
     </unrest-toolbar>
     <osd-viewer
@@ -98,7 +101,7 @@ export default {
   provide() {
     return {
       game_state: computed(() => this.game_state),
-      game_state: computed(() => this.game_state),
+      varia_state: computed(() => this.varia_state),
       json_data: computed(() => this.json_data),
       osd_store: computed(() => this.osd_store), // TODO osd_storage, not osd_store
       tool_storage: computed(() => this.tool_storage),
@@ -108,6 +111,7 @@ export default {
     window._S = () => saveFile(`${JSON.stringify(this.areas, null, 2)}`, 'areas.json')
     return {
       inventory: {},
+      varia_state: {},
       osd_store: osd.Store(),
       tool_storage: ToolStorage(this),
       osd_options: { showNavigator: false, mouseNavEnabled: false },
@@ -115,6 +119,13 @@ export default {
     }
   },
   computed: {
+    is_varia() {
+      return this.$site.name === 'varia'
+    },
+    is_plando() {
+      console.warn('TODO is_plando')
+      return false
+    },
     editing_area() {
       const { editing } = this.tool_storage.state
       return editing && this.areas.find((a) => a.slug === editing)
@@ -145,9 +156,9 @@ export default {
       ]
     },
     game_state() {
-      const varia_state = varia.getGameState(this.json_data)
-      if (varia_state) {
-        return varia_state
+      const varia_game_state = varia.getGameState(this.json_data)
+      if (varia_game_state) {
+        return varia_game_state
       }
       const state = {
         locations: {},
@@ -316,6 +327,9 @@ export default {
         json_data.roomsVisibility.forEach((s) => (json_data.svg_rooms[s] = true))
       }
       this.json_data = json_data
+    },
+    setVaria(data) {
+      Object.assign(this.varia_state, data)
     },
   },
 }

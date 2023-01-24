@@ -10,6 +10,7 @@
       @click="$emit('click-location', location.slug)"
     />
     <area-svg :area="area" :extra_path="extra_path" />
+    <div v-for="item in misc_items" :key="item.id" v-bind="item" />
   </div>
 </template>
 
@@ -40,6 +41,21 @@ export default {
         height: scale + 'px',
         width: scale + 'px',
       }
+    },
+    misc_items() {
+      const out = []
+      const { lastAP } = this.json_data || {}
+      this.area.gpss?.forEach(({ slug, x, y, name }) => {
+        out.push({
+          id: `gps__${slug}`,
+          style: this.getEntityStyle(x, y),
+          title: name,
+          class: [`area-box__gps fa smv-gps`, lastAP === slug && '-visible'],
+          'data-id': slug,
+          'data-type': 'gps',
+        })
+      })
+      return out
     },
     warps() {
       const { selected_warp } = this.tool_storage.state

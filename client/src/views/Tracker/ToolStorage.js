@@ -40,10 +40,17 @@ export default (component) => {
   }
 
   const getTools = () => {
+    const showHelp = () => {
+      if (component.is_varia) {
+        window.startTheTour()
+      } else {
+        unrest.ui.alert(HelpPopup)
+      }
+    }
     const tools = [
       { slug: 'undo', icon: 'fa fa-undo', select: () => storage.undo() },
       { slug: 'clear', icon: 'fa fa-trash', select: clearGame },
-      { slug: 'help', icon: 'fa fa-question-circle', select: () => unrest.ui.alert(HelpPopup) },
+      { slug: 'help', icon: 'fa fa-question-circle', select: showHelp },
       component.$store.layout.getButton(component),
     ]
     if (component.admin_mode) {
@@ -52,6 +59,9 @@ export default (component) => {
       tools.push({ slug: 'admin_move_area', icon: 'fa fa-arrows' })
       tools.push({ slug: 'admin_move_location', icon: 'fa fa-archive' })
       tools.push({ slug: 'admin_move_title', icon: 'fa fa-i-cursor' })
+    }
+    if (component.is_varia) {
+      tools.unshift({ slug: 'play', click: window.displayPopup(component.is_plando) })
     }
     return tools
   }

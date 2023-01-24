@@ -1,3 +1,10 @@
 .area-box {
   @apply absolute left-0 top-0;
+  &__gps {
+    @apply absolute hidden h-full w-full;
+    translate: transform(-50%, -50%);
+    &.-visible, .edit-area & {
+      @apply block;
+    }
+  }
 }

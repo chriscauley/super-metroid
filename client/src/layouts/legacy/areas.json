@@ -43,6 +43,12 @@
       ["GreenPiratesShaftBottomRight", 5.5, 9.5],
       ["ClimbRight", 15.5, 18.5],
       ["ConstructionZoneRight", 21.75, 25.25]
+    ],
+    "gpss": [
+      ["landingSite", 21.5, 3.25],
+      ["blueBrinstarElevatorBottom", 17.5, 24.75],
+      ["gauntletTop", 5, 2.25],
+      ["moatLeft", 31, 3.5]
     ]
   },
   {
@@ -64,14 +70,14 @@
     "doors": [
       ["PostCrocomireUpperLeft", 7.5, 1.25],
       ["PostCrocomireShaftRight", 8.5, 6.75]
-    ]
+    ],
+    "gpss": []
   },
   {
     "slug": "draygon",
-    "_doors": [],
     "locations": [
       ["SpaceJump", 0.5, 2.25],
-      ["Draygon", 2.25, 1.75]
+      ["Draygon", 2.25, 2]
     ],
     "width": 4.296296296296297,
     "height": 2.962962962962963,
@@ -79,7 +85,8 @@
     "y": 25.75,
     "warps": [["draygonRoomIn", 3.75, 1.25]],
     "title_dxy": [1.5, 2.75],
-    "doors": []
+    "doors": [],
+    "gpss": [["draygonRoomBottom", 1.25, -0.25]]
   },
   {
     "slug": "east-maridia",
@@ -116,6 +123,17 @@
       ["DraygonSaveRefillStation", 25, 9.5],
       ["MaridiaAqueductSaveStation", 2.75, 15.5],
       ["LeCoudeBottom", 18, 1.75]
+    ],
+    "gpss": [
+      ["preciousRoomTop", 25, 10.25],
+      ["aqueduct", 6, 12.75],
+      ["aqueductBottom", 3, 14.75],
+      ["toiletTop", 5, 6.75],
+      ["leftSandpit", 3.75, 18.25],
+      ["oasisBottom", 5, 20.5],
+      ["postBotwoon", 9.25, 11.5],
+      ["colosseumTopRight", 24, 9.25],
+      ["rightSandpit", 7, 18.25]
     ]
   },
   {
@@ -163,6 +181,11 @@
       ["BigPinkBottomLeft", 10.75, 21],
       ["GreenBrinstarMissileRefill", 4.25, 13.25],
       ["GreenBrinstarSaveStation", 4.25, 12.25]
+    ],
+    "gpss": [
+      ["bigPink", 13, 10.5],
+      ["etecoonsSupers", 0, 16.25],
+      ["etecoonsBottom", 1.5, 16.25]
     ]
   },
   {
@@ -177,7 +200,8 @@
     "y": 37.75,
     "warps": [["kraidRoomIn", 0.25, 1.75]],
     "title_dxy": [1.5, 2],
-    "doors": []
+    "doors": [],
+    "gpss": []
   },
   {
     "slug": "kraids-lair",
@@ -194,7 +218,8 @@
       ["warehouseZeelaRoomLeft", 1.5, 1.25],
       ["kraidRoomOut", 13.5, 2.5]
     ],
-    "title_dxy": [2, 3]
+    "title_dxy": [2, 3],
+    "gpss": []
   },
   {
     "slug": "lower-norfair",
@@ -223,11 +248,19 @@
     "doors": [
       ["RedKihunterShaftBottom", 24, 13],
       ["WastelandLeft", 19.25, 15.75]
+    ],
+    "gpss": [
+      ["lNEntrance", 6.5, 11.75],
+      ["lNAboveGT", 2, 14],
+      ["screwAttackBottom", 5.25, 14.25],
+      ["firefleas", 22.25, 7.25],
+      ["firefleasTop", 23.25, 2.75],
+      ["ridleyZone", 10, 15.25],
+      ["wasteland", 19.75, 13]
     ]
   },
   {
     "slug": "phantoon",
-    "_doors": [],
     "locations": [["Phantoon", 1.5, 1]],
     "width": 2.2222222222222223,
     "height": 2.074074074074074,
@@ -235,7 +268,8 @@
     "y": 11.5,
     "warps": [["phantoonRoomIn", 0.25, 1]],
     "title_dxy": [1.5, 1.5],
-    "doors": []
+    "doors": [],
+    "gpss": []
   },
   {
     "slug": "red-brinstar",
@@ -268,11 +302,11 @@
       ["BelowSpazerTopRight", 15.75, 17.5],
       ["RedBrinstarEnergyRefill", 10.5, 18.5],
       ["MaridiaBottomSaveStation", 17.75, 19.75]
-    ]
+    ],
+    "gpss": []
   },
   {
     "slug": "ridley",
-    "_doors": [],
     "locations": [
       ["EnergyTankRidley", 0.5, 2.25],
       ["Ridley", 1.75, 1.5]
@@ -283,11 +317,11 @@
     "y": 51.75,
     "warps": [["ridleyRoomIn", 3, 1.25]],
     "title_dxy": [0.75, 2.75],
-    "doors": []
+    "doors": [],
+    "gpss": []
   },
   {
     "slug": "tourian",
-    "_doors": [],
     "locations": [["MotherBrain", 3, 12.25]],
     "width": 11.62962962962963,
     "height": 16.37037037037037,
@@ -298,7 +332,8 @@
       ["tourianEscapeRoom4TopRight", 10.5, 11.25]
     ],
     "title_dxy": [3.5, 3.25],
-    "doors": []
+    "doors": [],
+    "gpss": []
   },
   {
     "slug": "upper-norfair",
@@ -344,6 +379,14 @@
       ["DoubleChamberRight", 28.5, 8],
       ["KronicBoostBottomLeft", 25.75, 14.75],
       ["CrocomireSpeedwayBottom", 14.25, 14]
+    ],
+    "gpss": [
+      ["bubbleMountain", 21.5, 7.5],
+      ["bubbleMountainTop", 22, 5.25],
+      ["bubbleMountainBottom", 21.5, 8.75],
+      ["businessCenter", 8.5, 5.25],
+      ["cathedral", 13.75, 5.5],
+      ["grappleEscape", 11.5, 9.75]
     ]
   },
   {
@@ -374,6 +417,14 @@
       ["MainStreetBottomRight", 2.25, 15.75],
       ["FishTankRight", 7.5, 14.5],
       ["CrabShaftRight", 10, 9]
+    ],
+    "gpss": [
+      ["beach", 8.75, 3.75],
+      ["crabShaftLeft", 8.5, 7.25],
+      ["mamaTurtle", 8.75, 14],
+      ["wateringHole", 5.25, 2.75],
+      ["wateringHoleBottom", 2, 3.75],
+      ["redFishRoomBottom", 4.25, 6]
     ]
   },
   {
@@ -406,6 +457,11 @@
       ["WestOceanRight", 9.5, 5],
       ["WreckedShipMainShaftBottom", 14.25, 10.25],
       ["ElectricDeathRoomTopLeft", 19, 4]
+    ],
+    "gpss": [
+      ["wreckedShipMain", 13.5, 3.5],
+      ["wreckedShipBack", 19, 3.5],
+      ["bowling", 7.5, 2.25]
     ]
   }
 ]

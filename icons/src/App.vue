@@ -2,7 +2,7 @@
   <div class="smi-tracker text-white p-8" style="font-size: 32px">
     <div v-for="(icons, name) in icon_groups" :key="name" class="mb-8">
       <h2>{{ name }}</h2>
-      <div class="flex">
+      <div class="flex flex-wrap">
         <div v-for="icon in icons" :key="icon" :class="icon" :title="icon" />
       </div>
     </div>
@@ -13,6 +13,7 @@
 const icon_groups = {
   sm: [],
   smv: [],
+  gps: [],
   smi: [
     'smi -auto',
     'smi -energy',
@@ -50,6 +51,12 @@ i = 0
 while (i < 5) {
   icon_groups.reserve_numbers.push(`smi-reserve-number -number-${i}`)
   i++
+}
+i = 0
+icon_groups.gps.push('smv-gps')
+while (i < 32) {
+  i++
+  icon_groups.gps.push(`smv-gps-number -number-${i}`)
 }
 
 // const beams = ['charge', 'ice', 'wave', 'spazer', 'plasma'].map(s => s+'-beam')

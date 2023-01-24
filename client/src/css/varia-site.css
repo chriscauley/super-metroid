@@ -24,8 +24,16 @@ body.-site-varia {
   }
   tr:last-child {
     td {
+      /* for table in init popup */
       border: 0;
     }
+  }
+  .btn {
+    margin: 0;
+  }
+  .ur-dropdown.tracker-view__config {
+    /* dropdown button for setting menu is smaller */
+    @apply flex;
   }
 }
 

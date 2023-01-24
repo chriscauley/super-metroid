@@ -7,6 +7,7 @@
         {{ display_name }}
         <div v-if="boss">Boss: {{ boss }}</div>
         <div v-else-if="visited">Item: {{ item_name }}</div>
+        <div v-if="!locData && !visitid">Sequence Break</div>
         <template v-if="locData && !visited">
           <div>Techniques: {{ locData.knows[0] || 'None' }}</div>
           <div>
