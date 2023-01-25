@@ -14,9 +14,6 @@ body.-site-varia {
     margin-top: 24px; /* topnav */
     margin-bottom: 60px; /* push old tracker below footer */
   }
-  .footer {
-    position: static;
-  }
   .btn-default {
     color: #ffffff;
     background-color: #3e3f3a;
@@ -48,6 +45,10 @@ body.-site-varia {
     .input-td {
       @apply flex items-center justify-between;
     }
+  }
+  #randomizerPopup {
+    /* tailwind makes images display: block */
+    img { display: inline-block; }
   }
 }
 

@@ -28,6 +28,7 @@
             </div>
           </template>
         </unrest-dropdown>
+        <entity-filter v-if="is_plando" />
       </template>
     </unrest-toolbar>
     <osd-viewer
@@ -79,9 +80,10 @@ import osd from '@unrest/vue-openseadragon'
 import openseadragon from 'openseadragon'
 
 import { saveFile } from '@/data/legacy'
-import { subarea_by_area } from '@/data/old'
+import { location_type_map, subarea_by_area } from '@/data/old'
 import AreaOverlay from './AreaOverlay.vue'
 import EditArea from './EditArea.vue'
+import EntityFilter from './EntityFilter.vue'
 import ItemCounter from './ItemCounter.vue'
 import ItemTracker from './ItemTracker.vue'
 import ToolStorage from './ToolStorage'
@@ -94,7 +96,15 @@ const { Rect } = openseadragon
 
 export default {
   name: 'TrackerView',
-  components: { AreaOverlay, EditArea, ItemCounter, ItemTracker, SeedSettings, WarpConnections },
+  components: {
+    AreaOverlay,
+    EditArea,
+    EntityFilter,
+    ItemCounter,
+    ItemTracker,
+    SeedSettings,
+    WarpConnections,
+  },
   provide() {
     return {
       game_state: computed(() => this.game_state),
@@ -120,8 +130,7 @@ export default {
       return this.$site.name === 'varia'
     },
     is_plando() {
-      console.warn('TODO is_plando')
-      return false
+      return this.$route.path.includes('plando')
     },
     editing_area() {
       const { editing } = this.tool_storage.state
@@ -145,11 +154,12 @@ export default {
       return this.$route.query.skin || 'jpg'
     },
     wrapper_class() {
-      const { large_warps, large_locations, large_doors } = this.tool_storage.state
+      const { large_warps, large_locations, large_doors, entity_filter } = this.tool_storage.state
       const { tool } = this.tool_storage.state.selected
       return [
         `tracker-view -layout-${this.$store.layout.state.selected} -tool-${tool}`,
         { large_locations, large_warps, large_doors },
+        entity_filter && `-entity-filter-${entity_filter}`,
       ]
     },
     game_state() {
@@ -195,6 +205,7 @@ export default {
   },
   mounted() {
     window.$tracker = this
+    this.location_type_map = location_type_map // needed by plando
     document.addEventListener('keydown', this.keyPress)
     window.addEventListener('resize', this.resize)
     if (this.$route.query.dummy) {

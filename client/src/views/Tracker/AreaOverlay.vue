@@ -1,6 +1,12 @@
 <template>
   <div :style="style.wrapper" class="area-overlay">
-    <area-box :area="area" size="100%" @click-location="clickLocation" @click-warp="clickWarp" />
+    <area-box
+      :area="area"
+      size="100%"
+      @click-location="clickLocation"
+      @click-warp="clickWarp"
+      @click-door="clickDoor"
+    />
     <div class="area-overlay__title" :style="style.title">
       <drag-anchor
         v-if="moving_area"
@@ -136,6 +142,11 @@ export default {
     },
     clickWarp(id) {
       this.tool_storage.click(id, this.game_state)
+    },
+    clickDoor(id) {
+      if (this.json_data && this.$route.path.includes('plando')) {
+        window.actionDoor(id)
+      }
     },
   },
 }

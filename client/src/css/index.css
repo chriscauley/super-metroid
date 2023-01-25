@@ -34,6 +34,21 @@ html, body, #app {
   .ur-toolbar {
     @apply absolute;
   }
+  &.-entity-filter-door, &.-entity-filter-item, &.-entity-filter-warp {
+    .location-marker, .area-warp, .area-door, .warp-connections {
+      display: none;
+    }
+  }
+  &.-entity-filter-door .area-door {
+    display: block;
+  }
+  &.-entity-filter-item .location-marker {
+    display: block;
+  }
+  &.-entity-filter-warp .area-warp,
+  &.-entity-filter-warp .warp-connections {
+    display: block;
+  }
 }
 
 .tracker-toolbar {
@@ -51,6 +66,14 @@ html, body, #app {
   }
 }
 
+.sm-portal:before {
+  background: radial-gradient(farthest-side, #000, #000 25%, #7001ce 50%, #FF00FF);
+  border-radius: 100%;
+  content: '';
+  display: block;
+  width: 1em;
+  height: 1em;
+}
 
 .area-warp {
   /* base size is 13.5px */
@@ -313,10 +336,13 @@ body {
     background-image: repeating-linear-gradient(
       45deg,
       transparent,
-      transparent 10px,
-      var(--door-brown) 10px,
-      var(--door-brown) 20px
-    ),
+      transparent 5px,
+      var(--door-brown) 5px,
+      var(--door-brown) 10px
+    );
+  }
+  &.-hidden {
+    display: none;
   }
 }
 

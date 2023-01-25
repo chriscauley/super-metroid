@@ -15,9 +15,9 @@
   .sm-item {
     @apply relative;
     .grid-tracker__numbers {
-      --inventory-px: 0.04em;
+      --inventory-px: 0.06em;
       @apply absolute flex right-0;
-      bottom: -0.04em;
+      bottom: -0.06em;
     }
   }
   *, *:before {

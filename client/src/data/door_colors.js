@@ -13,12 +13,12 @@ export default {
   PostCrocomireShaftRight: 'red',
   //east-maridia
   LeCoudeBottom: 'yellow',
-  DraygonSaveRefillStation: 'red',
-  ForgottenHighwaySaveStation: 'red',
+  DraygonSaveRefillStation: 'hidden',
+  ForgottenHighwaySaveStation: 'hidden',
   OasisTop: 'green',
   ColosseumBottomRight: 'green',
   PlasmaSparkBottom: 'green',
-  MaridiaAqueductSaveStation: 'red',
+  MaridiaAqueductSaveStation: 'hidden',
   //green-brinstar
   EarlySupersRight: 'red',
   NoobBridgeRight: 'green',
@@ -27,13 +27,13 @@ export default {
   MainShaftBottomRight: 'red',
   BigPinkTopRight: 'red',
   MainShaftRight: 'red',
-  GreenBrinstarSaveStation: 'red',
-  GreenBrinstarMissileRefill: 'red',
+  GreenBrinstarSaveStation: 'hidden',
+  GreenBrinstarMissileRefill: 'hidden',
   BigPinkBottomRight: 'green',
   BigPinkBottomLeft: 'red',
   BigPinkRight: 'yellow',
   //kraids-lair
-  KraidRefillStation: 'green',
+  KraidRefillStation: 'hidden',
   //lower-norfair
   RedKihunterShaftBottom: 'yellow',
   WastelandLeft: 'green',
@@ -45,8 +45,8 @@ export default {
   RedBrinstarFirefleaLeft: 'yellow',
   BelowSpazerTopRight: 'green',
   RedTowerLeft: 'blue',
-  MaridiaBottomSaveStation: 'red',
-  RedBrinstarEnergyRefill: 'green',
+  MaridiaBottomSaveStation: 'hidden',
+  RedBrinstarEnergyRefill: 'hidden',
   //upper-norfair
   BusinessCenterBottomLeft: 'red',
   BusinessCenterTopLeft: 'green',
