@@ -1,7 +1,7 @@
 @use "sass:math";
 @use "sass:list";
 
-.smv-boss, .smv-gps, .smv-gps-number {
+.smv-boss, .smv-gps, .smv-gps-number, .smv-icon {
   display: inline-block;
   position: relative;
   height: 1em;
@@ -30,6 +30,10 @@
       background-position: 0 $i * -100%;
     }
   }
+}
+
+.smv-icon.-door:before {
+  background-image: url(./images/varia/door_icon.png);
 }
 
 .smva-difficulty {

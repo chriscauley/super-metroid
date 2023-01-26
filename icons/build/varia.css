@@ -1,17 +1,17 @@
-.smv-boss {
+.smv-boss, .smv-gps, .smv-gps-number, .smv-icon {
   display: inline-block;
   position: relative;
   height: 1em;
   width: 1em;
 }
-.smv-boss:before, .smv-boss ._before {
+.smv-boss:before, .smv-boss ._before, .smv-gps:before, .smv-gps ._before, .smv-gps-number:before, .smv-gps-number ._before, .smv-icon:before, .smv-icon ._before {
   background-size: 100% auto;
   content: "";
   image-rendering: pixelated;
   inset: 0;
   position: absolute;
 }
-.smv-boss.-inactive {
+.smv-boss.-inactive, .smv-gps.-inactive, .smv-gps-number.-inactive, .smv-icon.-inactive {
   opacity: 0.75;
   filter: grayscale(1) brightness(0.75);
 }
@@ -45,6 +45,10 @@
 }
 .smv-boss.-golden-torizo:before {
   background-position: 0 -800%;
+}
+
+.smv-icon.-door:before {
+  background-image: url(./images/varia/door_icon.png);
 }
 
 .smva-difficulty:before {
@@ -90,4 +94,110 @@
 .smva-difficulty.-nothing:after {
   background-image: url(./images/varia/visited-boxes.png);
   image-rendering: unset;
+}
+
+.smv-gps:before {
+  background-image: url(./images/varia/gps.png);
+  image-rendering: initial;
+}
+
+.smv-gps-number:before {
+  background-image: url(./images/varia/gps-numbers.png);
+  image-rendering: initial;
+}
+.smv-gps-number.-number-1:before {
+  background-position: 0 0%;
+}
+.smv-gps-number.-number-2:before {
+  background-position: 0 -100%;
+}
+.smv-gps-number.-number-3:before {
+  background-position: 0 -200%;
+}
+.smv-gps-number.-number-4:before {
+  background-position: 0 -300%;
+}
+.smv-gps-number.-number-5:before {
+  background-position: 0 -400%;
+}
+.smv-gps-number.-number-6:before {
+  background-position: 0 -500%;
+}
+.smv-gps-number.-number-7:before {
+  background-position: 0 -600%;
+}
+.smv-gps-number.-number-8:before {
+  background-position: 0 -700%;
+}
+.smv-gps-number.-number-9:before {
+  background-position: 0 -800%;
+}
+.smv-gps-number.-number-10:before {
+  background-position: 0 -900%;
+}
+.smv-gps-number.-number-11:before {
+  background-position: 0 -1000%;
+}
+.smv-gps-number.-number-12:before {
+  background-position: 0 -1100%;
+}
+.smv-gps-number.-number-13:before {
+  background-position: 0 -1200%;
+}
+.smv-gps-number.-number-14:before {
+  background-position: 0 -1300%;
+}
+.smv-gps-number.-number-15:before {
+  background-position: 0 -1400%;
+}
+.smv-gps-number.-number-16:before {
+  background-position: 0 -1500%;
+}
+.smv-gps-number.-number-17:before {
+  background-position: 0 -1600%;
+}
+.smv-gps-number.-number-18:before {
+  background-position: 0 -1700%;
+}
+.smv-gps-number.-number-19:before {
+  background-position: 0 -1800%;
+}
+.smv-gps-number.-number-20:before {
+  background-position: 0 -1900%;
+}
+.smv-gps-number.-number-21:before {
+  background-position: 0 -2000%;
+}
+.smv-gps-number.-number-22:before {
+  background-position: 0 -2100%;
+}
+.smv-gps-number.-number-23:before {
+  background-position: 0 -2200%;
+}
+.smv-gps-number.-number-24:before {
+  background-position: 0 -2300%;
+}
+.smv-gps-number.-number-25:before {
+  background-position: 0 -2400%;
+}
+.smv-gps-number.-number-26:before {
+  background-position: 0 -2500%;
+}
+.smv-gps-number.-number-27:before {
+  background-position: 0 -2600%;
+}
+.smv-gps-number.-number-28:before {
+  background-position: 0 -2700%;
+}
+.smv-gps-number.-number-29:before {
+  background-position: 0 -2800%;
+}
+.smv-gps-number.-number-30:before {
+  background-position: 0 -2900%;
+}
+.smv-gps-number.-number-31:before {
+  background-position: 0 -3000%;
+}
+.smv-gps-number.-number-32:before {
+  background-position: 0 -3100%;
 }

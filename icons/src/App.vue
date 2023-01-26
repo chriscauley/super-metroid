@@ -12,7 +12,7 @@
 <script>
 const icon_groups = {
   sm: [],
-  smv: [],
+  smv: ['smv-icon -door'],
   gps: [],
   smi: [
     'smi -auto',
