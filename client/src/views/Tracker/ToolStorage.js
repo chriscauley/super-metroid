@@ -86,9 +86,10 @@ export default (component) => {
       { slug: 'help', icon: 'fa fa-question-circle', select: showHelp },
       component.$store.layout.getButton(component),
     ]
-    if (component.admin_mode) {
+    if (component.is_admin) {
       // if (component.$auth.user?.is_superuser) {
       tools.unshift({ slug: 'play', icon: 'fa fa-gamepad' })
+      tools.push('separator')
       tools.push({ slug: 'admin_move_area', icon: 'fa fa-arrows' })
       tools.push({ slug: 'admin_move_location', icon: 'fa fa-archive' })
       tools.push({ slug: 'admin_move_title', icon: 'fa fa-i-cursor' })

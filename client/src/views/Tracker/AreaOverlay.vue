@@ -115,14 +115,14 @@ export default {
     getEntityStyle(id, x, y) {
       const [dx, dy] = this.dxys[id] || [0, 0]
       const r = this.root.round
-      const _ = (a, b) => Math.round(r * (a + b / this.root.scale)) / r
+      const _ = (a, b) => r * Math.round((a + b / this.root.scale) / r)
       return {
         left: `${100 * _(x, dx)}%`,
         top: `${100 * _(y, dy)}%`,
       }
     },
     moveArea([dx, dy]) {
-      const { width: max_width, scale } = this.$store.layout.getWorld().root
+      const { width: max_width, scale } = this.root
       const [x, y] = this.$store.layout.moveArea(this.area.slug, dx / scale, dy / scale)
       const fname = this.area.slug + '.png'
       const item = this.osd_store.viewer.world._items.find((i) => i.source.url?.includes(fname))

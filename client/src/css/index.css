@@ -128,12 +128,23 @@ html, body, #app {
     @apply max-w-none pointer-events-none;
   }
   &__title {
-    @apply absolute text-white;
+    @apply absolute font-bold text-xl text-white;
     text-transform: uppercase;
     white-space: nowrap;
     .drag-anchor {
       transform: translate(-100%, 0);
     }
+  }
+}
+
+.ur-toolbar__separator {
+  pointer-events: none;
+  padding: 0.5rem 0.25rem; /* shrink x padding */
+  &:before {
+    @apply border-l border-r pl-1 h-full;
+    border-color: white;
+    border-style: solid;
+    content: "";
   }
 }
 
