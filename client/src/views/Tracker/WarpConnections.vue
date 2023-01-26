@@ -42,11 +42,10 @@ const colors = [
 ]
 
 export default {
+  inject: ['game_state', 'tool_storage'],
   props: {
     areas: Array,
     code_map: Object,
-    game_state: Object,
-    tool_storage: Object,
   },
   computed: {
     texts() {

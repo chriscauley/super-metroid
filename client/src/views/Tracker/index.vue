@@ -1,5 +1,5 @@
 <template>
-  <div :class="wrapper_class" :style="`--zoom: ${osd_store.state.zoom}`">
+  <div :class="wrapper_class" :style="`--zoom: ${osd_store?.state.zoom || 1}`">
     <unrest-toolbar :storage="tool_storage" class="tracker-toolbar">
       <template #right>
         <div class="btn-group" v-if="is_admin">
@@ -8,10 +8,10 @@
           </button>
           <button
             title="Lock viewer"
-            :class="`btn -${osd_options.mouseNavEnabled ? 'secondary' : 'primary'}`"
+            :class="`btn -${mouseNavEnabled ? 'secondary' : 'primary'}`"
             @click="osd_options.mouseNavEnabled = !osd_options.mouseNavEnabled"
           >
-            <i :class="`fa fa-${osd_options.mouseNavEnabled ? 'un' : ''}lock`" />
+            <i :class="`fa fa-${mouseNavEnabled ? 'un' : ''}lock`" />
           </button>
         </div>
         <unrest-dropdown class="tracker-view__config">
@@ -31,27 +31,7 @@
         <entity-filter v-if="is_plando" />
       </template>
     </unrest-toolbar>
-    <osd-viewer
-      :osd_store="osd_store"
-      @viewer-bound="addCorners"
-      :editor_mode="!!tool_storage.state.editor_mode"
-      :osd_options="osd_options"
-    />
-    <template v-if="osd_store.viewer">
-      <osd-html-overlay :viewer="osd_store.viewer">
-        <area-overlay
-          v-for="area in areas"
-          :key="area.slug"
-          :area="area"
-          @move-area="(data) => moveArea(area, data)"
-          :osd_store="osd_store"
-          :tool_storage="tool_storage"
-          :game_state="game_state"
-          :json_data="json_data"
-        />
-        <warp-connections :areas="areas" :game_state="game_state" :tool_storage="tool_storage" />
-      </osd-html-overlay>
-    </template>
+    <tracker-viewer :areas="areas" :key="selected_layout" />
     <div v-if="$store.layout.state.dirty" class="dirty-layout" @click="$store.layout.saveAreas">
       <div class="btn -primary">Save Areas</div>
     </div>
@@ -81,14 +61,12 @@ import openseadragon from 'openseadragon'
 
 import { saveFile } from '@/data/legacy'
 import { location_type_map, subarea_by_area } from '@/data/old'
-import AreaOverlay from './AreaOverlay.vue'
 import EditArea from './EditArea.vue'
 import EntityFilter from './EntityFilter.vue'
 import ItemCounter from './ItemCounter.vue'
 import ItemTracker from './ItemTracker.vue'
 import ToolStorage from './ToolStorage'
-import WarpConnections from './WarpConnections.vue'
-import { getStaticUrl, getGridUrl } from '@/utils'
+import TrackerViewer from './Viewer.vue'
 import varia from '@/varia'
 import SeedSettings from './SeedSettings.vue'
 
@@ -97,13 +75,12 @@ const { Rect } = openseadragon
 export default {
   name: 'TrackerView',
   components: {
-    AreaOverlay,
     EditArea,
     EntityFilter,
     ItemCounter,
     ItemTracker,
     SeedSettings,
-    WarpConnections,
+    TrackerViewer,
   },
   provide() {
     return {
@@ -119,13 +96,23 @@ export default {
     return {
       inventory: {},
       varia_state: {},
-      osd_store: osd.Store(),
       tool_storage: ToolStorage(this),
-      osd_options: { showNavigator: false, mouseNavEnabled: false },
       json_data: null,
     }
   },
   computed: {
+    selected_layout() {
+      console.log( this.$store.layout.selected)
+      return this.$store.layout.selected
+    },
+    osd_store() {
+      // TODO move to a different storage
+      return this.$store.layout.state.osd_store
+    },
+    mouseNavEnabled() {
+      // TODO was connected to osd_options.mouseNavEnabled
+      return false
+    },
     is_varia() {
       return this.$site.name === 'varia'
     },
@@ -206,7 +193,6 @@ export default {
     window.$tracker = this
     this.location_type_map = location_type_map // needed by plando
     document.addEventListener('keydown', this.keyPress)
-    window.addEventListener('resize', this.resize)
     if (this.$route.query.dummy) {
       this.$store.getDummyData().then((d) => {
         this.json_data = d
@@ -215,61 +201,8 @@ export default {
   },
   unmounted() {
     document.removeEventListener('keydown', this.keyPress)
-    window.removeEventListener('resize', this.resize)
   },
   methods: {
-    addCorners() {
-      this.osd_store.viewer.addOnceHandler('tile-loaded', this.addImages)
-      const { selected } = this.$store.layout.state
-      if (this.$route.query.debug) {
-        const url = getStaticUrl(`/${selected}/area_map.png`)
-        this.osd_store.viewer.addSimpleImage({ url })
-      } else if (selected === 'streaming') {
-        const url = getStaticUrl(`/${selected}/background.png`)
-        this.osd_store.viewer.addSimpleImage({ url })
-      } else {
-        const { scale, width: x_max, height: y_max } = this.$store.layout.getWorld().root
-        const url = getGridUrl(1, 1, scale)
-        const corners = [
-          [0, 0, 0],
-          [0, (y_max - scale) / x_max, 270],
-          [(x_max - scale) / x_max, (y_max - scale) / x_max, 180],
-          [(x_max - scale) / x_max, 0, 90],
-        ]
-        corners.forEach(([x, y, degrees]) => {
-          this.osd_store.viewer.addSimpleImage({
-            url,
-            x,
-            y,
-            width: scale / x_max,
-            degrees,
-          })
-        })
-      }
-    },
-    addImages() {
-      const { selected } = this.$store.layout.state
-      this.areas.forEach((area) => {
-        const { width: max_width, scale } = this.$store.layout.getWorld().root
-        let { width, x, y } = area
-        const url = getStaticUrl(`/${selected}/${area.slug}.png`)
-        this.osd_store.viewer.addSimpleImage({
-          url,
-          x: (x * scale) / max_width,
-          y: (y * scale) / max_width,
-          width: (width * scale) / max_width,
-        })
-      })
-      this.resetZoom()
-    },
-    resetZoom() {
-      const { width, height } = this.$store.layout.getWorld().root
-      const H = height / width
-      this.osd_store.viewer.viewport.fitBounds(new Rect(0, 0, 1, H), true)
-    },
-    moveArea(area, { dx, dy }) {
-      this.$store.layout.moveArea(area.slug, dx, dy)
-    },
     keyPress(e) {
       const { area_keys, key_stack } = this.tool_storage.state
       const reverse_keys = {}
@@ -325,9 +258,6 @@ export default {
     toggleItem(name) {
       this.inventory[name] = !this.inventory[name]
     },
-    resize: debounce(function () {
-      this.resetZoom()
-    }, 200),
     setJsonData(json_data) {
       if (json_data) {
         json_data.svg_rooms = { unknownSvg: true }
