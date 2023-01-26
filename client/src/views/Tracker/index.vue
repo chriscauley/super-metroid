@@ -102,12 +102,11 @@ export default {
   },
   computed: {
     selected_layout() {
-      console.log( this.$store.layout.selected)
-      return this.$store.layout.selected
+      return this.$store.layout.state.selected
     },
     osd_store() {
       // TODO move to a different storage
-      return this.$store.layout.state.osd_store
+      return this.$store.state.osd_store
     },
     mouseNavEnabled() {
       // TODO was connected to osd_options.mouseNavEnabled
@@ -197,6 +196,14 @@ export default {
       this.$store.getDummyData().then((d) => {
         this.json_data = d
       })
+    }
+    const { selected, preferred } = this.$store.layout.state
+    if (this.is_plando) {
+      if (selected.includes('streaming')) {
+        this.$store.layout.save({ selected: 'nordub', preferred: selected })
+      }
+    } else if (preferred) {
+      this.$store.layout.save({ selected: preferred, preferred: null })
     }
   },
   unmounted() {

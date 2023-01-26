@@ -6,6 +6,7 @@ import layouts from '@/layouts'
 const LS_KEY = 'LAYOUT_STORAGE'
 const initial = {
   selected: 'legacy',
+  preferred: null,
   dirty: null,
 }
 
@@ -55,7 +56,6 @@ export default () => {
         const index = (layouts.slugs.indexOf(selected) + 1) % layouts.slugs.length
         const next = layouts.slugs[index]
         storage.save({ selected: next })
-        component.resetZoom()
       },
     }
   }

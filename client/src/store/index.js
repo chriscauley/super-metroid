@@ -1,3 +1,4 @@
+import { reactive } from 'vue'
 import layout from './layout'
 import axios from 'axios'
 
@@ -11,6 +12,7 @@ const store = {
     Object.entries(modules).forEach(([name, module]) => {
       store[name] = module({ store })
     })
+    store.state = reactive({})
   },
   getDummyData() {
     return axios.get('/dummy_data.json').then((r) => r.data)

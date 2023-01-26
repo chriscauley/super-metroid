@@ -52,10 +52,6 @@ export default {
     is_admin() {
       return this.$route.query.is_admin
     },
-    src() {
-      const { selected } = this.$store.layout.state
-      return getStaticUrl(`/${selected}/${this.area.slug}.png`)
-    },
     grid_style() {
       const { width, height } = this.area
       const { scale } = this.root
