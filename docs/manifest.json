@@ -1,8 +1,7 @@
 {
-  "app.css": "/super-metroid/css/app.6a30a2df.css",
-  "app.js": "/super-metroid/js/app.1b0bcf8c.js",
-  "chunk-vendors.css": "/super-metroid/css/chunk-vendors.6d81774c.css",
-  "chunk-vendors.js": "/super-metroid/js/chunk-vendors.2712b8a4.js",
+  "app.css": "/super-metroid/css/app.87249d98.css",
+  "app.js": "/super-metroid/js/app.4eacb132.js",
+  "chunk-vendors.js": "/super-metroid/js/chunk-vendors.9c8d8588.js",
   "nordub/original_map.png": "/super-metroid/nordub/original_map.png",
   "legacy/area_map.png": "/super-metroid/legacy/area_map.png",
   "nordub/crater.png": "/super-metroid/nordub/crater.png",
@@ -17,6 +16,7 @@
   "streaming/area_map.png": "/super-metroid/streaming/area_map.png",
   "nordub/tourian.png": "/super-metroid/nordub/tourian.png",
   "legacy/upper-norfair.png": "/super-metroid/legacy/upper-norfair.png",
+  "img/boss-icons.png": "/super-metroid/img/boss-icons.a49b021b.png",
   "legacy/green-brinstar.png": "/super-metroid/legacy/green-brinstar.png",
   "legacy/crater.png": "/super-metroid/legacy/crater.png",
   "nordub/crocomire.png": "/super-metroid/nordub/crocomire.png",
@@ -24,11 +24,14 @@
   "legacy/lower-norfair.png": "/super-metroid/legacy/lower-norfair.png",
   "legacy/wrecked-ship.png": "/super-metroid/legacy/wrecked-ship.png",
   "legacy/west-maridia.png": "/super-metroid/legacy/west-maridia.png",
+  "dummy_data.json": "/super-metroid/dummy_data.json",
   "legacy/red-brinstar.png": "/super-metroid/legacy/red-brinstar.png",
   "legacy/tourian.png": "/super-metroid/legacy/tourian.png",
   "legacy/crocomire.png": "/super-metroid/legacy/crocomire.png",
   "img/crocomire.png": "/super-metroid/img/crocomire.5d0ae481.png",
   "img/mother-brain.png": "/super-metroid/img/mother-brain.5c6be8d0.png",
+  "img/gps-numbers.png": "/super-metroid/img/gps-numbers.ac71d806.png",
+  "img/visited-boxes.png": "/super-metroid/img/visited-boxes.0e4ab352.png",
   "streaming/west-maridia.png": "/super-metroid/streaming/west-maridia.png",
   "img/spore-spawn.png": "/super-metroid/img/spore-spawn.bbcbcf20.png",
   "alt-streaming/crater.png": "/super-metroid/alt-streaming/crater.png",
@@ -80,6 +83,6 @@
   "streaming/kraids-lair.png": "/super-metroid/streaming/kraids-lair.png",
   "index.html": "/super-metroid/index.html",
   "egg.png": "/super-metroid/egg.png",
-  "app.1b0bcf8c.js.map": "/super-metroid/js/app.1b0bcf8c.js.map",
-  "chunk-vendors.2712b8a4.js.map": "/super-metroid/js/chunk-vendors.2712b8a4.js.map"
+  "app.4eacb132.js.map": "/super-metroid/js/app.4eacb132.js.map",
+  "chunk-vendors.9c8d8588.js.map": "/super-metroid/js/chunk-vendors.9c8d8588.js.map"
 }
