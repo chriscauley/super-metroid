@@ -41,7 +41,9 @@ export default {
     }
   },
   mounted() {
-    this.$store.layout.osd_store = this.osd_store
+    this.$store.state.osd_store = this.osd_store
+    this.osd_store.resetZoom = this.resetZoom
+    this.$store.state.osd_options = this.osd_options
     this.resize = debounce(this.resetZoom, 200)
     window.addEventListener('resize', this.resize)
   },

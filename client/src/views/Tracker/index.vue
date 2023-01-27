@@ -3,15 +3,15 @@
     <unrest-toolbar :storage="tool_storage" class="tracker-toolbar">
       <template #right>
         <div class="btn-group" v-if="is_admin">
-          <button title="Reset Viewer" class="btn -secondary" @click="resetZoom">
+          <button title="Reset Viewer" class="btn -secondary" @click="osd_store.resetZoom">
             <i class="fa fa-arrows-alt" />
           </button>
           <button
             title="Lock viewer"
-            :class="`btn -${mouseNavEnabled ? 'secondary' : 'primary'}`"
-            @click="osd_options.mouseNavEnabled = !osd_options.mouseNavEnabled"
+            :class="`btn -${osd_options.mouseNavEnabled ? 'secondary' : 'primary'}`"
+            @click="toggleLock"
           >
-            <i :class="`fa fa-${mouseNavEnabled ? 'un' : ''}lock`" />
+            <i :class="`fa fa-${osd_options.mouseNavEnabled ? 'un' : ''}lock`" />
           </button>
         </div>
         <unrest-dropdown class="tracker-view__config">
@@ -108,9 +108,8 @@ export default {
       // TODO move to a different storage
       return this.$store.state.osd_store
     },
-    mouseNavEnabled() {
-      // TODO was connected to osd_options.mouseNavEnabled
-      return false
+    osd_options() {
+      return this.$store.state.osd_options || {}
     },
     is_varia() {
       return this.$site.name === 'varia'
@@ -275,6 +274,10 @@ export default {
     setVaria(data) {
       Object.assign(this.varia_state, data)
     },
+    toggleLock() {
+      const { osd_options } = this.$store.state
+      osd_options.mouseNavEnabled = !osd_options.mouseNavEnabled
+    }
   },
 }
 </script>
