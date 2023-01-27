@@ -2,7 +2,7 @@
   <osd-viewer
     :osd_store="osd_store"
     @viewer-bound="addCorners"
-    :editor_mode="!!tool_storage.state.editor_mode"
+    :editor_mode="!!tool_storage.state.tracker_settings.editor_mode"
     :osd_options="osd_options"
   />
   <osd-html-overlay :viewer="osd_store.viewer" v-if="osd_store.viewer">
@@ -11,7 +11,7 @@
       :key="area.slug"
       :area="area"
       @move-area="(data) => moveArea(area, data)"
-      />
+    />
     <warp-connections :areas="areas" />
   </osd-html-overlay>
 </template>
@@ -29,8 +29,8 @@ const { Rect } = openseadragon
 
 export default {
   name: 'TrackerViewer',
-  inject: ['tool_storage'],
   components: { AreaOverlay, WarpConnections },
+  inject: ['tool_storage'],
   props: {
     areas: Array,
   },

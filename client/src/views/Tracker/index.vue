@@ -14,20 +14,8 @@
             <i :class="`fa fa-${osd_options.mouseNavEnabled ? 'un' : ''}lock`" />
           </button>
         </div>
-        <unrest-dropdown class="tracker-view__config">
-          <button class="btn -primary">
-            <i class="fa fa-gear" />
-          </button>
-          <template #content>
-            <div class="dropdown-items" @click.stop>
-              <unrest-form
-                :schema="tool_storage.schema"
-                :state="tool_storage.state"
-                @change="tool_storage.save()"
-              />
-            </div>
-          </template>
-        </unrest-dropdown>
+        <tracker-settings />
+        <rando-settings />
         <entity-filter v-if="is_plando" />
       </template>
     </unrest-toolbar>
@@ -55,31 +43,30 @@
 
 <script>
 import { computed } from 'vue'
-import { debounce } from 'lodash'
-import osd from '@unrest/vue-openseadragon'
-import openseadragon from 'openseadragon'
 
 import { saveFile } from '@/data/legacy'
 import { location_type_map, subarea_by_area } from '@/data/old'
 import EditArea from './EditArea.vue'
 import EntityFilter from './EntityFilter.vue'
+import RandoSettings from './RandoSettings.vue'
 import ItemCounter from './ItemCounter.vue'
 import ItemTracker from './ItemTracker.vue'
 import ToolStorage from './ToolStorage'
+import TrackerSettings from './TrackerSettings.vue'
 import TrackerViewer from './Viewer.vue'
 import varia from '@/varia'
 import SeedSettings from './SeedSettings.vue'
-
-const { Rect } = openseadragon
 
 export default {
   name: 'TrackerView',
   components: {
     EditArea,
     EntityFilter,
+    RandoSettings,
     ItemCounter,
     ItemTracker,
     SeedSettings,
+    TrackerSettings,
     TrackerViewer,
   },
   provide() {
@@ -138,7 +125,8 @@ export default {
       return this.$route.query.skin || 'jpg'
     },
     wrapper_class() {
-      const { large_warps, large_locations, large_doors, entity_filter } = this.tool_storage.state
+      const { tracker_settings } = this.tool_storage.state
+      const { large_warps, large_locations, large_doors, entity_filter } = tracker_settings
       const { tool } = this.tool_storage.state.selected
       return [
         `tracker-view -layout-${this.$store.layout.state.selected} -tool-${tool}`,
@@ -277,7 +265,7 @@ export default {
     toggleLock() {
       const { osd_options } = this.$store.state
       osd_options.mouseNavEnabled = !osd_options.mouseNavEnabled
-    }
+    },
   },
 }
 </script>

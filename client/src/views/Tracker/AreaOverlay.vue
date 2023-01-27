@@ -35,7 +35,7 @@ import OSD from 'openseadragon'
 import AreaBox from './AreaBox.vue'
 import DragAnchor from './DragAnchor.vue'
 
-import { getStaticUrl, getGridUrl } from '@/utils'
+import { getGridUrl } from '@/utils'
 
 export default {
   components: { AreaBox, DragAnchor },

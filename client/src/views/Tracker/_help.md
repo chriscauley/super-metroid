@@ -1,17 +1,28 @@
-## Manual Tracker Instructions
+## Tracker Instructions
 
 All settings/progress are saved in local storage. Use trash can to reset progress.
 
 
-### Settings
+### <i class="fa fa-gear" /> Tracker Settings
 
 Click the gear button at the far right to view the settings:
 
-* Split: This is the only non-cosmetic settings. This will hide all locations not matching the split.
+* Visible locations: This will hide all locations not matching the selected split.
 * Warp lines: "legacy" will use the same line colors as the current varia.run site. "area" will draw two lines between each connected warp point. The color and style of the lines indicates which area the line is connected too (eg crater is solid+pink while red brinstar is dashed+green).
 * Show item counts: show/hide the list of items in each area in the top right
-* large locations, large warps: double the size of the click targets
+* Large locations, large warps: double the size of the click targets
 
+### <i class="fa fa-gamepad" /> Rando Settings
+
+These settings determine how the map is randomized. Click the gamepad button at the far right to view the settings:
+
+* Logic: Which initial rom (Vanilla Super Metroid or Mirrortroid) was used.
+* Majors Split: Where key items will be placed (change "visible locations" in tracker settings to filter).
+* Area rando: Whether or not the area connections can be remapped (purple portals).
+* Boss rando: Whether or not the boss connections can be remapped (red portals).
+* Escape rando: Whether or not the escape connections can be remapped (green portals).
+* Door rando: Whether or not door colors can be changed.
+* Tourian: Will Tourian be `vanilla` (unchanged), `fast` (no metroids, zebetites, or cutscenes), or `disabled` (escape starts when all objectives are met).
 
 ### Keyboard shortcuts
 

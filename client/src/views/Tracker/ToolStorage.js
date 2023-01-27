@@ -6,6 +6,88 @@ import HelpPopup from './HelpPopup.vue'
 
 import { warp_type_map, default_area_keys, subarea_by_area } from '@/data/old'
 
+const tracker_settings = {
+  schema: {
+    type: 'object',
+    properties: {
+      large_doors: { type: 'boolean' },
+      large_locations: { type: 'boolean' },
+      large_warps: { type: 'boolean' },
+      warp_display: {
+        type: 'string',
+        enum: ['dot', 'codes'],
+      },
+      // editor_mode: {
+      //   title: 'Controls',
+      //   type: 'string',
+      //   enum: ['', 'true'],
+      //   enumNames: ['Google Maps', 'Photo Shop'],
+      //   default: '',
+      // },
+      visible_locations: {
+        type: 'string',
+        enum: ['full', 'major', 'chozo', 'scavenger'],
+      },
+      item_tracker: {
+        type: 'string',
+        enum: ['', 'area-counter', 'pause-menu', 'grid', 'compact'],
+        enumNames: ['None', 'Area Counter', 'Pause Menu', 'Grid', 'Grid (compact)'],
+      },
+    },
+  },
+  initial: {
+    warp_display: 'codes',
+    large_doors: true,
+    large_locations: true,
+    large_warp: true,
+    item_tracker: 'pause-inventory',
+    entity_filter: undefined,
+  },
+}
+
+const rando_settings = {
+  schema: {
+    type: 'object',
+    properties: {
+      logic: {
+        type: 'string',
+        enum: ['vanilla', 'mirror'],
+      },
+      majorsSplit: {
+        type: 'string',
+        enum: ['Full', 'FullWithHUD', 'Major', 'Chozo', 'Scavenger'],
+        enumNames: ['Full', 'Full Countdown', 'Major', 'Chozo', 'Scavenger'],
+      },
+      areaRando: {
+        type: 'string',
+        enum: ['off', 'light', 'full'],
+      },
+      bossRando: {
+        type: 'boolean',
+      },
+      escapeRando: {
+        type: 'boolean',
+      },
+      doorsRando: {
+        type: 'boolean',
+      },
+      tourian: {
+        type: 'string',
+        enum: ['Vanilla', 'Fast', 'Disabled'],
+      },
+    },
+  },
+  initial: {
+    logic: 'vanilla',
+    majorsSplit: 'full',
+    areaRando: 'off',
+    bossRando: false,
+    escapeRando: false,
+    doorsRando: false,
+    tourian: 'Vanilla',
+  },
+}
+
 export default (component) => {
   const redo_stack = []
 
@@ -105,44 +187,12 @@ export default (component) => {
     actions: [],
     area_keys: cloneDeep(default_area_keys),
     key_stack: [],
-    split: 'full',
-    warp_display: 'codes',
-    large_doors: true,
-    large_locations: true,
-    large_warp: true,
-    item_tracker: 'pause-inventory',
-    entity_filter: undefined,
+    tracker_settings: { ...tracker_settings.initial },
+    rando_settings: { ...rando_settings.initial },
   }
   const storage = toolbar.ToolStorage('tools__tracker_v2', { tools: getTools, initial })
-  storage.schema = {
-    type: 'object',
-    properties: {
-      large_doors: { type: 'boolean' },
-      large_locations: { type: 'boolean' },
-      large_warps: { type: 'boolean' },
-      split: {
-        name: 'Majors Split',
-        type: 'string',
-        enum: ['full', 'major', 'chozo', 'scavenger'],
-      },
-      warp_display: {
-        type: 'string',
-        enum: ['dot', 'codes'],
-      },
-      // editor_mode: {
-      //   title: 'Controls',
-      //   type: 'string',
-      //   enum: ['', 'true'],
-      //   enumNames: ['Google Maps', 'Photo Shop'],
-      //   default: '',
-      // },
-      item_tracker: {
-        type: 'string',
-        enum: ['', 'area-counter', 'pause-menu', 'grid', 'compact'],
-        enumNames: ['None', 'Area Counter', 'Pause Menu', 'Grid', 'Grid (compact)'],
-      },
-    },
-  }
+  storage.tracker_settings = tracker_settings
+  storage.rando_settings = rando_settings
 
   const connectWarp = (id, selected_warp) => {
     const { json_data } = component
@@ -280,6 +330,27 @@ export default (component) => {
       return 'All'
     }
     return value.slice(0, 1).toUpperCase() + value.slice(1) + 's'
+  }
+
+  storage.getRandoSettings = () => {
+    if (component.json_data) {
+      const out = {}
+      return Object.keys(rando_settings.schema.properties).forEach((key) => {
+        out[key] = component.json_data[key]
+      })
+    }
+    return storage.state.rando_settings
+  }
+
+  storage.filterVisibleLocations = (locations) => {
+    if (component.$store.layout.getWorld().hide_locations) {
+      return []
+    }
+    const { visible_locations } = storage.state.tracker_settings
+    if (['major', 'chozo', 'scavenger'].includes(visible_locations)) {
+      return locations.filter((i) => i[visible_locations])
+    }
+    return locations.slice()
   }
 
   return storage

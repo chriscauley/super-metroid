@@ -10,7 +10,6 @@
 <script>
 import { subarea_by_area } from '@/data/old'
 import { prepName } from '@/layouts'
-import { filterSplitLocations } from '@/utils'
 
 export default {
   props: {
@@ -20,13 +19,13 @@ export default {
   },
   computed: {
     show() {
-      return this.tool_storage.state.item_tracker === 'area-counter'
+      return this.tool_storage.state.tracker_settings.item_tracker === 'area-counter'
     },
     rows() {
       const counts = {}
       const hits = {}
       this.areas.forEach((area) => {
-        const locations = filterSplitLocations(area.locations, this.tool_storage.state.split)
+        const locations = this.tool_storage.filterVisibleLocations(area.locations)
         const target_area = subarea_by_area[area.slug] || area.slug
         locations.forEach((location) => {
           counts[target_area] = (counts[target_area] || 0) + 1

@@ -70,15 +70,7 @@ export default {
       }))
     },
     locations() {
-      if (this.$store.layout.getWorld().hide_locations) {
-        return []
-      }
-      const { split } = this.tool_storage.state
-      let locations = this.area.locations
-      if (['major', 'chozo', 'scavenger'].includes(split)) {
-        locations = locations.filter((i) => i[split])
-      }
-      return locations
+      return this.tool_storage.filterVisibleLocations(this.area.locations)
     },
     doors() {
       if (this.$store.layout.getWorld().hide_locations) {

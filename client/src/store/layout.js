@@ -45,7 +45,7 @@ export default () => {
     const svg_coords = layouts[storage.state.selected].svg_coords
     saveFile('export default ' + JSON.stringify(svg_coords, null, 2), 'svg_coords.js')
   }
-  storage.getButton = (component) => {
+  storage.getButton = () => {
     const { selected } = storage.state
     return {
       slug: 'layout',

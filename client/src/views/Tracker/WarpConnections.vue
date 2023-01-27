@@ -49,7 +49,7 @@ export default {
   },
   computed: {
     texts() {
-      if (this.tool_storage.state.warp_display !== 'codes') {
+      if (this.tool_storage.state.tracker_settings.warp_display !== 'codes') {
         return []
       }
 
@@ -101,7 +101,7 @@ export default {
     },
     shapes() {
       const used = {}
-      const { warp_display } = this.tool_storage.state
+      const { warp_display } = this.tool_storage.state.tracker_settings
       const pairs = Object.entries(this.game_state.warps).filter(([a, b]) => {
         if (used[a] || used[b]) {
           return false

@@ -1,13 +1,13 @@
 <template>
-  <div class="item-tracker__wrapper" v-if="tagName">
+  <div class="item-tracker__wrapper" v-if="config.tagName">
     <div class="item-tracker__toolbar"></div>
     <component
-      :is="tagName"
+      :is="config.tagName"
       :inventory="inventory"
       @toggle-item="(item) => $emit('toggle-item', item)"
       @add-item="(item, amount) => $emit('add-item', item, amount)"
       :controlled="state.controlled"
-      :compact="compact"
+      :compact="config.compact"
     />
   </div>
 </template>
@@ -43,11 +43,12 @@ export default {
     return { state }
   },
   computed: {
-    compact() {
-      return this.tool_storage.state.item_tracker === 'compact'
-    },
-    tagName() {
-      return tagname_lookup[this.tool_storage.state.item_tracker]
+    config() {
+      const { item_tracker } = this.tool_storage.state.tracker_settings
+      return {
+        compact: item_tracker === 'compact',
+        tagName: tagname_lookup[item_tracker],
+      }
     },
     style() {
       const { size, x, y } = storage.state
