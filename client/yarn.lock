@@ -1341,10 +1341,10 @@
     eslint-plugin-vue "^9.1.1"
     prettier "^2.7.0"
 
-"@unrest/tailwind@0.1.22":
-  version "0.1.22"
-  resolved "https://registry.yarnpkg.com/@unrest/tailwind/-/tailwind-0.1.22.tgz#cc1b99007333d73b383843563f7f30da2d40fd0a"
-  integrity sha512-jAGDqlGxvYwREMHrHS+w5hMdNXLdUSqGaGllaVXByR+3oe4Hah94gHwS1mdow1XbJ+75b34YuycNYYovU5KmnQ==
+"@unrest/tailwind@0.1.23":
+  version "0.1.23"
+  resolved "https://registry.yarnpkg.com/@unrest/tailwind/-/tailwind-0.1.23.tgz#818d9a2c9e4fecc290136d041157a22b812bcf2b"
+  integrity sha512-bSFuK4KHeZRodgJN0P7/ZUXQf1JkSPPObwxK05HP8kcuuNhlE/HoxRGOwq7ZwVVU1ej+vnwYrBZVNGYVIQckfQ==
 
 "@unrest/vue-form@^0.0.18":
   version "0.0.18"
@@ -1382,19 +1382,19 @@
     lodash.debounce "^4.0.8"
     querystring "^0.2.1"
 
-"@unrest/vue-toolbar@^0.0.4":
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/@unrest/vue-toolbar/-/vue-toolbar-0.0.4.tgz#1aa442a0103ec6c9d698533a01f68283c7df032c"
-  integrity sha512-aZYan9qDHTNAw80DtSV4DfLSDh64zBu8wazJ/ja1Zgml1QpV2sBa/arlxD9sNXoMWKktOOAWL0en47eW1lbn1A==
+"@unrest/vue-toolbar@0.0.5":
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@unrest/vue-toolbar/-/vue-toolbar-0.0.5.tgz#410d591b95ec6638f0598e3c84359f1ea758b8df"
+  integrity sha512-EWG8RGEJ8BU406KCD62i1bX8rGn/FOgdrXDfSLtgjeNkbzs6daHDJsTI26w786JR6Ca/9Qekzwg0pzp2deXxiw==
   dependencies:
     "@unrest/vue-storage" "^0.0.19"
     lodash.startcase "^4.4.0"
     vue "^3.2.41"
 
-"@unrest/vue@0.2.16":
-  version "0.2.16"
-  resolved "https://registry.yarnpkg.com/@unrest/vue/-/vue-0.2.16.tgz#afb770974d87875e73fe8af2bfdae11cf1aa7ff5"
-  integrity sha512-yfhGkue+QtPevwWHxfIkC6TTc2fl+nYklEi0LvXe04J0xgNbt4E3m1SMmZ8869OA3IJtRb3achVW2wmqA3HS7Q==
+"@unrest/vue@0.2.18":
+  version "0.2.18"
+  resolved "https://registry.yarnpkg.com/@unrest/vue/-/vue-0.2.18.tgz#c25cf83151c91ba0b91fba6699a07ba1ce652453"
+  integrity sha512-wqOAJOf+OTYA0By8SuV+hpFw1nHmMHuiqcvvkuHf8Hz7HDSVZGjfIBrGuS9E2sxPhK/9J0gQ8ig7YECVHSGMsw==
   dependencies:
     dedent "^0.7.0"
     lodash.clonedeep "^4.5.0"
