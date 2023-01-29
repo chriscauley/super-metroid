@@ -1,3 +1,4 @@
+const CopyPlugin = require("copy-webpack-plugin");
 const { defineConfig } = require('@vue/cli-service')
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 
@@ -13,6 +14,11 @@ module.exports = defineConfig({
   configureWebpack: {
     plugins: [
       new WebpackManifestPlugin(),
+      new CopyPlugin({
+        patterns: [
+          './layouts/**/*',
+        ]
+      }),
     ]
   }
 })
