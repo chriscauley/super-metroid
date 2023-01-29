@@ -1,10 +1,11 @@
 <template>
   <unrest-dropdown class="tracker-view__config">
-    <button class="btn -primary">
+    <button class="btn -primary" title="Randomizer Settings">
       <i class="fa fa-gamepad" />
     </button>
     <template #content>
       <div class="dropdown-items" @click.stop>
+        <h3 class="form-group">Randomizer Settings</h3>
         <table v-if="locked" class="table" style="width: 100%">
           <tbody>
             <tr v-for="row in rows" :key="row">

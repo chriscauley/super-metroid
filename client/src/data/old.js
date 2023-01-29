@@ -36,100 +36,10 @@ export const varia_item_groups = Object.entries(items_by_group).map(([slug, item
 
 export const all_items = [...ammo, ...energy, ...beams, ...suits, ...items]
 
-// TODO rename to warps
-export const access_points = [
-  'lowerMushroomsLeft',
-  'moatRight',
-  'greenPiratesShaftBottomRight',
-  'keyhunterRoomBottom',
-  'morphBallRoomLeft',
-  'greenBrinstarElevator',
-  'greenHillZoneTopRight',
-  'noobBridgeRight',
-  'westOceanLeft',
-  'crabMazeLeft',
-  'lavaDiveRight',
-  'threeMuskateersRoomLeft',
-  'warehouseZeelaRoomLeft',
-  'warehouseEntranceLeft',
-  'warehouseEntranceRight',
-  'singleChamberTopRight',
-  'kronicBoostRoomBottomLeft',
-  'mainStreetBottom',
-  'crabHoleBottomLeft',
-  'leCoudeRight',
-  'redFishRoomLeft',
-  'redTowerTopLeft',
-  'crabShaftRight',
-  'aqueductTopLeft',
-  'caterpillarRoomTopRight',
-  'redBrinstarElevator',
-  'eastTunnelRight',
-  'eastTunnelTopRight',
-  'glassTunnelTop',
-  'goldenFour',
-  'crocomireSpeedwayBottom',
-  'crocomireRoomTop',
-]
-
 export const sand_doors = [
   'westSandHallLeft',
   'belowBotwoonEnergyTankRight',
   'westSandHallTunnelRight',
-]
-
-export const inter_area_access_points = [
-  'wreckedShipMain',
-  'wreckedShipBack',
-  'lNEntrance',
-  'lNAboveGT',
-  'screwAttackBottom',
-  'firefleas',
-  'firefleasTop',
-  'ridleyZone',
-  'preciousRoomTop',
-  'aqueduct',
-  'aqueductBottom',
-  'beach',
-  'crabShaftLeft',
-  'leftSandpit',
-  'oasisBottom',
-  'postBotwoon',
-  'colosseumTopRight',
-  'rightSandpit',
-  'toiletTop',
-  'landingSite',
-  'ceres',
-  'blueBrinstarElevatorBottom',
-  'bigPink',
-  'etecoonsSupers',
-  'etecoonsBottom',
-  'bubbleMountain',
-  'bubbleMountainTop',
-  'bubbleMountainBottom',
-  'draygonRoomBottom',
-  'wateringHole',
-  'wateringHoleBottom',
-  'gauntletTop',
-  'businessCenter',
-  'mamaTurtle',
-  'cathedral',
-  'moatLeft',
-  'bowling',
-  'wasteland',
-  'grappleEscape',
-  'redFishRoomBottom',
-]
-
-export const boss_doors = [
-  'phantoonRoomOut',
-  'phantoonRoomIn',
-  'ridleyRoomOut',
-  'ridleyRoomIn',
-  'kraidRoomOut',
-  'kraidRoomIn',
-  'draygonRoomOut',
-  'draygonRoomIn',
 ]
 
 export const escape_doors = [
@@ -140,6 +50,37 @@ export const escape_doors = [
   'businessCenterMidLeft',
   'crabHoleBottomRight',
 ]
+
+export const vanilla_warps = {
+  area: [
+    ['lowerMushroomsLeft', 'greenBrinstarElevator'],
+    ['greenPiratesShaftBottomRight', 'goldenFour'],
+    ['crabMazeLeft', 'leCoudeRight'],
+    ['noobBridgeRight', 'redTowerTopLeft'],
+    ['caterpillarRoomTopRight', 'redFishRoomLeft'],
+    ['redBrinstarElevator', 'keyhunterRoomBottom'],
+    ['moatRight', 'westOceanLeft'],
+    ['morphBallRoomLeft', 'greenHillZoneTopRight'],
+    ['mainStreetBottom', 'glassTunnelTop'],
+    ['warehouseZeelaRoomLeft', 'warehouseEntranceRight'],
+    ['threeMuskateersRoomLeft', 'singleChamberTopRight'],
+    ['lavaDiveRight', 'kronicBoostRoomBottomLeft'],
+    ['crabShaftRight', 'eastTunnelTopRight'],
+    ['crabHoleBottomLeft', 'aqueductTopLeft'],
+    ['warehouseEntranceLeft', 'eastTunnelRight'],
+    ['crocomireSpeedwayBottom', 'crocomireRoomTop'],
+  ],
+  boss: [
+    ['phantoonRoomOut', 'phantoonRoomIn'],
+    ['ridleyRoomOut', 'ridleyRoomIn'],
+    ['kraidRoomOut', 'kraidRoomIn'],
+    ['draygonRoomOut', 'draygonRoomIn'],
+  ],
+}
+
+// TODO rename to warps
+export const access_points = flatten(vanilla_warps.area)
+export const boss_doors = flatten(vanilla_warps.boss)
 
 export const locations_by_area = {
   crater: [

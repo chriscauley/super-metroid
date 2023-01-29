@@ -221,6 +221,13 @@ export default (component) => {
   storage.click = (id, game_state) => {
     const type = warp_type_map[id]
     const { json_data } = component
+    const rando_settings = storage.getRandoSettings()
+    if (type === 'warp' && !rando_settings.areaRando) {
+      unrest.ui.toast.warning('You cannot change this warp because area randomization is off.')
+    }
+    if (type === 'boss' && !rando_settings.bossRando) {
+      unrest.ui.toast.warning('You cannot change this warp because boss randomization is off.')
+    }
     if (type === 'location') {
       addAction(['click-location', id])
     } else if (type === 'warp' || type === 'boss') {
@@ -333,11 +340,10 @@ export default (component) => {
   }
 
   storage.getRandoSettings = () => {
-    if (component.json_data) {
-      const out = {}
-      return Object.keys(rando_settings.schema.properties).forEach((key) => {
-        out[key] = component.json_data[key]
-      })
+    const { json_data } = component
+    if (json_data) {
+      const { properties } = rando_settings.schema
+      return Object.fromEntries(Object.keys(properties).map((key) => [key, json_data[key]]))
     }
     return storage.state.rando_settings
   }
@@ -345,6 +351,9 @@ export default (component) => {
   storage.filterVisibleLocations = (locations) => {
     if (component.$store.layout.getWorld().hide_locations) {
       return []
+    }
+    if (component.json_data) {
+      return locations
     }
     const { visible_locations } = storage.state.tracker_settings
     if (['major', 'chozo', 'scavenger'].includes(visible_locations)) {

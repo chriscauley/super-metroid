@@ -97,14 +97,35 @@ const prepArea = (area, layout) => {
   return area
 }
 
+const transformLogic = (layout, areas, logic) => {
+  const transform_items = ['locations', 'warps', 'doors', 'gpss']
+
+  areas.forEach((area) => {
+    if (logic === 'mirror') {
+      area.x = layout.root.width / layout.root.scale - area.x - area.width
+    }
+    transform_items.forEach((key) => {
+      area[key].forEach((item) => {
+        if (logic === 'mirror') {
+          item.x = area.width - item.x
+        }
+      })
+    })
+  })
+}
+
 export default {
   legacy,
   nordub,
   streaming,
   'alt-streaming': alt_streaming,
   slugs: ['legacy', 'nordub', 'streaming', 'alt-streaming'],
-  getAreas(slug) {
-    const areas = this[slug].areas.map((a) => prepArea(a, this[slug]))
+  getAreas(slug, logic) {
+    const layout = this[slug]
+    const areas = layout.areas.map((a) => prepArea(a, this[slug]))
+    if (logic !== 'vanilla') {
+      transformLogic(layout, areas, logic)
+    }
     return areas
   },
   moveEntity(layout_slug, { type, id }, x, y) {

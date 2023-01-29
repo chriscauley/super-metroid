@@ -29,9 +29,6 @@
   &.-align-right {
     transform: translate(-75%, -50%);
   }
-  &.-align-double-right {
-    transform: translate(-75%, -50%);
-  }
   &.-align-left {
     transform: translate(-25%, -50%);
   }
@@ -54,6 +51,34 @@
     transform: translate(-25%, -75%);
   }
 }
+
+.-logic-mirror.large_locations .location-marker {
+  &.-align-right {
+    transform: translate(-25%, -50%);
+  }
+  &.-align-left {
+    transform: translate(-75%, -50%);
+  }
+  &.-align-top {
+    transform: translate(-50%, -25%);
+  }
+  &.-align-bottom {
+    transform: translate(-50%, -75%);
+  }
+  &.-align-top-right {
+    transform: translate(-25%, -25%);
+  }
+  &.-align-top-left {
+    transform: translate(-75%, -25%);
+  }
+  &.-align-bottom-right {
+    transform: translate(-25%, -75%);
+  }
+  &.-align-bottom-left {
+    transform: translate(-75%, -75%);
+  }
+}
+
 
 .location-marker__popper  {
   font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;

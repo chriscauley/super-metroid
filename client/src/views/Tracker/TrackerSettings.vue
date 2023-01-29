@@ -1,10 +1,11 @@
 <template>
   <unrest-dropdown class="tracker-view__config">
-    <button class="btn -primary">
+    <button class="btn -primary" title="Tracker Settings">
       <i class="fa fa-gear" />
     </button>
     <template #content>
       <div class="dropdown-items" @click.stop>
+        <h3 class="form-group">Tracker Settings</h3>
         <unrest-form
           :schema="schema"
           :state="tool_storage.state.tracker_settings"

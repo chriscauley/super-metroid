@@ -51,14 +51,19 @@ export default {
     window.removeEventListener('resize', this.resize)
   },
   methods: {
+    getLayoutUrl(filename) {
+      const { selected } = this.$store.layout.state
+      const { logic } = this.tool_storage.getRandoSettings()
+      return getStaticUrl(`/layouts/${logic}/${selected}/${filename}`)
+    },
     addCorners() {
       this.osd_store.viewer.addOnceHandler('tile-loaded', this.addImages)
       const { selected } = this.$store.layout.state
       if (this.$route.query.debug) {
-        const url = getStaticUrl(`/${selected}/area_map.png`)
+        const url = this.getLayoutUrl('area_map.png')
         this.osd_store.viewer.addSimpleImage({ url })
       } else if (selected === 'streaming') {
-        const url = getStaticUrl(`/${selected}/background.png`)
+        const url = this.getLayoutUrl('background.png')
         this.osd_store.viewer.addSimpleImage({ url })
       } else {
         const { scale, width: x_max, height: y_max } = this.$store.layout.getWorld().root
@@ -81,11 +86,10 @@ export default {
       }
     },
     addImages() {
-      const { selected } = this.$store.layout.state
       this.areas.forEach((area) => {
         const { width: max_width, scale } = this.$store.layout.getWorld().root
         let { width, x, y } = area
-        const url = getStaticUrl(`/${selected}/${area.slug}.png`)
+        const url = this.getLayoutUrl(`${area.slug}.png`)
         this.osd_store.viewer.addSimpleImage({
           url,
           x: (x * scale) / max_width,

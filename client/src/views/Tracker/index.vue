@@ -19,7 +19,7 @@
         <entity-filter v-if="is_plando" />
       </template>
     </unrest-toolbar>
-    <tracker-viewer :areas="areas" :key="selected_layout" />
+    <tracker-viewer :areas="areas" :key="selected_layout + tool_storage.getRandoSettings().logic" />
     <div v-if="$store.layout.state.dirty" class="dirty-layout" @click="$store.layout.saveAreas">
       <div class="btn -primary">Save Areas</div>
     </div>
@@ -45,7 +45,7 @@
 import { computed } from 'vue'
 
 import { saveFile } from '@/data/legacy'
-import { location_type_map, subarea_by_area } from '@/data/old'
+import { location_type_map, subarea_by_area, vanilla_warps } from '@/data/old'
 import EditArea from './EditArea.vue'
 import EntityFilter from './EntityFilter.vue'
 import RandoSettings from './RandoSettings.vue'
@@ -119,7 +119,7 @@ export default {
       return this.tool_storage.getCodeMap()
     },
     areas() {
-      return this.$store.layout.getAreas()
+      return this.$store.layout.getAreas(this.tool_storage.getRandoSettings().logic)
     },
     skin() {
       return this.$route.query.skin || 'jpg'
@@ -128,8 +128,10 @@ export default {
       const { tracker_settings } = this.tool_storage.state
       const { large_warps, large_locations, large_doors, entity_filter } = tracker_settings
       const { tool } = this.tool_storage.state.selected
+      const layout = this.$store.layout.state.selected
+      const { logic } = this.tool_storage.getRandoSettings()
       return [
-        `tracker-view -layout-${this.$store.layout.state.selected} -tool-${tool}`,
+        `tracker-view -layout-${layout} -tool-${tool} -logic-${logic}`,
         { large_locations, large_warps, large_doors },
         entity_filter && `-entity-filter-${entity_filter}`,
       ]
@@ -137,6 +139,7 @@ export default {
     game_state() {
       const varia_game_state = varia.getGameState(this.json_data)
       if (varia_game_state) {
+        // game state controlled by server
         return varia_game_state
       }
       const state = {
@@ -146,6 +149,24 @@ export default {
       }
       const type_map = {}
       const area_locations = {}
+      const rando_settings = this.tool_storage.getRandoSettings()
+      const locked = {}
+      const forceWarp = ([a, b]) => {
+        state.warps[a] = b
+        state.warps[b] = a
+        locked[a] = locked[b] = true
+      }
+
+      if (rando_settings.areaRando === 'off') {
+        // area randomizer locks all area_warps
+        vanilla_warps.area.forEach(forceWarp)
+      }
+
+      if (!rando_settings.bossRando) {
+        // area randomizer locks all area_warps
+        vanilla_warps.boss.forEach(forceWarp)
+      }
+
       this.areas.forEach((area) => {
         const target_area = subarea_by_area[area.slug] || area.slug
         area_locations[target_area] = area_locations[target_area] || []
@@ -156,6 +177,10 @@ export default {
         area.warps.forEach((w) => (type_map[w.slug] = 'warp'))
       })
       this.tool_storage.state.actions.forEach(([action_type, id, arg2]) => {
+        if ((action_type.includes('warp') && locked[id]) || locked[arg2]) {
+          // warp was set by rando_settings
+          return
+        }
         if (action_type === 'connect-warp') {
           state.warps[id] = arg2
           state.warps[arg2] = id
@@ -172,6 +197,7 @@ export default {
           console.warn('Unknown action:', action_type, id, arg2)
         }
       })
+
       return state
     },
   },
