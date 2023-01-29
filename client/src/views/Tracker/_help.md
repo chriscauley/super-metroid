@@ -3,16 +3,16 @@
 All settings/progress are saved in local storage. Use trash can to reset progress.
 
 
-### <i class="fa fa-gear" /> Tracker Settings
+### <i class="fa fa-gear"></i> Tracker Settings
 
 Click the gear button at the far right to view the settings:
 
 * Visible locations: This will hide all locations not matching the selected split.
-* Warp lines: "legacy" will use the same line colors as the current varia.run site. "area" will draw two lines between each connected warp point. The color and style of the lines indicates which area the line is connected too (eg crater is solid+pink while red brinstar is dashed+green).
+* Warp lines: "legacy" will use the same line colors as the current varia.run site (random colors alternating). Progressive will start with the
 * Show item counts: show/hide the list of items in each area in the top right
 * Large locations, large warps: double the size of the click targets
 
-### <i class="fa fa-gamepad" /> Rando Settings
+### <i class="fa fa-gamepad"></i> Rando Settings
 
 These settings determine how the map is randomized. Click the gamepad button at the far right to view the settings:
 
@@ -31,7 +31,6 @@ These settings determine how the map is randomized. Click the gamepad button at 
 * `g1c5`: connect warps c5 (left of morph) and g1 (green brinstar elevator). If already connected it will disconnect the two. If either warp is connected to a different warp, command is ignored.
 * `ctrl+z`: undo
 * `ctrl+shift+z`: redo
-
 
 ### Area hotkeys
 

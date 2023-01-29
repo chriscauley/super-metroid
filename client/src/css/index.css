@@ -392,3 +392,10 @@ body {
     }
   }
 }
+
+h3 {
+  @apply text-2xl font-bold;
+  .ur-dropdown &.form-group {
+    @apply pb-2
+  }
+}
