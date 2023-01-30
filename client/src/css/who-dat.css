@@ -1,0 +1,47 @@
+.who-dat {
+  @apply border-8 bg-gray-400 mx-auto my-16 p-4 rounded-xl;
+  width: 420px;
+  h1 {
+    @apply font-bold text-center;
+    font-size: 3rem;
+    height: 1.5em;
+    line-height: 1.5em;
+    overflow: visible;
+    text-shadow: 0 0 1px white;
+  }
+  &__display {
+    @apply relative m-8 mx-auto;
+    width: 90%;
+    &:before {
+      content: "";
+      display: block;
+      padding-top: 100%;
+    }
+    canvas {
+      @apply absolute h-full left-0 top-0 w-full;
+      opacity: 1;
+    }
+  }
+  &__img {
+    display:none;
+  }
+  &.-revealed {
+    .who-dat__mask {
+      opacity: 0;
+      transition: 2s;
+    }
+  }
+  &__scores {
+    @apply flex gap-4 justify-center mt-4;
+  }
+}
+
+.who-dat .ur-form {
+  @apply flex gap-4 items-end;
+  label {
+    display: none;
+  }
+  .form-group {
+    @apply mb-0;
+  }
+}
