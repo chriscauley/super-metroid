@@ -8,6 +8,8 @@ const LS_KEY = 'WHO_DAT_STORAGE'
 const initial = {
   recent: [],
   record: {},
+  streak: 0,
+  misspelled: {},
 }
 
 const random = Random()
@@ -27,16 +29,19 @@ export default () => {
     const { record } = storage.state
     const all = enemy_data.filter((enemy) => !recent_by_id[enemy.id])
     const missed = all.filter((enemy) => !record[enemy.id])
-    const matched = random.shuffle(all.filter((enemy) => record[enemy.id]).slice(0, 5))
-    return random.choice([...missed, ...matched])
+    const matched = all.filter((enemy) => record[enemy.id])
+    if (!missed.length || Math.random() > 0.95) {
+      return random.choice(matched)
+    }
+    return random.choice(missed)
   }
 
   const clean = (s) =>
     s
       .toLowerCase()
-      .replace('sm.', 'mini') // sidehopper and desgeega
       .split('(')[0] // get rid of (standing), etc
       .replace(/\W/g, '')
+      .replace('multiviola', 'viola')
 
   const mark = (id, value) => {
     const { recent, record } = storage.state
@@ -45,6 +50,11 @@ export default () => {
       recent.shift()
     }
     record[id] = value
+    if (value) {
+      storage.state.streak++
+    } else {
+      storage.state.streak = 0
+    }
     storage.save()
   }
 
@@ -64,5 +74,13 @@ export default () => {
       class: `alert -${correct ? 'success' : 'error'}`,
     }
   }
+
+  storage.getPercentage = () => {
+    const total = enemy_data.length
+    const { record } = storage.state
+    const correct = enemy_data.filter((e) => record[e.id]).length
+    return Math.floor((100 * correct) / total)
+  }
+
   return storage
 }
