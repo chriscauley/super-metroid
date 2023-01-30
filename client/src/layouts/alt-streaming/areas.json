@@ -33,7 +33,7 @@
       ["morphBallRoomLeft", 4.6000000000000005, 5.7],
       ["climbBottomLeft", 5, 2.9000000000000004]
     ],
-    "title_dxy": [2.800292999683244, -0.5539363075948442],
+    "title_dxy": [5.415138674547733, 0.1527787396658286],
     "doors": [
       ["ConstructionZoneRight", 0, 0],
       ["LandingSiteRight", 0, 0],
@@ -60,7 +60,7 @@
     "x": 4.440892098500626e-16,
     "y": 22.7,
     "warps": [["crocomireRoomTop", 1.5, -0.4]],
-    "title_dxy": [0.9489180302415661, 3.1439176353478917],
+    "title_dxy": [1.442041714334206, 3.4397918458034757],
     "doors": [
       ["PostCrocomireShaftRight", 0, 0],
       ["PostCrocomireUpperLeft", 0, 0]
@@ -77,7 +77,7 @@
     "x": 11.174163169662611,
     "y": 22.7,
     "warps": [["draygonRoomIn", 1.5, -0.4]],
-    "title_dxy": [1.468047708725675, 3.069823334230114],
+    "title_dxy": [1.468047708725675, 3.3656975446856983],
     "doors": []
   },
   {
@@ -106,7 +106,7 @@
       ["westSandHallLeft", 0.5, 4.5],
       ["belowBotwoonEnergyTankRight", 2.7, 2.4000000000000004]
     ],
-    "title_dxy": [1, 3],
+    "title_dxy": [1.9187295614388746, 1.0918693723961834],
     "doors": [
       ["ForgottenHighwaySaveStation", 0, 0],
       ["LeCoudeBottom", 0, 0],
@@ -148,7 +148,7 @@
       ["noobBridgeRight", 4.4, 7.300000000000001],
       ["greenBrinstarMainShaftTopLeft", 0, 3.1]
     ],
-    "title_dxy": [1.8674672888087525, 2.6294623059866966],
+    "title_dxy": [2.9275398596997615, 4.042892400508042],
     "doors": [
       ["BigPinkBottomRight", 0, 0],
       ["BigPinkBottomLeft", 0, 0],
@@ -175,7 +175,7 @@
     "x": 7.473957694562625,
     "y": 22.7,
     "warps": [["kraidRoomIn", 1.5, -0.4]],
-    "title_dxy": [1.4704257887856482, 3.2261435976865904],
+    "title_dxy": [1.3718010519671202, 3.4233930713236465],
     "doors": []
   },
   {
@@ -192,7 +192,7 @@
       ["warehouseZeelaRoomLeft", 0.5, 0.5],
       ["kraidRoomOut", 5.5, 0.5]
     ],
-    "title_dxy": [1.8681303452644917, -0.3016885553470925],
+    "title_dxy": [2.9988744208815685, -0.0896740411688906],
     "doors": [["KraidRefillStation", 0, 0]]
   },
   {
@@ -218,7 +218,7 @@
       ["threeMuskateersRoomLeft", 3.7, 0.5],
       ["ridleyRoomOut", 1.4000000000000001, 3]
     ],
-    "title_dxy": [1.585289405716235, -0.38142863234326674],
+    "title_dxy": [1.867975424620504, -0.1694141181650649],
     "doors": [
       ["RedKihunterShaftBottom", 0, 0],
       ["WastelandLeft", 0, 0]
@@ -232,7 +232,7 @@
     "x": 3.6569139200759464,
     "y": 22.7,
     "warps": [["phantoonRoomIn", 1.5, -0.4]],
-    "title_dxy": [1.601775625504439, 3.2463578643043296],
+    "title_dxy": [1.503150888685911, 3.4436073379413856],
     "doors": []
   },
   {
@@ -256,7 +256,7 @@
       ["eastTunnelRight", 6.7, 7.300000000000001],
       ["eastTunnelTopRight", 6.7, 5.800000000000001]
     ],
-    "title_dxy": [2.554014887551473, 2.155552374454813],
+    "title_dxy": [3.145763308462641, 3.5362986899142044],
     "doors": [
       ["MaridiaBottomSaveStation", 0, 0],
       ["RedTowerElevatorTopLeft", 0, 0],
@@ -279,7 +279,7 @@
     "x": 14.99120694414929,
     "y": 22.7,
     "warps": [["ridleyRoomIn", 1.5, -0.4]],
-    "title_dxy": [1.601775625504439, 3.102725701945361],
+    "title_dxy": [1.601775625504439, 3.398599912400945],
     "doors": []
   },
   {
@@ -293,7 +293,7 @@
       ["goldenFour", 1.5, -0.4],
       ["tourianEscapeRoom4TopRight", 5.5, 5.5]
     ],
-    "title_dxy": [0.5081714906745911, 3.028531540705904],
+    "title_dxy": [1.4944188588598708, 3.423030487980016],
     "doors": []
   },
   {
@@ -327,7 +327,7 @@
       ["kronicBoostRoomBottomLeft", 7.2, 5.2],
       ["businessCenterMidLeft", 1.1, 2.1]
     ],
-    "title_dxy": [3.1771932335956725, 1.5915292025048111],
+    "title_dxy": [4.449280318664884, 2.580930268669753],
     "doors": [
       ["BubbleMountainTopRight", 0, 0],
       ["BusinessCenterBottomLeft", 0, 0],
@@ -365,7 +365,7 @@
       ["westSandHallTunnelRight", 4.5, 4],
       ["crabHoleBottomRight", 4.5, 5.1000000000000005]
     ],
-    "title_dxy": [0.8987418069735162, 2.3125718793401697],
+    "title_dxy": [2.10015738731666, 3.726001973861515],
     "doors": [
       ["CrabShaftRight", 0, 0],
       ["FishTankRight", 0, 0],
@@ -397,7 +397,7 @@
       ["phantoonRoomOut", 3.6, 2],
       ["basementLeft", 1.5, 2]
     ],
-    "title_dxy": [1.8309044613922665, -0.679312151263373],
+    "title_dxy": [3.5270205748178816, -0.043268608728767394],
     "doors": [
       ["WestOceanRight", 0, 0],
       ["ElectricDeathRoomTopLeft", 0, 0],

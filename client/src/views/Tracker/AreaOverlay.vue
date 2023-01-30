@@ -20,7 +20,6 @@
         :osd_store="osd_store"
         @done="moveTitle"
       />
-      {{ area.name }}
       <i
         v-if="is_admin"
         class="fa fa-edit link"

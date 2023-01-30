@@ -33,7 +33,7 @@
       ["morphBallRoomLeft", 12, 25.25],
       ["climbBottomLeft", 12.25, 19.75]
     ],
-    "title_dxy": [14.5, 0.5],
+    "title_dxy": [14.5, 1.0185185185185186],
     "doors": [
       ["LandingSiteRight", 27, 5],
       ["LandingSiteTopRight", 27, 1.75],
@@ -45,10 +45,10 @@
       ["ConstructionZoneRight", 21.75, 25.25]
     ],
     "gpss": [
-      ["landingSite", 22.0, 3.75],
-      ["blueBrinstarElevatorBottom", 18.0, 25.25],
+      ["landingSite", 22, 3.75],
+      ["blueBrinstarElevatorBottom", 18, 25.25],
       ["gauntletTop", 5.5, 2.75],
-      ["moatLeft", 31.5, 4.0]
+      ["moatLeft", 31.5, 4]
     ]
   },
   {
@@ -66,7 +66,7 @@
     "x": 11.75,
     "y": 45.25,
     "warps": [["crocomireRoomTop", 13.25, 0.25]],
-    "title_dxy": [9, 3],
+    "title_dxy": [13.222222222222221, 3.4444444444444446],
     "doors": [
       ["PostCrocomireUpperLeft", 7.5, 1.25],
       ["PostCrocomireShaftRight", 8.5, 6.75]
@@ -84,7 +84,7 @@
     "x": 102.5,
     "y": 25.75,
     "warps": [["draygonRoomIn", 3.75, 1.25]],
-    "title_dxy": [1.5, 2.75],
+    "title_dxy": [1.6481481481481481, 3.787037037037037],
     "doors": [],
     "gpss": [["draygonRoomBottom", 1.75, 0.25]]
   },
@@ -114,7 +114,7 @@
       ["westSandHallLeft", 0.5, 21],
       ["belowBotwoonEnergyTankRight", 13.25, 14.25]
     ],
-    "title_dxy": [9.5, 6],
+    "title_dxy": [14.685185185185185, 6.814814814814815],
     "doors": [
       ["ColosseumBottomRight", 25, 10.75],
       ["PlasmaSparkBottom", 5.5, 8],
@@ -130,8 +130,8 @@
       ["aqueductBottom", 3.5, 15.25],
       ["toiletTop", 5.5, 7.25],
       ["leftSandpit", 4.25, 18.75],
-      ["oasisBottom", 5.5, 21.0],
-      ["postBotwoon", 9.75, 12.0],
+      ["oasisBottom", 5.5, 21],
+      ["postBotwoon", 9.75, 12],
       ["colosseumTopRight", 24.5, 9.75],
       ["rightSandpit", 7.5, 18.75]
     ]
@@ -167,7 +167,7 @@
       ["noobBridgeRight", 30.25, 21],
       ["greenBrinstarMainShaftTopLeft", 4, 11]
     ],
-    "title_dxy": [11, 7.5],
+    "title_dxy": [11.444444444444445, 7.351851851851851],
     "doors": [
       ["GreenHillZoneTopRight", 16.75, 17.75],
       ["NoobBridgeRight", 29, 21],
@@ -183,9 +183,9 @@
       ["GreenBrinstarSaveStation", 4.25, 12.25]
     ],
     "gpss": [
-      ["bigPink", 13.5, 11.0],
+      ["bigPink", 13.5, 11],
       ["etecoonsSupers", 0.5, 16.75],
-      ["etecoonsBottom", 2.0, 16.75]
+      ["etecoonsBottom", 2, 16.75]
     ]
   },
   {
@@ -199,7 +199,7 @@
     "x": 72,
     "y": 37.75,
     "warps": [["kraidRoomIn", 0.25, 1.75]],
-    "title_dxy": [1.5, 2],
+    "title_dxy": [1.9444444444444444, 2.7407407407407405],
     "doors": [],
     "gpss": []
   },
@@ -218,7 +218,7 @@
       ["warehouseZeelaRoomLeft", 1.5, 1.25],
       ["kraidRoomOut", 13.5, 2.5]
     ],
-    "title_dxy": [2, 3],
+    "title_dxy": [7.185185185185185, 4.111111111111111],
     "gpss": []
   },
   {
@@ -244,13 +244,13 @@
       ["lavaDiveRight", 11.75, 8.75],
       ["ridleyRoomOut", 9.25, 15.75]
     ],
-    "title_dxy": [17.25, 1],
+    "title_dxy": [15.25, 5.666666666666667],
     "doors": [
       ["RedKihunterShaftBottom", 24, 13],
       ["WastelandLeft", 19.25, 15.75]
     ],
     "gpss": [
-      ["lNEntrance", 7.0, 12.25],
+      ["lNEntrance", 7, 12.25],
       ["lNAboveGT", 2.5, 14.5],
       ["screwAttackBottom", 5.75, 14.75],
       ["firefleas", 22.75, 7.75],
@@ -267,7 +267,7 @@
     "x": 86.5,
     "y": 11.5,
     "warps": [["phantoonRoomIn", 0.25, 1]],
-    "title_dxy": [1.5, 1.5],
+    "title_dxy": [1.5, 2.2407407407407405],
     "doors": [],
     "gpss": []
   },
@@ -292,7 +292,7 @@
       ["eastTunnelRight", 19.25, 18.5],
       ["eastTunnelTopRight", 22.25, 17.5]
     ],
-    "title_dxy": [8.5, 3.75],
+    "title_dxy": [11.092592592592592, 4.12037037037037],
     "doors": [
       ["RedTowerLeft", 10.5, 13],
       ["RedBrinstarFirefleaLeft", 10.5, 15.25],
@@ -316,7 +316,7 @@
     "x": 84,
     "y": 51.75,
     "warps": [["ridleyRoomIn", 3, 1.25]],
-    "title_dxy": [0.75, 2.75],
+    "title_dxy": [1.7129629629629628, 3.4166666666666665],
     "doors": [],
     "gpss": []
   },
@@ -331,7 +331,7 @@
       ["goldenFour", 4, 1],
       ["tourianEscapeRoom4TopRight", 10.5, 11.25]
     ],
-    "title_dxy": [3.5, 3.25],
+    "title_dxy": [6.018518518518519, 4.212962962962963],
     "doors": [],
     "gpss": []
   },
@@ -366,7 +366,7 @@
       ["kronicBoostRoomBottomLeft", 24.75, 14.75],
       ["businessCenterMidLeft", 8.5, 7.75]
     ],
-    "title_dxy": [10, 4],
+    "title_dxy": [15.555555555555555, 3.6296296296296298],
     "doors": [
       ["BusinessCenterTopLeft", 8.5, 6.75],
       ["BusinessCenterBottomLeft", 8.5, 9.25],
@@ -381,12 +381,12 @@
       ["CrocomireSpeedwayBottom", 14.25, 14]
     ],
     "gpss": [
-      ["bubbleMountain", 22.0, 8.0],
+      ["bubbleMountain", 22, 8],
       ["bubbleMountainTop", 22.5, 5.75],
-      ["bubbleMountainBottom", 22.0, 9.25],
-      ["businessCenter", 9.0, 5.75],
-      ["cathedral", 14.25, 6.0],
-      ["grappleEscape", 12.0, 10.25]
+      ["bubbleMountainBottom", 22, 9.25],
+      ["businessCenter", 9, 5.75],
+      ["cathedral", 14.25, 6],
+      ["grappleEscape", 12, 10.25]
     ]
   },
   {
@@ -412,7 +412,7 @@
       ["westSandHallTunnelRight", 8.75, 15.75],
       ["crabHoleBottomRight", 7.5, 16.75]
     ],
-    "title_dxy": [3.25, -0.5],
+    "title_dxy": [5.768518518518519, 0.4629629629629629],
     "doors": [
       ["MainStreetBottomRight", 2.25, 15.75],
       ["FishTankRight", 7.5, 14.5],
@@ -420,7 +420,7 @@
     ],
     "gpss": [
       ["beach", 9.25, 4.25],
-      ["crabShaftLeft", 9.0, 7.75],
+      ["crabShaftLeft", 9, 7.75],
       ["mamaTurtle", 9.25, 14.5],
       ["wateringHole", 5.75, 3.25],
       ["wateringHoleBottom", 2.5, 4.25],
@@ -452,16 +452,16 @@
       ["phantoonRoomOut", 17.25, 10.75],
       ["basementLeft", 11.75, 10.75]
     ],
-    "title_dxy": [3.75, 6.75],
+    "title_dxy": [6.12037037037037, 7.564814814814815],
     "doors": [
       ["WestOceanRight", 9.5, 5],
       ["WreckedShipMainShaftBottom", 14.25, 10.25],
       ["ElectricDeathRoomTopLeft", 19, 4]
     ],
     "gpss": [
-      ["wreckedShipMain", 14.0, 4.0],
-      ["wreckedShipBack", 19.5, 4.0],
-      ["bowling", 8.0, 2.75]
+      ["wreckedShipMain", 14, 4],
+      ["wreckedShipBack", 19.5, 4],
+      ["bowling", 8, 2.75]
     ]
   }
 ]

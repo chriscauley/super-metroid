@@ -1,5 +1,6 @@
 <template>
   <osd-viewer
+    :class="wrapper_class"
     :osd_store="osd_store"
     @viewer-bound="addCorners"
     :editor_mode="!!tool_storage.state.tracker_settings.editor_mode"
@@ -36,9 +37,15 @@ export default {
   },
   data() {
     return {
+      loading: true,
       osd_options: { showNavigator: false, mouseNavEnabled: false },
       osd_store: osd.Store(),
     }
+  },
+  computed: {
+    wrapper_class() {
+      return [this.loading && '-loading']
+    },
   },
   mounted() {
     this.$store.state.osd_store = this.osd_store
@@ -86,6 +93,8 @@ export default {
       }
     },
     addImages() {
+      this.loading = true
+      this.osd_store.viewer.addOnceHandler('tile-loaded', this.finishedLoading)
       this.areas.forEach((area) => {
         const { width: max_width, scale } = this.$store.layout.getWorld().root
         let { width, x, y } = area
@@ -106,6 +115,14 @@ export default {
     },
     moveArea(area, { dx, dy }) {
       this.$store.layout.moveArea(area.slug, dx, dy)
+    },
+    finishedLoading() {
+      const remaining = this.osd_store.viewer.world._items.filter((i) => !i.getFullyLoaded())
+      this.loading = !!remaining.length
+      clearTimeout(this._timeout)
+      if (this.loading) {
+        this._timeout = setTimeout(this.finishedLoading, 100)
+      }
     },
   },
 }
