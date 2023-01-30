@@ -22,6 +22,7 @@ export default () => {
     // only 5 of all previously matched enemies are included
     // the last 10 enemies are excluded
     if (filter) {
+      filter = new RegExp(`(${filter})`)
       return random.choice(enemy_data.filter((e) => clean(e.name).match(filter)))
     }
     const recent_by_id = {}
@@ -29,8 +30,8 @@ export default () => {
     const { record } = storage.state
     const all = enemy_data.filter((enemy) => !recent_by_id[enemy.id])
     const missed = all.filter((enemy) => !record[enemy.id])
-    const matched = all.filter((enemy) => record[enemy.id])
     if (!missed.length || Math.random() > 0.95) {
+      const matched = all.filter((enemy) => record[enemy.id])
       return random.choice(matched)
     }
     return random.choice(missed)

@@ -37,7 +37,7 @@
       </div>
       <div>
         <b>Grade:</b>
-        {{ storage.getPercentage() }} %
+        {{ storage.getPercentage() }}%
       </div>
     </div>
   </div>
@@ -72,7 +72,11 @@ export default {
       if (!this.result) {
         return 'Who dat?'
       }
-      return `It's ${this.current.name}`
+      let { name } = this.current
+      if (name.includes('Pirate')) {
+        name = name.split('(')[0]
+      }
+      return `It's ${this.current.name}!`
     },
     msg1() {
       const { correct, distance } = this.result
