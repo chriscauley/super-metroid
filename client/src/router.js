@@ -1,7 +1,7 @@
 import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router'
 import views from '@/views'
 
-const { CheatSheet, HomeView, TrackerView, PauseInventoryView } = views
+const { CheatSheet, HomeView, PauseInventoryView, TrackerView, WhoDat } = views
 
 const routes = [
   { path: '/', component: HomeView },
@@ -9,6 +9,7 @@ const routes = [
   { path: '/plando/', component: TrackerView },
   { path: '/inventory/', component: PauseInventoryView },
   { path: '/cheat-sheet/', component: CheatSheet },
+  { path: '/who-dat/', component: WhoDat },
 ]
 
 const history = (process.env.VUE_APP_SITE === 'github' ? createWebHashHistory : createWebHistory)()

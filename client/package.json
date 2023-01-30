@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@popperjs/core": "^2.11.6",
+    "@unrest/random": "^0.0.2",
     "@unrest/tailwind": "0.1.23",
     "@unrest/vue": "0.2.18",
     "@unrest/vue-form": "^0.0.18",
@@ -19,6 +20,7 @@
     "@unrest/vue-storage": "^0.0.19",
     "@unrest/vue-toolbar": "0.0.5",
     "core-js": "^3.8.3",
+    "fast-levenshtein": "^3.0.0",
     "postcss-for": "^2.1.1",
     "postcss-functions": "^4.0.2",
     "postcss-import": "^15.0.0",
