@@ -40,6 +40,10 @@ export default {
         if (!coords?.length || !svg_rooms[id]) {
           return null
         }
+        if (this.json_data.logic === 'mirror') {
+          const { width } = this.area
+          coords = coords.map(([x, y]) => [width - x, y])
+        }
         coords = coords.map((a) => a.join(' '))
         if (coords[0] !== coords[coords.length - 1]) {
           coords.push(coords[0])
