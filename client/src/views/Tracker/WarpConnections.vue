@@ -41,6 +41,11 @@ const colors = [
   'teal',
 ]
 
+const sand_text = {
+  belowBotwoonEnergyTankRight: 'A',
+  westSandHallTunnelRight: 'V',
+}
+
 export default {
   inject: ['game_state', 'tool_storage'],
   props: {
@@ -49,29 +54,33 @@ export default {
   },
   computed: {
     texts() {
-      if (this.tool_storage.state.tracker_settings.warp_display !== 'codes') {
-        return []
-      }
-
-      const code_map = this.tool_storage.getCodeMap()
       const out = []
+      const code_map = this.tool_storage.getCodeMap()
       const { root } = this.$store.layout.getWorld()
       const { text_gap_scale = 1 } = root
       this.areas.forEach((area) => {
         area.warps.forEach((warp) => {
-          if (['escape', 'sand'].includes(warp.type)) {
-            return
-          }
           const [_, x, y] = this.entity_xys[warp.slug]
-          let subtext, subtext_attrs
-          const target_slug = this.game_state.warps[warp.slug]
           const attrs = {
             title: warp.slug,
-            id: `warp-text_code-map[warp.slug]`,
+            id: `warp-text_${warp.slug}`,
             x: this.scale(x),
             y: this.scale(y),
-            class: `warp-connections__text`,
+            class: `warp-connections__text -${warp.type}`,
           }
+          if (warp.type === 'sand') {
+            const content = sand_text[warp.slug]
+            content && out.push({ content, attrs })
+            return
+          }
+          if ('escape' === warp.type) {
+            return
+          }
+          if (this.tool_storage.state.tracker_settings.warp_display !== 'codes') {
+            return
+          }
+          let subtext, subtext_attrs
+          const target_slug = this.game_state.warps[warp.slug]
           if (target_slug) {
             subtext = code_map[target_slug]
             attrs.title += ' -> ' + target_slug
@@ -113,6 +122,7 @@ export default {
       const circles = []
       const rects = []
       const s = this.scale
+      const texts = this.texts.slice()
       pairs.forEach(([warp1, warp2], index) => {
         const [_area1, x1, y1] = this.entity_xys[warp1]
         const [_area2, x2, y2] = this.entity_xys[warp2]
@@ -150,7 +160,7 @@ export default {
           rects.push(this.getRect(warp2, x2, y2, color))
         }
       })
-      return { lines, circles, rects, texts: this.texts }
+      return { lines, circles, rects, texts }
     },
   },
   methods: {

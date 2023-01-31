@@ -100,12 +100,6 @@ html, body, #app {
       inset: -10%;
     }
   }
-  /* #westSandHallTunnelRight&:before { */
-  /*   content: 'V'; */
-  /* } */
-  /* #belowBotwoonEnergyTankRight&:before { */
-  /*   content: 'A'; */
-  /* } */
   &.-boss:before {
     background: radial-gradient(farthest-side, #000, #000 33%, #ce0001 75%, #FF0000);
   }
@@ -116,13 +110,22 @@ html, body, #app {
     background: radial-gradient(farthest-side, #000, #000 33%, #008800 75%, #00FF00);
   }
   &.-selected:after {
-    @apply absolute block inset-0;
+    @apply absolute block;
     content: "";
-    display: block;
-    border: 3px dashed white;
+    border: 2px solid #ddd;
+    animation: borderBlink 0.5s linear infinite;
     .large_locations & {
       inset: -25%;
     }
+  }
+}
+
+@keyframes borderBlink {
+  from, to {
+    border-color: #fff;
+  }
+  50% {
+    border-color: #222;
   }
 }
 
@@ -313,6 +316,8 @@ body {
     &:before {
       background: radial-gradient(#000, #000 50%, #a0f8f8 60%, #a0f8f8 90%, #000 100%);
     }
+  }
+  .area-warp, .warp-connections__text {
     &.-escape, &.-sand {
       display: none;
     }

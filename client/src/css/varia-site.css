@@ -50,6 +50,30 @@ body.-site-varia {
     /* tailwind makes images display: block */
     img { display: inline-block; }
   }
+  .tracker-view__config .dropdown-items {
+    /* root font size makes this smaller than it should be */
+    width: 272px;
+  }
+}
+
+body.-site-varia {
+  /* these are all unsetting bootstrap styles */
+  .table {
+    margin-bottom: 0;
+  }
+  .form-control {
+    font-size: 16px;
+    height: unset;
+  }
+  label {
+    margin-bottom: 0;
+    &.ur-checkbox {
+      @apply cursor-pointer flex gap-4 items-center;
+      input {
+        margin: 0;
+      }
+    }
+  }
 }
 
 .tooltip {
