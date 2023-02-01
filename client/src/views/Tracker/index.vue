@@ -125,38 +125,24 @@ export default {
       return this.$route.query.skin || 'jpg'
     },
     wrapper_class() {
-      const { tracker_settings } = this.tool_storage.state
-      const { large_warps, large_locations, large_doors, entity_filter } = tracker_settings
+      const { tracker_settings, entity_filter } = this.tool_storage.state
+      const { large_warps, large_locations, large_doors } = tracker_settings
       const { tool } = this.tool_storage.state.selected
       const layout = this.$store.layout.state.selected
       const { logic } = this.tool_storage.getRandoSettings()
       return [
         `tracker-view -layout-${layout} -tool-${tool} -logic-${logic}`,
         { large_locations, large_warps, large_doors },
-        entity_filter && `-entity-filter-${entity_filter}`,
+        this.is_plando && entity_filter && `-entity-filter-${entity_filter}`,
       ]
     },
-    game_state() {
-      const varia_game_state = varia.getGameState(this.json_data)
-      if (varia_game_state) {
-        // game state controlled by server
-        return varia_game_state
-      }
-      const state = {
-        locations: {},
-        warps: {},
-        inventory: this.inventory,
-      }
-      const type_map = {}
-      const area_locations = {}
-      const rando_settings = this.tool_storage.getRandoSettings()
+    locked_warps() {
       const locked = {}
+      const rando_settings = this.tool_storage.getRandoSettings()
       const forceWarp = ([a, b]) => {
-        state.warps[a] = b
-        state.warps[b] = a
-        locked[a] = locked[b] = true
+        locked[a] = b
+        locked[b] = a
       }
-
       if (rando_settings.areaRando === 'off') {
         // area randomizer locks all area_warps
         vanilla_warps.area.forEach(forceWarp)
@@ -166,6 +152,23 @@ export default {
         // area randomizer locks all area_warps
         vanilla_warps.boss.forEach(forceWarp)
       }
+      return locked
+    },
+    game_state() {
+      const { locked_warps } = this
+      const varia_game_state = varia.getGameState(this.json_data, locked_warps)
+      if (varia_game_state) {
+        // game state controlled by server
+        return varia_game_state
+      }
+      const state = {
+        locations: {},
+        warps: { ...locked_warps },
+        inventory: this.inventory,
+        locked_warps,
+      }
+      const type_map = {}
+      const area_locations = {}
 
       this.areas.forEach((area) => {
         const target_area = subarea_by_area[area.slug] || area.slug
@@ -176,23 +179,54 @@ export default {
         })
         area.warps.forEach((w) => (type_map[w.slug] = 'warp'))
       })
+      const location_history = []
+      const warp_history = []
       this.tool_storage.state.actions.forEach(([action_type, id, arg2]) => {
-        if ((action_type.includes('warp') && locked[id]) || locked[arg2]) {
+        if ((action_type.includes('warp') && locked_warps[id]) || locked_warps[arg2]) {
           // warp was set by rando_settings
           return
         }
         if (action_type === 'connect-warp') {
           state.warps[id] = arg2
           state.warps[arg2] = id
+          warp_history.push([id, arg2])
         } else if (action_type === 'disconnect-warp') {
           delete state.warps[id]
           delete state.warps[arg2]
         } else if (action_type === 'click-location') {
           state.locations[id] = !state.locations[id]
+          location_history.push(id)
         } else if (action_type === 'clear-area') {
           const location_slugs = area_locations[id] || []
           const remaining_locations = location_slugs.filter((i) => !state.locations[i]).length
           location_slugs.forEach((i) => (state.locations[i] = remaining_locations !== 0))
+        } else if (action_type === 'undo-location') {
+          while (location_history.length) {
+            const location_id = location_history.pop()
+            if (state.locations[location_id]) {
+              delete state.locations[location_id]
+              break
+            }
+          }
+        } else if (action_type === 'undo-warp') {
+          while (warp_history.length) {
+            const [a, b] = warp_history.pop() || []
+            if (state.warps[a] && state.warps[b]) {
+              delete state.warps[a]
+              delete state.warps[b]
+              break
+            }
+          }
+        } else if (action_type === 'clear-location') {
+          state.locations = {}
+        } else if (action_type === 'clear-warp') {
+          Object.entries(state.warps).forEach(([a, b]) => {
+            if (locked_warps[a] || locked_warps[b]) {
+              return
+            }
+            delete state.warps[a]
+            delete state.warps[b]
+          })
         } else {
           console.warn('Unknown action:', action_type, id, arg2)
         }

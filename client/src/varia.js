@@ -49,7 +49,7 @@ energy.forEach((i) => (packs[i] = 1))
 const varia = {
   sm_to_varia,
   varia_to_sm: invert(sm_to_varia),
-  getGameState: (json_data) => {
+  getGameState: (json_data, locked_warps) => {
     if (!json_data) {
       return null
     }
@@ -57,6 +57,7 @@ const varia = {
       inventory: {},
       locations: {},
       warps: json_data.lines,
+      locked_warps: { ...locked_warps },
     }
     json_data.collectedItems.forEach((varia_slug) => {
       const item_slug = varia.variaToSm(varia_slug)

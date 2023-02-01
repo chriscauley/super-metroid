@@ -121,18 +121,32 @@ export default (component) => {
     })
   }
 
+  const varia_action_by_key = {
+    'undo-location': window.deleteLoc,
+    'clear-location': window.clearLocs,
+    'undo-warp': window.deleteLine,
+    'clear-warp': window.clearLines,
+  }
+
+  const variaAction = (action, type) => {
+    const key = `${action}-${type}`
+    if (component.json_data) {
+      varia_action_by_key[key](component.is_plando)
+      return
+    }
+    addAction([key])
+  }
+
   const getTools = () => {
-    if (component.is_plando) {
+    if (component.is_varia) {
       const clickPlay = () => window.displayPopup(component.is_plando)
-      const { is_plando, json_data } = component
-      const { deleteLoc, clearLocs, deleteLine, clearLines, save } = window
       const loc_items = [
-        { text: 'Undo Last Location', icon: 'undo', click: () => deleteLoc(is_plando) },
-        { text: 'Reset All Locations', icon: 'trash', click: () => clearLocs(is_plando) },
+        { text: 'Undo Last Location', icon: 'undo', click: () => variaAction('undo', 'location') },
+        { text: 'Reset Locations', icon: 'trash', click: () => variaAction('clear', 'location') },
       ]
       const portal_items = [
-        { text: 'Undo Last Portal', icon: 'undo', click: () => deleteLine(is_plando) },
-        { text: 'Reset All Portals', icon: 'trash', click: () => clearLines(is_plando) },
+        { text: 'Undo Last Portal', icon: 'undo', click: () => variaAction('undo', 'warp') },
+        { text: 'Reset Portals', icon: 'trash', click: () => variaAction('clear', 'warp') },
       ]
 
       const download_items = [
@@ -150,7 +164,7 @@ export default (component) => {
         { slug: 'help', icon: 'fa fa-question-circle', select: window.startTheTour },
       ]
 
-      if (json_data && json_data.majorsSplit === 'Scavenger') {
+      if (component.json_data?.majorsSplit !== 'Scavenger') {
         tools = tools.filter((t) => t.slug !== 'scavenger')
       }
       return tools
@@ -177,8 +191,8 @@ export default (component) => {
       tools.push({ slug: 'admin_move_title', icon: 'fa fa-i-cursor' })
     }
     if (component.is_varia) {
-      const click = () => window.displayPopup(component.is_plando)
-      tools.unshift({ slug: 'play', click, icon: 'fa fa-play' })
+      const select = () => window.displayPopup(component.is_plando)
+      tools.unshift({ slug: 'play', select, icon: 'fa fa-play' })
     }
     return tools
   }

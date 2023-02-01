@@ -67,13 +67,30 @@ html, body, #app {
   }
 }
 
-.sm-portal:before {
-  background: radial-gradient(farthest-side, #000, #000 25%, #7001ce 50%, #FF00FF);
-  border-radius: 100%;
-  content: '';
-  display: block;
+.sm-portal {
+  @apply inline-block relative text-white;
   width: 1em;
   height: 1em;
+  &:before {
+    @apply absolute block;
+    background: radial-gradient(farthest-side, #000, #000 25%, #7001ce 50%, #FF00FF);
+    border-radius: 100%;
+    content: '';
+    inset: -0.3em 0;
+  }
+  &.-boss:before {
+    background: radial-gradient(farthest-side, #000, #000 25%, #ce0001 50%, #FF0000);
+  }
+  &.-sand:before {
+    background: radial-gradient(farthest-side, #000, #000 25%, #008888 50%, #00FFFF);
+  }
+  &.-escape:before {
+    background: radial-gradient(farthest-side, #000, #000 25%, #008800 50%, #00FF00);
+  }
+  &.-lock:after {
+    content: "\f023";
+    font: normal normal normal 14px/inherit FontAwesome;
+  }
 }
 
 .area-warp {

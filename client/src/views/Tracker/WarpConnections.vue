@@ -80,8 +80,12 @@ export default {
             return
           }
           let subtext, subtext_attrs
+          let content = code_map[warp.slug]
           const target_slug = this.game_state.warps[warp.slug]
-          if (target_slug) {
+          if (this.game_state.locked_warps[warp.slug]) {
+            attrs.class = 'warp-connections__text fa'
+            content = '' // "\uF023" or fa-lock
+          } else if (target_slug) {
             subtext = code_map[target_slug]
             attrs.title += ' -> ' + target_slug
             attrs.class += ' -linked'
@@ -92,7 +96,7 @@ export default {
             }
           }
           out.push({
-            content: code_map[warp.slug],
+            content,
             subtext,
             subtext_attrs,
             attrs,
@@ -123,6 +127,7 @@ export default {
       const rects = []
       const s = this.scale
       const texts = this.texts.slice()
+      const { locked_warps } = this.game_state
       pairs.forEach(([warp1, warp2], index) => {
         const [_area1, x1, y1] = this.entity_xys[warp1]
         const [_area2, x2, y2] = this.entity_xys[warp2]
@@ -137,14 +142,15 @@ export default {
           stroke: color,
           class: `warp-connections__line`,
         })
-        if (warp_display === 'dot') {
+        const locked = locked_warps[warp1] || locked_warps[warp2]
+        if (warp_display === 'dot' || locked) {
           circles.push({
             id: `warp-anchor-${warp1}`,
             cx: s(x1),
             cy: s(y1),
             r,
             class: 'warp-connections__circle',
-            fill: color,
+            fill: locked ? 'none' : color,
           })
           circles.push({
             id: `warp-anchor-${warp2}`,
@@ -152,7 +158,7 @@ export default {
             cy: s(y2),
             r,
             class: 'warp-connections__circle',
-            fill: color,
+            fill: locked ? 'none' : color,
           })
         } else {
           // warp_display === 'codes'

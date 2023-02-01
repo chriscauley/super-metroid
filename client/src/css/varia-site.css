@@ -54,6 +54,34 @@ body.-site-varia {
     /* root font size makes this smaller than it should be */
     width: 272px;
   }
+  .popover[class*="tour-"] {
+    background: white;
+    overflow: visible;
+    .popover-content {
+      box-shadow: 0 -2px 4px #eee inset;
+      max-height: 85vh;
+      overflow: scroll;
+      p {
+        margin-bottom: 0.5em;
+        i {
+          display: inline-block;
+        }
+      }
+    }
+    .popover-row {
+      /* class I added to clean up tacker tour #0 */
+      @apply flex gap-2 text-center;
+      > div {
+        width: 50px;
+      }
+      img {
+        margin: 0 auto;
+      }
+    }
+    .popover-navigation {
+      @apply flex justify-between;
+    }
+  }
 }
 
 body.-site-varia {
@@ -74,9 +102,68 @@ body.-site-varia {
       }
     }
   }
+  .modal-footer, .modal-body {
+    padding: 0;
+  }
 }
 
-.tooltip {
-  /* current varia tooltips have flicker issues */
-  pointer-events: none;
+body.-site-varia {
+  /* the headers */
+  /* from bootstrap */
+  h1, .h1, h2, .h2, h3, .h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  h1 {
+    font-size: 36px;
+  }
+  h3 {
+    font-size: 24px;
+  }
+  h4, .h4, h5, .h5, h6, .h6 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  h4, .h4 {
+    font-size: 18px;
+  }
+
+  h5, .h5 {
+    font-size: 14px;
+  }
+
+  h6, .h6 {
+    font-size: 12px;
+  }
+
+  /* from plando css */
+  h2 {
+    font-size: 30px;
+    margin: 0.3em 0;
+  }
+  h3 {
+    margin: 0.1em;
+  }
+}
+
+body.-site-varia {
+  /* other (might need to keep these) */
+  p img {
+    /* images in tour popups */
+    display: inline-block;
+  }
+  .tooltip {
+    /* current varia tooltips have flicker issues */
+    pointer-events: none;
+  }
+  .popover-content p i {
+    display: inline-block;
+  }
+  .sm-portal {
+    &[data-content]:before {
+      @apply font-bold inline-flex items-center justify-center text-white;
+      content: attr(data-content);
+      font-style: normal;
+    }
+  }
 }
