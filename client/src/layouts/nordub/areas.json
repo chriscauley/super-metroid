@@ -27,7 +27,7 @@
     "y": 1.4588689444979135,
     "warps": [
       ["lowerMushroomsLeft", -0.5, 8.5],
-      ["greenPiratesShaftBottomRight", 6.5, 8.5],
+      ["greenPiratesShaftBottomRight", 5.5, 8.5],
       ["keyhunterRoomBottom", 27.5, 8],
       ["moatRight", 31.5, 4.5],
       ["morphBallRoomLeft", 10.5, 29.5],
@@ -287,7 +287,7 @@
     "warps": [
       ["redBrinstarElevator", 14.5, 0.5],
       ["caterpillarRoomTopRight", 17.5, 5.5],
-      ["redTowerTopLeft", 8.5, 11.5],
+      ["redTowerTopLeft", 9.5, 11.5],
       ["glassTunnelTop", 16.5, 14.5],
       ["eastTunnelRight", 18.5, 16.5],
       ["eastTunnelTopRight", 21.5, 15.5]

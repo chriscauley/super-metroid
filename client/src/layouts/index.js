@@ -1,6 +1,7 @@
 import { startCase, cloneDeep, memoize } from 'lodash'
 
 import { access_points, boss_doors, escape_doors, sand_doors, special_locations } from '@/data/old'
+import { getStaticUrl } from '@/utils'
 import alt_streaming from './alt-streaming'
 import legacy from './legacy'
 import nordub from './nordub'
@@ -103,14 +104,12 @@ const transformLogic = (layout, areas, logic) => {
   areas.forEach((area) => {
     if (logic === 'mirror') {
       area.x = layout.root.width / layout.root.scale - area.x - area.width
-    }
-    transform_items.forEach((key) => {
-      area[key].forEach((item) => {
-        if (logic === 'mirror') {
+      transform_items.forEach((key) => {
+        area[key].forEach((item) => {
           item.x = area.width - item.x
-        }
+        })
       })
-    })
+    }
   })
 }
 
@@ -122,10 +121,9 @@ export default {
   slugs: ['legacy', 'nordub', 'streaming', 'alt-streaming'],
   getAreas(slug, logic) {
     const layout = this[slug]
+    layout.image_url = getStaticUrl(`/layouts/${logic}/${slug}/`)
     const areas = layout.areas.map((a) => prepArea(a, this[slug]))
-    if (logic !== 'vanilla') {
-      transformLogic(layout, areas, logic)
-    }
+    transformLogic(layout, areas, logic)
     return areas
   },
   moveEntity(layout_slug, { type, id }, x, y) {

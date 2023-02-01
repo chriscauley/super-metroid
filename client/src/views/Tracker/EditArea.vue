@@ -31,7 +31,6 @@
 <script>
 import { sortBy } from 'lodash'
 
-import { getStaticUrl } from '@/utils'
 import AreaStorage from './AreaStorage'
 import AreaBox from './AreaBox.vue'
 
@@ -53,8 +52,7 @@ export default {
   },
   computed: {
     src() {
-      const { selected } = this.$store.layout.state
-      return getStaticUrl(`/${selected}/${this.area.slug}.png`)
+      return `${this.$store.layout.getWorld().image_url}${this.area.slug}.png`
     },
     wrapper_class() {
       return ['edit-area -tool-' + this.area_storage.state.selected.tool]

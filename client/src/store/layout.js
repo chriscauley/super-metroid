@@ -5,7 +5,7 @@ import layouts from '@/layouts'
 
 const LS_KEY = 'LAYOUT_STORAGE'
 const initial = {
-  selected: 'legacy',
+  selected: 'nordub',
   preferred: null,
   dirty: null,
 }

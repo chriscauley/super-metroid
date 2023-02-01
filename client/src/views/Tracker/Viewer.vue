@@ -24,7 +24,7 @@ import osd from '@unrest/vue-openseadragon'
 
 import AreaOverlay from './AreaOverlay.vue'
 import WarpConnections from './WarpConnections.vue'
-import { getStaticUrl, getGridUrl } from '@/utils'
+import { getGridUrl } from '@/utils'
 
 const { Rect } = openseadragon
 
@@ -59,9 +59,7 @@ export default {
   },
   methods: {
     getLayoutUrl(filename) {
-      const { selected } = this.$store.layout.state
-      const { logic } = this.tool_storage.getRandoSettings()
-      return getStaticUrl(`/layouts/${logic}/${selected}/${filename}`)
+      return this.$store.layout.getWorld().image_url + filename
     },
     addCorners() {
       this.osd_store.viewer.addOnceHandler('tile-loaded', this.addImages)
