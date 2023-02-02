@@ -58,7 +58,7 @@ html, body, #app {
 
 .tracker-view .item-tracker__wrapper {
   @apply absolute left-0;
-  top: 40px;
+  top: 3rem;
   .grid-tracker {
     font-size: 2.5vw;
   }

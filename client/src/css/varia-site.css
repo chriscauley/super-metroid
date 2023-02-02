@@ -82,6 +82,10 @@ body.-site-varia {
       @apply flex justify-between;
     }
   }
+  .location-marker .ur-popper {
+    /* small font in popper makes the icons look bad (and is also just hard to read) */
+    font-size: 16px;
+  }
 }
 
 body.-site-varia {
@@ -165,5 +169,8 @@ body.-site-varia {
       content: attr(data-content);
       font-style: normal;
     }
+  }
+  .sm-item.-empty:before {
+    background: none;
   }
 }

@@ -127,3 +127,10 @@
     image-rendering: initial;
   }
 }
+
+.location-marker__item-list {
+  @apply flex gap-3;
+  .location-marker__item {
+    @apply flex items-center;
+  }
+}

@@ -6,13 +6,16 @@
       <div class="location-marker__popper-inner">
         {{ display_name }}
         <div v-if="boss">Boss: {{ boss }}</div>
-        <div v-else-if="visited">Item: {{ item_name }}</div>
-        <div v-if="!locData && !visited">Sequence Break</div>
-        <template v-if="locData && !visited">
+        <div v-else-if="visited_data">Item: {{ item_name }}</div>
+        <div v-if="!locData && !visited_data">Sequence Break</div>
+        <template v-if="locData && !visited_data">
           <div>Techniques: {{ locData.knows[0] || 'None' }}</div>
-          <div>
+          <div class="location-marker__item-list">
             Items:
-            <div v-for="(item, i) in items" :key="i" :class="item" />
+            <div v-for="(item, i) in items" :key="i" class="location-marker__item">
+              {{ item.text }}
+              <i :class="item.class" />
+            </div>
             {{ items.length === 0 ? 'None' : '' }}
           </div>
           <div v-if="locData.comeBack === false">
@@ -47,40 +50,61 @@ export default {
     locData() {
       return this.json_data?.availableLocations[this.location.slug]
     },
+    visited_data() {
+      return this.json_data?.visitedLocations[this.location.slug]
+    },
     display_name() {
       return this.locData?.name || this.location.name
     },
     item_name() {
-      const data = this.json_data?.visitedLocations[this.location.slug]
-      return varia.variaToDisplay(data.item)
-    },
-    visited() {
-      return this.json_data?.visitedLocations[this.location.slug]
+      return varia.variaToDisplay(this.visited_data.item)
     },
     boss() {
       return window.locsInfo?.[this.location.slug]?.boss
     },
     icon() {
-      const data = this.json_data?.visitedLocations[this.location.slug]
-      if (data) {
+      const { visited_data } = this
+      if (visited_data) {
         return [
-          varia.getIcon(data.item),
-          `smva-difficulty -difficulty-${data.difficulty[0]}`,
-          data.major && '-major',
+          varia.getIcon(visited_data.item),
+          `smva-difficulty -difficulty-${visited_data.difficulty[0]}`,
+          visited_data.major && '-major',
         ]
+      }
+      if (this.locData) {
+        return 'sm-item -empty'
       }
       const type = location_type_map[this.location.slug]
       return 'sm-map -' + (type === 'item' ? 'egg' : type)
     },
     items() {
-      return (this.locData.items || []).map((i) => varia.getIcon(i))
+      const items = this.locData.items || []
+      return items.map((item) => {
+        let count, text
+        if (item.includes('-')) {
+          ;[count, item] = item.split('-')
+          text = `${count}-`
+        }
+        return { text, class: varia.getIcon(item) }
+      })
     },
     attrs() {
       const { slug, chozo, major, scavenger } = this.location
+      const { icon } = this
+      let style = {}
+      if (this.locData) {
+        const difficulty = this.locData.difficulty[0]
+        const url = `/solver/static/images/tracker/markers/marker_${difficulty}.gif`
+        style = {
+          background: `url("${url}") no-repeat center`,
+          'background-size': 'contain',
+        }
+      }
       return {
         id: `location__${slug}`,
         'data-id': slug,
         'data-type': 'location',
+        style,
         class: [
           'location-marker',
           this.$store.layout.getWorld().extra_classes[slug],
@@ -88,7 +112,7 @@ export default {
           major && '-major',
           scavenger && '-scavenger',
           this.game_state.locations[slug] && '-completed',
-          this.icon,
+          icon,
         ],
       }
     },

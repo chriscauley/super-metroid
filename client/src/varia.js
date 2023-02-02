@@ -18,7 +18,7 @@ import { all_items, bosses, minibosses, ammo, energy, location_type_map } from '
 const sm_to_varia = {
   'charge-beam': 'Charge',
   'energy-tank': 'ETank',
-  'grapple-beam': 'Grapple',
+  'grappling-beam': 'Grapple',
   'gravity-suit': 'Gravity',
   'hi-jump-boots': 'HiJump',
   'ice-beam': 'Ice',
