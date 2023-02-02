@@ -67,7 +67,7 @@ export default {
             slug,
             numbers: getNumbers(value),
             attrs: {
-              class: getIcon(slug, value),
+              class: [getIcon(slug, value), value > 99 && '-three-digits'],
               id: `grid-tracker__${slug}`,
             },
           }

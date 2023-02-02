@@ -8,7 +8,7 @@ export { default_door_colors }
 export const door_colors = ['red', 'green', 'yellow', 'gray', 'wave', 'spazer', 'plasma', 'ice']
 
 export const ammo = ['missile', 'super-missile', 'power-bomb']
-export const energy = ['energy', 'reserve-tank']
+export const energy = ['energy-tank', 'reserve-tank']
 export const beams = ['charge-beam', 'ice-beam', 'wave-beam', 'spazer-beam', 'plasma-beam']
 const suits = ['varia-suit', 'gravity-suit']
 const items = [

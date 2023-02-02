@@ -1,10 +1,12 @@
 .grid-tracker {
+  &.smi-tracker {
+    image-rendering: unset;
+  }
   padding: 0.3em;
-  /* width: 7em; */
   &__row {
     @apply flex justify-center;
-    gap: 0.2em;
-    padding-bottom: 0.2em;
+    gap: 0.3em;
+    padding-bottom: 0.3em;
     &:last-child {
       padding-bottom: 0;
     }
@@ -16,11 +18,22 @@
     @apply relative;
     .grid-tracker__numbers {
       --inventory-px: 0.06em;
-      @apply absolute flex right-0;
+      @apply absolute flex;
       bottom: -0.06em;
+      right: 0;
     }
-  }
-  *, *:before {
-    /* image-rendering: initial !important; */
+    &.-three-digits .grid-tracker__numbers {
+      /* centering 1XX numbers is complicated */
+      right: -0.24em;
+      .smi-number {
+        @apply relative;
+        &:first-child {
+          left: 0.06em;
+        }
+        &:last-child {
+          left: -0.06em;
+        }
+      }
+    }
   }
 }
