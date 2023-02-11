@@ -1,5 +1,11 @@
 <template>
   <div class="smi-tracker text-white p-8" style="font-size: 32px">
+    <div style="display:flex; align-items: center;">
+      <div>
+        <img src="http://varia.localhost:8000/solver/static/images/tracker/markers/marker_mania.gif" />
+      </div>
+      <div class="sm-item -empty smva-difficulty -difficulty-mania" style="font-size: 128px;"/>
+    </div>
     <div v-for="(icons, name) in icon_groups" :key="name" class="mb-8">
       <h2>{{ name }}</h2>
       <div class="flex flex-wrap">

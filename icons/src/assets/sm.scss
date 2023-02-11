@@ -132,6 +132,9 @@ $cre-hex: respawn block exit;
 }
 
 .sm-item {
+  &.-empty:before {
+    background: none;
+  }
   &:before {
     background-image: url("./images/items.png");
   }

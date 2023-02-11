@@ -37,6 +37,7 @@
 }
 
 .smva-difficulty {
+  background-size: 100% auto;
   &:before {
     z-index: 2;
   }
@@ -50,15 +51,29 @@
   }
 }
 
+@function white-wipe($from, $to) {
+  $bg: linear-gradient(    135deg,    transparent $from,    white $from,    white $to,    transparent $to  );
+  @return $bg;
+}
+
 $varia-levels: break easy medium hard harder hardcore mania;
 .smva-difficulty {
-  &:after {
-    background-image: url(./images/varia/difficulty-boxes.png);
-  }
+  background-image: url(./images/varia/difficulty-boxes.png);
   @for $i from 0 to length($varia-levels) {
     $name: nth($varia-levels, $i + 1);
-    &.-difficulty-#{""+$name}:after {
+    &.-difficulty-#{""+$name} {
       background-position: 0 $i * -100%;
+    }
+  }
+  &.-empty{
+    &:before {
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-image: url(./images/varia/wipe_128.gif);
+      z-index: 2;
+    }
+    &:after {
+      z-index: 1;
     }
   }
 }

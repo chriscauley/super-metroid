@@ -335,6 +335,9 @@
   background-position: 0 -400%;
 }
 
+.sm-item.-empty:before {
+  background: none;
+}
 .sm-item:before {
   background-image: url("./images/items.png");
 }
