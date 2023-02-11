@@ -37,6 +37,7 @@
 <script>
 import { location_type_map } from '@/data/old'
 import varia from '@/varia'
+import { getStaticUrl } from '@/utils'
 
 export default {
   inject: ['json_data', 'game_state'],
@@ -63,7 +64,7 @@ export default {
       return window.locsInfo?.[this.location.slug]?.boss
     },
     icon() {
-      const { visited_data } = this
+      const { visited_data, locData } = this
       if (visited_data) {
         return [
           varia.getIcon(visited_data.item),
@@ -71,8 +72,8 @@ export default {
           visited_data.major && '-major',
         ]
       }
-      if (this.locData) {
-        return 'sm-item -empty'
+      if (locData) {
+        return `sm-item -empty smva-difficulty -difficulty-${locData.difficulty[0]}`
       }
       const type = location_type_map[this.location.slug]
       return 'sm-map -' + (type === 'item' ? 'egg' : type)
@@ -90,21 +91,10 @@ export default {
     },
     attrs() {
       const { slug, chozo, major, scavenger } = this.location
-      const { icon } = this
-      let style = {}
-      if (this.locData) {
-        const difficulty = this.locData.difficulty[0]
-        const url = `/solver/static/images/tracker/markers/marker_${difficulty}.gif`
-        style = {
-          background: `url("${url}") no-repeat center`,
-          'background-size': 'contain',
-        }
-      }
       return {
         id: `location__${slug}`,
         'data-id': slug,
         'data-type': 'location',
-        style,
         class: [
           'location-marker',
           this.$store.layout.getWorld().extra_classes[slug],
@@ -112,7 +102,7 @@ export default {
           major && '-major',
           scavenger && '-scavenger',
           this.game_state.locations[slug] && '-completed',
-          icon,
+          this.icon,
         ],
       }
     },

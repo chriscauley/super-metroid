@@ -81,12 +81,12 @@ const varia = {
   },
   getIcon(varia_slug) {
     if (varia_slug === 'GoldTorizo') {
-      return `sm-boss -map-icon -golden-torizo`
+      return `smv-boss -map-icon -golden-torizo`
     }
     const item_slug = varia.variaToSm(varia_slug)
     const type = location_type_map[varia_slug]
     if (type === 'boss' || type === 'miniboss') {
-      return `sm-boss -map-icon -${item_slug}`
+      return `smv-boss -map-icon -${item_slug}`
     }
     return `sm-item -${item_slug}`
   },

@@ -126,6 +126,9 @@
     inset: 10%;
     image-rendering: initial;
   }
+  &.smva-difficulty.-empty:before {
+    inset: 0;
+  }
 }
 
 .location-marker__item-list {

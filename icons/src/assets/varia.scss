@@ -51,11 +51,6 @@
   }
 }
 
-@function white-wipe($from, $to) {
-  $bg: linear-gradient(    135deg,    transparent $from,    white $from,    white $to,    transparent $to  );
-  @return $bg;
-}
-
 $varia-levels: break easy medium hard harder hardcore mania;
 .smva-difficulty {
   background-image: url(./images/varia/difficulty-boxes.png);
