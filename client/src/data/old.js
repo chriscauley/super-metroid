@@ -377,6 +377,7 @@ all_locations.forEach((loc) => (warp_type_map[loc] = 'location'))
 boss_doors.forEach((door) => (warp_type_map[door] = 'boss'))
 access_points.forEach((door) => (warp_type_map[door] = 'warp'))
 sand_doors.forEach((door) => (warp_type_map[door] = 'sand'))
+escape_doors.forEach((door) => (warp_type_map[door] = 'escape'))
 
 export const golden_four = ['kraid', 'phantoon', 'draygon', 'ridley']
 

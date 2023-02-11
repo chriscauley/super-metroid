@@ -15,6 +15,8 @@
 </template>
 
 <script>
+import { warp_type_map } from '@/data/old'
+
 const w = 0.002 // also used in css file
 const r = w * 4
 const w_rect = w * 9.8
@@ -129,6 +131,7 @@ export default {
       const texts = this.texts.slice()
       const { locked_warps } = this.game_state
       pairs.forEach(([warp1, warp2], index) => {
+        const is_escape = [warp_type_map[warp1], warp_type_map[warp2]].includes('escape')
         const [_area1, x1, y1] = this.entity_xys[warp1]
         const [_area2, x2, y2] = this.entity_xys[warp2]
         const color = colors[index % colors.length]
@@ -143,7 +146,7 @@ export default {
           class: `warp-connections__line`,
         })
         const locked = locked_warps[warp1] || locked_warps[warp2]
-        if (warp_display === 'dot' || locked) {
+        if (warp_display === 'dot' || locked || is_escape) {
           circles.push({
             id: `warp-anchor-${warp1}`,
             cx: s(x1),

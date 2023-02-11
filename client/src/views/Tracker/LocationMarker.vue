@@ -37,7 +37,6 @@
 <script>
 import { location_type_map } from '@/data/old'
 import varia from '@/varia'
-import { getStaticUrl } from '@/utils'
 
 export default {
   inject: ['json_data', 'game_state'],
