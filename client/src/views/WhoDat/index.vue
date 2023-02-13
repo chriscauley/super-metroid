@@ -6,11 +6,21 @@
       <canvas ref="mask" class="who-dat__mask" />
       <img ref="img" :src="src" @load="onload" class="who-dat__img" />
     </div>
-    <div v-if="result" :class="`alert -${result.correct ? 'success' : 'error'}`">
-      <div>
-        {{ msg1 }}
+    <div v-if="result">
+      <div :class="`alert -${result.correct ? 'success' : 'error'}`">
+        <div>
+          {{ msg1 }}
+        </div>
+        <div class="btn-group">
+          <button class="btn -primary" ref="focus" @click="skip" title="Next">
+            <i class="fa fa-play" />
+          </button>
+          <button v-if="next_at" class="btn -primary" @click="pause">
+            <i class="fa fa-pause" />
+          </button>
+        </div>
       </div>
-      <button class="btn -primary" ref="focus" @click="skip">Next</button>
+      <drop-list v-if="current" :enemy="current" />
     </div>
     <unrest-form v-else :schema="schema" :state="state" @submit="submit" />
     <div v-if="'debug' in $route.query" class="who-data__debug">
@@ -44,12 +54,14 @@
 </template>
 
 <script>
+import DropList from './DropList.vue'
 import Storage from './storage'
 
 const DURATION = 10000 // 10s
 
 export default {
   name: 'WhoDat',
+  components: { DropList },
   data() {
     const state = {}
     const schema = {
@@ -145,6 +157,9 @@ export default {
     },
     skip() {
       this.next_at = new Date().valueOf() - 1 // in past
+    },
+    pause() {
+      this.next_at = null
     },
   },
 }

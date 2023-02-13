@@ -1,0 +1,14 @@
+.drop-list {
+  @apply flex flex-wrap gap-2 items-center justify-center py-4;
+  &__cell {
+    @apply border-4 rounded-xl flex items-center gap-2 px-2;
+    height: 44px;
+  }
+  .sm-drop {
+    font-size: 2em;
+  }
+  .fa.fa-heart, .fa.fa-bomb {
+    color: #f82810; /* croc red */
+    font-size: 1.5em;
+  }
+}
