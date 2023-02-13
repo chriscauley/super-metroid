@@ -4,7 +4,7 @@
 @use "sass:string";
 @import "./variables.scss";
 
-.sm-item, .sm-block, .sm-cre-hex, .sm-ui, .sm-link, .sm-boss, .sm-icon, .sm-g4-head, .sm-map, .sm-map-boss {
+.sm-item, .sm-block, .sm-cre-hex, .sm-ui, .sm-link, .sm-boss, .sm-icon, .sm-g4-head, .sm-map, .sm-map-boss, .sm-drop {
   display: inline-block;
   position: relative;
   height: 1em;
@@ -32,6 +32,19 @@
   $icons: boss miniboss egg energy missile;
   @for $i from 0 to length($icons) {
     $name: nth($icons, $i + 1);
+    &.-#{"" + $name}:before {
+      background-position: 0 $i * -100%;
+    }
+  }
+}
+
+.sm-drop {
+  &:before {
+    background-image: url(./images/drops.png);
+  }
+  $_items: large-energy small-energy missile super-missile power-bomb;
+  @for $i from 0 to length($_items) {
+    $name: nth($_items, $i + 1);
     &.-#{"" + $name}:before {
       background-position: 0 $i * -100%;
     }

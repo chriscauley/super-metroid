@@ -19,6 +19,9 @@
             <i class="fa fa-pause" />
           </button>
         </div>
+        <div class="who-dat__countdown" v-if="next_at">
+          <div class="who-dat__countdown-bar" :style="`width: ${countdown}%`" />
+        </div>
       </div>
       <drop-list v-if="current" :enemy="current" />
     </div>
@@ -74,7 +77,7 @@ export default {
     }
     const storage = Storage()
     const current = storage.getNextEnemy(this.$route.query.filter)
-    return { schema, state, current, storage, result: null, next_at: null }
+    return { schema, state, current, storage, result: null, next_at: null, countdown: null }
   },
   computed: {
     src() {
@@ -113,11 +116,13 @@ export default {
   methods: {
     tick() {
       this._frame = requestAnimationFrame(this.tick)
+      this.countdown = null
       if (!this.next_at) {
         return
       }
       this.$refs.focus?.focus()
       if (this.next_at > new Date().valueOf()) {
+        this.countdown = (100 * (this.next_at - new Date().valueOf())) / DURATION
         return
       }
       this.next_at = null

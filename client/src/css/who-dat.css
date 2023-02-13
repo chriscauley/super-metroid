@@ -45,3 +45,15 @@
     @apply mb-0;
   }
 }
+
+.who-dat .alert {
+  @apply flex-wrap m-auto;
+  width: 50%;
+}
+
+.who-dat__countdown {
+  @apply bg-gray-300 mt-2 overflow-hidden rounded-xl w-full;
+  &-bar {
+    @apply bg-blue-400 h-2;
+  }
+}
