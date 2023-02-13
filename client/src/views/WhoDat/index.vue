@@ -2,8 +2,8 @@
   <div :class="wrapper_class">
     <h1>{{ title }}</h1>
     <div class="who-dat__display">
-      <canvas ref="canvas" class="who-dat__canvas" />
-      <canvas ref="mask" class="who-dat__mask" />
+      <canvas ref="canvas" class="who-dat__canvas" width="500" height="500" />
+      <canvas ref="mask" class="who-dat__mask" width="500" height="500" />
       <img ref="img" :src="src" @load="onload" class="who-dat__img" />
     </div>
     <div v-if="result">
