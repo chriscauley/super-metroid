@@ -1351,10 +1351,10 @@
   resolved "https://registry.yarnpkg.com/@unrest/tailwind/-/tailwind-0.1.23.tgz#818d9a2c9e4fecc290136d041157a22b812bcf2b"
   integrity sha512-bSFuK4KHeZRodgJN0P7/ZUXQf1JkSPPObwxK05HP8kcuuNhlE/HoxRGOwq7ZwVVU1ej+vnwYrBZVNGYVIQckfQ==
 
-"@unrest/vue-form@^0.0.18":
-  version "0.0.18"
-  resolved "https://registry.yarnpkg.com/@unrest/vue-form/-/vue-form-0.0.18.tgz#dfd1f3595b2748fdc9e386a377f98efa088f8173"
-  integrity sha512-9Ty1WY+FtY7RbidaTOXJTO+FW2gMVCED7/u1T/PxW2x3vrS2SRSlPBHZCLBTLU0NOe865LrSn+Yp5fb33ORWfQ==
+"@unrest/vue-form@0.0.19":
+  version "0.0.19"
+  resolved "https://registry.yarnpkg.com/@unrest/vue-form/-/vue-form-0.0.19.tgz#1f6ea2129b929f29b8bb561c354f3cc072b55b07"
+  integrity sha512-D51/MZ340a2vnxe7+55NIuEBpxtELNxCZeX4orJC3j4LvKzh2RoO1cLx4gI/s8/ayAMv8BzrWRjk9XxKBLNPHg==
   dependencies:
     jsonschema "^1.4.0"
     lodash.clonedeep "^4.5.0"
@@ -1396,10 +1396,10 @@
     lodash.startcase "^4.4.0"
     vue "^3.2.41"
 
-"@unrest/vue@0.2.18":
-  version "0.2.18"
-  resolved "https://registry.yarnpkg.com/@unrest/vue/-/vue-0.2.18.tgz#c25cf83151c91ba0b91fba6699a07ba1ce652453"
-  integrity sha512-wqOAJOf+OTYA0By8SuV+hpFw1nHmMHuiqcvvkuHf8Hz7HDSVZGjfIBrGuS9E2sxPhK/9J0gQ8ig7YECVHSGMsw==
+"@unrest/vue@0.2.19":
+  version "0.2.19"
+  resolved "https://registry.yarnpkg.com/@unrest/vue/-/vue-0.2.19.tgz#4574e7702850af8e6b85b20248f365f6bcf5f782"
+  integrity sha512-i9kIjaeDrzu9iTLlCwTg3AI4HxZBllKXsfn8hIGCgePJKf1Ig+uY4m7vce58xfgQn/bAfM1PL+CZ5dy/0J+XWA==
   dependencies:
     dedent "^0.7.0"
     lodash.clonedeep "^4.5.0"
