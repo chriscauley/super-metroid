@@ -211,7 +211,7 @@ export default (component) => {
   const connectWarp = (id, selected_warp) => {
     const { json_data } = component
     if (json_data) {
-      window.clickPortal(id, selected_warp)
+      window.addPortal(id, selected_warp)
     } else {
       addAction(['connect-warp', id, selected_warp])
     }
@@ -219,13 +219,9 @@ export default (component) => {
   }
 
   const disconnectWarp = (id, selected_warp) => {
-    const { json_data, game_state } = component
+    const { json_data } = component
     if (json_data) {
-      if (game_state[id]) {
-        window.removePortal(id)
-      } else {
-        window.addPortal(id, selected_warp)
-      }
+      window.removePortal(id, selected_warp)
     } else {
       addAction(['disconnect-warp', id, selected_warp])
     }

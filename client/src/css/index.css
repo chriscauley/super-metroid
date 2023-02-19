@@ -133,7 +133,7 @@ html, body, #app {
     background: radial-gradient(farthest-side, #000, #000 33%, #008800 75%, #00FF00);
   }
   &.-selected:after {
-    @apply absolute block;
+    @apply absolute block inset-0;
     content: "";
     border: 2px solid #ddd;
     animation: borderBlink 0.5s linear infinite;
@@ -245,12 +245,19 @@ body {
     &kraids-lair, &crocomire, &kraid {
       stroke: var(--color-warehouse);
     }
-    &red-brinstar, &tourian, &lower-norfair, &east-maridia, &kraids-lair {
-      stroke-dasharray: 0 0.005 0;
-    }
-    &phantoon, &ridley, &draygon, &kraid {
-      stroke-dasharray: 0 0.002 0;
-    }
+  }
+  &.-hovering {
+    stroke-dasharray: 0.008 0.004;
+    animation: slide-dash-offset 0.75s linear infinite;
+  }
+}
+
+@keyframes slide-dash-offset {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 0.012; /* sum of both offset parts */
   }
 }
 
@@ -393,9 +400,9 @@ body {
     background-image: repeating-linear-gradient(
       45deg,
       transparent,
-      transparent 5px,
-      var(--door-brown) 5px,
-      var(--door-brown) 10px
+      transparent 2.5px,
+      var(--door-brown) 2.5px,
+      var(--door-brown) 6px
     );
   }
   &.-hidden {

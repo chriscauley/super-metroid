@@ -85,7 +85,7 @@ const prepArea = (area, layout) => {
   })
 
   // Remove BT for now since it's not hooked up in varia backend
-  area.locations = area.locations.filter(l => l.slug !== 'BombTorizo')
+  area.locations = area.locations.filter((l) => l.slug !== 'BombTorizo')
 
   area.gpss = (area.gpss || []).map(([slug, x, y]) => ({ slug, x, y, name: prepName(slug) }))
 

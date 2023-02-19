@@ -18,7 +18,7 @@
 import { warp_type_map } from '@/data/old'
 
 const w = 0.002 // also used in css file
-const r = w * 4
+const r = w * 2
 const w_rect = w * 9.8
 const h_rect = w * 11.8
 
@@ -130,11 +130,13 @@ export default {
       const s = this.scale
       const texts = this.texts.slice()
       const { locked_warps } = this.game_state
+      const hover_target = this.tool_storage.state._hovering_warp
       pairs.forEach(([warp1, warp2], index) => {
         const is_escape = [warp_type_map[warp1], warp_type_map[warp2]].includes('escape')
         const [_area1, x1, y1] = this.entity_xys[warp1]
         const [_area2, x2, y2] = this.entity_xys[warp2]
         const color = colors[index % colors.length]
+        const hovering = warp1 === hover_target || warp2 === hover_target
         lines.push({
           id: `${warp1}-${warp2}`,
           x1: s(x1),
@@ -143,7 +145,7 @@ export default {
           y2: s(y2),
           'stroke-width': w,
           stroke: color,
-          class: `warp-connections__line`,
+          class: `warp-connections__line ${hovering ? '-hovering' : ''}`,
         })
         const locked = locked_warps[warp1] || locked_warps[warp2]
         if (warp_display === 'dot' || locked || is_escape) {

@@ -1,7 +1,13 @@
 <template>
   <div class="area-box" :style="style">
     <div v-for="door in doors" :key="door.id" v-bind="door" />
-    <div v-for="warp in warps" :key="warp.id" v-bind="warp" />
+    <div
+      v-for="warp in warps"
+      :key="warp.id"
+      v-bind="warp"
+      @mouseover="hover(warp)"
+      @mouseout="blur"
+    />
     <location-marker
       v-for="location in locations"
       :key="location.slug"
@@ -103,6 +109,12 @@ export default {
         return json_door[0]
       }
       return default_door_colors[slug]
+    },
+    hover(warp) {
+      this.tool_storage.state._hovering_warp = warp.id
+    },
+    blur() {
+      delete this.tool_storage.state._hovering_warp
     },
   },
 }
