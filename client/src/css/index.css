@@ -439,3 +439,28 @@ h3 {
     z-index: 99;
   }
 }
+
+.damage-table {
+  text-align: center;
+  &__icons {
+    @apply flex gap-4 justify-center;
+  }
+  .smv-beam.-charge {
+    order: 1;
+  }
+  .smv-beam.-wave {
+    order: 2;
+  }
+  .smv-beam.-ice {
+    order: 3;
+  }
+  .smv-beam.-spazer {
+    order: 4;
+  }
+  .smv-beam.-plasma {
+    order: 5;
+  }
+  .smv-beam:before {
+    inset: -25%;
+  }
+}

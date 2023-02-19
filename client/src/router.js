@@ -10,6 +10,7 @@ const routes = [
   { path: '/inventory/', component: PauseInventoryView },
   { path: '/cheat-sheet/', component: CheatSheet },
   { path: '/who-dat/', component: WhoDat },
+  { path: '/dash-rando/', component: views.DashRando },
 ]
 
 const history = (process.env.VUE_APP_SITE === 'github' ? createWebHashHistory : createWebHistory)()
