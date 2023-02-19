@@ -68,6 +68,11 @@ html, body, #app {
   }
 }
 
+.tracker-view.-logic-mirror .item-tracker__wrapper {
+  @apply right-0 top-0;
+  left: unset;
+}
+
 .sm-portal {
   @apply inline-block relative text-white;
   width: 1em;
