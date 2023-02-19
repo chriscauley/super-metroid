@@ -74,6 +74,9 @@ export default {
       if (locData) {
         return `sm-item -empty smva-difficulty -difficulty-${locData.difficulty[0]}`
       }
+      if (this.$site.name === 'varia') {
+        return 'sm-item -empty smva-difficulty -difficulty-break'
+      }
       const type = location_type_map[this.location.slug]
       return 'sm-map -' + (type === 'item' ? 'egg' : type)
     },
