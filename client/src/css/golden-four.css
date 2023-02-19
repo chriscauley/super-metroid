@@ -1,0 +1,47 @@
+.golden-four { /* width of 126px */
+  position: absolute;
+  pointer-events:none;
+  left: 38.5%;
+  top: 11%;
+  pointer-events: none;
+  width: 11%;
+  /* uncomment these to help debug */
+  /* top: 0; */
+  /* width: 40%; */
+  img {
+    position: absolute;
+    image-rendering: pixelated;
+  }
+  .golden-four__bg {
+    position: static;
+    width: 100%;
+  }
+  &__kraid {
+    left: calc(100% * 0 / 126);
+    top: calc(100% * 53 / 145);
+    width: calc(100% * 62 / 126);
+  }
+  &__phantoon {
+    left: calc(100% * 46 / 126);
+    top: calc(100% * 65 / 145);
+    width: calc(100% * 40 / 126);
+  }
+  &__draygon {
+    left: calc(100% * 69 / 126);
+    top: calc(100% * 56 / 145);
+    width: calc(100% * 57 / 126);
+  }
+  &__ridley {
+    left: calc(100% * 36 / 126);
+    top: 0%;
+    width: calc(100% * 77 / 126);
+  }
+}
+
+.golden-four {
+  .-logic-mirror & {
+    left: unset;
+    right: 38.5%;
+    transform: scale(-1, 1);
+  }
+}
