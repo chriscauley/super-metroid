@@ -48,9 +48,9 @@ import { saveFile } from '@/data/legacy'
 import { location_type_map, subarea_by_area, vanilla_warps } from '@/data/old'
 import EditArea from './EditArea.vue'
 import EntityFilter from './EntityFilter.vue'
-import RandoSettings from './RandoSettings.vue'
 import ItemCounter from './ItemCounter.vue'
 import ItemTracker from './ItemTracker.vue'
+import RandoSettings from './RandoSettings.vue'
 import ToolStorage from './ToolStorage'
 import TrackerSettings from './TrackerSettings.vue'
 import TrackerViewer from './Viewer.vue'
@@ -62,9 +62,9 @@ export default {
   components: {
     EditArea,
     EntityFilter,
-    RandoSettings,
     ItemCounter,
     ItemTracker,
+    RandoSettings,
     SeedSettings,
     TrackerSettings,
     TrackerViewer,

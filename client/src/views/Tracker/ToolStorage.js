@@ -33,6 +33,10 @@ const tracker_settings = {
         enum: ['', 'area-counter', 'pause-menu', 'grid', 'compact'],
         enumNames: ['None', 'Area Counter', 'Pause Menu', 'Grid', 'Grid (compact)'],
       },
+      room_visibility: {
+        type: 'string',
+        enum: ['highlight-open', 'hide-closed'],
+      },
     },
   },
   initial: {
@@ -42,6 +46,7 @@ const tracker_settings = {
     large_warp: true,
     item_tracker: 'pause-inventory',
     entity_filter: undefined,
+    room_visibility: 'highlight-open',
   },
 }
 

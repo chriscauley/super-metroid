@@ -1,5 +1,5 @@
 <template>
-  <svg v-bind="svg_attrs" class="area-box__svg">
+  <svg v-bind="svg_attrs">
     <path v-for="path in paths" :key="path.id" v-bind="path" />
     <text dominant-baseline="middle" text-anchor="middle" v-bind="text_attrs">
       {{ area.name }}
@@ -9,7 +9,7 @@
 
 <script>
 export default {
-  inject: ['json_data'],
+  inject: ['json_data', 'tool_storage'],
   props: {
     area: Object,
     extra_path: Array,
@@ -18,12 +18,14 @@ export default {
     svg_attrs() {
       const width = this.area.width
       const height = this.area.height
+      const { room_visibility } = this.tool_storage.state.tracker_settings
       return {
         viewBox: [-1, -1, width + 2, height + 2].join(' '),
         style: {
           height: `${100 * (height + 2)}%`,
           width: `${100 * (width + 2)}%`,
         },
+        class: `area-box__svg -${room_visibility}`,
       }
     },
     text_attrs() {
@@ -31,13 +33,16 @@ export default {
       return { x, y }
     },
     paths() {
-      const svg_rooms = this.json_data?.svg_rooms || {}
+      if (!this.json_data) {
+        return null
+      }
+      const svg_rooms = this.json_data.svg_rooms || {}
       const entries = Object.entries(this.area.svg_coords || {})
       if (this.extra_path) {
         entries.push(['unknownSvg', this.extra_path])
       }
       const prep = ([id, coords]) => {
-        if (!coords?.length || !svg_rooms[id]) {
+        if (!coords?.length) {
           return null
         }
         if (this.json_data.logic === 'mirror') {
@@ -48,7 +53,8 @@ export default {
         if (coords[0] !== coords[coords.length - 1]) {
           coords.push(coords[0])
         }
-        return { id, d: `M ${coords.join(' L ')} z` }
+        const cls = svg_rooms[id] ? '-open' : '-closed'
+        return { id, d: `M ${coords.join(' L ')} z`, class: cls }
       }
       return entries.map(prep).filter(Boolean)
     },

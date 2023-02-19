@@ -226,7 +226,7 @@ body {
 }
 
 .warp-connections__line {
-  stroke-width: 0.003;
+  stroke-width: 0.002;
   &.-area- {
     &green-brinstar, &red-brinstar {
       stroke: var(--color-brinstar);

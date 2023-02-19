@@ -15,10 +15,21 @@
   top: -100%;
   pointer-events: none;
   path {
-    fill: rgba(255,255,255, 0.25);
+    &.-closed {
+      fill: rgba(0, 0, 0, 0.75);
+    }
+    &.-open {
+      fill: rgba(255, 255, 255, 0.25);
+    }
     &#unknownSvg {
       fill: rgba(255, 0, 0, 0.25);
     }
+  }
+  &.-highlight-open path.-closed {
+    display: none;
+  }
+  &.-hide-closed path.-open {
+    display: none;
   }
   text {
     fill: white;
