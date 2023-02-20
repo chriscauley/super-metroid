@@ -1,7 +1,8 @@
 @use "sass:math";
 @use "sass:list";
+@use "sass:string";
 
-.smv-boss, .smv-gps, .smv-gps-number, .smv-icon {
+.smv-boss, .smv-gps, .smv-gps-number, .smv-icon, .smv-beam {
   display: inline-block;
   position: relative;
   height: 1em;
@@ -27,6 +28,19 @@
   @for $i from 0 to length($bosses) {
     $name: nth($bosses, $i + 1);
     &.-#{""+$name}:before {
+      background-position: 0 $i * -100%;
+    }
+  }
+}
+
+.smv-beam {
+  $beams: charge wave ice spazer plasma;
+  &:before {
+    background-image: url(./images/varia/cwisp.png);
+  }
+  @for $i from 0 to length($beams) {
+    $name: nth($beams, $i + 1);
+    &.-#{""+$name}:before, &.-#{""+string.slice($name, 1, 2)} {
       background-position: 0 $i * -100%;
     }
   }
@@ -64,7 +78,7 @@ $varia-levels: break easy medium hard harder hardcore mania;
     &:before {
       background-size: contain;
       background-repeat: no-repeat;
-      background-image: url(./images/varia/wipe_64.gif);
+      background-image: url(./images/varia/wipe_32.gif);
       z-index: 2;
     }
     &:after {

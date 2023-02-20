@@ -1,17 +1,17 @@
-.smv-boss, .smv-gps, .smv-gps-number, .smv-icon {
+.smv-boss, .smv-gps, .smv-gps-number, .smv-icon, .smv-beam {
   display: inline-block;
   position: relative;
   height: 1em;
   width: 1em;
 }
-.smv-boss:before, .smv-boss ._before, .smv-gps:before, .smv-gps ._before, .smv-gps-number:before, .smv-gps-number ._before, .smv-icon:before, .smv-icon ._before {
+.smv-boss:before, .smv-boss ._before, .smv-gps:before, .smv-gps ._before, .smv-gps-number:before, .smv-gps-number ._before, .smv-icon:before, .smv-icon ._before, .smv-beam:before, .smv-beam ._before {
   background-size: 100% auto;
   content: "";
   image-rendering: pixelated;
   inset: 0;
   position: absolute;
 }
-.smv-boss.-inactive, .smv-gps.-inactive, .smv-gps-number.-inactive, .smv-icon.-inactive {
+.smv-boss.-inactive, .smv-gps.-inactive, .smv-gps-number.-inactive, .smv-icon.-inactive, .smv-beam.-inactive {
   opacity: 0.75;
   filter: grayscale(1) brightness(0.75);
 }
@@ -45,6 +45,25 @@
 }
 .smv-boss.-golden-torizo:before {
   background-position: 0 -800%;
+}
+
+.smv-beam:before {
+  background-image: url(./images/varia/cwisp.png);
+}
+.smv-beam.-charge:before, .smv-beam.-ch {
+  background-position: 0 0%;
+}
+.smv-beam.-wave:before, .smv-beam.-wa {
+  background-position: 0 -100%;
+}
+.smv-beam.-ice:before, .smv-beam.-ic {
+  background-position: 0 -200%;
+}
+.smv-beam.-spazer:before, .smv-beam.-sp {
+  background-position: 0 -300%;
+}
+.smv-beam.-plasma:before, .smv-beam.-pl {
+  background-position: 0 -400%;
 }
 
 .smv-icon.-door:before {
@@ -93,7 +112,7 @@
 .smva-difficulty.-empty:before {
   background-size: contain;
   background-repeat: no-repeat;
-  background-image: url(./images/varia/wipe_128.gif);
+  background-image: url(./images/varia/wipe_32.gif);
   z-index: 2;
 }
 .smva-difficulty.-empty:after {
