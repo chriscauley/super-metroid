@@ -7,7 +7,7 @@ export default {
   root: {
     scale: 32,
     width: 3200,
-    height: 1600,
+    height: 1632,
     round: 0.5,
   },
   areas,

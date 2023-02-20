@@ -1,6 +1,8 @@
 /* overrides for varia site styling. Should be able to be removed before launch */
 
 body.-site-varia {
+  background: black;
+  overflow: hidden;
   .main {
     @apply bg-black p-0 mb-0;
     margin-top: 24px;
@@ -10,9 +12,9 @@ body.-site-varia {
     }
   }
   #app {
-    height: calc(100vh - 84px); /* topnav=24px, footer=60px */
+    height: calc(100vh - 24px); /* topnav=24px, footer=60px */
     margin-top: 24px; /* topnav */
-    margin-bottom: 60px; /* push old tracker below footer */
+    margin-bottom: 0; /* push old tracker below footer */
   }
   .btn-default {
     color: #ffffff;
