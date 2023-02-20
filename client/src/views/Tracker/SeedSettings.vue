@@ -16,16 +16,19 @@
 </template>
 
 <script>
+const icons = {
+  // remap icons to font awesome
+  checkmark: 'check',
+}
+
 export default {
   inject: ['json_data', 'varia_state'],
   computed: {
     ws_icon() {
       const { ws_icon } = this.varia_state
-      const icons = {
-        // remap icons to font awesome
-        checkmark: 'check',
-      }
-      return `fa fa-${icons[ws_icon] || ws_icon}`
+      const icon = icons[ws_icon] || ws_icon
+      document.body.dataset.connectionIcon = icon
+      return `fa fa-${icon}`
     },
   },
 }
