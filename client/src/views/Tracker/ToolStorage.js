@@ -170,18 +170,20 @@ export default (component) => {
         { slug: 'help', icon: 'fa fa-question-circle', select: window.startTheTour },
       ]
 
+      const remove = (slug) => (tools = tools.filter((t) => t.slug !== slug))
       if (component.json_data?.majorsSplit !== 'Scavenger') {
-        tools = tools.filter((t) => t.slug !== 'scavenger')
+        remove('scavenger')
+      }
+      if (component.is_plando) {
+        remove('layout')
+      } else {
+        remove('randomize-remaining')
+        remove('download-rom')
       }
       return tools
     }
-    const showHelp = () => {
-      if (component.is_varia) {
-        window.startTheTour()
-      } else {
-        unrest.ui.alert(HelpPopup)
-      }
-    }
+
+    const showHelp = () => unrest.ui.alert(HelpPopup)
     let tools = [
       { slug: 'undo', icon: 'fa fa-undo', select: () => storage.undo() },
       { slug: 'clear', icon: 'fa fa-trash', select: clearGame },
