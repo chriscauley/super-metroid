@@ -166,6 +166,7 @@ export default (component) => {
         { slug: 'scavenger', select: window.displayScavPopup, icon: 'fa fa-puzzle-piece' },
         { slug: 'randomize-remaining', select: window.displayRandoPopup, icon: 'fa fa-random' },
         { slug: 'download-rom', items: download_items, icon: 'fa fa-download' },
+        component.$store.layout.getButton(component),
         { slug: 'help', icon: 'fa fa-question-circle', select: window.startTheTour },
       ]
 

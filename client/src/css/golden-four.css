@@ -1,4 +1,5 @@
 .golden-four { /* width of 126px */
+  display: none;
   position: absolute;
   pointer-events:none;
   left: 38.5%;
@@ -43,5 +44,9 @@
     left: unset;
     right: 38.5%;
     transform: scale(-1, 1);
+  }
+  .-layout-nordub & {
+    /* need to reposition it for legacy and hide for streaming variants */
+    display: block;
   }
 }
