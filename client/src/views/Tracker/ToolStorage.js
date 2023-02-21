@@ -6,6 +6,8 @@ import HelpPopup from './HelpPopup.vue'
 
 import { warp_type_map, default_area_keys, subarea_by_area } from '@/data/old'
 
+const warn = unrest.ui.toast.warning
+
 const tracker_settings = {
   schema: {
     type: 'object',
@@ -40,10 +42,10 @@ const tracker_settings = {
     },
   },
   initial: {
-    warp_display: 'codes',
-    large_doors: true,
-    large_locations: true,
-    large_warp: true,
+    warp_display: 'dots',
+    large_doors: false,
+    large_locations: false,
+    large_warps: false,
     item_tracker: 'pause-inventory',
     entity_filter: undefined,
     room_visibility: 'highlight-open',
@@ -64,8 +66,7 @@ const rando_settings = {
         enumNames: ['Full', 'Full Countdown', 'Major', 'Chozo', 'Scavenger'],
       },
       areaRando: {
-        type: 'string',
-        enum: ['off', 'light', 'full'],
+        type: 'boolean',
       },
       bossRando: {
         type: 'boolean',
@@ -126,32 +127,50 @@ export default (component) => {
     })
   }
 
-  const varia_action_by_key = {
-    'undo-location': window.deleteLoc,
-    'clear-location': window.clearLocs,
-    'undo-warp': window.deleteLine,
-    'clear-warp': window.clearLines,
+  const isAreaRando = () => {
+    const { areaRando, escapeRando, bossRando } = storage.getRandoSettings()
+    return areaRando || escapeRando || bossRando
   }
 
-  const variaAction = (action, type) => {
-    const key = `${action}-${type}`
-    if (component.json_data) {
-      varia_action_by_key[key](component.is_plando)
-      return
-    }
-    addAction([key])
+  // this is an interface to some legacy functions I haven't absorbed into the library
+  const varia = {
+    undoLocation: () => window.deleteLoc(component.is_plando),
+    clearLocations: () => window.clearLocs(component.is_plando),
+    undoPortal: () => {
+      if (!isAreaRando()) {
+        return
+      }
+      const startPoint = storage.state.selected_warp
+      const is_connected = component.game_state.warps[startPoint]
+      if (is_connected) {
+        // removes selected warp
+        window.ajaxCall({ action: 'remove', scope: 'area', startPoint }, 'upload')
+      } else {
+        // removes last warp (undo)
+        window.ajaxCall({ action: 'remove', scope: 'area' }, 'upload')
+      }
+    },
+    clearPortals: () => {
+      if (!isAreaRando()) {
+        return
+      }
+      if (!confirm('Reset seed transitions ?')) {
+        return
+      }
+      window.ajaxCall({ action: 'clear', scope: 'area' }, 'upload')
+    },
   }
 
   const getTools = () => {
     if (component.is_varia) {
       const clickPlay = () => window.displayPopup(component.is_plando)
       const loc_items = [
-        { text: 'Undo Last Location', icon: 'undo', click: () => variaAction('undo', 'location') },
-        { text: 'Reset Locations', icon: 'trash', click: () => variaAction('clear', 'location') },
+        { text: 'Undo Last Location', icon: 'undo', click: varia.undoLocation },
+        { text: 'Reset Locations', icon: 'trash', click: varia.clearLocations },
       ]
       const portal_items = [
-        { text: 'Undo Last Portal', icon: 'undo', click: () => variaAction('undo', 'warp') },
-        { text: 'Reset Portals', icon: 'trash', click: () => variaAction('clear', 'warp') },
+        { text: 'Undo Last Portal', icon: 'undo', click: varia.undoPortal },
+        { text: 'Reset Portals', icon: 'trash', click: varia.clearPortals },
       ]
 
       const download_items = [
@@ -218,6 +237,15 @@ export default (component) => {
 
   const connectWarp = (id, selected_warp) => {
     const { json_data } = component
+    const type1 = warp_type_map[id]
+    const type2 = warp_type_map[selected_warp]
+    if (type1 !== type2) {
+      if (type1 === 'escape' || type2 === 'escape') {
+        warn('You cannot connect escape portals with non-escape portals.')
+        storage.state.selected_warp = null
+        return
+      }
+    }
     if (json_data) {
       window.addPortal(id, selected_warp)
     } else {
@@ -238,21 +266,29 @@ export default (component) => {
 
   storage.click = (id, game_state) => {
     const type = warp_type_map[id]
-    const { json_data } = component
     const rando_settings = storage.getRandoSettings()
     if (type === 'warp' && !rando_settings.areaRando) {
-      unrest.ui.toast.warning('You cannot change this warp because area randomization is off.')
+      warn('You cannot change this portal because area randomization is off.')
+      return
     }
     if (type === 'boss' && !rando_settings.bossRando) {
-      unrest.ui.toast.warning('You cannot change this warp because boss randomization is off.')
+      warn('You cannot change this portal because boss randomization is off.')
+      return
+    }
+    if (type === 'escape' && !rando_settings.escapeRando) {
+      warn('You cannot change this portal because escape randomization is off.')
+      return
+    }
+    if (type === 'sand') {
+      unrest.ui.alert({
+        text: 'Sand Hall warps connections are set by the area rando setting. If area randomization is on, the left sand pit connects to the door below botwoon. If not, the left sand hall door connects to the vanilla exit in West Maridia.',
+        class: '-sm',
+      })
+      return
     }
     if (type === 'location') {
       addAction(['click-location', id])
-    } else if (type === 'warp' || type === 'boss') {
-      if (json_data && !json_data.areaRando) {
-        // user cannot modify a warp when areaRando is selected
-        return
-      }
+    } else if (['warp', 'boss', 'escape'].includes(type)) {
       const { selected_warp } = storage.state
       const { warps } = game_state
       if (selected_warp === id) {
@@ -268,11 +304,6 @@ export default (component) => {
         // user clicked a bad combination of warps or no warp was selected
         storage.state.selected_warp = id
       }
-    } else if (type === 'sand') {
-      unrest.ui.alert({
-        text: 'Sand Hall warps connections are set by the area rando setting. If area randomization is on, the left sand pit connects to the door below botwoon. If not, the left sand hall door connects to the vanilla exit in West Maridia.',
-        class: '-sm',
-      })
     }
     storage.save()
   }
