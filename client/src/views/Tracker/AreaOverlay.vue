@@ -139,7 +139,7 @@ export default {
       this.tool_storage.click(id, this.game_state)
     },
     clickDoor(id) {
-      if (this.json_data && this.$route.path.includes('plando')) {
+      if (this.json_data) {
         window.actionDoor(id)
       }
     },

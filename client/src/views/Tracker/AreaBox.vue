@@ -102,11 +102,12 @@ export default {
     },
     getDoorColor(slug) {
       if (default_door_colors[slug] === 'hidden') {
-        return '-hidden'
+        return 'hidden'
       }
       const json_door = this.json_data?.doors[slug]
       if (json_door) {
-        return json_door[0]
+        const [color, _facing, hidden] = json_door
+        return hidden ? 'white' : color
       }
       return default_door_colors[slug]
     },

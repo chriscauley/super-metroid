@@ -393,6 +393,9 @@ body {
   &:hover:before {
     inset: -20%;
   }
+  &.-white {
+    --background-color: white;
+  }
   &.-ice, &.-blue {
     --background-color: var(--door-blue);
   }
@@ -415,6 +418,15 @@ body {
         var(--door-brown) 6px
       );
     }
+  }
+  &.-white:before {
+    background-image: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 2px,
+      black 2px,
+      black 4px
+    );
   }
   &.-hidden {
     display: none;

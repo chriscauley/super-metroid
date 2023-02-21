@@ -1,6 +1,6 @@
 <template>
   <div :class="wrapper_class" :style="`--zoom: ${osd_store?.state.zoom || 1}`">
-    <div v-if="completed_objectives" class="objectivesPopup" @click="completed_objectives=null">
+    <div v-if="completed_objectives" class="objectivesPopup" @click="completed_objectives = null">
       <div v-for="obj in completed_objectives" :key="obj">{{ obj }}</div>
     </div>
     <unrest-toolbar :storage="tool_storage" class="tracker-toolbar">
@@ -323,7 +323,7 @@ export default {
         json_data.roomsVisibility.forEach((s) => (json_data.svg_rooms[s] = true))
         if (json_data.newlyCompletedObjectives?.length) {
           clearTimeout(this._obj_timeout)
-          this._obj_timeout = setTimeout(() => this.completed_objectives = null, 3000)
+          this._obj_timeout = setTimeout(() => (this.completed_objectives = null), 3000)
           this.completed_objectives = json_data.newlyCompletedObjectives
         }
       }
