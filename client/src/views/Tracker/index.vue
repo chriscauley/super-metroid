@@ -1,5 +1,8 @@
 <template>
   <div :class="wrapper_class" :style="`--zoom: ${osd_store?.state.zoom || 1}`">
+    <div v-if="completed_objectives" class="objectivesPopup" @click="completed_objectives=null">
+      <div v-for="obj in completed_objectives" :key="obj">{{ obj }}</div>
+    </div>
     <unrest-toolbar :storage="tool_storage" class="tracker-toolbar">
       <template #right>
         <div class="btn-group" v-if="is_admin">
@@ -81,6 +84,7 @@ export default {
   data() {
     window._S = () => saveFile(`${JSON.stringify(this.areas, null, 2)}`, 'areas.json')
     return {
+      completed_objectives: null,
       inventory: {},
       varia_state: {},
       tool_storage: ToolStorage(this),
@@ -317,6 +321,11 @@ export default {
       if (json_data) {
         json_data.svg_rooms = { unknownSvg: true }
         json_data.roomsVisibility.forEach((s) => (json_data.svg_rooms[s] = true))
+        if (json_data.newlyCompletedObjectives?.length) {
+          clearTimeout(this._obj_timeout)
+          this._obj_timeout = setTimeout(() => this.completed_objectives = null, 3000)
+          this.completed_objectives = json_data.newlyCompletedObjectives
+        }
       }
       this.json_data = json_data
     },
