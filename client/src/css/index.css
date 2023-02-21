@@ -24,6 +24,10 @@ html, body, #app {
 
 }
 
+.modal-body .-sm {
+  width: 400px;
+}
+
 .tracker-view {
   @apply relative;
   height: 100%;
@@ -139,7 +143,7 @@ html, body, #app {
     border: 2px solid #ddd;
     animation: borderBlink 0.5s linear infinite;
     .large_locations & {
-      inset: -25%;
+      inset: -10%;
     }
   }
 }

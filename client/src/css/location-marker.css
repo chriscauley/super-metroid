@@ -16,15 +16,15 @@
 .tracker-view {
   &.large_locations .location-marker,
   .location-marker:hover {
-    width: 200%;
-    height: 200%;
+    width: 150%;
+    height: 150%;
   }
 }
 
 .large_locations .location-marker {
   &:hover {
-    width: 300%;
-    height: 300%
+    width: 200%;
+    height: 200%
   }
   &.-align-right {
     transform: translate(-75%, -50%);
