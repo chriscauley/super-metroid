@@ -14,7 +14,6 @@
       @move-area="(data) => moveArea(area, data)"
     />
     <warp-connections :areas="areas" />
-    <golden-four />
   </osd-html-overlay>
 </template>
 
@@ -24,7 +23,6 @@ import openseadragon from 'openseadragon'
 import osd from '@unrest/vue-openseadragon'
 
 import AreaOverlay from './AreaOverlay.vue'
-import GoldenFour from './GoldenFour.vue'
 import WarpConnections from './WarpConnections.vue'
 import { getGridUrl } from '@/utils'
 
@@ -32,7 +30,7 @@ const { Rect } = openseadragon
 
 export default {
   name: 'TrackerViewer',
-  components: { AreaOverlay, GoldenFour, WarpConnections },
+  components: { AreaOverlay, WarpConnections },
   inject: ['tool_storage'],
   props: {
     areas: Array,
