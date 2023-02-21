@@ -298,8 +298,8 @@
       ["RedTowerElevatorTopLeft", 14, 5.5],
       ["RedTowerElevatorBottomLeft", 14, 9.5],
       ["RedTowerElevatorLeft", 14, 7.5],
-      ["RedBrinstarFirefleaLeft", 10, 13.5],
-      ["RedTowerLeft", 10, 11.5],
+      ["RedBrinstarFirefleaLeft", 2, 13.5],
+      ["RedTowerLeft", 10, 13.5],
       ["RedBrinstarEnergyRefill", 10, 16.5],
       ["BelowSpazerTopRight", 15, 15.5]
     ],
