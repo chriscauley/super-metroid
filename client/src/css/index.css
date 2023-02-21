@@ -385,26 +385,36 @@ body {
       width: 150%;
     }
   }
+  &:before {
+    @apply absolute block inset-0;
+    content: "";
+    background-color: var(--background-color);
+  }
+  &:hover:before {
+    inset: -20%;
+  }
   &.-ice, &.-blue {
-    background-color: var(--door-blue);
+    --background-color: var(--door-blue);
   }
   &.-wave, &.-red {
-    background-color: var(--door-red);
+    --background-color: var(--door-red);
   }
   &.-plasma, &.-green {
-    background-color: var(--door-green);
+    --background-color: var(--door-green);
   }
   &.-spazer, &.-yellow {
-    background-color: var(--door-yellow);
+    --background-color: var(--door-yellow);
   }
   &.-wave, &.-plasma, &.-spazer, &.-ice {
-    background-image: repeating-linear-gradient(
-      45deg,
-      transparent,
-      transparent 2.5px,
-      var(--door-brown) 2.5px,
-      var(--door-brown) 6px
-    );
+    &:before {
+      background-image: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 2.5px,
+        var(--door-brown) 2.5px,
+        var(--door-brown) 6px
+      );
+    }
   }
   &.-hidden {
     display: none;
