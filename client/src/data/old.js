@@ -76,7 +76,16 @@ export const vanilla_warps = {
     ['kraidRoomOut', 'kraidRoomIn'],
     ['draygonRoomOut', 'draygonRoomIn'],
   ],
+  map: {},
 }
+
+const _mapWarp = ([a, b]) => {
+  vanilla_warps.map[a] = b
+  vanilla_warps.map[b] = a
+}
+
+vanilla_warps.area.forEach(_mapWarp)
+vanilla_warps.boss.forEach(_mapWarp)
 
 // TODO rename to warps
 export const access_points = flatten(vanilla_warps.area)

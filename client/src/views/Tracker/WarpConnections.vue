@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { warp_type_map } from '@/data/old'
+import { warp_type_map, vanilla_warps } from '@/data/old'
 
 const w = 0.002 // also used in css file
 const r = w * 2
@@ -23,15 +23,10 @@ const w_rect = w * 9.8
 const h_rect = w * 11.8
 
 const colors = [
-  'grey',
-  'lime',
   'pink',
   'fuchsia',
   'orange',
   'yellow',
-  'purple',
-  'aqua',
-  'red',
   '#bfef45',
   'white',
   'cyan',
@@ -46,6 +41,20 @@ const colors = [
 const sand_text = {
   belowBotwoonEnergyTankRight: 'A',
   westSandHallTunnelRight: 'V',
+}
+
+const getColor = (warp1, warp2, index) => {
+  const types = [warp_type_map[warp1], warp_type_map[warp2]]
+  if (vanilla_warps.map[warp1] === warp2) {
+    return '#808080'
+  }
+  if (types.includes('escape')) {
+    return '#00FF00'
+  }
+  if (types.includes('boss')) {
+    return '#FF0000'
+  }
+  return colors[index % colors.length]
 }
 
 export default {
@@ -81,13 +90,13 @@ export default {
           if (this.tool_storage.state.tracker_settings.warp_display !== 'codes') {
             return
           }
-          let subtext, subtext_attrs
-          let content = code_map[warp.slug]
-          const target_slug = this.game_state.warps[warp.slug]
           if (this.game_state.locked_warps[warp.slug]) {
-            attrs.class = 'warp-connections__text fa'
-            content = '' // "\uF023" or fa-lock
-          } else if (target_slug) {
+            // locked warps get dots
+            return
+          }
+          let subtext, subtext_attrs
+          const target_slug = this.game_state.warps[warp.slug]
+          if (target_slug) {
             subtext = code_map[target_slug]
             attrs.title += ' -> ' + target_slug
             attrs.class += ' -linked'
@@ -98,7 +107,7 @@ export default {
             }
           }
           out.push({
-            content,
+            content: code_map[warp.slug],
             subtext,
             subtext_attrs,
             attrs,
@@ -132,10 +141,12 @@ export default {
       const { locked_warps } = this.game_state
       const hover_target = this.tool_storage.state._hovering_warp
       pairs.forEach(([warp1, warp2], index) => {
-        const is_escape = [warp_type_map[warp1], warp_type_map[warp2]].includes('escape')
+        const types = [warp_type_map[warp1], warp_type_map[warp2]]
+        const is_escape = types.includes('escape')
         const [_area1, x1, y1] = this.entity_xys[warp1]
         const [_area2, x2, y2] = this.entity_xys[warp2]
-        const color = colors[index % colors.length]
+        const locked = locked_warps[warp1] || locked_warps[warp2]
+        const color = getColor(warp1, warp2, index)
         const hovering = warp1 === hover_target || warp2 === hover_target
         lines.push({
           id: `${warp1}-${warp2}`,
@@ -147,7 +158,6 @@ export default {
           stroke: color,
           class: `warp-connections__line ${hovering ? '-hovering' : ''}`,
         })
-        const locked = locked_warps[warp1] || locked_warps[warp2]
         if (warp_display === 'dot' || locked || is_escape) {
           circles.push({
             id: `warp-anchor-${warp1}`,
@@ -155,7 +165,7 @@ export default {
             cy: s(y1),
             r,
             class: 'warp-connections__circle',
-            fill: locked ? 'none' : color,
+            fill: color,
           })
           circles.push({
             id: `warp-anchor-${warp2}`,
@@ -163,10 +173,10 @@ export default {
             cy: s(y2),
             r,
             class: 'warp-connections__circle',
-            fill: locked ? 'none' : color,
+            fill: color,
           })
         } else {
-          // warp_display === 'codes'
+          // warp_display === 'codes' and warp is editable
           rects.push(this.getRect(warp1, x1, y1, color))
           rects.push(this.getRect(warp2, x2, y2, color))
         }

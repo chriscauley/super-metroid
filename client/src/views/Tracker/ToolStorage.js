@@ -42,12 +42,13 @@ const tracker_settings = {
     },
   },
   initial: {
-    warp_display: 'dots',
+    warp_display: 'dot',
     large_doors: false,
     large_locations: false,
     large_warps: false,
-    item_tracker: 'pause-inventory',
+    item_tracker: 'pause-menu',
     entity_filter: undefined,
+    visible_locations: 'full',
     room_visibility: 'highlight-open',
   },
 }
