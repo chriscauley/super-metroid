@@ -30,6 +30,18 @@ export default {
       [10, 1],
       [10, 0],
     ],
+    escapeSvg: [
+      [2, 10],
+      [0, 10],
+      [0, 13],
+      [7, 13],
+      [7, 14],
+      [10, 14],
+      [10, 8],
+      [7, 8],
+      [7, 11],
+      [2, 11],
+    ],
   },
   'wrecked-ship': {
     westOceanLeftSvg: [
@@ -73,6 +85,12 @@ export default {
       [14, 4],
       [13, 4],
       [13, 1],
+    ],
+    wreckedShipMapSvg: [
+      [10, 9],
+      [10, 10],
+      [9, 10],
+      [9, 9],
     ],
     wreckedShipBackSvg: [
       [25, 4],
@@ -218,6 +236,24 @@ export default {
       [25, 5],
       [25, 0],
     ],
+    climbEscapeSvg: [
+      [12, 17],
+      [11, 17],
+      [11, 18],
+      [12, 18],
+    ],
+    landingSiteSaveSvg: [
+      [12, 6],
+      [11, 6],
+      [11, 7],
+      [12, 7],
+    ],
+    crateriaMapSvg: [
+      [13, 7],
+      [17, 7],
+      [17, 8],
+      [13, 8],
+    ],
     EnergyTankTerminatorSvg: [
       [4, 7],
       [6, 7],
@@ -325,6 +361,12 @@ export default {
       [12, 5],
       [9, 5],
       [9, 0],
+    ],
+    norfairMapSvg: [
+      [8, 6],
+      [7, 6],
+      [7, 7],
+      [8, 7],
     ],
     cathedralSvg: [
       [12, 5],
@@ -705,6 +747,12 @@ export default {
       [5, 9],
       [5, 0],
     ],
+    brinstarMapSvg: [
+      [4, 6],
+      [0, 6],
+      [0, 7],
+      [4, 7],
+    ],
     SuperMissilegreenBrinstartopSvg: [
       [5, 5],
       [5, 6],
@@ -827,6 +875,14 @@ export default {
       [9, 9],
       [9, 8],
     ],
+    DachoraRoomBottomSvg: [
+      [9, 9],
+      [9, 14],
+      [4, 14],
+      [4, 15],
+      [10, 15],
+      [10, 9],
+    ],
     ChargeBeamSvg: [
       [12, 13],
       [12, 14],
@@ -942,6 +998,12 @@ export default {
       [6, 14],
       [7, 14],
       [7, 13],
+    ],
+    maridiaMapSvg: [
+      [7, 13],
+      [8, 13],
+      [8, 14],
+      [7, 14],
     ],
     'CrabTunnelSvg-3-8-0-5-6-6-0-4-2': [],
   },

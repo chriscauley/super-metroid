@@ -21,8 +21,15 @@
     &.-open {
       fill: rgba(255, 255, 255, 0.25);
     }
+  }
+  .-editing-svg & { /* TODO when in editing mode, show svg and add this class */
+    display: block !important;
+    fill: rgba(255, 0, 0, 0.25) !important;
+    stroke: white;
+    stroke-width: 0.2;
     &#unknownSvg {
-      fill: rgba(255, 0, 0, 0.25);
+      fill: rgba(255, 0, 0, 0.25) !important;
+      stroke: red;
     }
   }
   &.-highlight-open path.-closed {

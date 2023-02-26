@@ -8,6 +8,20 @@
 </template>
 
 <script>
+const getSvgRooms = (json_data) => {
+  // these aren't in varia's data so I added them manually
+  const svg_rooms = { ...(json_data.svg_rooms || {}) }
+  const collected = {}
+  json_data.collectedItems.forEach((i) => (collected[i] = true))
+  svg_rooms.escapeSvg = collected.MotherBrain
+  svg_rooms.DachoraRoomBottomSvg = collected.SpeedBooster && svg_rooms.bigPinkSvg
+  const canBombBlocks = collected.Morph && (collected.Bombs || collected.PowerBombs)
+  const hasScrewOrSpeed = collected.ScrewAttack || collected.SpeedBooster
+  const canBreakTallBlocks = hasScrewOrSpeed || canBombBlocks
+  svg_rooms.climbEscapeSvg = canBreakTallBlocks && svg_rooms.landingSiteSvg
+  return svg_rooms
+}
+
 export default {
   inject: ['json_data', 'tool_storage'],
   props: {
@@ -36,7 +50,7 @@ export default {
       if (!this.json_data) {
         return null
       }
-      const svg_rooms = this.json_data.svg_rooms || {}
+      const svg_rooms = getSvgRooms(this.json_data)
       const entries = Object.entries(this.area.svg_coords || {})
       if (this.extra_path) {
         entries.push(['unknownSvg', this.extra_path])
