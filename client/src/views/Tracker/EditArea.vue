@@ -36,9 +36,9 @@ import AreaBox from './AreaBox.vue'
 
 export default {
   components: { AreaBox },
+  inject: ['tool_storage'],
   props: {
     area: Object,
-    tool_storage: Object,
   },
   emits: ['close'],
   data() {

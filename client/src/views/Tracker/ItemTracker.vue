@@ -6,7 +6,7 @@
       :inventory="inventory"
       @toggle-item="(item) => $emit('toggle-item', item)"
       @add-item="(item, amount) => $emit('add-item', item, amount)"
-      :controlled="state.controlled"
+      :controlled="!!json_data"
       :compact="config.compact"
     />
   </div>
@@ -33,15 +33,11 @@ const tagname_lookup = {
 const storage = ReactiveLocalStorage({ LS_KEY, initial })
 
 export default {
+  inject: ['tool_storage', 'json_data'],
   props: {
     inventory: Object,
-    tool_storage: Object,
   },
   emits: ['add-item', 'toggle-item'],
-  data() {
-    const state = { controlled: false }
-    return { state }
-  },
   computed: {
     config() {
       const { item_tracker } = this.tool_storage.state.tracker_settings

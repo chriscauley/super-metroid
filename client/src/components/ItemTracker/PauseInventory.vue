@@ -1,5 +1,5 @@
 <template>
-  <div :class="['pause-inventory smi-pause-screen', !controlled && '-seedless']">
+  <div :class="wrapper_class">
     <div v-for="group in groups" :key="group.name" :class="group.class">
       <div v-for="(child, i) in group.children" :key="i" v-bind="child" />
     </div>
@@ -37,6 +37,8 @@ const item_groups = {
   boots: ['hi-jump-boots', 'space-jump', 'speed-booster'],
 }
 
+const hud_items = ['missile', 'super-missile', 'power-bomb', 'grappling-beam', 'x-ray']
+
 export default {
   props: {
     inventory: Object,
@@ -44,6 +46,9 @@ export default {
   },
   emits: ['add-item', 'toggle-item'],
   computed: {
+    wrapper_class() {
+      return ['pause-inventory smi-pause-screen', this.controlled && '-controlled']
+    },
     groups() {
       const out = [
         ...this.energy_tanks,
@@ -64,7 +69,7 @@ export default {
       return {
         name: 'hud-items',
         class: css.group('hud-items'),
-        children: ['missile', 'super-missile', 'power-bomb', 'grapple', 'xray'].map((item) => ({
+        children: hud_items.map((item) => ({
           class: ['smi -i' + item, this.inventory[item] || '-inactive'],
           onclick: () => this.$emit('toggle-item', item),
         })),

@@ -30,13 +30,8 @@
       <span v-if="selected_key"> {{ selected_key }} + </span>
       {{ tool_storage.state.key_stack.join(' ') }}
     </div>
-    <item-counter :game_state="game_state" :areas="areas" :tool_storage="tool_storage" />
-    <item-tracker
-      :tool_storage="tool_storage"
-      :inventory="game_state.inventory"
-      @add-item="addItem"
-      @toggle-item="toggleItem"
-    />
+    <item-counter :game_state="game_state" :areas="areas" />
+    <item-tracker :inventory="game_state.inventory" @add-item="addItem" @toggle-item="toggleItem" />
     <seed-settings :json_data="json_data" />
     <Teleport to="body">
       <edit-area :area="editing_area" :tool_storage="tool_storage" />

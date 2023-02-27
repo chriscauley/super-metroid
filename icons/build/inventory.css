@@ -40,23 +40,23 @@ body {
   padding-top: 83.3333333333%;
 }
 
-.smi.-igrapple {
-  background: url("./images/inventory/igrapple.png") center no-repeat;
+.smi.-igrappling-beam {
+  background: url("./images/inventory/igrappling-beam.png") center no-repeat;
   background-size: contain;
   width: calc(16 * var(--inventory-px));
 }
-.smi.-igrapple:before {
+.smi.-igrappling-beam:before {
   content: "";
   display: block;
   padding-top: 100%;
 }
 
-.smi.-ixray {
-  background: url("./images/inventory/ixray.png") center no-repeat;
+.smi.-ix-ray {
+  background: url("./images/inventory/ix-ray.png") center no-repeat;
   background-size: contain;
   width: calc(16 * var(--inventory-px));
 }
-.smi.-ixray:before {
+.smi.-ix-ray:before {
   content: "";
   display: block;
   padding-top: 100%;

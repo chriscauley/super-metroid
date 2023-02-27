@@ -12,9 +12,8 @@ import { subarea_by_area } from '@/data/old'
 import { prepName } from '@/layouts'
 
 export default {
+  inject: ['tool_storage', 'game_state'],
   props: {
-    tool_storage: Object,
-    game_state: Object,
     areas: Array,
   },
   computed: {
