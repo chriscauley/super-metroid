@@ -76,7 +76,7 @@ export default {
             title: warp.slug,
             id: `warp-text_${warp.slug}`,
             x: this.scale(x),
-            y: this.scale(y),
+            y: this.scale(y) + 0.005, // FireFox doesn't accept alignment-baseline
             class: `warp-connections__text -${warp.type}`,
           }
           if (warp.type === 'sand') {
@@ -103,7 +103,7 @@ export default {
             attrs.y -= this.scale(0.5 * text_gap_scale)
             subtext_attrs = {
               x: this.scale(x),
-              y: this.scale(y + 0.7 * text_gap_scale),
+              y: this.scale(y + 0.7 * text_gap_scale) + 0.002, // FF :(
             }
           }
           out.push({
