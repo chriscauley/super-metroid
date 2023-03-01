@@ -277,8 +277,8 @@
       ["XRayScope", 0.5, 13.5],
       ["Spazer", 15.5, 15.5],
       ["PowerBombredBrinstarsidehopperroom", 12.5, 6.5],
-      ["PowerBombredBrinstarspikeroom", 11.5, 9.5],
-      ["MissileredBrinstarspikeroom", 12.5, 9.5]
+      ["PowerBombredBrinstarspikeroom", 12.5, 9.5],
+      ["MissileredBrinstarspikeroom", 11.5, 9.5]
     ],
     "width": 21.0625,
     "height": 18.0625,

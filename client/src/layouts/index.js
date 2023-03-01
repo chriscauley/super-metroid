@@ -30,7 +30,7 @@ export const prepName = memoize((name) => {
     return SHORT_NAMES[name]
   }
   name = name.replace(
-    /(super|missile|outside|yellow|middle|above|false|wall|tatori|turtle|shine|spark|bubble|door|surface|gauntlet|spike|side|hopper|moat|pink|green|sand|bottom|top|left|right|behind|reserve|tank|of|fire|flea|norfair|blue|shame|lower)/g,
+    /(super|missile|outside|yellow|middle|above|false|wall|tatori|turtle|shine|spark|bubble|door|surface|gauntlet|spike|side|hopper|moat|pink|green|sand|bottom|top|left|right|behind|reserve|tank|of|fire|flea|norfair|blue|shame|lower|red)/g,
     (c) => ` ${c}`,
   )
   name = name.replace('Bombred', 'Bomb red')

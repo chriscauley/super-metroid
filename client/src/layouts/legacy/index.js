@@ -28,8 +28,8 @@ export default {
     ChargeBeam: '-align-top',
     MissilepinkBrinstarbottom: '-align-bottom',
     // red-brinstar
-    MissileredBrinstarspikeroom: '-align-left',
-    PowerBombredBrinstarspikeroom: '-align-right',
+    MissileredBrinstarspikeroom: '-align-right',
+    PowerBombredBrinstarspikeroom: '-align-left',
     // west-maridia
     MissilegreenMaridiashinespark: '-align-top-right',
     SuperMissilegreenMaridia: '-align-bottom-left',
