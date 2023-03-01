@@ -7,6 +7,7 @@ const routes = [
   { path: '/', component: HomeView },
   { path: '/tracker/', component: TrackerView },
   { path: '/plando/', component: TrackerView },
+  { path: '/plando/debug', component: TrackerView },
   { path: '/inventory/', component: PauseInventoryView },
   { path: '/cheat-sheet/', component: CheatSheet },
   { path: '/who-dat/', component: WhoDat },
