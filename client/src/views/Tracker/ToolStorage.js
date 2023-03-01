@@ -4,7 +4,7 @@ import unrest from '@unrest/vue'
 
 import HelpPopup from './HelpPopup.vue'
 
-import { warp_type_map, default_area_keys, subarea_by_area } from '@/data/old'
+import { default_door_colors, warp_type_map, default_area_keys, subarea_by_area } from '@/data/old'
 
 const warn = unrest.ui.toast.warning
 
@@ -226,6 +226,7 @@ export default (component) => {
   }
   const initial = {
     selected: { tool: 'play' },
+    active_door: null,
     actions: [],
     area_keys: cloneDeep(default_area_keys),
     key_stack: [],
@@ -263,6 +264,51 @@ export default (component) => {
       addAction(['disconnect-warp', id, selected_warp])
     }
     storage.state.selected_warp = null
+  }
+
+  storage.clickDoor = (id) => {
+    if (storage.getDoorColor(id) === 'blue') {
+      // doors froced to blue cannot be changed
+      return
+    }
+    const { mode, doorsRando } = component.json_data || {}
+    if (mode === 'standard' && doorsRando) {
+      // user clicks on white doors to see what they are
+      const doorName = id
+      window.ajaxCall({ action: 'toggle', scope: 'door', doorName }, 'upload')
+      return
+    }
+
+    // user is in plando mode, race mode, or using seedless tracker
+    if (storage.state.active_door === id) {
+      storage.state.active_door = null
+    } else {
+      storage.state.active_door = id
+    }
+  }
+
+  storage.updateDoorColor = (id, newColor, old_color) => {
+    if (component.json_data) {
+      if (newColor !== old_color) {
+        const data = { action: 'replace', scope: 'door', doorName: id, newColor }
+        window.ajaxCall(data, 'upload')
+      }
+    } else {
+      warn('TODO client side door tracking')
+    }
+    storage.state.active_door = null
+  }
+
+  storage.getDoorColor = (id) => {
+    if (default_door_colors[id] === 'hidden') {
+      return 'hidden'
+    }
+    const json_door = component.json_data?.doors[id]
+    if (json_door) {
+      const [color, _facing, hidden] = json_door
+      return hidden ? 'white' : color
+    }
+    return default_door_colors[id]
   }
 
   storage.click = (id, game_state) => {

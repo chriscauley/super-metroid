@@ -1,6 +1,8 @@
 <template>
   <div class="area-box" :style="style">
-    <div v-for="door in doors" :key="door.id" v-bind="door" />
+    <div v-for="door in doors" :key="door.id" v-bind="door">
+      <door-picker v-if="door.active" :current_color="getDoorColor(door.id)" :door_id="door.id" />
+    </div>
     <div
       v-for="warp in warps"
       :key="warp.id"
@@ -21,12 +23,12 @@
 </template>
 
 <script>
-import { default_door_colors } from '@/data/old'
+import DoorPicker from '@/components/DoorPicker.vue'
 import AreaSvg from './AreaSvg.vue'
 import LocationMarker from './LocationMarker.vue'
 
 export default {
-  components: { AreaSvg, LocationMarker },
+  components: { AreaSvg, DoorPicker, LocationMarker },
   inject: ['json_data', 'tool_storage'],
   props: {
     area: Object,
@@ -82,15 +84,23 @@ export default {
       if (this.$store.layout.getWorld().hide_locations) {
         return []
       }
-      return this.area.doors.map(({ slug, name, x, y, rotated }) => ({
-        id: slug,
-        title: name,
-        class: [`area-door -${this.getDoorColor(slug)}`, rotated && '-rotated'],
-        style: this.getEntityStyle(x, y),
-        'data-type': 'door',
-        'data-id': slug,
-        onclick: () => this.$emit('click-door', slug),
-      }))
+      return this.area.doors.map(({ slug, name, x, y, rotated }) => {
+        const active = slug === this.tool_storage.state.active_door
+        return {
+          id: slug,
+          title: name,
+          active,
+          class: [
+            `area-door -${this.getDoorColor(slug)}`,
+            rotated && '-rotated',
+            active && '-active',
+          ],
+          style: this.getEntityStyle(x, y),
+          'data-type': 'door',
+          'data-id': slug,
+          onclick: () => this.$emit('click-door', slug),
+        }
+      })
     },
   },
   methods: {
@@ -101,15 +111,7 @@ export default {
       }
     },
     getDoorColor(slug) {
-      if (default_door_colors[slug] === 'hidden') {
-        return 'hidden'
-      }
-      const json_door = this.json_data?.doors[slug]
-      if (json_door) {
-        const [color, _facing, hidden] = json_door
-        return hidden ? 'white' : color
-      }
-      return default_door_colors[slug]
+      return this.tool_storage.getDoorColor(slug)
     },
     hover(warp) {
       this.tool_storage.state._hovering_warp = warp.id

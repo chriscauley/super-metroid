@@ -5,7 +5,7 @@
       size="100%"
       @click-location="clickLocation"
       @click-warp="clickWarp"
-      @click-door="clickDoor"
+      @click-door="tool_storage.clickDoor"
     />
     <div class="area-overlay__title" :style="style.title">
       <drag-anchor
@@ -137,11 +137,6 @@ export default {
     },
     clickWarp(id) {
       this.tool_storage.click(id, this.game_state)
-    },
-    clickDoor(id) {
-      if (this.json_data) {
-        window.actionDoor(id)
-      }
     },
   },
 }

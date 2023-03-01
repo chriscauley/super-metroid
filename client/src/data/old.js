@@ -5,7 +5,18 @@ import default_door_colors from './door_colors'
 
 export { default_door_colors }
 
-export const door_colors = ['red', 'green', 'yellow', 'gray', 'wave', 'spazer', 'plasma', 'ice']
+export const door_item_by_color = {
+  gray: 'empty',
+  red: 'missile',
+  green: 'super-missile',
+  yellow: 'power-bomb',
+  ice: 'ice-beam',
+  wave: 'wave-beam',
+  plasma: 'plasma-beam',
+  spazer: 'spazer-beam',
+  // blue: 'empty',
+  // white: 'empty',
+}
 
 export const ammo = ['missile', 'super-missile', 'power-bomb']
 export const energy = ['energy-tank', 'reserve-tank']

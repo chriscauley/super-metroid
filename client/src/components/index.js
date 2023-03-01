@@ -1,9 +1,9 @@
-import DoorPopup from './DoorPopup.vue'
+import DoorPicker from './DoorPicker.vue'
 import ItemPopup from './ItemPopup.vue'
 import ItemTracker from './ItemTracker'
 
 export default {
-  DoorPopup,
+  DoorPicker,
   ItemPopup,
   ...ItemTracker.components,
 }

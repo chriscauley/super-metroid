@@ -1,4 +1,5 @@
 @import './area-box.css';
+@import './door-picker.css';
 @import './drop-list.css';
 @import './edit-area.css';
 @import './item-counter.css';
@@ -367,11 +368,6 @@ body {
 }
 
 .area-door {
-  --door-blue: #3870ff;
-  --door-red: #ff2f8f;
-  --door-green: #80ff0f;
-  --door-yellow: #f0af00;
-  --door-brown: #6f404f;
   @apply absolute cursor-pointer;
   height: 100%;
   width: 40%;
@@ -388,13 +384,32 @@ body {
       width: 150%;
     }
   }
+  &:hover:before {
+    inset: -20%;
+  }
+  &.-wave, &.-plasma, &.-spazer, &.-ice {
+    &:before {
+      background-image: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 2.5px,
+        var(--door-brown) 2.5px,
+        var(--door-brown) 6px
+      );
+    }
+  }
+}
+
+.area-door, .door-picker__door {
+  --door-blue: #3870ff;
+  --door-red: #ff2f8f;
+  --door-green: #80ff0f;
+  --door-yellow: #f0af00;
+  --door-brown: #6f404f;
   &:before {
     @apply absolute block inset-0;
     content: "";
     background-color: var(--background-color);
-  }
-  &:hover:before {
-    inset: -20%;
   }
   &.-white {
     --background-color: white;
@@ -411,16 +426,8 @@ body {
   &.-spazer, &.-yellow {
     --background-color: var(--door-yellow);
   }
-  &.-wave, &.-plasma, &.-spazer, &.-ice {
-    &:before {
-      background-image: repeating-linear-gradient(
-        45deg,
-        transparent,
-        transparent 2.5px,
-        var(--door-brown) 2.5px,
-        var(--door-brown) 6px
-      );
-    }
+  &.-brown, &.-gray {
+    --background-color: var(--door-brown);
   }
   &.-white:before {
     background-image: repeating-linear-gradient(
