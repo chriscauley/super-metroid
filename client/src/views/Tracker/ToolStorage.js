@@ -237,6 +237,9 @@ export default (component) => {
   storage.tracker_settings = tracker_settings
   storage.rando_settings = rando_settings
 
+  // reset these on refresh
+  storage.save({ key_stack: [], active_door: null, selected: { tool: 'play' } })
+
   const connectWarp = (id, selected_warp) => {
     const { json_data } = component
     const type1 = warp_type_map[id]
@@ -271,6 +274,7 @@ export default (component) => {
       // doors froced to blue cannot be changed
       return
     }
+    // TODO this should be using the getRandoSettings() and needs to work in serverless mode
     const { mode, doorsRando } = component.json_data || {}
     if (mode === 'standard' && doorsRando) {
       // user clicks on white doors to see what they are
@@ -280,7 +284,7 @@ export default (component) => {
     }
 
     // user is in plando mode, race mode, or using seedless tracker
-    if (storage.state.active_door === id) {
+    if (!doorsRando || storage.state.active_door === id) {
       storage.state.active_door = null
     } else {
       storage.state.active_door = id
