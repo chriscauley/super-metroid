@@ -410,11 +410,11 @@ export default (component) => {
     component.areas.forEach((area) => {
       area.warps.forEach((w) => {
         checkUnique(w.slug)
-        out[w.slug] = [area.slug, area.x + _(w.x), area.y + _(w.y)]
+        out[w.slug] = [area.x + _(w.x), area.y + _(w.y)]
       })
       area.locations.forEach((i) => {
         checkUnique(i.slug)
-        out[i.slug] = [area.slug, area.x + _(i.x), area.y + _(i.y)]
+        out[i.slug] = [area.x + _(i.x), area.y + _(i.y)]
       })
     })
     return out

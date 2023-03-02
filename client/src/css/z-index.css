@@ -23,7 +23,7 @@
 }
 
 .area-warp, .area-door, .location-marker {
-  &:hover, &.-active {
+  &:hover, &.-active, &.-hover {
     z-index: 40;
   }
 }

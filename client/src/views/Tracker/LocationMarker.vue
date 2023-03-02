@@ -44,9 +44,17 @@ export default {
     location: Object,
   },
   data() {
-    return { hover: false }
+    return { over: false }
   },
   computed: {
+    hover() {
+      if (this.$store.ui.state.hover_location === this.location.slug) {
+        // hover via vcr
+        return true
+      }
+      // hover via mouseover
+      return this.over
+    },
     locData() {
       return this.json_data?.availableLocations[this.location.slug]
     },
@@ -105,16 +113,17 @@ export default {
           scavenger && '-scavenger',
           this.game_state.locations[slug] && '-completed',
           this.icon,
+          this.hover && '-hover',
         ],
       }
     },
   },
   methods: {
     mouseover() {
-      this.hover = true
+      this.over = true
     },
     mouseout() {
-      this.hover = false
+      this.over = false
     },
   },
 }

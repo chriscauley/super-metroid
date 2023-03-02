@@ -74,6 +74,7 @@ export default {
       json_data: computed(() => this.json_data),
       osd_store: computed(() => this.osd_store), // TODO osd_storage, not osd_store
       tool_storage: computed(() => this.tool_storage),
+      areas: computed(() => this.areas),
     }
   },
   data() {

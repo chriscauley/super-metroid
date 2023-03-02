@@ -38,6 +38,16 @@ const colors = [
   'teal',
 ]
 
+const color_by_difficulty = {
+  break: '#FFFFFF',
+  easy: '#6daa53',
+  medium: '#c1b725',
+  hard: '#e69235',
+  harder: '#d13434',
+  hardcore: '#123456',
+  mania: '#000000',
+}
+
 const sand_text = {
   belowBotwoonEnergyTankRight: 'A',
   westSandHallTunnelRight: 'V',
@@ -46,7 +56,7 @@ const sand_text = {
 const getColor = (warp1, warp2, index) => {
   const types = [warp_type_map[warp1], warp_type_map[warp2]]
   if (vanilla_warps.map[warp1] === warp2) {
-    return '#808080'
+    return '#FF00FF'
   }
   if (types.includes('escape')) {
     return '#00FF00'
@@ -58,7 +68,7 @@ const getColor = (warp1, warp2, index) => {
 }
 
 export default {
-  inject: ['game_state', 'tool_storage'],
+  inject: ['game_state', 'json_data', 'tool_storage', 'areas'],
   props: {
     areas: Array,
     code_map: Object,
@@ -71,7 +81,7 @@ export default {
       const { text_gap_scale = 1 } = root
       this.areas.forEach((area) => {
         area.warps.forEach((warp) => {
-          const [_, x, y] = this.entity_xys[warp.slug]
+          const [x, y] = this.entity_xys[warp.slug]
           const attrs = {
             title: warp.slug,
             id: `warp-text_${warp.slug}`,
@@ -121,7 +131,13 @@ export default {
       return tool !== 'admin_move_location'
     },
     entity_xys() {
-      return this.tool_storage.getEntityXys()
+      const entity_xys = this.tool_storage.getEntityXys()
+      this.areas.forEach((area) =>
+        area.gpss.forEach(({ x, y, slug }) => {
+          entity_xys[slug] = [area.x + x, area.y + y]
+        }),
+      )
+      return entity_xys
     },
     shapes() {
       const used = {}
@@ -133,54 +149,33 @@ export default {
         used[a] = used[b] = true
         return true
       })
-      const lines = []
-      const circles = []
+      let lines = []
+      let circles = []
       const rects = []
-      const s = this.scale
       const texts = this.texts.slice()
       const { locked_warps } = this.game_state
       const hover_target = this.tool_storage.state._hovering_warp
       pairs.forEach(([warp1, warp2], index) => {
         const types = [warp_type_map[warp1], warp_type_map[warp2]]
         const is_escape = types.includes('escape')
-        const [_area1, x1, y1] = this.entity_xys[warp1]
-        const [_area2, x2, y2] = this.entity_xys[warp2]
+        const xy1 = this.entity_xys[warp1]
+        const xy2 = this.entity_xys[warp2]
         const locked = locked_warps[warp1] || locked_warps[warp2]
         const color = getColor(warp1, warp2, index)
         const hovering = warp1 === hover_target || warp2 === hover_target
-        lines.push({
-          id: `${warp1}-${warp2}`,
-          x1: s(x1),
-          y1: s(y1),
-          x2: s(x2),
-          y2: s(y2),
-          'stroke-width': w,
-          stroke: color,
-          class: `warp-connections__line ${hovering ? '-hovering' : ''}`,
-        })
+        lines.push(this.makeLine(warp1, warp2, xy1, xy2, 'warp', color, hovering))
         if (warp_display === 'dot' || locked || is_escape) {
-          circles.push({
-            id: `warp-anchor-${warp1}`,
-            cx: s(x1),
-            cy: s(y1),
-            r,
-            class: 'warp-connections__circle',
-            fill: color,
-          })
-          circles.push({
-            id: `warp-anchor-${warp2}`,
-            cx: s(x2),
-            cy: s(y2),
-            r,
-            class: 'warp-connections__circle',
-            fill: color,
-          })
+          circles.push(this.makeCircle(warp1, xy1, 'warp', color))
+          circles.push(this.makeCircle(warp2, xy2, 'warp', color))
         } else {
           // warp_display === 'codes' and warp is editable
           rects.push(this.getRect(warp1, x1, y1, color))
           rects.push(this.getRect(warp2, x2, y2, color))
         }
       })
+      const [inner_lines, inner_circles] = this.getInnerLines()
+      lines = lines.concat(inner_lines)
+      circles = circles.concat(inner_circles)
       return { lines, circles, rects, texts }
     },
   },
@@ -201,6 +196,49 @@ export default {
         height: h_rect,
         rx: 2 * w,
         ry: 2 * w,
+      }
+    },
+    getInnerLines() {
+      const { innerTransitions = [] } = this.json_data || {}
+
+      const lines = []
+      const circles = {}
+      innerTransitions.forEach(([gps1, gps2, difficulties]) => {
+        const xy1 = this.entity_xys[gps1]
+        const xy2 = this.entity_xys[gps2]
+        if (!xy1 || !xy2) {
+          !xy1 && console.warn(`missing xy1 for ${gps1}`)
+          !xy2 && console.warn(`missing xy2 for ${gps2}`)
+          return
+        }
+
+        const color = color_by_difficulty[difficulties[0]]
+        lines.push(this.makeLine(gps1, gps2, xy1, xy2, 'gps', color, false))
+        circles[gps1] = this.makeCircle(gps1, xy1, 'gps', color)
+        circles[gps2] = this.makeCircle(gps2, xy2, 'gps', color)
+      })
+      return [lines, Object.values(circles)]
+    },
+    makeLine(slug1, slug2, xy1, xy2, type, stroke, hovering) {
+      return {
+        id: `${slug1}-${slug2}`,
+        x1: this.scale(xy1[0]),
+        y1: this.scale(xy1[1]),
+        x2: this.scale(xy2[0]),
+        y2: this.scale(xy2[1]),
+        'stroke-width': w,
+        stroke,
+        class: `${type}-connections__line ${hovering ? '-hovering' : ''}`,
+      }
+    },
+    makeCircle(slug, xy, type, color) {
+      return {
+        id: `${type}-anchor-${slug}`,
+        cx: this.scale(xy[0]),
+        cy: this.scale(xy[1]),
+        r,
+        class: type + '-connections__circle',
+        fill: color,
       }
     },
   },
