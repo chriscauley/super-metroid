@@ -6,6 +6,12 @@
     &.-visible, .edit-area & {
       @apply block;
     }
+    &:before {
+      inset: -100% -50% 0;
+    }
+    &.smv-gps-number:before {
+      inset: -50% -25% 0;
+    }
   }
 }
 

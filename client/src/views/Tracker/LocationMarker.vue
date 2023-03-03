@@ -22,11 +22,13 @@
             {{ "WARNING: Can't come back" }}
           </div>
           <div v-if="locData.difficulty">Difficulty: {{ locData.difficulty[1] }}</div>
-          <template v-if="$route.query.debug">
-            <div v-if="distance in locData">Distance: {{ locData.distance }}</div>
-            <div v-if="path in locData">Path: {{ locData.path }}</div>
-            <div v-if="locDifficulty in locData">LocDifficulty: {{ locData.locDifficulty }}</div>
-            <div v-if="pathDifficulty in locData">PathDifficulty: {{ locData.pathDifficulty }}</div>
+          <template v-if="$route.path.includes('debug')">
+            <div v-if="locData.distance">Distance: {{ locData.distance }}</div>
+            <div v-if="locData.path" style="max-width: 500px; white-space: break-spaces">
+              Path: {{ locData.path.join(' > ') }}
+            </div>
+            <div v-if="locData.locDifficulty">LocDifficulty: {{ locData.locDifficulty }}</div>
+            <div v-if="locData.pathDifficulty">PathDifficulty: {{ locData.pathDifficulty }}</div>
           </template>
         </template>
       </div>
@@ -48,12 +50,9 @@ export default {
   },
   computed: {
     hover() {
-      if (this.$store.ui.state.hover_location === this.location.slug) {
-        // hover via vcr
-        return true
-      }
-      // hover via mouseover
-      return this.over
+      const { highlight_location, hover_location } = this.$store.ui.state
+      const { slug } = this.location
+      return slug === hover_location || slug === highlight_location
     },
     locData() {
       return this.json_data?.availableLocations[this.location.slug]
@@ -120,10 +119,10 @@ export default {
   },
   methods: {
     mouseover() {
-      this.over = true
+      this.$store.ui.state.hover_location = this.location.slug
     },
     mouseout() {
-      this.over = false
+      this.$store.ui.state.hover_location = null
     },
   },
 }

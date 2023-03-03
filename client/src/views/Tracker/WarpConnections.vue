@@ -69,10 +69,6 @@ const getColor = (warp1, warp2, index) => {
 
 export default {
   inject: ['game_state', 'json_data', 'tool_storage', 'areas'],
-  props: {
-    areas: Array,
-    code_map: Object,
-  },
   computed: {
     texts() {
       const out = []
@@ -169,8 +165,8 @@ export default {
           circles.push(this.makeCircle(warp2, xy2, 'warp', color))
         } else {
           // warp_display === 'codes' and warp is editable
-          rects.push(this.getRect(warp1, x1, y1, color))
-          rects.push(this.getRect(warp2, x2, y2, color))
+          rects.push(this.getRect(warp1, xy1, color))
+          rects.push(this.getRect(warp2, xy2, color))
         }
       })
       const [inner_lines, inner_circles] = this.getInnerLines()
@@ -185,13 +181,13 @@ export default {
       const { svg_scale = 1 } = root
       return (svg_scale * (root.scale * number)) / root.width
     },
-    getRect(id, x, y, stroke) {
+    getRect(id, xy, stroke) {
       return {
         id: `warp-rect-${id}`,
         class: 'warp-connections__rect',
         stroke,
-        x: this.scale(x) - w_rect / 2,
-        y: this.scale(y) - h_rect / 2,
+        x: this.scale(xy[0]) - w_rect / 2,
+        y: this.scale(xy[1]) - h_rect / 2,
         width: w_rect,
         height: h_rect,
         rx: 2 * w,

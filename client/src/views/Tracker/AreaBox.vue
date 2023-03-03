@@ -51,14 +51,26 @@ export default {
       }
     },
     misc_items() {
+      if (!this.json_data) {
+        return []
+      }
       const out = []
-      const { lastAP } = this.json_data || {}
+      const { lastAP, availableLocations } = this.json_data
+      const hover_location = this.$store.ui.state.hover_location
+      const path = availableLocations[hover_location]?.path
+      const getClass = (slug) => {
+        const index = path?.indexOf(slug)
+        if (index > -1) {
+          return `area-box__gps smv-gps-number -number-${index + 1} -visible`
+        }
+        return [`area-box__gps smv-gps`, lastAP === slug && '-visible']
+      }
       this.area.gpss?.forEach(({ slug, x, y, name }) => {
         out.push({
           id: `gps__${slug}`,
           style: this.getEntityStyle(x, y),
           title: name,
-          class: [`area-box__gps smv-gps`, lastAP === slug && '-visible'],
+          class: getClass(slug),
           'data-id': slug,
           'data-type': 'gps',
         })

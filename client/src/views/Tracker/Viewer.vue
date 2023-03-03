@@ -13,7 +13,7 @@
       :area="area"
       @move-area="(data) => moveArea(area, data)"
     />
-    <warp-connections :areas="areas" />
+    <warp-connections />
   </osd-html-overlay>
 </template>
 
