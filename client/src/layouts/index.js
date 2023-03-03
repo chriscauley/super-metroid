@@ -7,8 +7,9 @@ import legacy from './legacy'
 import nordub from './nordub'
 import streaming from './streaming'
 
+// uncomment this to check for missing gps
 // import checkGps from './checkGps'
-// checkGps(nordub.areas)
+// checkGps(legacy.areas)
 
 const rotated_warp_regexp = /(Top|Bottom|redBrinstarElevator)$/
 

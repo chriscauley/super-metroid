@@ -103,7 +103,9 @@ export default (areas) => {
     })
   })
   const missing = points.filter((p) => !found[p])
-  dirty += missing.length
+  if (missing.length) {
+    console.warn('missing gps', missing)
+  }
   if (dirty) {
     saveFile(`${JSON.stringify(areas, null, 2)}`, 'areas.json')
   }
