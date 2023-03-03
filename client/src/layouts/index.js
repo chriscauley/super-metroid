@@ -7,6 +7,9 @@ import legacy from './legacy'
 import nordub from './nordub'
 import streaming from './streaming'
 
+// import checkGps from './checkGps'
+// checkGps(nordub.areas)
+
 const rotated_warp_regexp = /(Top|Bottom|redBrinstarElevator)$/
 
 const SHORT_NAMES = {
