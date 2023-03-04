@@ -297,6 +297,12 @@ export default {
       this.tool_storage.save()
     },
     addItem(name, amount) {
+      if (this.json_data) {
+        const action = amount < 0 ? 'remove' : 'add'
+        const itemName = varia.smToVaria(name)
+        window.ajaxCall({ action, scope: 'item', itemName }, 'upload')
+        return
+      }
       const max_items = {
         missile: 995,
         'super-missile': 255,
@@ -311,6 +317,11 @@ export default {
       this.inventory[name] = Math.min(this.inventory[name], max_items[name])
     },
     toggleItem(name) {
+      if (this.json_data) {
+        const itemName = varia.smToVaria(name)
+        window.ajaxCall({ action: 'toggle', scope: 'item', itemName }, 'upload')
+        return
+      }
       this.inventory[name] = !this.inventory[name]
     },
     setJsonData(json_data) {

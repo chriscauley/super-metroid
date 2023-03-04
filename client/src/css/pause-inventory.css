@@ -13,7 +13,16 @@
     opacity: 0;
   }
   .-imissile, .-isuper-missile, .-ipower-bomb {
-    opacity: 1;
+    opacity: 0;
+  }
+}
+
+.pause-inventory.-high- {
+  &super-missile .pause-inventory__group.-group-super-missile {
+    margin-left: calc(var(--inventory-px) * -5);
+  }
+  &power-bomb .pause-inventory__group.-group-power-bomb {
+    margin-left: calc(var(--inventory-px) * -2);
   }
 }
 
@@ -90,7 +99,7 @@
     gap: px(7);
     left: px(83);
     top: px(6);
-    .-igrapple, .-ixray {
+    .-igrappling-beam, .-ix-ray {
       @apply cursor-pointer;
     }
     .-imissile, .-isuper-missile, .-ipower-bomb {

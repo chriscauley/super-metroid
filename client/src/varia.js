@@ -76,6 +76,13 @@ const varia = {
     }
     return slug || varia_slug
   },
+  smToVaria(slug) {
+    const varia_slug = varia.sm_to_varia[slug]
+    if (!varia_slug) {
+      console.error(`Unknown slug: ${slug}`)
+    }
+    return varia_slug || slug
+  },
   variaToDisplay(varia_slug) {
     return startCase(varia.variaToSm(varia_slug))
   },

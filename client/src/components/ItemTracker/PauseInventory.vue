@@ -47,7 +47,12 @@ export default {
   emits: ['add-item', 'toggle-item'],
   computed: {
     wrapper_class() {
-      return ['pause-inventory smi-pause-screen', this.controlled && '-controlled']
+      return [
+        'pause-inventory smi-pause-screen',
+        this.controlled && '-controlled',
+        this.inventory['super-missile'] > 99 && '-high-super-missile',
+        this.inventory['power-bomb'] > 99 && '-high-power-bomb',
+      ]
     },
     groups() {
       const out = [

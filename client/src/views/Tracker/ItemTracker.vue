@@ -6,7 +6,7 @@
       :inventory="inventory"
       @toggle-item="(item) => $emit('toggle-item', item)"
       @add-item="(item, amount) => $emit('add-item', item, amount)"
-      :controlled="!!json_data"
+      :controlled="controlled"
       :compact="config.compact"
     />
   </div>
@@ -39,6 +39,10 @@ export default {
   },
   emits: ['add-item', 'toggle-item'],
   computed: {
+    controlled() {
+      const { json_data } = this
+      return !json_data || json_data.seed !== 'seedless'
+    },
     config() {
       const { item_tracker } = this.tool_storage.state.tracker_settings
       return {
