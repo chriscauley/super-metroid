@@ -264,8 +264,8 @@ body {
   image-rendering: pixelated;
   position: relative;
 }
-.smi-pause-screen.-seedless {
-  background-image: url("./images/inventory/background_seedless.png");
+.smi-pause-screen.-controlled {
+  background-image: url("./images/inventory/background_controlled.png");
 }
 
 .smi-tracker {

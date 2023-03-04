@@ -86,8 +86,8 @@ $items: list.join($beams, $other_items);
   background-image: url('./images/inventory/background.png');
   image-rendering: pixelated;
   position: relative;
-  &.-seedless {
-    background-image: url('./images/inventory/background_seedless.png');
+  &.-controlled {
+    background-image: url('./images/inventory/background_controlled.png');
   }
 }
 
