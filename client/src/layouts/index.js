@@ -92,6 +92,7 @@ const prepArea = (area, layout) => {
   area.locations = area.locations.filter((l) => l.slug !== 'BombTorizo')
 
   area.gpss = (area.gpss || []).map(([slug, x, y]) => ({ slug, x, y, name: prepName(slug) }))
+  area.warps.forEach(({ slug, x, y, name }) => area.gpss.push({ slug, x, y, name }))
 
   area.doors = area.doors.map(([slug, x, y]) => {
     const name = prepName(slug)
