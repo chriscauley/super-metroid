@@ -14,6 +14,7 @@
       @move-area="(data) => moveArea(area, data)"
     />
     <warp-connections />
+    <samus-icon />
   </osd-html-overlay>
 </template>
 
@@ -23,6 +24,7 @@ import openseadragon from 'openseadragon'
 import osd from '@unrest/vue-openseadragon'
 
 import AreaOverlay from './AreaOverlay.vue'
+import SamusIcon from './SamusIcon.vue'
 import WarpConnections from './WarpConnections.vue'
 import { getGridUrl } from '@/utils'
 
@@ -30,7 +32,7 @@ const { Rect } = openseadragon
 
 export default {
   name: 'TrackerViewer',
-  components: { AreaOverlay, WarpConnections },
+  components: { AreaOverlay, SamusIcon, WarpConnections },
   inject: ['tool_storage'],
   props: {
     areas: Array,

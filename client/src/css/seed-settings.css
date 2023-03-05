@@ -1,5 +1,8 @@
 .seed-settings {
-  @apply absolute bg-black bottom-0 text-white flex gap-8;
+  @apply absolute bg-black bottom-0 text-white;
+  ._row {
+    @apply flex gap-8 flex-wrap;
+  }
   ._col {
     @apply flex gap-2 items-center;
   }

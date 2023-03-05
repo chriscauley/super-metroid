@@ -85,6 +85,7 @@ export default {
       varia_state: {},
       tool_storage: ToolStorage(this),
       json_data: null,
+      samus_icon: null,
     }
   },
   computed: {

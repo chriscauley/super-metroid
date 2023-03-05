@@ -26,6 +26,10 @@
   z-index: 35;
 }
 
+#samusIcon {
+  z-index: 36;
+}
+
 .area-warp, .area-door, .location-marker {
   &:hover, &.-active, &.-hover {
     z-index: 40;
