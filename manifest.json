@@ -1,6 +1,6 @@
 {
   "app.css": "/super-metroid/css/app.610f1074.css",
-  "app.js": "/super-metroid/js/app.29ce0e71.js",
+  "app.js": "/super-metroid/js/app.5ba7c2e9.js",
   "chunk-vendors.css": "/super-metroid/css/chunk-vendors.6747177f.css",
   "chunk-vendors.js": "/super-metroid/js/chunk-vendors.d21c9726.js",
   "layouts/vanilla/nordub/original_map.png": "/super-metroid/layouts/vanilla/nordub/original_map.png",
@@ -2386,6 +2386,6 @@
   "layouts/vanilla/legacy/ridley_files/0/0_0.png": "/super-metroid/layouts/vanilla/legacy/ridley_files/0/0_0.png",
   "layouts/vanilla/streaming/area_map_files/0/0_0.png": "/super-metroid/layouts/vanilla/streaming/area_map_files/0/0_0.png",
   "layouts/mirror/alt-streaming/phantoon_files/0/0_0.png": "/super-metroid/layouts/mirror/alt-streaming/phantoon_files/0/0_0.png",
-  "app.29ce0e71.js.map": "/super-metroid/js/app.29ce0e71.js.map",
+  "app.5ba7c2e9.js.map": "/super-metroid/js/app.5ba7c2e9.js.map",
   "chunk-vendors.d21c9726.js.map": "/super-metroid/js/chunk-vendors.d21c9726.js.map"
 }
