@@ -26,7 +26,7 @@ jobs:
       - name: Build client
         working-directory: './client'
         run: yarn build:github
-      - run: lsx
+      - run: ls
       - run: ls ../
       - run: ls ../../
       - name: Deploy github pages 🚀
