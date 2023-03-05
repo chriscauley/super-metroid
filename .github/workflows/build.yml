@@ -3,6 +3,7 @@ run-name: Build and Release
 on: [push]
 jobs:
   Build-and-release:
+    concurrency: ci-${{ github.ref }}
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
@@ -20,5 +21,13 @@ jobs:
       - name: Build client
         working-directory: './client'
         run: yarn install && yarn build:varia
+      - name: Build client
+        working-directory: './client'
+        run: yarn build:github
+      - run: ls
       - run: ls ../
       - run: ls ../../
+      - name: Deploy github pages 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: docs
