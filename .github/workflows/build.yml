@@ -1,6 +1,8 @@
 name: Build and Release
 run-name: Build and Release
 on: [push]
+permissions:
+  contents: write
 jobs:
   Build-and-release:
     concurrency: ci-${{ github.ref }}
@@ -24,7 +26,7 @@ jobs:
       - name: Build client
         working-directory: './client'
         run: yarn build:github
-      - run: ls
+      - run: lsx
       - run: ls ../
       - run: ls ../../
       - name: Deploy github pages 🚀
