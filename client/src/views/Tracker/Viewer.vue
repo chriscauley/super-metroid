@@ -98,9 +98,9 @@ export default {
       this.areas.forEach((area) => {
         const { width: max_width, scale } = this.$store.layout.getWorld().root
         let { width, x, y } = area
-        const url = this.getLayoutUrl(`${area.slug}.png`)
-        this.osd_store.viewer.addSimpleImage({
-          url,
+        const tileSource = this.getLayoutUrl(`${area.slug}.dzi`)
+        this.osd_store.viewer.addTiledImage({
+          tileSource,
           x: (x * scale) / max_width,
           y: (y * scale) / max_width,
           width: (width * scale) / max_width,
