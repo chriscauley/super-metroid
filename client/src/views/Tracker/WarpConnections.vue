@@ -138,6 +138,7 @@ export default {
     shapes() {
       const used = {}
       const { warp_display } = this.tool_storage.state.tracker_settings
+      const { areaRando } = this.tool_storage.getRandoSettings()
       const pairs = Object.entries(this.game_state.warps).filter(([a, b]) => {
         if (used[a] || used[b]) {
           return false
@@ -145,6 +146,10 @@ export default {
         used[a] = used[b] = true
         return true
       })
+      pairs.push([
+        'westSandHallLeft',
+        areaRando ? 'belowBotwoonEnergyTankRight' : 'westSandHallTunnelRight',
+      ])
       let lines = []
       let circles = []
       const rects = []
