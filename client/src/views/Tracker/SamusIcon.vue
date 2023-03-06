@@ -55,13 +55,15 @@ export default {
       }
       this.map_xy = [area.x + left + x, area.y + top + y]
       const _round = (a) => a.map((n) => n.toFixed(1)).join(',')
-      this.$store.ui.state.tracker_debug = {
-        area: variaArea,
-        room: roomPointer,
-        tracker_xy: _round(this.map_xy), // final position
-        room_xy: [x, y], // position in room
-        room_offset: [left, top], // room position on area
-        area_offset: _round([area.x, area.y]), // area position on map
+      if (this.$route.query.debug) {
+        this.$store.ui.state.tracker_debug = {
+          area: variaArea,
+          room: roomPointer,
+          tracker_xy: _round(this.map_xy), // final position
+          room_xy: [x, y], // position in room
+          room_offset: [left, top], // room position on area
+          area_offset: _round([area.x, area.y]), // area position on map
+        }
       }
     },
   },

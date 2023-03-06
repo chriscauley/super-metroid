@@ -73,7 +73,9 @@ export default {
       const invert = !!this.$route.query.debug
       const { width, x = 0, y = 0 } = this.area
       const { root } = this
-      const [title_x, title_y] = this.area.title_dxy || [0, 0]
+      const { logic } = this.tool_storage.getRandoSettings()
+      const title_key = logic === 'vanilla' ? 'title_dxy' : `${logic}_title_dxy`
+      const [title_x, title_y] = this.area[title_key] || [0, 0]
       const [dx, dy] = this.dxys.__root || [0, 0]
       const _ = (a) => `${(root.scale * (100 * a)) / root.width}%`
       return {
@@ -126,7 +128,8 @@ export default {
     },
     moveTitle([dx, dy]) {
       const { scale } = this.root
-      this.$store.layout.moveTitle(this.area.slug, dx / scale, dy / scale)
+      const { logic } = this.tool_storage.getRandoSettings()
+      this.$store.layout.moveTitle(this.area.slug, dx / scale, dy / scale, logic)
     },
     clickLocation(id) {
       if (this.json_data) {

@@ -156,14 +156,15 @@ export default {
     area.y += dy
     return [area.x, area.y]
   },
-  moveTitle(layout_slug, area_slug, dx, dy) {
+  moveTitle(layout_slug, area_slug, dx, dy, logic) {
     const area = this[layout_slug].areas.find((area) => area.slug === area_slug)
     if (!area) {
       throw `Unable to locate area: ${area_slug}`
     }
-    area.title_dxy = area.title_dxy || [0, 0]
-    area.title_dxy[0] += dx
-    area.title_dxy[1] += dy
+    const key = logic === 'vanilla' ? 'title_dxy' : `${logic}_title_dxy`
+    area[key] = area[key] || [0, 0]
+    area[key][0] += dx
+    area[key][1] += dy
   },
   savePath(layout_slug, area_slug, path_id, path) {
     this[layout_slug].svg_coords[area_slug][path_id] = path

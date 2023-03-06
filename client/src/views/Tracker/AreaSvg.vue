@@ -43,7 +43,8 @@ export default {
       }
     },
     text_attrs() {
-      const [x, y] = this.area.title_dxy
+      const { logic } = this.tool_storage.getRandoSettings()
+      const [x, y] = this.area[`${logic}_title_dxy`] || this.area.title_dxy
       return { x, y }
     },
     paths() {

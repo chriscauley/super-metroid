@@ -32,8 +32,8 @@ export default () => {
     storage.markDirty()
     return xy
   }
-  storage.moveTitle = (area_slug, dx, dy) => {
-    layouts.moveTitle(storage.state.selected, area_slug, dx, dy)
+  storage.moveTitle = (area_slug, dx, dy, logic) => {
+    layouts.moveTitle(storage.state.selected, area_slug, dx, dy, logic)
     storage.markDirty()
   }
   storage.saveAreas = () => {
