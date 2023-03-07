@@ -97,6 +97,11 @@ $varia-levels: break easy medium hard harder hardcore mania;
   }
 }
 
+.smva-difficulty.-is-major.-empty {
+  background-image: url(./images/varia/major-boxes.png);
+  image-rendering: unset;
+}
+
 .smv-gps:before {
   background-image: url(./images/varia/gps.png);
   image-rendering: initial;
