@@ -1,6 +1,6 @@
 {
-  "app.css": "/super-metroid/css/app.610f1074.css",
-  "app.js": "/super-metroid/js/app.389b04ab.js",
+  "app.css": "/super-metroid/css/app.ff498be5.css",
+  "app.js": "/super-metroid/js/app.5b7a3211.js",
   "chunk-vendors.css": "/super-metroid/css/chunk-vendors.6747177f.css",
   "chunk-vendors.js": "/super-metroid/js/chunk-vendors.d21c9726.js",
   "layouts/vanilla/legacy/area_map.png": "/super-metroid/layouts/vanilla/legacy/area_map.png",
@@ -207,6 +207,7 @@
   "layouts/mirror/nordub/wrecked-ship_files/8/0_0.png": "/super-metroid/layouts/mirror/nordub/wrecked-ship_files/8/0_0.png",
   "layouts/vanilla/nordub/wrecked-ship_files/8/0_0.png": "/super-metroid/layouts/vanilla/nordub/wrecked-ship_files/8/0_0.png",
   "layouts/vanilla/legacy/area_map_files/11/3_0.png": "/super-metroid/layouts/vanilla/legacy/area_map_files/11/3_0.png",
+  "img/major-boxes.png": "/super-metroid/img/major-boxes.734010a3.png",
   "layouts/mirror/legacy/wrecked-ship_files/8/0_0.png": "/super-metroid/layouts/mirror/legacy/wrecked-ship_files/8/0_0.png",
   "layouts/vanilla/legacy/wrecked-ship_files/8/0_0.png": "/super-metroid/layouts/vanilla/legacy/wrecked-ship_files/8/0_0.png",
   "layouts/mirror/nordub/lower-norfair_files/8/0_0.png": "/super-metroid/layouts/mirror/nordub/lower-norfair_files/8/0_0.png",
@@ -2108,6 +2109,6 @@
   "layouts/vanilla/legacy/ridley_files/0/0_0.png": "/super-metroid/layouts/vanilla/legacy/ridley_files/0/0_0.png",
   "layouts/vanilla/streaming/area_map_files/0/0_0.png": "/super-metroid/layouts/vanilla/streaming/area_map_files/0/0_0.png",
   "layouts/mirror/alt-streaming/phantoon_files/0/0_0.png": "/super-metroid/layouts/mirror/alt-streaming/phantoon_files/0/0_0.png",
-  "app.389b04ab.js.map": "/super-metroid/js/app.389b04ab.js.map",
+  "app.5b7a3211.js.map": "/super-metroid/js/app.5b7a3211.js.map",
   "chunk-vendors.d21c9726.js.map": "/super-metroid/js/chunk-vendors.d21c9726.js.map"
 }
