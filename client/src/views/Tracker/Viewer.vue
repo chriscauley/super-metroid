@@ -66,10 +66,7 @@ export default {
     addCorners() {
       this.osd_store.viewer.addOnceHandler('tile-loaded', this.addImages)
       const { selected } = this.$store.layout.state
-      if (this.$route.query.debug) {
-        const url = this.getLayoutUrl('area_map.png')
-        this.osd_store.viewer.addSimpleImage({ url })
-      } else if (selected === 'streaming') {
+      if (selected === 'streaming') {
         const url = this.getLayoutUrl('background.png')
         this.osd_store.viewer.addSimpleImage({ url })
       } else {

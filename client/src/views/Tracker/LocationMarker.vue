@@ -41,7 +41,7 @@ import { location_type_map } from '@/data/old'
 import varia from '@/varia'
 
 export default {
-  inject: ['json_data', 'game_state'],
+  inject: ['json_data', 'game_state', 'tool_storage'],
   props: {
     location: Object,
   },
@@ -100,6 +100,11 @@ export default {
     },
     attrs() {
       const { slug, chozo, major, scavenger } = this.location
+      let is_major = false
+      if (!!this.json_data) {
+        const split = this.tool_storage.getRandoSettings().majorsSplit.toLowerCase()
+        is_major = this.location[split]
+      }
       return {
         id: `location__${slug}`,
         'data-id': slug,
@@ -113,6 +118,7 @@ export default {
           this.game_state.locations[slug] && '-completed',
           this.icon,
           this.hover && '-hover',
+          is_major && '-is-major',
         ],
       }
     },
