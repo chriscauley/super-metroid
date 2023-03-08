@@ -76,14 +76,6 @@
 .smva-difficulty:before {
   z-index: 2;
 }
-.smva-difficulty:after { /* these use :after so they can go behind the :before icons */
-  background-size: 100% auto;
-  content: "";
-  image-rendering: pixelated;
-  inset: 0;
-  position: absolute;
-  z-index: 1;
-}
 
 .smva-difficulty {
   background-image: url(./images/varia/difficulty-boxes.png);
@@ -91,45 +83,125 @@
 .smva-difficulty.-difficulty-break {
   background-position: 0 0%;
 }
+.smva-difficulty.-difficulty-break.-empty {
+  background-position: 0;
+  background-image: url("./images/varia/marker_break.gif");
+}
+.smva-difficulty.-difficulty-break.-empty:hover {
+  background-image: url(./images/varia/hover-boxes.png);
+  background-position: 0 0%;
+}
+.smva-difficulty.-difficulty-break.-empty.-is-major {
+  background-position: 0;
+  background-image: url("./images/varia/marker_break_major.gif");
+}
 .smva-difficulty.-difficulty-easy {
   background-position: 0 -100%;
+}
+.smva-difficulty.-difficulty-easy.-empty {
+  background-position: 0;
+  background-image: url("./images/varia/marker_easy.gif");
+}
+.smva-difficulty.-difficulty-easy.-empty:hover {
+  background-image: url(./images/varia/hover-boxes.png);
+  background-position: 0 -100%;
+}
+.smva-difficulty.-difficulty-easy.-empty.-is-major {
+  background-position: 0;
+  background-image: url("./images/varia/marker_easy_major.gif");
 }
 .smva-difficulty.-difficulty-medium {
   background-position: 0 -200%;
 }
+.smva-difficulty.-difficulty-medium.-empty {
+  background-position: 0;
+  background-image: url("./images/varia/marker_medium.gif");
+}
+.smva-difficulty.-difficulty-medium.-empty:hover {
+  background-image: url(./images/varia/hover-boxes.png);
+  background-position: 0 -200%;
+}
+.smva-difficulty.-difficulty-medium.-empty.-is-major {
+  background-position: 0;
+  background-image: url("./images/varia/marker_medium_major.gif");
+}
 .smva-difficulty.-difficulty-hard {
   background-position: 0 -300%;
+}
+.smva-difficulty.-difficulty-hard.-empty {
+  background-position: 0;
+  background-image: url("./images/varia/marker_hard.gif");
+}
+.smva-difficulty.-difficulty-hard.-empty:hover {
+  background-image: url(./images/varia/hover-boxes.png);
+  background-position: 0 -300%;
+}
+.smva-difficulty.-difficulty-hard.-empty.-is-major {
+  background-position: 0;
+  background-image: url("./images/varia/marker_hard_major.gif");
 }
 .smva-difficulty.-difficulty-harder {
   background-position: 0 -400%;
 }
+.smva-difficulty.-difficulty-harder.-empty {
+  background-position: 0;
+  background-image: url("./images/varia/marker_harder.gif");
+}
+.smva-difficulty.-difficulty-harder.-empty:hover {
+  background-image: url(./images/varia/hover-boxes.png);
+  background-position: 0 -400%;
+}
+.smva-difficulty.-difficulty-harder.-empty.-is-major {
+  background-position: 0;
+  background-image: url("./images/varia/marker_harder_major.gif");
+}
 .smva-difficulty.-difficulty-hardcore {
   background-position: 0 -500%;
+}
+.smva-difficulty.-difficulty-hardcore.-empty {
+  background-position: 0;
+  background-image: url("./images/varia/marker_hardcore.gif");
+}
+.smva-difficulty.-difficulty-hardcore.-empty:hover {
+  background-image: url(./images/varia/hover-boxes.png);
+  background-position: 0 -500%;
+}
+.smva-difficulty.-difficulty-hardcore.-empty.-is-major {
+  background-position: 0;
+  background-image: url("./images/varia/marker_hardcore_major.gif");
 }
 .smva-difficulty.-difficulty-mania {
   background-position: 0 -600%;
 }
+.smva-difficulty.-difficulty-mania.-empty {
+  background-position: 0;
+  background-image: url("./images/varia/marker_mania.gif");
+}
+.smva-difficulty.-difficulty-mania.-empty:hover {
+  background-image: url(./images/varia/hover-boxes.png);
+  background-position: 0 -600%;
+}
+.smva-difficulty.-difficulty-mania.-empty.-is-major {
+  background-position: 0;
+  background-image: url("./images/varia/marker_mania_major.gif");
+}
+.smva-difficulty:before {
+  /* shrink icon a little to fit in box */
+  inset: 10%;
+}
 .smva-difficulty.-empty:before {
+  inset: 0;
   background-size: contain;
   background-repeat: no-repeat;
-  background-image: url(./images/varia/wipe_32.gif);
   z-index: 2;
 }
-.smva-difficulty.-empty:after {
-  z-index: 1;
-}
 
-.smva-difficulty.-nothing:before {
-  display: none;
-}
-.smva-difficulty.-nothing:after {
+.smva-difficulty.-nothing {
   background-image: url(./images/varia/visited-boxes.png);
   image-rendering: unset;
 }
-
-.smva-difficulty.-is-major.-empty {
-  background-image: url(./images/varia/major-boxes.png);
-  image-rendering: unset;
+.smva-difficulty.-nothing:before {
+  display: none;
 }
 
 .smv-gps:before {

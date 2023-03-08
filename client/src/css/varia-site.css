@@ -76,8 +76,9 @@ body.-site-varia {
       > div {
         width: 50px;
       }
-      img {
-        margin: 0 auto;
+      .sm-item {
+        font-size: 32px;
+        background-color: black;
       }
     }
     .popover-navigation {

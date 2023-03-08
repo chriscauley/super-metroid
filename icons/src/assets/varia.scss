@@ -55,14 +55,6 @@
   &:before {
     z-index: 2;
   }
-  &:after { /* these use :after so they can go behind the :before icons */
-    background-size: 100% auto;
-    content: "";
-    image-rendering: pixelated;
-    inset: 0;
-    position: absolute;
-    z-index: 1;
-  }
 }
 
 $varia-levels: break easy medium hard harder hardcore mania;
@@ -72,34 +64,40 @@ $varia-levels: break easy medium hard harder hardcore mania;
     $name: nth($varia-levels, $i + 1);
     &.-difficulty-#{""+$name} {
       background-position: 0 $i * -100%;
+      &.-empty {
+        background-position: 0;
+        background-image: url("./images/varia/marker_#{$name}.gif");
+        &:hover {
+          background-image: url(./images/varia/hover-boxes.png);
+          background-position: 0 $i * -100%;
+        }
+      }
+      &.-empty.-is-major {
+        background-position: 0;
+        background-image: url("./images/varia/marker_#{$name}_major.gif");
+      }
     }
+  }
+  &:before {
+    /* shrink icon a little to fit in box */
+    inset: 10%;
   }
   &.-empty{
     &:before {
+      inset: 0;
       background-size: contain;
       background-repeat: no-repeat;
-      background-image: url(./images/varia/wipe_32.gif);
       z-index: 2;
-    }
-    &:after {
-      z-index: 1;
     }
   }
 }
 
 .smva-difficulty.-nothing {
+  background-image: url(./images/varia/visited-boxes.png);
+  image-rendering: unset;
   &:before {
     display:none;
   }
-  &:after {
-    background-image: url(./images/varia/visited-boxes.png);
-    image-rendering: unset;
-  }
-}
-
-.smva-difficulty.-is-major.-empty {
-  background-image: url(./images/varia/major-boxes.png);
-  image-rendering: unset;
 }
 
 .smv-gps:before {
