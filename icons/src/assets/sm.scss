@@ -148,16 +148,13 @@ $cre-hex: respawn block exit;
   &.-empty:before {
     background: none;
   }
-  &:before {
-    background-image: url("./images/items.png");
-  }
   @for $i from 0 to length($items) {
     $name: nth($items, $i + 1);
     &.-#{"" + $name}:before {
-      background-position: 0 $i * -100%;
+      background-image: url("./images/#{$name}.png");
     }
     &.-alt:before {
-      background-image: url("./images/items-alt.png");
+      background-image: url("./images/#{$name}-alt.png");
     }
   }
 }

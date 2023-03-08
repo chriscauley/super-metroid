@@ -357,146 +357,143 @@
 .sm-item.-empty:before {
   background: none;
 }
-.sm-item:before {
-  background-image: url("./images/items.png");
-}
 .sm-item.-morph-ball:before {
-  background-position: 0 0%;
+  background-image: url("./images/morph-ball.png");
 }
 .sm-item.-alt:before {
-  background-image: url("./images/items-alt.png");
+  background-image: url("./images/morph-ball-alt.png");
 }
 .sm-item.-bomb:before {
-  background-position: 0 -100%;
+  background-image: url("./images/bomb.png");
 }
 .sm-item.-alt:before {
-  background-image: url("./images/items-alt.png");
+  background-image: url("./images/bomb-alt.png");
 }
 .sm-item.-screw-attack:before {
-  background-position: 0 -200%;
+  background-image: url("./images/screw-attack.png");
 }
 .sm-item.-alt:before {
-  background-image: url("./images/items-alt.png");
+  background-image: url("./images/screw-attack-alt.png");
 }
 .sm-item.-missile:before {
-  background-position: 0 -300%;
+  background-image: url("./images/missile.png");
 }
 .sm-item.-alt:before {
-  background-image: url("./images/items-alt.png");
+  background-image: url("./images/missile-alt.png");
 }
 .sm-item.-super-missile:before {
-  background-position: 0 -400%;
+  background-image: url("./images/super-missile.png");
 }
 .sm-item.-alt:before {
-  background-image: url("./images/items-alt.png");
+  background-image: url("./images/super-missile-alt.png");
 }
 .sm-item.-energy-tank:before {
-  background-position: 0 -500%;
+  background-image: url("./images/energy-tank.png");
 }
 .sm-item.-alt:before {
-  background-image: url("./images/items-alt.png");
+  background-image: url("./images/energy-tank-alt.png");
 }
 .sm-item.-energy2-tank:before {
-  background-position: 0 -600%;
+  background-image: url("./images/energy2-tank.png");
 }
 .sm-item.-alt:before {
-  background-image: url("./images/items-alt.png");
+  background-image: url("./images/energy2-tank-alt.png");
 }
 .sm-item.-varia-suit:before {
-  background-position: 0 -700%;
+  background-image: url("./images/varia-suit.png");
 }
 .sm-item.-alt:before {
-  background-image: url("./images/items-alt.png");
+  background-image: url("./images/varia-suit-alt.png");
 }
 .sm-item.-space-jump:before {
-  background-position: 0 -800%;
+  background-image: url("./images/space-jump.png");
 }
 .sm-item.-alt:before {
-  background-image: url("./images/items-alt.png");
+  background-image: url("./images/space-jump-alt.png");
 }
 .sm-item.-power-bomb:before {
-  background-position: 0 -900%;
+  background-image: url("./images/power-bomb.png");
 }
 .sm-item.-alt:before {
-  background-image: url("./images/items-alt.png");
+  background-image: url("./images/power-bomb-alt.png");
 }
 .sm-item.-hi-jump-boots:before {
-  background-position: 0 -1000%;
+  background-image: url("./images/hi-jump-boots.png");
 }
 .sm-item.-alt:before {
-  background-image: url("./images/items-alt.png");
+  background-image: url("./images/hi-jump-boots-alt.png");
 }
 .sm-item.-speed-booster:before {
-  background-position: 0 -1100%;
+  background-image: url("./images/speed-booster.png");
 }
 .sm-item.-alt:before {
-  background-image: url("./images/items-alt.png");
+  background-image: url("./images/speed-booster-alt.png");
 }
 .sm-item.-pedastool:before {
-  background-position: 0 -1200%;
+  background-image: url("./images/pedastool.png");
 }
 .sm-item.-alt:before {
-  background-image: url("./images/items-alt.png");
+  background-image: url("./images/pedastool-alt.png");
 }
 .sm-item.-reserve-tank:before {
-  background-position: 0 -1300%;
+  background-image: url("./images/reserve-tank.png");
 }
 .sm-item.-alt:before {
-  background-image: url("./images/items-alt.png");
+  background-image: url("./images/reserve-tank-alt.png");
 }
 .sm-item.-x-ray:before {
-  background-position: 0 -1400%;
+  background-image: url("./images/x-ray.png");
 }
 .sm-item.-alt:before {
-  background-image: url("./images/items-alt.png");
+  background-image: url("./images/x-ray-alt.png");
 }
 .sm-item.-spring-ball:before {
-  background-position: 0 -1500%;
+  background-image: url("./images/spring-ball.png");
 }
 .sm-item.-alt:before {
-  background-image: url("./images/items-alt.png");
+  background-image: url("./images/spring-ball-alt.png");
 }
 .sm-item.-grappling-beam:before {
-  background-position: 0 -1600%;
+  background-image: url("./images/grappling-beam.png");
 }
 .sm-item.-alt:before {
-  background-image: url("./images/items-alt.png");
+  background-image: url("./images/grappling-beam-alt.png");
 }
 .sm-item.-charge-beam:before {
-  background-position: 0 -1700%;
+  background-image: url("./images/charge-beam.png");
 }
 .sm-item.-alt:before {
-  background-image: url("./images/items-alt.png");
+  background-image: url("./images/charge-beam-alt.png");
 }
 .sm-item.-spazer-beam:before {
-  background-position: 0 -1800%;
+  background-image: url("./images/spazer-beam.png");
 }
 .sm-item.-alt:before {
-  background-image: url("./images/items-alt.png");
+  background-image: url("./images/spazer-beam-alt.png");
 }
 .sm-item.-wave-beam:before {
-  background-position: 0 -1900%;
+  background-image: url("./images/wave-beam.png");
 }
 .sm-item.-alt:before {
-  background-image: url("./images/items-alt.png");
+  background-image: url("./images/wave-beam-alt.png");
 }
 .sm-item.-ice-beam:before {
-  background-position: 0 -2000%;
+  background-image: url("./images/ice-beam.png");
 }
 .sm-item.-alt:before {
-  background-image: url("./images/items-alt.png");
+  background-image: url("./images/ice-beam-alt.png");
 }
 .sm-item.-plasma-beam:before {
-  background-position: 0 -2100%;
+  background-image: url("./images/plasma-beam.png");
 }
 .sm-item.-alt:before {
-  background-image: url("./images/items-alt.png");
+  background-image: url("./images/plasma-beam-alt.png");
 }
 .sm-item.-gravity-suit:before {
-  background-position: 0 -2200%;
+  background-image: url("./images/gravity-suit.png");
 }
 .sm-item.-alt:before {
-  background-image: url("./images/items-alt.png");
+  background-image: url("./images/gravity-suit-alt.png");
 }
 
 .sm-item.-weapons-tank:before {
