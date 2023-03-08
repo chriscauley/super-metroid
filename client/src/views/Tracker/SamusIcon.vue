@@ -35,9 +35,9 @@ export default {
   methods: {
     setSamusIcon(roomPointer, x, y) {
       if (!(roomPointer && this.json_data)) {
+        this.map_xy = null
         return null
       }
-      Object.assign(this, { roomPointer, x, y })
       const { logic } = this.tool_storage.getRandoSettings()
       const room = window.rooms[logic][roomPointer]
       if (!room) {
