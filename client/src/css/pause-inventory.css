@@ -13,7 +13,7 @@
     opacity: 0;
   }
   .-imissile, .-isuper-missile, .-ipower-bomb {
-    opacity: 0;
+    opacity: 1;
   }
 }
 
