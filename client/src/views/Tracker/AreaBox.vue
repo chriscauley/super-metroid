@@ -26,10 +26,11 @@
 import DoorPicker from '@/components/DoorPicker.vue'
 import AreaSvg from './AreaSvg.vue'
 import LocationMarker from './LocationMarker.vue'
+import { getWarpColor } from './WarpConnections.vue'
 
 export default {
   components: { AreaSvg, DoorPicker, LocationMarker },
-  inject: ['json_data', 'tool_storage'],
+  inject: ['json_data', 'tool_storage', 'game_state'],
   props: {
     area: Object,
     size: null,
@@ -79,10 +80,19 @@ export default {
     },
     warps() {
       const { selected_warp } = this.tool_storage.state
+      const warp_colors = {}
+      this.area.warps.forEach(({ slug }) => {
+        const warp2 = this.game_state.warps[slug] || ''
+        warp_colors[slug] = getWarpColor(slug, warp2, 0, true)
+      })
       return this.area.warps.map(({ slug, name, x, y, type, rotated }) => ({
         id: slug,
         title: name,
-        class: [`area-warp -${type}`, rotated && '-rotated', selected_warp === slug && '-selected'],
+        class: [
+          `area-warp -${type} -color-${warp_colors[slug].replace('#', '')}`,
+          rotated && '-rotated',
+          selected_warp === slug && '-selected',
+        ],
         style: this.getEntityStyle(x, y),
         'data-type': 'warp',
         'data-id': slug,

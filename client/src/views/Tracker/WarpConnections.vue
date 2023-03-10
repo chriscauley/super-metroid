@@ -53,16 +53,25 @@ const sand_text = {
   westSandHallTunnelRight: 'V',
 }
 
-const getColor = (warp1, warp2, index) => {
+export const getWarpColor = (warp1, warp2, index, is_portal) => {
   const types = [warp_type_map[warp1], warp_type_map[warp2]]
-  if (vanilla_warps.map[warp1] === warp2) {
-    return '#FF00FF'
+  if (types.includes('sand')) {
+    return '#0FF'
   }
   if (types.includes('escape')) {
-    return '#00FF00'
+    return '#0F0'
   }
-  if (types.includes('boss')) {
-    return '#FF0000'
+  if (vanilla_warps.map[warp1] === warp2) {
+    return '#888'
+  }
+  if (types.includes('escape')) {
+    return '#0F0'
+  }
+  if (warp1.endsWith('RoomIn') || warp2.endsWith('RoomIn')) {
+    return '#F00'
+  }
+  if (is_portal) {
+    return '#F0F'
   }
   return colors[index % colors.length]
 }
@@ -162,7 +171,7 @@ export default {
         const xy1 = this.entity_xys[warp1]
         const xy2 = this.entity_xys[warp2]
         const locked = locked_warps[warp1] || locked_warps[warp2]
-        const color = getColor(warp1, warp2, index)
+        const color = getWarpColor(warp1, warp2, index)
         const hovering = warp1 === hover_target || warp2 === hover_target
         lines.push(this.makeLine(warp1, warp2, xy1, xy2, 'warp', color, hovering))
         if (warp_display === 'dot' || locked || is_escape) {
