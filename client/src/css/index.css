@@ -429,7 +429,7 @@ body {
   &.-spazer, &.-yellow {
     --background-color: var(--door-yellow);
   }
-  &.-brown, &.-gray {
+  &.-brown, &.-grey {
     --background-color: var(--door-brown);
   }
   &.-white:before {

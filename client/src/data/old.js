@@ -6,7 +6,7 @@ import default_door_colors from './door_colors'
 export { default_door_colors }
 
 export const door_item_by_color = {
-  gray: 'empty',
+  grey: 'empty',
   red: 'missile',
   green: 'super-missile',
   yellow: 'power-bomb',
