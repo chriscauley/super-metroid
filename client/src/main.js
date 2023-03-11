@@ -14,6 +14,7 @@ import form from '@unrest/vue-form'
 
 import '@unrest/tailwind/dist.css'
 import '@/css/index.css'
+import '@/lib/autotracker'
 
 const app = createApp(App)
 app.use(site)

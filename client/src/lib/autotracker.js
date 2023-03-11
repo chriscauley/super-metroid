@@ -245,16 +245,16 @@ function displayStartButton() {
   document.getElementById('stopAutoTracker').style.display = 'none'
 }
 
-function startAutoTracker() {
-  if (interfaceIsFrozen()) {
+window.startAutoTracker = () => {
+  if (window.interfaceIsFrozen()) {
     return
   }
 
-  if (mode == 'seedless') {
+  if (window.mode == 'seedless') {
     alert('Auto Tracker is incompatible with seedless mode, please load the seed to track first')
     return
   }
-  if (mode == 'race') {
+  if (window.mode == 'race') {
     alert('Auto Tracker is disabled with race protected seeds')
     return
   }
@@ -292,7 +292,7 @@ function closeSocket() {
 
   // update interface
   setAutoTrackerIcon('statusLoad')
-  window.setSamusIcon()
+  window.setSamusIcon() // set by client (SamusIcon.vue)
 }
 
 function socketOnOpen(_event) {
@@ -422,7 +422,7 @@ function socketOnClose(event) {
   cleanup(event.wasClean)
 }
 
-function socketOnError(_error) {
+function socketOnError(error) {
   appendLog('\u274C Connection error')
 
   // update state & interface
@@ -1000,26 +1000,26 @@ function populateCurrentState() {
   currentState.fill(0)
 
   // add data to state
-  for (const j = 0; j < dataToAskChain.length; j++) {
+  for (let j = 0; j < dataToAskChain.length; j++) {
     if (dataToAskChain[j] == dataEnum.items) {
       curOffset = stateDataOffsets[dataToAskChain[j]]
-      for (const i = 0; i < itemsData.length; i++) {
+      for (let i = 0; i < itemsData.length; i++) {
         currentState[curOffset + i] = itemsData[i] & stateBitMasks[curOffset + i]
       }
     } else if (dataToAskChain[j] == dataEnum.boss) {
       curOffset = stateDataOffsets[dataEnum.boss]
-      for (const i = 0; i < bossData.length; i++) {
+      for (let i = 0; i < bossData.length; i++) {
         currentState[curOffset + i] = bossData[i] & stateBitMasks[curOffset + i]
       }
     } else if (dataToAskChain[j] == dataEnum.map) {
       curOffset = stateDataOffsets[dataEnum.map]
-      for (const i = 0; i < mapData.length; i++) {
+      for (let i = 0; i < mapData.length; i++) {
         currentState[curOffset + i] = mapData[i] & stateBitMasks[curOffset + i]
       }
     } else if (dataToAskChain[j] == dataEnum.events) {
       curOffset = stateDataOffsets[dataEnum.events]
       const { eventsData } = window
-      for (const i = 0; i < eventsData.length; i++) {
+      for (let i = 0; i < eventsData.length; i++) {
         currentState[curOffset + i] = eventsData[i] & stateBitMasks[curOffset + i]
       }
     }
