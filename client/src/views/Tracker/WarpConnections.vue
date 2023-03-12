@@ -71,7 +71,7 @@ export const getWarpColor = (warp1, warp2, index, is_portal) => {
     return '#F00'
   }
   if (is_portal) {
-    return '#F0F'
+    return '#0F0'
   }
   return colors[index % colors.length]
 }
@@ -146,6 +146,7 @@ export default {
     },
     shapes() {
       const used = {}
+      const is_nordub = this.$store.layout.state.selected === 'nordub'
       const { warp_display } = this.tool_storage.state.tracker_settings
       const { areaRando } = this.tool_storage.getRandoSettings()
       const pairs = Object.entries(this.game_state.warps).filter(([a, b]) => {
@@ -155,10 +156,11 @@ export default {
         used[a] = used[b] = true
         return true
       })
-      pairs.push([
-        'westSandHallLeft',
-        areaRando ? 'belowBotwoonEnergyTankRight' : 'westSandHallTunnelRight',
-      ])
+      is_nordub &&
+        pairs.push([
+          'westSandHallLeft',
+          areaRando ? 'belowBotwoonEnergyTankRight' : 'westSandHallTunnelRight',
+        ])
       let lines = []
       let circles = []
       const rects = []
@@ -168,6 +170,9 @@ export default {
       pairs.forEach(([warp1, warp2], index) => {
         const types = [warp_type_map[warp1], warp_type_map[warp2]]
         const is_escape = types.includes('escape')
+        if (is_escape && !is_nordub) {
+          return
+        }
         const xy1 = this.entity_xys[warp1]
         const xy2 = this.entity_xys[warp2]
         const locked = locked_warps[warp1] || locked_warps[warp2]

@@ -1,5 +1,5 @@
 /* bg items */
-.golden-four {
+.golden-four, .tracker-view__key-stack {
   z-index: 1;
 }
 
