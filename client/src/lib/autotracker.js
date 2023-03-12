@@ -1,3 +1,4 @@
+let eventsData
 // auto tracker
 var socket
 // device type
@@ -750,7 +751,7 @@ function handleData(data) {
       log.info(`\u2705 Events data received in ${duration}ms`)
 
       // concatenate all arrays
-      window.eventsData = concatArrays(dataEnum.events)
+      eventsData = concatArrays(dataEnum.events)
 
       askNextData()
     }
@@ -1018,7 +1019,6 @@ function populateCurrentState() {
       }
     } else if (dataToAskChain[j] == dataEnum.events) {
       curOffset = stateDataOffsets[dataEnum.events]
-      const { eventsData } = window
       for (let i = 0; i < eventsData.length; i++) {
         currentState[curOffset + i] = eventsData[i] & stateBitMasks[curOffset + i]
       }
@@ -1087,13 +1087,7 @@ window.updateGlobalHook = (jsonData) => {
 }
 
 window.stopAutoTracker = () => {
-  const { loaded, webServInProgress, init, autoTrackInProgress } = window
-  if (
-    loaded == false ||
-    webServInProgress == true ||
-    init == false ||
-    autoTrackInProgress == false
-  ) {
+  if (window.interfaceIsFrozen()) {
     return
   }
 
