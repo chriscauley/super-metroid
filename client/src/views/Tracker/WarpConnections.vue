@@ -168,6 +168,7 @@ export default {
       pairs.forEach(([warp1, warp2], index) => {
         const types = [warp_type_map[warp1], warp_type_map[warp2]]
         const is_escape = types.includes('escape')
+        const is_sand = types.includes('sand')
         if (is_escape && !is_nordub) {
           return
         }
@@ -177,7 +178,7 @@ export default {
         const color = getWarpColor(warp1, warp2, index)
         const hovering = warp1 === hover_target || warp2 === hover_target
         lines.push(this.makeLine(warp1, warp2, xy1, xy2, 'warp', color, hovering))
-        if (warp_display === 'dot' || locked || is_escape) {
+        if (warp_display === 'dot' || locked || is_escape || is_sand) {
           circles.push(this.makeCircle(warp1, xy1, 'warp', color))
           circles.push(this.makeCircle(warp2, xy2, 'warp', color))
         } else {
