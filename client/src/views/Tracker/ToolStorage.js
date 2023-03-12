@@ -180,7 +180,7 @@ export default (component) => {
       ]
 
       let tools = [
-        { slug: 'play', select: clickPlay, icon: 'fa fa-play' },
+        { slug: 'play', name: 'Load Seed', select: clickPlay, icon: 'fa fa-play' },
         { slug: 'item-locations', icon: 'sm-map -egg', items: loc_items },
         { slug: 'portal-locations', icon: 'sm-portal', items: portal_items },
         { slug: 'scavenger', select: window.displayScavPopup, icon: 'fa fa-puzzle-piece' },
@@ -238,7 +238,12 @@ export default (component) => {
   storage.rando_settings = rando_settings
 
   // reset these on refresh
-  storage.save({ key_stack: [], active_door: null, selected: { tool: 'play' } })
+  storage.save({
+    key_stack: [],
+    active_door: null,
+    selected: { tool: 'play' },
+    selected_warp: null,
+  })
 
   const connectWarp = (id, selected_warp) => {
     const { json_data } = component
