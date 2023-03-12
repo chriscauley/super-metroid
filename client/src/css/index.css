@@ -132,10 +132,10 @@ html, body, #app {
   &.-boss:before, &.-color-F00:before {
     background: radial-gradient(farthest-side, #000, #000 33%, #ce0001 75%, #FF0000);
   }
-  &.-sand:before, &.-color-F0F:before {
+  &.-sand:before, &.-color-0FF:before {
     background: radial-gradient(farthest-side, #000, #000 33%, #008888 75%, #00FFFF);
   }
-  &.-escape:before, &.-color-0FF:before {
+  &.-escape:before, &.-color-00F:before {
     background: radial-gradient(farthest-side, #000, #000 33%, #008800 75%, #00FF00);
   }
   &.-color-888:before {

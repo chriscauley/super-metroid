@@ -55,6 +55,7 @@ const sand_text = {
 
 export const getWarpColor = (warp1, warp2, index, is_portal) => {
   const types = [warp_type_map[warp1], warp_type_map[warp2]]
+  console.log(types)
   if (types.includes('sand')) {
     return '#0FF'
   }
@@ -64,14 +65,11 @@ export const getWarpColor = (warp1, warp2, index, is_portal) => {
   if (vanilla_warps.map[warp1] === warp2) {
     return '#888'
   }
-  if (types.includes('escape')) {
-    return '#0F0'
-  }
   if (warp1.endsWith('RoomIn') || warp2.endsWith('RoomIn')) {
     return '#F00'
   }
   if (is_portal) {
-    return '#0F0'
+    return '#F0F'
   }
   return colors[index % colors.length]
 }
