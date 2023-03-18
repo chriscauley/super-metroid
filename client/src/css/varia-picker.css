@@ -1,0 +1,44 @@
+.varia-picker {
+  @apply p-2;
+  background: white;
+  color: black;
+  cursor: default;
+}
+
+.varia-picker__colors {
+  @apply flex flex-wrap gap-1;
+  width: calc(4 * 6rem + 3 * 0.25rem);
+}
+
+.varia-picker__items {
+  @apply flex flex-wrap gap-1;
+  min-width: 500px;
+}
+
+.varia-picker__item-group {
+  @apply flex flex-wrap gap-1;
+}
+
+.varia-picker__door {
+  @apply flex cursor-pointer items-center justify-center relative h-24 w-24;
+  background: #ccc;
+  font-size: 4rem;
+  &:before {
+    @apply absolute block inset-0;
+    content: '';
+  }
+  &:hover:before {
+    border: 0.5rem solid black;
+  }
+  &.-selected:before {
+    border: 0.25rem solid black;
+  }
+}
+
+.varia-picker__key {
+  @apply bg-white text-black;
+  @apply h-8 w-8;
+  @apply absolute bottom-0 right-0;
+  @apply flex items-center justify-center;
+  font-size: 2rem;
+}

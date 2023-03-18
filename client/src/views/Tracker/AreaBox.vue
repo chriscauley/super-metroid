@@ -23,13 +23,12 @@
 </template>
 
 <script>
-import DoorPicker from '@/components/DoorPicker.vue'
 import AreaSvg from './AreaSvg.vue'
 import LocationMarker from './LocationMarker.vue'
 import { getWarpColor } from './WarpConnections.vue'
 
 export default {
-  components: { AreaSvg, DoorPicker, LocationMarker },
+  components: { AreaSvg, LocationMarker },
   inject: ['json_data', 'tool_storage', 'game_state'],
   props: {
     area: Object,

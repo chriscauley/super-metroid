@@ -15,14 +15,14 @@
 
 .tracker-view {
   &.large_locations .location-marker,
-  .location-marker:hover {
+  .location-marker:hover, .location-marker.-hover {
     width: 150%;
     height: 150%;
   }
 }
 
 .large_locations .location-marker {
-  &:hover {
+  &:hover, &.-hover {
     width: 200%;
     height: 200%
   }

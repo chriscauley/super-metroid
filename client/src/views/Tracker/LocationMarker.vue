@@ -1,7 +1,13 @@
 <template>
   <div v-bind="attrs" @mouseover="mouseover" @mouseleave="mouseout">
     <slot />
-    <unrest-popper v-if="hover" class="location-marker__popper" offset="0,10" placement="bottom">
+    <item-picker v-if="selected" :location="location" :current_item="visited_data?.item" />
+    <unrest-popper
+      v-else-if="hover"
+      class="location-marker__popper"
+      offset="0,10"
+      placement="bottom"
+    >
       <div data-popper-arrow />
       <div class="location-marker__popper-inner">
         {{ display_name }}
@@ -49,10 +55,13 @@ export default {
     return { over: false }
   },
   computed: {
+    selected() {
+      return this.tool_storage.state.active_location === this.location.slug
+    },
     hover() {
       const { highlight_location, hover_location } = this.$store.ui.state
       const { slug } = this.location
-      return slug === hover_location || slug === highlight_location
+      return this.selected || slug === hover_location || slug === highlight_location
     },
     locData() {
       return this.json_data?.availableLocations[this.location.slug]

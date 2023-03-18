@@ -36,6 +36,7 @@
   }
 }
 
+.varia-picker,
 .edit-area__click-mask {
   z-index: 50; /* above locations, warps, and doors */
 }

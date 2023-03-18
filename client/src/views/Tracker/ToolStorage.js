@@ -227,6 +227,7 @@ export default (component) => {
   const initial = {
     selected: { tool: 'play' },
     active_door: null,
+    active_location: null,
     actions: [],
     area_keys: cloneDeep(default_area_keys),
     key_stack: [],
@@ -296,6 +297,47 @@ export default (component) => {
     }
   }
 
+  const setVariaLocation = (action, locName, itemName, hide) => {
+    window.ajaxCall({ action, scope: 'item', locName, itemName, hide }, 'upload')
+    if (action === 'add' && locName === 'MotherBrain') {
+      alert('SEE YOU NEXT MISSION')
+    }
+    storage.state.active_location = null
+  }
+
+  storage.clickLocation = (id) => {
+    if (component.json_data) {
+      const visited = component.json_data.visitedLocations[id]
+      const type = component.location_type_map[id]
+      const is_boss = ['boss', 'miniboss'].includes(type)
+      if (component.is_plando && !is_boss) {
+        storage.state.active_location = id
+      } else {
+        // in tracker or clicked plando boss
+        const action = visited ? 'remove' : 'add'
+        setVariaLocation(action, id)
+      }
+    } else {
+      addAction(['click-location', id])
+    }
+  }
+
+  storage.updateLocationItem = (locName, itemName, old_item, hide) => {
+    if (component.json_data) {
+      if (itemName === '') {
+        if (old_item) {
+          setVariaLocation('remove', locName)
+        }
+        storage.state.active_location = null
+      } else if (itemName !== old_item) {
+        const action = old_item ? 'replace' : 'add'
+        setVariaLocation(action, locName, itemName, hide)
+      }
+    } else {
+      warn('TODO client side item tracking')
+    }
+  }
+
   storage.updateDoorColor = (id, newColor, old_color) => {
     if (component.json_data) {
       if (newColor !== old_color) {
@@ -320,7 +362,7 @@ export default (component) => {
     return default_door_colors[id]
   }
 
-  storage.click = (id, game_state) => {
+  storage.clickWarp = (id) => {
     const type = warp_type_map[id]
     const rando_settings = storage.getRandoSettings()
     if (type === 'warp' && !rando_settings.areaRando) {
@@ -342,11 +384,9 @@ export default (component) => {
       })
       return
     }
-    if (type === 'location') {
-      addAction(['click-location', id])
-    } else if (['warp', 'boss', 'escape'].includes(type)) {
+    if (['warp', 'boss', 'escape'].includes(type)) {
       const { selected_warp } = storage.state
-      const { warps } = game_state
+      const { warps } = component.game_state
       if (selected_warp === id) {
         // clicked the same warp twice, unselect
         storage.state.selected_warp = null

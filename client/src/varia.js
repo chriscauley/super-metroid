@@ -32,6 +32,7 @@ const sm_to_varia = {
   'wave-beam': 'Wave',
   'x-ray': 'XRayScope',
   nothing: 'Nothing',
+  '': '',
 }
 const to_convert = [all_items, bosses, minibosses]
 
@@ -71,14 +72,14 @@ const varia = {
   },
   variaToSm(varia_slug) {
     const slug = varia.varia_to_sm[varia_slug]
-    if (!slug) {
+    if (slug === undefined) {
       console.error(`Unknown varia_slug: ${varia_slug}`)
     }
     return slug || varia_slug
   },
   smToVaria(slug) {
     const varia_slug = varia.sm_to_varia[slug]
-    if (!varia_slug) {
+    if (varia_slug === undefined) {
       console.error(`Unknown slug: ${slug}`)
     }
     return varia_slug || slug

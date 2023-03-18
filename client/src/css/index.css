@@ -1,5 +1,4 @@
 @import './area-box.css';
-@import './door-picker.css';
 @import './drop-list.css';
 @import './edit-area.css';
 @import './item-counter.css';
@@ -10,6 +9,7 @@
 @import './seed-settings.css';
 @import './tailwind.css';
 @import './varia-site.css';
+@import './varia-picker.css';
 @import './who-dat.css';
 @import './z-index.css';
 
@@ -403,7 +403,7 @@ body {
   }
 }
 
-.area-door, .door-picker__door {
+.area-door, .-bg-door {
   --door-blue: #3870ff;
   --door-red: #ff2f8f;
   --door-green: #80ff0f;

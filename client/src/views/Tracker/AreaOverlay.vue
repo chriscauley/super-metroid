@@ -3,8 +3,8 @@
     <area-box
       :area="area"
       size="100%"
-      @click-location="clickLocation"
-      @click-warp="clickWarp"
+      @click-location="tool_storage.clickLocation"
+      @click-warp="tool_storage.clickWarp"
       @click-door="tool_storage.clickDoor"
     />
     <div class="area-overlay__title" :style="style.title">
@@ -130,16 +130,6 @@ export default {
       const { scale } = this.root
       const { logic } = this.tool_storage.getRandoSettings()
       this.$store.layout.moveTitle(this.area.slug, dx / scale, dy / scale, logic)
-    },
-    clickLocation(id) {
-      if (this.json_data) {
-        window.clickLoc({ id })
-      } else {
-        this.tool_storage.click(id, this.game_state)
-      }
-    },
-    clickWarp(id) {
-      this.tool_storage.click(id, this.game_state)
     },
   },
 }

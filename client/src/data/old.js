@@ -33,7 +33,8 @@ const items = [
   'x-ray',
 ]
 
-export const items_by_group = { ammo, energy, beams, suits, items }
+const nothing = ['nothing']
+export const items_by_group = { nothing, ammo, energy, beams, suits, items }
 export const varia_item_groups = Object.entries(items_by_group).map(([slug, items]) => ({
   slug,
   name: startCase(slug),
