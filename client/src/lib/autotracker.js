@@ -1,3 +1,7 @@
+import Timer from './Timer'
+
+const timer = Timer()
+
 let eventsData
 // auto tracker
 var socket
@@ -13,12 +17,6 @@ var retryTimeout
 var timeout
 // timeout duration in ms
 var waitingTime = 1000
-// timeout to increment RTA
-var incrRTA
-// time when the timeout has been set
-var incrRTAstart = 0
-var rawTimeFrames = 0
-var RTAwaitingTime = 50
 
 // first you open the socket,
 // then you list the available devices,
@@ -246,45 +244,6 @@ function displayStartButton() {
   document.getElementById('stopAutoTracker').style.display = 'none'
 }
 
-window.startAutoTracker = () => {
-  if (window.interfaceIsFrozen()) {
-    return
-  }
-
-  if (window.mode == 'seedless') {
-    alert('Auto Tracker is incompatible with seedless mode, please load the seed to track first')
-    return
-  }
-  if (window.mode == 'race') {
-    alert('Auto Tracker is disabled with race protected seeds')
-    return
-  }
-
-  // in case a snes classic retry was in progress
-  if (retryTimeout != undefined) {
-    clearTimeout(retryTimeout)
-    retryTimeout = undefined
-  }
-
-  resetLog()
-  appendLog('\r\n\u2026 Starting Auto Tracker')
-  // open websocket
-  var url = 'ws://localhost:8080'
-  socket = new WebSocket(url)
-  socket.onopen = socketOnOpen
-  socket.onmessage = socketOnMessage
-  socket.onclose = socketOnClose
-  socket.onerror = socketOnError
-
-  // update state
-  curState = stateEnum.opening
-  window.autoTrackInProgress = true
-
-  // update interface
-  displayStopButton()
-  setAutoTrackerIcon('statusLoad')
-}
-
 function closeSocket() {
   socket.close(1000)
 
@@ -392,8 +351,8 @@ function socketOnInitMessage(event) {
     socket.binaryType = 'arraybuffer'
 
     // display initial time
-    document.getElementById('rtaTimer').innerHTML = "00'00'00''00"
-    document.getElementById('rtaTimerDiv').style.display = 'block'
+    timer.setTime("00'00'00''00")
+    timer.show()
 
     // first data retrieval
     initDataChain()
@@ -424,6 +383,7 @@ function socketOnClose(event) {
 }
 
 function socketOnError(error) {
+  console.error(error)
   appendLog('\u274C Connection error')
 
   // update state & interface
@@ -438,12 +398,11 @@ function cleanup(cleanExit) {
   // update state & interface
   cleanupBuffer()
   curState = stateEnum.closed
-  window.autoTrackInProgress = false
+  window.$autotracker.in_progress = false
   displayStartButton()
   window.setSamusIcon()
   // RTA
-  document.getElementById('rtaTimerDiv').style.display = 'none'
-  disableRTAFake()
+  timer.hide()
 
   // if the device is an SNES Classic try to reconnect in 1s,
   // as reseting the game on it will close the connection to the auto tracker
@@ -551,58 +510,6 @@ function getGameStateName(gameStateCode) {
   return name_by_code[gameStateCode] || `Unkown game state (${gameStateCode})`
 }
 
-function displayRTA(frames) {
-  // 60 frame per second
-  var timeSeconds = Math.floor(frames / 60)
-  var remainFrames = frames % 60
-  var hours = Math.floor(timeSeconds / 3600)
-  var minutes = Math.floor((timeSeconds - hours * 3600) / 60)
-  var seconds = timeSeconds - hours * 3600 - minutes * 60
-
-  if (hours < 10) {
-    hours = '0' + hours
-  }
-  if (minutes < 10) {
-    minutes = '0' + minutes
-  }
-  if (seconds < 10) {
-    seconds = '0' + seconds
-  }
-  if (remainFrames < 10) {
-    remainFrames = '0' + remainFrames
-  }
-
-  document.getElementById('rtaTimer').innerHTML = `${hours}'${minutes}'${seconds}''${remainFrames}`
-}
-
-function disableRTAFake() {
-  if (incrRTA != undefined) {
-    clearTimeout(incrRTA)
-    incrRTA = undefined
-  }
-}
-
-function updateRTAFake() {
-  var diffms = new Date() - incrRTAstart
-  // 60 frames per seconds
-  rawTimeFrames += Math.floor(diffms / (1000 / 60))
-  displayRTA(rawTimeFrames)
-  incrRTAstart = new Date()
-  incrRTA = setTimeout(updateRTAFake, RTAwaitingTime)
-}
-
-function updateRTA(frames, armFakeTimer) {
-  displayRTA(frames)
-  disableRTAFake()
-
-  if (armFakeTimer) {
-    // arm a timer to increase displayed RTA between two data retrieval
-    rawTimeFrames = frames
-    incrRTAstart = new Date()
-    incrRTA = setTimeout(updateRTAFake, RTAwaitingTime)
-  }
-}
-
 // managed data returned by qusb
 function handleData(data) {
   var chunk = new Uint8Array(data)
@@ -638,19 +545,17 @@ function handleData(data) {
         if (gameState >= mainGameplayState && gameState <= gameOverState) {
           var w0 = readWord(stateData, stateDataEnum.rta1)
           var w1 = readWord(stateData, stateDataEnum.rta2)
-          var rawTimeFrames = (w1 << 16) | w0
-          updateRTA(rawTimeFrames, true)
+          timer.updateRTA((w1 << 16) | w0, true)
         } else if (gameState == creditState) {
           // during the credits the last RTA has been copied to SRAM
           var save = readWord(stateData, stateDataEnum.saveSlot)
           var offset = stateDataEnum.sramStats + save * 0x4
           var w0 = readWord(stateData, offset)
           var w1 = readWord(stateData, offset + 2)
-          var rawTimeFrames = (w1 << 16) | w0
-          updateRTA(rawTimeFrames, false)
+          timer.updateRTA((w1 << 16) | w0, false)
         } else {
           // if the user reset, stop incrementing the RTA
-          disableRTAFake()
+          timer.disableFake()
         }
 
         if (gameState == mainGameplayState) {
@@ -1072,28 +977,76 @@ function sendAutoTrackerMessage(data, newState) {
 
 // TODO the following are called by window
 // called after a state upload to rearm the timer
-window.postAjaxHook = () => {
-  var duration = Date.now() - transfertStart
-  appendLog(`\u2705 Backend updated in ${duration}ms`)
+const autotracker = {
+  timer,
+  postAjaxHook() {
+    var duration = Date.now() - transfertStart
+    appendLog(`\u2705 Backend updated in ${duration}ms`)
 
-  resetNextDataChain()
+    resetNextDataChain()
+  },
+
+  updateGlobalHook(jsonData) {
+    // get eventsBitMasks if preset
+    if ('eventsBitMasks' in jsonData) {
+      eventsBitMasks = jsonData['eventsBitMasks']
+    }
+  },
+
+  stop() {
+    const { in_progress } = autotracker
+    autotracker.in_progress = false
+    if (window.interfaceIsFrozen()) {
+      autotracker.in_progress = in_progress
+      return
+    }
+
+    appendLog('\u2026 Stopping Auto Tracker')
+    closeSocket()
+
+    // update interface
+    displayStartButton()
+    autotracker.timer.hide()
+  },
+
+  start() {
+    if (window.interfaceIsFrozen()) {
+      return
+    }
+
+    if (window.mode == 'seedless') {
+      alert('Auto Tracker is incompatible with seedless mode, please load the seed to track first')
+      return
+    }
+    if (window.mode == 'race') {
+      alert('Auto Tracker is disabled with race protected seeds')
+      return
+    }
+
+    // in case a snes classic retry was in progress
+    if (retryTimeout != undefined) {
+      clearTimeout(retryTimeout)
+      retryTimeout = undefined
+    }
+
+    resetLog()
+    appendLog('\r\n\u2026 Starting Auto Tracker')
+    // open websocket
+    var url = 'ws://localhost:8080'
+    socket = new WebSocket(url)
+    socket.onopen = socketOnOpen
+    socket.onmessage = socketOnMessage
+    socket.onclose = socketOnClose
+    socket.onerror = socketOnError
+
+    // update state
+    curState = stateEnum.opening
+    autotracker.in_progress = true
+
+    // update interface
+    displayStopButton()
+    setAutoTrackerIcon('statusLoad')
+  },
 }
 
-window.updateGlobalHook = (jsonData) => {
-  // get eventsBitMasks if preset
-  if ('eventsBitMasks' in jsonData) {
-    eventsBitMasks = jsonData['eventsBitMasks']
-  }
-}
-
-window.stopAutoTracker = () => {
-  if (window.interfaceIsFrozen()) {
-    return
-  }
-
-  appendLog('\u2026 Stopping Auto Tracker')
-  closeSocket()
-
-  // update interface
-  displayStartButton()
-}
+window.$autotracker = autotracker
