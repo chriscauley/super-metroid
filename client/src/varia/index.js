@@ -1,6 +1,7 @@
 // library for converting from varia.run data structures to data structures for this app
 import { invert, startCase } from 'lodash'
 import { all_items, bosses, minibosses, ammo, energy, location_type_map } from '@/data/old'
+import objectives from './objectives'
 
 //   Morph: 'morph-ball',
 //   Super: 'super-missile',
@@ -32,7 +33,6 @@ const sm_to_varia = {
   'wave-beam': 'Wave',
   'x-ray': 'XRayScope',
   nothing: 'Nothing',
-  '': '',
 }
 const to_convert = [all_items, bosses, minibosses]
 
@@ -48,6 +48,7 @@ ammo.forEach((i) => (packs[i] = 5))
 energy.forEach((i) => (packs[i] = 1))
 
 const varia = {
+  objectives,
   sm_to_varia,
   varia_to_sm: invert(sm_to_varia),
   getGameState: (json_data, locked_warps) => {
@@ -72,14 +73,14 @@ const varia = {
   },
   variaToSm(varia_slug) {
     const slug = varia.varia_to_sm[varia_slug]
-    if (slug === undefined) {
+    if (!slug) {
       console.error(`Unknown varia_slug: ${varia_slug}`)
     }
     return slug || varia_slug
   },
   smToVaria(slug) {
     const varia_slug = varia.sm_to_varia[slug]
-    if (varia_slug === undefined) {
+    if (!varia_slug) {
       console.error(`Unknown slug: ${slug}`)
     }
     return varia_slug || slug
