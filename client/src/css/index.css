@@ -499,3 +499,15 @@ h3 {
     inset: -25%;
   }
 }
+
+.objective-form {
+  .form-group {
+    margin-bottom: 0
+  }
+  .form-group____root > .input-wrapper {
+    @apply flex flex-wrap gap-8;
+  }
+  .unrest-checkboxes {
+    @apply flex-col
+  }
+}

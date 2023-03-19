@@ -1,40 +1,71 @@
 <template>
   <div>
-    <div v-for="(row, i) in rows" :key="i">
+    <div v-for="row in rows" :key="row.text">
       <label>
-        <input type="checkbox" @input="$emit('toggle', i)" :checked="row.checked" />
+        <input type="checkbox" @input="$emit('check', row.text)" :checked="row.checked" />
         {{ row.text }}
       </label>
     </div>
-    <select @input="(e) => $emit('add', e.target.value)">
-      <optgroup v-for="(options, name) in groups" :key="name" :label="name">
-        <option v-for="option in options" :key="option" :disabled="objectives?.includes(option)">
-          {{ option }}
-        </option>
-      </optgroup>
-    </select>
+    <unrest-modal v-if="adding" @close="adding = false">
+      <unrest-form :schema="schema" class="objective-form" @change="change" :errors="errors" />
+    </unrest-modal>
   </div>
 </template>
 
 <script>
+import { flatten } from 'lodash'
+
 import varia from '@/varia'
+
+// lodash's startcase removes the % sign
+const startCase = (s) => s[0].toUpperCase() + s.slice(1)
+const toName = (i) => i.split(' ').slice(1).map(startCase).join(' ')
 
 export default {
   props: {
     objectives: Array,
     completed: Object,
   },
-  emits: ['toggle', 'add'],
+  emits: ['check', 'set-objectives'],
   data() {
-    return { groups: varia.objectives }
+    return { groups: varia.objectives, adding: true, errors: null }
   },
   computed: {
+    schema() {
+      const schema = {
+        type: 'object',
+        properties: {},
+      }
+
+      Object.entries(varia.objectives).forEach(([group, items]) => {
+        schema.properties[group] = {
+          type: 'array',
+          items: {
+            type: 'string',
+            enum: items,
+            enumNames: items.map(toName),
+          },
+        }
+      })
+      return schema
+    },
     rows() {
       const rows = []
       this.objectives?.forEach((text) => {
         rows.push({ text, checked: this.completed[text] })
       })
       return rows
+    },
+  },
+  methods: {
+    change(formData) {
+      const selected = flatten(Object.values(formData)).filter(Boolean)
+      if (selected.length > 5) {
+        this.errors = { __root: 'You can only select up to 5 objectives.' }
+      } else {
+        this.errors = null
+        this.$emit('set-objectives', selected)
+      }
     },
   },
 }

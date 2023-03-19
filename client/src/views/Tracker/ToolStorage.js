@@ -139,6 +139,7 @@ export default (component) => {
     clearLocations: () => window.clearLocs(component.is_plando),
     undoPortal: () => {
       if (!isAreaRando()) {
+        warn('Area randomiztion is off.')
         return
       }
       const startPoint = storage.state.selected_warp
@@ -153,9 +154,10 @@ export default (component) => {
     },
     clearPortals: () => {
       if (!isAreaRando()) {
+        warn('Area randomiztion is off.')
         return
       }
-      if (!confirm('Reset seed transitions ?')) {
+      if (!confirm('Reset seed transitions?')) {
         return
       }
       window.ajaxCall({ action: 'clear', scope: 'area' }, 'upload')
@@ -366,15 +368,15 @@ export default (component) => {
     const type = warp_type_map[id]
     const rando_settings = storage.getRandoSettings()
     if (type === 'warp' && !rando_settings.areaRando) {
-      warn('You cannot change this portal because area randomization is off.')
+      warn('You cannot change this portal because area rando is off.')
       return
     }
     if (type === 'boss' && !rando_settings.bossRando) {
-      warn('You cannot change this portal because boss randomization is off.')
+      warn('You cannot change this portal because boss rando is off.')
       return
     }
     if (type === 'escape' && !rando_settings.escapeRando) {
-      warn('You cannot change this portal because escape randomization is off.')
+      warn('You cannot change this portal because escape rando is off.')
       return
     }
     if (type === 'sand') {

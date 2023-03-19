@@ -3,8 +3,8 @@
     <objective-tracker
       :objectives="objectives"
       :completed="completed"
-      @toggle="toggle"
-      @add="add"
+      @check="check"
+      @set-objectives="(o) => (objectives = o)"
       @rm="rm"
     />
   </div>
@@ -18,14 +18,8 @@ export default {
     return { objectives: [], completed: {} }
   },
   methods: {
-    toggle(i) {
-      console.warn('TODO toggling', i)
-    },
-    add(objective) {
-      this.objectives.push(objective)
-    },
-    rm(objective) {
-      console.warn('TODO removing', objective)
+    check(objective) {
+      this.completed[objective] = !this.completed[objective]
     },
   },
 }

@@ -33,6 +33,7 @@ const sm_to_varia = {
   'wave-beam': 'Wave',
   'x-ray': 'XRayScope',
   nothing: 'Nothing',
+  '': '',
 }
 const to_convert = [all_items, bosses, minibosses]
 
