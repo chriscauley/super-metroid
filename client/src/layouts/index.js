@@ -1,5 +1,4 @@
 import { startCase, cloneDeep, memoize } from 'lodash'
-import { reactive } from 'vue'
 
 import { access_points, boss_doors, escape_doors, sand_doors, special_locations } from '@/data/old'
 import { getStaticUrl } from '@/utils'
@@ -125,11 +124,8 @@ const transformLogic = (layout, areas, logic) => {
   })
 }
 
-const transformRando = (layout, areas, rando_settings, tracker_settings) => {
-  if (tracker_settings.no_compact) {
-    return
-  }
-  if (!rando_settings.areaRando && layout.area_rando) {
+const transformCompact = (areas, compact_settings) => {
+  if (compact_settings.area) {
     areas.forEach((area) => {
       if (area.compact_xy) {
         area.x = area.compact_xy[0]
@@ -137,7 +133,7 @@ const transformRando = (layout, areas, rando_settings, tracker_settings) => {
       }
     })
   }
-  if (rando_settings.bossRando && layout.boss_rando) {
+  if (!compact_settings.boss) {
     areas.forEach((area) => {
       if (area.boss_dxy) {
         area.x += area.boss_dxy[0]
@@ -153,13 +149,12 @@ export default {
   streaming,
   'alt-streaming': alt_streaming,
   slugs: ['legacy', 'nordub', 'streaming', 'alt-streaming'],
-  getAreas(slug, rando_settings, tracker_settings) {
+  getAreas(slug, logic, compact_settings) {
     const layout = this[slug]
-    const { logic } = rando_settings
     layout.image_url = getStaticUrl(`/layouts/${logic}/${slug}/`)
     const areas = layout.areas.map((a) => prepArea(a, this[slug]))
 
-    transformRando(layout, areas, rando_settings, tracker_settings)
+    transformCompact(areas, compact_settings)
     transformLogic(layout, areas, logic)
     return areas
   },

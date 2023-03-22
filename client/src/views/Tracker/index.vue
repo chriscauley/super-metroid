@@ -92,7 +92,7 @@ export default {
   computed: {
     compact_settings() {
       const { areaRando, bossRando } = this.tool_storage.getRandoSettings()
-      const { no_compact } = this.tool_storage.tracker_settings
+      const { no_compact } = this.tool_storage.state.tracker_settings
       return {
         area: !no_compact && !areaRando,
         sand: !no_compact && !areaRando,
@@ -131,8 +131,8 @@ export default {
       return this.tool_storage.getCodeMap()
     },
     areas() {
-      const { tracker_settings, getRandoSettings } = this.tool_storage
-      return this.$store.layout.getAreas(getRandoSettings(), tracker_settings)
+      const { logic } = this.tool_storage.getRandoSettings()
+      return this.$store.layout.getAreas(logic, this.compact_settings)
     },
     skin() {
       return this.$route.query.skin || 'jpg'

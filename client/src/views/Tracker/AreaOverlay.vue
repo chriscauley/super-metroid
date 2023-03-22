@@ -110,6 +110,9 @@ export default {
     'area.x': 'redraw',
     'area.y': 'redraw',
   },
+  mounted() {
+    this.redraw()
+  },
   methods: {
     getEntityStyle(id, x, y) {
       const [dx, dy] = this.dxys[id] || [0, 0]
@@ -146,7 +149,11 @@ export default {
         i.source.tilesUrl?.includes(fname),
       )
       const point = new OSD.Point((x * scale) / max_width, (y * scale) / max_width)
-      item.setPosition(point, true)
+      if (!item) {
+        console.error('cannot find area tile', this.area.slug)
+      } else {
+        item.setPosition(point, true)
+      }
     },
   },
 }

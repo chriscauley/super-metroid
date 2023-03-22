@@ -6,7 +6,7 @@
     :editor_mode="!!tool_storage.state.tracker_settings.editor_mode"
     :osd_options="osd_options"
   />
-  <osd-html-overlay :viewer="osd_store.viewer" v-if="osd_store.viewer">
+  <osd-html-overlay :viewer="osd_store.viewer" v-if="!loading">
     <area-overlay
       v-for="area in areas"
       :key="area.slug"
@@ -52,6 +52,7 @@ export default {
   watch: {
     'tool_storage.state.rando_settings.areaRando': 'resetZoom',
     'tool_storage.state.rando_settings.bossRando': 'resetZoom',
+    'tool_storage.state.tracker_settings.no_compact': 'resetZoom',
     json_data: 'resetZoom',
   },
   mounted() {
@@ -124,7 +125,7 @@ export default {
       let ymax = -Infinity
       this.areas.forEach(({ x, y, width, height, slug }) => {
         if (slug.endsWith('__compact')) {
-          // "__compact" tubes are never on the edges
+          // "__compact" tubes are never on the edges (unless they are hidden and at 0,0)
           return
         }
         xmin = Math.min(xmin, x - 1)
@@ -136,26 +137,27 @@ export default {
       const S = W / 32
       const bounds = new Rect(xmin / S, ymin / S, (xmax - xmin) / S, (ymax - ymin) / S)
       this.osd_store.viewer.viewport.fitBounds(bounds, true)
-
-      // this.osd_store.viewer.viewport.fitBounds(new Rect(0, 0, 1, H / W), true)
-      this.osd_store.viewer.world._items.forEach((i) => {
-        if (i.source.tilesUrl?.includes('__compact')) {
-          // Hide the "compact only" elevators
-          i.setOpacity(this.compact_settings.area ? 1 : 0)
-        }
-      })
     },
     Movearea(area, { dx, dy }) {
       this.$store.layout.moveArea(area.slug, dx, dy)
     },
     finishedLoading() {
-      const remaining = this.osd_store.viewer.world._items.filter((i) => !i.getFullyLoaded())
-      this.loading = remaining.length === 0
+      const { _items } = this.osd_store.viewer.world
+      const remaining = _items.filter((i) => i.source.tilesUrl && !i.getFullyLoaded())
+      this.loading = remaining.length
       clearTimeout(this._timeout)
-      if (this.loading) {
-        this._timeout = setTimeout(this.finishedLoading, 100)
-      } else {
+
+      if (this.loading === 0) {
         this.resetZoom()
+        // this.osd_store.viewer.viewport.fitBounds(new Rect(0, 0, 1, H / W), true)
+        this.osd_store.viewer.world._items.forEach((i) => {
+          if (i.source.tilesUrl?.includes('__compact')) {
+            // Hide the "compact only" elevators
+            i.setOpacity(this.compact_settings.area ? 1 : 0)
+          }
+        })
+      } else {
+        this._timeout = setTimeout(this.finishedLoading, 100)
       }
     },
   },

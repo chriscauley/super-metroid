@@ -15,9 +15,9 @@ export default () => {
   storage.getWorld = () => {
     return layouts[storage.state.selected]
   }
-  storage.getAreas = (tracker_settings, rando_settings) => {
+  storage.getAreas = (logic, compact_settings) => {
     storage.watch()
-    return layouts.getAreas(storage.state.selected, tracker_settings, rando_settings)
+    return layouts.getAreas(storage.state.selected, logic, compact_settings)
   }
   storage.watch = () => storage.state.dirty
   storage.markDirty = () => {

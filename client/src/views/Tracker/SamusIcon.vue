@@ -5,8 +5,15 @@
 <script>
 import { kebabCase } from 'lodash'
 
+const compact_y_offset = {
+  9938: -9,
+  '962a': -14,
+  '95a8': -7,
+  '94cc': -7,
+}
+
 export default {
-  inject: ['json_data', 'tool_storage', 'areas'],
+  inject: ['json_data', 'tool_storage', 'areas', 'compact_settings'],
   data() {
     return { map_xy: null }
   },
@@ -54,6 +61,9 @@ export default {
         return null
       }
       this.map_xy = [area.x + left + x, area.y + top + y]
+      if (this.compact_settings.area) {
+        this.map_xy[1] += compact_y_offset[roomPointer] || 0
+      }
       const _round = (a) => a.map((n) => n.toFixed(1)).join(',')
       if (this.$route.query.debug) {
         this.$store.ui.state.tracker_debug = {

@@ -108,6 +108,10 @@ export default {
       }
       return this.area.doors.map(({ slug, name, x, y, rotated }) => {
         const active = slug === this.tool_storage.state.active_door
+        if (this.compact_settings.area && slug === 'LeCoudeBottom') {
+          // in compact mode this needs to be moved up to wrecked ship
+          y -= 7
+        }
         return {
           id: slug,
           title: name,

@@ -39,6 +39,10 @@ const tracker_settings = {
         type: 'string',
         enum: ['highlight-open', 'hide-closed'],
       },
+      no_compact: {
+        title: 'Never Compact',
+        type: 'boolean',
+      },
     },
   },
   initial: {
@@ -50,6 +54,7 @@ const tracker_settings = {
     entity_filter: undefined,
     visible_locations: 'full',
     room_visibility: 'highlight-open',
+    no_compat: false,
   },
 }
 
@@ -367,26 +372,16 @@ export default (component) => {
   storage.clickWarp = (id) => {
     const type = warp_type_map[id]
     const rando_settings = storage.getRandoSettings()
-    if (type === 'area' && !rando_settings.areaRando) {
-      warn('You cannot change this portal because area rando is off.')
-      return
-    }
-    if (type === 'boss' && !rando_settings.bossRando) {
-      warn('You cannot change this portal because boss rando is off.')
-      return
-    }
-    if (type === 'escape' && !rando_settings.escapeRando) {
-      warn('You cannot change this portal because escape rando is off.')
-      return
-    }
     if (type === 'sand') {
       unrest.ui.alert({
         text: 'Sand Hall warps connections are set by the area rando setting. If area randomization is on, the left sand pit connects to the door below botwoon. If not, the left sand hall door connects to the vanilla exit in West Maridia.',
         class: '-sm',
       })
-      return
-    }
-    if (['warp', 'boss', 'escape'].includes(type)) {
+    } else if (['area', 'boss', 'escape'].includes(type)) {
+      if (!rando_settings[type + 'Rando']) {
+        warn(`You cannot change this portal because ${type} rando is off.`)
+        return
+      }
       const { selected_warp } = storage.state
       const { warps } = component.game_state
       if (selected_warp === id) {
