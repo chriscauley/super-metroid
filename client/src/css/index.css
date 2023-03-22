@@ -156,6 +156,9 @@ html, body, #app {
       inset: -10%;
     }
   }
+  &.-compact {
+    display: none;
+  }
 }
 
 @keyframes borderBlink {

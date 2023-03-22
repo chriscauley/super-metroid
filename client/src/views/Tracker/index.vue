@@ -95,6 +95,8 @@ export default {
       const { no_compact } = this.tool_storage.tracker_settings
       return {
         area: !no_compact && !areaRando,
+        sand: !no_compact && !areaRando,
+        escape: !no_compact && !areaRando,
         boss: !no_compact && !bossRando,
       }
     },

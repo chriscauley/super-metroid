@@ -51,6 +51,7 @@ export default {
   },
   watch: {
     'tool_storage.state.rando_settings.areaRando': 'resetZoom',
+    'tool_storage.state.rando_settings.bossRando': 'resetZoom',
     json_data: 'resetZoom',
   },
   mounted() {
