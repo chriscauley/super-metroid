@@ -33,7 +33,7 @@ const { Rect } = openseadragon
 export default {
   name: 'TrackerViewer',
   components: { AreaOverlay, SamusIcon, WarpConnections },
-  inject: ['tool_storage'],
+  inject: ['tool_storage', 'compact_settings', 'json_data'],
   props: {
     areas: Array,
   },
@@ -48,6 +48,10 @@ export default {
     wrapper_class() {
       return [this.loading && '-loading']
     },
+  },
+  watch: {
+    'tool_storage.state.rando_settings.areaRando': 'resetZoom',
+    json_data: 'resetZoom',
   },
   mounted() {
     this.$store.state.osd_store = this.osd_store
@@ -64,6 +68,11 @@ export default {
       return this.$store.layout.getWorld().image_url + filename
     },
     addCorners() {
+      this.osd_store.viewer.addHandler('canvas-drag', (e) => {
+        if (e.originalEvent.target.classList.contains('unrest-draggable')) {
+          e.preventDefaultAction = true
+        }
+      })
       this.osd_store.viewer.addOnceHandler('tile-loaded', this.addImages)
       const { selected } = this.$store.layout.state
       if (selected === 'streaming') {
@@ -106,19 +115,46 @@ export default {
       this.resetZoom()
     },
     resetZoom() {
-      const { width, height } = this.$store.layout.getWorld().root
-      const H = height / width
-      this.osd_store.viewer.viewport.fitBounds(new Rect(0, 0, 1, H), true)
+      const { width: W } = this.$store.layout.getWorld().root
+
+      let xmin = Infinity
+      let xmax = -Infinity
+      let ymin = Infinity
+      let ymax = -Infinity
+      this.areas.forEach(({ x, y, width, height, slug }) => {
+        if (slug.endsWith('__compact')) {
+          // "__compact" tubes are never on the edges
+          return
+        }
+        xmin = Math.min(xmin, x - 1)
+        xmax = Math.max(xmax, x + width + 1)
+        ymin = Math.min(ymin, y - 3)
+        ymax = Math.max(ymax, y + height + 1)
+      })
+
+      const S = W / 32
+      const bounds = new Rect(xmin / S, ymin / S, (xmax - xmin) / S, (ymax - ymin) / S)
+      this.osd_store.viewer.viewport.fitBounds(bounds, true)
+
+      // this.osd_store.viewer.viewport.fitBounds(new Rect(0, 0, 1, H / W), true)
+      this.osd_store.viewer.world._items.forEach((i) => {
+        if (i.source.tilesUrl?.includes('__compact')) {
+          // Hide the "compact only" elevators
+          i.setOpacity(this.compact_settings.area ? 1 : 0)
+        }
+      })
     },
-    moveArea(area, { dx, dy }) {
+    Movearea(area, { dx, dy }) {
       this.$store.layout.moveArea(area.slug, dx, dy)
     },
     finishedLoading() {
       const remaining = this.osd_store.viewer.world._items.filter((i) => !i.getFullyLoaded())
-      this.loading = !!remaining.length
+      this.loading = remaining.length === 0
       clearTimeout(this._timeout)
       if (this.loading) {
         this._timeout = setTimeout(this.finishedLoading, 100)
+      } else {
+        this.resetZoom()
       }
     },
   },

@@ -1,4 +1,5 @@
 import { startCase, cloneDeep, memoize } from 'lodash'
+import { reactive } from 'vue'
 
 import { access_points, boss_doors, escape_doors, sand_doors, special_locations } from '@/data/old'
 import { getStaticUrl } from '@/utils'
@@ -72,6 +73,9 @@ const prepArea = (area, layout) => {
   area = cloneDeep(area)
   const isRotated = (slug) => slug.match(rotated_warp_regexp)
   area.name = prepName(area.slug)
+  if (area.slug.includes('__compact')) {
+    area.name = ''
+  }
 
   area.warps = area.warps.map(([slug, x, y]) => {
     const name = prepName(slug)
@@ -121,16 +125,41 @@ const transformLogic = (layout, areas, logic) => {
   })
 }
 
+const transformRando = (layout, areas, rando_settings, tracker_settings) => {
+  if (tracker_settings.no_compact) {
+    return
+  }
+  if (!rando_settings.areaRando && layout.area_rando) {
+    areas.forEach((area) => {
+      if (area.compact_xy) {
+        area.x = area.compact_xy[0]
+        area.y = area.compact_xy[1]
+      }
+    })
+  }
+  if (rando_settings.bossRando && layout.boss_rando) {
+    areas.forEach((area) => {
+      if (area.boss_dxy) {
+        area.x += area.boss_dxy[0]
+        area.y += area.boss_dxy[1]
+      }
+    })
+  }
+}
+
 export default {
   legacy,
   nordub,
   streaming,
   'alt-streaming': alt_streaming,
   slugs: ['legacy', 'nordub', 'streaming', 'alt-streaming'],
-  getAreas(slug, logic) {
+  getAreas(slug, rando_settings, tracker_settings) {
     const layout = this[slug]
+    const { logic } = rando_settings
     layout.image_url = getStaticUrl(`/layouts/${logic}/${slug}/`)
     const areas = layout.areas.map((a) => prepArea(a, this[slug]))
+
+    transformRando(layout, areas, rando_settings, tracker_settings)
     transformLogic(layout, areas, logic)
     return areas
   },
@@ -147,14 +176,20 @@ export default {
     entity[1] = x
     entity[2] = y
   },
-  moveArea(layout_slug, area_slug, dx, dy) {
-    const area = this[layout_slug].areas.find((area) => area.slug === area_slug)
+  moveArea(layout_slug, area_slug, dx, dy, tool_storage) {
+    const layout = this[layout_slug]
+    const area = layout.areas.find((area) => area.slug === area_slug)
     if (!area) {
       throw `Unable to locate area: ${area_slug}`
     }
-    area.x += dx
-    area.y += dy
-    return [area.x, area.y]
+    if (tool_storage.getRandoSettings().areaRando) {
+      area.x = area.x + dx
+      area.y = area.y + dy
+    } else {
+      area.compact_xy = area.compact_xy || [area.x, area.y]
+      area.compact_xy[0] += dx
+      area.compact_xy[1] += dy
+    }
   },
   moveTitle(layout_slug, area_slug, dx, dy, logic) {
     const area = this[layout_slug].areas.find((area) => area.slug === area_slug)

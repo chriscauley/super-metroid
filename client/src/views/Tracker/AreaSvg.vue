@@ -23,7 +23,7 @@ const getSvgRooms = (json_data) => {
 }
 
 export default {
-  inject: ['json_data', 'tool_storage'],
+  inject: ['json_data', 'tool_storage', 'compact_settings'],
   props: {
     area: Object,
     extra_path: Array,

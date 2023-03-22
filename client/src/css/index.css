@@ -63,6 +63,12 @@ html, body, #app {
   @apply fixed;
 }
 
+.tracker-view.-tool-admin_move_area {
+  .warp-connections, .area-warp, .location-marker, .area-door {
+    display: none;
+  }
+}
+
 .tracker-view .item-tracker__wrapper {
   @apply absolute left-0;
   top: 3rem;
@@ -178,6 +184,9 @@ html, body, #app {
       transform: translate(-50%, -50%);
       z-index: 200;
     }
+  }
+  .fa.fa-edit {
+    transform: translate(50%,-50%);
   }
 }
 

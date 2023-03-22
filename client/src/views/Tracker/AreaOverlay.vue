@@ -8,12 +8,7 @@
       @click-door="tool_storage.clickDoor"
     />
     <div class="area-overlay__title" :style="style.title">
-      <drag-anchor
-        v-if="moving_area"
-        v-model="dxys.__root"
-        :osd_store="osd_store"
-        @done="moveArea"
-      />
+      <unrest-draggable v-if="moving_area" @drag="dragArea" class="fa fa-arrows drag-anchor" />
       <drag-anchor
         v-if="moving_title"
         v-model="dxys.__title"
@@ -38,7 +33,7 @@ import { getGridUrl } from '@/utils'
 
 export default {
   components: { AreaBox, DragAnchor },
-  inject: ['osd_store', 'tool_storage', 'json_data', 'game_state'],
+  inject: ['osd_store', 'tool_storage', 'json_data', 'game_state', 'compact_settings'],
   props: {
     area: Object,
     show_image: Boolean,
@@ -70,6 +65,9 @@ export default {
       return this.$store.layout.getWorld().root
     },
     style() {
+      if (!this.compact_settings.area && this.area.slug.endsWith('__compact')) {
+        return { display: 'none' }
+      }
       const invert = !!this.$route.query.debug
       const { width, x = 0, y = 0 } = this.area
       const { root } = this
@@ -108,6 +106,10 @@ export default {
       return 'admin_move_title' === tool
     },
   },
+  watch: {
+    'area.x': 'redraw',
+    'area.y': 'redraw',
+  },
   methods: {
     getEntityStyle(id, x, y) {
       const [dx, dy] = this.dxys[id] || [0, 0]
@@ -118,18 +120,33 @@ export default {
         top: `${100 * _(y, dy)}%`,
       }
     },
-    moveArea([dx, dy]) {
-      const { width: max_width, scale } = this.root
-      const [x, y] = this.$store.layout.moveArea(this.area.slug, dx / scale, dy / scale)
-      const fname = this.area.slug + '.png'
-      const item = this.osd_store.viewer.world._items.find((i) => i.source.url?.includes(fname))
-      const point = new OSD.Point((x * scale) / max_width, (y * scale) / max_width)
-      item.setPosition(point, true)
+    dragArea(e) {
+      let [dx, dy] = e._drag.last_dxy
+      if (dx === 0 && dy === 0) {
+        return
+      }
+      const viewer = this.osd_store.viewer
+      const viewer_zoom = viewer.viewport.getZoom()
+      const zoom = viewer.world.getItemAt(0).viewportToImageZoom(viewer_zoom)
+      const { scale } = this.root
+      dx = dx / (zoom * scale)
+      dy = dy / (zoom * scale)
+      this.$store.layout.moveArea(this.area.slug, dx, dy, this.tool_storage)
     },
     moveTitle([dx, dy]) {
       const { scale } = this.root
       const { logic } = this.tool_storage.getRandoSettings()
       this.$store.layout.moveTitle(this.area.slug, dx / scale, dy / scale, logic)
+    },
+    redraw() {
+      const { x, y } = this.area
+      const { width: max_width, scale } = this.root
+      const fname = this.area.slug + '_files'
+      const item = this.osd_store.viewer.world._items.find((i) =>
+        i.source.tilesUrl?.includes(fname),
+      )
+      const point = new OSD.Point((x * scale) / max_width, (y * scale) / max_width)
+      item.setPosition(point, true)
     },
   },
 }

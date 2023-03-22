@@ -396,7 +396,7 @@ export const all_locations = flatten([
 export const warp_type_map = {}
 all_locations.forEach((loc) => (warp_type_map[loc] = 'location'))
 boss_doors.forEach((door) => (warp_type_map[door] = 'boss'))
-access_points.forEach((door) => (warp_type_map[door] = 'warp'))
+access_points.forEach((door) => (warp_type_map[door] = 'area'))
 sand_doors.forEach((door) => (warp_type_map[door] = 'sand'))
 escape_doors.forEach((door) => (warp_type_map[door] = 'escape'))
 

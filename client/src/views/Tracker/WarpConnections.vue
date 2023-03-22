@@ -74,7 +74,7 @@ export const getWarpColor = (warp1, warp2, index, is_portal) => {
 }
 
 export default {
-  inject: ['game_state', 'json_data', 'tool_storage', 'areas'],
+  inject: ['game_state', 'json_data', 'tool_storage', 'areas', 'compact_settings'],
   computed: {
     texts() {
       const out = []
@@ -84,6 +84,9 @@ export default {
       this.areas.forEach((area) => {
         area.warps.forEach((warp) => {
           const [x, y] = this.entity_xys[warp.slug]
+          if (this.hideWarpBecauseCompact(warp)) {
+            return
+          }
           const attrs = {
             title: warp.slug,
             id: `warp-text_${warp.slug}`,
@@ -166,6 +169,9 @@ export default {
       const hover_target = this.tool_storage.state._hovering_warp
       pairs.forEach(([warp1, warp2], index) => {
         const types = [warp_type_map[warp1], warp_type_map[warp2]]
+        if (this.hideTypesBecauseCompact(types)) {
+          return
+        }
         const is_escape = types.includes('escape')
         const is_sand = types.includes('sand')
         if (is_escape && !is_nordub) {
@@ -253,6 +259,12 @@ export default {
         class: type + '-connections__circle',
         fill: color,
       }
+    },
+    hideTypesBecauseCompact(types) {
+      return types.find((type) => this.compact_settings[type])
+    },
+    hideWarpBecauseCompact(warp) {
+      return this.compact_settings[warp.type]
     },
   },
 }

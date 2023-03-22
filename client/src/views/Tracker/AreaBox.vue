@@ -29,7 +29,7 @@ import { getWarpColor } from './WarpConnections.vue'
 
 export default {
   components: { AreaSvg, LocationMarker },
-  inject: ['json_data', 'tool_storage', 'game_state'],
+  inject: ['json_data', 'tool_storage', 'game_state', 'compact_settings'],
   props: {
     area: Object,
     size: null,
@@ -91,6 +91,7 @@ export default {
           `area-warp -${type} -color-${warp_colors[slug].replace('#', '')}`,
           rotated && '-rotated',
           selected_warp === slug && '-selected',
+          this.compact_settings[type] && '-compact',
         ],
         style: this.getEntityStyle(x, y),
         'data-type': 'warp',

@@ -367,7 +367,7 @@ export default (component) => {
   storage.clickWarp = (id) => {
     const type = warp_type_map[id]
     const rando_settings = storage.getRandoSettings()
-    if (type === 'warp' && !rando_settings.areaRando) {
+    if (type === 'area' && !rando_settings.areaRando) {
       warn('You cannot change this portal because area rando is off.')
       return
     }

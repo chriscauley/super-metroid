@@ -3,6 +3,9 @@ import legacy from '../legacy'
 import svg_coords from './svg_coords'
 
 export default {
+  areas,
+  area_rando: true,
+  boss_rando: true,
   svg_coords,
   root: {
     scale: 32,
@@ -10,6 +13,5 @@ export default {
     height: 1632,
     round: 0.5,
   },
-  areas,
   extra_classes: { ...legacy.extra_classes },
 }

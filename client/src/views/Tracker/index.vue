@@ -23,8 +23,8 @@
       </template>
     </unrest-toolbar>
     <tracker-viewer :areas="areas" :key="selected_layout + tool_storage.getRandoSettings().logic" />
-    <div v-if="$store.layout.state.dirty" class="dirty-layout" @click="$store.layout.saveAreas">
-      <div class="btn -primary">Save Areas</div>
+    <div v-if="$store.layout.state.dirty" class="dirty-layout">
+      <div class="btn -primary" @click="$store.layout.saveLoose">Save Areas</div>
     </div>
     <div class="tracker-view__key-stack">
       <span v-if="selected_key"> {{ selected_key }} + </span>
@@ -75,6 +75,7 @@ export default {
       osd_store: computed(() => this.osd_store), // TODO osd_storage, not osd_store
       tool_storage: computed(() => this.tool_storage),
       areas: computed(() => this.areas),
+      compact_settings: computed(() => this.compact_settings),
     }
   },
   data() {
@@ -89,6 +90,14 @@ export default {
     }
   },
   computed: {
+    compact_settings() {
+      const { areaRando, bossRando } = this.tool_storage.getRandoSettings()
+      const { no_compact } = this.tool_storage.tracker_settings
+      return {
+        area: !no_compact && !areaRando,
+        boss: !no_compact && !bossRando,
+      }
+    },
     selected_layout() {
       return this.$store.layout.state.selected
     },
@@ -120,7 +129,8 @@ export default {
       return this.tool_storage.getCodeMap()
     },
     areas() {
-      return this.$store.layout.getAreas(this.tool_storage.getRandoSettings().logic)
+      const { tracker_settings, getRandoSettings } = this.tool_storage
+      return this.$store.layout.getAreas(getRandoSettings(), tracker_settings)
     },
     skin() {
       return this.$route.query.skin || 'jpg'

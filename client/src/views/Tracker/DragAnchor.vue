@@ -13,7 +13,9 @@ export default {
     drag(e) {
       const [x0, y0] = e._drag.xy_start
       const [x1, y1] = e._drag.xy
-      const zoom = this.osd_store.viewer.viewport.getZoom()
+      const viewer = this.osd_store.viewer
+      const viewer_zoom = viewer.viewport.getZoom()
+      const zoom = viewer.world.getItemAt(0).viewportToImageZoom(viewer_zoom)
       this.$emit('update:modelValue', [(x1 - x0) / zoom, (y1 - y0) / zoom])
     },
     dragend() {

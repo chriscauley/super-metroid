@@ -155,10 +155,10 @@
     "warps": [],
     "doors": [],
     "gpss": [],
-    "title_dxy": [0, 0],
+    "title_dxy": [0, 8.395989974937343],
     "mirror_title_dxy": [0, 0],
     "compact_only": true,
-    "compact_xy": [0, 0]
+    "compact_xy": [70.21748541733349, 10.46201941835935]
   },
   {
     "slug": "green-brinstar",
@@ -224,10 +224,10 @@
     "warps": [],
     "doors": [],
     "gpss": [],
-    "title_dxy": [0, 0],
+    "title_dxy": [0.5156249999999999, 9.851562499999998],
     "mirror_title_dxy": [0, 0],
     "compact_only": true,
-    "compact_xy": [0, 0]
+    "compact_xy": [17.21781537969928, 9.465427966165413]
   },
   {
     "slug": "kraid",
@@ -368,10 +368,10 @@
     "warps": [],
     "doors": [],
     "gpss": [],
-    "title_dxy": [0, 0],
+    "title_dxy": [0.0390625, 13.268190006265662],
     "mirror_title_dxy": [0, 0],
     "compact_only": true,
-    "compact_xy": [0, 0]
+    "compact_xy": [45.20792214912282, 8.45786340852131]
   },
   {
     "slug": "ridley",

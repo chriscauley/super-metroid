@@ -15,9 +15,9 @@ export default () => {
   storage.getWorld = () => {
     return layouts[storage.state.selected]
   }
-  storage.getAreas = (logic) => {
+  storage.getAreas = (tracker_settings, rando_settings) => {
     storage.watch()
-    return layouts.getAreas(storage.state.selected, logic)
+    return layouts.getAreas(storage.state.selected, tracker_settings, rando_settings)
   }
   storage.watch = () => storage.state.dirty
   storage.markDirty = () => {
@@ -27,8 +27,8 @@ export default () => {
     layouts.moveEntity(storage.state.selected, entity, dx, dy)
     storage.markDirty()
   }
-  storage.moveArea = (area_slug, dx, dy) => {
-    const xy = layouts.moveArea(storage.state.selected, area_slug, dx, dy)
+  storage.moveArea = (area_slug, dx, dy, tool_storage) => {
+    const xy = layouts.moveArea(storage.state.selected, area_slug, dx, dy, tool_storage)
     storage.markDirty()
     return xy
   }
@@ -36,7 +36,7 @@ export default () => {
     layouts.moveTitle(storage.state.selected, area_slug, dx, dy, logic)
     storage.markDirty()
   }
-  storage.saveAreas = () => {
+  storage.saveLoose = () => {
     const { areas } = layouts[storage.state.selected]
     saveFile(JSON.stringify(areas, null, 2), 'areas.json')
     storage.state.dirty = null
