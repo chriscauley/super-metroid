@@ -12,7 +12,7 @@
 
 .varia-picker__items {
   @apply flex flex-wrap gap-1;
-  min-width: 500px;
+  min-width: 43.5rem;
 }
 
 .varia-picker__item-group {

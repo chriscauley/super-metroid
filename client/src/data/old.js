@@ -31,6 +31,7 @@ const items = [
   'speed-booster',
   'grappling-beam',
   'x-ray',
+  'screw-attack',
 ]
 
 const nothing = ['nothing']
