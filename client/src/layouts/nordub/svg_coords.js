@@ -582,6 +582,14 @@ export default {
       [3, 1],
     ],
   },
+  'red-brinstar__compact': {
+    redBrinstarElevatorSvg: [
+      [1, 14.02],
+      [2, 14.02],
+      [2, 0],
+      [1, 0],
+    ],
+  },
   'red-brinstar': {
     redBrinstarElevatorSvg: [
       [14, 0],
@@ -730,6 +738,14 @@ export default {
       [6, 1],
       [7, 1],
       [7, 0],
+    ],
+  },
+  'green-brinstar__compact': {
+    greenBrinstarElevatorSvg: [
+      [1, 0],
+      [1, 9],
+      [2, 9],
+      [2, 0],
     ],
   },
   'green-brinstar': {
@@ -1006,6 +1022,14 @@ export default {
       [7, 14],
     ],
     'CrabTunnelSvg-3-8-0-5-6-6-0-4-2': [],
+  },
+  'east-maridia__compact': {
+    leCoudeRightSvg: [
+      [1, 0],
+      [1, 7.02],
+      [2, 7.02],
+      [2, 0],
+    ],
   },
   'east-maridia': {
     SpringBallSvg: [
