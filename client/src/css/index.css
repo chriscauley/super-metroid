@@ -59,6 +59,11 @@ html, body, #app {
   }
 }
 
+.tracker-view.-debug-svg .area-box__svg.-highlight-open path {
+  display: block;
+  fill: rgba(255, 0, 0, 0.5);
+}
+
 .tracker-toolbar {
   @apply fixed;
 }

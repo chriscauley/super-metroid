@@ -1,5 +1,5 @@
 <template>
-  <div :style="style.wrapper" class="area-overlay">
+  <div :style="style.wrapper" :class="wrapper_class">
     <area-box
       :area="area"
       size="100%"
@@ -61,13 +61,14 @@ export default {
         pointerEvents: 'none',
       }
     },
+    wrapper_class() {
+      const compact = !this.compact_settings.area && this.area.slug.endsWith('__compact')
+      return ['area-overlay', compact && '-compact']
+    },
     root() {
       return this.$store.layout.getWorld().root
     },
     style() {
-      if (!this.compact_settings.area && this.area.slug.endsWith('__compact')) {
-        return { display: 'none' }
-      }
       const invert = !!this.$route.query.debug
       const { width, x = 0, y = 0 } = this.area
       const { root } = this
@@ -142,17 +143,20 @@ export default {
       this.$store.layout.moveTitle(this.area.slug, dx / scale, dy / scale, logic)
     },
     redraw() {
-      const { x, y } = this.area
+      const { x, y, slug } = this.area
       const { width: max_width, scale } = this.root
-      const fname = this.area.slug + '_files'
+      const fname = slug + '_files'
       const item = this.osd_store.viewer.world._items.find((i) =>
         i.source.tilesUrl?.includes(fname),
       )
-      const point = new OSD.Point((x * scale) / max_width, (y * scale) / max_width)
       if (!item) {
-        console.error('cannot find area tile', this.area.slug)
+        console.error('cannot find area tile', slug)
       } else {
+        const point = new OSD.Point((x * scale) / max_width, (y * scale) / max_width)
         item.setPosition(point, true)
+        if (slug.endsWith('__compact')) {
+          item.setOpacity(this.compact_settings.area ? 1 : 0)
+        }
       }
     },
   },

@@ -143,11 +143,13 @@ export default {
       const { tool } = this.tool_storage.state.selected
       const layout = this.$store.layout.state.selected
       const { logic } = this.tool_storage.getRandoSettings()
+      const { debug } = this.$route.query
       document.body.dataset.variaLogic = logic
       return [
         `tracker-view -layout-${layout} -tool-${tool} -logic-${logic}`,
         { large_locations, large_warps, large_doors },
         this.is_plando && entity_filter && `-entity-filter-${entity_filter}`,
+        debug && `-debug-${debug}`,
       ]
     },
     locked_warps() {

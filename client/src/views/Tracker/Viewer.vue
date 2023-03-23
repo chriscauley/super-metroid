@@ -70,6 +70,8 @@ export default {
       return this.$store.layout.getWorld().image_url + filename
     },
     addCorners() {
+      this.loading = true
+      this.item_count = this.areas.length + 4 // 4 corners
       this.osd_store.viewer.addHandler('canvas-drag', (e) => {
         if (e.originalEvent.target.classList.contains('unrest-draggable')) {
           e.preventDefaultAction = true
@@ -101,7 +103,6 @@ export default {
       }
     },
     addImages() {
-      this.loading = true
       this.osd_store.viewer.addOnceHandler('tile-loaded', this.finishedLoading)
       this.areas.forEach((area) => {
         const { width: max_width, scale } = this.$store.layout.getWorld().root
@@ -144,10 +145,12 @@ export default {
     finishedLoading() {
       const { _items } = this.osd_store.viewer.world
       const remaining = _items.filter((i) => i.source.tilesUrl && !i.getFullyLoaded())
-      this.loading = remaining.length
+
+      // finishedLoading can fire before items are loaded or before addImages
+      this.loading = remaining.length !== 0 || _items.length < this.item_count
       clearTimeout(this._timeout)
 
-      if (this.loading === 0) {
+      if (!this.loading) {
         this.resetZoom()
         // this.osd_store.viewer.viewport.fitBounds(new Rect(0, 0, 1, H / W), true)
         this.osd_store.viewer.world._items.forEach((i) => {

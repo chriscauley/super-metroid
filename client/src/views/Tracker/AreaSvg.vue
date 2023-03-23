@@ -9,6 +9,9 @@
 
 <script>
 const getSvgRooms = (json_data) => {
+  if (!json_data) {
+    return {}
+  }
   // these aren't in varia's data so I added them manually
   const svg_rooms = { ...(json_data.svg_rooms || {}) }
   const collected = {}
@@ -48,7 +51,8 @@ export default {
       return { x, y }
     },
     paths() {
-      if (!this.json_data) {
+      const { debug } = this.$route.query
+      if (!this.json_data && !debug) {
         return null
       }
       const svg_rooms = getSvgRooms(this.json_data)
@@ -56,11 +60,12 @@ export default {
       if (this.extra_path) {
         entries.push(['unknownSvg', this.extra_path])
       }
+      const { logic } = this.tool_storage.getRandoSettings()
       const prep = ([id, coords]) => {
         if (!coords?.length) {
           return null
         }
-        if (this.json_data.logic === 'mirror') {
+        if (logic === 'mirror') {
           const { width } = this.area
           coords = coords.map(([x, y]) => [width - x, y])
         }
