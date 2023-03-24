@@ -2,7 +2,7 @@
   <unrest-popper class="varia-picker" placement="bottom" title="Choose new color" @click.stop>
     <div>
       <div class="varia-picker__title">Choose door new color for:</div>
-      <div>{{ door_id }}</div>
+      <div class="varia-picker__selected">{{ door_id }}</div>
     </div>
     <div class="varia-picker__colors">
       <div v-for="color in colors" :key="color.value">

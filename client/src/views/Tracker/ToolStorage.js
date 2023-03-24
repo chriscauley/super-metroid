@@ -309,7 +309,6 @@ export default (component) => {
     if (action === 'add' && locName === 'MotherBrain') {
       alert('SEE YOU NEXT MISSION')
     }
-    storage.state.active_location = null
   }
 
   storage.clickLocation = (id) => {
@@ -323,6 +322,7 @@ export default (component) => {
         // in tracker or clicked plando boss
         const action = visited ? 'remove' : 'add'
         setVariaLocation(action, id)
+        storage.state.active_location = null
       }
     } else {
       addAction(['click-location', id])
@@ -335,11 +335,11 @@ export default (component) => {
         if (old_item) {
           setVariaLocation('remove', locName)
         }
-        storage.state.active_location = null
       } else if (itemName !== old_item) {
         const action = old_item ? 'replace' : 'add'
         setVariaLocation(action, locName, itemName, hide)
       }
+      storage.state.active_location = null
     } else {
       warn('TODO client side item tracking')
     }

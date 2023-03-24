@@ -26,12 +26,12 @@ const items = [
   'morph-ball',
   'bomb',
   'spring-ball',
+  'screw-attack',
   'hi-jump-boots',
   'space-jump',
   'speed-booster',
   'grappling-beam',
   'x-ray',
-  'screw-attack',
 ]
 
 const nothing = ['nothing']
