@@ -90,6 +90,11 @@ html, body, #app {
   left: unset;
 }
 
+.tracker-view.-compact-area .item-tracker__wrapper {
+  @apply bottom-0;
+  top: unset;
+}
+
 .sm-portal {
   @apply inline-block relative text-white;
   width: 1em;

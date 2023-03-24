@@ -150,6 +150,7 @@ export default {
         { large_locations, large_warps, large_doors },
         this.is_plando && entity_filter && `-entity-filter-${entity_filter}`,
         debug && `-debug-${debug}`,
+        this.compact_settings.area && '-compact-area',
       ]
     },
     locked_warps() {
