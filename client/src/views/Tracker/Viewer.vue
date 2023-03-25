@@ -80,6 +80,7 @@ export default {
       this.osd_store.viewer.addOnceHandler('tile-loaded', this.addImages)
       const { selected } = this.$store.layout.state
       if (selected === 'streaming') {
+        this.item_count -= 4
         const url = this.getLayoutUrl('background.png')
         this.osd_store.viewer.addSimpleImage({ url })
       } else {
@@ -118,7 +119,13 @@ export default {
       this.resetZoom()
     },
     resetZoom() {
-      const { width: W } = this.$store.layout.getWorld().root
+      const { width: W, height: H } = this.$store.layout.getWorld().root
+      if (this.$store.layout.state.selected !== 'nordub') {
+        // nordub layout is the only one with compact settings
+        // everything else' bounds are set by the layout root
+        this.osd_store.viewer.viewport.fitBounds(new Rect(0, 0, 1, H / W), true)
+        return
+      }
 
       let xmin = Infinity
       let xmax = -Infinity
@@ -152,7 +159,6 @@ export default {
 
       if (!this.loading) {
         this.resetZoom()
-        // this.osd_store.viewer.viewport.fitBounds(new Rect(0, 0, 1, H / W), true)
         this.osd_store.viewer.world._items.forEach((i) => {
           if (i.source.tilesUrl?.includes('__compact')) {
             // Hide the "compact only" elevators

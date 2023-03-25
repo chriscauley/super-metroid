@@ -17,7 +17,7 @@ import toolbar from '@unrest/vue-toolbar'
 
 const LS_KEY = 'TRACKER_INVENTORY_v2'
 const initial = {
-  size: 'auto',
+  size: 'medium',
   position: 'auto',
 }
 
