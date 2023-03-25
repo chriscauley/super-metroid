@@ -7,7 +7,6 @@ import SmVue from 'sm-vue'
 import App from '@/App.vue'
 import site from '@/site'
 import store from '@/store'
-import '@/lib/autotracker'
 import router from '@/router'
 import components from '@/components'
 import unrest from '@unrest/vue'
@@ -15,7 +14,6 @@ import form from '@unrest/vue-form'
 
 import '@unrest/tailwind/dist.css'
 import '@/css/index.css'
-import '@/lib/autotracker'
 
 const app = createApp(App)
 app.use(site)

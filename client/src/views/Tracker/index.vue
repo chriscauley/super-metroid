@@ -23,6 +23,7 @@
       <div v-for="obj in completed_objectives" :key="obj">{{ obj }}</div>
     </div>
     <tracker-viewer :areas="areas" :key="selected_layout + tool_storage.getRandoSettings().logic" />
+    <auto-tracker />
     <div v-if="$store.layout.state.dirty" class="dirty-layout">
       <div class="btn -primary" @click="$store.layout.saveLoose">Save Areas</div>
     </div>
@@ -50,6 +51,7 @@ import { computed } from 'vue'
 
 import { saveFile } from '@/utils'
 import { location_type_map, subarea_by_area, vanilla_warps, varia } from 'sm-data'
+import AutoTracker from '@/components/AutoTracker/index.vue'
 import EditArea from './EditArea.vue'
 import ItemCounter from './ItemCounter.vue'
 import ItemTracker from './ItemTracker.vue'
@@ -65,6 +67,7 @@ import SeedSettings from './SeedSettings.vue'
 export default {
   name: 'TrackerView',
   components: {
+    AutoTracker,
     EditArea,
     ItemCounter,
     ItemTracker,
