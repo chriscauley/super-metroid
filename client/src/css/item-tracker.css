@@ -1,0 +1,82 @@
+.tracker-view .item-tracker__wrapper {
+  @apply absolute;
+  .tracker-toolbar {
+    display: none;
+    .dropdown-item {
+      text-align: left;
+    }
+  }
+  &:hover .tracker-toolbar {
+    display: block;
+  }
+}
+
+.tracker-view .item-tracker__wrapper {
+  &.-top.-left {
+    top: 2em;
+  }
+  &.-top.-right {
+    @apply top-0;
+  }
+  &.-right {
+    @apply right-0;
+  }
+  &.-bottom {
+    @apply bottom-0;
+  }
+  &.-left {
+    @apply left-0;
+  }
+}
+
+
+.tracker-view .item-tracker__wrapper {
+  &.-smallest {
+    .grid-tracker {
+      font-size: 1.5vw;
+    }
+    .pause-inventory {
+      --inventory-px: 0.6px;
+    }
+  }
+  &.-small {
+    .grid-tracker {
+      font-size: 2vw;
+    }
+    .pause-inventory {
+      --inventory-px: 0.8px;
+    }
+  }
+  &.-medium {
+    .grid-tracker {
+      font-size: 2.5vw;
+    }
+    .pause-inventory {
+      --inventory-px: 1px;
+    }
+  }
+  &.-large {
+    .grid-tracker {
+      font-size: 3vw;
+    }
+    .pause-inventory {
+      --inventory-px: 1.2px;
+    }
+  }
+  &.-larger {
+    .grid-tracker {
+      font-size: 3.5vw;
+    }
+    .pause-inventory {
+      --inventory-px: 1.4px;
+    }
+  }
+  &.-largest {
+    .grid-tracker {
+      font-size: 4vw;
+    }
+    .pause-inventory {
+      --inventory-px: 1.6px;
+    }
+  }
+}

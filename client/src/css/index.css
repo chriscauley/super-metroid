@@ -2,6 +2,7 @@
 @import './drop-list.css';
 @import './edit-area.css';
 @import './item-counter.css';
+@import './item-tracker.css';
 @import './grid-tracker.css';
 @import './golden-four.css';
 @import './location-marker.css';
@@ -72,27 +73,6 @@ html, body, #app {
   .warp-connections, .area-warp, .location-marker, .area-door {
     display: none;
   }
-}
-
-.tracker-view .item-tracker__wrapper {
-  @apply absolute left-0;
-  top: 3rem;
-  .grid-tracker {
-    font-size: 2.5vw;
-  }
-  .pause-inventory {
-    --inventory-px: 1px;
-  }
-}
-
-.tracker-view.-logic-mirror .item-tracker__wrapper {
-  @apply right-0 top-0;
-  left: unset;
-}
-
-.tracker-view.-compact-area .item-tracker__wrapper {
-  @apply bottom-0;
-  top: unset;
 }
 
 .sm-portal {
