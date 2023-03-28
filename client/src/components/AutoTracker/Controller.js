@@ -214,7 +214,10 @@ function resetLog() {
 let _id = 0
 const fmt = (s) => s.replace(/,/g, ', ')
 const log = {
-  error: () => (text) => log.append('\u274C ' + text),
+  error: (text) => {
+    log.append('\u274C ' + text)
+    window.$autotracker.state.error = text
+  },
   reset: () => (window.$autotracker.state.log = []),
   append: (text) => window.$autotracker.state.log.push({ text: fmt(text), id: _id++ }),
   info: (text) => window.$autotracker.state.info.push({ text: fmt(text), id: _id++ }),
@@ -268,10 +271,10 @@ function socketOnInitMessage(event) {
 
   if (window.$autotracker.state.status == stateEnum.listing) {
     if (results.length == 0) {
-      log.append('\u274C no device found')
+      log.error('no device found')
       closeSocket()
     } else if (results.length > 1) {
-      log.append('\u274C too many devices found, please connect only one')
+      log.error('too many devices found, please connect only one')
       closeSocket()
     } else {
       var deviceToAttach = results
@@ -334,7 +337,7 @@ function socketOnInitMessage(event) {
     initDataChain()
     askForData()
   } else {
-    log.append(`\u274C unknown receiving state ${window.$autotracker.state.status}`)
+    log.error(`unknown receiving state ${window.$autotracker.state.status}`)
     closeSocket()
   }
 }
@@ -351,7 +354,7 @@ function socketOnClose(event) {
   } else {
     // e.g. server process killed or network down
     // event.code is usually 1006 in this case
-    log.append('\u274C Connection died')
+    log.error('Connection died')
     log.info(`socketOnClose not clean: code=${event.code} reason=${event.reason}`)
   }
   window.$autotracker.setIcon('statusNA')
@@ -359,7 +362,7 @@ function socketOnClose(event) {
 }
 
 function socketOnError(_error) {
-  log.append('\u274C Connection error')
+  log.error('Connection error')
 
   // update state & interface
   window.$autotracker.setIcon('statusKO')
@@ -402,7 +405,7 @@ function cleanup(cleanExit) {
 function askForData() {
   // check current state
   if (window.$autotracker.state.status != stateEnum.looping) {
-    log.append(`\u274C Wrong state: ${window.$autotracker.state.status}`)
+    log.error(`Wrong state: ${window.$autotracker.state.status}`)
     closeSocket()
   } else {
     var metadata = dataToAsk[dataToAskChain[dataToAskStep]]
@@ -914,6 +917,7 @@ export default class AutoTracker {
       status: 0,
       log: [],
       info: [],
+      error: null,
     })
 
     window.$autotracker = this
@@ -951,8 +955,10 @@ export default class AutoTracker {
   }
 
   start = () => {
+    this.state.error = null
     if (!window.init) {
       log.error('You must initialize a seed first')
+      return
     }
     if (window.interfaceIsFrozen()) {
       log.error('Interface is frozen')

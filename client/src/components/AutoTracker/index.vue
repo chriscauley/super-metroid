@@ -1,20 +1,20 @@
 <template>
   <div class="auto-tracker">
     <div class="auto-tracker__actions btn-group">
+      <div class="auto-tracker__title">Auto Tracker</div>
       <button v-bind="play">
         <i :class="play.icon" />
       </button>
       <div class="btn -secondary">
         <i :class="status.icon" />
       </div>
-      <button class="btn -secondary" @click="window.startTheTour">
-        <i class="fa fa-question-circle" id="helpAutoTracker" />
+      <button class="btn -secondary" id="helpAutoTracker" @click="startTheTour">
+        <i class="fa fa-question-circle" />
       </button>
       <button v-for="button in log_buttons" :key="button.id" v-bind="button">
         {{ button.title }}
       </button>
     </div>
-    <div class="auto-tracker__title">Auto Tracker</div>
     <div v-if="log_page" :class="`virtual-list__wrapper ${locked ? '-locked' : ''}`">
       <button class="virtual-list__lock btn -primary" @click="unlock">
         <i :class="`fa fa-${locked ? 'un' : ''}lock`" />
@@ -28,6 +28,13 @@
         :data-component="TextLog"
         ref="list"
       />
+    </div>
+    <div
+      v-if="controller.state.error"
+      class="auto-tracker__error alert -error"
+      @click="controller.state.error = null"
+    >
+      Error: {{ controller.state.error }}
     </div>
   </div>
 </template>
@@ -107,6 +114,9 @@ export default {
       if (force || this.locked) {
         setTimeout(() => this.$refs.list?.scrollToBottom(), 0)
       }
+    },
+    startTheTour(event) {
+      window.startTheTour(event)
     },
   },
 }
