@@ -1,0 +1,55 @@
+.tracker-view .auto-tracker {
+  @apply absolute top-0 right-0;
+}
+
+.auto-tracker {
+  &__title {
+    color: white;
+    font-weight: bold;
+    text-aign: center;
+    text-transform: uppercase;
+  }
+  .-green {
+    color: #0F0;
+  }
+  .-red {
+    color: #F00
+  }
+  .-orange {
+    color: #F80;
+  }
+}
+
+.virtual-list {
+  @apply bg-gray-400;
+  height: 20rem;
+  overflow-y: auto;
+  &__wrapper {
+    @apply relative;
+  }
+  &.-locked {
+    pointer-events: none;
+  }
+}
+
+.virtual-list__lock {
+  @apply absolute;
+  left: 50%;
+  top: 100%;
+  transform: translate(-50%, 0)
+}
+
+.text-log {
+  @apply bg-gray-400 border-b border-gray-200 flex px-1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 300px;
+  &__index {
+    width: 40px;
+  }
+  &__text {
+    width: 250px;
+    white-space: break-spaces;
+  }
+}
