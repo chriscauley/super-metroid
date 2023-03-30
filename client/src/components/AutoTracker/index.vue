@@ -1,19 +1,19 @@
 <template>
   <div class="auto-tracker">
-    <div class="auto-tracker__actions btn-group">
+    <div class="auto-tracker__top">
+      <i :class="status_icon" />
       <div class="auto-tracker__title">Auto Tracker</div>
-      <button v-bind="play">
-        <i :class="play.icon" />
-      </button>
-      <div class="btn -secondary">
-        <i :class="status.icon" />
+      <div class="auto-tracker__actions btn-group">
+        <button v-bind="play">
+          <i :class="play.icon" />
+        </button>
+        <button class="btn -secondary" id="helpAutoTracker" @click="startTheTour">
+          <i class="fa fa-question-circle" />
+        </button>
+        <button v-for="button in log_buttons" :key="button.id" v-bind="button">
+          {{ button.title }}
+        </button>
       </div>
-      <button class="btn -secondary" id="helpAutoTracker" @click="startTheTour">
-        <i class="fa fa-question-circle" />
-      </button>
-      <button v-for="button in log_buttons" :key="button.id" v-bind="button">
-        {{ button.title }}
-      </button>
     </div>
     <div v-if="log_page" :class="`virtual-list__wrapper ${locked ? '-locked' : ''}`">
       <button class="virtual-list__lock btn -primary" @click="unlock">
@@ -79,12 +79,10 @@ export default {
     logs() {
       return this.controller.state[this.log_page]
     },
-    status() {
+    status_icon() {
       const { icon } = this.controller.state
       const color = colors[icon]
-      return {
-        icon: `fa fa-circle -${color}`,
-      }
+      return `fa fa-circle auto-tracker__status -${color}`
     },
     log_buttons() {
       const { log_page, controller } = this

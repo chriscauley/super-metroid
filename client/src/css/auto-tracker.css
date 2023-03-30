@@ -3,20 +3,26 @@
 }
 
 .auto-tracker {
+  &__top {
+    @apply flex items-center gap-2;
+  }
   &__title {
     @apply flex items-center pr-2;
     color: white;
     font-weight: bold;
     text-transform: uppercase;
   }
-  .-green {
-    color: #0F0;
-  }
-  .-red {
-    color: #F00
-  }
-  .-orange {
-    color: #F80;
+  &__status {
+    color: white;
+    &.-green {
+      color: #0F0;
+    }
+    &.-red {
+      color: #F00
+    }
+    &.-orange {
+      color: #F80;
+    }
   }
 }
 
