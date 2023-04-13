@@ -20,7 +20,7 @@
 <script>
 const icon_groups = {
   sm: [],
-  smv: ['smv-icon -door'],
+  smv: ['smv-icon -door', 'smv-icon -map-cursor -blink'],
   gps: [],
   smi: [
     'smi -auto',

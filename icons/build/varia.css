@@ -70,6 +70,32 @@
   background-image: url(./images/varia/door_icon.png);
 }
 
+.smv-icon.-map-cursor:before {
+  background-image: url(./images/varia/map-cursor.png);
+  inset: -50%;
+  z-index: 1;
+}
+.smv-icon.-map-cursor.-blink:before {
+  animation: 0.38s infinite map-cursor-blink;
+}
+
+@keyframes map-cursor-blink {
+  0%, 20% {
+    background-position: 0 0;
+  }
+  20.0001%, 40% {
+    background-position: 0 -100%;
+  }
+  40.0001%, 60% {
+    background-position: 0 -200%;
+  }
+  60.0001%, 80% {
+    background-position: 0 -100%;
+  }
+  80.0001%, 100% {
+    background-position: 0 0;
+  }
+}
 .smva-difficulty {
   background-size: 100% auto;
 }

@@ -372,6 +372,17 @@ body {
   }
 }
 
+.-layout-streaming, .-layout-alt-streaming, .-layout-legacy {
+  /* hide autotracker cursor on everything except nordub */
+  .smv-icon.-map-cursor {
+    display: none;
+  }
+}
+
+.smv-icon.-map-cursor:before {
+  inset: -20%;
+}
+
 .area-door {
   @apply absolute cursor-pointer;
   height: 100%;

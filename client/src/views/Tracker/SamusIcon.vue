@@ -1,5 +1,5 @@
 <template>
-  <div id="samusIcon" v-show="style" :style="style" />
+  <div class="smv-icon -map-cursor -blink" v-show="style" :style="style" />
 </template>
 
 <script>
