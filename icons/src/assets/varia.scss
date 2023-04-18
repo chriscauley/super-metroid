@@ -121,7 +121,7 @@ $varia-levels: break easy medium hard harder hardcore mania;
   }
 }
 
-.smva-difficulty.-nothing {
+.smva-difficulty.-nothing, .smva-difficulty.-noenergy {
   background-image: url(./images/varia/visited-boxes.png);
   image-rendering: unset;
   &:before {

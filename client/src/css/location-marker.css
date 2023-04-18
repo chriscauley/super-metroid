@@ -8,7 +8,7 @@
     filter: grayscale(1);
     inset: 10%;
   }
-  &.-nothing:before {
+  &.-nothing:before, &.-noenergy:before {
     display: none;
   }
 }

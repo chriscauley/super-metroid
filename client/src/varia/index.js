@@ -3,19 +3,6 @@ import { invert, startCase } from 'lodash'
 import { all_items, bosses, minibosses, ammo, energy, location_type_map } from '@/data/old'
 import objectives from './objectives'
 
-//   Morph: 'morph-ball',
-//   Super: 'super-missile',
-//   ETank: 'e-tank',
-//   Nothing: 'nothing',
-//   Gravity: 'gravity-suit',
-//   Varia: 'varia-suit',
-//   XRayScope: 'x-ray',
-//   PowerBomb: 'power-bomb',
-//   ScrewAttack: 'screw-attack',
-//   Kraid: 'kraid',
-//   Ridley: 'Ridley
-// }
-
 const sm_to_varia = {
   'charge-beam': 'Charge',
   'energy-tank': 'ETank',
@@ -33,6 +20,7 @@ const sm_to_varia = {
   'wave-beam': 'Wave',
   'x-ray': 'XRayScope',
   nothing: 'Nothing',
+  noenergy: 'NoEnergy',
   '': '',
 }
 const to_convert = [all_items, bosses, minibosses]

@@ -222,11 +222,11 @@
   z-index: 2;
 }
 
-.smva-difficulty.-nothing {
+.smva-difficulty.-nothing, .smva-difficulty.-noenergy {
   background-image: url(./images/varia/visited-boxes.png);
   image-rendering: unset;
 }
-.smva-difficulty.-nothing:before {
+.smva-difficulty.-nothing:before, .smva-difficulty.-noenergy:before {
   display: none;
 }
 
