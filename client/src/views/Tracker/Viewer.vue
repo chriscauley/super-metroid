@@ -119,6 +119,13 @@ export default {
         })
       })
       this.resetZoom()
+      if (!this.$route.query.debug) {
+        this.osd_store.viewer.world._items.forEach(item => {
+          if (item.source.url?.startsWith('data:image/png')) {
+            item.setOpacity(0)
+          }
+        })
+      }
     },
     resetZoom() {
       const { width: W, height: H } = this.$store.layout.getWorld().root
