@@ -43,6 +43,9 @@ const tracker_settings = {
         title: 'Never Compact',
         type: 'boolean',
       },
+      show_grid: {
+        type: 'boolean',
+      },
     },
   },
   initial: {

@@ -1,0 +1,21 @@
+.streaming-bg {
+  @apply absolute inset-0;
+  bottom: unset;
+  height: 148.577235772%; /* calculated from image */
+  background: url(/layouts/streaming/background.png) no-repeat;
+  background-size: cover;
+  &.-grid {
+    background-image: url(/layouts/streaming/background_grid.png);
+  }
+}
+
+.-layout-streaming .area-warp {
+  &#kraidRoomIn,
+  &#phantoonRoomIn,
+  &#draygonRoomIn,
+  &#ridleyRoomIn {
+    height: 260%;
+    opacity: 0;
+    width: 260%;
+  }
+}

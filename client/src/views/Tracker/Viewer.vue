@@ -7,6 +7,7 @@
     :osd_options="osd_options"
   />
   <osd-html-overlay :viewer="osd_store.viewer" v-if="!loading">
+    <div v-if="bg" :class="bg" />
     <area-overlay
       v-for="area in areas"
       :key="area.slug"
@@ -48,6 +49,14 @@ export default {
     wrapper_class() {
       return [this.loading && '-loading']
     },
+    bg() {
+      const { selected } = this.$store.layout.state
+      if (selected === 'streaming') {
+        const { show_grid } = this.tool_storage.state.tracker_settings
+        return ['streaming-bg', show_grid && '-grid']
+      }
+      return null
+    },
   },
   watch: {
     'tool_storage.state.rando_settings.areaRando': 'resetZoom',
@@ -78,30 +87,23 @@ export default {
         }
       })
       this.osd_store.viewer.addOnceHandler('tile-loaded', this.addImages)
-      const { selected } = this.$store.layout.state
-      if (selected === 'streaming') {
-        this.item_count -= 4
-        const url = this.getLayoutUrl('background.png')
-        this.osd_store.viewer.addSimpleImage({ url })
-      } else {
-        const { scale, width: x_max, height: y_max } = this.$store.layout.getWorld().root
-        const url = getGridUrl(1, 1, scale)
-        const corners = [
-          [0, 0, 0],
-          [0, (y_max - scale) / x_max, 270],
-          [(x_max - scale) / x_max, (y_max - scale) / x_max, 180],
-          [(x_max - scale) / x_max, 0, 90],
-        ]
-        corners.forEach(([x, y, degrees]) => {
-          this.osd_store.viewer.addSimpleImage({
-            url,
-            x,
-            y,
-            width: scale / x_max,
-            degrees,
-          })
+      const { scale, width: x_max, height: y_max } = this.$store.layout.getWorld().root
+      const url = getGridUrl(1, 1, scale)
+      const corners = [
+        [0, 0, 0],
+        [0, (y_max - scale) / x_max, 270],
+        [(x_max - scale) / x_max, (y_max - scale) / x_max, 180],
+        [(x_max - scale) / x_max, 0, 90],
+      ]
+      corners.forEach(([x, y, degrees]) => {
+        this.osd_store.viewer.addSimpleImage({
+          url,
+          x,
+          y,
+          width: scale / x_max,
+          degrees,
         })
-      }
+      })
     },
     addImages() {
       this.osd_store.viewer.addOnceHandler('tile-loaded', this.finishedLoading)

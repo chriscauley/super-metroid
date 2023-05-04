@@ -1,4 +1,8 @@
 /* bg items */
+.streaming-bg {
+  z-index: -1;
+}
+
 .golden-four, .tracker-view__key-stack {
   z-index: 1;
 }

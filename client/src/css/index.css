@@ -5,6 +5,7 @@
 @import './item-tracker.css';
 @import './grid-tracker.css';
 @import './golden-four.css';
+@import './layouts.css';
 @import './location-marker.css';
 @import './pause-inventory.css';
 @import './seed-settings.css';
@@ -15,7 +16,7 @@
 @import './z-index.css';
 
 body {
-  margin: 0;
+  @apply bg-black m-0;
 }
 
 html, body, #app {
@@ -31,17 +32,19 @@ html, body, #app {
 }
 
 .tracker-view {
-  @apply relative;
-  height: 100%;
+  @apply h-full relative;
   #openseadragon-viewer {
-    @apply h-full w-full;
-    background: black;
+    @apply w-full;
+    height: calc(100% - 2.5rem); /* height of toolbar */
   }
   &__config .dropdown-items {
     width: 17rem;
   }
   .ur-toolbar {
     @apply absolute;
+    &.tracker-toolbar {
+      @apply relative;
+    }
   }
   &.-entity-filter-door, &.-entity-filter-item, &.-entity-filter-warp {
     .location-marker, .area-warp, .area-door, .warp-connections {
@@ -166,7 +169,7 @@ html, body, #app {
     @apply max-w-none pointer-events-none;
   }
   &__title {
-    @apply absolute font-bold text-xl text-white;
+    @apply absolute font-bold h-full text-xl text-white;
     text-transform: uppercase;
     white-space: nowrap;
     .drag-anchor {
@@ -180,6 +183,11 @@ html, body, #app {
   }
   .fa.fa-edit {
     transform: translate(50%,-50%);
+  }
+  &__title-img {
+    @apply absolute;
+    height: 50%;
+    top: 150%;
   }
 }
 
@@ -282,15 +290,21 @@ body {
 
 .warp-connections__text {
   font-size: 0.015px;
-  .-layout-streaming & {
-    font-size: 0.01px;
-  }
 }
 
 .warp-connections__subtext {
   font-size: 0.01px;
-  .-layout-streaming & {
+}
+
+.-layout-streaming {
+  .warp-connections__subtext {
     font-size: 0.007px;
+  }
+  .warp-connections__text {
+    font-size: 0.01px;
+  }
+  .area-box__svg text {
+    display: none;
   }
 }
 

@@ -20,6 +20,7 @@
         class="fa fa-edit link"
         @click="tool_storage.save({ editing: area.slug })"
       />
+      <img v-if="title_url" :src="title_url" class="area-overlay__title-img" />
     </div>
   </div>
 </template>
@@ -29,7 +30,7 @@ import OSD from 'openseadragon'
 import AreaBox from './AreaBox.vue'
 import DragAnchor from './DragAnchor.vue'
 
-import { getGridUrl } from '@/utils'
+import { getGridUrl, getStaticUrl } from '@/utils'
 
 export default {
   components: { AreaBox, DragAnchor },
@@ -45,6 +46,14 @@ export default {
   computed: {
     is_admin() {
       return this.$route.query.is_admin
+    },
+    title_url() {
+      if (this.$store.layout.state.selected === 'streaming') {
+        if (!['ridley', 'kraid', 'draygon', 'phantoon'].includes(this.area.slug)) {
+          return getStaticUrl(`/layouts/streaming/${this.area.slug}_name.png`)
+        }
+      }
+      return null
     },
     grid_style() {
       const { width, height } = this.area

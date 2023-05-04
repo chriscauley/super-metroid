@@ -1,19 +1,19 @@
 .tracker-view .item-tracker__wrapper {
   @apply absolute;
-  .tracker-toolbar {
+  .item-tracker__toolbar {
     display: none;
     .dropdown-item {
       text-align: left;
     }
   }
-  &:hover .tracker-toolbar {
+  &:hover .item-tracker__toolbar {
     display: block;
   }
 }
 
 .tracker-view .item-tracker__wrapper {
   &.-top.-left {
-    top: 2em;
+    top: 2.5rem;
   }
   &.-top.-right {
     @apply top-0;

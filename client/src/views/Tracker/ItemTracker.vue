@@ -1,6 +1,6 @@
 <template>
   <div :class="config.class" v-if="config.tagName">
-    <unrest-toolbar :storage="storage" class="tracker-toolbar" />
+    <unrest-toolbar :storage="storage" class="item-tracker__toolbar" />
     <component
       :is="config.tagName"
       :inventory="inventory"

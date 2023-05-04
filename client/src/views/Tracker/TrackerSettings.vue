@@ -31,6 +31,13 @@ export default {
 
       // Room visibility only affects controlled maps
       schema.properties.room_visibility.format = this.json_data ? undefined : 'hidden'
+      const { selected } = this.$store.layout.state
+      if (selected !== 'streaming') {
+        delete schema.properties.show_grid
+      }
+      if (selected !== 'nordub') {
+        delete schema.properties.no_compact
+      }
       return schema
     },
   },
