@@ -43,7 +43,8 @@
       ["FlywayRight", 0, 0],
       ["KihunterRight", 0, 0],
       ["LandingSiteTopRight", 0, 0]
-    ]
+    ],
+    "mirror_title_dxy": [2.0960573476702513, -2.3818833496252854]
   },
   {
     "slug": "crocomire",
@@ -64,7 +65,8 @@
     "doors": [
       ["PostCrocomireShaftRight", 0, 0],
       ["PostCrocomireUpperLeft", 0, 0]
-    ]
+    ],
+    "mirror_title_dxy": [2.33424568263278, 4.382665363310525]
   },
   {
     "slug": "draygon",
@@ -115,7 +117,8 @@
       ["ColosseumBottomRight", 0, 0],
       ["DraygonSaveRefillStation", 0, 0],
       ["PlasmaSparkBottom", 0, 0]
-    ]
+    ],
+    "mirror_title_dxy": [0.9051156728576085, 3.286999022482894]
   },
   {
     "slug": "green-brinstar",
@@ -162,7 +165,8 @@
       ["EtecoonEnergyTankLeft", 0, 0],
       ["GreenBrinstarMissileRefill", 0, 0],
       ["BigPinkRight", 0, 0]
-    ]
+    ],
+    "mirror_title_dxy": [0.3811013359400457, -2.810622352557837]
   },
   {
     "slug": "kraid",
@@ -193,7 +197,8 @@
       ["kraidRoomOut", 5.5, 0.5]
     ],
     "title_dxy": [-0.856406172070154, -2.277252520283729],
-    "doors": [["KraidRefillStation", 0, 0]]
+    "doors": [["KraidRefillStation", 0, 0]],
+    "mirror_title_dxy": [-0.9527533398501142, -3.3346366894754]
   },
   {
     "slug": "lower-norfair",
@@ -222,7 +227,8 @@
     "doors": [
       ["RedKihunterShaftBottom", 0, 0],
       ["WastelandLeft", 0, 0]
-    ]
+    ],
+    "mirror_title_dxy": [0.14291300097751714, 7.050374714890846]
   },
   {
     "slug": "phantoon",
@@ -266,7 +272,8 @@
       ["RedTowerLeft", 0, 0],
       ["RedBrinstarEnergyRefill", 0, 0],
       ["BelowSpazerTopRight", 0, 0]
-    ]
+    ],
+    "mirror_title_dxy": [0.6192896709025743, 7.098012381883351]
   },
   {
     "slug": "ridley",
@@ -294,7 +301,8 @@
       ["tourianEscapeRoom4TopRight", 5.5, 3.5]
     ],
     "title_dxy": [2.8539228075040652, -2.155002209564165],
-    "doors": []
+    "doors": [],
+    "mirror_title_dxy": [-1.0956663408276313, -2.572434017595308]
   },
   {
     "slug": "upper-norfair",
@@ -340,7 +348,8 @@
       ["DoubleChamberRight", 0, 0],
       ["CrocomireSpeedwayBottom", 0, 0],
       ["SingleChamberRight", 0, 0]
-    ]
+    ],
+    "mirror_title_dxy": [2.66770935158032, 5.66888237210818]
   },
   {
     "slug": "west-maridia",
@@ -370,7 +379,8 @@
       ["CrabShaftRight", 0, 0],
       ["FishTankRight", 0, 0],
       ["MainStreetBottomRight", 0, 0]
-    ]
+    ],
+    "mirror_title_dxy": [1.4291300097751714, 6.240534376018248]
   },
   {
     "slug": "wrecked-ship",
@@ -402,6 +412,7 @@
       ["WestOceanRight", 0, 0],
       ["ElectricDeathRoomTopLeft", 0, 0],
       ["WreckedShipMainShaftBottom", 0, 0]
-    ]
+    ],
+    "mirror_title_dxy": [0.28582600195503427, -2.7629846855653315]
   }
 ]
