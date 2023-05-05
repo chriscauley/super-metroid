@@ -1,3 +1,5 @@
+@import './tailwind.css';
+
 @import './area-box.css';
 @import './drop-list.css';
 @import './edit-area.css';
@@ -9,14 +11,18 @@
 @import './location-marker.css';
 @import './pause-inventory.css';
 @import './seed-settings.css';
-@import './tailwind.css';
 @import './varia-site.css';
 @import './varia-picker.css';
 @import './who-dat.css';
 @import './z-index.css';
 
 body {
-  @apply bg-black m-0;
+  @apply m-0;
+  background: rgb(3 7 18); /* tailwind gray-950 */
+}
+
+*, :before, :after {
+  border-color: var(--border);
 }
 
 html, body, #app {
@@ -312,17 +318,6 @@ body {
   stroke-width: 0.002px;
   fill: black;
 }
-
-.dropdown-items .form-group {
-  @apply border-b flex  items-center gap-4 m-0 p-4;
-  &:last-child {
-    @apply border-0;
-  }
-  &____root {
-    @apply border-0 block p-0;
-  }
-}
-
 
 .drag-anchor {
   @apply absolute cursor-pointer text-white;
