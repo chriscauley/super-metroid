@@ -120,8 +120,9 @@ export default {
       })
       this.resetZoom()
       if (!this.$route.query.debug) {
-        this.osd_store.viewer.world._items.forEach(item => {
+        this.osd_store.viewer.world._items.forEach((item) => {
           if (item.source.url?.startsWith('data:image/png')) {
+            // hide the corners
             item.setOpacity(0)
           }
         })

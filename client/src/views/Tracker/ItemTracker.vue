@@ -68,8 +68,22 @@ export default {
   methods: {
     getTools() {
       return [
-        { slug: 'position', icon: 'fa fa-th-large', items: POSITIONS },
-        { slug: 'size', icon: 'fa fa-arrows', items: SIZES },
+        {
+          slug: 'position',
+          icon: 'fa fa-th-large',
+          items: POSITIONS.map((item) => ({
+            text: item,
+            click: () => this.storage.save({ position: item }),
+          })),
+        },
+        {
+          slug: 'size',
+          icon: 'fa fa-arrows',
+          items: SIZES.map((item) => ({
+            text: item,
+            click: () => this.storage.save({ size: item }),
+          })),
+        },
       ]
     },
   },

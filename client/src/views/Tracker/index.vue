@@ -91,6 +91,10 @@ export default {
   },
   computed: {
     compact_settings() {
+      if (this.$store.layout.state.selected !== 'nordub') {
+        // only nordub has compact settings
+        return {}
+      }
       const { areaRando, bossRando } = this.tool_storage.getRandoSettings()
       const { no_compact } = this.tool_storage.state.tracker_settings
       return {

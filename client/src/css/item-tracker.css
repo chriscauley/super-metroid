@@ -12,6 +12,12 @@
 }
 
 .tracker-view .item-tracker__wrapper {
+  &.-top .item-tracker__toolbar {
+    top: 100%;
+  }
+  &.-bottom .item-tracker__toolbar {
+    bottom: 100%;
+  }
   &.-top.-left {
     top: 2.5rem;
   }
