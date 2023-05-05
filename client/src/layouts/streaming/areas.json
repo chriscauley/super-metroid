@@ -33,7 +33,7 @@
       ["morphBallRoomLeft", 4.5, 5.7],
       ["climbBottomLeft", 4.9, 2.5]
     ],
-    "title_dxy": [2.4378492292214062, -2.034452348769054],
+    "title_dxy": [2.4378492292214062, -2.3562762481401234],
     "doors": [
       ["ConstructionZoneRight", 0, 0],
       ["LandingSiteRight", 0, 0],
@@ -151,7 +151,7 @@
       ["noobBridgeRight", 7.1000000000000005, 8.4],
       ["greenBrinstarMainShaftTopLeft", 0.5, 3.5]
     ],
-    "title_dxy": [1.0955426627954714, -2.2904019059135936],
+    "title_dxy": [1.1874923483300626, -2.8880748618884367],
     "doors": [
       ["BigPinkBottomRight", 0, 0],
       ["BigPinkBottomLeft", 0, 0],
@@ -196,7 +196,7 @@
       ["warehouseZeelaRoomLeft", 0.5, 0.5],
       ["kraidRoomOut", 5.5, 0.5]
     ],
-    "title_dxy": [-0.856406172070154, -2.277252520283729],
+    "title_dxy": [-0.856406172070154, -2.76507367477155],
     "doors": [["KraidRefillStation", 0, 0]],
     "mirror_title_dxy": [-0.9527533398501142, -3.3346366894754]
   },
@@ -223,7 +223,7 @@
       ["lavaDiveRight", 1.5, 0.5],
       ["ridleyRoomOut", 2.9000000000000004, 4]
     ],
-    "title_dxy": [0.3882469239066624, -2.1264160382167985],
+    "title_dxy": [0.20434755283748, -2.878857158582447],
     "doors": [
       ["RedKihunterShaftBottom", 0, 0],
       ["WastelandLeft", 0, 0]
@@ -300,7 +300,7 @@
       ["goldenFour", 4.9, 0.7000000000000001],
       ["tourianEscapeRoom4TopRight", 5.5, 3.5]
     ],
-    "title_dxy": [2.8539228075040652, -2.155002209564165],
+    "title_dxy": [2.8539228075040652, -2.430851266167939],
     "doors": [],
     "mirror_title_dxy": [-1.0956663408276313, -2.572434017595308]
   },
@@ -335,7 +335,7 @@
       ["kronicBoostRoomBottomLeft", 6.67585922787194, 5.894864441229158],
       ["businessCenterMidLeft", 5, 1]
     ],
-    "title_dxy": [2.280488997501652, 5.545230712054167],
+    "title_dxy": [2.280488997501652, 5.82107976865794],
     "doors": [
       ["BubbleMountainTopRight", 0, 0],
       ["BusinessCenterBottomLeft", 0, 0],
@@ -407,7 +407,7 @@
       ["phantoonRoomOut", 3.6, 2],
       ["basementLeft", 2.1, 2]
     ],
-    "title_dxy": [-0.04705840294665142, -2.3716570385021063],
+    "title_dxy": [-0.04705840294665142, -2.739455780640471],
     "doors": [
       ["WestOceanRight", 0, 0],
       ["ElectricDeathRoomTopLeft", 0, 0],
