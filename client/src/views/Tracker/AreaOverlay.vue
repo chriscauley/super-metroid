@@ -50,7 +50,7 @@ export default {
     title_url() {
       if (this.$store.layout.state.selected === 'streaming') {
         if (!['ridley', 'kraid', 'draygon', 'phantoon'].includes(this.area.slug)) {
-          return getStaticUrl(`/layouts/streaming/${this.area.slug}_name.png`)
+          return getStaticUrl(`/layouts/common/streaming/${this.area.slug}_name.png`)
         }
       }
       return null

@@ -7,7 +7,7 @@
     :osd_options="osd_options"
   />
   <osd-html-overlay :viewer="osd_store.viewer" v-if="!loading">
-    <div v-if="bg" :class="bg" />
+    <div v-if="bg" v-bind="bg" />
     <area-overlay
       v-for="area in areas"
       :key="area.slug"
@@ -27,7 +27,7 @@ import osd from '@unrest/vue-openseadragon'
 import AreaOverlay from './AreaOverlay.vue'
 import SamusIcon from './SamusIcon.vue'
 import WarpConnections from './WarpConnections.vue'
-import { getGridUrl } from '@/utils'
+import { getGridUrl, getStaticUrl } from '@/utils'
 
 const { Rect } = openseadragon
 
@@ -53,7 +53,12 @@ export default {
       const { selected } = this.$store.layout.state
       if (selected === 'streaming') {
         const { show_grid } = this.tool_storage.state.tracker_settings
-        return ['streaming-bg', show_grid && '-grid']
+        const file = `background${show_grid ? '_grid' : ''}.png`
+        const url = getStaticUrl(`/layouts/common/streaming/${file}`)
+        return {
+          class: 'streaming-bg',
+          style: { backgroundImage: `url(${url})` },
+        }
       }
       return null
     },
