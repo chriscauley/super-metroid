@@ -49,6 +49,10 @@
   z-index: 100;
 }
 
+.auto-tracker {
+  z-index: 101;
+}
+
 .modal {
   z-index: 200;
 }
