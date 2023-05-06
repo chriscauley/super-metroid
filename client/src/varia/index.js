@@ -40,7 +40,7 @@ const varia = {
   objectives,
   sm_to_varia,
   varia_to_sm: invert(sm_to_varia),
-  getGameState: (json_data, locked_warps) => {
+  getGameState: (json_data, inventory, locked_warps) => {
     if (!json_data) {
       return null
     }
@@ -50,14 +50,25 @@ const varia = {
       warps: json_data.lines,
       locked_warps: { ...locked_warps },
     }
-    json_data.collectedItems.forEach((varia_slug) => {
-      const item_slug = varia.variaToSm(varia_slug)
-      if (packs[item_slug]) {
-        state.inventory[item_slug] = (state.inventory[item_slug] || 0) + packs[item_slug]
-      } else {
-        state.inventory[item_slug] = true
-      }
-    })
+    if (inventory) {
+      Object.entries(inventory).forEach(([varia_slug, value]) => {
+        const item_slug = varia.variaToSm(varia_slug)
+        if (packs[item_slug]) {
+          state.inventory[item_slug] = value * packs[item_slug]
+        } else {
+          state.inventory[item_slug] = true
+        }
+      })
+    } else {
+      json_data.collectedItems.forEach((varia_slug) => {
+        const item_slug = varia.variaToSm(varia_slug)
+        if (packs[item_slug]) {
+          state.inventory[item_slug] = (state.inventory[item_slug] || 0) + packs[item_slug]
+        } else {
+          state.inventory[item_slug] = true
+        }
+      })
+    }
     return state
   },
   variaToSm(varia_slug) {

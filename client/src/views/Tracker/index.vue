@@ -177,7 +177,8 @@ export default {
     },
     game_state() {
       const { locked_warps } = this
-      const varia_game_state = varia.getGameState(this.json_data, locked_warps)
+      const { inventory } = this.varia_state
+      const varia_game_state = varia.getGameState(this.json_data, inventory, locked_warps)
       if (varia_game_state) {
         // game state controlled by server
         return varia_game_state
