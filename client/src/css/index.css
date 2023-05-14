@@ -10,7 +10,9 @@
 @import './layouts.css';
 @import './location-marker.css';
 @import './pause-inventory.css';
+@import './resize-box.css';
 @import './seed-settings.css';
+@import './timer.css';
 @import './varia-site.css';
 @import './varia-picker.css';
 @import './who-dat.css';
@@ -47,7 +49,7 @@ html, body, #app {
     width: 17rem;
   }
   .ur-toolbar {
-    @apply absolute;
+    @apply absolute inline-block;;
     &.tracker-toolbar {
       @apply relative;
     }

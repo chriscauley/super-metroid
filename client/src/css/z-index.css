@@ -3,7 +3,9 @@
   z-index: -1;
 }
 
-.golden-four, .tracker-view__key-stack {
+.resize-box,
+.golden-four,
+.tracker-view__key-stack {
   z-index: 1;
 }
 
@@ -40,10 +42,13 @@
   }
 }
 
+.item-tracker__wrapper,
+.timer-widget,
 .varia-picker,
 .edit-area__click-mask {
   z-index: 50; /* above locations, warps, and doors */
 }
+
 
 .ur-toolbar {
   z-index: 100;

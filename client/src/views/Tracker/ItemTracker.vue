@@ -1,6 +1,6 @@
 <template>
-  <div :class="config.class" v-if="config.tagName">
-    <unrest-toolbar :storage="storage" class="item-tracker__toolbar" />
+  <div :class="config.class" v-if="config.tagName" :style="style">
+    <resize-box @update="resizeBox" v-if="edit_mode" />
     <component
       :is="config.tagName"
       :inventory="inventory"
@@ -13,17 +13,6 @@
 </template>
 
 <script>
-import toolbar from '@unrest/vue-toolbar'
-
-const LS_KEY = 'TRACKER_INVENTORY_v2'
-const initial = {
-  size: 'medium',
-  position: 'auto',
-}
-
-const POSITIONS = ['auto', 'top-left', 'top-right', 'bottom-left', 'bottom-right']
-const SIZES = ['smallest', 'small', 'medium', 'large', 'larger', 'largest']
-
 const tagname_lookup = {
   compact: 'grid-tracker',
   grid: 'grid-tracker',
@@ -36,55 +25,40 @@ export default {
     inventory: Object,
   },
   emits: ['add-item', 'toggle-item'],
-  data() {
-    const { getTools } = this
-    const storage = toolbar.ToolStorage(LS_KEY, { tools: getTools, initial })
-    return { storage }
-  },
   computed: {
     controlled() {
       const { json_data } = this
       return !json_data || json_data.seed !== 'seedless'
     },
+    edit_mode() {
+      return true
+    },
     config() {
       const { item_tracker } = this.tool_storage.state.tracker_settings
-      let { size, position } = this.storage.state
-      if (position === 'auto') {
-        if (this.tool_storage.getRandoSettings().logic === 'mirror') {
-          position = 'top-right'
-        } else {
-          position = 'top-left'
-        }
-      }
-      const [a, b] = position.split('-')
-      document.body.dataset.itemTrackerPosition = position
       return {
         compact: item_tracker === 'compact',
         tagName: tagname_lookup[item_tracker],
-        class: `item-tracker__wrapper -${size} -${a} -${b}`,
+        class: 'item-tracker__wrapper',
+      }
+    },
+    style() {
+      const { x, y, width } = this.$store.config.state['item-tracker'] || {}
+      if (!width) {
+        return {}
+      }
+      const columns = 5 + 2 * 0.2 + 4 * 0.1 // number of columns + padding + gap
+
+      return {
+        '--inventory-px': `${width / 256}px`,
+        fontSize: `${width / columns}px`,
+        left: `${x}px`,
+        top: `${y}px`,
       }
     },
   },
   methods: {
-    getTools() {
-      return [
-        {
-          slug: 'position',
-          icon: 'fa fa-th-large',
-          items: POSITIONS.map((item) => ({
-            text: item,
-            click: () => this.storage.save({ position: item }),
-          })),
-        },
-        {
-          slug: 'size',
-          icon: 'fa fa-arrows',
-          items: SIZES.map((item) => ({
-            text: item,
-            click: () => this.storage.save({ size: item }),
-          })),
-        },
-      ]
+    resizeBox(values) {
+      this.$store.config.save({ 'item-tracker': values })
     },
   },
 }

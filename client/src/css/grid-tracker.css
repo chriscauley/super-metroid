@@ -2,11 +2,11 @@
   &.smi-tracker {
     image-rendering: unset;
   }
-  padding: 0.3em;
+  padding: 0.2em;
   &__row {
     @apply flex justify-center;
-    gap: 0.3em;
-    padding-bottom: 0.3em;
+    gap: 0.1em;
+    padding-bottom: 0.2em;
     &:last-child {
       padding-bottom: 0;
     }
@@ -14,6 +14,7 @@
   .sm-item, .sm-g4-head {
     cursor: pointer;
   }
+
   .sm-item {
     @apply relative;
     .grid-tracker__numbers {

@@ -1,0 +1,26 @@
+.resize-box {
+  @apply border-2 cursor-default border-blue-400 absolute inset-0;
+  background: rgba(0,0,0,0.75);
+  &__target {
+    @apply absolute cursor-pointer;
+    color: #4299e1;
+    height: 1em;
+    width: 1em;
+    &[data-target="bottom-right"] {
+      @apply border-2 border-white w-6 h-6;
+      @apply bottom-0 right-0;
+      background: currentColor;
+    }
+    &[data-target="center"] {
+      @apply border-0 flex items-center justify-center;
+      cursor: grab;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .fa {
+      /* the target needs to receive the pointer event directly*/
+      pointer-events: none;
+    }
+  }
+}

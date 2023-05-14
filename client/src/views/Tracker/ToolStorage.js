@@ -8,6 +8,8 @@ import { default_door_colors, warp_type_map, default_area_keys, subarea_by_area 
 
 const warn = unrest.ui.toast.warning
 
+const { TOGGLE } = toolbar.ToolStorage
+
 const tracker_settings = {
   schema: {
     type: 'object',
@@ -104,6 +106,8 @@ const rando_settings = {
 }
 
 export default (component) => {
+  const edit_tool = { slug: 'edit_mode', icon: 'fa fa-edit', select: TOGGLE }
+
   const redo_stack = []
 
   const addAction = (action) => {
@@ -198,6 +202,7 @@ export default (component) => {
         { slug: 'download-rom', items: download_items, icon: 'fa fa-download' },
         component.$store.layout.getButton(component),
         { slug: 'help', icon: 'fa fa-question-circle', select: window.startTheTour },
+        edit_tool,
       ]
 
       const remove = (slug) => (tools = tools.filter((t) => t.slug !== slug))
@@ -232,6 +237,7 @@ export default (component) => {
       const select = () => window.displayPopup(component.is_plando)
       tools.unshift({ slug: 'play', select, icon: 'fa fa-play' })
     }
+    tools.push(edit_tool)
     return tools
   }
   const initial = {

@@ -1,10 +1,11 @@
 import axios from 'axios'
 import { reactive } from 'vue'
 
+import config from './config'
 import layout from './layout'
 import ui from './ui'
 
-const modules = { layout, ui }
+const modules = { config, layout, ui }
 
 const store = {
   install(app) {

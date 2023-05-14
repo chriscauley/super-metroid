@@ -1,8 +1,5 @@
 <template>
   <div :class="wrapper_class" :style="`--zoom: ${osd_store?.state.zoom || 1}`">
-    <div v-if="completed_objectives" class="objectivesPopup" @click="completed_objectives = null">
-      <div v-for="obj in completed_objectives" :key="obj">{{ obj }}</div>
-    </div>
     <unrest-toolbar :storage="tool_storage" class="tracker-toolbar">
       <template #right>
         <div class="btn-group" v-if="is_admin">
@@ -22,6 +19,9 @@
         <entity-filter v-if="is_plando" />
       </template>
     </unrest-toolbar>
+    <div v-if="completed_objectives" class="objectivesPopup" @click="completed_objectives = null">
+      <div v-for="obj in completed_objectives" :key="obj">{{ obj }}</div>
+    </div>
     <tracker-viewer :areas="areas" :key="selected_layout + tool_storage.getRandoSettings().logic" />
     <div v-if="$store.layout.state.dirty" class="dirty-layout">
       <div class="btn -primary" @click="$store.layout.saveLoose">Save Areas</div>
@@ -32,6 +32,7 @@
     </div>
     <item-counter :game_state="game_state" :areas="areas" />
     <item-tracker :inventory="game_state.inventory" @add-item="addItem" @toggle-item="toggleItem" />
+    <timer-widget />
     <seed-settings :json_data="json_data" />
     <Teleport to="body">
       <edit-area :area="editing_area" :tool_storage="tool_storage" />
@@ -49,6 +50,7 @@ import EntityFilter from './EntityFilter.vue'
 import ItemCounter from './ItemCounter.vue'
 import ItemTracker from './ItemTracker.vue'
 import RandoSettings from './RandoSettings.vue'
+import TimerWidget from '@/components/TimerWidget'
 import ToolStorage from './ToolStorage'
 import TrackerSettings from './TrackerSettings.vue'
 import TrackerViewer from './Viewer.vue'
@@ -64,6 +66,7 @@ export default {
     ItemTracker,
     RandoSettings,
     SeedSettings,
+    TimerWidget,
     TrackerSettings,
     TrackerViewer,
   },

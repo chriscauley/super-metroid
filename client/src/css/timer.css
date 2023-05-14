@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+.timer-widget {
+  @apply absolute bg-black text-white;
+  cursor: pointer;
+  left: calc(50% - 7.5vw);
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.5vw;
+  line-height: 1.4;
+  text-align: center;
+  top: 2px;
+  width: 5.25em;
+  &__controls {
+    @apply absolute flex left-0;
+    font-size: 0.6em;
+    margin: 2px -2px;
+    top: 100%;
+    transform: transform(0, -50%);
+  }
+  &.-controlled {
+    cursor: not-allowed;
+  }
+}

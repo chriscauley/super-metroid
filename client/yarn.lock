@@ -6410,6 +6410,11 @@ vary@~1.1.2:
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
   integrity sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==
 
+vue-click@^2.1.7:
+  version "2.1.7"
+  resolved "https://registry.yarnpkg.com/vue-click/-/vue-click-2.1.7.tgz#ba0850d687952af86786736aa172f333002bf1ca"
+  integrity sha512-/OEonHYtYNJq8NCko1Z5RmE5gzSY5+fdAAnI2mgygrd4TLuqQr/9ItYGa1xanAOQDqpSFnW/BbX2qVp6pIl7Eg==
+
 vue-eslint-parser@^8.0.1:
   version "8.3.0"
   resolved "https://registry.yarnpkg.com/vue-eslint-parser/-/vue-eslint-parser-8.3.0.tgz#5d31129a1b3dd89c0069ca0a1c88f970c360bd0d"
