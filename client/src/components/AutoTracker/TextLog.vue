@@ -4,6 +4,7 @@
       {{ index }}
     </div>
     <div class="text-log__text">
+      <span v-if="source.count > 1">{{ source.count }}x</span>
       {{ source.text }}
     </div>
   </div>

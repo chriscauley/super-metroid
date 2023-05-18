@@ -24,81 +24,86 @@
         :key="log_page"
         class="virtual-list"
         data-key="id"
-        :data-sources="logs"
+        :data-sources="current_logs"
         :data-component="TextLog"
         ref="list"
       />
     </div>
-    <div
-      v-if="controller.state.error"
-      class="auto-tracker__error alert -error"
-      @click="controller.state.error = null"
-    >
-      Error: {{ controller.state.error }}
+    <div v-if="error" class="auto-tracker__error alert -error" @click="error = null">
+      Error: {{ error }}
     </div>
   </div>
 </template>
 
 <script>
-import Controller from './Controller'
 import TextLog from './TextLog.vue'
 import VirtualList from 'vue3-virtual-scroll-list'
 
+const _fmt = (s) => s.replace(/,/g, ', ')
+let log_id = 0
 const colors = {
   statusOK: 'green',
   statusKO: 'red',
   statusNA: 'white',
   statusLoad: 'orange',
 }
+
 export default {
   name: 'AutoTracker',
   components: { VirtualList },
   data() {
-    // const controller = Controller(this);
-    // window.C = () => new Controller(this)
-    window.AT = this
     return {
-      controller: new Controller(this),
       TextLog,
       log_page: null,
       autoscroll: true,
       locked: true,
+      curState: 0,
+      icon: null,
+      error: null,
+      game_state: null,
+      logs: {
+        info: [],
+        log: [],
+      },
     }
   },
   computed: {
     play() {
-      const running = !!this.controller.state.status
-      const { start, stop } = this.controller
+      const running = this.inProgress()
+      const { startAutoTracker, stopAutoTracker } = window
       return {
         class: 'btn btn-default',
         title: `${running ? 'Stop' : 'Start'} the Auto Tracker`,
         icon: `fa fa-${running ? 'stop' : 'play'}`,
-        onClick: running ? stop : start,
+        onClick: running ? stopAutoTracker : startAutoTracker,
       }
     },
-    logs() {
-      return this.controller.state[this.log_page]
+    current_logs() {
+      return this.logs[this.log_page]
     },
     status_icon() {
-      const { icon } = this.controller.state
+      const { icon } = this
       const color = colors[icon]
       return `fa fa-circle auto-tracker__status -${color}`
     },
     log_buttons() {
-      const { log_page, controller } = this
+      const { log_page } = this
       return ['info', 'log'].map((slug, index) => ({
         index,
         id: `log-button__${slug}`,
-        title: `${slug}: ${controller.state[slug].length}`,
+        title: `${slug}: ${this.logs[slug].length}`,
         onClick: () => this.toggleLogs(slug),
         class: `btn -${slug === log_page ? 'primary' : 'secondary'}`,
       }))
     },
   },
   watch: {
-    'controller.state.log.length': function () {
+    'current_logs.length': function () {
       this.scrollToBottom()
     },
+  },
+  mounted() {
+    window.$autotracker = this
   },
   methods: {
     unlock() {
@@ -115,6 +120,35 @@ export default {
     },
     startTheTour(event) {
       window.startTheTour(event)
+    },
+    resetLog() {
+      this._old_log = this.logs.log
+      this._old_info = this.logs.info
+      this.logs.log = []
+      this.logs.info = []
+      this.log('info', 'logs reset')
+    },
+    setError(error) {
+      this.error = error
+      if (error) {
+        this.log('info', `\u274C ${error}`)
+      }
+    },
+    log(level, text) {
+      const logs = this.logs[level]
+      const last = logs[logs.length - 1]
+      if (last && last.text === text) {
+        last.count++
+      } else {
+        logs.push({
+          text: _fmt(text),
+          id: log_id++,
+          count: 1,
+        })
+      }
+    },
+    inProgress() {
+      return this.curState > 0
     },
   },
 }
