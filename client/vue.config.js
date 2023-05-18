@@ -24,12 +24,11 @@ module.exports = defineConfig({
   }
 })
 
-if (process.env.NODE_ENV === 'production') {
-  if (process.env.VUE_APP_SITE === 'varia') {
-    module.exports.publicPath = '/solver/static/client/'
-  } else {
-    module.exports.publicPath = '/super-metroid'
-  }
+
+if (process.env.VUE_APP_SITE === 'varia') {
+  module.exports.publicPath = '/solver/static/client/'
+} else if (process.env.NODE_ENV === 'production') {
+  module.exports.publicPath = '/super-metroid'
 }
 
 if (process.env.VARIA_WATCH) {
