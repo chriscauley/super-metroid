@@ -63,3 +63,13 @@
     white-space: break-spaces;
   }
 }
+
+.auto-tracker__debug {
+  @apply bg-gray-400;
+  ._row {
+    @apply flex;
+  }
+  ._label {
+    width: 85px;
+  }
+}

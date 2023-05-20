@@ -15,7 +15,13 @@
         </button>
       </div>
     </div>
-    <div v-if="log_page" :class="`virtual-list__wrapper ${locked ? '-locked' : ''}`">
+    <div v-if="log_page === 'debug'" class="auto-tracker__debug">
+      <div v-for="row in tracker_debug" :key="row[0]" class="_row">
+        <div class="_label">{{ row[0] }}</div>
+        <div class="_value">{{ row[1] }}</div>
+      </div>
+    </div>
+    <div v-else-if="log_page" :class="`virtual-list__wrapper ${locked ? '-locked' : ''}`">
       <button class="virtual-list__lock btn -primary" @click="unlock">
         <i :class="`fa fa-${locked ? 'un' : ''}lock`" />
         Autoscroll: {{ locked ? 'off' : 'on' }}
@@ -88,13 +94,17 @@ export default {
     },
     log_buttons() {
       const { log_page } = this
-      return ['info', 'log'].map((slug, index) => ({
+      return ['info', 'log', 'debug'].map((slug, index) => ({
         index,
         id: `log-button__${slug}`,
-        title: `${slug}: ${this.logs[slug].length}`,
+        title: slug,
         onClick: () => this.toggleLogs(slug),
         class: `btn -${slug === log_page ? 'primary' : 'secondary'}`,
       }))
+    },
+    tracker_debug() {
+      const { tracker_debug } = this.$store.ui.state
+      return Object.entries(tracker_debug || {})
     },
   },
   watch: {
