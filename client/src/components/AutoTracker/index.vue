@@ -2,7 +2,8 @@
   <div class="auto-tracker">
     <div class="auto-tracker__top">
       <div class="auto-tracker__title">
-        {{ game_state || "Auto Tracker" }}</div>
+        {{ game_state || 'Auto Tracker' }}
+      </div>
       <i :class="status_icon" />
       <div class="auto-tracker__actions btn-group">
         <button v-bind="play">
@@ -44,6 +45,7 @@
 
 <script>
 import { markRaw } from 'vue'
+import Controller from './Controller'
 
 import TextLog from './TextLog.vue'
 import VirtualList from 'vue3-virtual-scroll-list'
@@ -62,6 +64,7 @@ export default {
   components: { VirtualList },
   data() {
     return {
+      controller: new Controller(),
       TextLog: markRaw(TextLog),
       log_page: null,
       autoscroll: true,
