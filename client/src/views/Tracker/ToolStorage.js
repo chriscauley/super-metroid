@@ -56,7 +56,6 @@ const tracker_settings = {
     large_locations: false,
     large_warps: false,
     item_tracker: 'pause-menu',
-    entity_filter: undefined,
     visible_locations: 'full',
     room_visibility: 'highlight-open',
     no_compat: false,
@@ -473,21 +472,6 @@ export default (component) => {
 
   storage.clearArea = (area) => {
     addAction(['clear-area', area.slug])
-  }
-
-  storage.nextEntityFilter = () => {
-    const value = storage.state.entity_filter
-    const values = [undefined, 'door', 'warp', 'item']
-    const index = values.indexOf(value) + 1
-    storage.save({ entity_filter: values[index % values.length] })
-  }
-
-  storage.getEntityFilterDisplay = () => {
-    const value = storage.state.entity_filter
-    if (!value) {
-      return 'All'
-    }
-    return value.slice(0, 1).toUpperCase() + value.slice(1) + 's'
   }
 
   storage.getRandoSettings = () => {

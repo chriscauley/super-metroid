@@ -145,7 +145,8 @@ export default {
       return this.$route.query.skin || 'jpg'
     },
     wrapper_class() {
-      const { tracker_settings, entity_filter } = this.tool_storage.state
+      const { tracker_settings } = this.tool_storage.state
+      const { entity_filter } = this.$store.ui.state
       const { large_warps, large_locations, large_doors } = tracker_settings
       const { tool } = this.tool_storage.state.selected
       const layout = this.$store.layout.state.selected
