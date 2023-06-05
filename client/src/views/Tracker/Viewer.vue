@@ -1,22 +1,25 @@
 <template>
-  <osd-viewer
-    :class="wrapper_class"
-    :osd_store="osd_store"
-    @viewer-bound="addCorners"
-    :editor_mode="!!tool_storage.state.tracker_settings.editor_mode"
-    :osd_options="osd_options"
-  />
-  <osd-html-overlay :viewer="osd_store.viewer" v-if="!loading">
-    <div v-if="bg" v-bind="bg" />
-    <area-overlay
-      v-for="area in areas"
-      :key="area.slug"
-      :area="area"
-      @move-area="(data) => moveArea(area, data)"
+  <div :style="style">
+    <resize-box @update="resizeBox" />
+    <osd-viewer
+      :class="wrapper_class"
+      :osd_store="osd_store"
+      @viewer-bound="addCorners"
+      :editor_mode="!!tool_storage.state.tracker_settings.editor_mode"
+      :osd_options="osd_options"
     />
-    <warp-connections />
-    <samus-icon />
-  </osd-html-overlay>
+    <osd-html-overlay :viewer="osd_store.viewer" v-if="!loading">
+      <div v-if="bg" v-bind="bg" />
+      <area-overlay
+        v-for="area in areas"
+        :key="area.slug"
+        :area="area"
+        @move-area="(data) => moveArea(area, data)"
+      />
+      <warp-connections />
+      <samus-icon />
+    </osd-html-overlay>
+  </div>
 </template>
 
 <script>
@@ -46,6 +49,23 @@ export default {
     }
   },
   computed: {
+    style() {
+      const bounds = this.$store.config.state['viewer-bounds']
+      const { x, y, width, height } = bounds || {}
+      if (!bounds || height < 0) {
+        return {
+          position: 'absolute',
+          inset: 0,
+        }
+      }
+      return {
+        position: 'absolute',
+        top: `${y}px`,
+        left: `${x}px`,
+        width: `${width}px`,
+        height: `${height}px`,
+      }
+    },
     wrapper_class() {
       return [this.loading && '-loading']
     },
@@ -79,6 +99,9 @@ export default {
     window.removeEventListener('resize', this.resize)
   },
   methods: {
+    resizeBox(values) {
+      this.$store.config.save({ 'viewer-bounds': values })
+    },
     getLayoutUrl(filename) {
       return this.$store.layout.getWorld().image_url + filename
     },

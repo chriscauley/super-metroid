@@ -1,24 +1,23 @@
 <template>
-  <div v-if="tool_storage.state.edit_mode">
-    <unrest-draggable
-      class="resize-box"
-      @dragstart="dragstart"
-      @drag="drag"
-      @dragend="dragend"
-      @click.stop
-      ref="root"
-    >
-      <div class="resize-box__target" data-target="reset">
-        <i class="fa fa-undo" />
-      </div>
-      <div v-if="!noResize" class="resize-box__target" data-target="bottom-right" />
-      <div class="resize-box__target" data-target="center">
-        <i class="fa fa-arrows" />
-      </div>
-      <div class="resize-box__debug">{{ debug }}</div>
-    </unrest-draggable>
+  <unrest-draggable
+    class="resize-box"
+    @dragstart="dragstart"
+    @drag="drag"
+    @dragend="dragend"
+    @click.stop
+    ref="root"
+    v-if="tool_storage.state.edit_mode"
+  >
+    <div class="resize-box__target" data-target="reset">
+      <i class="fa fa-undo" />
+    </div>
+    <div v-if="!noResize" class="resize-box__target" data-target="bottom-right" />
+    <div class="resize-box__target" data-target="center">
+      <i class="fa fa-arrows" />
+    </div>
+    <div class="resize-box__debug">{{ debug }}</div>
     <slot />
-  </div>
+  </unrest-draggable>
 </template>
 
 <script>
