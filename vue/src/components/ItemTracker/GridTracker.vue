@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import worlds from './worlds'
 const rows = [
   ['energy-tank', 'reserve-tank', 'missile', 'super-missile', 'power-bomb'],
   ['charge-beam', 'ice-beam', 'wave-beam', 'spazer-beam', 'plasma-beam'],
@@ -20,11 +21,12 @@ const rows = [
 ]
 const packs = rows[0]
 
-const getNumbers = (value) => {
+const getNumbers = (value, multiplier) => {
   if (!value || typeof value !== 'number') {
     return null
   }
-  return value
+  const displayValue = multiplier ? value * multiplier : value
+  return displayValue
     .toString()
     .padStart(2, 0)
     .split('')
@@ -44,6 +46,7 @@ export default {
     controlled: Boolean,
     compact: Boolean,
     rows: Array,
+    world: String,
   },
   emits: ['add-item', 'toggle-item'],
   computed: {
@@ -51,7 +54,15 @@ export default {
       if (this.rows) {
         return this.rows
       }
-      const row_slugs = rows.slice().map((r) => r.slice())
+      let row_slugs = rows.slice().map((r) => r.slice())
+      const world_options = worlds[this.world]
+      if (world_options) {
+        row_slugs = row_slugs.map(
+          row => row.map(
+            slug => world_options[slug] || slug
+          )
+        )
+      }
       if (this.compact) {
         row_slugs[4].pop() // grappling-beam
         row_slugs[4].shift() // x-ray
@@ -60,12 +71,13 @@ export default {
       return row_slugs
     },
     prepped_rows() {
+      const world_options = worlds[this.world] || worlds.default
       return this.row_slugs.map((row) =>
         row.map((slug) => {
           const value = this.inventory[slug]
           return {
             slug,
-            numbers: getNumbers(value),
+            numbers: getNumbers(value, world_options._packs?.[slug]),
             attrs: {
               class: [getIcon(slug, value), value > 99 && '-three-digits'],
               id: `grid-tracker__${slug}`,

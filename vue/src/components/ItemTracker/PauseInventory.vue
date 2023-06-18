@@ -7,6 +7,8 @@
 </template>
 
 <script>
+import worlds from './worlds'
+
 const css = {
   item: (_class) => ({ class: _class }),
   group: (name, c) => [`pause-inventory__group -group-${name}`, c],
@@ -41,6 +43,7 @@ export default {
   props: {
     inventory: Object,
     controlled: Boolean,
+    world: String,
   },
   emits: ['add-item', 'toggle-item'],
   computed: {
@@ -79,11 +82,15 @@ export default {
       }
     },
     pack_numbers() {
-      return ['missile', 'super-missile', 'power-bomb'].map((name) => ({
-        name,
-        class: css.group(name),
-        children: css.numbers(this.inventory[name] || 0, name === 'missile' ? 3 : 2),
-      }))
+      const world = worlds[this.world] || worlds.default
+      return ['missile', 'super-missile', 'power-bomb'].map((name) => {
+        const number = this.inventory[name] * (world._packs?.[name] || 1)
+        return {
+          name,
+          class: css.group(name),
+          children: css.numbers(number || 0, name === 'missile' ? 3 : 2),
+        }
+      })
     },
     pack_controls() {
       const packs = ['missile', 'super-missile', 'power-bomb', 'energy-tank', 'reserve-tank']
