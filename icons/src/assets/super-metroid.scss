@@ -4,7 +4,7 @@
 @use "sass:string";
 @import "./variables.scss";
 
-.sm-item, .sm-block, .sm-cre-hex, .sm-ui, .sm-link, .sm-boss, .sm-icon, .sm-g4-head, .sm-map, .sm-map-boss, .sm-drop {
+.sm-item, .sm-block, .sm-cre-hex, .sm-ui, .sm-boss, .sm-icon, .sm-g4-head, .sm-map, .sm-map-boss, .sm-drop {
   display: inline-block;
   position: relative;
   height: 1em;

@@ -1,5 +1,6 @@
 docs/* binary
 docs/**/* binary
+vue/dist/* binary
 icons/build/* binary
 icons/build/**/* binary
 yarn.lock binary

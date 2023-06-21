@@ -148,7 +148,7 @@ export default {
   nordub,
   streaming,
   'alt-streaming': alt_streaming,
-  slugs: ['legacy', 'nordub', 'streaming', 'alt-streaming'],
+  slugs: ['nordub', 'streaming', 'alt-streaming'],
   getAreas(slug, logic, compact_settings) {
     const layout = this[slug]
     layout.image_url = getStaticUrl(`/layouts/${logic}/${slug}/`)

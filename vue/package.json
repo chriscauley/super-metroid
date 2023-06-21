@@ -3,6 +3,14 @@
   "license": "MIT",
   "version": "0.0.1",
   "type": "module",
+  "main": "./dist/sm-vue.umd.cjs",
+  "module": "./dist/sm-vue.js",
+  "exports": {
+    ".": {
+      "import": "./dist/sm-vue.js",
+      "require": "./dist/sm-vue.umd.cjs"
+    }
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
