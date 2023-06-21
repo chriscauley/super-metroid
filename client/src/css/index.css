@@ -45,9 +45,6 @@ html, body, #app {
     @apply w-full;
     height: calc(100% - 2.5rem); /* height of toolbar */
   }
-  &__config .dropdown-items {
-    width: 17rem;
-  }
   .ur-toolbar {
     @apply absolute inline-block;;
     &.tracker-toolbar {
@@ -68,6 +65,15 @@ html, body, #app {
   &.-entity-filter-warp .area-warp,
   &.-entity-filter-warp .warp-connections {
     display: block;
+  }
+}
+
+.tracker-view__config {
+  .dropdown-items {
+    width: 17rem;
+  }
+  ._hidden-objectives {
+    @apply border-t p-2;
   }
 }
 

@@ -21,17 +21,22 @@
           @change="tool_storage.save()"
         />
         <div v-if="objectives.length">
-          <h4 class="form-group">Objectives</h4>
-          <table class="table" style="width: 100%">
-            <tbody>
-              <tr v-for="objective in objectives" :key="objective.name">
-                <td>
-                  <i :class="objective.icon" />
-                  {{ objective.name }}
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          <div v-if="json_data?.objectivesHidden" class="_hidden-objectives">
+            Objectives Hidden: To reveal them you must visit the golden statues room.
+          </div>
+          <div v-else>
+            <h4 class="form-group">Objectives</h4>
+            <table class="table" style="width: 100%">
+              <tbody>
+                <tr v-for="objective in objectives" :key="objective.name">
+                  <td>
+                    <i :class="objective.icon" />
+                    {{ objective.name }}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </template>
