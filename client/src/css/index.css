@@ -72,9 +72,6 @@ html, body, #app {
   .dropdown-items {
     width: 17rem;
   }
-  ._hidden-objectives {
-    @apply border-t p-2;
-  }
 }
 
 .tracker-view.-debug-svg .area-box__svg.-highlight-open path {

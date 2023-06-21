@@ -21,9 +21,7 @@
           @change="tool_storage.save()"
         />
         <div v-if="objectives.length">
-          <div v-if="json_data?.objectivesHidden" class="_hidden-objectives">
-            Objectives Hidden: To reveal them you must visit the golden statues room.
-          </div>
+          <h4 class="form-group" v-if="json_data?.objectivesHidden">Objectives Hidden</h4>
           <div v-else>
             <h4 class="form-group">Objectives</h4>
             <table class="table" style="width: 100%">
