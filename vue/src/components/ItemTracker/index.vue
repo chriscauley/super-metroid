@@ -19,12 +19,13 @@ const tagname_lookup = {
 }
 
 export default {
+  name: 'ItemTracker',
   props: {
     inventory: Object,
     controlled: Boolean,
     compact: Boolean,
     format: String,
-    width: Number
+    width: Number,
   },
   computed: {
     tagName() {

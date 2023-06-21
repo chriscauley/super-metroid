@@ -9,7 +9,7 @@
         @add-item="add"
         :width="300"
         :world="world"
-        />
+      />
     </div>
     <div>
       <h2>Grid + Compact</h2>
@@ -21,7 +21,7 @@
         @add-item="add"
         :width="300"
         :world="world"
-        />
+      />
     </div>
     <div>
       <h2>Pause Inventory</h2>
@@ -32,7 +32,7 @@
         @add-item="add"
         :width="300"
         :world="world"
-        />
+      />
     </div>
     <div>
       <h2>Pause Inventory + controlled</h2>
@@ -44,7 +44,7 @@
         @add-item="add"
         :width="300"
         :world="world"
-        />
+      />
     </div>
   </div>
 </template>
@@ -60,7 +60,7 @@ export default {
     },
     add(slug, quantity) {
       this.inventory[slug] = (this.inventory[slug] || 0) + quantity
-    }
-  }
+    },
+  },
 }
 </script>

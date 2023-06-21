@@ -57,11 +57,7 @@ export default {
       let row_slugs = rows.slice().map((r) => r.slice())
       const world_options = worlds[this.world]
       if (world_options) {
-        row_slugs = row_slugs.map(
-          row => row.map(
-            slug => world_options[slug] || slug
-          )
-        )
+        row_slugs = row_slugs.map((row) => row.map((slug) => world_options[slug] || slug))
       }
       if (this.compact) {
         row_slugs[4].pop() // grappling-beam

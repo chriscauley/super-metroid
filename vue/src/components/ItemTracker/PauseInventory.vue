@@ -17,7 +17,10 @@ const css = {
 }
 
 css.separator = css.item('flex-grow')
-const range = (n) => Array(n || 0).fill().map((_,i) => i)
+const range = (n) =>
+  Array(n || 0)
+    .fill()
+    .map((_, i) => i)
 const energyTanks = (n, flag) => ({
   name: 'energy-tanks',
   children: range(n).map(() => css.item('smi -ietank')),
