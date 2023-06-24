@@ -5,12 +5,12 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build:client": "vue-cli-service build --dest build",
-    "build:css": "yarn build:sm && yarn build:smi",
-    "build:sm": "sass src/assets/sm.scss > build/super-metroid.css",
-    "build:smi": "sass src/assets/inventory.scss > build/inventory.css",
-    "build:smv": "sass src/assets/varia.scss > build/varia.css",
+    "build:css": "yarn build:sm && yarn build:smi && yarn build:smv",
+    "build:sm": "./bin/build super-metroid",
+    "build:smi": "./bin/build inventory",
+    "build:smv": "./bin/build varia",
     "build:images": "rsync -a src/assets/images build/",
-    "build": "yarn build:client && yarn build:css && yarn build:images && yarn build:smv",
+    "build": "yarn build:client && yarn build:css && yarn build:images",
     "lint": "eslint \"src/**/*\""
   },
   "devDependencies": {
@@ -37,5 +37,8 @@
     "last 2 versions",
     "not dead",
     "not ie 11"
-  ]
+  ],
+  "dependencies": {
+    "postcss-cli": "^10.1.0"
+  }
 }

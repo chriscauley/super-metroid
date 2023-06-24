@@ -1,0 +1,3 @@
+#! /bin/bash
+
+yarn -s sass src/assets/$1.scss | yarn postcss -o build/$1.css
