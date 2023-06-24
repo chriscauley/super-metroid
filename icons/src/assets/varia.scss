@@ -80,7 +80,13 @@
 }
 
 .smva-difficulty {
-  background-size: 100% auto;
+  &:after {
+    @apply absolute block inset-0;
+    content: "";
+    background-size: 100% auto;
+    background-image: url(./images/varia/difficulty-boxes.png);
+    z-index: 1;
+  }
   &:before {
     z-index: 2;
   }
@@ -88,20 +94,23 @@
 
 $varia-levels: break easy medium hard harder hardcore mania;
 .smva-difficulty {
-  background-image: url(./images/varia/difficulty-boxes.png);
   @for $i from 0 to length($varia-levels) {
     $name: nth($varia-levels, $i + 1);
     &.-difficulty-#{""+$name} {
-      background-position: 0 $i * -100%;
+      &:after {
+        background-position: 0 $i * -100%;
+      }
       &.-empty {
-        background-position: 0;
-        background-image: url("./images/varia/marker_#{$name}.gif");
-        &:hover {
+        &:after {
+          background-position: 0;
+          background-image: url("./images/varia/marker_#{$name}.gif");
+        }
+        &:hover:after {
           background-image: url(./images/varia/hover-boxes.png);
           background-position: 0 $i * -100%;
         }
       }
-      &.-empty.-is-major {
+      &.-empty.-is-major:after {
         background-position: 0;
         background-image: url("./images/varia/marker_#{$name}_major.gif");
       }
@@ -122,8 +131,10 @@ $varia-levels: break easy medium hard harder hardcore mania;
 }
 
 .smva-difficulty.-nothing, .smva-difficulty.-noenergy {
-  background-image: url(./images/varia/visited-boxes.png);
-  image-rendering: unset;
+  &:after {
+    background-image: url(./images/varia/visited-boxes.png);
+    image-rendering: unset;
+  }
   &:before {
     display:none;
   }
