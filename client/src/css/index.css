@@ -74,6 +74,16 @@ html, body, #app {
   }
 }
 
+.objective-settings__table {
+  max-height: calc(100vh - 150px);
+  overflow-y: auto;
+  .fa {
+    line-height: 0.8;
+    margin-right: 4px;
+    vertical-align: middle;
+  }
+}
+
 .tracker-view.-debug-svg .area-box__svg.-highlight-open path {
   display: block;
   fill: rgba(255, 0, 0, 0.5);

@@ -20,22 +20,6 @@
           :state="tool_storage.state.rando_settings"
           @change="tool_storage.save()"
         />
-        <div v-if="objectives.length">
-          <h4 class="form-group" v-if="json_data?.objectivesHidden">Objectives Hidden</h4>
-          <div v-else>
-            <h4 class="form-group">Objectives</h4>
-            <table class="table" style="width: 100%">
-              <tbody>
-                <tr v-for="objective in objectives" :key="objective.name">
-                  <td>
-                    <i :class="objective.icon" />
-                    {{ objective.name }}
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
       </div>
     </template>
   </unrest-dropdown>
@@ -53,12 +37,6 @@ export default {
     },
     locked() {
       return !!this.json_data
-    },
-    objectives() {
-      return Object.entries(this.json_data?.objectives || {}).map(([name, checked]) => ({
-        name,
-        icon: `fa fa-lg fa-${checked ? 'check-' : ''}square-o`,
-      }))
     },
   },
 }

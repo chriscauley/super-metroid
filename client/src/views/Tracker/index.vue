@@ -16,6 +16,7 @@
         </div>
         <tracker-settings />
         <rando-settings />
+        <objective-settings />
         <entity-filter v-if="is_plando" />
       </template>
     </unrest-toolbar>
@@ -49,6 +50,7 @@ import EditArea from './EditArea.vue'
 import EntityFilter from './EntityFilter.vue'
 import ItemCounter from './ItemCounter.vue'
 import ItemTracker from './ItemTracker.vue'
+import ObjectiveSettings from './ObjectiveSettings.vue'
 import RandoSettings from './RandoSettings.vue'
 import TimerWidget from '@/components/TimerWidget'
 import ToolStorage from './ToolStorage'
@@ -64,6 +66,7 @@ export default {
     EntityFilter,
     ItemCounter,
     ItemTracker,
+    ObjectiveSettings,
     RandoSettings,
     SeedSettings,
     TimerWidget,
