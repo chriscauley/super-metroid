@@ -329,7 +329,7 @@ export default (component) => {
       } else {
         // in tracker or clicked plando boss
         const action = visited ? 'remove' : 'add'
-        setVariaLocation(action, id)
+        setVariaLocation(action, id, id)
         storage.state.active_location = null
       }
     } else {
