@@ -106,6 +106,9 @@ $items: list.join($beams, $other_items);
 
 .grid-tracker {
   display: inline-block;
+  &.-controlled {
+    pointer-events: none;
+  }
   &.smi-tracker {
     image-rendering: unset;
   }
