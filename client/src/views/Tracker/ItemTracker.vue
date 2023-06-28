@@ -4,8 +4,8 @@
     <component
       :is="config.tagName"
       :inventory="inventory"
-      @toggle-item="(item) => $emit('toggle-item', item)"
-      @add-item="(item, amount) => $emit('add-item', item, amount)"
+      @toggle-item="(item) => !controlled && $emit('toggle-item', item)"
+      @add-item="(item, amount) => !controlled && $emit('add-item', item, amount)"
       :controlled="controlled"
       :compact="config.compact"
     />

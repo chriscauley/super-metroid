@@ -1,5 +1,5 @@
 <template>
-  <div class="grid-tracker smi-tracker">
+  <div :class="`grid-tracker smi-tracker ${controlled ? '-controlled' : ''}`">
     <div v-for="(row, i) in prepped_rows" :key="i" class="grid-tracker__row">
       <div v-for="col in row" :key="col.id" v-bind="col.attrs" @click="(e) => click(e, col)">
         <div v-if="col.numbers" class="grid-tracker__numbers">
