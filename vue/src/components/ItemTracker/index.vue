@@ -5,6 +5,8 @@
     :controlled="controlled"
     :compact="compact || format === 'compact'"
     :style="style"
+    @add-item="(item, amount) => !controlled && $emit('add-item', item, amount)"
+    @toggle-item="(item) => !controlled && $emit('toggle-item', item)"
   />
 </template>
 
@@ -27,6 +29,7 @@ export default {
     format: String,
     width: Number,
   },
+  emits: ['add-item', 'toggle-item'],
   computed: {
     tagName() {
       return tagname_lookup[this.format]
