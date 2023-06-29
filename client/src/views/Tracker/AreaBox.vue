@@ -15,7 +15,7 @@
       :key="location.slug"
       :location="location"
       :style="getEntityStyle(location.x, location.y)"
-      @click="$emit('click-location', location.slug)"
+      @click.stop="$emit('click-location', location.slug)"
     />
     <area-svg :area="area" :extra_path="extra_path" />
     <div v-for="item in misc_items" :key="item.id" v-bind="item" />
