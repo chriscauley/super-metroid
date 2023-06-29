@@ -21,6 +21,7 @@ const sm_to_varia = {
   'x-ray': 'XRayScope',
   nothing: 'Nothing',
   noenergy: 'NoEnergy',
+  'crystal-flash': 'CrystalFlash',
   '': '',
 }
 const to_convert = [all_items, bosses, minibosses]

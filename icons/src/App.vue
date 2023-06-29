@@ -40,6 +40,7 @@ const bosses = ['ridley', 'draygon', 'phantoon', 'kraid']
 const minibosses = ['spore-spawn', 'botwoon', 'crocomire', 'golden-torizo']
 bosses.forEach((b) => icon_groups.sm.push('sm-item -' + b))
 bosses.forEach((b) => icon_groups.sm.push('sm-item -inactive -' + b))
+icon_groups.sm.push('sm-item -crystal-flash')
 
 const all_bosses = [...bosses, ...minibosses, 'mother-brain']
 const levels = ['break', 'easy', 'medium', 'hard', 'harder', 'hardcore', 'mania']
