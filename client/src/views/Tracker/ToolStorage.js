@@ -273,6 +273,9 @@ export default (component) => {
       }
     }
     if (json_data) {
+      if (window.interfaceIsFrozen()) {
+        return
+      }
       window.addPortal(id, selected_warp)
     } else {
       addAction(['connect-warp', id, selected_warp])
@@ -283,6 +286,9 @@ export default (component) => {
   const disconnectWarp = (id, selected_warp) => {
     const { json_data } = component
     if (json_data) {
+      if (window.interfaceIsFrozen()) {
+        return
+      }
       window.removePortal(id, selected_warp)
     } else {
       addAction(['disconnect-warp', id, selected_warp])
@@ -339,6 +345,9 @@ export default (component) => {
 
   storage.updateLocationItem = (locName, itemName, old_item, hide) => {
     if (component.json_data) {
+      if (window.interfaceIsFrozen()) {
+        return
+      }
       if (itemName === '') {
         if (old_item) {
           setVariaLocation('remove', locName)
@@ -355,6 +364,9 @@ export default (component) => {
 
   storage.updateDoorColor = (id, newColor, old_color) => {
     if (component.json_data) {
+      if (window.interfaceIsFrozen()) {
+        return
+      }
       if (newColor !== old_color) {
         const data = { action: 'replace', scope: 'door', doorName: id, newColor }
         window.ajaxCall(data, 'upload')

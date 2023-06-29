@@ -177,4 +177,7 @@ body.-site-varia {
 
 body.-site-varia[data-connection-icon="upload"] * {
   cursor: wait !important;
+  .tracker-view {
+    pointer-events: none;
+  }
 }
