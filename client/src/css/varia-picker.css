@@ -1,6 +1,6 @@
 $size: 64px;
 $font: 48px;
-$gap: 6px__item;
+$gap: 6px;
 
 .varia-picker {
   @apply p-2;

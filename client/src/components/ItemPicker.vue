@@ -88,8 +88,7 @@ export default {
     },
   },
   mounted() {
-    // Adding this now causes the click that added the picker to close the picker /shrug
-    setTimeout(() => document.addEventListener('click', this.close), 100)
+    document.addEventListener('click', this.close)
   },
   unmounted() {
     document.removeEventListener('click', this.close)
