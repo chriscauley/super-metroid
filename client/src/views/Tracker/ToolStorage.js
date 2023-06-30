@@ -489,6 +489,9 @@ export default (component) => {
   storage.getRandoSettings = () => {
     const { json_data } = component
     if (json_data) {
+      if (json_data.mode === 'seedless') {
+        json_data.doorsRando = true
+      }
       const { properties } = rando_settings.schema
       return Object.fromEntries(Object.keys(properties).map((key) => [key, json_data[key]]))
     }
