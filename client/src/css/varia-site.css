@@ -91,6 +91,11 @@ body.-site-varia {
   }
 }
 
+body.-site-varia .tracker-toolbar .btn {
+  font-size: 14px;
+  line-height: 14px;
+}
+
 body.-site-varia {
   /* these are all unsetting bootstrap styles */
   .table {
