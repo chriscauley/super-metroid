@@ -297,10 +297,6 @@ export default (component) => {
   }
 
   storage.clickDoor = (id) => {
-    if (storage.getDoorColor(id) === 'blue') {
-      // doors froced to blue cannot be changed
-      return
-    }
     // TODO this should be using the getRandoSettings() and needs to work in serverless mode
     const { mode, doorsRando } = component.json_data || {}
     if (mode === 'standard' && doorsRando) {
@@ -489,9 +485,6 @@ export default (component) => {
   storage.getRandoSettings = () => {
     const { json_data } = component
     if (json_data) {
-      if (json_data.mode === 'seedless') {
-        json_data.doorsRando = true
-      }
       const { properties } = rando_settings.schema
       return Object.fromEntries(Object.keys(properties).map((key) => [key, json_data[key]]))
     }
