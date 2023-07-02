@@ -4,6 +4,17 @@ on: [push]
 permissions:
   contents: write
 jobs:
+  versionNumber:
+    outputs:
+      output1: ${{ steps.semver.outputs.semver}}
+    steps:
+      - id: semver
+        run: |
+          PACKAGE_VERSION=$(cat client/package.json \
+            | grep version \
+            | head -1 \
+            | awk -F: '{ print $2 }' \
+            | sed 's/[\",]//g')
   Build-and-release:
     concurrency: ci-${{ github.ref }}
     runs-on: ubuntu-latest
@@ -13,14 +24,6 @@ jobs:
 
       - name: Set tag name
         id: tag
-        run: |
-          PACKAGE_VERSION=$(cat client/package.json \
-            | grep version \
-            | head -1 \
-            | awk -F: '{ print $2 }' \
-            | sed 's/[\",]//g')
-
-          echo "tag=$PACKAGE_VERSION" >> $GITHUB_OUTPUT
 
       - uses: actions/setup-node@v3
         with:
@@ -42,18 +45,18 @@ jobs:
         working-directory: './client'
         run: yarn install && yarn build:varia && tar -czvf release.tar.gz dist
 
-      - name: publish release
-        id: publish_release
+      - name: create release
+        id: create_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ steps.tag.outputs.tag }}
-          release_name: ${{ steps.tag.outputs.tag }}
+          tag_name: ${{ github.ref }}
+          release_name: ${{ github.ref }}
           draft: true
           prerelease: true
 
-      - uses: actions/upload-release-asset@v1.0.1
+      - uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
