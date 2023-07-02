@@ -37,10 +37,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.run_number }}
-          release_name: ${{ github.run_number }}
-          draft: true
-          prerelease: true
+          tag_name: release_${{ github.run_number }}
+          release_name: release_${{ github.run_number }}
+          draft: false
+          prerelease: false
 
       - uses: actions/upload-release-asset@v1
         env:
