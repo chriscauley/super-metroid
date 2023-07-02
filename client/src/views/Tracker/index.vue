@@ -355,6 +355,11 @@ export default {
     setJsonData(json_data) {
       if (json_data) {
         json_data.svg_rooms = { unknownSvg: true }
+        json_data.all_locations = {
+          ...json_data.availableLocations,
+          ...json_data.remainingLocations,
+          ...json_data.visitedLocations,
+        }
         json_data.roomsVisibility.forEach((s) => (json_data.svg_rooms[s] = true))
         if (json_data.newlyCompletedObjectives?.length) {
           clearTimeout(this._obj_timeout)
