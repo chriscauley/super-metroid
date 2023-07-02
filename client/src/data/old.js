@@ -285,7 +285,6 @@ export const special_locations = {
     'GrappleBeam',
     // upper-norfair
     'IceBeam',
-    'EnergyTankHiJumpBoots',
     'HiJumpBoots',
     'ReserveTankNorfair',
     'SpeedBooster',

@@ -28,10 +28,10 @@
             {{ "WARNING: Can't come back" }}
           </div>
           <div v-if="locData.difficulty">Difficulty: {{ locData.difficulty[1] }}</div>
-          <template v-if="$route.path.includes('debug')">
+          <template v-if="$route.fullPath.includes('debug')">
             <div v-if="locData.distance">Distance: {{ locData.distance }}</div>
             <div v-if="locData.path" style="max-width: 500px; white-space: break-spaces">
-              Path: {{ locData.path.join(' > ') }}
+              Path: {{ displayPath }}
             </div>
             <div v-if="locData.locDifficulty">LocDifficulty: {{ locData.locDifficulty }}</div>
             <div v-if="locData.pathDifficulty">PathDifficulty: {{ locData.pathDifficulty }}</div>
@@ -55,6 +55,9 @@ export default {
     return { over: false }
   },
   computed: {
+    displayPath() {
+      return this.locData.path.join(' > ')
+    },
     selected() {
       return this.tool_storage.state.active_location === this.location.slug
     },
@@ -109,11 +112,7 @@ export default {
     },
     attrs() {
       const { slug, chozo, major, scavenger } = this.location
-      let is_major = false
-      if (!!this.json_data) {
-        const split = this.tool_storage.getRandoSettings().majorsSplit.toLowerCase()
-        is_major = this.location[split]
-      }
+      const is_major = this.json_data?.all_locations[slug]?.major
       return {
         id: `location__${slug}`,
         'data-id': slug,
