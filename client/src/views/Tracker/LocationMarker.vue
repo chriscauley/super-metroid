@@ -15,7 +15,6 @@
         <div v-else-if="visited_data">Item: {{ item_name }}</div>
         <div v-if="!locData && !visited_data">Sequence Break</div>
         <template v-if="locData && !visited_data">
-          <div>Techniques: {{ locData.knows[0] || 'None' }}</div>
           <div class="location-marker__item-list">
             Items:
             <div v-for="(item, i) in items" :key="i" class="location-marker__item">
@@ -36,6 +35,12 @@
             <div v-if="locData.locDifficulty">LocDifficulty: {{ locData.locDifficulty }}</div>
             <div v-if="locData.pathDifficulty">PathDifficulty: {{ locData.pathDifficulty }}</div>
           </template>
+          <div>
+            Techniques: {{ knows.length ? '' : 'None' }}
+            <div v-for="tech,i in knows" :key="i">
+              - {{ tech }}
+            </div>
+          </div>
         </template>
       </div>
     </unrest-popper>
@@ -43,6 +48,7 @@
 </template>
 
 <script>
+import { startCase } from 'lodash'
 import { location_type_map } from '@/data/old'
 import varia from '@/varia'
 
@@ -55,6 +61,9 @@ export default {
     return { over: false }
   },
   computed: {
+    knows() {
+      return this.locData.knows.map(t => startCase(t))
+    },
     displayPath() {
       return this.locData.path.join(' > ')
     },
