@@ -1346,10 +1346,10 @@
   resolved "https://registry.yarnpkg.com/@unrest/random/-/random-0.0.2.tgz#18b9541043accd36fb39ebd0286ff154564b8c70"
   integrity sha512-apUNVqvzPO1QLdAIkDHXn79dy1MlYyopQWBva9+sZ13HomIwRin0KvjgUSt+Fi997DWsqI+MJ7kLTRfVQvA1Dw==
 
-"@unrest/tailwind@0.1.23":
-  version "0.1.23"
-  resolved "https://registry.yarnpkg.com/@unrest/tailwind/-/tailwind-0.1.23.tgz#818d9a2c9e4fecc290136d041157a22b812bcf2b"
-  integrity sha512-bSFuK4KHeZRodgJN0P7/ZUXQf1JkSPPObwxK05HP8kcuuNhlE/HoxRGOwq7ZwVVU1ej+vnwYrBZVNGYVIQckfQ==
+"@unrest/tailwind@^0.1.24":
+  version "0.1.24"
+  resolved "https://registry.yarnpkg.com/@unrest/tailwind/-/tailwind-0.1.24.tgz#fc3670dfe90c916faa9c3d8bfe6c226b1d11d168"
+  integrity sha512-5FRbdLc135gfe6RELxGQFqQ0dcLBf1KCa1s7iOCsti+/ul+RY5+Ev6gOOqUsiYBLzKO+9Q2p5bWDfEnzQCxRpw==
 
 "@unrest/vue-form@0.0.19":
   version "0.0.19"
@@ -1375,6 +1375,17 @@
     "@unrest/vue-mousetrap" "^0.0.12"
     openseadragon "^2.4.2"
     vue "^3.2.41"
+
+"@unrest/vue-storage@0.0.20":
+  version "0.0.20"
+  resolved "https://registry.yarnpkg.com/@unrest/vue-storage/-/vue-storage-0.0.20.tgz#00500428087a735204f9893f9bb550a5f535142f"
+  integrity sha512-mVaoiC9Lj+9EfK6Rz5iTwqBpO8lj9VEt6xXlslAxmadNsg8lVExYzMK59nwm8m8EuNZQuzbvRqB+gH5US7y2OQ==
+  dependencies:
+    axios "^0.27.2"
+    core-js "^3.23.1"
+    local-storage-json "^1.1.0"
+    lodash.debounce "^4.0.8"
+    querystring "^0.2.1"
 
 "@unrest/vue-storage@^0.0.19":
   version "0.0.19"
