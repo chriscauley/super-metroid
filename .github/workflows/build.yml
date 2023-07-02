@@ -29,7 +29,11 @@ jobs:
 
       - name: Build client
         working-directory: './client'
-        run: yarn install && yarn build:varia && tar -czvf release.tar.gz dist
+        run: |
+          yarn install
+          yarn build:varia
+          mv dist client
+          tar -czvf release.tar.gz client
 
       - name: create release
         id: create_release
