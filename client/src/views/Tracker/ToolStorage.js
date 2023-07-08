@@ -188,8 +188,8 @@ export default (component) => {
       ]
 
       const download_items = [
-        { text: 'Download Unlocked ROM', click: () => save('save'), icon: 'unlock' },
-        { text: 'Download Locked ROM', click: () => save('save'), icon: 'lock' },
+        { text: 'Download Unlocked ROM', click: () => window.save('save'), icon: 'unlock' },
+        { text: 'Download Locked ROM', click: () => window.save('lock'), icon: 'lock' },
       ]
 
       let tools = [

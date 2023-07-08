@@ -2,7 +2,8 @@
   <div class="area-box" :style="style">
     <div
       v-for="door in doors"
-      :key="door.id" v-bind="door"
+      :key="door.id"
+      v-bind="door"
       @click.stop="$emit('click-door', door.id)"
     >
       <door-picker v-if="door.active" :current_color="getDoorColor(door.id)" :door_id="door.id" />

@@ -27,12 +27,6 @@ export default {
     current_color: String,
     door_id: String,
   },
-  mounted() {
-    document.addEventListener('click', this.close)
-  },
-  unmount() {
-    document.removeEventListener('click', this.close)
-  },
   computed: {
     display() {
       return startCase(this.door_id)
@@ -51,6 +45,12 @@ export default {
         key: `${index + 1}`,
       }))
     },
+  },
+  mounted() {
+    document.addEventListener('click', this.close)
+  },
+  unmount() {
+    document.removeEventListener('click', this.close)
   },
   methods: {
     updateDoorColor(value) {

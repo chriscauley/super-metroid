@@ -37,9 +37,7 @@
           </template>
           <div>
             Techniques: {{ knows.length ? '' : 'None' }}
-            <div v-for="tech,i in knows" :key="i">
-              - {{ tech }}
-            </div>
+            <div v-for="(tech, i) in knows" :key="i">- {{ tech }}</div>
           </div>
         </template>
       </div>
@@ -62,7 +60,7 @@ export default {
   },
   computed: {
     knows() {
-      return this.locData.knows.map(t => startCase(t))
+      return this.locData.knows.map((t) => startCase(t))
     },
     displayPath() {
       return this.locData.path.join(' > ')
