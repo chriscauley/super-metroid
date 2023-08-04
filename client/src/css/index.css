@@ -170,8 +170,14 @@ html, body, #app {
       inset: -10%;
     }
   }
+}
+
+.area-overlay, .area-warp {
   &.-compact {
     display: none;
+    .-compact-area & {
+      display: block;
+    }
   }
 }
 
