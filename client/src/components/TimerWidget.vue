@@ -32,7 +32,10 @@ export default {
   computed: {
     display() {
       // calculate how many frames have passed since frames was last set
-      const delta = Math.floor((60 * this.dt) / 1000)
+      let delta = Math.floor((60 * this.dt) / 1000)
+      if (!this.running) {
+        delta = 0
+      }
       return format(this.frames + delta)
     },
     cls() {
