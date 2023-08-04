@@ -33,7 +33,7 @@
     </div>
     <item-counter :game_state="game_state" :areas="areas" />
     <item-tracker :inventory="game_state.inventory" @add-item="addItem" @toggle-item="toggleItem" />
-    <timer-widget />
+    <timer-widget v-if="!is_plando" />
     <seed-settings :json_data="json_data" />
     <Teleport to="body">
       <edit-area :area="editing_area" :tool_storage="tool_storage" />

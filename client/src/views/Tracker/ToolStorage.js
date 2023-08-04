@@ -1,6 +1,7 @@
 import { cloneDeep } from 'lodash'
 import toolbar from '@unrest/vue-toolbar'
 import unrest from '@unrest/vue'
+import NotInitialized from './NotInitialized'
 
 import HelpPopup from './HelpPopup.vue'
 
@@ -178,6 +179,11 @@ export default (component) => {
   const getTools = () => {
     if (component.is_varia) {
       const clickPlay = () => window.displayPopup(component.is_plando)
+      const play = { slug: 'play', name: 'Load Seed', select: clickPlay, icon: 'fa fa-play' }
+      const help = { slug: 'help', icon: 'fa fa-question-circle', select: window.startTheTour }
+      if (!(component.json_data && window.init)) {
+        return [play, help]
+      }
       const loc_items = [
         { text: 'Undo Last Location', icon: 'undo', click: varia.undoLocation },
         { text: 'Reset Locations', icon: 'trash', click: varia.clearLocations },
@@ -193,14 +199,14 @@ export default (component) => {
       ]
 
       let tools = [
-        { slug: 'play', name: 'Load Seed', select: clickPlay, icon: 'fa fa-play' },
+        play,
         { slug: 'item-locations', icon: 'sm-map -egg', items: loc_items },
         { slug: 'portal-locations', icon: 'sm-portal', items: portal_items },
         { slug: 'scavenger', select: window.displayScavPopup, icon: 'fa fa-puzzle-piece' },
         { slug: 'randomize-remaining', select: window.displayRandoPopup, icon: 'fa fa-random' },
         { slug: 'download-rom', items: download_items, icon: 'fa fa-download' },
         component.$store.layout.getButton(component),
-        { slug: 'help', icon: 'fa fa-question-circle', select: window.startTheTour },
+        help,
         edit_tool,
       ]
 
@@ -296,6 +302,14 @@ export default (component) => {
     storage.state.selected_warp = null
   }
 
+  const checkVaria = () => {
+    if (component.is_varia && !component.json_data && !window.init) {
+      unrest.ui.alert(NotInitialized)
+      return false
+    }
+    return true
+  }
+
   storage.clickDoor = (id) => {
     // TODO this should be using the getRandoSettings() and needs to work in serverless mode
     const { mode, doorsRando } = component.json_data || {}
@@ -322,6 +336,9 @@ export default (component) => {
   }
 
   storage.clickLocation = (id) => {
+    if (!checkVaria()) {
+      return
+    }
     if (component.json_data) {
       const visited = component.json_data.visitedLocations[id]
       const type = component.location_type_map[id]
