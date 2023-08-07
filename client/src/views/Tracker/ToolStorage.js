@@ -313,6 +313,10 @@ export default (component) => {
   storage.clickDoor = (id) => {
     // TODO this should be using the getRandoSettings() and needs to work in serverless mode
     const { mode, doorsRando } = component.json_data || {}
+    if (storage.getDoorColor(id) === 'blue') {
+      // doors froced to blue cannot be changed
+      return
+    }
     if (mode === 'standard' && doorsRando) {
       // user clicks on white doors to see what they are
       const doorName = id
