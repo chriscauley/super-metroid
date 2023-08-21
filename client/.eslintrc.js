@@ -1,4 +1,4 @@
 module.exports = {
   extends: '@unrest',
-  ignorePatterns: ['*.css', '*.html', '*.svg', '*.md', '*.png'],
+  ignorePatterns: ['*.css', '*.html', '*.svg', '*.md', '*.png', 'LICENSE'],
 }

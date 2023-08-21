@@ -1,10 +1,11 @@
 import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router'
 import views from '@/views'
 
-const { CheatSheet, HomeView, PauseInventoryView, TrackerView, WhoDat } = views
+const { CheatSheet, PauseInventoryView, TrackerView, WhoDat } = views
 
 const routes = [
-  { path: '/', component: HomeView },
+  { path: '/', component: views.HomeView },
+  { path: '/randomizer/', component: views.RandomizerView },
   { path: '/tracker/', component: TrackerView },
   { path: '/plando/', component: TrackerView },
   { path: '/plando/debug', component: TrackerView },
