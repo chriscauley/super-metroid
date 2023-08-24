@@ -6,7 +6,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <h3>Select Objectives</h3>
-            <div class="close" data-dismiss="modal" aria-label="Close">
+            <div class="close" data-dismiss="modal" aria-label="Close" @click="$emit('close')">
               <span aria-hidden="true">×</span>
             </div>
           </div>
@@ -14,7 +14,7 @@
             <objective-selector />
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-primary">Close</button>
+            <button type="button" class="btn btn-primary" @click="$emit('close')">Close</button>
           </div>
         </div>
       </div>
@@ -27,6 +27,7 @@ import ObjectiveSelector from '@/components/ObjectiveSelector.vue'
 
 export default {
   components: { ObjectiveSelector },
+  emits: ['close'],
   __route: {
     path: '/randomizer',
   },
