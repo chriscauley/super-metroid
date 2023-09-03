@@ -8,7 +8,7 @@
         </div>
         <i v-if="objective_buttons.length === 0">None</i>
       </div>
-      <input type="text" readonly :value="randomizer.state.objective.join(',')" />
+      <input type="hidden" :value="randomizer.state.objective" id="objectiveMultiSelect" />
     </teleport>
   </div>
 </template>

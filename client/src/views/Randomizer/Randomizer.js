@@ -6,6 +6,7 @@ export default (component) => {
 
   const setObjectiveRandom = (value) => {
     state.objective = window.objectiveBackup[value]
+    state.objectiveRandom = value
   }
 
   setObjectiveRandom(isRandom('objective'))
@@ -20,9 +21,19 @@ export default (component) => {
     state,
     component,
     isRandom,
-    setRandom: setObjectiveRandom,
+    set: (key, value) => {
+      state[key] = value
+    },
     objective: {
+      setRandom: setObjectiveRandom,
       by_category: objectives_by_category,
+      getMax() {
+        if (isRandom('objective')) {
+          return Infinity
+        }
+        const majorsSplit = document.getElementById('majorsSplit').value
+        return majorsSplit === 'Scavenger' ? 17 : 18
+      },
       add(objective) {
         if (!state.objective.includes(objective)) {
           state.objective.push(objective)
@@ -73,6 +84,15 @@ export default (component) => {
         }
         const selected_map = randomizer.objective.getSelectedMap()
 
+        if (randomizer.objective.getMax() === state.objective.length) {
+          // Cannot add more objectives because we've reached max amount
+          const reason = "You cannot add any more objectives for this splits mode"
+          Object.keys(window.objectives_categories)
+            .filter((o) => !selected_map[o])
+            .forEach((o) => (disabled_map[o] = reason))
+          return disabled_map
+        }
+
         const { objectives_exclusions, is_clear_area_objective } = window
         const selected_objectives = state.objective
         const tourian = document.getElementById('tourian').value
@@ -95,7 +115,7 @@ export default (component) => {
           }
           const { type, limit } = options
           if (type && objective_counts[type] > limit) {
-            const reason = `This objective can only be used with ${limit} ${type} objectives`
+            const reason = `There are too many ${type} objectives`
             disabled_map[objective] = reason
           } else if (window.is_count_objective(objective)) {
             const type = window.get_count_objective_type(objective)
@@ -105,7 +125,7 @@ export default (component) => {
               if (window.get_limit_objective_type(toTest) == type) {
                 const limit = window.get_limit_objective_limit(toTest)
                 if (count >= limit) {
-                  const reason = `This objective can only be used with ${limit} ${type} objectives`
+                  const reason = `There are too many ${type} objectives`
                   disabled_map[objective] = reason
                 }
               }
@@ -126,10 +146,11 @@ export default (component) => {
         return disabled_map
       },
       toggleCategory(category) {
+        const disabled_objectives = randomizer.objective.getDisabledMap()
         if (category.partial || !category.checked) {
           // mark every non-disabled objective as selected
           category.objectives
-            .filter((o) => !this.disabled_objectives[o])
+            .filter((o) => !disabled_objectives[o])
             .forEach((o) => randomizer.objective.add(o))
         } else {
           category.objectives.forEach((o) => randomizer.objective.remove(o))
