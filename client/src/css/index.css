@@ -172,12 +172,22 @@ html, body, #app {
   }
 }
 
-.area-overlay, .area-warp {
-  &.-compact {
+.tracker-view.-compact-area {
+  .area-warp.-area,
+  .area-warp.-sand {
     display: none;
-    .-compact-area & {
-      display: block;
-    }
+  }
+}
+
+.tracker-view.-compact-boss {
+  .area-warp.-boss {
+    display: none;
+  }
+}
+
+.tracker-view.-compact-escape {
+  .area-warp.-escape {
+    display: none;
   }
 }
 

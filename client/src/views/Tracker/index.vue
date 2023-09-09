@@ -101,12 +101,12 @@ export default {
         // only nordub has compact settings
         return {}
       }
-      const { areaRando, bossRando } = this.tool_storage.getRandoSettings()
+      const { areaRando, bossRando, escapeRando } = this.tool_storage.getRandoSettings()
       const { no_compact } = this.tool_storage.state.tracker_settings
       return {
         area: !no_compact && !areaRando,
         sand: !no_compact && !areaRando,
-        escape: !no_compact && !areaRando,
+        escape: !no_compact && !escapeRando,
         boss: !no_compact && !bossRando,
       }
     },
@@ -162,6 +162,8 @@ export default {
         this.is_plando && entity_filter && `-entity-filter-${entity_filter}`,
         debug && `-debug-${debug}`,
         this.compact_settings.area && '-compact-area',
+        this.compact_settings.boss && '-compact-boss',
+        this.compact_settings.escape && '-compact-escape',
       ]
     },
     locked_warps() {
