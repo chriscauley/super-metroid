@@ -17,7 +17,7 @@
             <div v-if="warning" class="alert alert-warning" role="alert">
               {{ warning }}
             </div>
-            <span> {{ count_display }} Selected</span>
+            <span class="modal-footer__text">{{ count_display }} Selected</span>
             <button type="button" class="btn btn-primary" @click="$emit('close')">Close</button>
           </div>
         </div>
