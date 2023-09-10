@@ -5,8 +5,16 @@ export default (component) => {
   const state = reactive({})
 
   const setObjectiveRandom = (value) => {
+    if (state.objective) {
+      window.objectiveBackup[!value] = state.objective.slice()
+    }
     state.objective = window.objectiveBackup[value]
     state.objectiveRandom = value
+
+    // disable/enable relevant inputs
+    window.disableElement('hiddenObjectives', !value)
+    window.disableElement('nbObjective', !value)
+    window.$('#nbObjectiveRandom').attr('disabled', !value)
   }
 
   setObjectiveRandom(isRandom('objective'))
@@ -38,11 +46,9 @@ export default (component) => {
         if (!state.objective.includes(objective)) {
           state.objective.push(objective)
         }
-        randomizer.objective._syncBackup()
       },
       remove(objective) {
         state.objective = state.objective.filter((o) => o !== objective)
-        randomizer.objective._syncBackup()
       },
       toggle(objective) {
         if (!state.objective.includes(objective)) {
@@ -50,10 +56,6 @@ export default (component) => {
         } else {
           randomizer.objective.remove(objective)
         }
-      },
-      _syncBackup() {
-        const _is_random = isRandom('objective')
-        window.objectiveBackup[_is_random] = state.objective.slice()
       },
       getSelectedMap() {
         const selected_map = {}
@@ -86,7 +88,7 @@ export default (component) => {
 
         if (randomizer.objective.getMax() === state.objective.length) {
           // Cannot add more objectives because we've reached max amount
-          const reason = "You cannot add any more objectives for this splits mode"
+          const reason = 'You cannot add any more objectives for this splits mode'
           Object.keys(window.objectives_categories)
             .filter((o) => !selected_map[o])
             .forEach((o) => (disabled_map[o] = reason))
@@ -147,13 +149,14 @@ export default (component) => {
       },
       toggleCategory(category) {
         const disabled_objectives = randomizer.objective.getDisabledMap()
-        if (category.partial || !category.checked) {
+        if (category.partial || category.checked) {
+          // deselect all objectives in category
+          category.objectives.forEach((o) => randomizer.objective.remove(o))
+        } else {
           // mark every non-disabled objective as selected
           category.objectives
             .filter((o) => !disabled_objectives[o])
             .forEach((o) => randomizer.objective.add(o))
-        } else {
-          category.objectives.forEach((o) => randomizer.objective.remove(o))
         }
       },
     },

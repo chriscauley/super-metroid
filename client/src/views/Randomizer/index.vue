@@ -2,7 +2,7 @@
   <div>
     <objective-selector-modal v-if="open" @close="open = false" />
     <teleport to="#objectivePortal">
-      <div @click="open = true" class="_flex">
+      <div @click="open = true" class="selected-objectives">
         <div v-for="button in objective_buttons" :key="button.text" :class="button.class">
           {{ button.text }}
         </div>

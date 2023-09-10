@@ -17,7 +17,7 @@
             <div v-if="warning" class="alert alert-warning" role="alert">
               {{ warning }}
             </div>
-            {{ count_display }}
+            <span> {{ count_display }} Selected</span>
             <button type="button" class="btn btn-primary" @click="$emit('close')">Close</button>
           </div>
         </div>
@@ -47,7 +47,7 @@ export default {
       if (max_objectives > this.randomizer.state.objective.length) {
         return ''
       }
-      return 'You cannot add any more objectives'
+      return 'You cannot add any more objectives for this splits mode'
     },
   },
 }
