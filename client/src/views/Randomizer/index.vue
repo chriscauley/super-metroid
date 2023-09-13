@@ -1,14 +1,18 @@
 <template>
   <div>
-    <objective-selector-modal v-if="open" @close="open = false" />
-    <teleport to="#objectivePortal">
-      <div @click="open = true" class="selected-objectives">
-        <div v-for="button in objective_buttons" :key="button.text" :class="button.class">
+    <objective-block />
+    <teleport to="#areaLayoutPatchesPortal">
+      <div @click="open = true" class="button-list">
+        <div v-for="button in patch_buttons" :key="button.text" :class="button.class">
           {{ button.text }}
         </div>
-        <i v-if="objective_buttons.length === 0">None</i>
+        <i v-if="patch_buttons.length === 0">None</i>
       </div>
-      <input type="hidden" :value="randomizer.state.objective" id="objectiveMultiSelect" />
+      <input
+        type="hidden"
+        :value="randomizer.state.areaLayoutCustom"
+        id="areaLayoutCustomMultiSelect"
+      />
     </teleport>
   </div>
 </template>
@@ -17,22 +21,11 @@
 import { computed } from 'vue'
 
 import Randomizer from './Randomizer'
-import ObjectiveSelectorModal from './ObjectiveSelectorModal.vue'
-
-const cat_map = {
-  Bosses: 'danger',
-  Minibosses: 'warning',
-  Items: 'primary',
-  Map: 'success',
-  Memes: 'info',
-}
-const css = {
-  btn: (o, c) => `btn btn-xs btn-${cat_map[c.name]}`,
-}
+import ObjectiveBlock from './ObjectiveBlock.vue'
 
 export default {
   name: 'RandomizerView',
-  components: { ObjectiveSelectorModal },
+  components: { ObjectiveBlock },
   __route: {
     path: '/randomizer',
   },
@@ -42,14 +35,18 @@ export default {
     }
   },
   data() {
-    return { open: false, css, randomizer: Randomizer(this) }
+    return { randomizer: Randomizer(this) }
   },
   computed: {
-    objective_buttons() {
-      const _order = Object.keys(cat_map)
-      return this.randomizer.state.objective.map((o) => ({
-        text: o,
-        class: `btn btn-${cat_map[window.objectives_categories[o]]} btn-xs`,
+    patch_buttons() {
+      const patches = this.randomizer.getAreaPatches()
+      if (!patches.find((p) => p.active)) {
+        return []
+      }
+      return patches.map((patch) => ({
+        ...patch,
+        text: `${patch.active ? '+' : '-'} ${patch.title}`,
+        class: [`btn btn-xs btn-${patch.active ? 'primary' : 'default'}`],
       }))
     },
   },

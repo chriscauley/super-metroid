@@ -1,8 +1,17 @@
+import { startCase } from 'lodash'
 import { reactive } from 'vue'
 
 export default (component) => {
   const isRandom = (param) => window.isElemIdRandom(param)
   const state = reactive({})
+
+  const side_effects = {
+    areaRando: () => {
+      if (state.areaRando && state.areaLayoutCustom.length === 0) {
+        state.areaLayoutCustom = Object.keys(window.AREA_PATCHES)
+      }
+    },
+  }
 
   const setObjectiveRandom = (value) => {
     if (state.objective) {
@@ -30,7 +39,19 @@ export default (component) => {
     component,
     isRandom,
     set: (key, value) => {
+      const changed = state[key] !== value
       state[key] = value
+      changed && side_effects[key]?.()
+    },
+    init: (data) => Object.assign(state, data),
+    getAreaPatches() {
+      const { areaRando, areaLayoutCustom } = state
+      return Object.entries(window.AREA_PATCHES).map(([slug, options]) => ({
+        ...options,
+        slug,
+        active: areaRando && areaLayoutCustom.includes(slug),
+        title: options.title || startCase(slug),
+      }))
     },
     objective: {
       setRandom: setObjectiveRandom,
