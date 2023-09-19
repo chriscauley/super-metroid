@@ -8,7 +8,7 @@ export default (component) => {
   const side_effects = {
     areaRando: () => {
       if (state.areaRando && state.areaLayoutCustom.length === 0) {
-        state.areaLayoutCustom = Object.keys(window.AREA_PATCHES)
+        state.areaLayoutCustom = window.PATCHES.areaLayout.map((p) => p.id)
       }
     },
   }
@@ -34,6 +34,10 @@ export default (component) => {
     objectives_by_category[category].push(objective)
   })
 
+  const getPatchKey = (group) => {
+    return group + 'Custom'
+  }
+
   const randomizer = {
     state,
     component,
@@ -44,13 +48,41 @@ export default (component) => {
       changed && side_effects[key]?.()
     },
     init: (data) => Object.assign(state, data),
+    togglePatch(patch) {
+      const key = getPatchKey(patch.patch_group)
+      if (state[key].includes(patch.id)) {
+        state[key] = state[key].filter((i) => i !== patch.id)
+      } else {
+        state[key].push(patch.id)
+      }
+    },
+    isPatchGroupAllowed(group) {
+      if (group === 'areaLayout') {
+        const value = state.areaRandomization
+        if (value === 'random') {
+          // if random, anything more than off is fine
+          return !!state.areaRandomizationMultiSelect.find((v) => v !== 'off')
+        }
+        // if not random, anything other than off is fine
+        return value !== 'off'
+      }
+      return true
+    },
+    getPatches(group) {
+      const enabled_patches = state[getPatchKey(group)]
+      const allowed = randomizer.isPatchGroupAllowed(group)
+      return window.PATCHES[group].map((patch) => ({
+        ...patch,
+        active: allowed && enabled_patches?.includes(patch.id),
+      }))
+    },
     getAreaPatches() {
       const { areaRando, areaLayoutCustom } = state
-      return Object.entries(window.AREA_PATCHES).map(([slug, options]) => ({
+      return Object.entries(window.PATCHES.areaLayout).map(([id, options]) => ({
         ...options,
-        slug,
-        active: areaRando && areaLayoutCustom.includes(slug),
-        title: options.title || startCase(slug),
+        id,
+        active: areaRando && areaLayoutCustom.includes(id),
+        title: options.title || startCase(id),
       }))
     },
     objective: {
