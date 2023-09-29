@@ -1,8 +1,15 @@
 import { startCase } from 'lodash'
 import { reactive } from 'vue'
+import { ReactiveLocalStorage } from '@unrest/vue-storage'
+
+const LS_KEY = 'RANDOMIZER_STORAGE'
 
 export default (component) => {
   const isRandom = (param) => window.isElemIdRandom(param)
+  const initial = {
+    backups: {},
+  }
+  const storage = ReactiveLocalStorage({ LS_KEY, initial })
   const state = reactive({})
 
   const side_effects = {
@@ -48,6 +55,19 @@ export default (component) => {
       changed && side_effects[key]?.()
     },
     init: (data) => Object.assign(state, data),
+    hasBackup(key) {
+      return !!storage.state.backups[key]
+    },
+    setPatches(value, group) {
+      const group_key = getPatchKey(group)
+      if (value === 'all') {
+        state[group_key] = randomizer.getPatches(group).map((p) => p.id)
+      } else if (value === 'none') {
+        state[group_key] = []
+      } else if (value === 'custom') {
+        alert('todo')
+      }
+    },
     togglePatch(patch) {
       const key = getPatchKey(patch.patch_group)
       if (state[key].includes(patch.id)) {

@@ -4,6 +4,12 @@
     <teleport to="#areaLayoutStep .vue-app">
       <patch-toggler patch_group="areaLayout" />
     </teleport>
+    <teleport to="#variaTweaksStep .vue-app">
+      <patch-toggler patch_group="variaTweaks" />
+    </teleport>
+    <teleport to="#layoutStep .vue-app">
+      <patch-toggler patch_group="layout" />
+    </teleport>
   </div>
 </template>
 
