@@ -14,16 +14,7 @@
         </button>
       </div>
       <template v-else>
-        <button
-          v-for="button in patch_buttons"
-          :key="button.title"
-          :class="button.class"
-          @click="randomizer.togglePatch(button)"
-          type="button"
-        >
-          <i :class="button.icon" />
-          {{ button.title }}
-        </button>
+        <PatchButton v-for="patch, i in patches" :key="i" :patch="patch" />
       </template>
       <div class="expand-patches" @click="compact = !compact">
         {{ compact ? 'expand' : 'collapse' }}
@@ -33,7 +24,10 @@
 </template>
 
 <script>
+import PatchButton from './PatchButton.vue';
+
 export default {
+  components: { PatchButton },
   inject: ['randomizer'],
   props: {
     patch_group: String,
@@ -80,13 +74,6 @@ export default {
         },
         is_custom || has_custom ? custom_button : fake_custom,
       ]
-    },
-    patch_buttons() {
-      return this.patches.map((patch) => ({
-        ...patch,
-        class: [`btn btn-xs btn-${patch.active ? 'primary' : 'default'}`],
-        icon: `fa fa-${patch.active ? 'plus' : 'minus'}`,
-      }))
     },
   },
 }

@@ -1,14 +1,13 @@
-<!--
-    This is currently unused but the goal is to make the "start the tour" modal interactive for adding and removing patches
--->
 <template>
   <div class="patch-selector">
+    <div v-if="disabled" class="alert alert-warning">
+      These patches can only be enabled when area randomization is full or light.
+    </div>
     <div class="patch-selector__cards">
       <div v-for="patch in patches" :key="patch.id" :class="getClass(patch)" @click="click(patch)">
         <div class="patch-card__images">
           <template v-for="i in patch.images" :key="i">
             <img :src="`/solver/static/images/help/${i}`" class="patch-card__image -on" />
-            <img :src="`/solver/static/images/help/vanilla/${i}`" class="patch-card__image -off" />
           </template>
         </div>
         <div class="patch-card__content">
@@ -39,11 +38,20 @@ const applyMarkdown = (s) =>
   )
 
 export default {
+  inject: ['randomizer'],
   props: {
-    patches: Array,
+    patch_gruop: String,
     readonly: Boolean,
   },
   emits: ['toggle-patch'],
+  computed: {
+    patches() {
+      return this.randomizer.getPatches(this.patch_group)
+    },
+    disabled() {
+      return !this.randomizer
+    }
+  },
   methods: {
     getClass(patch) {
       return [`patch-card -width-${patch.images.length}`, patch.active ? '-active' : '-inactive']

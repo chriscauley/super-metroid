@@ -1,10 +1,16 @@
+import { createApp } from 'vue'
 import { startCase } from 'lodash'
 import { reactive } from 'vue'
 import { ReactiveLocalStorage } from '@unrest/vue-storage'
 
+import PatchSelector from '@/components/PatchSelector'
+import TourApp from '@/components/TourApp.vue'
+
+// TODO this localstorage is unused, remove it
 const LS_KEY = 'RANDOMIZER_STORAGE'
 
 export default (component) => {
+  let extra_app
   const isRandom = (param) => window.isElemIdRandom(param)
   const initial = {
     backups: {},
@@ -91,10 +97,15 @@ export default (component) => {
     getPatches(group) {
       const enabled_patches = state[getPatchKey(group)]
       const allowed = randomizer.isPatchGroupAllowed(group)
-      return window.PATCHES[group].map((patch) => ({
-        ...patch,
-        active: allowed && enabled_patches?.includes(patch.id),
-      }))
+      return window.PATCHES[group].map((patch) => {
+        const active = allowed && enabled_patches?.includes(patch.id)
+        return {
+          ...patch,
+          active,
+          class: [`btn btn-xs btn-${active ? 'primary' : 'default'}`],
+          icon: `fa fa-${active ? 'check-square-o' : 'square-o'}`,
+        }
+      })
     },
     getAreaPatches() {
       const { areaRando, areaLayoutCustom } = state
@@ -104,6 +115,14 @@ export default (component) => {
         active: areaRando && areaLayoutCustom.includes(id),
         title: options.title || startCase(id),
       }))
+    },
+    mountHelp(target) {
+      // remove old help text app (if it exists)
+      extra_app?.unmount()
+      const app = createApp(TourApp)
+      state.tour_target = target
+      app.config.globalProperties.$randomizer = randomizer
+      app.mount(`#${target}TourPortal`)
     },
     objective: {
       setRandom: setObjectiveRandom,
