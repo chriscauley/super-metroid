@@ -14,7 +14,7 @@
         </button>
       </div>
       <template v-else>
-        <PatchButton v-for="patch, i in patches" :key="i" :patch="patch" />
+        <PatchButton v-for="(patch, i) in patches" :key="i" :patch="patch" />
       </template>
       <div class="expand-patches" @click="compact = !compact">
         {{ compact ? 'expand' : 'collapse' }}
@@ -24,10 +24,7 @@
 </template>
 
 <script>
-import PatchButton from './PatchButton.vue';
-
 export default {
-  components: { PatchButton },
   inject: ['randomizer'],
   props: {
     patch_group: String,
@@ -35,7 +32,10 @@ export default {
   },
   emits: ['toggle-patch'],
   data() {
-    return { compact: true }
+    const patches = this.randomizer.getPatches(this.patch_group)
+    const all = patches.length
+    const selected = patches.filter((p) => p.active).length
+    return { compact: selected === all || selected === 0 }
   },
   computed: {
     patches() {
@@ -48,19 +48,8 @@ export default {
       const all = this.patches.length
       const selected = this.patches.filter((p) => p.active).length
       const cls = (active) => `btn btn-${active ? 'primary' : 'default'}`
-      const set = (value) => this.randomizer.setPatches(value, this.patch_group)
+      const set = (value) => this.randomizer.setPatches(this.patch_group, value)
       const is_custom = selected < all && selected > 0
-      const has_custom = this.randomizer.hasBackup(this.patch_group)
-      const custom_button = {
-        text: `Custom ${selected}/${all}`,
-        click: () => set('custom'),
-        class: cls(is_custom),
-      }
-      const fake_custom = {
-        text: 'Custom',
-        click: () => (this.compact = false),
-        class: cls(false),
-      }
       return [
         {
           text: 'All',
@@ -72,7 +61,11 @@ export default {
           click: () => set('none'),
           class: cls(0 === selected),
         },
-        is_custom || has_custom ? custom_button : fake_custom,
+        {
+          text: is_custom ? `Custom ${selected}/${all}` : 'Custom',
+          click: () => (this.compact = false),
+          class: cls(is_custom),
+        },
       ]
     },
   },

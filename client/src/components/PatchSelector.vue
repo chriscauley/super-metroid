@@ -11,12 +11,9 @@
           </template>
         </div>
         <div class="patch-card__content">
-          <div class="patch-card__title">
-            <i :class="`fa fa${patch.active ? '-check' : ''}-square`" />
-            {{ patch.title }}
-          </div>
+          <PatchButton :patch="patch" />
           <!-- eslint-disable vue/no-v-html -->
-          <span v-html="applyMarkdown(patch.description)" />
+          <div v-html="applyMarkdown(patch.description)" />
           <!-- eslint-enable -->
         </div>
       </div>
@@ -32,15 +29,13 @@ const applyMarkdown = (s) =>
     (_, b) => `<a
     href="https://wiki.supermetroid.run/${b.replace(/ /g, '_')}"
     target="_blank"
-  >
-    ${b}
-  </a>`,
+  >${b}</a>`,
   )
 
 export default {
   inject: ['randomizer'],
   props: {
-    patch_gruop: String,
+    patch_group: String,
     readonly: Boolean,
   },
   emits: ['toggle-patch'],
@@ -50,7 +45,7 @@ export default {
     },
     disabled() {
       return !this.randomizer
-    }
+    },
   },
   methods: {
     getClass(patch) {

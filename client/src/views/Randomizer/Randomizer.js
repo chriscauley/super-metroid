@@ -1,21 +1,8 @@
-import { createApp } from 'vue'
-import { startCase } from 'lodash'
+import { startCase, cloneDeep } from 'lodash'
 import { reactive } from 'vue'
-import { ReactiveLocalStorage } from '@unrest/vue-storage'
-
-import PatchSelector from '@/components/PatchSelector'
-import TourApp from '@/components/TourApp.vue'
-
-// TODO this localstorage is unused, remove it
-const LS_KEY = 'RANDOMIZER_STORAGE'
 
 export default (component) => {
-  let extra_app
   const isRandom = (param) => window.isElemIdRandom(param)
-  const initial = {
-    backups: {},
-  }
-  const storage = ReactiveLocalStorage({ LS_KEY, initial })
   const state = reactive({})
 
   const side_effects = {
@@ -51,6 +38,28 @@ export default (component) => {
     return group + 'Custom'
   }
 
+  const migratePreset = (original_data) => {
+    // As the definition of a preset grows over time, we want to support legacy definitons
+    // many people are running bots and external websites and we can't make them migrate
+    const data = cloneDeep(original_data)
+    if (data.layoutPatches) {
+      // layoutPatches is the old name for layout
+      data.layout = data.layoutPatches
+      delete data.layoutPatches
+    }
+    Object.keys(window.PATCHES).forEach((patch_group) => {
+      const key = getPatchKey(patch_group)
+      const all_patches = randomizer.getPatchIds(patch_group)
+      if (data[patch_group] && !data[key]) {
+        data[key] = data[patch_group] === 'on' ? all_patches : []
+      }
+      if (data[patch_group] === 'on' && data[key]?.length === 0) {
+        data[key] = all_patches
+      }
+    })
+    return data
+  }
+
   const randomizer = {
     state,
     component,
@@ -60,18 +69,18 @@ export default (component) => {
       state[key] = value
       changed && side_effects[key]?.()
     },
-    init: (data) => Object.assign(state, data),
-    hasBackup(key) {
-      return !!storage.state.backups[key]
+    init: (data) => {
+      const fixed_data = migratePreset(data)
+      Object.keys(state).forEach((key) => delete state[key])
+      Object.assign(state, fixed_data)
+      state.initialized = true
     },
-    setPatches(value, group) {
+    setPatches(group, value) {
       const group_key = getPatchKey(group)
       if (value === 'all') {
-        state[group_key] = randomizer.getPatches(group).map((p) => p.id)
+        state[group_key] = randomizer.getPatchIds(group)
       } else if (value === 'none') {
         state[group_key] = []
-      } else if (value === 'custom') {
-        alert('todo')
       }
     },
     togglePatch(patch) {
@@ -93,6 +102,9 @@ export default (component) => {
         return value !== 'off'
       }
       return true
+    },
+    getPatchIds(group) {
+      return window.PATCHES[group].map((patch) => patch.id)
     },
     getPatches(group) {
       const enabled_patches = state[getPatchKey(group)]
@@ -117,12 +129,8 @@ export default (component) => {
       }))
     },
     mountHelp(target) {
-      // remove old help text app (if it exists)
-      extra_app?.unmount()
-      const app = createApp(TourApp)
       state.tour_target = target
-      app.config.globalProperties.$randomizer = randomizer
-      app.mount(`#${target}TourPortal`)
+      state.tour_hash = Math.random() // forces re-render even if target did not change
     },
     objective: {
       setRandom: setObjectiveRandom,

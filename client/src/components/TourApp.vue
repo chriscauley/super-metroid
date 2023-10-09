@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <PatchSelector :patch_group="$randomizer.state.tour_target" />
+  <div class="vue-app">
+    <patch-selector :patch_group="randomizer.state.tour_target" />
   </div>
 </template>
 
@@ -9,10 +9,11 @@ import PatchSelector from './PatchSelector.vue'
 
 export default {
   components: { PatchSelector },
-  provide() {
-    return {
-      // This is abit hacky because it is a separate app
-      randomizer: this.$randomizer,
+  inject: ['randomizer'],
+  mounted() {
+    if (this.randomizer.state.tour_target !== 'variaTweaks') {
+      const e = document.querySelector('.tour-tour')
+      e.style.top = '2.5vh'
     }
   },
 }

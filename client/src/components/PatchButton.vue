@@ -1,9 +1,5 @@
 <template>
-  <button
-    :class="css.btn"
-    @click="randomizer.togglePatch(patch)"
-    type="button"
-  >
+  <button :class="css.btn" @click="randomizer.togglePatch(patch)" type="button">
     <i :class="css.icon" />
     {{ patch.title }}
   </button>
@@ -22,7 +18,7 @@ export default {
         btn: [`btn btn-xs btn-${active ? 'primary' : 'default'}`],
         icon: `fa fa-${active ? 'check-square-o' : 'square-o'}`,
       }
-    }
+    },
   },
 }
 </script>
