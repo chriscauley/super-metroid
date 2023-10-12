@@ -26,10 +26,9 @@ export default (component) => {
     window.$('#nbObjectiveRandom').attr('disabled', !value)
   }
 
-  setObjectiveRandom(isRandom('objective'))
-
+  // TODO need to add objectives to customizer so we can display objectives widget
   const objectives_by_category = {}
-  Object.entries(window.objectives_categories).forEach(([objective, category]) => {
+  Object.entries(window.objectives_categories || {}).forEach(([objective, category]) => {
     objectives_by_category[category] = objectives_by_category[category] || []
     objectives_by_category[category].push(objective)
   })
@@ -43,17 +42,23 @@ export default (component) => {
     // many people are running bots and external websites and we can't make them migrate
     const data = cloneDeep(original_data)
     if (data.layoutPatches) {
-      // layoutPatches is the old name for layout
+      // layout breaks the pattern with layoutPatches for the on/off setting
       data.layout = data.layoutPatches
       delete data.layoutPatches
     }
     Object.keys(window.PATCHES).forEach((patch_group) => {
       const key = getPatchKey(patch_group)
       const all_patches = randomizer.getPatchIds(patch_group)
+      if (data[patch_group] === 'off') {
+        // backend doesn't save empty list, so user will get stuck with previous setting
+        // force an empty list
+        data[key] = []
+      }
       if (data[patch_group] && !data[key]) {
         data[key] = data[patch_group] === 'on' ? all_patches : []
       }
       if (data[patch_group] === 'on' && data[key]?.length === 0) {
+        // on and empty list is all
         data[key] = all_patches
       }
     })
@@ -70,6 +75,11 @@ export default (component) => {
       changed && side_effects[key]?.()
     },
     init: (data) => {
+      if (data.readonly) {
+        data.objective = data.objective.split(',')
+      } else {
+        setObjectiveRandom(isRandom('objective'))
+      }
       const fixed_data = migratePreset(data)
       Object.keys(state).forEach((key) => delete state[key])
       Object.assign(state, fixed_data)
@@ -109,13 +119,19 @@ export default (component) => {
     getPatches(group) {
       const enabled_patches = state[getPatchKey(group)]
       const allowed = randomizer.isPatchGroupAllowed(group)
+      const icon = (active) => {
+        if (state.readonly) {
+          return active ? 'check' : 'close'
+        }
+        return active ? 'check-square-o' : 'square-o'
+      }
       return window.PATCHES[group].map((patch) => {
         const active = allowed && enabled_patches?.includes(patch.id)
         return {
           ...patch,
           active,
-          class: [`btn btn-xs btn-${active ? 'primary' : 'default'}`],
-          icon: `fa fa-${active ? 'check-square-o' : 'square-o'}`,
+          btn: `btn btn-xs btn-${active ? 'primary' : 'default'}`,
+          icon: `fa fa-${icon(active)}`,
         }
       })
     },
@@ -261,6 +277,22 @@ export default (component) => {
       },
     },
   }
+
+  const blockReadonly = (o, keys) => {
+    keys.forEach((key) => {
+      const func = o[key]
+      o[key] = (...args) => {
+        if (state.readonly) {
+          console.warn('attempted to modify randomizer in readonly mode', ...args)
+          return null
+        }
+        return func(...args)
+      }
+    })
+  }
+
+  blockReadonly(randomizer, ['set', 'setPatches', 'togglePatch'])
+  blockReadonly(randomizer.objective, ['toggle', 'add', 'remove', 'setRandom'])
 
   window.$randomizer = randomizer
   return randomizer

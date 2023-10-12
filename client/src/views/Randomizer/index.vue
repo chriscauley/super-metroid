@@ -1,6 +1,6 @@
 <template>
   <div v-if="randomizer.state.initialized">
-    <objective-block />
+    <objective-block v-if="!randomizer.state.readonly" />
     <teleport to="#areaLayoutStep .vue-app">
       <patch-toggler patch_group="areaLayout" />
     </teleport>

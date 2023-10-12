@@ -2,7 +2,8 @@
   <div class="patch-toggler">
     <i v-if="!allowed">None (disabled for non-area rando)</i>
     <div v-else class="button-list">
-      <div class="btn-group" v-if="compact">
+      <div v-if="readonly_text">{{ readonly_text }}</div>
+      <div class="btn-group" v-else-if="compact">
         <button
           v-for="button in compact_buttons"
           type="button"
@@ -38,6 +39,17 @@ export default {
     return { compact: selected === all || selected === 0 }
   },
   computed: {
+    readonly_text() {
+      if (!this.compact || !this.randomizer.state.readonly) {
+        return null
+      }
+      const selected = this.patches.filter((p) => p.active).length
+      const all = this.patches.length
+      if (all > selected && selected > 0) {
+        return `${selected} / ${all} patches applied`
+      }
+      return all === selected ? 'all' : 'none'
+    },
     patches() {
       return this.randomizer.getPatches(this.patch_group)
     },
