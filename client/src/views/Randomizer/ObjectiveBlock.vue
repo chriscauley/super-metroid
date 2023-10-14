@@ -14,6 +14,7 @@
         {{ button.text }}
       </div>
       <i v-if="objective_buttons.length === 0">None</i>
+      <div v-if="!randomizer.state.readonly" class="faux-link">edit</div>
     </div>
     <input type="hidden" :value="randomizer.state.objective" id="objectiveMultiSelect" />
   </teleport>

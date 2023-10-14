@@ -15,6 +15,7 @@ export default (component) => {
 
   const setObjectiveRandom = (value) => {
     if (state.objective) {
+      // first time this is run, reinitialize backup
       window.objectiveBackup[!value] = state.objective.slice()
     }
     state.objective = window.objectiveBackup[value]
@@ -77,8 +78,13 @@ export default (component) => {
     init: (data) => {
       if (data.readonly) {
         data.objective = data.objective.split(',')
-      } else {
-        setObjectiveRandom(isRandom('objective'))
+      } else if (!state.initialized) {
+        const is_random = ['true', 'on', true].includes(data.objectiveRandom)
+        setObjectiveRandom(is_random)
+        data.objective = state.objective
+        if (is_random) {
+          document.getElementById('objectiveRandom').className += ' active'
+        }
       }
       const fixed_data = migratePreset(data)
       Object.keys(state).forEach((key) => delete state[key])

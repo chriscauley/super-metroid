@@ -17,7 +17,7 @@
       <template v-else>
         <PatchButton v-for="(patch, i) in patches" :key="i" :patch="patch" />
       </template>
-      <div class="expand-patches" @click="compact = !compact">
+      <div class="faux-link" @click="compact = !compact">
         {{ compact ? 'expand' : 'collapse' }}
       </div>
     </div>
