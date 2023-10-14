@@ -3,6 +3,7 @@ import { reactive } from 'vue'
 
 export default (component) => {
   const isRandom = (param) => window.isElemIdRandom(param)
+  const isTrue = (v) => String(v).toLowerCase() === 'true'
   const state = reactive({})
 
   const side_effects = {
@@ -14,17 +15,24 @@ export default (component) => {
   }
 
   const setObjectiveRandom = (value) => {
-    if (state.objective) {
+    if (state.initialized) {
       // first time this is run, reinitialize backup
       window.objectiveBackup[!value] = state.objective.slice()
     }
     state.objective = window.objectiveBackup[value]
     state.objectiveRandom = value
 
+    updateObjectiveElements()
+  }
+
+  const updateObjectiveElements = () => {
+    const value = isTrue(state.objectiveRandom)
     // disable/enable relevant inputs
     window.disableElement('hiddenObjectives', !value)
     window.disableElement('nbObjective', !value)
     window.$('#nbObjectiveRandom').attr('disabled', !value)
+    const dice = document.getElementById('objectiveRandom')
+    dice.classList[value ? 'add' : 'remove']('active')
   }
 
   // TODO need to add objectives to customizer so we can display objectives widget
@@ -47,6 +55,10 @@ export default (component) => {
       data.layout = data.layoutPatches
       delete data.layoutPatches
     }
+    if (isTrue(data.objectiveRandom)) {
+      data.objective = data.objectiveMultiSelect
+    }
+
     Object.keys(window.PATCHES).forEach((patch_group) => {
       const key = getPatchKey(patch_group)
       const all_patches = randomizer.getPatchIds(patch_group)
@@ -78,17 +90,11 @@ export default (component) => {
     init: (data) => {
       if (data.readonly) {
         data.objective = data.objective.split(',')
-      } else if (!state.initialized) {
-        const is_random = ['true', 'on', true].includes(data.objectiveRandom)
-        setObjectiveRandom(is_random)
-        data.objective = state.objective
-        if (is_random) {
-          document.getElementById('objectiveRandom').className += ' active'
-        }
       }
       const fixed_data = migratePreset(data)
       Object.keys(state).forEach((key) => delete state[key])
       Object.assign(state, fixed_data)
+      updateObjectiveElements()
       state.initialized = true
     },
     setPatches(group, value) {
