@@ -2,7 +2,7 @@
   <div :class="wrapper_class" :style="`--zoom: ${osd_store?.state.zoom || 1}`">
     <unrest-toolbar :storage="tool_storage" class="tracker-toolbar">
       <template #right>
-        <div class="btn-group" v-if="is_admin">
+        <div class="btn-group">
           <button title="Reset Viewer" class="btn -secondary" @click="osd_store.resetZoom">
             <i class="fa fa-arrows-alt" />
           </button>
@@ -133,9 +133,6 @@ export default {
     selected_key() {
       const { selected_warp } = this.tool_storage.state
       return selected_warp && this.code_map[selected_warp]
-    },
-    is_admin() {
-      return this.$route.query.is_admin
     },
     code_map() {
       return this.tool_storage.getCodeMap()
