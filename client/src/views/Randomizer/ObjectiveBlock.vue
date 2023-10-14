@@ -35,6 +35,11 @@ export default {
     return { open: false }
   },
   computed: {
+    count_display() {
+      const max = this.randomizer.objective.getMax()
+      const selected = this.randomizer.state.objective.length
+      return max === Infinity ? selected : `${selected} / ${max}`
+    },
     objective_buttons() {
       const _order = Object.keys(cat_map)
       return this.randomizer.state.objective.map((o) => ({
