@@ -26,6 +26,9 @@ export default (component) => {
   }
 
   const updateObjectiveElements = () => {
+    if (state.readonly) {
+      return
+    }
     const value = isTrue(state.objectiveRandom)
     // disable/enable relevant inputs
     window.disableElement('hiddenObjectives', !value)
@@ -114,6 +117,9 @@ export default (component) => {
       }
     },
     isPatchGroupAllowed(group) {
+      if (state.readonly) {
+        return true
+      }
       if (group === 'areaLayout') {
         const value = state.areaRandomization
         if (value === 'random') {

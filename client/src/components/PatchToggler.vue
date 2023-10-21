@@ -81,5 +81,17 @@ export default {
       ]
     },
   },
+  mounted() {
+    if (this.randomizer.state.readonly) {
+      const pg = this.patch_group
+      const selected = this.patches.filter((p) => p.active).length
+      const all = this.patches.length
+      const default_count = pg === 'areaLayout' ? 0 : all
+      const selector = `#${pg}${pg === 'layout' ? 'Patches' : ''}Step td:first-child`
+      if (selected !== default_count) {
+        document.querySelector(selector)?.classList.add('bold')
+      }
+    }
+  },
 }
 </script>
