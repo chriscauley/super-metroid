@@ -315,8 +315,8 @@
     ],
     "title_dxy": [11.092592592592592, 4.12037037037037],
     "doors": [
-      ["RedTowerLeft", 10.5, 13],
-      ["RedBrinstarFirefleaLeft", 10.5, 15.25],
+      ["RedTowerLeft", 10.5, 15.25],
+      ["RedBrinstarFirefleaLeft", 2, 15.25],
       ["RedTowerElevatorTopLeft", 14.75, 6.25],
       ["RedTowerElevatorLeft", 14.75, 8.5],
       ["RedTowerElevatorBottomLeft", 14.75, 10.75],
