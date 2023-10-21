@@ -32,6 +32,7 @@ export default (component) => {
     const value = isTrue(state.objectiveRandom)
     // disable/enable relevant inputs
     window.disableElement('hiddenObjectives', !value)
+    window.disableElement('distributeObjectives', !value)
     window.disableElement('nbObjective', !value)
     window.$('#nbObjectiveRandom').attr('disabled', !value)
     const dice = document.getElementById('objectiveRandom')
