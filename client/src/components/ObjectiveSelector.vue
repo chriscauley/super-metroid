@@ -1,26 +1,26 @@
 <template>
   <div class="objective-selector">
-    <div v-for="category in categories" class="objective-selector__category" :key="category.name">
+    <div v-for="category in categories" class="objective-selector__category" :key="category.id">
       <h4 :class="category.class">
-        <div v-if="!category.is_random">{{ category.name }}</div>
+        <div v-if="!category.is_random">{{ category.id }}</div>
         <label v-else>
           <input type="checkbox" :checked="category.checked" @input="toggleCategory(category)" />
-          {{ category.name }}
+          {{ category.id }}
         </label>
       </h4>
       <div
-        v-for="objective in category.objectives"
-        :key="objective"
-        :class="objectiveClass(objective)"
+        v-for="objective_id in category.objective_ids"
+        :key="objective_id"
+        :class="objectiveClass(objective_id)"
       >
-        <label :title="disabled_objectives[objective]">
+        <label :title="disabled_objectives[objective_id]">
           <input
             type="checkbox"
-            @input="randomizer.objective.toggle(objective)"
-            :checked="selected_objectives[objective]"
-            :disabled="!!disabled_objectives[objective]"
+            @input="randomizer.objective.toggle(objective_id)"
+            :checked="selected_objectives[objective_id]"
+            :disabled="!!disabled_objectives[objective_id]"
           />
-          {{ objective }}
+          {{ objective_id }}
         </label>
       </div>
     </div>

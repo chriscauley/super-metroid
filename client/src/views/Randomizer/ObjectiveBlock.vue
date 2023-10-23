@@ -22,11 +22,11 @@
 
 <script>
 const cat_map = {
-  Bosses: 'danger',
-  Minibosses: 'warning',
-  Items: 'primary',
-  Map: 'success',
-  Memes: 'info',
+  bosses: 'danger',
+  minibosses: 'warning',
+  items: 'primary',
+  map: 'success',
+  memes: 'info',
 }
 
 export default {
@@ -42,10 +42,13 @@ export default {
     },
     objective_buttons() {
       const _order = Object.keys(cat_map)
-      return this.randomizer.state.objective.map((o) => ({
-        text: o,
-        class: `btn btn-${cat_map[window.objectives_categories[o]]} btn-xs`,
-      }))
+      return this.randomizer.state.objective.map((o_id) => {
+        const objective = this.randomizer.objective.by_id[o_id]
+        return {
+          text: o_id,
+          class: `btn btn-${cat_map[objective.category]} btn-xs`,
+        }
+      })
     },
   },
 }
