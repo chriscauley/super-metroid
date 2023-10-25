@@ -8,7 +8,7 @@
     "build:github": "VUE_APP_SITE=github vue-cli-service build --dest ../docs",
     "build:release": "VUE_APP_SITE=varia vue-cli-service build",
     "build:varia": "yarn build:release --dest ../../web/client",
-    "watch:varia": "yarn build:varia --watch --mode production",
+    "watch:varia": "VARIA_WATCH=true yarn build:varia --watch --mode production",
     "lint": "eslint \"src/**/*\""
   },
   "dependencies": {

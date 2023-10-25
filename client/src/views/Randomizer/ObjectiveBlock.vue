@@ -1,7 +1,12 @@
 <template>
   <teleport to="#objectivePortal">
     <bootstrap-modal v-if="open" title="Select Objectives" @close="open = false">
-      <objective-selector />
+      <objective-selector
+        :categories="randomizer.objective.getCategories()"
+        :is_random="randomizer.isRandom('objective')"
+        @toggle-category="randomizer.objective.toggleCategory"
+        @toggle-objective="randomizer.objective.toggle"
+      />
       <template #footer>
         <div v-if="warning" class="alert alert-warning" role="alert">
           {{ warning }}

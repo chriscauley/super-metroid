@@ -30,3 +30,7 @@ if (process.env.NODE_ENV === 'production') {
     module.exports.publicPath = '/super-metroid'
   }
 }
+
+if (process.env.VARIA_WATCH) {
+  module.exports.chainWebpack = config => config.optimization.minimize(false)
+}
