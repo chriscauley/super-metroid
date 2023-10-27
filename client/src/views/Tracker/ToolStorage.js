@@ -18,9 +18,8 @@ const tracker_settings = {
       large_doors: { type: 'boolean' },
       large_locations: { type: 'boolean' },
       large_warps: { type: 'boolean' },
-      warp_display: {
-        type: 'string',
-        enum: ['dot', 'codes'],
+      show_objectives: {
+        type: 'boolean',
       },
       // editor_mode: {
       //   title: 'Controls',
@@ -49,6 +48,10 @@ const tracker_settings = {
       show_grid: {
         type: 'boolean',
       },
+      warp_display: {
+        type: 'string',
+        enum: ['dot', 'codes'],
+      },
     },
   },
   initial: {
@@ -56,6 +59,7 @@ const tracker_settings = {
     large_doors: false,
     large_locations: false,
     large_warps: false,
+    show_objectives: true,
     item_tracker: 'pause-menu',
     visible_locations: 'full',
     room_visibility: 'highlight-open',

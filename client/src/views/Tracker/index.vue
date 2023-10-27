@@ -31,7 +31,7 @@
       <span v-if="selected_key"> {{ selected_key }} + </span>
       {{ tool_storage.state.key_stack.join(' ') }}
     </div>
-    <objective-checklist />
+    <objective-checklist v-if="tool_storage.state.tracker_settings.show_objectives" />
     <item-counter :game_state="game_state" :areas="areas" />
     <item-tracker :inventory="game_state.inventory" @add-item="addItem" @toggle-item="toggleItem" />
     <timer-widget v-if="!is_plando" />
