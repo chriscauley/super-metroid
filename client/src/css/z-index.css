@@ -45,7 +45,8 @@
 .item-tracker__wrapper,
 .timer-widget,
 .varia-picker,
-.edit-area__click-mask {
+.edit-area__click-mask,
+.objective-checklist {
   z-index: 50; /* above locations, warps, and doors */
 }
 

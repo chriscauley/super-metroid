@@ -31,6 +31,7 @@
       <span v-if="selected_key"> {{ selected_key }} + </span>
       {{ tool_storage.state.key_stack.join(' ') }}
     </div>
+    <objective-checklist />
     <item-counter :game_state="game_state" :areas="areas" />
     <item-tracker :inventory="game_state.inventory" @add-item="addItem" @toggle-item="toggleItem" />
     <timer-widget v-if="!is_plando" />
@@ -50,6 +51,7 @@ import EditArea from './EditArea.vue'
 import EntityFilter from './EntityFilter.vue'
 import ItemCounter from './ItemCounter.vue'
 import ItemTracker from './ItemTracker.vue'
+import ObjectiveChecklist from './ObjectiveChecklist.vue'
 import ObjectiveSettings from './ObjectiveSettings.vue'
 import RandoSettings from './RandoSettings.vue'
 import TimerWidget from '@/components/TimerWidget'
@@ -66,6 +68,7 @@ export default {
     EntityFilter,
     ItemCounter,
     ItemTracker,
+    ObjectiveChecklist,
     ObjectiveSettings,
     RandoSettings,
     SeedSettings,

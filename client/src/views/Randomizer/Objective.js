@@ -61,11 +61,11 @@ export default (randomizer) => {
       const selected_map = randomizer.objective.getSelectedMap()
       const disabled_map = randomizer.objective.getDisabledMap()
       return Object.entries(randomizer.objective.by_category).map(([id, objectives]) => {
-        objectives = objectives.map(o => ({
+        objectives = objectives.map((o) => ({
           ...o,
           disabled: disabled_map[o.id],
           selected: selected_map[o.id],
-          }))
+        }))
         const checked = objectives.filter((o) => o.selected).length > 0
         const partial = is_random && checked > 0 && checked < objectives.length
         return {

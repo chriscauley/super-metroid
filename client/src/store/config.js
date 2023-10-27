@@ -3,6 +3,7 @@ import { ReactiveLocalStorage } from '@unrest/vue-storage'
 const LS_KEY = 'CONFIG_STORAGE'
 const initial = {
   'item-tracker': null,
+  'objective-checklist': null,
 }
 
 export default () => {

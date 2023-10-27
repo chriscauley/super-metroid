@@ -1,41 +1,37 @@
 <template>
-  <unrest-draggable
-    v-if="tool_storage.state.edit_mode"
-    class="resize-box"
-    @dragstart="dragstart"
-    @drag="drag"
-    @dragend="dragend"
-    @click.stop
-  >
-    <div class="resize-box__target" data-target="reset">
-      <i class="fa fa-undo" />
-    </div>
-    <div v-for="t in TARGETS" class="resize-box__target" :key="t" :data-target="t" />
-    <div class="resize-box__target" data-target="center">
-      <i class="fa fa-arrows" />
-    </div>
-    <div class="resize-box__debug">{{ debug }}</div>
-  </unrest-draggable>
+  <div v-if="tool_storage.state.edit_mode">
+    <unrest-draggable
+      class="resize-box"
+      @dragstart="dragstart"
+      @drag="drag"
+      @dragend="dragend"
+      @click.stop
+      ref="root"
+    >
+      <div class="resize-box__target" data-target="reset">
+        <i class="fa fa-undo" />
+      </div>
+      <div v-if="!noResize" class="resize-box__target" data-target="bottom-right" />
+      <div class="resize-box__target" data-target="center">
+        <i class="fa fa-arrows" />
+      </div>
+      <div class="resize-box__debug">{{ debug }}</div>
+    </unrest-draggable>
+    <slot />
+  </div>
 </template>
 
 <script>
 import { clamp } from 'lodash'
 
-const TARGETS = ['bottom-right'] // 'top-right', 'top-left', 'bottom-right', 'bottom-left']
-
 export default {
   inject: ['tool_storage'],
+  props: {
+    noResize: Boolean,
+  },
   emits: ['update'],
   data() {
-    return { TARGETS, debug: null, state: null, target: null }
-  },
-  computed: {
-    targets() {
-      return TARGETS.map((name) => ({
-        class: `resize-box__target -${name}`,
-        'data-name': name,
-      }))
-    },
+    return { debug: null, state: null, target: null }
   },
   methods: {
     dragstart(e) {

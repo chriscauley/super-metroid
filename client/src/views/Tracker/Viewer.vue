@@ -179,6 +179,7 @@ export default {
             i.setOpacity(this.compact_settings.area ? 1 : 0)
           }
         })
+        this.osd_store.state.ready = true
       } else {
         this._timeout = setTimeout(this.finishedLoading, 100)
       }

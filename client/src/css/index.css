@@ -564,3 +564,27 @@ h3 {
     @apply flex-col
   }
 }
+
+.objective-checklist {
+  @apply p-2 bg-white text-black;
+  background-color: white;
+  color: black;
+  position: absolute;
+  margin-bottom: 21px; /* height of "seed settings" */
+  .resize-box__target.fa-edit {
+    @apply top-0 right-0;
+  }
+  .ur-form {
+    @apply p-2 bg-white text-black;
+    font-size: 14px;
+    width: 120px;
+  }
+  h4.objective-checklist__title {
+    font-size: 1.2em;
+    margin-bottom: 0.25em;
+  }
+  &__cell {
+    @apply flex items-center;
+    gap: 0.2em;
+  }
+}
