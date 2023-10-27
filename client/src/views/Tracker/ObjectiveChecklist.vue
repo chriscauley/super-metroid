@@ -21,8 +21,8 @@
       <div class="objective-checklist__table">
         <table class="table" style="width: 100%">
           <tbody>
-            <tr v-for="goal in goals.list" :key="goal.name">
-              <td>
+            <tr v-for="(row, i) in rows" :key="i">
+              <td v-for="goal in row" :key="goal.name">
                 <div class="objective-checklist__cell">
                   <i :class="goal.icon" />
                   {{ goal.name }}
@@ -40,12 +40,9 @@
 const schema = {
   type: 'object',
   properties: {
-    font_size: {
-      type: 'number',
-    },
-    show_title: {
-      type: 'boolean',
-    },
+    font_size: { type: 'number' },
+    columns: { type: 'number' },
+    show_title: { type: 'boolean' },
   },
 }
 
@@ -58,9 +55,16 @@ export default {
     config() {
       const default_config = {
         font_size: 14,
+        columns: 1,
         show_title: true,
       }
-      return this.$store.config.state['objective-checklist'] || default_config
+      const config = this.$store.config.state['objective-checklist'] || default_config
+      // TODO need max, min, step on type number
+      config.columns = parseInt(config.columns)
+      if (!config.columns > 0) {
+        config.columns = 1
+      }
+      return config
     },
     watchme() {
       if (!this.osd_store?.state.ready) {
@@ -80,8 +84,22 @@ export default {
         required: nbRequiredGoals,
       }
     },
+    rows() {
+      const goals = this.goals.list
+      const { columns = 1 } = this.config
+      const rows = []
+      let row
+      goals.forEach((g, i) => {
+        if (i % columns === 0) {
+          row = []
+          rows.push(row)
+        }
+        row.push(g)
+      })
+      return rows
+    },
     style() {
-      const { x = 0, y, font_size = 14 } = this.config
+      const { x = 0, y, font_size } = this.config
 
       const style = {
         left: `${x}px`,
