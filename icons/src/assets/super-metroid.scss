@@ -4,7 +4,7 @@
 @use "sass:string";
 @import "./variables.scss";
 
-.sm-item, .sm-block, .sm-cre-hex, .sm-ui, .sm-link, .sm-boss, .sm-icon, .sm-g4-head, .sm-map, .sm-map-boss, .sm-drop {
+.sm-item, .sm-block, .sm-cre-hex, .sm-ui, .sm-link, .sm-boss, .sm-icon, .sm-g4-head, .sm-map, .sm-map-boss, .sm-drop, .sm-cwisp {
   display: inline-block;
   position: relative;
   height: 1em;
@@ -22,6 +22,57 @@
   }
   &.-inactive {
     filter: grayscale(1) brightness(0.75);
+  }
+}
+
+.sm-cwisp {
+  &__cell {
+    @apply absolute cursor-pointer;
+    border-radius: 10%;
+    background-size: cover;
+    height: math.div(7, 17) * 100%;
+    image-rendering: pixelated;
+    transition: 0.25s;
+    width: math.div(7, 17) * 100%;
+    &.-inactive {
+      filter: grayscale(1) brightness(0.25);
+      z-index: 1;
+      &:hover {
+        filter: grayscale(0.5) brightness(0.75);
+      }
+    }
+    &.-active {
+      z-index: 2;
+      &.-charge-beam {
+        z-index: 3;
+      }
+    }
+    &:hover {
+      scale: 1.2;
+      z-index: 4;
+    }
+    &.-charge-beam {
+      background-image: url('./images/cwisp/charge-beam.png');
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+    &.-wave-beam {
+      @apply left-0 top-0;
+      background-image: url('./images/cwisp/wave-beam.png');
+    }
+    &.-ice-beam {
+      @apply right-0 top-0;
+      background-image: url('./images/cwisp/ice-beam.png');
+    }
+    &.-spazer-beam {
+      @apply left-0 bottom-0;
+      background-image: url('./images/cwisp/spazer-beam.png');
+    }
+    &.-plasma-beam {
+      @apply right-0 bottom-0;
+      background-image: url('./images/cwisp/plasma-beam.png');
+    }
   }
 }
 
