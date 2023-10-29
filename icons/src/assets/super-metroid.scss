@@ -56,6 +56,11 @@
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
+      &:hover {
+        scale: 1;
+        height: 1.2 * math.div(7, 17) * 100%;
+        width: 1.2*math.div(7, 17) * 100%;
+      }
     }
     &.-wave-beam {
       @apply left-0 top-0;
