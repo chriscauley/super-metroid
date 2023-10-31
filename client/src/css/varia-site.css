@@ -104,6 +104,11 @@ body.-site-varia {
   .form-control {
     font-size: 16px;
     height: unset;
+    &[type="color"] {
+      height: 32px;
+      padding: unset;
+      width: 32px;
+    }
   }
   label {
     margin-bottom: 0;

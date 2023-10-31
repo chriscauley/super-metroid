@@ -43,6 +43,8 @@ const schema = {
     font_size: { type: 'number' },
     columns: { type: 'number' },
     show_title: { type: 'boolean' },
+    text: { type: 'string', format: 'color' },
+    background: { type: 'string', format: 'color' },
   },
 }
 
@@ -57,6 +59,8 @@ export default {
         font_size: 14,
         columns: 1,
         show_title: true,
+        text: '#000000',
+        background: '#FFFFFF',
       }
       const config = this.$store.config.state['objective-checklist'] || default_config
       // TODO need max, min, step on type number
@@ -99,12 +103,14 @@ export default {
       return rows
     },
     style() {
-      const { x = 0, y, font_size } = this.config
+      const { x = 0, y, font_size, text, background } = this.config
 
       const style = {
         left: `${x}px`,
         top: `${y}px`,
         fontSize: `${font_size}px`,
+        color: text,
+        background,
       }
       if (y === undefined) {
         delete style.top
