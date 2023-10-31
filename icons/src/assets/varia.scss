@@ -2,7 +2,9 @@
 @use "sass:list";
 @use "sass:string";
 
-.smv-boss, .smv-gps, .smv-gps-number, .smv-icon, .smv-beam {
+$allbosses: kraid phantoon draygon ridley mother-brain spore-spawn crocomire botwoon golden-torizo;
+
+.smv-boss, .smv-gps, .smv-gps-number, .smv-icon, .smv-beam, .smv-obj, .smv-font {
   display: inline-block;
   position: relative;
   height: 1em;
@@ -21,12 +23,11 @@
 }
 
 .smv-boss {
-  $bosses: kraid phantoon draygon ridley mother-brain spore-spawn crocomire botwoon golden-torizo;
   &:before {
     background-image: url(./images/varia/boss-icons.png);
   }
-  @for $i from 0 to length($bosses) {
-    $name: nth($bosses, $i + 1);
+  @for $i from 0 to length($allbosses) {
+    $name: nth($allbosses, $i + 1);
     &.-#{""+$name}:before {
       background-position: 0 $i * -100%;
     }
@@ -148,4 +149,136 @@ $varia-levels: break easy medium hard harder hardcore mania;
 
 .sm-item.-crystal-flash:before {
   background-image: url(./images/varia/CrystalFlash.png);
+}
+
+/* $objs: kill-kraid, kill-phantoon, kill-draygon, kill-ridley, kill-one-g-4, kill-two-g-4, kill-three-g-4, kill-all-g-4, kill-spore-spawn, kill-botwoon, kill-crocomire, kill-golden-torizo, kill-one-miniboss, kill-two-minibosses, kill-three-minibosses, kill-all-mini-bosses, collect-25-items, collect-50-items, collect-75-items, collect-100-items, collect-all-upgrades, clear-crateria, clear-green-brinstar, clear-red-brinstar, clear-wrecked-ship, clear-kraids-lair, clear-upper-norfair, clear-crocs-lair, clear-lower-norfair, clear-west-maridia, clear-east-maridia, explore-25-map, explore-50-map, explore-75-map, explore-100-map, explore-crateria, explore-green-brinstar, explore-red-brinstar, explore-wrecked-ship, explore-kraids-lair, explore-upper-norfair, explore-crocs-lair, explore-lower-norfair, explore-west-maridia, explore-east-maridia, tickle-the-red-fish, kill-the-orange-geemer, kill-shaktool, activate-chozo-robots, visit-the-animals, kill-king-cacatac; */
+$objs: kill-one-g-4, kill-two-g-4, kill-three-g-4, kill-all-g-4,
+       tickle-the-red-fish, kill-the-orange-geemer, kill-shaktool, activate-chozo-robots, visit-the-animals, kill-king-cacatac,
+       collect-25-items, collect-50-items, collect-75-items, collect-100-items, collect-all-upgrades,
+       explore-25-map, explore-50-map, explore-75-map, explore-100-map;
+ /* explore-crateria, explore-green-brinstar, explore-red-brinstar, explore-wrecked-ship, explore-kraids-lair, explore-upper-norfair, explore-crocs-lair, explore-lower-norfair, explore-west-maridia, explore-east-maridia,  clear-crateria, clear-green-brinstar, clear-red-brinstar, clear-wrecked-ship, clear-kraids-lair, clear-upper-norfair, clear-crocs-lair, clear-lower-norfair, clear-west-maridia, clear-east-maridia, */
+/* , kill-one-miniboss, kill-two-minibosses, kill-three-minibosses, kill-all-mini-bosses; */
+
+.smv-obj {
+  font-style: normal;
+  text-align: center;
+  &:before {
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  @each $obj in $objs {
+    &.-#{$obj}:before {
+      background-image: url(./images/objectives/#{$obj}.png);
+    }
+  }
+  @each $boss in $allbosses {
+    &.-kill-#{$boss}:before {
+      background-image: url(./images/bosses/#{$boss}_head.png);
+    }
+  }
+  &.-kill-one-miniboss:before {
+    background-image: url('./images/fonts/green_1.png');
+  }
+  &.-kill-two-minibosses:before {
+    background-image: url('./images/fonts/green_2.png');
+  }
+  &.-kill-three-minibosses:before {
+    background-image: url('./images/fonts/green_3.png');
+  }
+  &.-kill-all-mini-bosses:before {
+    background-image: url('./images/fonts/green_4.png');
+  }
+  &.-clear-crateria,
+  &.-clear-red-brinstar,
+  &.-clear-green-brinstar,
+  &.-clear-wrecked-ship,
+  &.-clear-kraids-lair,
+  &.-clear-upper-norfair,
+  &.-clear-crocs-lair,
+  &.-clear-lower-norfair,
+  &.-clear-west-maridia,
+  &.-clear-east-maridia,
+  &.-explore-crateria,
+  &.-explore-red-brinstar,
+  &.-explore-green-brinstar,
+  &.-explore-wrecked-ship,
+  &.-explore-kraids-lair,
+  &.-explore-upper-norfair,
+  &.-explore-crocs-lair,
+  &.-explore-lower-norfair,
+  &.-explore-west-maridia,
+  &.-explore-east-maridia {
+    &:before {
+      bottom: 10%;
+      left: 20%;
+      right: 10%;
+      top: 20%;
+      z-index: 2;
+
+    }
+    &:after {
+      @apply absolute inset-0;
+      content: "";
+      background-color: #123456;
+      border-radius: 100%;
+      z-index: 1;
+    }
+  }
+  &.-explore-crateria,
+  &.-explore-red-brinstar,
+  &.-explore-green-brinstar,
+  &.-explore-wrecked-ship,
+  &.-explore-kraids-lair,
+  &.-explore-upper-norfair,
+  &.-explore-crocs-lair,
+  &.-explore-lower-norfair,
+  &.-explore-west-maridia,
+  &.-explore-east-maridia {
+    &:after {
+      border-radius: 0;
+      background-color: transparent;
+      background-image: url(./images/objectives/explore.png);
+      background-size: cover;
+    }
+  }
+  &.-clear-crateria:before,
+  &.-explore-crateria:before {
+    background-image: url('./images/fonts/white_c.png');
+  }
+  &.-clear-red-brinstar:before,
+  &.-explore-red-brinstar:before {
+    background-image: url('./images/fonts/white_r.png');
+  }
+  &.-clear-green-brinstar:before,
+  &.-explore-green-brinstar:before {
+    background-image: url('./images/fonts/white_g.png');
+  }
+  &.-clear-wrecked-ship:before,
+  &.-explore-wrecked-ship:before {
+    background-image: url('./images/fonts/white_s.png');
+  }
+  &.-clear-kraids-lair:before,
+  &.-explore-kraids-lair:before {
+    background-image: url('./images/fonts/white_k.png');
+}
+  &.-clear-upper-norfair:before,
+  &.-explore-upper-norfair:before {
+    background-image: url('./images/fonts/white_u.png');
+}
+  &.-clear-crocs-lair:before,
+  &.-explore-crocs-lair:before {
+    background-image: url('./images/fonts/white_o.png');
+}
+  &.-clear-lower-norfair:before,
+  &.-explore-lower-norfair:before {
+    background-image: url('./images/fonts/white_l.png');
+}
+  &.-clear-west-maridia:before,
+  &.-explore-west-maridia:before {
+    background-image: url('./images/fonts/white_w.png');
+}
+  &.-clear-east-maridia:before,
+  &.-explore-east-maridia:before {
+    background-image: url('./images/fonts/white_e.png');
+}
 }

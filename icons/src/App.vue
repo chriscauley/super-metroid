@@ -1,4 +1,10 @@
 <template>
+  <div style="font-size: 32px;columns: 4;padding: 20px; background: black; color:white;">
+    <div v-for="obj in randomizer_data.objective_by_id" :key="obj.id">
+      <i :class="objClass(obj.id)" />
+      {{ obj.id }}
+    </div>
+  </div>
   <div class="smi-tracker text-white p-8" style="font-size: 32px">
     <div style="display: flex; align-items: center">
       <div>
@@ -18,6 +24,9 @@
 </template>
 
 <script>
+import randomizer_data from './randomizerData.json'
+import { kebabCase } from 'lodash'
+
 const icon_groups = {
   sm: [],
   smv: ['smv-icon -door', 'smv-icon -map-cursor -blink'],
@@ -68,16 +77,14 @@ while (i < 32) {
   icon_groups.gps.push(`smv-gps-number -number-${i}`)
 }
 
-// const beams = ['charge', 'ice', 'wave', 'spazer', 'plasma'].map(s => s+'-beam')
-// const suits = ['varia-suit', 'gravity-suit']
-// const misc = ['morph-ball', 'bomb', 'spring-ball', 'screw-attack']
-// const boots = ['hi-jump-boots', 'space-jump', 'speed-booster']
-
-// const menu_items = [ ...beams, ...suits, ...misc, ...misc]
-
 export default {
   data() {
-    return { icon_groups }
+    return { icon_groups, inventory: {}, randomizer_data }
+  },
+  methods: {
+    objClass(id) {
+      return `smv-obj -${kebabCase(id)}`
+    }
   },
 }
 </script>

@@ -25,6 +25,11 @@
   }
 }
 
+.sm-item.-blank {
+  /* this is just to have an item that fills space in the inventory */
+  pointer-events: none;
+}
+
 .sm-cwisp {
   &__cell {
     @apply absolute cursor-pointer;
@@ -143,8 +148,6 @@
     &.-#{""+$name}:before {
       background-image: url(./images/bosses/#{$name}.png);
     }
-  }
-  @each $name in $bosses {
     &.-head.-#{""+$name}:before {
       background-image: url(./images/bosses/#{$name}_head.png);
     }
