@@ -83,7 +83,7 @@ export default {
   },
   methods: {
     objClass(id) {
-      return `smv-obj -${kebabCase(id)}`
+      return `smv-objective -${kebabCase(id)}`
     }
   },
 }

@@ -4,7 +4,7 @@
 
 $allbosses: kraid phantoon draygon ridley mother-brain spore-spawn crocomire botwoon golden-torizo;
 
-.smv-boss, .smv-gps, .smv-gps-number, .smv-icon, .smv-beam, .smv-obj, .smv-font {
+.smv-boss, .smv-gps, .smv-gps-number, .smv-icon, .smv-beam, .smv-objective, .smv-font {
   display: inline-block;
   position: relative;
   height: 1em;
@@ -151,15 +151,13 @@ $varia-levels: break easy medium hard harder hardcore mania;
   background-image: url(./images/varia/CrystalFlash.png);
 }
 
-/* $objs: kill-kraid, kill-phantoon, kill-draygon, kill-ridley, kill-one-g-4, kill-two-g-4, kill-three-g-4, kill-all-g-4, kill-spore-spawn, kill-botwoon, kill-crocomire, kill-golden-torizo, kill-one-miniboss, kill-two-minibosses, kill-three-minibosses, kill-all-mini-bosses, collect-25-items, collect-50-items, collect-75-items, collect-100-items, collect-all-upgrades, clear-crateria, clear-green-brinstar, clear-red-brinstar, clear-wrecked-ship, clear-kraids-lair, clear-upper-norfair, clear-crocs-lair, clear-lower-norfair, clear-west-maridia, clear-east-maridia, explore-25-map, explore-50-map, explore-75-map, explore-100-map, explore-crateria, explore-green-brinstar, explore-red-brinstar, explore-wrecked-ship, explore-kraids-lair, explore-upper-norfair, explore-crocs-lair, explore-lower-norfair, explore-west-maridia, explore-east-maridia, tickle-the-red-fish, kill-the-orange-geemer, kill-shaktool, activate-chozo-robots, visit-the-animals, kill-king-cacatac; */
+/* all objectives for reference kill-kraid, kill-phantoon, kill-draygon, kill-ridley, kill-one-g-4, kill-two-g-4, kill-three-g-4, kill-all-g-4, kill-spore-spawn, kill-botwoon, kill-crocomire, kill-golden-torizo, kill-one-miniboss, kill-two-minibosses, kill-three-minibosses, kill-all-mini-bosses, collect-25-items, collect-50-items, collect-75-items, collect-100-items, collect-all-upgrades, clear-crateria, clear-green-brinstar, clear-red-brinstar, clear-wrecked-ship, clear-kraids-lair, clear-upper-norfair, clear-crocs-lair, clear-lower-norfair, clear-west-maridia, clear-east-maridia, explore-25-map, explore-50-map, explore-75-map, explore-100-map, explore-crateria, explore-green-brinstar, explore-red-brinstar, explore-wrecked-ship, explore-kraids-lair, explore-upper-norfair, explore-crocs-lair, explore-lower-norfair, explore-west-maridia, explore-east-maridia, tickle-the-red-fish, kill-the-orange-geemer, kill-shaktool, activate-chozo-robots, visit-the-animals, kill-king-cacatac; */
 $objs: kill-one-g-4, kill-two-g-4, kill-three-g-4, kill-all-g-4,
        tickle-the-red-fish, kill-the-orange-geemer, kill-shaktool, activate-chozo-robots, visit-the-animals, kill-king-cacatac,
        collect-25-items, collect-50-items, collect-75-items, collect-100-items, collect-all-upgrades,
        explore-25-map, explore-50-map, explore-75-map, explore-100-map;
- /* explore-crateria, explore-green-brinstar, explore-red-brinstar, explore-wrecked-ship, explore-kraids-lair, explore-upper-norfair, explore-crocs-lair, explore-lower-norfair, explore-west-maridia, explore-east-maridia,  clear-crateria, clear-green-brinstar, clear-red-brinstar, clear-wrecked-ship, clear-kraids-lair, clear-upper-norfair, clear-crocs-lair, clear-lower-norfair, clear-west-maridia, clear-east-maridia, */
-/* , kill-one-miniboss, kill-two-minibosses, kill-three-minibosses, kill-all-mini-bosses; */
 
-.smv-obj {
+.smv-objective {
   font-style: normal;
   text-align: center;
   &:before {
@@ -239,11 +237,12 @@ $objs: kill-one-g-4, kill-two-g-4, kill-three-g-4, kill-all-g-4,
       background-color: transparent;
       background-image: url(./images/objectives/explore.png);
       background-size: cover;
+      image-rendering: pixelated;
     }
   }
   &.-clear-crateria:before,
   &.-explore-crateria:before {
-    background-image: url('./images/fonts/white_c.png');
+    background-image: url('./images/fonts/white_a.png');
   }
   &.-clear-red-brinstar:before,
   &.-explore-red-brinstar:before {
@@ -255,7 +254,7 @@ $objs: kill-one-g-4, kill-two-g-4, kill-three-g-4, kill-all-g-4,
   }
   &.-clear-wrecked-ship:before,
   &.-explore-wrecked-ship:before {
-    background-image: url('./images/fonts/white_s.png');
+    background-image: url('./images/fonts/white_p.png');
   }
   &.-clear-kraids-lair:before,
   &.-explore-kraids-lair:before {
@@ -275,7 +274,7 @@ $objs: kill-one-g-4, kill-two-g-4, kill-three-g-4, kill-all-g-4,
 }
   &.-clear-west-maridia:before,
   &.-explore-west-maridia:before {
-    background-image: url('./images/fonts/white_w.png');
+    background-image: url('./images/fonts/white_m.png');
 }
   &.-clear-east-maridia:before,
   &.-explore-east-maridia:before {
