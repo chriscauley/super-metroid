@@ -1,0 +1,30 @@
+{
+  "name": "sm-vue",
+  "license": "MIT",
+  "version": "0.0.7",
+  "type": "module",
+  "main": "./dist/sm-vue.umd.cjs",
+  "module": "./dist/sm-vue.js",
+  "exports": {
+    ".": {
+      "import": "./dist/sm-vue.js",
+      "require": "./dist/sm-vue.umd.cjs"
+    }
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint \"src/**/*\""
+  },
+  "peerDependencies": {
+    "vue": "^3.2.47"
+  },
+  "devDependencies": {
+    "@unrest/eslint-config": "^0.0.8",
+    "@vitejs/plugin-vue": "^4.1.0",
+    "@vue/cli-plugin-babel": "^5.0.8",
+    "vite": "^4.3.9",
+    "vue": "^3.2.47"
+  }
+}

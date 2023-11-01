@@ -1,5 +1,5 @@
 <template>
-  <div :class="wrapper_class">
+  <div :class="wrapper_class" :style="style">
     <div v-for="group in groups" :key="group.name" :class="group.class">
       <div v-for="(child, i) in group.children" :key="i" v-bind="child" />
     </div>
@@ -17,7 +17,10 @@ const css = {
 }
 
 css.separator = css.item('flex-grow')
-const range = (n) => Array(n || 0).fill().map((_,i) => i)
+const range = (n) =>
+  Array(n || 0)
+    .fill()
+    .map((_, i) => i)
 const energyTanks = (n, flag) => ({
   name: 'energy-tanks',
   children: range(n).map(() => css.item('smi -ietank')),
@@ -44,6 +47,7 @@ export default {
     inventory: Object,
     controlled: Boolean,
     world: String,
+    width: Number,
   },
   emits: ['add-item', 'toggle-item'],
   computed: {
@@ -143,6 +147,9 @@ export default {
           onclick: () => this.$emit('toggle-item', item),
         })),
       }))
+    },
+    style() {
+      return this.width && { '--inventory-px': `${this.width / 256}px` }
     },
   },
 }
