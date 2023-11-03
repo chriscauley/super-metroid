@@ -355,7 +355,7 @@ export default {
       this.inventory[name] = !this.inventory[name]
     },
     setJsonData(json_data) {
-      if (jsond_data?.seed !== this.$store.seed.state.seed) {
+      if (json_data?.seed !== this.$store.seed.state.seed) {
         this.$store.seed.save({
           seed: json_data?.seed,
           objective_order: [],
