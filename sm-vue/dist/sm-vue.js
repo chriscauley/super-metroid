@@ -1,5 +1,5 @@
-import { resolveComponent as T, openBlock as a, createElementBlock as c, normalizeClass as g, Fragment as p, renderList as d, createBlock as j, mergeProps as x, createCommentVNode as B, resolveDynamicComponent as z, normalizeStyle as A } from "vue";
-const b = {
+import { resolveComponent as B, openBlock as n, createElementBlock as c, normalizeClass as d, normalizeStyle as S, Fragment as h, renderList as b, createBlock as I, mergeProps as C, createCommentVNode as N } from "vue";
+const _ = {
   default: {
     _packs: {
       missile: 5,
@@ -7,6 +7,8 @@ const b = {
       "power-bomb": 5
     }
   },
+  varia: {},
+  // all multipliers are 1
   nature: {
     _packs: {
       missile: 5,
@@ -27,26 +29,26 @@ const b = {
     draygon: "weapons-tank",
     "x-ray": "shinespark"
   }
-}, _ = (e, t) => {
+}, v = (e, t) => {
   const s = e.__vccOpts || e;
-  for (const [r, l] of t)
-    s[r] = l;
+  for (const [o, m] of t)
+    s[o] = m;
   return s;
-}, N = (e) => e.replace(/([a-z])([A-Z])/g, "$1-$2").replace(/[\s_]+/g, "-").toLowerCase(), S = [
+}, V = (e) => e.replace(/([a-z])([A-Z])/g, "$1-$2").replace(/[\W_]+/g, "-").toLowerCase(), O = [
   ["energy-tank", "reserve-tank", "missile", "super-missile", "power-bomb"],
   ["charge-beam", "ice-beam", "wave-beam", "spazer-beam", "plasma-beam"],
   ["morph-ball", "varia-suit", "spring-ball", "hi-jump-boots", "space-jump"],
   ["bomb", "gravity-suit", "ridley", "speed-booster", "screw-attack"],
   ["grappling-beam", "kraid", "phantoon", "draygon", "x-ray"]
-], v = [
+], k = [
   ["cwisp", "morph-ball", "bomb", "spring-ball"],
   ["hi-jump-boots", "speed-booster", "space-jump", "screw-attack"],
   ["varia-suit", "ridley", "gravity-suit"],
   ["kraid", "phantoon", "draygon"]
-], V = [
+], L = [
   ["cwisp", "morph-ball", "bomb", "spring-ball", "varia-suit"],
   ["hi-jump-boots", "speed-booster", "space-jump", "screw-attack", "gravity-suit"]
-], L = S[0], M = (e, t) => !e || typeof e != "number" ? null : (t ? e * t : e).toString().padStart(2, 0).split("").map((r) => `smi-number -number-${r}`), E = (e, t) => ["ridley", "draygon", "phantoon", "kraid"].includes(e) ? [`sm-g4-head -${e}`, t && "-inactive"] : [`sm-item -${e}`, !t && "-has-not"], C = {
+], M = O[0], y = (e, t, s = 2) => !e || typeof e != "number" ? null : (t ? e * t : e).toString().padStart(s, 0).split("").map((m) => `smi-number -number-${m}`), E = (e, t) => ["ridley", "draygon", "phantoon", "kraid"].includes(e) ? [`sm-g4-head -${e}`, t && "-inactive"] : [`sm-item -${e}`, !t && "-has-not"], T = {
   "kill kraid": !0,
   "kill phantoon": !0,
   "kill draygon": !0,
@@ -55,135 +57,153 @@ const b = {
   phantoon: !0,
   draygon: !0,
   ridley: !0
-}, G = (e) => e.map((t) => t.filter((s) => !C[s])), K = {
+}, G = (e) => e.map((t) => t.filter((s) => !T[s])), P = {
   props: {
     inventory: Object,
     controlled: Boolean,
     mode: String,
     rows: Array,
     world: String,
-    objectives: Object
+    objectives: Object,
+    width: Number,
+    objective_order: Array
   },
   emits: ["add-item", "toggle-item", "toggle-objective"],
   computed: {
     vanilla_objectives() {
-      return !Object.keys(this.objectives || {}).find((t) => !C[t]);
+      return !Object.keys(this.objectives || {}).find((t) => !T[t]);
     },
     row_slugs() {
       if (this.rows)
         return this.rows;
-      let e = S.map((s) => s.slice());
-      const t = b[this.world];
-      return this.mode === "cwisp" ? this.vanilla_objectives ? e = v.map((s) => s.slice()) : Object.keys(this.objectives || {}).length <= 6 ? e = v : e = V.map((s) => s.slice()) : this.mode === "compact" && (e[4].pop(), e[4].shift(), e.shift()), t && (e = e.map((s) => s.map((r) => t[r] || r))), this.vanilla_objectives || (e = G(e)), e;
+      let e = O.map((s) => s.slice());
+      const t = _[this.world];
+      return this.mode === "cwisp" ? this.vanilla_objectives ? e = k.map((s) => s.slice()) : Object.keys(this.objectives || {}).length <= 6 ? e = k : e = L.map((s) => s.slice()) : this.mode === "compact" && (e[4].pop(), e[4].shift(), e.shift()), t && (e = e.map((s) => s.map((o) => t[o] || o))), this.vanilla_objectives || (e = G(e)), e;
+    },
+    columns() {
+      return Object.keys(this.objectives || {}).length > 15 ? 6 : this.row_slugs[0].length;
     },
     prepped_rows() {
-      var s;
-      const e = b[this.world] || b.default, t = this.row_slugs.map(
-        (r) => r.map((l) => {
-          var i;
-          const o = this.inventory[l];
+      var s, o;
+      const e = _[this.world] || _.default, t = this.row_slugs.map(
+        (m) => m.map((a) => {
+          var l;
+          const i = this.inventory[a];
           return {
-            slug: l,
-            numbers: M(o, (i = e._packs) == null ? void 0 : i[l]),
+            slug: a,
+            numbers: y(i, (l = e._packs) == null ? void 0 : l[a]),
             attrs: {
-              class: [E(l, o), o > 99 && "-three-digits"],
-              id: `grid-tracker__${l}`
+              class: [E(a, i), i > 99 && "-three-digits"],
+              id: `grid-tracker__${a}`
             }
           };
         })
       );
       if (!this.vanilla_objectives) {
-        const r = Object.keys(this.objectives || {}), l = r.length > 15 ? 6 : t[0].length;
+        const m = Object.keys(this.objectives || {}), { columns: a } = this;
         this.mode || t[3].push(...t.pop());
-        let o = t.findIndex((i) => i.length < t[0].length);
-        for (o === -1 && (o = t.length); r.length > 0; ) {
-          for (; ((s = t[o]) == null ? void 0 : s.length) >= l; )
-            o++;
-          t[o] || t.push([]);
-          const i = r.shift(), m = N(i);
-          t[o].push({
-            slug: i,
+        let i = t.findIndex((l) => l.length < t[0].length);
+        for (i === -1 && (i = t.length); m.length > 0; ) {
+          for (; ((s = t[i]) == null ? void 0 : s.length) >= a; )
+            i++;
+          t[i] || t.push([]);
+          const l = m.shift(), u = V(l);
+          let p;
+          (o = this.objective_order) != null && o.includes(l) && (p = this.objective_order.indexOf(l) + 1), t[i].push({
+            slug: l,
             type: "objective",
+            numbers: y(p, 1, 1),
             attrs: {
-              class: `smv-objective -${m} -${this.objectives[i] ? "in" : ""}active`,
-              id: `grid-tracker__${m}`
+              class: `smv-objective -${u} -${this.objectives[l] ? "in" : ""}active`,
+              id: `grid-tracker__${u}`
             }
           });
         }
       }
       return t;
+    },
+    style() {
+      const { width: e } = this;
+      if (!e)
+        return {};
+      const t = this.columns + 2 * 0.2 + 4 * 0.1;
+      return {
+        fontSize: `${e / t}px`
+      };
     }
   },
   methods: {
     click(e, { slug: t, type: s } = {}) {
       if (s === "objective")
         this.$emit("toggle-objective", t);
-      else if (L.includes(t)) {
-        const r = e.shiftKey || e.ctrlKey ? -1 : 1;
-        this.$emit("add-item", t, r);
+      else if (M.includes(t)) {
+        const o = e.shiftKey || e.ctrlKey ? -1 : 1;
+        this.$emit("add-item", t, o);
       } else
         this.$emit("toggle-item", t);
     }
   }
-}, P = ["onClick"], D = {
-  key: 0,
-  class: "grid-tracker__numbers"
-};
-function F(e, t, s, r, l, o) {
-  const i = T("sm-cwisp-tracker");
-  return a(), c("div", {
-    class: g(`grid-tracker smi-tracker ${s.controlled ? "-controlled" : ""}`)
+}, K = ["onClick"];
+function F(e, t, s, o, m, a) {
+  const i = B("sm-cwisp-tracker");
+  return n(), c("div", {
+    class: d(`grid-tracker smi-tracker ${s.controlled ? "-controlled" : ""}`),
+    style: S(a.style)
   }, [
-    (a(!0), c(p, null, d(o.prepped_rows, (m, k) => (a(), c("div", {
-      key: k,
+    (n(!0), c(h, null, b(a.prepped_rows, (l, u) => (n(), c("div", {
+      key: u,
       class: "grid-tracker__row"
     }, [
-      (a(!0), c(p, null, d(m, (u) => (a(), c(p, {
-        key: u.slug
+      (n(!0), c(h, null, b(l, (p) => (n(), c("div", {
+        key: p.slug,
+        class: "grid-tracker__cell"
       }, [
-        u.slug === "cwisp" ? (a(), j(i, {
+        p.slug === "cwisp" ? (n(), I(i, {
           key: 0,
           inventory: s.inventory,
-          onToggleItem: (h) => e.$emit("toggle-item", h)
-        }, null, 8, ["inventory", "onToggleItem"])) : (a(), c("div", x({ key: 1 }, u.attrs, {
-          onClick: (h) => o.click(h, u)
-        }), [
-          u.numbers ? (a(), c("div", D, [
-            (a(!0), c(p, null, d(u.numbers, (h, O) => (a(), c("div", {
-              key: O,
-              class: g(h)
-            }, null, 2))), 128))
-          ])) : B("", !0)
-        ], 16, P))
-      ], 64))), 128))
+          onToggleItem: (g) => e.$emit("toggle-item", g)
+        }, null, 8, ["inventory", "onToggleItem"])) : (n(), c("div", C({ key: 1 }, p.attrs, {
+          onClick: (g) => a.click(g, p)
+        }), null, 16, K)),
+        p.numbers ? (n(), c("div", {
+          key: 2,
+          class: d(`grid-tracker__numbers -length-${p.numbers.length}`)
+        }, [
+          (n(!0), c(h, null, b(p.numbers, (g, A) => (n(), c("div", {
+            key: A,
+            class: d(g)
+          }, null, 2))), 128))
+        ], 2)) : N("", !0)
+      ]))), 128))
     ]))), 128))
-  ], 2);
+  ], 6);
 }
-const y = /* @__PURE__ */ _(K, [["render", F]]), n = {
+const w = /* @__PURE__ */ v(P, [["render", F]]), r = {
   item: (e) => ({ class: e }),
   group: (e, t) => [`pause-inventory__group -group-${e}`, t],
-  number: (e) => n.item(`smi-number -number-${e}`),
-  numbers: (e, t) => e.toString().padStart(t, 0).split("").map(n.number)
+  number: (e) => r.item(`smi-number -number-${e}`),
+  numbers: (e, t) => e.toString().padStart(t, 0).split("").map(r.number)
 };
-n.separator = n.item("flex-grow");
-const I = (e) => Array(e || 0).fill().map((t, s) => s), w = (e, t) => ({
+r.separator = r.item("flex-grow");
+const z = (e) => Array(e || 0).fill().map((t, s) => s), f = (e, t) => ({
   name: "energy-tanks",
-  children: I(e).map(() => n.item("smi -ietank")),
-  class: n.group("energy-tanks", t)
-}), f = (e) => ({
+  children: z(e).map(() => r.item("smi -ietank")),
+  class: r.group("energy-tanks", t)
+}), j = (e) => ({
   name: e,
-  class: n.group(e),
-  children: [n.item("smi -" + e)]
-}), Z = {
+  class: r.group(e),
+  children: [r.item("smi -" + e)]
+}), W = {
   beams: ["charge", "ice", "wave", "spazer", "plasma"].map((e) => e + "-beam"),
   suits: ["varia-suit", "gravity-suit"],
   misc: ["morph-ball", "bomb", "spring-ball", "screw-attack"],
   boots: ["hi-jump-boots", "space-jump", "speed-booster"]
-}, q = ["missile", "super-missile", "power-bomb", "grappling-beam", "x-ray"], H = {
+}, Z = ["missile", "super-missile", "power-bomb", "grappling-beam", "x-ray"], q = {
   props: {
     inventory: Object,
     controlled: Boolean,
-    world: String
+    world: String,
+    width: Number
   },
   emits: ["add-item", "toggle-item"],
   computed: {
@@ -205,34 +225,34 @@ const I = (e) => Array(e || 0).fill().map((t, s) => s), w = (e, t) => ({
         ...this.item_groups,
         ...this.pack_controls
       ];
-      return this.inventory["reserve-tank"] && (e.push(f("auto")), e.push(f("reserve_text"))), e;
+      return this.inventory["reserve-tank"] && (e.push(j("auto")), e.push(j("reserve_text"))), e;
     },
     hud_items() {
       return {
         name: "hud-items",
-        class: n.group("hud-items"),
-        children: q.map((e) => ({
+        class: r.group("hud-items"),
+        children: Z.map((e) => ({
           class: ["smi -i" + e, this.inventory[e] || "-inactive"],
           onclick: () => this.$emit("toggle-item", e)
         }))
       };
     },
     pack_numbers() {
-      const e = b[this.world] || b.default;
+      const e = _[this.world] || _.default;
       return ["missile", "super-missile", "power-bomb"].map((t) => {
-        var r;
-        const s = this.inventory[t] * (((r = e._packs) == null ? void 0 : r[t]) || 1);
+        var o;
+        const s = this.inventory[t] * (((o = e._packs) == null ? void 0 : o[t]) || 1);
         return {
           name: t,
-          class: n.group(t),
-          children: n.numbers(s || 0, t === "missile" ? 3 : 2)
+          class: r.group(t),
+          children: r.numbers(s || 0, t === "missile" ? 3 : 2)
         };
       });
     },
     pack_controls() {
       return ["missile", "super-missile", "power-bomb", "energy-tank", "reserve-tank"].map((t) => ({
         name: `${t} controls`,
-        class: n.group(t + "-controls"),
+        class: r.group(t + "-controls"),
         children: [
           {
             class: "_plus",
@@ -247,116 +267,82 @@ const I = (e) => Array(e || 0).fill().map((t, s) => s), w = (e, t) => ({
     },
     energy_tanks() {
       const e = this.inventory["energy-tank"];
-      return [w(Math.min(e, 7)), w(Math.max(e - 7, 0), "-top")];
+      return [f(Math.min(e, 7)), f(Math.max(e - 7, 0), "-top")];
     },
     reserve_tanks() {
-      const e = this.inventory["reserve-tank"], s = [...I(Math.floor(e)).map(() => n.item("smi -ireserve")), n.separator];
-      return e > 0 && (100 * e).toString().split("").forEach((l) => s.push(n.item(`smi-reserve-number -number-${l}`))), {
+      const e = this.inventory["reserve-tank"], s = [...z(Math.floor(e)).map(() => r.item("smi -ireserve")), r.separator];
+      return e > 0 && (100 * e).toString().split("").forEach((m) => s.push(r.item(`smi-reserve-number -number-${m}`))), {
         name: "reserve-tanks",
-        class: n.group("reserve-tanks"),
+        class: r.group("reserve-tanks"),
         children: s
       };
     },
     energy_text() {
       return {
         name: "energy-text",
-        class: n.group("energy-text"),
-        children: [n.item("smi -energy"), n.separator, n.number(9), n.number(9)]
+        class: r.group("energy-text"),
+        children: [r.item("smi -energy"), r.separator, r.number(9), r.number(9)]
       };
     },
     item_groups() {
-      return Object.entries(Z).map(([e, t]) => ({
+      return Object.entries(W).map(([e, t]) => ({
         name: e,
-        class: n.group(e),
+        class: r.group(e),
         children: t.map((s) => ({
           class: [`smi-pause-item -${s}`, this.inventory[s] || "-inactive"],
           onclick: () => this.$emit("toggle-item", s)
         }))
       }));
-    }
-  }
-};
-function J(e, t, s, r, l, o) {
-  return a(), c("div", {
-    class: g(o.wrapper_class)
-  }, [
-    (a(!0), c(p, null, d(o.groups, (i) => (a(), c("div", {
-      key: i.name,
-      class: g(i.class)
-    }, [
-      (a(!0), c(p, null, d(i.children, (m, k) => (a(), c("div", x({ key: k }, m), null, 16))), 128))
-    ], 2))), 128))
-  ], 2);
-}
-const Q = /* @__PURE__ */ _(H, [["render", J]]), R = {
-  grid: y,
-  compact: y,
-  pause: Q
-}, U = {
-  name: "ItemTracker",
-  props: {
-    inventory: Object,
-    controlled: Boolean,
-    compact: Boolean,
-    format: String,
-    width: Number
-  },
-  emits: ["add-item", "toggle-item"],
-  computed: {
-    tagName() {
-      return R[this.format];
     },
     style() {
-      const { width: e } = this;
-      if (!e)
-        return {};
-      const t = 5 + 2 * 0.2 + 4 * 0.1;
-      return {
-        "--inventory-px": `${e / 256}px`,
-        fontSize: `${e / t}px`
-      };
+      return this.width && { "--inventory-px": `${this.width / 256}px` };
     }
   }
 };
-function W(e, t, s, r, l, o) {
-  return a(), j(z(o.tagName), {
-    inventory: s.inventory,
-    controlled: s.controlled,
-    compact: s.compact || s.format === "compact",
-    style: A(o.style),
-    onAddItem: t[0] || (t[0] = (i, m) => !s.controlled && e.$emit("add-item", i, m)),
-    onToggleItem: t[1] || (t[1] = (i) => !s.controlled && e.$emit("toggle-item", i))
-  }, null, 40, ["inventory", "controlled", "compact", "style"]);
+function D(e, t, s, o, m, a) {
+  return n(), c("div", {
+    class: d(a.wrapper_class),
+    style: S(a.style)
+  }, [
+    (n(!0), c(h, null, b(a.groups, (i) => (n(), c("div", {
+      key: i.name,
+      class: d(i.class)
+    }, [
+      (n(!0), c(h, null, b(i.children, (l, u) => (n(), c("div", C({ key: u }, l), null, 16))), 128))
+    ], 2))), 128))
+  ], 6);
 }
-const $ = /* @__PURE__ */ _(U, [["render", W]]), X = ["charge-beam", "wave-beam", "ice-beam", "spazer-beam", "plasma-beam"], Y = {
+const $ = /* @__PURE__ */ v(q, [["render", D]]), H = ["charge-beam", "wave-beam", "ice-beam", "spazer-beam", "plasma-beam"], J = {
   props: {
     inventory: Object
   },
   emits: ["toggle-item"],
   computed: {
     beams() {
-      return X.map((e) => ({
+      return H.map((e) => ({
         id: e,
         class: [`sm-cwisp__cell -${e}`, this.inventory[e] ? "-active" : "-inactive"]
       }));
     }
   }
-}, ee = { class: "sm-cwisp" }, te = ["onClick"];
-function se(e, t, s, r, l, o) {
-  return a(), c("div", ee, [
-    (a(!0), c(p, null, d(o.beams, (i) => (a(), c("div", {
-      class: g(i.class),
-      onClick: (m) => e.$emit("toggle-item", i.id),
+}, Q = { class: "sm-cwisp" }, R = ["onClick"];
+function U(e, t, s, o, m, a) {
+  return n(), c("div", Q, [
+    (n(!0), c(h, null, b(a.beams, (i) => (n(), c("div", {
+      class: d(i.class),
+      onClick: (l) => e.$emit("toggle-item", i.id),
       key: i.id
-    }, null, 10, te))), 128))
+    }, null, 10, R))), 128))
   ]);
 }
-const re = /* @__PURE__ */ _(Y, [["render", se]]), ne = {
-  ItemTracker: $,
+const x = /* @__PURE__ */ v(J, [["render", U]]), Y = {
+  GridTracker: w,
+  PauseTracker: $,
+  CwispTracker: x,
   install(e) {
-    e.component("SmItemTracker", $), e.component("SmCwispTracker", re);
+    e.component("SmGridTracker", w), e.component("SmPauseTracker", $), e.component("SmCwispTracker", x);
   }
 };
 export {
-  ne as default
+  Y as default
 };
