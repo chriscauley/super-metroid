@@ -122,25 +122,30 @@ $items: list.join($beams, $other_items);
     cursor: pointer;
   }
 
-  .sm-item {
+  .sm-item, .smv-objective {
     @apply relative;
-    .grid-tracker__numbers {
-      --inventory-px: 0.06em;
-      @apply absolute flex;
-      bottom: -0.06em;
-      right: 0;
-    }
-    &.-three-digits .grid-tracker__numbers {
-      /* centering 1XX numbers is complicated */
-      right: -0.24em;
-      .smi-number {
-        @apply relative;
-        &:first-child {
-          left: 0.06em;
-        }
-        &:last-child {
-          left: -0.06em;
-        }
+  }
+}
+
+.grid-tracker__cell {
+  @apply flex relative;
+}
+
+.grid-tracker__numbers {
+  --inventory-px: 0.06em;
+  @apply absolute flex;
+  bottom: -0.06em;
+  right: 0;
+  &.-length-3 {
+    /* centering 1XX numbers is complicated */
+    right: -0.24em;
+    .smi-number {
+      @apply relative;
+      &:first-child {
+        left: 0.06em;
+      }
+      &:last-child {
+        left: -0.06em;
       }
     }
   }
