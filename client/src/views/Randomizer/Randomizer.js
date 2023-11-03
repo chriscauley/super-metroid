@@ -46,6 +46,7 @@ export default (component) => {
     // As the definition of a preset grows over time, we want to support legacy definitons
     // many people are running bots and external websites and we can't make them migrate
     const data = cloneDeep(original_data)
+
     if (data.layoutPatches) {
       // layout breaks the pattern with layoutPatches for the on/off setting
       data.layout = data.layoutPatches
@@ -53,6 +54,9 @@ export default (component) => {
     }
     if (isTrue(data.objectiveRandom)) {
       data.objective = data.objectiveMultiSelect
+    }
+    if (typeof data.objective === 'string') {
+      data.objective = data.objective.split(',')
     }
 
     Object.keys(window.PATCHES).forEach((patch_group) => {
