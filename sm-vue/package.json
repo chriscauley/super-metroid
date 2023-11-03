@@ -1,7 +1,7 @@
 {
   "name": "sm-vue",
   "license": "MIT",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "type": "module",
   "main": "./dist/sm-vue.umd.cjs",
   "module": "./dist/sm-vue.js",
