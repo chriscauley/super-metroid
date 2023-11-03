@@ -1,7 +1,6 @@
 import BootstrapModal from './BootstrapModal.vue'
 import DoorPicker from './DoorPicker.vue'
 import ItemPicker from './ItemPicker.vue'
-import ItemTracker from './ItemTracker'
 import ObjectiveSelector from './objective/ObjectiveSelector'
 import PatchButton from './PatchButton'
 import PatchSelector from './PatchSelector'
@@ -11,11 +10,10 @@ import ResizeBox from './ResizeBox'
 export default {
   BootstrapModal,
   DoorPicker,
-  ItemPicker,
   ObjectiveSelector,
+  ItemPicker,
   PatchButton,
   PatchSelector,
   PatchToggler,
   ResizeBox,
-  ...ItemTracker.components,
 }

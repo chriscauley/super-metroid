@@ -34,8 +34,8 @@ const tracker_settings = {
       },
       item_tracker: {
         type: 'string',
-        enum: ['', 'area-counter', 'pause-menu', 'grid', 'compact'],
-        enumNames: ['None', 'Area Counter', 'Pause Menu', 'Grid', 'Grid (compact)'],
+        enum: ['', 'pause-menu', 'grid', 'compact', 'cwisp'],
+        enumNames: ['None', 'Pause Menu', 'Grid', 'Compact Grid', 'CWISP Grid'],
       },
       room_visibility: {
         type: 'string',

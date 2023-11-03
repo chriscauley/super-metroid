@@ -2,6 +2,7 @@ import { createApp } from 'vue'
 import VueClick from 'vue-click'
 import osd from '@unrest/vue-openseadragon'
 import toolbar from '@unrest/vue-toolbar'
+import SmVue from 'sm-vue'
 
 import App from '@/App.vue'
 import site from '@/site'
@@ -26,6 +27,7 @@ app.use(form)
 app.use(toolbar)
 app.use(unrest.plugin)
 app.use(unrest.ui)
+app.use(SmVue)
 app.use(VueClick)
 
 app.config.unwrapInjectedRef = true

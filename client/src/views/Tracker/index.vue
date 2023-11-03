@@ -355,6 +355,12 @@ export default {
       this.inventory[name] = !this.inventory[name]
     },
     setJsonData(json_data) {
+      if (jsond_data?.seed !== this.$store.seed.state.seed) {
+        this.$store.seed.save({
+          seed: json_data?.seed,
+          objective_order: [],
+        })
+      }
       if (json_data) {
         json_data.svg_rooms = { unknownSvg: true }
         json_data.all_locations = {
@@ -367,6 +373,14 @@ export default {
           clearTimeout(this._obj_timeout)
           this._obj_timeout = setTimeout(() => (this.completed_objectives = null), 3000)
           this.completed_objectives = json_data.newlyCompletedObjectives
+          const { objective_order = [] } = this.$store.seed.state
+          this.completed_objectives.forEach((o) => {
+            o = o.replace('Completed objective: ', '')
+            if (!objective_order.includes(o)) {
+              objective_order.push(o)
+              this.$store.seed.save({ objective_order })
+            }
+          })
         }
       }
       this.json_data = json_data

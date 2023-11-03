@@ -1,24 +1,21 @@
 <template>
-  <div :class="config.class" v-if="config.tagName" :style="style">
+  <div :class="config.class" :style="style" v-if="config.tagName">
     <resize-box @update="resizeBox" v-if="edit_mode" />
     <component
       :is="config.tagName"
       :inventory="inventory"
-      @toggle-item="(item) => !controlled && $emit('toggle-item', item)"
-      @add-item="(item, amount) => !controlled && $emit('add-item', item, amount)"
+      @toggle-item="(item) => $emit('toggle-item', item)"
+      @add-item="(item, amount) => $emit('add-item', item, amount)"
       :controlled="controlled"
-      :compact="config.compact"
+      :mode="config.mode"
+      :objectives="json_data?.objectives?.goals"
+      :objective_order="$store.seed.state.objective_order"
+      :world="world"
     />
   </div>
 </template>
 
 <script>
-const tagname_lookup = {
-  compact: 'grid-tracker',
-  grid: 'grid-tracker',
-  'pause-menu': 'pause-inventory',
-}
-
 export default {
   inject: ['tool_storage', 'json_data'],
   props: {
@@ -30,14 +27,20 @@ export default {
       const { json_data } = this
       return !json_data || json_data.seed !== 'seedless'
     },
+    world() {
+      return this.controlled ? 'varia' : undefined
+    },
     edit_mode() {
       return true
     },
     config() {
       const { item_tracker } = this.tool_storage.state.tracker_settings
+      if (!item_tracker) {
+        return {}
+      }
       return {
-        compact: item_tracker === 'compact',
-        tagName: tagname_lookup[item_tracker],
+        tagName: item_tracker === 'pause-menu' ? 'sm-pause-tracker' : 'sm-grid-tracker',
+        mode: item_tracker,
         class: 'item-tracker__wrapper',
       }
     },
