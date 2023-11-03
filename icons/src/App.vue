@@ -1,5 +1,5 @@
 <template>
-  <div style="font-size: 32px;columns: 4;padding: 20px; background: black; color:white;">
+  <div style="font-size: 32px; columns: 4; padding: 20px; background: black; color: white">
     <div v-for="obj in randomizer_data.objective_by_id" :key="obj.id">
       <i :class="objClass(obj.id)" />
       {{ obj.id }}
@@ -84,7 +84,7 @@ export default {
   methods: {
     objClass(id) {
       return `smv-objective -${kebabCase(id)}`
-    }
+    },
   },
 }
 </script>
