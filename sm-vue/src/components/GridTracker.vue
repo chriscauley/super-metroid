@@ -1,18 +1,17 @@
 <template>
   <div :class="`grid-tracker smi-tracker ${controlled ? '-controlled' : ''}`" :style="style">
     <div v-for="(row, i) in prepped_rows" :key="i" class="grid-tracker__row">
-      <template v-for="col in row" :key="col.slug">
+      <div v-for="cell in row" :key="cell.slug" class="grid-tracker__cell">
         <sm-cwisp-tracker
-          v-if="col.slug === 'cwisp'"
+          v-if="cell.slug === 'cwisp'"
           :inventory="inventory"
           @toggle-item="(i) => $emit('toggle-item', i)"
         />
-        <div v-else v-bind="col.attrs" @click="(e) => click(e, col)">
-          <div v-if="col.numbers" class="grid-tracker__numbers">
-            <div v-for="(cls, j) in col.numbers" :key="j" :class="cls" />
-          </div>
+        <div v-else v-bind="cell.attrs" @click="(e) => click(e, cell)" />
+        <div v-if="cell.numbers" :class="`grid-tracker__numbers -length-${cell.numbers.length}`">
+          <div v-for="(cls, j) in cell.numbers" :key="j" :class="cls" />
         </div>
-      </template>
+      </div>
     </div>
   </div>
 </template>
@@ -23,7 +22,7 @@ import worlds from './worlds'
 const kebabCase = (string) =>
   string
     .replace(/([a-z])([A-Z])/g, '$1-$2')
-    .replace(/[\s_]+/g, '-')
+    .replace(/[\W_]+/g, '-')
     .toLowerCase()
 
 const rows = [
@@ -34,28 +33,28 @@ const rows = [
   ['grappling-beam', 'kraid', 'phantoon', 'draygon', 'x-ray'],
 ]
 
-const cwisp_4_cols = [
+const cwisp_4_cells = [
   ['cwisp', 'morph-ball', 'bomb', 'spring-ball'],
   ['hi-jump-boots', 'speed-booster', 'space-jump', 'screw-attack'],
   ['varia-suit', 'ridley', 'gravity-suit'],
   ['kraid', 'phantoon', 'draygon'],
 ]
 
-const cwisp_5_cols = [
+const cwisp_5_cells = [
   ['cwisp', 'morph-ball', 'bomb', 'spring-ball', 'varia-suit'],
   ['hi-jump-boots', 'speed-booster', 'space-jump', 'screw-attack', 'gravity-suit'],
 ]
 
 const packs = rows[0]
 
-const getNumbers = (value, multiplier) => {
+const getNumbers = (value, multiplier, pad = 2) => {
   if (!value || typeof value !== 'number') {
     return null
   }
   const displayValue = multiplier ? value * multiplier : value
   return displayValue
     .toString()
-    .padStart(2, 0)
+    .padStart(pad, 0)
     .split('')
     .map((n) => `smi-number -number-${n}`)
 }
@@ -89,6 +88,7 @@ export default {
     world: String,
     objectives: Object,
     width: Number,
+    objective_order: Array,
   },
   emits: ['add-item', 'toggle-item', 'toggle-objective'],
   computed: {
@@ -104,11 +104,11 @@ export default {
       const world_options = worlds[this.world]
       if (this.mode === 'cwisp') {
         if (this.vanilla_objectives) {
-          row_slugs = cwisp_4_cols.map((r) => r.slice())
+          row_slugs = cwisp_4_cells.map((r) => r.slice())
         } else if (Object.keys(this.objectives || {}).length <= 6) {
-          row_slugs = cwisp_4_cols
+          row_slugs = cwisp_4_cells
         } else {
-          row_slugs = cwisp_5_cols.map((r) => r.slice())
+          row_slugs = cwisp_5_cells.map((r) => r.slice())
         }
       } else if (this.mode === 'compact') {
         row_slugs[4].pop() // grappling-beam
@@ -162,9 +162,14 @@ export default {
           }
           const slug = objective_ids.shift()
           const cased = kebabCase(slug)
+          let order
+          if (this.objective_order?.includes(slug)) {
+            order = this.objective_order.indexOf(slug) + 1
+          }
           rows[row_index].push({
             slug,
             type: 'objective',
+            numbers: getNumbers(order, 1, 1),
             attrs: {
               class: `smv-objective -${cased} -${this.objectives[slug] ? 'in' : ''}active`,
               id: `grid-tracker__${cased}`,
@@ -182,9 +187,9 @@ export default {
       const columns = this.columns + 2 * 0.2 + 4 * 0.1 // number of columns + padding + gap
 
       return {
-        fontSize: `${width / columns}px`, 
+        fontSize: `${width / columns}px`,
       }
-    }
+    },
   },
   methods: {
     click(e, { slug, type } = {}) {

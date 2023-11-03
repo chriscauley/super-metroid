@@ -6,6 +6,7 @@ export default {
       'power-bomb': 5,
     },
   },
+  varia: {}, // all multipliers are 1
   nature: {
     _packs: {
       missile: 5,
