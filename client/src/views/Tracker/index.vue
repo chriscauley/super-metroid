@@ -39,6 +39,7 @@
     <Teleport to="body">
       <edit-area :area="editing_area" :tool_storage="tool_storage" />
     </Teleport>
+    <tour-app />
   </div>
 </template>
 

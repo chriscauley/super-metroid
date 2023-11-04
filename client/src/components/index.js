@@ -6,6 +6,7 @@ import PatchButton from './PatchButton'
 import PatchSelector from './PatchSelector'
 import PatchToggler from './PatchToggler'
 import ResizeBox from './ResizeBox'
+import TourPortal from './TourPortal'
 
 export default {
   BootstrapModal,
@@ -16,4 +17,5 @@ export default {
   PatchSelector,
   PatchToggler,
   ResizeBox,
+  TourPortal,
 }

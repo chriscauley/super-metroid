@@ -136,10 +136,6 @@ export default (component) => {
         title: options.title || startCase(id),
       }))
     },
-    mountHelp(target) {
-      state.tour_target = target
-      state.tour_hash = Math.random() // forces re-render even if target did not change
-    },
   }
 
   Objective(randomizer) // add objective logic
