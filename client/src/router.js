@@ -6,6 +6,7 @@ const { CheatSheet, PauseInventoryView, TrackerView, WhoDat } = views
 const routes = [
   { path: '/', component: views.HomeView },
   { path: '/randomizer/', component: views.RandomizerView },
+  { path: '/randomizer/:seed_hash', component: views.RandomizerView },
   { path: '/customizer/', component: views.RandomizerView },
   { path: '/customizer/:seed_hash', component: views.RandomizerView },
   { path: '/tracker/', component: TrackerView },
