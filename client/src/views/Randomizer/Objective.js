@@ -1,3 +1,5 @@
+import varia from '@/varia'
+
 export default (randomizer) => {
   const isTrue = (v) => String(v).toLowerCase() === 'true'
   const setObjectiveRandom = (value) => {
@@ -60,7 +62,7 @@ export default (randomizer) => {
       const is_random = randomizer.isRandom('objective')
       const selected_map = randomizer.objective.getSelectedMap()
       const disabled_map = randomizer.objective.getDisabledMap()
-      return Object.entries(randomizer.objective.by_category).map(([id, objectives]) => {
+      return Object.entries(varia.objective.by_category).map(([id, objectives]) => {
         objectives = objectives.map((o) => ({
           ...o,
           disabled: disabled_map[o.id],
@@ -89,7 +91,7 @@ export default (randomizer) => {
       if (randomizer.objective.getMax() === randomizer.state.objective.length) {
         // Cannot add more objectives because we've reached max amount
         const reason = 'You cannot add any more objectives for this splits mode'
-        Object.keys(randomizer.objective.by_id)
+        Object.keys(varia.objective.by_id)
           .filter((objective_id) => !selected_map[objective_id])
           .forEach((objective_id) => (disabled_map[objective_id] = reason))
         return disabled_map
@@ -99,13 +101,13 @@ export default (randomizer) => {
       const tourian = document.getElementById('tourian').value
       const majorsSplit = document.getElementById('majorsSplit').value
       const disqualifying_ids = { bosses: [], minibosses: [] }
-      Object.values(randomizer.objective.by_id).forEach((objective) => {
+      Object.values(varia.objective.by_id).forEach((objective) => {
         if (objective.is_count && selected_map[objective.id]) {
           disqualifying_ids[objective.category].push(objective.id)
         }
       })
 
-      Object.values(randomizer.objective.by_id).forEach((objective) => {
+      Object.values(varia.objective.by_id).forEach((objective) => {
         if (objective.id.startsWith('clear ')) {
           if (tourian === 'Disabled') {
             const reason = 'Clear ojectives cannot be used with disabled tourian.'
@@ -130,7 +132,7 @@ export default (randomizer) => {
           disabled_map[objective.id] = `There are too many ${category} objectives`
         } else if (disc_ids?.length && objective.is_count) {
           selected_objectives.forEach((test_id) => {
-            const test_objective = randomizer.objective.by_id[test_id]
+            const test_objective = varia.objective.by_id[test_id]
             const { category_limit } = test_objective
             if (test_objective.category !== category || category_limit === undefined) {
               return
@@ -154,13 +156,14 @@ export default (randomizer) => {
       return disabled_map
     },
     toggleCategory(category) {
+      const objective_ids = category.objectives.map((i) => i.id)
       const disabled_objectives = randomizer.objective.getDisabledMap()
       if (category.partial || category.checked) {
         // deselect all objectives in category
-        category.objective_ids.forEach((o_id) => randomizer.objective.remove(o_id))
+        objective_ids.forEach((o_id) => randomizer.objective.remove(o_id))
       } else {
         // mark every non-disabled objective as selected
-        category.objective_ids
+        objective_ids
           .filter((o_id) => !disabled_objectives[o_id])
           .forEach((o_id) => randomizer.objective.add(o_id))
       }

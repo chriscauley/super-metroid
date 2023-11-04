@@ -1,31 +1,8 @@
-import axios from 'axios'
 import { startCase, cloneDeep } from 'lodash'
 import { reactive } from 'vue'
 import Objective from './Objective'
 
 export default (component) => {
-  let afterAjax
-  axios.get('/randomizerData.json').then((response) => {
-    const info = (randomizer.info = response.data)
-
-    // add info to objective module
-    const by_category = (randomizer.objective.by_category = {})
-    randomizer.objective.by_id = info.objective_by_id
-    randomizer.objective.categories = []
-
-    Object.values(info.objective_by_id).forEach((objective) => {
-      const { category } = objective
-      if (!by_category[category]) {
-        by_category[category] = []
-        randomizer.objective.categories.push(category)
-      }
-      by_category[category].push(objective)
-    })
-
-    if (afterAjax) {
-      afterAjax()
-    }
-  })
   const isRandom = (param) => window.isElemIdRandom(param)
   const isTrue = (v) => String(v).toLowerCase() === 'true'
   const state = reactive({})
@@ -88,10 +65,6 @@ export default (component) => {
       changed && side_effects[key]?.()
     },
     init: (data) => {
-      if (!randomizer.info) {
-        afterAjax = () => randomizer.init(data)
-        return
-      }
       if (data.readonly) {
         data.objective = data.objective.split(',')
       }

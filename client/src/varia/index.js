@@ -38,7 +38,6 @@ ammo.forEach((i) => (packs[i] = 5))
 energy.forEach((i) => (packs[i] = 1))
 
 const varia = {
-  objectives,
   sm_to_varia,
   varia_to_sm: invert(sm_to_varia),
   getGameState: (json_data, inventory, locked_warps) => {
@@ -100,6 +99,19 @@ const varia = {
     }
     return `sm-item -${item_slug}`
   },
+
+  // Objectives are currently taken from repo but will eventually be pulled in from server
+  loadObjectives: (by_id) => {
+    const by_category = {}
+    Object.values(objectives).forEach((objective) => {
+      const { category } = objective
+      by_category[category] = by_category[category] || []
+      by_category[category].push(objective)
+    })
+    varia.objective = { by_id, by_category }
+  },
 }
+
+varia.loadObjectives(objectives)
 
 export default varia

@@ -26,6 +26,8 @@
 </template>
 
 <script>
+import varia from '@/varia'
+
 const cat_map = {
   bosses: 'danger',
   minibosses: 'warning',
@@ -48,7 +50,7 @@ export default {
     objective_buttons() {
       const _order = Object.keys(cat_map)
       return this.randomizer.state.objective.map((o_id) => {
-        const objective = this.randomizer.objective.by_id[o_id]
+        const objective = varia.objective.by_id[o_id]
         return {
           text: o_id,
           class: `btn btn-${cat_map[objective.category]} btn-xs`,
