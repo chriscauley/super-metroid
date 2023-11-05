@@ -1,5 +1,8 @@
 <template>
   <div :class="config.class" :style="style" v-if="config.tagName">
+    <button class="btn -primary help-anchor" id="helpItemTracker" @click="showHelp">
+      <i class="fa fa-question-circle" />
+    </button>
     <resize-box @update="resizeBox" v-if="edit_mode" />
     <component
       :is="config.tagName"
@@ -62,6 +65,9 @@ export default {
   methods: {
     resizeBox(values) {
       this.$store.config.save({ 'item-tracker': values })
+    },
+    showHelp() {
+      window.startTheTour?.('helpItemTracker')
     },
   },
 }

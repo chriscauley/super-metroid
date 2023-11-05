@@ -1,5 +1,5 @@
 // library for converting from varia.run data structures to data structures for this app
-import { invert, startCase } from 'lodash'
+import { invert, startCase, kebabCase } from 'lodash'
 import { all_items, bosses, minibosses, ammo, energy, location_type_map } from '@/data/old'
 import objectives from './objectives'
 
@@ -104,6 +104,7 @@ const varia = {
   loadObjectives: (by_id) => {
     const by_category = {}
     Object.values(objectives).forEach((objective) => {
+      objective.icon = `smv-objective -${kebabCase(objective.id)}`
       const { category } = objective
       by_category[category] = by_category[category] || []
       by_category[category].push(objective)

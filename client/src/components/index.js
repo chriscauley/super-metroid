@@ -7,11 +7,13 @@ import PatchSelector from './PatchSelector'
 import PatchToggler from './PatchToggler'
 import ResizeBox from './ResizeBox'
 import TourPortal from './TourPortal'
+import HelpItemTracker from './help/ItemTracker.vue'
 
 export default {
   BootstrapModal,
   DoorPicker,
   ObjectiveSelector,
+  HelpItemTracker,
   ItemPicker,
   PatchButton,
   PatchSelector,

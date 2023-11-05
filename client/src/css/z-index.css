@@ -51,7 +51,8 @@
 }
 
 
-.ur-toolbar {
+.ur-toolbar,
+.help-anchor {
   z-index: 100;
 }
 

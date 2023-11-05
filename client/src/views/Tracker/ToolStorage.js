@@ -184,7 +184,12 @@ export default (component) => {
     if (component.is_varia) {
       const clickPlay = () => window.displayPopup(component.is_plando)
       const play = { slug: 'play', name: 'Load Seed', select: clickPlay, icon: 'fa fa-play' }
-      const help = { slug: 'help', icon: 'fa fa-question-circle', select: window.startTheTour }
+      const help = {
+        slug: 'help',
+        icon: 'fa fa-question-circle',
+        select: window.startTheTour,
+        id: 'welcomeHelp',
+      }
       if (!(component.json_data && window.init)) {
         return [play, help]
       }

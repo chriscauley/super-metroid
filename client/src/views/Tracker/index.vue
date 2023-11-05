@@ -39,7 +39,10 @@
     <Teleport to="body">
       <edit-area :area="editing_area" :tool_storage="tool_storage" />
     </Teleport>
-    <tour-app />
+    <tour-portal />
+    <div style="display: none">
+      <help-item-tracker ref="help_item_tracker" />
+    </div>
   </div>
 </template>
 
