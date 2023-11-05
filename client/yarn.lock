@@ -1346,15 +1346,15 @@
   resolved "https://registry.yarnpkg.com/@unrest/random/-/random-0.0.2.tgz#18b9541043accd36fb39ebd0286ff154564b8c70"
   integrity sha512-apUNVqvzPO1QLdAIkDHXn79dy1MlYyopQWBva9+sZ13HomIwRin0KvjgUSt+Fi997DWsqI+MJ7kLTRfVQvA1Dw==
 
-"@unrest/tailwind@^0.1.24":
-  version "0.1.24"
-  resolved "https://registry.yarnpkg.com/@unrest/tailwind/-/tailwind-0.1.24.tgz#fc3670dfe90c916faa9c3d8bfe6c226b1d11d168"
-  integrity sha512-5FRbdLc135gfe6RELxGQFqQ0dcLBf1KCa1s7iOCsti+/ul+RY5+Ev6gOOqUsiYBLzKO+9Q2p5bWDfEnzQCxRpw==
+"@unrest/tailwind@0.1.25":
+  version "0.1.25"
+  resolved "https://registry.yarnpkg.com/@unrest/tailwind/-/tailwind-0.1.25.tgz#50943973cf031177980240e60974ad80f3a089d9"
+  integrity sha512-N6yif38JjVNp/bqFBdpwHV7cF26zbenVoo0C6EetJD+vjupX/KGWM76rQyvD0NRewYbwmQNAMDF7CnsCsnAFAw==
 
-"@unrest/vue-form@0.0.19":
-  version "0.0.19"
-  resolved "https://registry.yarnpkg.com/@unrest/vue-form/-/vue-form-0.0.19.tgz#1f6ea2129b929f29b8bb561c354f3cc072b55b07"
-  integrity sha512-D51/MZ340a2vnxe7+55NIuEBpxtELNxCZeX4orJC3j4LvKzh2RoO1cLx4gI/s8/ayAMv8BzrWRjk9XxKBLNPHg==
+"@unrest/vue-form@0.0.20":
+  version "0.0.20"
+  resolved "https://registry.yarnpkg.com/@unrest/vue-form/-/vue-form-0.0.20.tgz#02e3fe1faea645b8fbc2b1ffcbecc8f25ee3e32d"
+  integrity sha512-pi+qx5g24UBANlxcZiH0xbV3qiNIyppE1HV+rRaaWISgOYD8voPQij0iJqiwIcurDQ8lAiYX/xxrWCYvjQ/0KQ==
   dependencies:
     jsonschema "^1.4.0"
     lodash.clonedeep "^4.5.0"
@@ -1398,19 +1398,19 @@
     lodash.debounce "^4.0.8"
     querystring "^0.2.1"
 
-"@unrest/vue-toolbar@0.0.5":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@unrest/vue-toolbar/-/vue-toolbar-0.0.5.tgz#410d591b95ec6638f0598e3c84359f1ea758b8df"
-  integrity sha512-EWG8RGEJ8BU406KCD62i1bX8rGn/FOgdrXDfSLtgjeNkbzs6daHDJsTI26w786JR6Ca/9Qekzwg0pzp2deXxiw==
+"@unrest/vue-toolbar@0.0.6":
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/@unrest/vue-toolbar/-/vue-toolbar-0.0.6.tgz#821d3d28ad0f1ad44bfd2f395d993004aae9fb3a"
+  integrity sha512-u5Fsn0jmZh+5txsf76qCJvVUU0XW7fO3lvjEMOnh5k9XkEPSEWhjBlB2QeO3r1feYxyC89RKHlrX5eVa+pvauA==
   dependencies:
     "@unrest/vue-storage" "^0.0.19"
     lodash.startcase "^4.4.0"
     vue "^3.2.41"
 
-"@unrest/vue@0.2.19":
-  version "0.2.19"
-  resolved "https://registry.yarnpkg.com/@unrest/vue/-/vue-0.2.19.tgz#4574e7702850af8e6b85b20248f365f6bcf5f782"
-  integrity sha512-i9kIjaeDrzu9iTLlCwTg3AI4HxZBllKXsfn8hIGCgePJKf1Ig+uY4m7vce58xfgQn/bAfM1PL+CZ5dy/0J+XWA==
+"@unrest/vue@0.2.20":
+  version "0.2.20"
+  resolved "https://registry.yarnpkg.com/@unrest/vue/-/vue-0.2.20.tgz#cf5630248b1b5106e8c076aa8a7cd86f0de6e26d"
+  integrity sha512-AkjQH/DXgKrSgL+kyfC2GbAeyJ1RwKD+OSjM6EqOcspK1SlTZChcq0fmPxKASFZAGEv1/n6oEDtCNWN7QC4qLA==
   dependencies:
     dedent "^0.7.0"
     lodash.clonedeep "^4.5.0"
@@ -2356,9 +2356,9 @@ caniuse-api@^3.0.0:
     lodash.uniq "^4.5.0"
 
 caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001400, caniuse-lite@^1.0.30001426:
-  version "1.0.30001441"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001441.tgz#987437b266260b640a23cd18fbddb509d7f69f3e"
-  integrity sha512-OyxRR4Vof59I3yGWXws6i908EtGbMzVUi3ganaZQHmydk1iwDhRnvaPG2WaR0KcqrDFKrxVZHULT396LEPhXfg==
+  version "1.0.30001559"
+  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001559.tgz"
+  integrity sha512-cPiMKZgqgkg5LY3/ntGeLFUpi6tzddBNS58A4tnTgQw1zON7u2sZMU7SzOeVH4tj20++9ggL+V6FDOFMTaFFYA==
 
 case-sensitive-paths-webpack-plugin@^2.3.0:
   version "2.4.0"
