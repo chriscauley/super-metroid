@@ -11,6 +11,7 @@
         <div v-if="cell.numbers" :class="`grid-tracker__numbers -length-${cell.numbers.length}`">
           <div v-for="(cls, j) in cell.numbers" :key="j" :class="cls" />
         </div>
+        <i v-else-if="cell.target" class="fa fa-crosshairs _targeted" />
       </div>
     </div>
   </div>
@@ -86,6 +87,9 @@ export default {
     objective_order: Array,
   },
   emits: ['add-item', 'toggle-item', 'toggle-objective'],
+  data() {
+    return { targets: {} }
+  },
   computed: {
     vanilla_objectives() {
       const objective_ids = Object.keys(this.objectives || {})
@@ -165,6 +169,7 @@ export default {
             slug,
             type: 'objective',
             numbers: getNumbers(order, 1, 1),
+            target: this.targets[slug],
             attrs: {
               class: `smv-objective -${cased} -${this.objectives[slug] ? 'in' : ''}active`,
               id: `grid-tracker__${cased}`,
@@ -198,9 +203,9 @@ export default {
         }
       } else if (packs.includes(slug)) {
         const amount = e.shiftKey || e.ctrlKey ? -1 : 1
-        this.$emit('add-item', slug, amount)
+        !this.controlled && this.$emit('add-item', slug, amount)
       } else {
-        this.$emit('toggle-item', slug)
+        !this.controlled && this.$emit('toggle-item', slug)
       }
     },
   },
