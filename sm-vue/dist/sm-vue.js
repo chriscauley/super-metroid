@@ -1,5 +1,264 @@
-import { resolveComponent as B, openBlock as n, createElementBlock as c, normalizeClass as d, normalizeStyle as S, Fragment as h, renderList as b, createBlock as I, mergeProps as C, createCommentVNode as N } from "vue";
-const _ = {
+import { resolveComponent as re, openBlock as u, createElementBlock as c, normalizeClass as b, normalizeStyle as z, Fragment as f, renderList as h, createBlock as se, mergeProps as M, createCommentVNode as ie } from "vue";
+var v = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : typeof global < "u" ? global : typeof self < "u" ? self : {};
+function ne(e) {
+  return e && e.__esModule && Object.prototype.hasOwnProperty.call(e, "default") ? e.default : e;
+}
+var oe = 1 / 0, ue = "[object Symbol]", ae = /[^\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\x7f]+/g, ce = /[\xc0-\xd6\xd8-\xf6\xf8-\xff\u0100-\u017f]/g, N = "\\ud800-\\udfff", le = "\\u0300-\\u036f\\ufe20-\\ufe23", de = "\\u20d0-\\u20f0", Z = "\\u2700-\\u27bf", G = "a-z\\xdf-\\xf6\\xf8-\\xff", me = "\\xac\\xb1\\xd7\\xf7", pe = "\\x00-\\x2f\\x3a-\\x40\\x5b-\\x60\\x7b-\\xbf", be = "\\u2000-\\u206f", fe = " \\t\\x0b\\f\\xa0\\ufeff\\n\\r\\u2028\\u2029\\u1680\\u180e\\u2000\\u2001\\u2002\\u2003\\u2004\\u2005\\u2006\\u2007\\u2008\\u2009\\u200a\\u202f\\u205f\\u3000", P = "A-Z\\xc0-\\xd6\\xd8-\\xde", he = "\\ufe0e\\ufe0f", B = me + pe + be + fe, y = "['’]", k = "[" + B + "]", D = "[" + le + de + "]", V = "\\d+", ge = "[" + Z + "]", W = "[" + G + "]", F = "[^" + N + B + V + Z + G + P + "]", xe = "\\ud83c[\\udffb-\\udfff]", ve = "(?:" + D + "|" + xe + ")", ye = "[^" + N + "]", K = "(?:\\ud83c[\\udde6-\\uddff]){2}", J = "[\\ud800-\\udbff][\\udc00-\\udfff]", p = "[" + P + "]", _e = "\\u200d", w = "(?:" + W + "|" + F + ")", ke = "(?:" + p + "|" + F + ")", j = "(?:" + y + "(?:d|ll|m|re|s|t|ve))?", $ = "(?:" + y + "(?:D|LL|M|RE|S|T|VE))?", Y = ve + "?", H = "[" + he + "]?", we = "(?:" + _e + "(?:" + [ye, K, J].join("|") + ")" + H + Y + ")*", je = H + Y + we, $e = "(?:" + [ge, K, J].join("|") + ")" + je, Oe = RegExp(y, "g"), Se = RegExp(D, "g"), Ae = RegExp([
+  p + "?" + W + "+" + j + "(?=" + [k, p, "$"].join("|") + ")",
+  ke + "+" + $ + "(?=" + [k, p + w, "$"].join("|") + ")",
+  p + "?" + w + "+" + j,
+  p + "+" + $,
+  V,
+  $e
+].join("|"), "g"), Ce = /[a-z][A-Z]|[A-Z]{2,}[a-z]|[0-9][a-zA-Z]|[a-zA-Z][0-9]|[^a-zA-Z0-9 ]/, Re = {
+  // Latin-1 Supplement block.
+  À: "A",
+  Á: "A",
+  Â: "A",
+  Ã: "A",
+  Ä: "A",
+  Å: "A",
+  à: "a",
+  á: "a",
+  â: "a",
+  ã: "a",
+  ä: "a",
+  å: "a",
+  Ç: "C",
+  ç: "c",
+  Ð: "D",
+  ð: "d",
+  È: "E",
+  É: "E",
+  Ê: "E",
+  Ë: "E",
+  è: "e",
+  é: "e",
+  ê: "e",
+  ë: "e",
+  Ì: "I",
+  Í: "I",
+  Î: "I",
+  Ï: "I",
+  ì: "i",
+  í: "i",
+  î: "i",
+  ï: "i",
+  Ñ: "N",
+  ñ: "n",
+  Ò: "O",
+  Ó: "O",
+  Ô: "O",
+  Õ: "O",
+  Ö: "O",
+  Ø: "O",
+  ò: "o",
+  ó: "o",
+  ô: "o",
+  õ: "o",
+  ö: "o",
+  ø: "o",
+  Ù: "U",
+  Ú: "U",
+  Û: "U",
+  Ü: "U",
+  ù: "u",
+  ú: "u",
+  û: "u",
+  ü: "u",
+  Ý: "Y",
+  ý: "y",
+  ÿ: "y",
+  Æ: "Ae",
+  æ: "ae",
+  Þ: "Th",
+  þ: "th",
+  ß: "ss",
+  // Latin Extended-A block.
+  Ā: "A",
+  Ă: "A",
+  Ą: "A",
+  ā: "a",
+  ă: "a",
+  ą: "a",
+  Ć: "C",
+  Ĉ: "C",
+  Ċ: "C",
+  Č: "C",
+  ć: "c",
+  ĉ: "c",
+  ċ: "c",
+  č: "c",
+  Ď: "D",
+  Đ: "D",
+  ď: "d",
+  đ: "d",
+  Ē: "E",
+  Ĕ: "E",
+  Ė: "E",
+  Ę: "E",
+  Ě: "E",
+  ē: "e",
+  ĕ: "e",
+  ė: "e",
+  ę: "e",
+  ě: "e",
+  Ĝ: "G",
+  Ğ: "G",
+  Ġ: "G",
+  Ģ: "G",
+  ĝ: "g",
+  ğ: "g",
+  ġ: "g",
+  ģ: "g",
+  Ĥ: "H",
+  Ħ: "H",
+  ĥ: "h",
+  ħ: "h",
+  Ĩ: "I",
+  Ī: "I",
+  Ĭ: "I",
+  Į: "I",
+  İ: "I",
+  ĩ: "i",
+  ī: "i",
+  ĭ: "i",
+  į: "i",
+  ı: "i",
+  Ĵ: "J",
+  ĵ: "j",
+  Ķ: "K",
+  ķ: "k",
+  ĸ: "k",
+  Ĺ: "L",
+  Ļ: "L",
+  Ľ: "L",
+  Ŀ: "L",
+  Ł: "L",
+  ĺ: "l",
+  ļ: "l",
+  ľ: "l",
+  ŀ: "l",
+  ł: "l",
+  Ń: "N",
+  Ņ: "N",
+  Ň: "N",
+  Ŋ: "N",
+  ń: "n",
+  ņ: "n",
+  ň: "n",
+  ŋ: "n",
+  Ō: "O",
+  Ŏ: "O",
+  Ő: "O",
+  ō: "o",
+  ŏ: "o",
+  ő: "o",
+  Ŕ: "R",
+  Ŗ: "R",
+  Ř: "R",
+  ŕ: "r",
+  ŗ: "r",
+  ř: "r",
+  Ś: "S",
+  Ŝ: "S",
+  Ş: "S",
+  Š: "S",
+  ś: "s",
+  ŝ: "s",
+  ş: "s",
+  š: "s",
+  Ţ: "T",
+  Ť: "T",
+  Ŧ: "T",
+  ţ: "t",
+  ť: "t",
+  ŧ: "t",
+  Ũ: "U",
+  Ū: "U",
+  Ŭ: "U",
+  Ů: "U",
+  Ű: "U",
+  Ų: "U",
+  ũ: "u",
+  ū: "u",
+  ŭ: "u",
+  ů: "u",
+  ű: "u",
+  ų: "u",
+  Ŵ: "W",
+  ŵ: "w",
+  Ŷ: "Y",
+  ŷ: "y",
+  Ÿ: "Y",
+  Ź: "Z",
+  Ż: "Z",
+  Ž: "Z",
+  ź: "z",
+  ż: "z",
+  ž: "z",
+  Ĳ: "IJ",
+  ĳ: "ij",
+  Œ: "Oe",
+  œ: "oe",
+  ŉ: "'n",
+  ſ: "ss"
+}, Te = typeof v == "object" && v && v.Object === Object && v, Ee = typeof self == "object" && self && self.Object === Object && self, Le = Te || Ee || Function("return this")();
+function Ie(e, t, r, o) {
+  var a = -1, i = e ? e.length : 0;
+  for (o && i && (r = e[++a]); ++a < i; )
+    r = t(r, e[a], a, e);
+  return r;
+}
+function Ue(e) {
+  return e.match(ae) || [];
+}
+function ze(e) {
+  return function(t) {
+    return e == null ? void 0 : e[t];
+  };
+}
+var Me = ze(Re);
+function Ne(e) {
+  return Ce.test(e);
+}
+function Ze(e) {
+  return e.match(Ae) || [];
+}
+var Ge = Object.prototype, Pe = Ge.toString, O = Le.Symbol, S = O ? O.prototype : void 0, A = S ? S.toString : void 0;
+function Be(e) {
+  if (typeof e == "string")
+    return e;
+  if (We(e))
+    return A ? A.call(e) : "";
+  var t = e + "";
+  return t == "0" && 1 / e == -oe ? "-0" : t;
+}
+function De(e) {
+  return function(t) {
+    return Ie(Je(Fe(t).replace(Oe, "")), e, "");
+  };
+}
+function Ve(e) {
+  return !!e && typeof e == "object";
+}
+function We(e) {
+  return typeof e == "symbol" || Ve(e) && Pe.call(e) == ue;
+}
+function q(e) {
+  return e == null ? "" : Be(e);
+}
+function Fe(e) {
+  return e = q(e), e && e.replace(ce, Me).replace(Se, "");
+}
+var Ke = De(function(e, t, r) {
+  return e + (r ? "-" : "") + t.toLowerCase();
+});
+function Je(e, t, r) {
+  return e = q(e), t = r ? void 0 : t, t === void 0 ? Ne(e) ? Ze(e) : Ue(e) : e.match(t) || [];
+}
+var Ye = Ke;
+const He = /* @__PURE__ */ ne(Ye), x = {
   default: {
     _packs: {
       missile: 5,
@@ -29,26 +288,26 @@ const _ = {
     draygon: "weapons-tank",
     "x-ray": "shinespark"
   }
-}, v = (e, t) => {
-  const s = e.__vccOpts || e;
-  for (const [o, m] of t)
-    s[o] = m;
-  return s;
-}, V = (e) => e.replace(/([a-z])([A-Z])/g, "$1-$2").replace(/[\W_]+/g, "-").toLowerCase(), O = [
+}, _ = (e, t) => {
+  const r = e.__vccOpts || e;
+  for (const [o, a] of t)
+    r[o] = a;
+  return r;
+}, Q = [
   ["energy-tank", "reserve-tank", "missile", "super-missile", "power-bomb"],
   ["charge-beam", "ice-beam", "wave-beam", "spazer-beam", "plasma-beam"],
   ["morph-ball", "varia-suit", "spring-ball", "hi-jump-boots", "space-jump"],
   ["bomb", "gravity-suit", "ridley", "speed-booster", "screw-attack"],
   ["grappling-beam", "kraid", "phantoon", "draygon", "x-ray"]
-], k = [
+], C = [
   ["cwisp", "morph-ball", "bomb", "spring-ball"],
   ["hi-jump-boots", "speed-booster", "space-jump", "screw-attack"],
   ["varia-suit", "ridley", "gravity-suit"],
   ["kraid", "phantoon", "draygon"]
-], L = [
+], qe = [
   ["cwisp", "morph-ball", "bomb", "spring-ball", "varia-suit"],
   ["hi-jump-boots", "speed-booster", "space-jump", "screw-attack", "gravity-suit"]
-], M = O[0], y = (e, t, s = 2) => !e || typeof e != "number" ? null : (t ? e * t : e).toString().padStart(s, 0).split("").map((m) => `smi-number -number-${m}`), E = (e, t) => ["ridley", "draygon", "phantoon", "kraid"].includes(e) ? [`sm-g4-head -${e}`, t && "-inactive"] : [`sm-item -${e}`, !t && "-has-not"], T = {
+], Qe = Q[0], R = (e, t, r = 2) => !e || typeof e != "number" ? null : (t ? e * t : e).toString().padStart(r, 0).split("").map((a) => `smi-number -number-${a}`), Xe = (e, t) => ["ridley", "draygon", "phantoon", "kraid"].includes(e) ? [`sm-g4-head -${e}`, t && "-inactive"] : [`sm-item -${e}`, !t && "-has-not"], X = {
   "kill kraid": !0,
   "kill phantoon": !0,
   "kill draygon": !0,
@@ -57,7 +316,7 @@ const _ = {
   phantoon: !0,
   draygon: !0,
   ridley: !0
-}, G = (e) => e.map((t) => t.filter((s) => !T[s])), P = {
+}, et = (e) => e.map((t) => t.filter((r) => !X[r])), tt = {
   props: {
     inventory: Object,
     controlled: Boolean,
@@ -69,53 +328,57 @@ const _ = {
     objective_order: Array
   },
   emits: ["add-item", "toggle-item", "toggle-objective"],
+  data() {
+    return { targets: {} };
+  },
   computed: {
     vanilla_objectives() {
-      return !Object.keys(this.objectives || {}).find((t) => !T[t]);
+      return !Object.keys(this.objectives || {}).find((t) => !X[t]);
     },
     row_slugs() {
       if (this.rows)
         return this.rows;
-      let e = O.map((s) => s.slice());
-      const t = _[this.world];
-      return this.mode === "cwisp" ? this.vanilla_objectives ? e = k.map((s) => s.slice()) : Object.keys(this.objectives || {}).length <= 6 ? e = k : e = L.map((s) => s.slice()) : this.mode === "compact" && (e[4].pop(), e[4].shift(), e.shift()), t && (e = e.map((s) => s.map((o) => t[o] || o))), this.vanilla_objectives || (e = G(e)), e;
+      let e = Q.map((r) => r.slice());
+      const t = x[this.world];
+      return this.mode === "cwisp" ? this.vanilla_objectives ? e = C.map((r) => r.slice()) : Object.keys(this.objectives || {}).length <= 6 ? e = C : e = qe.map((r) => r.slice()) : this.mode === "compact" && (e[4].pop(), e[4].shift(), e.shift()), t && (e = e.map((r) => r.map((o) => t[o] || o))), this.vanilla_objectives || (e = et(e)), e;
     },
     columns() {
       return Object.keys(this.objectives || {}).length > 15 ? 6 : this.row_slugs[0].length;
     },
     prepped_rows() {
-      var s, o;
-      const e = _[this.world] || _.default, t = this.row_slugs.map(
-        (m) => m.map((a) => {
+      var r, o;
+      const e = x[this.world] || x.default, t = this.row_slugs.map(
+        (a) => a.map((i) => {
           var l;
-          const i = this.inventory[a];
+          const n = this.inventory[i];
           return {
-            slug: a,
-            numbers: y(i, (l = e._packs) == null ? void 0 : l[a]),
+            slug: i,
+            numbers: R(n, (l = e._packs) == null ? void 0 : l[i]),
             attrs: {
-              class: [E(a, i), i > 99 && "-three-digits"],
-              id: `grid-tracker__${a}`
+              class: [Xe(i, n), n > 99 && "-three-digits"],
+              id: `grid-tracker__${i}`
             }
           };
         })
       );
       if (!this.vanilla_objectives) {
-        const m = Object.keys(this.objectives || {}), { columns: a } = this;
+        const a = Object.keys(this.objectives || {}), { columns: i } = this;
         this.mode || t[3].push(...t.pop());
-        let i = t.findIndex((l) => l.length < t[0].length);
-        for (i === -1 && (i = t.length); m.length > 0; ) {
-          for (; ((s = t[i]) == null ? void 0 : s.length) >= a; )
-            i++;
-          t[i] || t.push([]);
-          const l = m.shift(), u = V(l);
-          let p;
-          (o = this.objective_order) != null && o.includes(l) && (p = this.objective_order.indexOf(l) + 1), t[i].push({
+        let n = t.findIndex((l) => l.length < t[0].length);
+        for (n === -1 && (n = t.length); a.length > 0; ) {
+          for (; ((r = t[n]) == null ? void 0 : r.length) >= i; )
+            n++;
+          t[n] || t.push([]);
+          const l = a.shift(), m = He(l);
+          let d;
+          (o = this.objective_order) != null && o.includes(l) && (d = this.objective_order.indexOf(l) + 1), t[n].push({
             slug: l,
             type: "objective",
-            numbers: y(p, 1, 1),
+            numbers: R(d, 1, 1),
+            target: this.targets[l],
             attrs: {
-              class: `smv-objective -${u} -${this.objectives[l] ? "in" : ""}active`,
-              id: `grid-tracker__${u}`
+              class: `smv-objective -${m} -${this.objectives[l] ? "in" : ""}active`,
+              id: `grid-tracker__${m}`
             }
           });
         }
@@ -133,72 +396,75 @@ const _ = {
     }
   },
   methods: {
-    click(e, { slug: t, type: s } = {}) {
-      if (s === "objective")
-        this.$emit("toggle-objective", t);
-      else if (M.includes(t)) {
+    click(e, { slug: t, type: r } = {}) {
+      if (r === "objective")
+        this.objectives[t] === void 0 ? console.error("trying to toggle non-existant objective") : e.shiftKey || e.ctrlKey ? this.targets[t] = !this.targets[t] : !this.controlled && this.$emit("toggle-objective", t);
+      else if (Qe.includes(t)) {
         const o = e.shiftKey || e.ctrlKey ? -1 : 1;
-        this.$emit("add-item", t, o);
+        !this.controlled && this.$emit("add-item", t, o);
       } else
-        this.$emit("toggle-item", t);
+        !this.controlled && this.$emit("toggle-item", t);
     }
   }
-}, K = ["onClick"];
-function F(e, t, s, o, m, a) {
-  const i = B("sm-cwisp-tracker");
-  return n(), c("div", {
-    class: d(`grid-tracker smi-tracker ${s.controlled ? "-controlled" : ""}`),
-    style: S(a.style)
+}, rt = ["onClick"], st = {
+  key: 3,
+  class: "fa fa-crosshairs _targeted"
+};
+function it(e, t, r, o, a, i) {
+  const n = re("sm-cwisp-tracker");
+  return u(), c("div", {
+    class: b(`grid-tracker smi-tracker ${r.controlled ? "-controlled" : ""}`),
+    style: z(i.style)
   }, [
-    (n(!0), c(h, null, b(a.prepped_rows, (l, u) => (n(), c("div", {
-      key: u,
+    (u(!0), c(f, null, h(i.prepped_rows, (l, m) => (u(), c("div", {
+      key: m,
       class: "grid-tracker__row"
     }, [
-      (n(!0), c(h, null, b(l, (p) => (n(), c("div", {
-        key: p.slug,
+      (u(!0), c(f, null, h(l, (d) => (u(), c("div", {
+        key: d.slug,
         class: "grid-tracker__cell"
       }, [
-        p.slug === "cwisp" ? (n(), I(i, {
+        d.slug === "cwisp" ? (u(), se(n, {
           key: 0,
-          inventory: s.inventory,
-          onToggleItem: (g) => e.$emit("toggle-item", g)
-        }, null, 8, ["inventory", "onToggleItem"])) : (n(), c("div", C({ key: 1 }, p.attrs, {
-          onClick: (g) => a.click(g, p)
-        }), null, 16, K)),
-        p.numbers ? (n(), c("div", {
+          inventory: r.inventory,
+          onToggleItem: (g) => !r.controlled && e.$emit("toggle-item", g)
+        }, null, 8, ["inventory", "onToggleItem"])) : (u(), c("div", M({ key: 1 }, d.attrs, {
+          onClick: (g) => i.click(g, d)
+        }), null, 16, rt)),
+        d.numbers ? (u(), c("div", {
           key: 2,
-          class: d(`grid-tracker__numbers -length-${p.numbers.length}`)
+          class: b(`grid-tracker__numbers -length-${d.numbers.length}`)
         }, [
-          (n(!0), c(h, null, b(p.numbers, (g, A) => (n(), c("div", {
-            key: A,
-            class: d(g)
+          (u(!0), c(f, null, h(d.numbers, (g, te) => (u(), c("div", {
+            key: te,
+            class: b(g)
           }, null, 2))), 128))
-        ], 2)) : N("", !0)
+        ], 2)) : d.target ? (u(), c("i", st)) : ie("", !0)
       ]))), 128))
     ]))), 128))
   ], 6);
 }
-const w = /* @__PURE__ */ v(P, [["render", F]]), r = {
+const T = /* @__PURE__ */ _(tt, [["render", it]]), s = {
   item: (e) => ({ class: e }),
   group: (e, t) => [`pause-inventory__group -group-${e}`, t],
-  number: (e) => r.item(`smi-number -number-${e}`),
-  numbers: (e, t) => e.toString().padStart(t, 0).split("").map(r.number)
+  number: (e) => s.item(`smi-number -number-${e}`),
+  numbers: (e, t) => e.toString().padStart(t, 0).split("").map(s.number)
 };
-r.separator = r.item("flex-grow");
-const z = (e) => Array(e || 0).fill().map((t, s) => s), f = (e, t) => ({
+s.separator = s.item("flex-grow");
+const ee = (e) => Array(e || 0).fill().map((t, r) => r), E = (e, t) => ({
   name: "energy-tanks",
-  children: z(e).map(() => r.item("smi -ietank")),
-  class: r.group("energy-tanks", t)
-}), j = (e) => ({
+  children: ee(e).map(() => s.item("smi -ietank")),
+  class: s.group("energy-tanks", t)
+}), L = (e) => ({
   name: e,
-  class: r.group(e),
-  children: [r.item("smi -" + e)]
-}), W = {
+  class: s.group(e),
+  children: [s.item("smi -" + e)]
+}), nt = {
   beams: ["charge", "ice", "wave", "spazer", "plasma"].map((e) => e + "-beam"),
   suits: ["varia-suit", "gravity-suit"],
   misc: ["morph-ball", "bomb", "spring-ball", "screw-attack"],
   boots: ["hi-jump-boots", "space-jump", "speed-booster"]
-}, Z = ["missile", "super-missile", "power-bomb", "grappling-beam", "x-ray"], q = {
+}, ot = ["missile", "super-missile", "power-bomb", "grappling-beam", "x-ray"], ut = {
   props: {
     inventory: Object,
     controlled: Boolean,
@@ -225,34 +491,34 @@ const z = (e) => Array(e || 0).fill().map((t, s) => s), f = (e, t) => ({
         ...this.item_groups,
         ...this.pack_controls
       ];
-      return this.inventory["reserve-tank"] && (e.push(j("auto")), e.push(j("reserve_text"))), e;
+      return this.inventory["reserve-tank"] && (e.push(L("auto")), e.push(L("reserve_text"))), e;
     },
     hud_items() {
       return {
         name: "hud-items",
-        class: r.group("hud-items"),
-        children: Z.map((e) => ({
+        class: s.group("hud-items"),
+        children: ot.map((e) => ({
           class: ["smi -i" + e, this.inventory[e] || "-inactive"],
           onclick: () => this.$emit("toggle-item", e)
         }))
       };
     },
     pack_numbers() {
-      const e = _[this.world] || _.default;
+      const e = x[this.world] || x.default;
       return ["missile", "super-missile", "power-bomb"].map((t) => {
         var o;
-        const s = this.inventory[t] * (((o = e._packs) == null ? void 0 : o[t]) || 1);
+        const r = this.inventory[t] * (((o = e._packs) == null ? void 0 : o[t]) || 1);
         return {
           name: t,
-          class: r.group(t),
-          children: r.numbers(s || 0, t === "missile" ? 3 : 2)
+          class: s.group(t),
+          children: s.numbers(r || 0, t === "missile" ? 3 : 2)
         };
       });
     },
     pack_controls() {
       return ["missile", "super-missile", "power-bomb", "energy-tank", "reserve-tank"].map((t) => ({
         name: `${t} controls`,
-        class: r.group(t + "-controls"),
+        class: s.group(t + "-controls"),
         children: [
           {
             class: "_plus",
@@ -267,30 +533,30 @@ const z = (e) => Array(e || 0).fill().map((t, s) => s), f = (e, t) => ({
     },
     energy_tanks() {
       const e = this.inventory["energy-tank"];
-      return [f(Math.min(e, 7)), f(Math.max(e - 7, 0), "-top")];
+      return [E(Math.min(e, 7)), E(Math.max(e - 7, 0), "-top")];
     },
     reserve_tanks() {
-      const e = this.inventory["reserve-tank"], s = [...z(Math.floor(e)).map(() => r.item("smi -ireserve")), r.separator];
-      return e > 0 && (100 * e).toString().split("").forEach((m) => s.push(r.item(`smi-reserve-number -number-${m}`))), {
+      const e = this.inventory["reserve-tank"], r = [...ee(Math.floor(e)).map(() => s.item("smi -ireserve")), s.separator];
+      return e > 0 && (100 * e).toString().split("").forEach((a) => r.push(s.item(`smi-reserve-number -number-${a}`))), {
         name: "reserve-tanks",
-        class: r.group("reserve-tanks"),
-        children: s
+        class: s.group("reserve-tanks"),
+        children: r
       };
     },
     energy_text() {
       return {
         name: "energy-text",
-        class: r.group("energy-text"),
-        children: [r.item("smi -energy"), r.separator, r.number(9), r.number(9)]
+        class: s.group("energy-text"),
+        children: [s.item("smi -energy"), s.separator, s.number(9), s.number(9)]
       };
     },
     item_groups() {
-      return Object.entries(W).map(([e, t]) => ({
+      return Object.entries(nt).map(([e, t]) => ({
         name: e,
-        class: r.group(e),
-        children: t.map((s) => ({
-          class: [`smi-pause-item -${s}`, this.inventory[s] || "-inactive"],
-          onclick: () => this.$emit("toggle-item", s)
+        class: s.group(e),
+        children: t.map((r) => ({
+          class: [`smi-pause-item -${r}`, this.inventory[r] || "-inactive"],
+          onclick: () => this.$emit("toggle-item", r)
         }))
       }));
     },
@@ -299,50 +565,50 @@ const z = (e) => Array(e || 0).fill().map((t, s) => s), f = (e, t) => ({
     }
   }
 };
-function D(e, t, s, o, m, a) {
-  return n(), c("div", {
-    class: d(a.wrapper_class),
-    style: S(a.style)
+function at(e, t, r, o, a, i) {
+  return u(), c("div", {
+    class: b(i.wrapper_class),
+    style: z(i.style)
   }, [
-    (n(!0), c(h, null, b(a.groups, (i) => (n(), c("div", {
-      key: i.name,
-      class: d(i.class)
+    (u(!0), c(f, null, h(i.groups, (n) => (u(), c("div", {
+      key: n.name,
+      class: b(n.class)
     }, [
-      (n(!0), c(h, null, b(i.children, (l, u) => (n(), c("div", C({ key: u }, l), null, 16))), 128))
+      (u(!0), c(f, null, h(n.children, (l, m) => (u(), c("div", M({ key: m }, l), null, 16))), 128))
     ], 2))), 128))
   ], 6);
 }
-const $ = /* @__PURE__ */ v(q, [["render", D]]), H = ["charge-beam", "wave-beam", "ice-beam", "spazer-beam", "plasma-beam"], J = {
+const I = /* @__PURE__ */ _(ut, [["render", at]]), ct = ["charge-beam", "wave-beam", "ice-beam", "spazer-beam", "plasma-beam"], lt = {
   props: {
     inventory: Object
   },
   emits: ["toggle-item"],
   computed: {
     beams() {
-      return H.map((e) => ({
+      return ct.map((e) => ({
         id: e,
         class: [`sm-cwisp__cell -${e}`, this.inventory[e] ? "-active" : "-inactive"]
       }));
     }
   }
-}, Q = { class: "sm-cwisp" }, R = ["onClick"];
-function U(e, t, s, o, m, a) {
-  return n(), c("div", Q, [
-    (n(!0), c(h, null, b(a.beams, (i) => (n(), c("div", {
-      class: d(i.class),
-      onClick: (l) => e.$emit("toggle-item", i.id),
-      key: i.id
-    }, null, 10, R))), 128))
+}, dt = { class: "sm-cwisp" }, mt = ["onClick"];
+function pt(e, t, r, o, a, i) {
+  return u(), c("div", dt, [
+    (u(!0), c(f, null, h(i.beams, (n) => (u(), c("div", {
+      class: b(n.class),
+      onClick: (l) => e.$emit("toggle-item", n.id),
+      key: n.id
+    }, null, 10, mt))), 128))
   ]);
 }
-const x = /* @__PURE__ */ v(J, [["render", U]]), Y = {
-  GridTracker: w,
-  PauseTracker: $,
-  CwispTracker: x,
+const U = /* @__PURE__ */ _(lt, [["render", pt]]), ft = {
+  GridTracker: T,
+  PauseTracker: I,
+  CwispTracker: U,
   install(e) {
-    e.component("SmGridTracker", w), e.component("SmPauseTracker", $), e.component("SmCwispTracker", x);
+    e.component("SmGridTracker", T), e.component("SmPauseTracker", I), e.component("SmCwispTracker", U);
   }
 };
 export {
-  Y as default
+  ft as default
 };
