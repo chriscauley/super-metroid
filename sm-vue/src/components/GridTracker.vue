@@ -5,7 +5,7 @@
         <sm-cwisp-tracker
           v-if="cell.slug === 'cwisp'"
           :inventory="inventory"
-          @toggle-item="(i) => $emit('toggle-item', i)"
+          @toggle-item="(i) => !controlled && $emit('toggle-item', i)"
         />
         <div v-else v-bind="cell.attrs" @click="(e) => click(e, cell)" />
         <div v-if="cell.numbers" :class="`grid-tracker__numbers -length-${cell.numbers.length}`">
@@ -189,7 +189,13 @@ export default {
   methods: {
     click(e, { slug, type } = {}) {
       if (type === 'objective') {
-        this.$emit('toggle-objective', slug)
+        if (this.objectives[slug] === undefined) {
+          console.error('trying to toggle non-existant objective')
+        } else if (e.shiftKey || e.ctrlKey) {
+          this.targets[slug] = !this.targets[slug]
+        } else {
+          !this.controlled && this.$emit('toggle-objective', slug)
+        }
       } else if (packs.includes(slug)) {
         const amount = e.shiftKey || e.ctrlKey ? -1 : 1
         this.$emit('add-item', slug, amount)
