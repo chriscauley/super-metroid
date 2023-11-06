@@ -6,16 +6,19 @@
   --inventory-px: 1px;
 }
 
-.help-anchor {
+.hover-buttons {
   /* need to hide these help buttons they hover over the parent
      it needs to be present on the page so it can be targeted by the tour */
-  @apply absolute right-0 top-0;
-  font-size: 18px;
+  @apply absolute flex right-0;
+  bottom: 100%;
   opacity: 0;
   pointer-events: none;
   .-site-varia .item-tracker__wrapper:hover &,
   body.-tour-open & {
     opacity: 1;
     pointer-events: all;
+  }
+  button {
+    font-size: 18px;
   }
 }

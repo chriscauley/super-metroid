@@ -3,12 +3,12 @@
   z-index: -1;
 }
 
-.resize-box,
 .golden-four,
 .tracker-view__key-stack {
   z-index: 1;
 }
 
+.resize-box, /* needs to be above "gems" in CWISP */
 .warp-connections {
   z-index: 10;
 }
@@ -52,7 +52,7 @@
 
 
 .ur-toolbar,
-.help-anchor {
+.hover-buttons {
   z-index: 100;
 }
 

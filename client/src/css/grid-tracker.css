@@ -1,7 +1,4 @@
 .grid-tracker {
-  &.-controlled {
-    pointer-events: none;
-  }
   &.smi-tracker {
     image-rendering: unset;
   }

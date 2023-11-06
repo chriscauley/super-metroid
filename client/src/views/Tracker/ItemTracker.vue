@@ -1,40 +1,70 @@
 <template>
   <div :class="config.class" :style="style" v-if="config.tagName">
-    <button class="btn -primary help-anchor" id="helpItemTracker" @click="showHelp">
-      <i class="fa fa-question-circle" />
-    </button>
-    <resize-box @update="resizeBox" v-if="edit_mode" />
+    <div class="hover-buttons">
+      <button v-if="!locked" class="btn -primary" @click="editor_open = true">
+        <i class="fa fa-edit" />
+      </button>
+      <button :class="`btn -${locked ? 'primary' : 'secondary'}`" @click="toggleLock">
+        <i :class="`fa fa-${locked ? 'lock' : 'unlock'}`" />
+      </button>
+      <button class="btn -primary" id="helpItemTracker" @click="showHelp">
+        <i class="fa fa-question-circle" />
+      </button>
+    </div>
+    <resize-box @update="resizeBox" />
     <component
       :is="config.tagName"
       :inventory="inventory"
       @toggle-item="(item) => $emit('toggle-item', item)"
       @add-item="(item, amount) => $emit('add-item', item, amount)"
+      @toggle-objective="toggleObjective"
       :controlled="controlled"
       :mode="config.mode"
-      :objectives="json_data?.objectives?.goals"
+      :objectives="objectives"
       :objective_order="$store.seed.state.objective_order"
       :world="world"
     />
   </div>
+  <teleport to="body">
+    <unrest-modal v-if="editor_open" @close="editor_open = false">
+      <objective-selector :categories="categories" @toggle-objective="toggleSelectedObjective" />
+      <template #actions>
+        <button class="btn -danger" @click="resetObjectives">Reset Objectives</button>
+        <div class="flex-grow" />
+        <button class="btn -secondary" @click="editor_open = false">Close</button>
+      </template>
+    </unrest-modal>
+  </teleport>
 </template>
 
 <script>
+import varia from '@/varia'
+
 export default {
   inject: ['tool_storage', 'json_data'],
   props: {
     inventory: Object,
   },
   emits: ['add-item', 'toggle-item'],
+  data() {
+    return { editor_open: false }
+  },
   computed: {
+    objectives() {
+      if (this.locked) {
+        return this.json_data?.objectives?.goals || {}
+      }
+      return this.$store.seed.state.objective_overrides || {}
+    },
+    locked() {
+      return this.$store.seed.state.objective_locked
+    },
     controlled() {
       const { json_data } = this
       return !json_data || json_data.seed !== 'seedless'
     },
     world() {
       return this.controlled ? 'varia' : undefined
-    },
-    edit_mode() {
-      return true
     },
     config() {
       const { item_tracker } = this.tool_storage.state.tracker_settings
@@ -61,13 +91,51 @@ export default {
         top: `${y}px`,
       }
     },
+    categories() {
+      const { objective_overrides = {} } = this.$store.seed.state
+      return Object.entries(varia.objective.by_category).map(([id, objectives]) => ({
+        id,
+        objectives: objectives.map((o) => ({
+          ...o,
+          selected: objective_overrides[o.id] !== undefined,
+        })),
+      }))
+    },
   },
   methods: {
+    resetObjectives() {
+      this.$store.seed.save({ objective_overrides: {}, objective_order: [] })
+    },
     resizeBox(values) {
       this.$store.config.save({ 'item-tracker': values })
     },
     showHelp() {
       window.startTheTour?.('helpItemTracker')
+    },
+    toggleLock() {
+      this.$store.seed.save({ objective_locked: !this.locked })
+    },
+    toggleObjective(o_id) {
+      const { objective_overrides = {} } = this.$store.seed.state
+      let { objective_order = [] } = this.$store.seed.state
+
+      if (objective_overrides[o_id]) {
+        objective_order = objective_order.filter((o) => o !== o_id)
+      } else {
+        objective_order.push(o_id)
+      }
+
+      objective_overrides[o_id] = !objective_overrides[o_id]
+      this.$store.seed.save({ objective_overrides, objective_order })
+    },
+    toggleSelectedObjective(o_id) {
+      const { objective_overrides = {} } = this.$store.seed.state
+      if (objective_overrides[o_id] !== undefined) {
+        delete objective_overrides[o_id]
+      } else {
+        objective_overrides[o_id] = false
+      }
+      this.$store.seed.save({ objective_overrides, objective_order: [] })
     },
   },
 }
