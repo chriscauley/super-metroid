@@ -129,6 +129,20 @@ $items: list.join($beams, $other_items);
 
 .grid-tracker__cell {
   @apply flex relative;
+  ._targeted {
+    @apply absolute flex items-center justify-center right-0 bottom-0;
+    text-shadow:
+      1px 1px 0 #fff,
+      -1px 1px 0 #fff,
+      -1px -1px 0 #fff,
+      1px -1px 0 #fff;
+    color: red;
+    font-size: 0.5em;
+    width: 0.8em;
+    height: 0.8em;
+    border-radius: 50%;
+    z-index: 2;
+  }
 }
 
 .grid-tracker__numbers {
