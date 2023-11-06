@@ -7,7 +7,7 @@
         :key="category"
         class="objective-help__category"
       >
-        <h4>{{ category }}</h4>
+        <h4 class="objective-help__category-name">{{ category }}</h4>
         <div class="objective-help__list">
           <div v-for="(column, i) in getColumns(objectives)" :key="i">
             <div v-for="objective in column" :key="objective.id" class="objective-help__item">
