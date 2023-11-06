@@ -17,13 +17,8 @@
 </template>
 
 <script>
+import kebabCase from 'lodash.kebabcase'
 import worlds from './worlds'
-
-const kebabCase = (string) =>
-  string
-    .replace(/([a-z])([A-Z])/g, '$1-$2')
-    .replace(/[\W_]+/g, '-')
-    .toLowerCase()
 
 const rows = [
   ['energy-tank', 'reserve-tank', 'missile', 'super-missile', 'power-bomb'],

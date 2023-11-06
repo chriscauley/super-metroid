@@ -26,5 +26,8 @@
     "@vue/cli-plugin-babel": "^5.0.8",
     "vite": "^4.3.9",
     "vue": "^3.2.47"
+  },
+  "dependencies": {
+    "lodash.kebabcase": "^4.1.1"
   }
 }
