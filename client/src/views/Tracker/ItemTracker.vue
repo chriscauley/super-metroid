@@ -20,6 +20,7 @@
       :objectives="objectives"
       :objective_order="$store.seed.state.objective_order"
       :world="world"
+      :class="tool_storage.state.tracker_settings.tracker_grid ? '' : '-no-grid'"
     />
   </div>
   <teleport to="body">
@@ -51,15 +52,11 @@ export default {
   },
   computed: {
     objectives() {
-      const { objective_overrides, completion_overrides=[] } = this.$store.seed.state
+      const { objective_overrides } = this.$store.seed.state
       if (objective_overrides) {
         return objective_overrides
       }
       const objectives = {...this.json_data?.objectives?.goals}
-      if (!Object.values(objectives).find(Boolean)) {
-        // server hasn't checked off any objectives
-        completion_overrides.forEach(c => objectives[c] = true)
-      }
       return objectives
     },
     controlled() {
@@ -67,7 +64,7 @@ export default {
       return !json_data || json_data.seed !== 'seedless'
     },
     world() {
-      return this.controlled ? 'varia' : undefined
+      return this.json_data ? 'varia' : undefined
     },
     config() {
       const { item_tracker } = this.tool_storage.state.tracker_settings
@@ -108,7 +105,7 @@ export default {
   methods: {
     resetObjectives() {
       this.$store.seed.save({
-        objective_overrides: {},
+        objective_overrides: null,
         objective_order: [],
       })
     },

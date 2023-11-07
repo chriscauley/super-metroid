@@ -102,6 +102,13 @@ $items: list.join($beams, $other_items);
   background-repeat: no-repeat, no-repeat, repeat;
   background-position: left top, left bottom, left center;
   image-rendering: pixelated;
+  &.-no-grid {
+    background-image:
+      url('./images/inventory/background_tracker_top.png'),
+      url('./images/inventory/background_tracker_bottom.png'),
+      url('./images/inventory/background_tracker_middle-no-grid.png')
+    ;
+  }
 }
 
 .grid-tracker {

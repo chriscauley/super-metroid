@@ -48,6 +48,9 @@ const tracker_settings = {
       show_grid: {
         type: 'boolean',
       },
+      tracker_grid: {
+        type: 'boolean',
+      },
       warp_display: {
         type: 'string',
         enum: ['dot', 'codes'],
