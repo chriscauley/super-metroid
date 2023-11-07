@@ -1,11 +1,8 @@
 <template>
   <div :class="config.class" :style="style" v-if="config.tagName">
     <div class="hover-buttons">
-      <button v-if="!locked" class="btn -primary" @click="editor_open = true">
+      <button class="btn -primary" @click="editor_open = true">
         <i class="fa fa-edit" />
-      </button>
-      <button :class="`btn -${locked ? 'primary' : 'secondary'}`" @click="toggleLock">
-        <i :class="`fa fa-${locked ? 'lock' : 'unlock'}`" />
       </button>
       <button class="btn -primary" id="helpItemTracker" @click="showHelp">
         <i class="fa fa-question-circle" />
@@ -27,6 +24,9 @@
   </div>
   <teleport to="body">
     <unrest-modal v-if="editor_open" @close="editor_open = false">
+      <p>
+        You can override objectives in the tracker by selecting them below. If no objectives are selected, the tracker will default to the seed used to initialize the tracker.
+      </p>
       <objective-selector :categories="categories" @toggle-objective="toggleSelectedObjective" />
       <template #actions>
         <button class="btn -danger" @click="resetObjectives">Reset Objectives</button>
@@ -51,13 +51,16 @@ export default {
   },
   computed: {
     objectives() {
-      if (this.locked) {
-        return this.json_data?.objectives?.goals || {}
+      const { objective_overrides, completion_overrides=[] } = this.$store.seed.state
+      if (objective_overrides) {
+        return objective_overrides
       }
-      return this.$store.seed.state.objective_overrides || {}
-    },
-    locked() {
-      return this.$store.seed.state.objective_locked
+      const objectives = {...this.json_data?.objectives?.goals}
+      if (!Object.values(objectives).find(Boolean)) {
+        // server hasn't checked off any objectives
+        completion_overrides.forEach(c => objectives[c] = true)
+      }
+      return objectives
     },
     controlled() {
       const { json_data } = this
@@ -97,14 +100,17 @@ export default {
         id,
         objectives: objectives.map((o) => ({
           ...o,
-          selected: objective_overrides[o.id] !== undefined,
+          selected: objective_overrides?.[o.id] !== undefined,
         })),
       }))
     },
   },
   methods: {
     resetObjectives() {
-      this.$store.seed.save({ objective_overrides: {}, objective_order: [] })
+      this.$store.seed.save({
+        objective_overrides: {},
+        objective_order: [],
+      })
     },
     resizeBox(values) {
       this.$store.config.save({ 'item-tracker': values })
@@ -112,11 +118,8 @@ export default {
     showHelp() {
       window.startTheTour?.('helpItemTracker')
     },
-    toggleLock() {
-      this.$store.seed.save({ objective_locked: !this.locked })
-    },
     toggleObjective(o_id) {
-      const { objective_overrides = {} } = this.$store.seed.state
+      const { objective_overrides } = this.$store.seed.state
       let { objective_order = [] } = this.$store.seed.state
 
       if (objective_overrides[o_id]) {
@@ -125,15 +128,21 @@ export default {
         objective_order.push(o_id)
       }
 
-      objective_overrides[o_id] = !objective_overrides[o_id]
+      if (objective_overrides) {
+        objective_overrides[o_id] = !objective_overrides[o_id]
+      }
       this.$store.seed.save({ objective_overrides, objective_order })
     },
     toggleSelectedObjective(o_id) {
-      const { objective_overrides = {} } = this.$store.seed.state
+      let objective_overrides = this.$store.seed.state.objective_overrides || {}
       if (objective_overrides[o_id] !== undefined) {
         delete objective_overrides[o_id]
       } else {
         objective_overrides[o_id] = false
+      }
+      if (Object.keys(objective_overrides).length === 0) {
+        // no objective overrides, use seed objectives instead
+        objective_overrides = null
       }
       this.$store.seed.save({ objective_overrides, objective_order: [] })
     },

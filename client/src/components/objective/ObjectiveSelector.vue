@@ -23,6 +23,7 @@
             @input="$emit('toggle-objective', objective.id)"
             :checked="objective.selected"
             :disabled="!!objective.disabled"
+            :name="objective.id"
           />
           <i :class="objective.icon" />
           {{ objective.id }}
