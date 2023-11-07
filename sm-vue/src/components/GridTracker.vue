@@ -21,6 +21,8 @@
 import kebabCase from 'lodash.kebabcase'
 import worlds from './worlds'
 
+const slugifyObjective = id => kebabCase(id.toLowerCase().replace("'",''))
+
 const rows = [
   ['energy-tank', 'reserve-tank', 'missile', 'super-missile', 'power-bomb'],
   ['charge-beam', 'ice-beam', 'wave-beam', 'spazer-beam', 'plasma-beam'],
@@ -159,19 +161,20 @@ export default {
           if (!rows[row_index]) {
             rows.push([])
           }
-          const slug = objective_ids.shift()
-          const cased = kebabCase(slug)
+          const id = objective_ids.shift()
+          const cased = slugifyObjective(id)
           let order
-          if (this.objective_order?.includes(slug)) {
-            order = this.objective_order.indexOf(slug) + 1
+          if (this.objective_order?.includes(id)) {
+            order = this.objective_order.indexOf(id) + 1
           }
           rows[row_index].push({
-            slug,
+            // slug vs id is a bit confusing because the varia "ids" are human readable
+            slug: id,
             type: 'objective',
             numbers: getNumbers(order, 1, 1),
-            target: this.targets[slug],
+            target: this.targets[id],
             attrs: {
-              class: `smv-objective -${cased} -${this.objectives[slug] ? 'in' : ''}active`,
+              class: `smv-objective -${cased} -${this.objectives[id] ? 'in' : ''}active`,
               id: `grid-tracker__${cased}`,
             },
           })
