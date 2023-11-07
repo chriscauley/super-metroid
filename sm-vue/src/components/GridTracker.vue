@@ -21,7 +21,7 @@
 import kebabCase from 'lodash.kebabcase'
 import worlds from './worlds'
 
-const slugifyObjective = id => kebabCase(id.toLowerCase().replace("'",''))
+const slugifyObjective = (id) => kebabCase(id.toLowerCase().replace("'", ''))
 
 const rows = [
   ['energy-tank', 'reserve-tank', 'missile', 'super-missile', 'power-bomb'],
