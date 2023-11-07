@@ -24,6 +24,7 @@
             :checked="objective.selected"
             :disabled="!!objective.disabled"
           />
+          <i :class="objective.icon" />
           {{ objective.id }}
         </label>
       </div>
