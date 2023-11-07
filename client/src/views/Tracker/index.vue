@@ -366,6 +366,14 @@ export default {
         })
       }
       if (json_data) {
+        if (json_data.mode === 'race' && json_data.visitedLocations) {
+          Object.values(json_data.visitedLocations).forEach((value) => {
+            // race mode uses these to obsurce what was in each location
+            if (value.item === 'SpringBall' || value.item === 'NoEnergy') {
+              value.item = 'Nothing'
+            }
+          })
+        }
         json_data.svg_rooms = { unknownSvg: true }
         json_data.all_locations = {
           ...json_data.availableLocations,
