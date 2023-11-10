@@ -21,12 +21,14 @@
       :objective_order="$store.seed.state.objective_order"
       :world="world"
       :class="tool_storage.state.tracker_settings.tracker_grid ? '' : '-no-grid'"
+      :width="$store.config.state['item-tracker']?.width"
     />
   </div>
   <teleport to="body">
     <unrest-modal v-if="editor_open" @close="editor_open = false">
       <p>
-        You can override objectives in the tracker by selecting them below. If no objectives are selected, the tracker will default to the seed used to initialize the tracker.
+        You can override objectives in the tracker by selecting them below. If no objectives are
+        selected, the tracker will default to the seed used to initialize the tracker.
       </p>
       <objective-selector :categories="categories" @toggle-objective="toggleSelectedObjective" />
       <template #actions>
@@ -56,7 +58,7 @@ export default {
       if (objective_overrides) {
         return objective_overrides
       }
-      const objectives = {...this.json_data?.objectives?.goals}
+      const objectives = { ...this.json_data?.objectives?.goals }
       return objectives
     },
     controlled() {
@@ -78,15 +80,12 @@ export default {
       }
     },
     style() {
-      const { x, y, width } = this.$store.config.state['item-tracker'] || {}
-      if (!width) {
+      const { x, y } = this.$store.config.state['item-tracker'] || {}
+      if (x === undefined) {
         return {}
       }
-      const columns = 5 + 2 * 0.2 + 4 * 0.1 // number of columns + padding + gap
 
       return {
-        '--inventory-px': `${width / 256}px`,
-        fontSize: `${width / columns}px`,
         left: `${x}px`,
         top: `${y}px`,
       }
