@@ -390,16 +390,14 @@ const He = /* @__PURE__ */ oe(Ye), x = {
       const { width: e } = this;
       if (!e)
         return {};
-      const t = this.columns + 2 * 0.2 + 4 * 0.1;
-      return {
-        fontSize: `${e / t}px`
-      };
+      const t = this.columns + 2 * 0.2 + (this.columns - 1) * 0.1;
+      return { fontSize: `${e / t}px` };
     }
   },
   methods: {
     click(e, { slug: t, type: r } = {}) {
       if (r === "objective")
-        this.objectives[t] === void 0 ? console.error("trying to toggle non-existant objective") : e.shiftKey || e.ctrlKey ? this.targets[t] = !this.targets[t] : !this.controlled && this.$emit("toggle-objective", t);
+        this.objectives[t] === void 0 ? console.error("trying to toggle non-existant objective") : e.shiftKey || e.ctrlKey ? this.targets[t] = !this.targets[t] : this.$emit("toggle-objective", t);
       else if (Xe.includes(t)) {
         const n = e.shiftKey || e.ctrlKey ? -1 : 1;
         !this.controlled && this.$emit("add-item", t, n);
