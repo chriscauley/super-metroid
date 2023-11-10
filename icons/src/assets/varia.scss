@@ -205,12 +205,7 @@ $objs: kill-one-g-4, kill-two-g-4, kill-three-g-4, kill-all-g-4,
   &.-explore-crocs-lair,
   &.-explore-lower-norfair,
   &.-explore-west-maridia,
-  &.-explore-east-maridia,
-  &.-clear-kraid-s-lair,
-  &.-clear-croc-s-lair,
-  &.-explore-kraid-s-lair,
-  &.-explore-croc-s-lair,
- {
+  &.-explore-east-maridia {
     &:before {
       bottom: 10%;
       left: 20%;
@@ -231,14 +226,12 @@ $objs: kill-one-g-4, kill-two-g-4, kill-three-g-4, kill-all-g-4,
   &.-explore-red-brinstar,
   &.-explore-green-brinstar,
   &.-explore-wrecked-ship,
-  &.-explore-kraids-lair,
   &.-explore-upper-norfair,
-  &.-explore-crocs-lair,
   &.-explore-lower-norfair,
   &.-explore-west-maridia,
   &.-explore-east-maridia,
-  &.-explore-croc-s-lair,
-  &.-explore-kraid-s-lair {
+  &.-explore-crocs-lair,
+  &.-explore-kraids-lair {
     &:after {
       border-radius: 0;
       background-color: transparent;
