@@ -5905,10 +5905,10 @@ slice-ansi@^4.0.0:
     astral-regex "^2.0.0"
     is-fullwidth-code-point "^3.0.0"
 
-sm-vue@0.0.11:
-  version "0.0.11"
-  resolved "https://registry.yarnpkg.com/sm-vue/-/sm-vue-0.0.11.tgz#f1b82d1a7b6c943aa2acdbb4703769159a6aa242"
-  integrity sha512-xMb9o/yQYIdf1CWfC/zTbM1vrEmucFK6fYOJ9mMLFUcqBsT4B2GGricmcgql3v5mICgELOrnd+try27gh3qmLg==
+sm-vue@0.0.12:
+  version "0.0.12"
+  resolved "https://registry.yarnpkg.com/sm-vue/-/sm-vue-0.0.12.tgz#9acde596bb4fee1aa3d5c551b690599398763c2c"
+  integrity sha512-49atiy2V1Iwm+4lrWMhkKEuJawOHOmwed5ZjKmrX/CBDTbR8Y8AoRyvOUxhv1i+MrWjwXVhssRD+GS+XefYEOg==
   dependencies:
     lodash.kebabcase "^4.1.1"
 
