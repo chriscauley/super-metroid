@@ -362,6 +362,8 @@ export default {
       if (json_data?.seed !== this.$store.seed.state.seed) {
         this.$store.seed.save({
           seed: json_data?.seed,
+          objective_overrides: [],
+          completed_overrides: [],
           objective_order: [],
         })
       }

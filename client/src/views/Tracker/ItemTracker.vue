@@ -42,6 +42,7 @@
 
 <script>
 import varia from '@/varia'
+import { remove } from 'lodash'
 
 export default {
   inject: ['tool_storage', 'json_data'],
@@ -54,11 +55,16 @@ export default {
   },
   computed: {
     objectives() {
-      const { objective_overrides } = this.$store.seed.state
-      if (objective_overrides) {
-        return objective_overrides
+      const { objective_overrides, completed_overrides = [] } = this.$store.seed.state
+      if (objective_overrides?.length > 0) {
+        return Object.fromEntries(
+          objective_overrides.map((o) => [o, completed_overrides.includes(o)]),
+        )
       }
       const objectives = { ...this.json_data?.objectives?.goals }
+      if (!Object.values(objectives).find(Boolean)) {
+        Object.keys(objectives).forEach((o) => (objectives[o] = completed_overrides.includes(o)))
+      }
       return objectives
     },
     controlled() {
@@ -91,12 +97,12 @@ export default {
       }
     },
     categories() {
-      const { objective_overrides = {} } = this.$store.seed.state
+      const { completed_overrides = [] } = this.$store.seed.state
       return Object.entries(varia.objective.by_category).map(([id, objectives]) => ({
         id,
         objectives: objectives.map((o) => ({
           ...o,
-          selected: objective_overrides?.[o.id] !== undefined,
+          selected: completed_overrides.includes(o.id),
         })),
       }))
     },
@@ -104,7 +110,8 @@ export default {
   methods: {
     resetObjectives() {
       this.$store.seed.save({
-        objective_overrides: null,
+        objective_overrides: [],
+        completed_overrides: [],
         objective_order: [],
       })
     },
@@ -115,32 +122,30 @@ export default {
       window.startTheTour?.('helpItemTracker')
     },
     toggleObjective(o_id) {
-      const { objective_overrides } = this.$store.seed.state
-      let { objective_order = [] } = this.$store.seed.state
+      const { objectives } = this
+      const { completed_overrides = [], objective_order = [] } = this.$store.seed.state
 
-      if (objective_overrides[o_id]) {
-        objective_order = objective_order.filter((o) => o !== o_id)
+      if (objectives[o_id]) {
+        const removeIt = (array) => remove(array, (value) => value === o_id)
+        removeIt(completed_overrides)
+        removeIt(objective_order)
       } else {
         objective_order.push(o_id)
+        completed_overrides.push(o_id)
       }
 
-      if (objective_overrides) {
-        objective_overrides[o_id] = !objective_overrides[o_id]
-      }
-      this.$store.seed.save({ objective_overrides, objective_order })
+      this.$store.seed.save({ objective_order, completed_overrides })
     },
     toggleSelectedObjective(o_id) {
-      let objective_overrides = this.$store.seed.state.objective_overrides || {}
-      if (objective_overrides[o_id] !== undefined) {
-        delete objective_overrides[o_id]
+      const { objective_overrides = [] } = this.$store.seed.state
+      if (objective_overrides.includes(o_id)) {
+        const removeIt = (array) => remove(array, (value) => value === o_id)
+        removeIt(objective_overrides)
       } else {
-        objective_overrides[o_id] = false
+        // only adds to this one
+        objective_overrides.push(o_id)
+        this.$store.seed.save({ objective_overrides })
       }
-      if (Object.keys(objective_overrides).length === 0) {
-        // no objective overrides, use seed objectives instead
-        objective_overrides = null
-      }
-      this.$store.seed.save({ objective_overrides, objective_order: [] })
     },
   },
 }
