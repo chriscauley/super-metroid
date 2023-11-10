@@ -201,7 +201,8 @@ export default {
         } else if (e.shiftKey || e.ctrlKey) {
           this.targets[slug] = !this.targets[slug]
         } else {
-          !this.controlled && this.$emit('toggle-objective', slug)
+          // this still emits even if controlled
+          this.$emit('toggle-objective', slug)
         }
       } else if (packs.includes(slug)) {
         const amount = e.shiftKey || e.ctrlKey ? -1 : 1

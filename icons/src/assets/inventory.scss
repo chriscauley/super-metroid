@@ -156,6 +156,7 @@ $items: list.join($beams, $other_items);
   --inventory-px: 0.06em;
   @apply absolute flex;
   bottom: -0.06em;
+  pointer-events: none;
   right: 0;
   &.-length-3 {
     /* centering 1XX numbers is complicated */
