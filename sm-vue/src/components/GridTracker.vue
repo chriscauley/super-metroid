@@ -187,11 +187,10 @@ export default {
       if (!width) {
         return {}
       }
-      const columns = this.columns + 2 * 0.2 + 4 * 0.1 // number of columns + padding + gap
 
-      return {
-        fontSize: `${width / columns}px`,
-      }
+      // number of columns + 2*padding + (columns-1)*gap
+      const total_columns = this.columns + 2 * 0.2 + (this.columns - 1) * 0.1
+      return { fontSize: `${width / total_columns}px` }
     },
   },
   methods: {
