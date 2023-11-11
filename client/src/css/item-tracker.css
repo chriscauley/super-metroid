@@ -10,7 +10,7 @@
   /* need to hide these help buttons they hover over the parent
      it needs to be present on the page so it can be targeted by the tour */
   @apply absolute flex right-0;
-  bottom: 100%;
+  top: 100%;
   opacity: 0;
   pointer-events: none;
   .-site-varia .item-tracker__wrapper:hover &,

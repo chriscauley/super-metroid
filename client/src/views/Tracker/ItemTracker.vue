@@ -97,12 +97,12 @@ export default {
       }
     },
     categories() {
-      const { completed_overrides = [] } = this.$store.seed.state
+      const { objective_overrides = [], completed_overrides = [] } = this.$store.seed.state
       return Object.entries(varia.objective.by_category).map(([id, objectives]) => ({
         id,
         objectives: objectives.map((o) => ({
           ...o,
-          selected: completed_overrides.includes(o.id),
+          selected: objective_overrides.includes(o.id),
         })),
       }))
     },

@@ -1,6 +1,6 @@
 import { ReactiveLocalStorage } from '@unrest/vue-storage'
 
-const LS_KEY = 'SEED_STORAGE'
+const LS_KEY = 'SEED_STORAGE-v2'
 const initial = {}
 
 export default () => {
