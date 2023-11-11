@@ -1,5 +1,5 @@
 // A one off function for making sure a given map has gps points
-import { saveFile } from '@/data/legacy'
+import { saveFile } from '@/utils'
 
 const points = [
   'lowerMushroomsLeft',

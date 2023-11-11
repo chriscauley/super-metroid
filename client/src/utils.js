@@ -23,3 +23,12 @@ export const getGridUrl = (width, height, scale) => {
   })
   return canvas.toDataURL()
 }
+
+export const saveFile = (text, filename) => {
+  const anchor = document.createElement('a')
+  anchor.href = 'data:' + 'text/plain' + 'charset=utf-8,' + escape(text)
+  anchor.setAttribute('download', filename)
+  document.body.appendChild(anchor)
+  anchor.click()
+  document.body.removeChild(anchor)
+}

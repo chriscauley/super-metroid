@@ -49,7 +49,7 @@
 <script>
 import { computed } from 'vue'
 
-import { saveFile } from '@/data/legacy'
+import { saveFile } from '@/utils'
 import { location_type_map, subarea_by_area, vanilla_warps } from '@/data/old'
 import EditArea from './EditArea.vue'
 import EntityFilter from './EntityFilter.vue'

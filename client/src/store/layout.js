@@ -1,6 +1,6 @@
 import { ReactiveLocalStorage } from '@unrest/vue-storage'
 
-import { saveFile } from '@/data/legacy'
+import { saveFile } from '@/utils'
 import layouts from '@/layouts'
 
 const LS_KEY = 'LAYOUT_STORAGE'

@@ -4,15 +4,6 @@ const chunks = {}
 
 const parent = { width: 1500, height: 750, door_w: 16, door_h: 27 }
 
-export const saveFile = (text, filename) => {
-  const anchor = document.createElement('a')
-  anchor.href = 'data:' + 'text/plain' + 'charset=utf-8,' + escape(text)
-  anchor.setAttribute('download', filename)
-  document.body.appendChild(anchor)
-  anchor.click()
-  document.body.removeChild(anchor)
-}
-
 const parseChuncks = () => {
   if (Object.keys(chunks).length) {
     return
