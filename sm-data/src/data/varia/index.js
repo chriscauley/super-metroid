@@ -37,7 +37,7 @@ const packs = {}
 
 ammo.forEach((i) => (packs[i] = 5))
 energy.forEach((i) => (packs[i] = 1))
-const invert = obj => Object.fromEntries(Object.entries(obj).map(([a,b]) => [b, a]))
+const invert = (obj) => Object.fromEntries(Object.entries(obj).map(([a, b]) => [b, a]))
 
 const varia = {
   sm_to_varia,

@@ -7,5 +7,3 @@ import '../../icons/build/inventory.css'
 import '../../icons/build/varia.css'
 
 createApp(App).use(components).mount('#app')
-
-

@@ -98,11 +98,9 @@ vanilla_warps.area.forEach(_mapWarp)
 vanilla_warps.boss.forEach(_mapWarp)
 
 // TODO rename to warps
-const _flatten = array => array.reduce((result, target) => [...result, ...target], [])
+const _flatten = (array) => array.reduce((result, target) => [...result, ...target], [])
 export const access_points = _flatten(vanilla_warps.area)
 export const boss_doors = _flatten(vanilla_warps.boss)
-console.log(access_points)
-console.log(boss_doors)
 
 export const locations_by_area = {
   crater: [

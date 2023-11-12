@@ -1,2 +1,2 @@
-export { default as varia } from './varia';
-export * from './misc';
+export { default as varia } from './varia'
+export * from './misc'

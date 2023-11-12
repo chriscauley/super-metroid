@@ -1,9 +1,9 @@
 <template>
   <div>
-    <div v-for="items, group in items_by_group">
+    <div v-for="(items, group) in items_by_group" :key="group">
       <h2>{{ group }}</h2>
       <ul>
-        <li v-for="item in items">
+        <li v-for="item in items" :key="item">
           <i :class="getIcon(item)" />
           {{ getDisplay(item) }}
         </li>
@@ -21,12 +21,11 @@ export default {
   },
   methods: {
     getDisplay(item) {
-      console.log(item)
       return varia.variaToDisplay(varia.smToVaria(item))
     },
     getIcon(item) {
       return varia.getIcon(varia.smToVaria(item))
-    }
-  }
+    },
+  },
 }
 </script>
