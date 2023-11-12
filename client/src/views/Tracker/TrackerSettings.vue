@@ -26,9 +26,6 @@ export default {
     schema() {
       const schema = cloneDeep(this.tool_storage.tracker_settings.schema)
 
-      // In a controlled map, user cannot set location splits
-      schema.properties.visible_locations.format = this.json_data ? 'hidden' : undefined
-
       // Room visibility only affects controlled maps
       schema.properties.room_visibility.format = this.json_data ? undefined : 'hidden'
       const { selected } = this.$store.layout.state

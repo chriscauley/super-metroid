@@ -28,10 +28,6 @@ const tracker_settings = {
       //   enumNames: ['Google Maps', 'Photo Shop'],
       //   default: '',
       // },
-      visible_locations: {
-        type: 'string',
-        enum: ['full', 'major', 'chozo', 'scavenger'],
-      },
       item_tracker: {
         type: 'string',
         enum: ['', 'pause-menu', 'grid', 'compact', 'cwisp'],
@@ -64,7 +60,6 @@ const tracker_settings = {
     large_warps: false,
     show_objectives: true,
     item_tracker: 'pause-menu',
-    visible_locations: 'full',
     room_visibility: 'highlight-open',
     no_compat: false,
   },
@@ -530,10 +525,6 @@ export default (component) => {
     }
     if (component.json_data) {
       return locations
-    }
-    const { visible_locations } = storage.state.tracker_settings
-    if (['major', 'chozo', 'scavenger'].includes(visible_locations)) {
-      return locations.filter((i) => i[visible_locations])
     }
     return locations.slice()
   }

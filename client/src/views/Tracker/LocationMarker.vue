@@ -118,7 +118,7 @@ export default {
       })
     },
     attrs() {
-      const { slug, chozo, major, scavenger } = this.location
+      const { slug } = this.location
       const is_major = this.json_data?.all_locations[slug]?.major
       return {
         id: `location__${slug}`,
@@ -127,9 +127,6 @@ export default {
         class: [
           'location-marker',
           this.$store.layout.getWorld().extra_classes[slug],
-          chozo && '-chozo',
-          major && '-major',
-          scavenger && '-scavenger',
           this.game_state.locations[slug] && '-completed',
           this.icon,
           this.hover && '-hover',

@@ -1,6 +1,6 @@
 import { startCase, cloneDeep, memoize } from 'lodash'
 
-import { access_points, boss_doors, escape_doors, sand_doors, special_locations } from '@/data/old'
+import { access_points, boss_doors, escape_doors, sand_doors } from '@/data/old'
 import { getStaticUrl } from '@/utils'
 import alt_streaming from './alt-streaming'
 import legacy from './legacy'
@@ -85,10 +85,7 @@ const prepArea = (area, layout) => {
 
   area.locations = area.locations.map(([slug, x, y]) => {
     const name = prepName(slug)
-    const chozo = special_locations.chozo[slug]
-    const major = special_locations.major[slug]
-    const scavenger = special_locations.scavenger[slug]
-    return { slug, x, y, name, chozo, major, scavenger }
+    return { slug, x, y, name }
   })
 
   // Remove BT for now since it's not hooked up in varia backend
