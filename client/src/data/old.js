@@ -226,7 +226,7 @@ export const locations_by_area = {
 }
 
 export const default_area_keys = {
-  crater: 'c',
+  crater: 'a', // crAteria
   crocomire: 'o', // crOc
   'east-maridia': 'e',
   'green-brinstar': 'g',
@@ -235,7 +235,7 @@ export const default_area_keys = {
   'red-brinstar': 'r',
   'upper-norfair': 'u',
   'west-maridia': 'w',
-  'wrecked-ship': 's', // wrecked Ship
+  'wrecked-ship': 'p', // Phantoon
   tourian: 't',
 }
 
@@ -284,6 +284,7 @@ const _v = (s) => startCase(s).replace(' ', '')
 minibosses.forEach((b) => (location_type_map[_v(b)] = 'miniboss'))
 bosses.forEach((b) => (location_type_map[_v(b)] = 'boss'))
 
+// Doors that can be recollored in varia
 export const doors = [
   'LandingSiteRight',
   'LandingSiteTopRight',
