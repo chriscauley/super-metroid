@@ -18,7 +18,7 @@
 <script>
 import { startCase } from 'lodash'
 import Mousetrap from '@unrest/vue-mousetrap'
-import { door_item_by_color } from '@/data/old'
+import { door_item_by_color } from 'sm-data'
 
 export default {
   mixins: [Mousetrap.mixin],

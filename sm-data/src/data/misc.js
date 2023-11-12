@@ -1,6 +1,4 @@
-// data scraped from the t_main.html template fragment. Currently used only for reference
-
-import { startCase, flatten } from 'lodash'
+import startCase from 'lodash.startcase'
 import default_door_colors from './door_colors'
 
 export { default_door_colors }
@@ -100,8 +98,11 @@ vanilla_warps.area.forEach(_mapWarp)
 vanilla_warps.boss.forEach(_mapWarp)
 
 // TODO rename to warps
-export const access_points = flatten(vanilla_warps.area)
-export const boss_doors = flatten(vanilla_warps.boss)
+const _flatten = array => array.reduce((result, target) => [...result, ...target], [])
+export const access_points = _flatten(vanilla_warps.area)
+export const boss_doors = _flatten(vanilla_warps.boss)
+console.log(access_points)
+console.log(boss_doors)
 
 export const locations_by_area = {
   crater: [
@@ -262,10 +263,10 @@ export const subarea_by_area = {
   ridley: 'lower-norfair',
 }
 
-export const all_locations = flatten([
-  ...Object.values(locations_by_area),
-  Object.keys(area_by_bosses),
-])
+export const all_locations = [
+  ..._flatten(Object.values(locations_by_area)),
+  ...Object.keys(area_by_bosses),
+]
 
 export const warp_type_map = {}
 all_locations.forEach((loc) => (warp_type_map[loc] = 'location'))

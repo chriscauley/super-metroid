@@ -1,6 +1,7 @@
 // library for converting from varia.run data structures to data structures for this app
-import { invert, startCase, kebabCase } from 'lodash'
-import { all_items, bosses, minibosses, ammo, energy, location_type_map } from '@/data/old'
+import kebabCase from 'lodash.kebabcase'
+import startCase from 'lodash.startcase'
+import { all_items, bosses, minibosses, ammo, energy, location_type_map } from '../misc'
 import objectives from './objectives'
 
 const sm_to_varia = {
@@ -36,6 +37,7 @@ const packs = {}
 
 ammo.forEach((i) => (packs[i] = 5))
 energy.forEach((i) => (packs[i] = 1))
+const invert = obj => Object.fromEntries(Object.entries(obj).map(([a,b]) => [b, a]))
 
 const varia = {
   sm_to_varia,

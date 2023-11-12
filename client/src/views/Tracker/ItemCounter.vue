@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { subarea_by_area } from '@/data/old'
+import { subarea_by_area } from 'sm-data'
 import { prepName } from '@/layouts'
 
 export default {

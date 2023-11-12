@@ -5,7 +5,7 @@ import NotInitialized from './NotInitialized'
 
 import HelpPopup from './HelpPopup.vue'
 
-import { default_door_colors, warp_type_map, default_area_keys, subarea_by_area } from '@/data/old'
+import { default_door_colors, warp_type_map, default_area_keys, subarea_by_area } from 'sm-data'
 
 const warn = unrest.ui.toast.warning
 

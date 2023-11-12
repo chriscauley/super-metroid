@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { warp_type_map, vanilla_warps } from '@/data/old'
+import { warp_type_map, vanilla_warps } from 'sm-data'
 
 const w = 0.002 // also used in css file
 const r = w * 2

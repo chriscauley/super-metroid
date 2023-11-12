@@ -50,7 +50,7 @@
 import { computed } from 'vue'
 
 import { saveFile } from '@/utils'
-import { location_type_map, subarea_by_area, vanilla_warps } from '@/data/old'
+import { location_type_map, subarea_by_area, vanilla_warps, varia } from 'sm-data'
 import EditArea from './EditArea.vue'
 import EntityFilter from './EntityFilter.vue'
 import ItemCounter from './ItemCounter.vue'
@@ -62,7 +62,6 @@ import TimerWidget from '@/components/TimerWidget'
 import ToolStorage from './ToolStorage'
 import TrackerSettings from './TrackerSettings.vue'
 import TrackerViewer from './Viewer.vue'
-import varia from '@/varia'
 import SeedSettings from './SeedSettings.vue'
 
 export default {

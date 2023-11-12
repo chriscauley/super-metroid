@@ -1,6 +1,6 @@
 import { ReactiveLocalStorage } from '@unrest/vue-storage'
 
-import { beams } from '@/data/old'
+import { beams } from 'sm-data'
 
 const beam_slugs = beams.map((b) => b.replace('-beam', ''))
 

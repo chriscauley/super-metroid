@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import varia from '@/varia'
+import { varia } from 'sm-data'
 
 const cat_map = {
   bosses: 'danger',

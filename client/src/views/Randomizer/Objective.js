@@ -1,4 +1,4 @@
-import varia from '@/varia'
+import { varia } from 'sm-data'
 
 export default (randomizer) => {
   const isTrue = (v) => String(v).toLowerCase() === 'true'

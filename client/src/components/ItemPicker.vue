@@ -32,8 +32,7 @@
 <script>
 import { range, startCase } from 'lodash'
 import Mousetrap from '@unrest/vue-mousetrap'
-import { items_by_group, ammo, energy } from '@/data/old'
-import varia from '@/varia'
+import { items_by_group, ammo, energy, varia } from 'sm-data'
 
 export default {
   mixins: [Mousetrap.mixin],

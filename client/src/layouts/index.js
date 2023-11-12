@@ -1,6 +1,6 @@
 import { startCase, cloneDeep, memoize } from 'lodash'
 
-import { access_points, boss_doors, escape_doors, sand_doors } from '@/data/old'
+import { access_points, boss_doors, escape_doors, sand_doors } from 'sm-data'
 import { getStaticUrl } from '@/utils'
 import alt_streaming from './alt-streaming'
 import legacy from './legacy'

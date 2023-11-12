@@ -41,7 +41,7 @@
 </template>
 
 <script>
-import varia from '@/varia'
+import { varia } from 'sm-data'
 import { remove } from 'lodash'
 
 export default {

@@ -95,7 +95,7 @@
 </template>
 
 <script>
-import varia from '@/varia'
+import { varia } from 'sm-data'
 
 export default {
   data() {

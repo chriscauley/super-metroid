@@ -1,0 +1,31 @@
+{
+  "name": "sm-data",
+  "license": "MIT",
+  "version": "0.0.1",
+  "type": "module",
+  "main": "./dist/sm-data.umd.cjs",
+  "module": "./dist/sm-data.js",
+  "exports": {
+    ".": {
+      "import": "./dist/sm-data.js",
+      "require": "./dist/sm-data.umd.cjs"
+    }
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint \"src/**/*\""
+  },
+  "peerDependencies": {
+    "lodash.kebabcase": "^4.1.1",
+    "lodash.startcase": "^4.4.0"
+  },
+  "devDependencies": {
+    "lodash.kebabcase": "^4.1.1",
+    "lodash.startcase": "^4.4.0",
+    "@vitejs/plugin-vue": "^4.2.3",
+    "vite": "^4.4.5",
+    "vue": "^3.3.4"
+  }
+}

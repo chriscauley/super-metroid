@@ -47,8 +47,7 @@
 
 <script>
 import { startCase } from 'lodash'
-import { location_type_map } from '@/data/old'
-import varia from '@/varia'
+import { location_type_map, varia} from 'sm-data'
 
 export default {
   inject: ['json_data', 'game_state', 'tool_storage'],
