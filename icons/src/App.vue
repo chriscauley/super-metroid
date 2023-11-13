@@ -1,6 +1,6 @@
 <template>
   <div style="font-size: 32px; columns: 4; padding: 20px; background: black; color: white">
-    <div v-for="obj in randomizer_data.objective_by_id" :key="obj.id">
+    <div v-for="obj in varia.objective.by_id" :key="obj.id">
       <i :class="objClass(obj.id)" />
       {{ obj.id }}
     </div>
@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import randomizer_data from './randomizerData.json'
+import { varia } from 'sm-data'
 import { kebabCase } from 'lodash'
 
 const icon_groups = {
@@ -79,7 +79,7 @@ while (i < 32) {
 
 export default {
   data() {
-    return { icon_groups, inventory: {}, randomizer_data }
+    return { icon_groups, inventory: {}, varia }
   },
   methods: {
     objClass(id) {

@@ -5860,6 +5860,11 @@ slice-ansi@^4.0.0:
     astral-regex "^2.0.0"
     is-fullwidth-code-point "^3.0.0"
 
+sm-data@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/sm-data/-/sm-data-0.0.1.tgz#fd38863bd4225a8641ccbde55a27995706224fef"
+  integrity sha512-4dDEctZ45mnAW1C2UWlpIcOK3wv2IfPvFpSOofHRORWfp70EOoAgFEBGwNFW4dh/Z9u6vPcSiWX6bpEXb4JGhw==
+
 sockjs@^0.3.24:
   version "0.3.24"
   resolved "https://registry.yarnpkg.com/sockjs/-/sockjs-0.3.24.tgz#c9bc8995f33a111bea0395ec30aa3206bdb5ccce"
