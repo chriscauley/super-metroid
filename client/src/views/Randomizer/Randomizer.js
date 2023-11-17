@@ -2,6 +2,14 @@ import { startCase, cloneDeep } from 'lodash'
 import { reactive } from 'vue'
 import Objective from './Objective'
 
+const forceArray = (value) => {
+  if (Array.isArray(value)) {
+    return value
+  }
+  // ''.split(',') => ['']
+  return value ? value.split(',') : []
+}
+
 export default (component) => {
   const isRandom = (param) => window.isElemIdRandom(param)
   const isTrue = (v) => String(v).toLowerCase() === 'true'
@@ -51,6 +59,7 @@ export default (component) => {
         // on and empty list is all
         data[key] = all_patches
       }
+      data[key] = forceArray(data[key])
     })
     return data
   }
