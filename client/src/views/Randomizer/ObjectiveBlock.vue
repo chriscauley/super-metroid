@@ -18,7 +18,7 @@
       <div v-for="button in objective_buttons" :key="button.text" :class="button.class">
         {{ button.text }}
       </div>
-      <i v-if="objective_buttons.length === 0">{none_text}</i>
+      <i v-if="objective_buttons.length === 0">{{ none_text }}</i>
       <div v-if="!randomizer.state.readonly" class="faux-link">edit</div>
     </div>
     <input type="hidden" :value="randomizer.state.objective" id="objectiveMultiSelect" />
@@ -49,18 +49,21 @@ export default {
     },
     none_text() {
       const { readonly, hiddenObjectives } = this.randomizer.state
-      if (readonly && hiddenObjectives) {
+      if (readonly && hiddenObjectives === 'on') {
         return 'Objectives are initially hidden. Visit the pause screen for more info.'
       }
-      return 'None'
+      return 'Nothing'
     },
     objective_buttons() {
-      const { readonly, hiddenObjectives } = this.randomizer.state
+      const { readonly, hiddenObjectives, objective } = this.randomizer.state
       if (readonly && hiddenObjectives === 'on') {
         return []
       }
+      if (objective[0] === 'nothing') {
+        return []
+      }
       const _order = Object.keys(cat_map)
-      return this.randomizer.state.objective.map((o_id) => {
+      return objective.map((o_id) => {
         const objective = varia.objective.by_id[o_id]
         return {
           text: o_id,
