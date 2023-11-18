@@ -1,7 +1,7 @@
 {
   "name": "sm-data",
   "license": "MIT",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "module",
   "main": "./dist/sm-data.umd.cjs",
   "module": "./dist/sm-data.js",
@@ -22,9 +22,9 @@
     "lodash.startcase": "^4.4.0"
   },
   "devDependencies": {
+    "@vitejs/plugin-vue": "^4.2.3",
     "lodash.kebabcase": "^4.1.1",
     "lodash.startcase": "^4.4.0",
-    "@vitejs/plugin-vue": "^4.2.3",
     "vite": "^4.4.5",
     "vue": "^3.3.4"
   }
