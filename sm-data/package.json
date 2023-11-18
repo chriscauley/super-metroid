@@ -1,7 +1,7 @@
 {
   "name": "sm-data",
   "license": "MIT",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "type": "module",
   "main": "./dist/sm-data.umd.cjs",
   "module": "./dist/sm-data.js",
