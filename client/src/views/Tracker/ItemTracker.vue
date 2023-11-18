@@ -65,6 +65,10 @@ export default {
           objective_overrides.map((o) => [o, completed_overrides.includes(o)]),
         )
       }
+      if (this.json_data?.objectivesHidden) {
+        // TODO need a better way to signal objectives hidden
+        return {}
+      }
       const objectives = { ...this.json_data?.objectives?.goals }
       if (!Object.values(objectives).find(Boolean)) {
         Object.keys(objectives).forEach((o) => (objectives[o] = completed_overrides.includes(o)))

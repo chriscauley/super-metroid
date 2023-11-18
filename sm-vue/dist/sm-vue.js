@@ -1,9 +1,9 @@
 import { resolveComponent as re, openBlock as u, createElementBlock as c, normalizeClass as b, normalizeStyle as z, Fragment as f, renderList as h, createBlock as se, mergeProps as M, createCommentVNode as ie } from "vue";
-var v = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : typeof global < "u" ? global : typeof self < "u" ? self : {};
-function oe(e) {
+var y = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : typeof global < "u" ? global : typeof self < "u" ? self : {};
+function ne(e) {
   return e && e.__esModule && Object.prototype.hasOwnProperty.call(e, "default") ? e.default : e;
 }
-var ne = 1 / 0, ue = "[object Symbol]", ae = /[^\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\x7f]+/g, ce = /[\xc0-\xd6\xd8-\xf6\xf8-\xff\u0100-\u017f]/g, N = "\\ud800-\\udfff", le = "\\u0300-\\u036f\\ufe20-\\ufe23", de = "\\u20d0-\\u20f0", Z = "\\u2700-\\u27bf", G = "a-z\\xdf-\\xf6\\xf8-\\xff", me = "\\xac\\xb1\\xd7\\xf7", pe = "\\x00-\\x2f\\x3a-\\x40\\x5b-\\x60\\x7b-\\xbf", be = "\\u2000-\\u206f", fe = " \\t\\x0b\\f\\xa0\\ufeff\\n\\r\\u2028\\u2029\\u1680\\u180e\\u2000\\u2001\\u2002\\u2003\\u2004\\u2005\\u2006\\u2007\\u2008\\u2009\\u200a\\u202f\\u205f\\u3000", P = "A-Z\\xc0-\\xd6\\xd8-\\xde", he = "\\ufe0e\\ufe0f", B = me + pe + be + fe, y = "['’]", k = "[" + B + "]", D = "[" + le + de + "]", V = "\\d+", ge = "[" + Z + "]", W = "[" + G + "]", F = "[^" + N + B + V + Z + G + P + "]", xe = "\\ud83c[\\udffb-\\udfff]", ve = "(?:" + D + "|" + xe + ")", ye = "[^" + N + "]", K = "(?:\\ud83c[\\udde6-\\uddff]){2}", J = "[\\ud800-\\udbff][\\udc00-\\udfff]", p = "[" + P + "]", _e = "\\u200d", w = "(?:" + W + "|" + F + ")", ke = "(?:" + p + "|" + F + ")", j = "(?:" + y + "(?:d|ll|m|re|s|t|ve))?", $ = "(?:" + y + "(?:D|LL|M|RE|S|T|VE))?", Y = ve + "?", H = "[" + he + "]?", we = "(?:" + _e + "(?:" + [ye, K, J].join("|") + ")" + H + Y + ")*", je = H + Y + we, $e = "(?:" + [ge, K, J].join("|") + ")" + je, Oe = RegExp(y, "g"), Se = RegExp(D, "g"), Ae = RegExp([
+var oe = 1 / 0, ue = "[object Symbol]", ae = /[^\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\x7f]+/g, ce = /[\xc0-\xd6\xd8-\xf6\xf8-\xff\u0100-\u017f]/g, N = "\\ud800-\\udfff", le = "\\u0300-\\u036f\\ufe20-\\ufe23", de = "\\u20d0-\\u20f0", Z = "\\u2700-\\u27bf", G = "a-z\\xdf-\\xf6\\xf8-\\xff", me = "\\xac\\xb1\\xd7\\xf7", pe = "\\x00-\\x2f\\x3a-\\x40\\x5b-\\x60\\x7b-\\xbf", be = "\\u2000-\\u206f", fe = " \\t\\x0b\\f\\xa0\\ufeff\\n\\r\\u2028\\u2029\\u1680\\u180e\\u2000\\u2001\\u2002\\u2003\\u2004\\u2005\\u2006\\u2007\\u2008\\u2009\\u200a\\u202f\\u205f\\u3000", P = "A-Z\\xc0-\\xd6\\xd8-\\xde", he = "\\ufe0e\\ufe0f", B = me + pe + be + fe, v = "['’]", k = "[" + B + "]", D = "[" + le + de + "]", V = "\\d+", ge = "[" + Z + "]", W = "[" + G + "]", F = "[^" + N + B + V + Z + G + P + "]", xe = "\\ud83c[\\udffb-\\udfff]", ye = "(?:" + D + "|" + xe + ")", ve = "[^" + N + "]", K = "(?:\\ud83c[\\udde6-\\uddff]){2}", J = "[\\ud800-\\udbff][\\udc00-\\udfff]", p = "[" + P + "]", _e = "\\u200d", w = "(?:" + W + "|" + F + ")", ke = "(?:" + p + "|" + F + ")", j = "(?:" + v + "(?:d|ll|m|re|s|t|ve))?", $ = "(?:" + v + "(?:D|LL|M|RE|S|T|VE))?", Y = ye + "?", H = "[" + he + "]?", we = "(?:" + _e + "(?:" + [ve, K, J].join("|") + ")" + H + Y + ")*", je = H + Y + we, $e = "(?:" + [ge, K, J].join("|") + ")" + je, Oe = RegExp(v, "g"), Se = RegExp(D, "g"), Ae = RegExp([
   p + "?" + W + "+" + j + "(?=" + [k, p, "$"].join("|") + ")",
   ke + "+" + $ + "(?=" + [k, p + w, "$"].join("|") + ")",
   p + "?" + w + "+" + j,
@@ -203,10 +203,10 @@ var ne = 1 / 0, ue = "[object Symbol]", ae = /[^\x00-\x2f\x3a-\x40\x5b-\x60\x7b-
   œ: "oe",
   ŉ: "'n",
   ſ: "ss"
-}, Te = typeof v == "object" && v && v.Object === Object && v, Le = typeof self == "object" && self && self.Object === Object && self, Ee = Te || Le || Function("return this")();
-function Ie(e, t, r, n) {
+}, Te = typeof y == "object" && y && y.Object === Object && y, Le = typeof self == "object" && self && self.Object === Object && self, Ee = Te || Le || Function("return this")();
+function Ie(e, t, r, o) {
   var a = -1, i = e ? e.length : 0;
-  for (n && i && (r = e[++a]); ++a < i; )
+  for (o && i && (r = e[++a]); ++a < i; )
     r = t(r, e[a], a, e);
   return r;
 }
@@ -232,7 +232,7 @@ function Be(e) {
   if (We(e))
     return A ? A.call(e) : "";
   var t = e + "";
-  return t == "0" && 1 / e == -ne ? "-0" : t;
+  return t == "0" && 1 / e == -oe ? "-0" : t;
 }
 function De(e) {
   return function(t) {
@@ -258,7 +258,7 @@ function Je(e, t, r) {
   return e = q(e), t = r ? void 0 : t, t === void 0 ? Ne(e) ? Ze(e) : Ue(e) : e.match(t) || [];
 }
 var Ye = Ke;
-const He = /* @__PURE__ */ oe(Ye), x = {
+const He = /* @__PURE__ */ ne(Ye), x = {
   default: {
     _packs: {
       missile: 5,
@@ -290,8 +290,8 @@ const He = /* @__PURE__ */ oe(Ye), x = {
   }
 }, _ = (e, t) => {
   const r = e.__vccOpts || e;
-  for (const [n, a] of t)
-    r[n] = a;
+  for (const [o, a] of t)
+    r[o] = a;
   return r;
 }, qe = (e) => He(e.toLowerCase().replace("'", "")), Q = [
   ["energy-tank", "reserve-tank", "missile", "super-missile", "power-bomb"],
@@ -333,29 +333,30 @@ const He = /* @__PURE__ */ oe(Ye), x = {
   },
   computed: {
     vanilla_objectives() {
-      return !Object.keys(this.objectives || {}).find((t) => !X[t]);
+      const e = Object.keys(this.objectives || {});
+      return e.length === 4 && !e.find((t) => !X[t]);
     },
     row_slugs() {
       if (this.rows)
         return this.rows;
       let e = Q.map((r) => r.slice());
       const t = x[this.world];
-      return this.mode === "cwisp" ? this.vanilla_objectives ? e = C.map((r) => r.slice()) : Object.keys(this.objectives || {}).length <= 6 ? e = C : e = Qe.map((r) => r.slice()) : this.mode === "compact" && (e[4].pop(), e[4].shift(), e.shift()), t && (e = e.map((r) => r.map((n) => t[n] || n))), this.vanilla_objectives || (e = tt(e)), e;
+      return this.mode === "cwisp" ? this.vanilla_objectives ? e = C.map((r) => r.slice()) : Object.keys(this.objectives || {}).length <= 6 ? e = C : e = Qe.map((r) => r.slice()) : this.mode === "compact" && (e[4].pop(), e[4].shift(), e.shift()), t && (e = e.map((r) => r.map((o) => t[o] || o))), this.vanilla_objectives || (e = tt(e)), e;
     },
     columns() {
       return Object.keys(this.objectives || {}).length > 15 ? 6 : this.row_slugs[0].length;
     },
     prepped_rows() {
-      var r, n;
+      var r, o;
       const e = x[this.world] || x.default, t = this.row_slugs.map(
         (a) => a.map((i) => {
           var l;
-          const o = this.inventory[i];
+          const n = this.inventory[i];
           return {
             slug: i,
-            numbers: R(o, (l = e._packs) == null ? void 0 : l[i]),
+            numbers: R(n, (l = e._packs) == null ? void 0 : l[i]),
             attrs: {
-              class: [et(i, o), o > 99 && "-three-digits"],
+              class: [et(i, n), n > 99 && "-three-digits"],
               id: `grid-tracker__${i}`
             }
           };
@@ -364,14 +365,14 @@ const He = /* @__PURE__ */ oe(Ye), x = {
       if (!this.vanilla_objectives) {
         const a = Object.keys(this.objectives || {}), { columns: i } = this;
         this.mode || t[3].push(...t.pop());
-        let o = t.findIndex((l) => l.length < t[0].length);
-        for (o === -1 && (o = t.length); a.length > 0; ) {
-          for (; ((r = t[o]) == null ? void 0 : r.length) >= i; )
-            o++;
-          t[o] || t.push([]);
+        let n = t.findIndex((l) => l.length < t[0].length);
+        for (n === -1 && (n = t.length); a.length > 0; ) {
+          for (; ((r = t[n]) == null ? void 0 : r.length) >= i; )
+            n++;
+          t[n] || t.push([]);
           const l = a.shift(), m = qe(l);
           let d;
-          (n = this.objective_order) != null && n.includes(l) && (d = this.objective_order.indexOf(l) + 1), t[o].push({
+          (o = this.objective_order) != null && o.includes(l) && (d = this.objective_order.indexOf(l) + 1), t[n].push({
             // slug vs id is a bit confusing because the varia "ids" are human readable
             slug: l,
             type: "objective",
@@ -399,8 +400,8 @@ const He = /* @__PURE__ */ oe(Ye), x = {
       if (r === "objective")
         this.objectives[t] === void 0 ? console.error("trying to toggle non-existant objective") : e.shiftKey || e.ctrlKey ? this.targets[t] = !this.targets[t] : this.$emit("toggle-objective", t);
       else if (Xe.includes(t)) {
-        const n = e.shiftKey || e.ctrlKey ? -1 : 1;
-        !this.controlled && this.$emit("add-item", t, n);
+        const o = e.shiftKey || e.ctrlKey ? -1 : 1;
+        !this.controlled && this.$emit("add-item", t, o);
       } else
         !this.controlled && this.$emit("toggle-item", t);
     }
@@ -409,8 +410,8 @@ const He = /* @__PURE__ */ oe(Ye), x = {
   key: 3,
   class: "fa fa-crosshairs _targeted"
 };
-function ot(e, t, r, n, a, i) {
-  const o = re("sm-cwisp-tracker");
+function nt(e, t, r, o, a, i) {
+  const n = re("sm-cwisp-tracker");
   return u(), c("div", {
     class: b(`grid-tracker smi-tracker ${r.controlled ? "-controlled" : ""}`),
     style: z(i.style)
@@ -423,7 +424,7 @@ function ot(e, t, r, n, a, i) {
         key: d.slug,
         class: "grid-tracker__cell"
       }, [
-        d.slug === "cwisp" ? (u(), se(o, {
+        d.slug === "cwisp" ? (u(), se(n, {
           key: 0,
           inventory: r.inventory,
           onToggleItem: (g) => !r.controlled && e.$emit("toggle-item", g)
@@ -443,7 +444,7 @@ function ot(e, t, r, n, a, i) {
     ]))), 128))
   ], 6);
 }
-const T = /* @__PURE__ */ _(rt, [["render", ot]]), s = {
+const T = /* @__PURE__ */ _(rt, [["render", nt]]), s = {
   item: (e) => ({ class: e }),
   group: (e, t) => [`pause-inventory__group -group-${e}`, t],
   number: (e) => s.item(`smi-number -number-${e}`),
@@ -458,7 +459,7 @@ const ee = (e) => Array(e || 0).fill().map((t, r) => r), L = (e, t) => ({
   name: e,
   class: s.group(e),
   children: [s.item("smi -" + e)]
-}), nt = {
+}), ot = {
   beams: ["charge", "ice", "wave", "spazer", "plasma"].map((e) => e + "-beam"),
   suits: ["varia-suit", "gravity-suit"],
   misc: ["morph-ball", "bomb", "spring-ball", "screw-attack"],
@@ -505,8 +506,8 @@ const ee = (e) => Array(e || 0).fill().map((t, r) => r), L = (e, t) => ({
     pack_numbers() {
       const e = x[this.world] || x.default;
       return ["missile", "super-missile", "power-bomb"].map((t) => {
-        var n;
-        const r = this.inventory[t] * (((n = e._packs) == null ? void 0 : n[t]) || 1);
+        var o;
+        const r = this.inventory[t] * (((o = e._packs) == null ? void 0 : o[t]) || 1);
         return {
           name: t,
           class: s.group(t),
@@ -550,7 +551,7 @@ const ee = (e) => Array(e || 0).fill().map((t, r) => r), L = (e, t) => ({
       };
     },
     item_groups() {
-      return Object.entries(nt).map(([e, t]) => ({
+      return Object.entries(ot).map(([e, t]) => ({
         name: e,
         class: s.group(e),
         children: t.map((r) => ({
@@ -564,16 +565,16 @@ const ee = (e) => Array(e || 0).fill().map((t, r) => r), L = (e, t) => ({
     }
   }
 };
-function ct(e, t, r, n, a, i) {
+function ct(e, t, r, o, a, i) {
   return u(), c("div", {
     class: b(i.wrapper_class),
     style: z(i.style)
   }, [
-    (u(!0), c(f, null, h(i.groups, (o) => (u(), c("div", {
-      key: o.name,
-      class: b(o.class)
+    (u(!0), c(f, null, h(i.groups, (n) => (u(), c("div", {
+      key: n.name,
+      class: b(n.class)
     }, [
-      (u(!0), c(f, null, h(o.children, (l, m) => (u(), c("div", M({ key: m }, l), null, 16))), 128))
+      (u(!0), c(f, null, h(n.children, (l, m) => (u(), c("div", M({ key: m }, l), null, 16))), 128))
     ], 2))), 128))
   ], 6);
 }
@@ -591,12 +592,12 @@ const I = /* @__PURE__ */ _(at, [["render", ct]]), lt = ["charge-beam", "wave-be
     }
   }
 }, mt = { class: "sm-cwisp" }, pt = ["onClick"];
-function bt(e, t, r, n, a, i) {
+function bt(e, t, r, o, a, i) {
   return u(), c("div", mt, [
-    (u(!0), c(f, null, h(i.beams, (o) => (u(), c("div", {
-      class: b(o.class),
-      onClick: (l) => e.$emit("toggle-item", o.id),
-      key: o.id
+    (u(!0), c(f, null, h(i.beams, (n) => (u(), c("div", {
+      class: b(n.class),
+      onClick: (l) => e.$emit("toggle-item", n.id),
+      key: n.id
     }, null, 10, pt))), 128))
   ]);
 }
