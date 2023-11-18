@@ -59,9 +59,6 @@ export default {
       if (readonly && hiddenObjectives === 'on') {
         return []
       }
-      if (objective[0] === 'nothing') {
-        return []
-      }
       const _order = Object.keys(cat_map)
       return objective.map((o_id) => {
         const objective = varia.objective.by_id[o_id]

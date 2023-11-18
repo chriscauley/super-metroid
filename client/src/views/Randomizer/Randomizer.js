@@ -40,9 +40,10 @@ export default (component) => {
     if (isTrue(data.objectiveRandom)) {
       data.objective = data.objectiveMultiSelect
     }
-    if (typeof data.objective === 'string') {
-      data.objective = data.objective.split(',')
-    }
+    data.objective = forceArray(data.objective)
+
+    // the server uses this when no objectives are set, but it screws with objective abstraction
+    data.objective = data.objective.filter((o) => o !== 'nothing')
 
     Object.keys(window.PATCHES).forEach((patch_group) => {
       const key = getPatchKey(patch_group)

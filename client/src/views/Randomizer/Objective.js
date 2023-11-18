@@ -132,6 +132,9 @@ export default (randomizer) => {
           disabled_map[objective.id] = `There are too many ${category} objectives`
         } else if (disc_ids?.length && objective.is_count) {
           selected_objectives.forEach((test_id) => {
+            if (test_id === 'nothing') {
+              return
+            }
             const test_objective = varia.objective.by_id[test_id]
             const { category_limit } = test_objective
             if (test_objective.category !== category || category_limit === undefined) {
