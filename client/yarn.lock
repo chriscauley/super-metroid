@@ -5905,15 +5905,15 @@ slice-ansi@^4.0.0:
     astral-regex "^2.0.0"
     is-fullwidth-code-point "^3.0.0"
 
-sm-data@^0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/sm-data/-/sm-data-0.0.1.tgz#fd38863bd4225a8641ccbde55a27995706224fef"
-  integrity sha512-4dDEctZ45mnAW1C2UWlpIcOK3wv2IfPvFpSOofHRORWfp70EOoAgFEBGwNFW4dh/Z9u6vPcSiWX6bpEXb4JGhw==
+sm-data@0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/sm-data/-/sm-data-0.0.4.tgz#fac08e6cee0ab50a21c0877622c8a0945a700990"
+  integrity sha512-qDdkFkVgrRCp9uSzPqkwBReGENxb3Q2F6Nlqs7dLOcB0HB5arHWB2YEGDBZmpny6/fKAdUbuUr0H23ySniiTzg==
 
-sm-vue@0.0.12:
-  version "0.0.12"
-  resolved "https://registry.yarnpkg.com/sm-vue/-/sm-vue-0.0.12.tgz#9acde596bb4fee1aa3d5c551b690599398763c2c"
-  integrity sha512-49atiy2V1Iwm+4lrWMhkKEuJawOHOmwed5ZjKmrX/CBDTbR8Y8AoRyvOUxhv1i+MrWjwXVhssRD+GS+XefYEOg==
+sm-vue@0.0.14:
+  version "0.0.14"
+  resolved "https://registry.yarnpkg.com/sm-vue/-/sm-vue-0.0.14.tgz#cf70b1b4912e9c99278502b456077bbf8fd3dc04"
+  integrity sha512-AGhPN1sDEt15Nqy3xsubMm94E25fb2C8PObSJpwazj21+zNRyRwD1ZKGpVnk+9RszxrgVX0MOdgTuRqujM1LvA==
   dependencies:
     lodash.kebabcase "^4.1.1"
 
