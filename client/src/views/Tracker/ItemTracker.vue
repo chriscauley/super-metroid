@@ -1,7 +1,11 @@
 <template>
   <div :class="config.class" :style="style" v-if="config.tagName">
-    <div class="hover-buttons">
-      <button class="btn -primary" @click="editor_open = true">
+    <div class="hover-buttons" v-if="!$route.path.includes('plando')">
+      <button
+        class="btn -primary"
+        @click="editor_open = true"
+        v-if="config.tagName !== 'sm-pause-tracker'"
+      >
         <i class="fa fa-edit" />
       </button>
       <button class="btn -primary" id="helpItemTracker" @click="showHelp">
