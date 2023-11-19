@@ -1,9 +1,9 @@
-import { resolveComponent as re, openBlock as u, createElementBlock as c, normalizeClass as b, normalizeStyle as z, Fragment as f, renderList as h, createBlock as se, mergeProps as M, createCommentVNode as ie } from "vue";
-var y = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : typeof global < "u" ? global : typeof self < "u" ? self : {};
-function ne(e) {
+import { resolveComponent as re, openBlock as a, createElementBlock as c, normalizeClass as b, normalizeStyle as z, Fragment as f, renderList as h, createBlock as se, mergeProps as M, createCommentVNode as ie } from "vue";
+var v = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : typeof global < "u" ? global : typeof self < "u" ? self : {};
+function oe(e) {
   return e && e.__esModule && Object.prototype.hasOwnProperty.call(e, "default") ? e.default : e;
 }
-var oe = 1 / 0, ue = "[object Symbol]", ae = /[^\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\x7f]+/g, ce = /[\xc0-\xd6\xd8-\xf6\xf8-\xff\u0100-\u017f]/g, N = "\\ud800-\\udfff", le = "\\u0300-\\u036f\\ufe20-\\ufe23", de = "\\u20d0-\\u20f0", Z = "\\u2700-\\u27bf", G = "a-z\\xdf-\\xf6\\xf8-\\xff", me = "\\xac\\xb1\\xd7\\xf7", pe = "\\x00-\\x2f\\x3a-\\x40\\x5b-\\x60\\x7b-\\xbf", be = "\\u2000-\\u206f", fe = " \\t\\x0b\\f\\xa0\\ufeff\\n\\r\\u2028\\u2029\\u1680\\u180e\\u2000\\u2001\\u2002\\u2003\\u2004\\u2005\\u2006\\u2007\\u2008\\u2009\\u200a\\u202f\\u205f\\u3000", P = "A-Z\\xc0-\\xd6\\xd8-\\xde", he = "\\ufe0e\\ufe0f", B = me + pe + be + fe, v = "['’]", k = "[" + B + "]", D = "[" + le + de + "]", V = "\\d+", ge = "[" + Z + "]", W = "[" + G + "]", F = "[^" + N + B + V + Z + G + P + "]", xe = "\\ud83c[\\udffb-\\udfff]", ye = "(?:" + D + "|" + xe + ")", ve = "[^" + N + "]", K = "(?:\\ud83c[\\udde6-\\uddff]){2}", J = "[\\ud800-\\udbff][\\udc00-\\udfff]", p = "[" + P + "]", _e = "\\u200d", w = "(?:" + W + "|" + F + ")", ke = "(?:" + p + "|" + F + ")", j = "(?:" + v + "(?:d|ll|m|re|s|t|ve))?", $ = "(?:" + v + "(?:D|LL|M|RE|S|T|VE))?", Y = ye + "?", H = "[" + he + "]?", we = "(?:" + _e + "(?:" + [ve, K, J].join("|") + ")" + H + Y + ")*", je = H + Y + we, $e = "(?:" + [ge, K, J].join("|") + ")" + je, Oe = RegExp(v, "g"), Se = RegExp(D, "g"), Ae = RegExp([
+var ne = 1 / 0, ue = "[object Symbol]", ae = /[^\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\x7f]+/g, ce = /[\xc0-\xd6\xd8-\xf6\xf8-\xff\u0100-\u017f]/g, N = "\\ud800-\\udfff", le = "\\u0300-\\u036f\\ufe20-\\ufe23", de = "\\u20d0-\\u20f0", Z = "\\u2700-\\u27bf", G = "a-z\\xdf-\\xf6\\xf8-\\xff", me = "\\xac\\xb1\\xd7\\xf7", pe = "\\x00-\\x2f\\x3a-\\x40\\x5b-\\x60\\x7b-\\xbf", be = "\\u2000-\\u206f", fe = " \\t\\x0b\\f\\xa0\\ufeff\\n\\r\\u2028\\u2029\\u1680\\u180e\\u2000\\u2001\\u2002\\u2003\\u2004\\u2005\\u2006\\u2007\\u2008\\u2009\\u200a\\u202f\\u205f\\u3000", P = "A-Z\\xc0-\\xd6\\xd8-\\xde", he = "\\ufe0e\\ufe0f", B = me + pe + be + fe, y = "['’]", k = "[" + B + "]", D = "[" + le + de + "]", V = "\\d+", ge = "[" + Z + "]", W = "[" + G + "]", F = "[^" + N + B + V + Z + G + P + "]", xe = "\\ud83c[\\udffb-\\udfff]", ve = "(?:" + D + "|" + xe + ")", ye = "[^" + N + "]", K = "(?:\\ud83c[\\udde6-\\uddff]){2}", J = "[\\ud800-\\udbff][\\udc00-\\udfff]", p = "[" + P + "]", _e = "\\u200d", w = "(?:" + W + "|" + F + ")", ke = "(?:" + p + "|" + F + ")", j = "(?:" + y + "(?:d|ll|m|re|s|t|ve))?", $ = "(?:" + y + "(?:D|LL|M|RE|S|T|VE))?", Y = ve + "?", H = "[" + he + "]?", we = "(?:" + _e + "(?:" + [ye, K, J].join("|") + ")" + H + Y + ")*", je = H + Y + we, $e = "(?:" + [ge, K, J].join("|") + ")" + je, Oe = RegExp(y, "g"), Se = RegExp(D, "g"), Ae = RegExp([
   p + "?" + W + "+" + j + "(?=" + [k, p, "$"].join("|") + ")",
   ke + "+" + $ + "(?=" + [k, p + w, "$"].join("|") + ")",
   p + "?" + w + "+" + j,
@@ -203,11 +203,11 @@ var oe = 1 / 0, ue = "[object Symbol]", ae = /[^\x00-\x2f\x3a-\x40\x5b-\x60\x7b-
   œ: "oe",
   ŉ: "'n",
   ſ: "ss"
-}, Te = typeof y == "object" && y && y.Object === Object && y, Le = typeof self == "object" && self && self.Object === Object && self, Ee = Te || Le || Function("return this")();
+}, Te = typeof v == "object" && v && v.Object === Object && v, Ee = typeof self == "object" && self && self.Object === Object && self, Le = Te || Ee || Function("return this")();
 function Ie(e, t, r, o) {
-  var a = -1, i = e ? e.length : 0;
-  for (o && i && (r = e[++a]); ++a < i; )
-    r = t(r, e[a], a, e);
+  var n = -1, s = e ? e.length : 0;
+  for (o && s && (r = e[++n]); ++n < s; )
+    r = t(r, e[n], n, e);
   return r;
 }
 function Ue(e) {
@@ -225,14 +225,14 @@ function Ne(e) {
 function Ze(e) {
   return e.match(Ae) || [];
 }
-var Ge = Object.prototype, Pe = Ge.toString, O = Ee.Symbol, S = O ? O.prototype : void 0, A = S ? S.toString : void 0;
+var Ge = Object.prototype, Pe = Ge.toString, O = Le.Symbol, S = O ? O.prototype : void 0, A = S ? S.toString : void 0;
 function Be(e) {
   if (typeof e == "string")
     return e;
   if (We(e))
     return A ? A.call(e) : "";
   var t = e + "";
-  return t == "0" && 1 / e == -oe ? "-0" : t;
+  return t == "0" && 1 / e == -ne ? "-0" : t;
 }
 function De(e) {
   return function(t) {
@@ -258,7 +258,7 @@ function Je(e, t, r) {
   return e = q(e), t = r ? void 0 : t, t === void 0 ? Ne(e) ? Ze(e) : Ue(e) : e.match(t) || [];
 }
 var Ye = Ke;
-const He = /* @__PURE__ */ ne(Ye), x = {
+const He = /* @__PURE__ */ oe(Ye), x = {
   default: {
     _packs: {
       missile: 5,
@@ -290,8 +290,8 @@ const He = /* @__PURE__ */ ne(Ye), x = {
   }
 }, _ = (e, t) => {
   const r = e.__vccOpts || e;
-  for (const [o, a] of t)
-    r[o] = a;
+  for (const [o, n] of t)
+    r[o] = n;
   return r;
 }, qe = (e) => He(e.toLowerCase().replace("'", "")), Q = [
   ["energy-tank", "reserve-tank", "missile", "super-missile", "power-bomb"],
@@ -307,7 +307,7 @@ const He = /* @__PURE__ */ ne(Ye), x = {
 ], Qe = [
   ["cwisp", "morph-ball", "bomb", "spring-ball", "varia-suit"],
   ["hi-jump-boots", "speed-booster", "space-jump", "screw-attack", "gravity-suit"]
-], Xe = Q[0], R = (e, t, r = 2) => !e || typeof e != "number" ? null : (t ? e * t : e).toString().padStart(r, 0).split("").map((a) => `smi-number -number-${a}`), et = (e, t) => ["ridley", "draygon", "phantoon", "kraid"].includes(e) ? [`sm-g4-head -${e}`, t && "-inactive"] : [`sm-item -${e}`, !t && "-has-not"], X = {
+], Xe = Q[0], R = (e, t, r = 2) => !e || typeof e != "number" ? null : (t ? e * t : e).toString().padStart(r, 0).split("").map((n) => `smi-number -number-${n}`), et = (e, t) => ["ridley", "draygon", "phantoon", "kraid"].includes(e) ? [`sm-g4-head -${e}`, t && "-inactive"] : [`sm-item -${e}`, !t && "-has-not"], X = {
   "kill kraid": !0,
   "kill phantoon": !0,
   "kill draygon": !0,
@@ -326,10 +326,18 @@ const He = /* @__PURE__ */ ne(Ye), x = {
     objectives: Object,
     width: Number,
     objective_order: Array
+    // optional (intenally tracked if missing)
+  },
+  watch: {
+    objectives() {
+      Object.keys(this.objectives).forEach((t) => {
+        this.objectives[t] && !this.orders.includes(t) && this.orders.push(t);
+      }), this.orders = this.orders.filter((t) => this.objectives[t]);
+    }
   },
   emits: ["add-item", "toggle-item", "toggle-objective"],
   data() {
-    return { targets: {} };
+    return { targets: {}, orders: [] };
   },
   computed: {
     vanilla_objectives() {
@@ -347,39 +355,39 @@ const He = /* @__PURE__ */ ne(Ye), x = {
       return Object.keys(this.objectives || {}).length > 15 ? 6 : this.row_slugs[0].length;
     },
     prepped_rows() {
-      var r, o;
+      var r;
       const e = x[this.world] || x.default, t = this.row_slugs.map(
-        (a) => a.map((i) => {
-          var l;
-          const n = this.inventory[i];
+        (o) => o.map((n) => {
+          var u;
+          const s = this.inventory[n];
           return {
-            slug: i,
-            numbers: R(n, (l = e._packs) == null ? void 0 : l[i]),
+            slug: n,
+            numbers: R(s, (u = e._packs) == null ? void 0 : u[n]),
             attrs: {
-              class: [et(i, n), n > 99 && "-three-digits"],
-              id: `grid-tracker__${i}`
+              class: [et(n, s), s > 99 && "-three-digits"],
+              id: `grid-tracker__${n}`
             }
           };
         })
       );
       if (!this.vanilla_objectives) {
-        const a = Object.keys(this.objectives || {}), { columns: i } = this;
+        const o = Object.keys(this.objectives || {}), { columns: n } = this;
         this.mode || t[3].push(...t.pop());
-        let n = t.findIndex((l) => l.length < t[0].length);
-        for (n === -1 && (n = t.length); a.length > 0; ) {
-          for (; ((r = t[n]) == null ? void 0 : r.length) >= i; )
-            n++;
-          t[n] || t.push([]);
-          const l = a.shift(), m = qe(l);
-          let d;
-          (o = this.objective_order) != null && o.includes(l) && (d = this.objective_order.indexOf(l) + 1), t[n].push({
+        let s = t.findIndex((u) => u.length < t[0].length);
+        for (s === -1 && (s = t.length); o.length > 0; ) {
+          for (; ((r = t[s]) == null ? void 0 : r.length) >= n; )
+            s++;
+          t[s] || t.push([]);
+          const u = o.shift(), m = qe(u), d = this.objective_order || this.orders;
+          let l;
+          d != null && d.includes(u) && (l = d.indexOf(u) + 1), t[s].push({
             // slug vs id is a bit confusing because the varia "ids" are human readable
-            slug: l,
+            slug: u,
             type: "objective",
-            numbers: R(d, 1, 1),
-            target: this.targets[l],
+            numbers: R(l, 1, 1),
+            target: this.targets[u],
             attrs: {
-              class: `smv-objective -${m} -${this.objectives[l] ? "in" : ""}active`,
+              class: `smv-objective -${m} -${this.objectives[u] ? "in" : ""}active`,
               id: `grid-tracker__${m}`
             }
           });
@@ -410,56 +418,56 @@ const He = /* @__PURE__ */ ne(Ye), x = {
   key: 3,
   class: "fa fa-crosshairs _targeted"
 };
-function nt(e, t, r, o, a, i) {
-  const n = re("sm-cwisp-tracker");
-  return u(), c("div", {
+function ot(e, t, r, o, n, s) {
+  const u = re("sm-cwisp-tracker");
+  return a(), c("div", {
     class: b(`grid-tracker smi-tracker ${r.controlled ? "-controlled" : ""}`),
-    style: z(i.style)
+    style: z(s.style)
   }, [
-    (u(!0), c(f, null, h(i.prepped_rows, (l, m) => (u(), c("div", {
-      key: m,
+    (a(!0), c(f, null, h(s.prepped_rows, (m, d) => (a(), c("div", {
+      key: d,
       class: "grid-tracker__row"
     }, [
-      (u(!0), c(f, null, h(l, (d) => (u(), c("div", {
-        key: d.slug,
+      (a(!0), c(f, null, h(m, (l) => (a(), c("div", {
+        key: l.slug,
         class: "grid-tracker__cell"
       }, [
-        d.slug === "cwisp" ? (u(), se(n, {
+        l.slug === "cwisp" ? (a(), se(u, {
           key: 0,
           inventory: r.inventory,
           onToggleItem: (g) => !r.controlled && e.$emit("toggle-item", g)
-        }, null, 8, ["inventory", "onToggleItem"])) : (u(), c("div", M({ key: 1 }, d.attrs, {
-          onClick: (g) => i.click(g, d)
+        }, null, 8, ["inventory", "onToggleItem"])) : (a(), c("div", M({ key: 1 }, l.attrs, {
+          onClick: (g) => s.click(g, l)
         }), null, 16, st)),
-        d.numbers ? (u(), c("div", {
+        l.numbers ? (a(), c("div", {
           key: 2,
-          class: b(`grid-tracker__numbers -length-${d.numbers.length}`)
+          class: b(`grid-tracker__numbers -length-${l.numbers.length}`)
         }, [
-          (u(!0), c(f, null, h(d.numbers, (g, te) => (u(), c("div", {
+          (a(!0), c(f, null, h(l.numbers, (g, te) => (a(), c("div", {
             key: te,
             class: b(g)
           }, null, 2))), 128))
-        ], 2)) : d.target ? (u(), c("i", it)) : ie("", !0)
+        ], 2)) : l.target ? (a(), c("i", it)) : ie("", !0)
       ]))), 128))
     ]))), 128))
   ], 6);
 }
-const T = /* @__PURE__ */ _(rt, [["render", nt]]), s = {
+const T = /* @__PURE__ */ _(rt, [["render", ot]]), i = {
   item: (e) => ({ class: e }),
   group: (e, t) => [`pause-inventory__group -group-${e}`, t],
-  number: (e) => s.item(`smi-number -number-${e}`),
-  numbers: (e, t) => e.toString().padStart(t, 0).split("").map(s.number)
+  number: (e) => i.item(`smi-number -number-${e}`),
+  numbers: (e, t) => e.toString().padStart(t, 0).split("").map(i.number)
 };
-s.separator = s.item("flex-grow");
-const ee = (e) => Array(e || 0).fill().map((t, r) => r), L = (e, t) => ({
+i.separator = i.item("flex-grow");
+const ee = (e) => Array(e || 0).fill().map((t, r) => r), E = (e, t) => ({
   name: "energy-tanks",
-  children: ee(e).map(() => s.item("smi -ietank")),
-  class: s.group("energy-tanks", t)
-}), E = (e) => ({
+  children: ee(e).map(() => i.item("smi -ietank")),
+  class: i.group("energy-tanks", t)
+}), L = (e) => ({
   name: e,
-  class: s.group(e),
-  children: [s.item("smi -" + e)]
-}), ot = {
+  class: i.group(e),
+  children: [i.item("smi -" + e)]
+}), nt = {
   beams: ["charge", "ice", "wave", "spazer", "plasma"].map((e) => e + "-beam"),
   suits: ["varia-suit", "gravity-suit"],
   misc: ["morph-ball", "bomb", "spring-ball", "screw-attack"],
@@ -491,12 +499,12 @@ const ee = (e) => Array(e || 0).fill().map((t, r) => r), L = (e, t) => ({
         ...this.item_groups,
         ...this.pack_controls
       ];
-      return this.inventory["reserve-tank"] && (e.push(E("auto")), e.push(E("reserve_text"))), e;
+      return this.inventory["reserve-tank"] && (e.push(L("auto")), e.push(L("reserve_text"))), e;
     },
     hud_items() {
       return {
         name: "hud-items",
-        class: s.group("hud-items"),
+        class: i.group("hud-items"),
         children: ut.map((e) => ({
           class: ["smi -i" + e, this.inventory[e] || "-inactive"],
           onclick: () => this.$emit("toggle-item", e)
@@ -510,15 +518,15 @@ const ee = (e) => Array(e || 0).fill().map((t, r) => r), L = (e, t) => ({
         const r = this.inventory[t] * (((o = e._packs) == null ? void 0 : o[t]) || 1);
         return {
           name: t,
-          class: s.group(t),
-          children: s.numbers(r || 0, t === "missile" ? 3 : 2)
+          class: i.group(t),
+          children: i.numbers(r || 0, t === "missile" ? 3 : 2)
         };
       });
     },
     pack_controls() {
       return ["missile", "super-missile", "power-bomb", "energy-tank", "reserve-tank"].map((t) => ({
         name: `${t} controls`,
-        class: s.group(t + "-controls"),
+        class: i.group(t + "-controls"),
         children: [
           {
             class: "_plus",
@@ -533,27 +541,27 @@ const ee = (e) => Array(e || 0).fill().map((t, r) => r), L = (e, t) => ({
     },
     energy_tanks() {
       const e = this.inventory["energy-tank"];
-      return [L(Math.min(e, 7)), L(Math.max(e - 7, 0), "-top")];
+      return [E(Math.min(e, 7)), E(Math.max(e - 7, 0), "-top")];
     },
     reserve_tanks() {
-      const e = this.inventory["reserve-tank"], r = [...ee(Math.floor(e)).map(() => s.item("smi -ireserve")), s.separator];
-      return e > 0 && (100 * e).toString().split("").forEach((a) => r.push(s.item(`smi-reserve-number -number-${a}`))), {
+      const e = this.inventory["reserve-tank"], r = [...ee(Math.floor(e)).map(() => i.item("smi -ireserve")), i.separator];
+      return e > 0 && (100 * e).toString().split("").forEach((n) => r.push(i.item(`smi-reserve-number -number-${n}`))), {
         name: "reserve-tanks",
-        class: s.group("reserve-tanks"),
+        class: i.group("reserve-tanks"),
         children: r
       };
     },
     energy_text() {
       return {
         name: "energy-text",
-        class: s.group("energy-text"),
-        children: [s.item("smi -energy"), s.separator, s.number(9), s.number(9)]
+        class: i.group("energy-text"),
+        children: [i.item("smi -energy"), i.separator, i.number(9), i.number(9)]
       };
     },
     item_groups() {
-      return Object.entries(ot).map(([e, t]) => ({
+      return Object.entries(nt).map(([e, t]) => ({
         name: e,
-        class: s.group(e),
+        class: i.group(e),
         children: t.map((r) => ({
           class: [`smi-pause-item -${r}`, this.inventory[r] || "-inactive"],
           onclick: () => this.$emit("toggle-item", r)
@@ -565,16 +573,16 @@ const ee = (e) => Array(e || 0).fill().map((t, r) => r), L = (e, t) => ({
     }
   }
 };
-function ct(e, t, r, o, a, i) {
-  return u(), c("div", {
-    class: b(i.wrapper_class),
-    style: z(i.style)
+function ct(e, t, r, o, n, s) {
+  return a(), c("div", {
+    class: b(s.wrapper_class),
+    style: z(s.style)
   }, [
-    (u(!0), c(f, null, h(i.groups, (n) => (u(), c("div", {
-      key: n.name,
-      class: b(n.class)
+    (a(!0), c(f, null, h(s.groups, (u) => (a(), c("div", {
+      key: u.name,
+      class: b(u.class)
     }, [
-      (u(!0), c(f, null, h(n.children, (l, m) => (u(), c("div", M({ key: m }, l), null, 16))), 128))
+      (a(!0), c(f, null, h(u.children, (m, d) => (a(), c("div", M({ key: d }, m), null, 16))), 128))
     ], 2))), 128))
   ], 6);
 }
@@ -592,12 +600,12 @@ const I = /* @__PURE__ */ _(at, [["render", ct]]), lt = ["charge-beam", "wave-be
     }
   }
 }, mt = { class: "sm-cwisp" }, pt = ["onClick"];
-function bt(e, t, r, o, a, i) {
-  return u(), c("div", mt, [
-    (u(!0), c(f, null, h(i.beams, (n) => (u(), c("div", {
-      class: b(n.class),
-      onClick: (l) => e.$emit("toggle-item", n.id),
-      key: n.id
+function bt(e, t, r, o, n, s) {
+  return a(), c("div", mt, [
+    (a(!0), c(f, null, h(s.beams, (u) => (a(), c("div", {
+      class: b(u.class),
+      onClick: (m) => e.$emit("toggle-item", u.id),
+      key: u.id
     }, null, 10, pt))), 128))
   ]);
 }
