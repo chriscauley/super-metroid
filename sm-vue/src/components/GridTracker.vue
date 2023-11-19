@@ -86,11 +86,22 @@ export default {
     world: String,
     objectives: Object,
     width: Number,
-    objective_order: Array,
+    objective_order: Array, // optional (intenally tracked if missing)
+  },
+  watch: {
+    objectives() {
+      const keys = Object.keys(this.objectives)
+      keys.forEach((key) => {
+        if (this.objectives[key] && !this.orders.includes(key)) {
+          this.orders.push(key)
+        }
+      })
+      this.orders = this.orders.filter(k => this.objectives[k])
+    },
   },
   emits: ['add-item', 'toggle-item', 'toggle-objective'],
   data() {
-    return { targets: {} }
+    return { targets: {}, orders: [] }
   },
   computed: {
     vanilla_objectives() {
@@ -163,9 +174,10 @@ export default {
           }
           const id = objective_ids.shift()
           const cased = slugifyObjective(id)
+          const orders = this.objective_order || this.orders
           let order
-          if (this.objective_order?.includes(id)) {
-            order = this.objective_order.indexOf(id) + 1
+          if (orders?.includes(id)) {
+            order = orders.indexOf(id) + 1
           }
           rows[row_index].push({
             // slug vs id is a bit confusing because the varia "ids" are human readable

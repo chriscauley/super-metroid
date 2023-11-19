@@ -109,20 +109,23 @@ $items: list.join($beams, $other_items);
       url('./images/inventory/background_tracker_middle-no-grid.png')
     ;
   }
+  &.-no-chrome {
+    background-image: none;
+  }
 }
 
 .grid-tracker {
-  display: inline-block;
+  @apply flex flex-wrap flex-col items-center justify-center;
+  gap: 0.2em;
+  padding: 0.2em;
   &.smi-tracker {
     image-rendering: unset;
   }
-  padding: 0.2em;
   &__row {
     @apply flex justify-center;
     gap: 0.1em;
-    padding-bottom: 0.2em;
-    &:last-child {
-      padding-bottom: 0;
+    &:empty {
+      display: none;
     }
   }
   .sm-item, .sm-g4-head, .smv-objective {

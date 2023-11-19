@@ -2,6 +2,8 @@ docs/* binary
 docs/**/* binary
 icons/build/* binary
 icons/build/**/* binary
+sm-data/dist/* binary
+sm-data/dist/**/* binary
 sm-vue/dist/* binary
 sm-vue/dist/**/* binary
 yarn.lock binary

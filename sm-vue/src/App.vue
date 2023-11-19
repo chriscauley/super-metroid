@@ -13,7 +13,6 @@
           :width="300"
           :world="world"
           mode="cwisp"
-          :objective_order="objective_order"
         />
       </div>
       <div>
@@ -27,7 +26,6 @@
           :world="world"
           mode="cwisp"
           :objectives="getObjectives(1)"
-          :objective_order="objective_order"
         />
       </div>
       <div>
@@ -41,7 +39,6 @@
           :world="world"
           mode="cwisp"
           :objectives="getObjectives(8)"
-          :objective_order="objective_order"
         />
       </div>
       <div>
@@ -55,7 +52,6 @@
           :world="world"
           mode="cwisp"
           :objectives="getObjectives(18)"
-          :objective_order="objective_order"
         />
       </div>
       <div>
@@ -69,7 +65,6 @@
           :width="300"
           :world="world"
           :objectives="getObjectives(18)"
-          :objective_order="objective_order"
         />
       </div>
     </div>
@@ -82,7 +77,6 @@
         @add-item="add"
         :width="300"
         :world="world"
-        :objective_order="objective_order"
       />
     </div>
     <div>
@@ -137,7 +131,6 @@ export default {
       inventory: {},
       world: 'nature',
       objectives: Object.fromEntries(objectives.map((o) => [o, false])),
-      objective_order: [],
     }
   },
   methods: {
@@ -148,11 +141,6 @@ export default {
     },
     toggleObjective(slug) {
       this.objectives[slug] = !this.objectives[slug]
-      if (this.objectives[slug]) {
-        this.objective_order.push(slug)
-      } else {
-        this.objective_order = this.objective_order.filter((o) => o !== slug)
-      }
     },
     toggle(slug) {
       this.inventory[slug] = !this.inventory[slug]

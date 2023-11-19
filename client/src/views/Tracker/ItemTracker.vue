@@ -22,7 +22,6 @@
       :controlled="controlled"
       :mode="config.mode"
       :objectives="objectives"
-      :objective_order="$store.seed.state.objective_order"
       :world="world"
       :class="tool_storage.state.tracker_settings.tracker_grid ? '' : '-no-grid'"
       :width="$store.config.state['item-tracker']?.width"
@@ -120,7 +119,6 @@ export default {
       this.$store.seed.save({
         objective_overrides: [],
         completed_overrides: [],
-        objective_order: [],
       })
     },
     resizeBox(values) {
@@ -131,18 +129,16 @@ export default {
     },
     toggleObjective(o_id) {
       const { objectives } = this
-      const { completed_overrides = [], objective_order = [] } = this.$store.seed.state
+      const { completed_overrides = [] } = this.$store.seed.state
 
       if (objectives[o_id]) {
         const removeIt = (array) => remove(array, (value) => value === o_id)
         removeIt(completed_overrides)
-        removeIt(objective_order)
       } else {
-        objective_order.push(o_id)
         completed_overrides.push(o_id)
       }
 
-      this.$store.seed.save({ objective_order, completed_overrides })
+      this.$store.seed.save({ completed_overrides })
     },
     toggleSelectedObjective(o_id) {
       const { objective_overrides = [] } = this.$store.seed.state

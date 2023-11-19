@@ -363,7 +363,6 @@ export default {
           seed: json_data?.seed,
           objective_overrides: [],
           completed_overrides: [],
-          objective_order: [],
         })
       }
       if (json_data) {
@@ -386,13 +385,8 @@ export default {
           clearTimeout(this._obj_timeout)
           this._obj_timeout = setTimeout(() => (this.completed_objectives = null), 3000)
           this.completed_objectives = json_data.newlyCompletedObjectives
-          const { objective_order = [] } = this.$store.seed.state
           this.completed_objectives.forEach((o) => {
             o = o.replace('Completed objective: ', '')
-            if (!objective_order.includes(o)) {
-              objective_order.push(o)
-              this.$store.seed.save({ objective_order })
-            }
           })
         }
       }
