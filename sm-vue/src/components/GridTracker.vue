@@ -105,8 +105,8 @@ export default {
   },
   computed: {
     vanilla_objectives() {
-      const objective_ids = Object.keys(this.objectives || {})
-      return objective_ids.length === 4 && !objective_ids.find((o) => !VANILLA[o])
+      const ids = Object.keys(this.objectives || {})
+      return [0,4].includes(ids.length) && !ids.find((o) => !VANILLA[o])
     },
     row_slugs() {
       if (this.rows) {

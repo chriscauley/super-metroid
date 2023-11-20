@@ -40,6 +40,6 @@
   ],
   "dependencies": {
     "postcss-cli": "^10.1.0",
-    "sm-data": "^0.0.1"
+    "sm-data": "0.0.5"
   }
 }
