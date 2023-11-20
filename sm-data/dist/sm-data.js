@@ -1,15 +1,15 @@
-var l = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : typeof global < "u" ? global : typeof self < "u" ? self : {};
+var n = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : typeof global < "u" ? global : typeof self < "u" ? self : {};
 function N(e) {
   return e && e.__esModule && Object.prototype.hasOwnProperty.call(e, "default") ? e.default : e;
 }
-var Ee = 1 / 0, Le = "[object Symbol]", Ce = /[^\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\x7f]+/g, $e = /[\xc0-\xd6\xd8-\xf6\xf8-\xff\u0100-\u017f]/g, Z = "\\ud800-\\udfff", _e = "\\u0300-\\u036f\\ufe20-\\ufe23", Oe = "\\u20d0-\\u20f0", D = "\\u2700-\\u27bf", H = "a-z\\xdf-\\xf6\\xf8-\\xff", Ge = "\\xac\\xb1\\xd7\\xf7", je = "\\x00-\\x2f\\x3a-\\x40\\x5b-\\x60\\x7b-\\xbf", Ae = "\\u2000-\\u206f", ze = " \\t\\x0b\\f\\xa0\\ufeff\\n\\r\\u2028\\u2029\\u1680\\u180e\\u2000\\u2001\\u2002\\u2003\\u2004\\u2005\\u2006\\u2007\\u2008\\u2009\\u200a\\u202f\\u205f\\u3000", F = "A-Z\\xc0-\\xd6\\xd8-\\xde", Pe = "\\ufe0e\\ufe0f", K = Ge + je + Ae + ze, y = "['’]", E = "[" + K + "]", J = "[" + _e + Oe + "]", V = "\\d+", Ue = "[" + D + "]", Y = "[" + H + "]", q = "[^" + Z + K + V + D + H + F + "]", We = "\\ud83c[\\udffb-\\udfff]", Ie = "(?:" + J + "|" + We + ")", Ne = "[^" + Z + "]", X = "(?:\\ud83c[\\udde6-\\uddff]){2}", Q = "[\\ud800-\\udbff][\\udc00-\\udfff]", n = "[" + F + "]", Ze = "\\u200d", L = "(?:" + Y + "|" + q + ")", De = "(?:" + n + "|" + q + ")", C = "(?:" + y + "(?:d|ll|m|re|s|t|ve))?", $ = "(?:" + y + "(?:D|LL|M|RE|S|T|VE))?", ee = Ie + "?", re = "[" + Pe + "]?", He = "(?:" + Ze + "(?:" + [Ne, X, Q].join("|") + ")" + re + ee + ")*", Fe = re + ee + He, Ke = "(?:" + [Ue, X, Q].join("|") + ")" + Fe, Je = RegExp(y, "g"), Ve = RegExp(J, "g"), Ye = RegExp([
-  n + "?" + Y + "+" + C + "(?=" + [E, n, "$"].join("|") + ")",
-  De + "+" + $ + "(?=" + [E, n + L, "$"].join("|") + ")",
-  n + "?" + L + "+" + C,
-  n + "+" + $,
+var Te = 1 / 0, Ee = "[object Symbol]", Le = /[^\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\x7f]+/g, Ce = /[\xc0-\xd6\xd8-\xf6\xf8-\xff\u0100-\u017f]/g, Z = "\\ud800-\\udfff", $e = "\\u0300-\\u036f\\ufe20-\\ufe23", _e = "\\u20d0-\\u20f0", D = "\\u2700-\\u27bf", H = "a-z\\xdf-\\xf6\\xf8-\\xff", Oe = "\\xac\\xb1\\xd7\\xf7", Ge = "\\x00-\\x2f\\x3a-\\x40\\x5b-\\x60\\x7b-\\xbf", je = "\\u2000-\\u206f", Ae = " \\t\\x0b\\f\\xa0\\ufeff\\n\\r\\u2028\\u2029\\u1680\\u180e\\u2000\\u2001\\u2002\\u2003\\u2004\\u2005\\u2006\\u2007\\u2008\\u2009\\u200a\\u202f\\u205f\\u3000", F = "A-Z\\xc0-\\xd6\\xd8-\\xde", ze = "\\ufe0e\\ufe0f", K = Oe + Ge + je + Ae, y = "['’]", E = "[" + K + "]", J = "[" + $e + _e + "]", V = "\\d+", Pe = "[" + D + "]", Y = "[" + H + "]", q = "[^" + Z + K + V + D + H + F + "]", Ue = "\\ud83c[\\udffb-\\udfff]", We = "(?:" + J + "|" + Ue + ")", Ie = "[^" + Z + "]", X = "(?:\\ud83c[\\udde6-\\uddff]){2}", Q = "[\\ud800-\\udbff][\\udc00-\\udfff]", l = "[" + F + "]", Ne = "\\u200d", L = "(?:" + Y + "|" + q + ")", Ze = "(?:" + l + "|" + q + ")", C = "(?:" + y + "(?:d|ll|m|re|s|t|ve))?", $ = "(?:" + y + "(?:D|LL|M|RE|S|T|VE))?", ee = We + "?", re = "[" + ze + "]?", De = "(?:" + Ne + "(?:" + [Ie, X, Q].join("|") + ")" + re + ee + ")*", He = re + ee + De, Fe = "(?:" + [Pe, X, Q].join("|") + ")" + He, Ke = RegExp(y, "g"), Je = RegExp(J, "g"), Ve = RegExp([
+  l + "?" + Y + "+" + C + "(?=" + [E, l, "$"].join("|") + ")",
+  Ze + "+" + $ + "(?=" + [E, l + L, "$"].join("|") + ")",
+  l + "?" + L + "+" + C,
+  l + "+" + $,
   V,
-  Ke
-].join("|"), "g"), qe = /[a-z][A-Z]|[A-Z]{2,}[a-z]|[0-9][a-zA-Z]|[a-zA-Z][0-9]|[^a-zA-Z0-9 ]/, Xe = {
+  Fe
+].join("|"), "g"), Ye = /[a-z][A-Z]|[A-Z]{2,}[a-z]|[0-9][a-zA-Z]|[a-zA-Z][0-9]|[^a-zA-Z0-9 ]/, qe = {
   // Latin-1 Supplement block.
   À: "A",
   Á: "A",
@@ -202,70 +202,70 @@ var Ee = 1 / 0, Le = "[object Symbol]", Ce = /[^\x00-\x2f\x3a-\x40\x5b-\x60\x7b-
   œ: "oe",
   ŉ: "'n",
   ſ: "ss"
-}, Qe = typeof l == "object" && l && l.Object === Object && l, er = typeof self == "object" && self && self.Object === Object && self, rr = Qe || er || Function("return this")();
-function ir(e, r, i, o) {
-  var a = -1, t = e ? e.length : 0;
-  for (o && t && (i = e[++a]); ++a < t; )
-    i = r(i, e[a], a, e);
-  return i;
+}, Xe = typeof n == "object" && n && n.Object === Object && n, Qe = typeof self == "object" && self && self.Object === Object && self, er = Xe || Qe || Function("return this")();
+function rr(e, r, o, i) {
+  var t = -1, a = e ? e.length : 0;
+  for (i && a && (o = e[++t]); ++t < a; )
+    o = r(o, e[t], t, e);
+  return o;
 }
 function or(e) {
-  return e.match(Ce) || [];
+  return e.match(Le) || [];
 }
-function ar(e) {
+function ir(e) {
   return function(r) {
     return e == null ? void 0 : e[r];
   };
 }
-var tr = ar(Xe);
+var tr = ir(qe);
+function ar(e) {
+  return Ye.test(e);
+}
 function sr(e) {
-  return qe.test(e);
+  return e.match(Ve) || [];
 }
-function lr(e) {
-  return e.match(Ye) || [];
-}
-var nr = Object.prototype, ur = nr.toString, _ = rr.Symbol, O = _ ? _.prototype : void 0, G = O ? O.toString : void 0;
-function cr(e) {
+var nr = Object.prototype, lr = nr.toString, _ = er.Symbol, O = _ ? _.prototype : void 0, G = O ? O.toString : void 0;
+function ur(e) {
   if (typeof e == "string")
     return e;
-  if (pr(e))
+  if (mr(e))
     return G ? G.call(e) : "";
   var r = e + "";
-  return r == "0" && 1 / e == -Ee ? "-0" : r;
+  return r == "0" && 1 / e == -Te ? "-0" : r;
 }
-function dr(e) {
+function cr(e) {
   return function(r) {
-    return ir(br(fr(r).replace(Je, "")), e, "");
+    return rr(gr(fr(r).replace(Ke, "")), e, "");
   };
 }
-function mr(e) {
+function dr(e) {
   return !!e && typeof e == "object";
 }
-function pr(e) {
-  return typeof e == "symbol" || mr(e) && ur.call(e) == Le;
+function mr(e) {
+  return typeof e == "symbol" || dr(e) && lr.call(e) == Ee;
 }
-function ie(e) {
-  return e == null ? "" : cr(e);
+function oe(e) {
+  return e == null ? "" : ur(e);
 }
 function fr(e) {
-  return e = ie(e), e && e.replace($e, tr).replace(Ve, "");
+  return e = oe(e), e && e.replace(Ce, tr).replace(Je, "");
 }
-var gr = dr(function(e, r, i) {
-  return e + (i ? "-" : "") + r.toLowerCase();
+var pr = cr(function(e, r, o) {
+  return e + (o ? "-" : "") + r.toLowerCase();
 });
-function br(e, r, i) {
-  return e = ie(e), r = i ? void 0 : r, r === void 0 ? sr(e) ? lr(e) : or(e) : e.match(r) || [];
+function gr(e, r, o) {
+  return e = oe(e), r = o ? void 0 : r, r === void 0 ? ar(e) ? sr(e) : or(e) : e.match(r) || [];
 }
-var xr = gr;
-const hr = /* @__PURE__ */ N(xr);
-var kr = 1 / 0, yr = "[object Symbol]", Rr = /[^\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\x7f]+/g, wr = /[\xc0-\xd6\xd8-\xf6\xf8-\xff\u0100-\u017f]/g, x = "\\ud800-\\udfff", oe = "\\u0300-\\u036f\\ufe20-\\ufe23", ae = "\\u20d0-\\u20f0", te = "\\u2700-\\u27bf", se = "a-z\\xdf-\\xf6\\xf8-\\xff", Sr = "\\xac\\xb1\\xd7\\xf7", Br = "\\x00-\\x2f\\x3a-\\x40\\x5b-\\x60\\x7b-\\xbf", vr = "\\u2000-\\u206f", Mr = " \\t\\x0b\\f\\xa0\\ufeff\\n\\r\\u2028\\u2029\\u1680\\u180e\\u2000\\u2001\\u2002\\u2003\\u2004\\u2005\\u2006\\u2007\\u2008\\u2009\\u200a\\u202f\\u205f\\u3000", le = "A-Z\\xc0-\\xd6\\xd8-\\xde", ne = "\\ufe0e\\ufe0f", ue = Sr + Br + vr + Mr, R = "['’]", Tr = "[" + x + "]", j = "[" + ue + "]", g = "[" + oe + ae + "]", ce = "\\d+", Er = "[" + te + "]", de = "[" + se + "]", me = "[^" + x + ue + ce + te + se + le + "]", k = "\\ud83c[\\udffb-\\udfff]", Lr = "(?:" + g + "|" + k + ")", pe = "[^" + x + "]", w = "(?:\\ud83c[\\udde6-\\uddff]){2}", S = "[\\ud800-\\udbff][\\udc00-\\udfff]", u = "[" + le + "]", fe = "\\u200d", A = "(?:" + de + "|" + me + ")", Cr = "(?:" + u + "|" + me + ")", z = "(?:" + R + "(?:d|ll|m|re|s|t|ve))?", P = "(?:" + R + "(?:D|LL|M|RE|S|T|VE))?", ge = Lr + "?", be = "[" + ne + "]?", $r = "(?:" + fe + "(?:" + [pe, w, S].join("|") + ")" + be + ge + ")*", xe = be + ge + $r, _r = "(?:" + [Er, w, S].join("|") + ")" + xe, Or = "(?:" + [pe + g + "?", g, w, S, Tr].join("|") + ")", Gr = RegExp(R, "g"), jr = RegExp(g, "g"), Ar = RegExp(k + "(?=" + k + ")|" + Or + xe, "g"), zr = RegExp([
+var br = pr;
+const xr = /* @__PURE__ */ N(br);
+var hr = 1 / 0, kr = "[object Symbol]", yr = /[^\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\x7f]+/g, Rr = /[\xc0-\xd6\xd8-\xf6\xf8-\xff\u0100-\u017f]/g, x = "\\ud800-\\udfff", ie = "\\u0300-\\u036f\\ufe20-\\ufe23", te = "\\u20d0-\\u20f0", ae = "\\u2700-\\u27bf", se = "a-z\\xdf-\\xf6\\xf8-\\xff", wr = "\\xac\\xb1\\xd7\\xf7", Sr = "\\x00-\\x2f\\x3a-\\x40\\x5b-\\x60\\x7b-\\xbf", Br = "\\u2000-\\u206f", vr = " \\t\\x0b\\f\\xa0\\ufeff\\n\\r\\u2028\\u2029\\u1680\\u180e\\u2000\\u2001\\u2002\\u2003\\u2004\\u2005\\u2006\\u2007\\u2008\\u2009\\u200a\\u202f\\u205f\\u3000", ne = "A-Z\\xc0-\\xd6\\xd8-\\xde", le = "\\ufe0e\\ufe0f", ue = wr + Sr + Br + vr, R = "['’]", Mr = "[" + x + "]", j = "[" + ue + "]", g = "[" + ie + te + "]", ce = "\\d+", Tr = "[" + ae + "]", de = "[" + se + "]", me = "[^" + x + ue + ce + ae + se + ne + "]", k = "\\ud83c[\\udffb-\\udfff]", Er = "(?:" + g + "|" + k + ")", fe = "[^" + x + "]", w = "(?:\\ud83c[\\udde6-\\uddff]){2}", S = "[\\ud800-\\udbff][\\udc00-\\udfff]", u = "[" + ne + "]", pe = "\\u200d", A = "(?:" + de + "|" + me + ")", Lr = "(?:" + u + "|" + me + ")", z = "(?:" + R + "(?:d|ll|m|re|s|t|ve))?", P = "(?:" + R + "(?:D|LL|M|RE|S|T|VE))?", ge = Er + "?", be = "[" + le + "]?", Cr = "(?:" + pe + "(?:" + [fe, w, S].join("|") + ")" + be + ge + ")*", xe = be + ge + Cr, $r = "(?:" + [Tr, w, S].join("|") + ")" + xe, _r = "(?:" + [fe + g + "?", g, w, S, Mr].join("|") + ")", Or = RegExp(R, "g"), Gr = RegExp(g, "g"), jr = RegExp(k + "(?=" + k + ")|" + _r + xe, "g"), Ar = RegExp([
   u + "?" + de + "+" + z + "(?=" + [j, u, "$"].join("|") + ")",
-  Cr + "+" + P + "(?=" + [j, u + A, "$"].join("|") + ")",
+  Lr + "+" + P + "(?=" + [j, u + A, "$"].join("|") + ")",
   u + "?" + A + "+" + z,
   u + "+" + P,
   ce,
-  _r
-].join("|"), "g"), Pr = RegExp("[" + fe + x + oe + ae + ne + "]"), Ur = /[a-z][A-Z]|[A-Z]{2,}[a-z]|[0-9][a-zA-Z]|[a-zA-Z][0-9]|[^a-zA-Z0-9 ]/, Wr = {
+  $r
+].join("|"), "g"), zr = RegExp("[" + pe + x + ie + te + le + "]"), Pr = /[a-z][A-Z]|[A-Z]{2,}[a-z]|[0-9][a-zA-Z]|[a-zA-Z][0-9]|[^a-zA-Z0-9 ]/, Ur = {
   // Latin-1 Supplement block.
   À: "A",
   Á: "A",
@@ -458,92 +458,92 @@ var kr = 1 / 0, yr = "[object Symbol]", Rr = /[^\x00-\x2f\x3a-\x40\x5b-\x60\x7b-
   œ: "oe",
   ŉ: "'n",
   ſ: "ss"
-}, Ir = typeof l == "object" && l && l.Object === Object && l, Nr = typeof self == "object" && self && self.Object === Object && self, Zr = Ir || Nr || Function("return this")();
-function Dr(e, r, i, o) {
-  var a = -1, t = e ? e.length : 0;
-  for (o && t && (i = e[++a]); ++a < t; )
-    i = r(i, e[a], a, e);
-  return i;
+}, Wr = typeof n == "object" && n && n.Object === Object && n, Ir = typeof self == "object" && self && self.Object === Object && self, Nr = Wr || Ir || Function("return this")();
+function Zr(e, r, o, i) {
+  var t = -1, a = e ? e.length : 0;
+  for (i && a && (o = e[++t]); ++t < a; )
+    o = r(o, e[t], t, e);
+  return o;
 }
-function Hr(e) {
+function Dr(e) {
   return e.split("");
 }
-function Fr(e) {
-  return e.match(Rr) || [];
+function Hr(e) {
+  return e.match(yr) || [];
 }
-function Kr(e) {
+function Fr(e) {
   return function(r) {
     return e == null ? void 0 : e[r];
   };
 }
-var Jr = Kr(Wr);
+var Kr = Fr(Ur);
 function he(e) {
+  return zr.test(e);
+}
+function Jr(e) {
   return Pr.test(e);
 }
 function Vr(e) {
-  return Ur.test(e);
+  return he(e) ? Yr(e) : Dr(e);
 }
 function Yr(e) {
-  return he(e) ? qr(e) : Hr(e);
+  return e.match(jr) || [];
 }
 function qr(e) {
   return e.match(Ar) || [];
 }
-function Xr(e) {
-  return e.match(zr) || [];
+var Xr = Object.prototype, Qr = Xr.toString, U = Nr.Symbol, W = U ? U.prototype : void 0, I = W ? W.toString : void 0;
+function eo(e, r, o) {
+  var i = -1, t = e.length;
+  r < 0 && (r = -r > t ? 0 : t + r), o = o > t ? t : o, o < 0 && (o += t), t = r > o ? 0 : o - r >>> 0, r >>>= 0;
+  for (var a = Array(t); ++i < t; )
+    a[i] = e[i + r];
+  return a;
 }
-var Qr = Object.prototype, ei = Qr.toString, U = Zr.Symbol, W = U ? U.prototype : void 0, I = W ? W.toString : void 0;
-function ri(e, r, i) {
-  var o = -1, a = e.length;
-  r < 0 && (r = -r > a ? 0 : a + r), i = i > a ? a : i, i < 0 && (i += a), a = r > i ? 0 : i - r >>> 0, r >>>= 0;
-  for (var t = Array(a); ++o < a; )
-    t[o] = e[o + r];
-  return t;
-}
-function ii(e) {
+function ro(e) {
   if (typeof e == "string")
     return e;
-  if (li(e))
+  if (so(e))
     return I ? I.call(e) : "";
   var r = e + "";
-  return r == "0" && 1 / e == -kr ? "-0" : r;
+  return r == "0" && 1 / e == -hr ? "-0" : r;
 }
-function oi(e, r, i) {
-  var o = e.length;
-  return i = i === void 0 ? o : i, !r && i >= o ? e : ri(e, r, i);
+function oo(e, r, o) {
+  var i = e.length;
+  return o = o === void 0 ? i : o, !r && o >= i ? e : eo(e, r, o);
 }
-function ai(e) {
+function io(e) {
   return function(r) {
     r = B(r);
-    var i = he(r) ? Yr(r) : void 0, o = i ? i[0] : r.charAt(0), a = i ? oi(i, 1).join("") : r.slice(1);
-    return o[e]() + a;
+    var o = he(r) ? Vr(r) : void 0, i = o ? o[0] : r.charAt(0), t = o ? oo(o, 1).join("") : r.slice(1);
+    return i[e]() + t;
   };
 }
-function ti(e) {
+function to(e) {
   return function(r) {
-    return Dr(di(ni(r).replace(Gr, "")), e, "");
+    return Zr(co(no(r).replace(Or, "")), e, "");
   };
 }
-function si(e) {
+function ao(e) {
   return !!e && typeof e == "object";
 }
-function li(e) {
-  return typeof e == "symbol" || si(e) && ei.call(e) == yr;
+function so(e) {
+  return typeof e == "symbol" || ao(e) && Qr.call(e) == kr;
 }
 function B(e) {
-  return e == null ? "" : ii(e);
+  return e == null ? "" : ro(e);
 }
-function ni(e) {
-  return e = B(e), e && e.replace(wr, Jr).replace(jr, "");
+function no(e) {
+  return e = B(e), e && e.replace(Rr, Kr).replace(Gr, "");
 }
-var ui = ti(function(e, r, i) {
-  return e + (i ? " " : "") + ci(r);
-}), ci = ai("toUpperCase");
-function di(e, r, i) {
-  return e = B(e), r = i ? void 0 : r, r === void 0 ? Vr(e) ? Xr(e) : Fr(e) : e.match(r) || [];
+var lo = to(function(e, r, o) {
+  return e + (o ? " " : "") + uo(r);
+}), uo = io("toUpperCase");
+function co(e, r, o) {
+  return e = B(e), r = o ? void 0 : r, r === void 0 ? Jr(e) ? qr(e) : Hr(e) : e.match(r) || [];
 }
-var mi = ui;
-const m = /* @__PURE__ */ N(mi), vi = {
+var mo = lo;
+const m = /* @__PURE__ */ N(mo), Mo = {
   //crater
   GreenPiratesShaftBottomRight: "red",
   KihunterRight: "yellow",
@@ -612,7 +612,7 @@ const m = /* @__PURE__ */ N(mi), vi = {
   WreckedShipMainShaftBottom: "green",
   WestOceanRight: "green",
   ElectricDeathRoomTopLeft: "red"
-}, Mi = {
+}, To = {
   grey: "empty",
   red: "missile",
   green: "super-missile",
@@ -632,17 +632,17 @@ const m = /* @__PURE__ */ N(mi), vi = {
   "speed-booster",
   "grappling-beam",
   "x-ray"
-], pi = ["nothing"], fi = { nothing: pi, ammo: v, energy: M, beams: ke, suits: ye, items: Re }, Ti = Object.entries(fi).map(([e, r]) => ({
+], fo = ["nothing"], po = { nothing: fo, ammo: v, energy: M, beams: ke, suits: ye, items: Re }, Eo = Object.entries(po).map(([e, r]) => ({
   slug: e,
   name: m(e),
-  items: r.map((i) => ({ name: m(
-    i.replace(/(-beam|-boots|-missile)/, "").replace("x-ray", "x-ray-scope")
-  ), item_slug: i }))
-})), gi = [...v, ...M, ...ke, ...ye, ...Re], bi = [
+  items: r.map((o) => ({ name: m(
+    o.replace(/(-beam|-boots|-missile)/, "").replace("x-ray", "x-ray-scope")
+  ), item_slug: o }))
+})), go = [...v, ...M, ...ke, ...ye, ...Re], bo = [
   "westSandHallLeft",
   "belowBotwoonEnergyTankRight",
   "westSandHallTunnelRight"
-], xi = [
+], xo = [
   "tourianEscapeRoom4TopRight",
   "climbBottomLeft",
   "greenBrinstarMainShaftTopLeft",
@@ -680,7 +680,7 @@ const m = /* @__PURE__ */ N(mi), vi = {
 };
 d.area.forEach(we);
 d.boss.forEach(we);
-const T = (e) => e.reduce((r, i) => [...r, ...i], []), hi = T(d.area), ki = T(d.boss), yi = {
+const T = (e) => e.reduce((r, o) => [...r, ...o], []), ho = T(d.area), ko = T(d.boss), yo = {
   crater: [
     "EnergyTankGauntlet",
     "Bomb",
@@ -800,7 +800,7 @@ const T = (e) => e.reduce((r, i) => [...r, ...i], []), hi = T(d.area), ki = T(d.
     "SuperMissileWreckedShipleft"
   ],
   tourian: []
-}, Ei = {
+}, Lo = {
   crater: "a",
   // crAteria
   crocomire: "o",
@@ -815,7 +815,7 @@ const T = (e) => e.reduce((r, i) => [...r, ...i], []), hi = T(d.area), ki = T(d.
   "wrecked-ship": "p",
   // Phantoon
   tourian: "t"
-}, Ri = {
+}, Ro = {
   Kraid: "kraids-lair",
   Crocomire: "crocomize",
   SporeSpawn: "green-brinstar",
@@ -825,21 +825,21 @@ const T = (e) => e.reduce((r, i) => [...r, ...i], []), hi = T(d.area), ki = T(d.
   GoldenTorizo: "lower-norfair",
   Phantoon: "wrecked-ship",
   MotherBrain: "tourian"
-}, Se = ["kraid", "phantoon", "draygon", "ridley", "mother-brain"], Be = ["crocomire", "spore-spawn", "botwoon", "golden-torizo", "bomb-torizo"], Li = {
+}, Se = ["kraid", "phantoon", "draygon", "ridley", "mother-brain"], Be = ["crocomire", "spore-spawn", "botwoon", "golden-torizo", "bomb-torizo"], Co = {
   draygon: "east-maridia",
   phantoon: "wrecked-ship",
   kraid: "kraids-lair",
   ridley: "lower-norfair"
 }, ve = [
-  ...T(Object.values(yi)),
-  ...Object.keys(Ri)
-], p = {};
-ve.forEach((e) => p[e] = "location");
-ki.forEach((e) => p[e] = "boss");
-hi.forEach((e) => p[e] = "area");
-bi.forEach((e) => p[e] = "sand");
-xi.forEach((e) => p[e] = "escape");
-const Ci = ["kraid", "phantoon", "draygon", "ridley"], h = {
+  ...T(Object.values(yo)),
+  ...Object.keys(Ro)
+], f = {};
+ve.forEach((e) => f[e] = "location");
+ko.forEach((e) => f[e] = "boss");
+ho.forEach((e) => f[e] = "area");
+bo.forEach((e) => f[e] = "sand");
+xo.forEach((e) => f[e] = "escape");
+const $o = ["kraid", "phantoon", "draygon", "ridley"], h = {
   GoldTorizo: "miniboss"
   // Varia has this as gold in some places, golden in others
 };
@@ -847,7 +847,7 @@ ve.forEach((e) => h[e] = "item");
 const Me = (e) => m(e).replace(" ", "");
 Be.forEach((e) => h[Me(e)] = "miniboss");
 Se.forEach((e) => h[Me(e)] = "boss");
-const $i = [
+const _o = [
   "LandingSiteRight",
   "LandingSiteTopRight",
   "KihunterBottom",
@@ -906,7 +906,7 @@ const $i = [
   "KraidRefillStation",
   "RedBrinstarEnergyRefill",
   "GreenBrinstarMissileRefill"
-], Te = {
+], wo = {
   "kill kraid": {
     id: "kill kraid",
     category: "bosses",
@@ -1128,31 +1128,7 @@ const $i = [
   "kill shaktool": { id: "kill shaktool", category: "memes" },
   "activate chozo robots": { id: "activate chozo robots", category: "memes" },
   "visit the animals": { id: "visit the animals", category: "memes" },
-  "kill king cacatac": { id: "kill king cacatac", category: "memes" },
-  "kill all space pirates": {
-    id: "kill all space pirates",
-    category: "enemies"
-  },
-  "kill all ki hunters": {
-    id: "kill all ki hunters",
-    category: "enemies"
-  },
-  "kill all beetoms": {
-    id: "kill all beetoms",
-    category: "enemies"
-  },
-  "kill all cacatacs": {
-    id: "kill all cacatacs",
-    category: "enemies"
-  },
-  "kill all kagos": {
-    id: "kill all kagos",
-    category: "enemies"
-  },
-  "kill all yapping maws": {
-    id: "kill all yapping maws",
-    category: "enemies"
-  }
+  "kill king cacatac": { id: "kill king cacatac", category: "memes" }
 }, b = {
   "charge-beam": "Charge",
   "energy-tank": "ETank",
@@ -1173,8 +1149,8 @@ const $i = [
   noenergy: "NoEnergy",
   "crystal-flash": "CrystalFlash",
   "": ""
-}, wi = [gi, Se, Be];
-wi.forEach(
+}, So = [go, Se, Be];
+So.forEach(
   (e) => e.forEach((r) => {
     b[r] = b[r] || m(r).replace(/ /g, "");
   })
@@ -1182,25 +1158,25 @@ wi.forEach(
 const c = {};
 v.forEach((e) => c[e] = 5);
 M.forEach((e) => c[e] = 1);
-const Si = (e) => Object.fromEntries(Object.entries(e).map(([r, i]) => [i, r])), s = {
+const Bo = (e) => Object.fromEntries(Object.entries(e).map(([r, o]) => [o, r])), s = {
   sm_to_varia: b,
-  varia_to_sm: Si(b),
-  getGameState: (e, r, i) => {
+  varia_to_sm: Bo(b),
+  getGameState: (e, r, o) => {
     if (!e)
       return null;
-    const o = {
+    const i = {
       inventory: {},
       locations: {},
       warps: e.lines,
-      locked_warps: { ...i }
+      locked_warps: { ...o }
     };
-    return r ? Object.entries(r).forEach(([a, t]) => {
-      const f = s.variaToSm(a);
-      c[f] ? o.inventory[f] = t * c[f] : o.inventory[f] = !0;
-    }) : e.collectedItems.forEach((a) => {
-      const t = s.variaToSm(a);
-      c[t] ? o.inventory[t] = (o.inventory[t] || 0) + c[t] : o.inventory[t] = !0;
-    }), o;
+    return r ? Object.entries(r).forEach(([t, a]) => {
+      const p = s.variaToSm(t);
+      c[p] ? i.inventory[p] = a * c[p] : i.inventory[p] = !0;
+    }) : e.collectedItems.forEach((t) => {
+      const a = s.variaToSm(t);
+      c[a] ? i.inventory[a] = (i.inventory[a] || 0) + c[a] : i.inventory[a] = !0;
+    }), i;
   },
   variaToSm(e) {
     const r = s.varia_to_sm[e];
@@ -1216,43 +1192,44 @@ const Si = (e) => Object.fromEntries(Object.entries(e).map(([r, i]) => [i, r])),
   getIcon(e) {
     if (e === "GoldTorizo")
       return "smv-boss -map-icon -golden-torizo";
-    const r = s.variaToSm(e), i = h[e];
-    return i === "boss" || i === "miniboss" ? `smv-boss -map-icon -${r}` : `sm-item -${r}`;
+    const r = s.variaToSm(e), o = h[e];
+    return o === "boss" || o === "miniboss" ? `smv-boss -map-icon -${r}` : `sm-item -${r}`;
   },
   // Objectives are currently taken from repo but will eventually be pulled in from server
+  objective: {},
   loadObjectives: (e) => {
     const r = {};
-    Object.values(Te).forEach((i) => {
-      i.icon = `smv-objective -${Bi(i.id)}`;
-      const { category: o } = i;
-      r[o] = r[o] || [], r[o].push(i);
-    }), s.objective = { by_id: e, by_category: r };
+    Object.values(e).forEach((o) => {
+      o.icon = `smv-objective -${vo(o.id)}`;
+      const { category: i } = o;
+      r[i] = r[i] || [], r[i].push(o);
+    }), s.objective.by_id = e, s.objective.by_category = r;
   }
-}, Bi = (e) => hr(e.toLowerCase().replace("'", ""));
-s.loadObjectives(Te);
+}, vo = (e) => xr(e.toLowerCase().replace("'", ""));
+s.loadObjectives(wo);
 export {
-  hi as access_points,
-  gi as all_items,
+  ho as access_points,
+  go as all_items,
   ve as all_locations,
   v as ammo,
   ke as beams,
-  ki as boss_doors,
+  ko as boss_doors,
   Se as bosses,
-  Ei as default_area_keys,
-  vi as default_door_colors,
-  Mi as door_item_by_color,
-  $i as doors,
+  Lo as default_area_keys,
+  Mo as default_door_colors,
+  To as door_item_by_color,
+  _o as doors,
   M as energy,
-  xi as escape_doors,
-  Ci as golden_four,
-  fi as items_by_group,
+  xo as escape_doors,
+  $o as golden_four,
+  po as items_by_group,
   h as location_type_map,
-  yi as locations_by_area,
+  yo as locations_by_area,
   Be as minibosses,
-  bi as sand_doors,
-  Li as subarea_by_area,
+  bo as sand_doors,
+  Co as subarea_by_area,
   d as vanilla_warps,
   s as varia,
-  Ti as varia_item_groups,
-  p as warp_type_map
+  Eo as varia_item_groups,
+  f as warp_type_map
 };
