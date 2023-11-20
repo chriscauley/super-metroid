@@ -1,4 +1,13 @@
 import { varia } from 'sm-data'
+import { reactive } from 'vue'
+import { getServerData } from '@/utils'
+
+// making this reactive so components respond to getServerData
+varia.objective = reactive(varia.objective)
+
+getServerData().then(({ data }) => {
+  varia.loadObjectives(data.objective_by_id)
+})
 
 export default (randomizer) => {
   const isTrue = (v) => String(v).toLowerCase() === 'true'

@@ -34,6 +34,7 @@ const cat_map = {
   items: 'primary',
   map: 'success',
   memes: 'info',
+  enemies: 'default',
 }
 
 export default {

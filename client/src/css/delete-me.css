@@ -234,7 +234,8 @@
 #objectivePortal .btn-primary { order: 3 }
 #objectivePortal .btn-success { order: 4 }
 #objectivePortal .btn-info { order: 5 }
-#objectivePortal .faux-link { order: 6; }
+#objectivePortal .btn-default { order: 6 }
+#objectivePortal .faux-link { order: 7; }
 
 /* readonly mode */
 #seedInfoVisibility .patch-toggler .btn {

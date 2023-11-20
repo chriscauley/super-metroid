@@ -3,9 +3,9 @@ var v = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : ty
 function oe(e) {
   return e && e.__esModule && Object.prototype.hasOwnProperty.call(e, "default") ? e.default : e;
 }
-var ne = 1 / 0, ue = "[object Symbol]", ae = /[^\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\x7f]+/g, ce = /[\xc0-\xd6\xd8-\xf6\xf8-\xff\u0100-\u017f]/g, N = "\\ud800-\\udfff", le = "\\u0300-\\u036f\\ufe20-\\ufe23", de = "\\u20d0-\\u20f0", Z = "\\u2700-\\u27bf", G = "a-z\\xdf-\\xf6\\xf8-\\xff", me = "\\xac\\xb1\\xd7\\xf7", pe = "\\x00-\\x2f\\x3a-\\x40\\x5b-\\x60\\x7b-\\xbf", be = "\\u2000-\\u206f", fe = " \\t\\x0b\\f\\xa0\\ufeff\\n\\r\\u2028\\u2029\\u1680\\u180e\\u2000\\u2001\\u2002\\u2003\\u2004\\u2005\\u2006\\u2007\\u2008\\u2009\\u200a\\u202f\\u205f\\u3000", P = "A-Z\\xc0-\\xd6\\xd8-\\xde", he = "\\ufe0e\\ufe0f", B = me + pe + be + fe, y = "['’]", k = "[" + B + "]", D = "[" + le + de + "]", V = "\\d+", ge = "[" + Z + "]", W = "[" + G + "]", F = "[^" + N + B + V + Z + G + P + "]", xe = "\\ud83c[\\udffb-\\udfff]", ve = "(?:" + D + "|" + xe + ")", ye = "[^" + N + "]", K = "(?:\\ud83c[\\udde6-\\uddff]){2}", J = "[\\ud800-\\udbff][\\udc00-\\udfff]", p = "[" + P + "]", _e = "\\u200d", w = "(?:" + W + "|" + F + ")", ke = "(?:" + p + "|" + F + ")", j = "(?:" + y + "(?:d|ll|m|re|s|t|ve))?", $ = "(?:" + y + "(?:D|LL|M|RE|S|T|VE))?", Y = ve + "?", H = "[" + he + "]?", we = "(?:" + _e + "(?:" + [ye, K, J].join("|") + ")" + H + Y + ")*", je = H + Y + we, $e = "(?:" + [ge, K, J].join("|") + ")" + je, Oe = RegExp(y, "g"), Se = RegExp(D, "g"), Ae = RegExp([
-  p + "?" + W + "+" + j + "(?=" + [k, p, "$"].join("|") + ")",
-  ke + "+" + $ + "(?=" + [k, p + w, "$"].join("|") + ")",
+var ne = 1 / 0, ue = "[object Symbol]", ae = /[^\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\x7f]+/g, ce = /[\xc0-\xd6\xd8-\xf6\xf8-\xff\u0100-\u017f]/g, N = "\\ud800-\\udfff", le = "\\u0300-\\u036f\\ufe20-\\ufe23", de = "\\u20d0-\\u20f0", Z = "\\u2700-\\u27bf", G = "a-z\\xdf-\\xf6\\xf8-\\xff", me = "\\xac\\xb1\\xd7\\xf7", pe = "\\x00-\\x2f\\x3a-\\x40\\x5b-\\x60\\x7b-\\xbf", be = "\\u2000-\\u206f", fe = " \\t\\x0b\\f\\xa0\\ufeff\\n\\r\\u2028\\u2029\\u1680\\u180e\\u2000\\u2001\\u2002\\u2003\\u2004\\u2005\\u2006\\u2007\\u2008\\u2009\\u200a\\u202f\\u205f\\u3000", P = "A-Z\\xc0-\\xd6\\xd8-\\xde", he = "\\ufe0e\\ufe0f", B = me + pe + be + fe, y = "['’]", _ = "[" + B + "]", D = "[" + le + de + "]", V = "\\d+", ge = "[" + Z + "]", W = "[" + G + "]", F = "[^" + N + B + V + Z + G + P + "]", xe = "\\ud83c[\\udffb-\\udfff]", ve = "(?:" + D + "|" + xe + ")", ye = "[^" + N + "]", K = "(?:\\ud83c[\\udde6-\\uddff]){2}", J = "[\\ud800-\\udbff][\\udc00-\\udfff]", p = "[" + P + "]", ke = "\\u200d", w = "(?:" + W + "|" + F + ")", _e = "(?:" + p + "|" + F + ")", j = "(?:" + y + "(?:d|ll|m|re|s|t|ve))?", $ = "(?:" + y + "(?:D|LL|M|RE|S|T|VE))?", Y = ve + "?", H = "[" + he + "]?", we = "(?:" + ke + "(?:" + [ye, K, J].join("|") + ")" + H + Y + ")*", je = H + Y + we, $e = "(?:" + [ge, K, J].join("|") + ")" + je, Oe = RegExp(y, "g"), Se = RegExp(D, "g"), Ae = RegExp([
+  p + "?" + W + "+" + j + "(?=" + [_, p, "$"].join("|") + ")",
+  _e + "+" + $ + "(?=" + [_, p + w, "$"].join("|") + ")",
   p + "?" + w + "+" + j,
   p + "+" + $,
   V,
@@ -288,7 +288,7 @@ const He = /* @__PURE__ */ oe(Ye), x = {
     draygon: "weapons-tank",
     "x-ray": "shinespark"
   }
-}, _ = (e, t) => {
+}, k = (e, t) => {
   const r = e.__vccOpts || e;
   for (const [o, n] of t)
     r[o] = n;
@@ -342,7 +342,7 @@ const He = /* @__PURE__ */ oe(Ye), x = {
   computed: {
     vanilla_objectives() {
       const e = Object.keys(this.objectives || {});
-      return e.length === 4 && !e.find((t) => !X[t]);
+      return [0, 4].includes(e.length) && !e.find((t) => !X[t]);
     },
     row_slugs() {
       if (this.rows)
@@ -452,7 +452,7 @@ function ot(e, t, r, o, n, s) {
     ]))), 128))
   ], 6);
 }
-const T = /* @__PURE__ */ _(rt, [["render", ot]]), i = {
+const T = /* @__PURE__ */ k(rt, [["render", ot]]), i = {
   item: (e) => ({ class: e }),
   group: (e, t) => [`pause-inventory__group -group-${e}`, t],
   number: (e) => i.item(`smi-number -number-${e}`),
@@ -586,7 +586,7 @@ function ct(e, t, r, o, n, s) {
     ], 2))), 128))
   ], 6);
 }
-const I = /* @__PURE__ */ _(at, [["render", ct]]), lt = ["charge-beam", "wave-beam", "ice-beam", "spazer-beam", "plasma-beam"], dt = {
+const I = /* @__PURE__ */ k(at, [["render", ct]]), lt = ["charge-beam", "wave-beam", "ice-beam", "spazer-beam", "plasma-beam"], dt = {
   props: {
     inventory: Object
   },
@@ -609,7 +609,7 @@ function bt(e, t, r, o, n, s) {
     }, null, 10, pt))), 128))
   ]);
 }
-const U = /* @__PURE__ */ _(dt, [["render", bt]]), ht = {
+const U = /* @__PURE__ */ k(dt, [["render", bt]]), ht = {
   GridTracker: T,
   PauseTracker: I,
   CwispTracker: U,

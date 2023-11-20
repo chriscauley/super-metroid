@@ -385,9 +385,6 @@ export default {
           clearTimeout(this._obj_timeout)
           this._obj_timeout = setTimeout(() => (this.completed_objectives = null), 3000)
           this.completed_objectives = json_data.newlyCompletedObjectives
-          this.completed_objectives.forEach((o) => {
-            o = o.replace('Completed objective: ', '')
-          })
         }
       }
       this.json_data = json_data

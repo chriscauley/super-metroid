@@ -1,3 +1,4 @@
+import axios from 'axios'
 import { range } from 'lodash'
 import site from '@/site'
 
@@ -32,3 +33,5 @@ export const saveFile = (text, filename) => {
   anchor.click()
   document.body.removeChild(anchor)
 }
+
+export const getServerData = () => axios.get('/randomizerData.json')
