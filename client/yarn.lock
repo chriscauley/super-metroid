@@ -5910,10 +5910,15 @@ sm-data@0.0.6:
   resolved "https://registry.yarnpkg.com/sm-data/-/sm-data-0.0.6.tgz#1ae68dd05caf8906039943aefb0d94c51352262c"
   integrity sha512-ZJ2aJTqtPVMWZ3X12Vk/F0S0PgY29mxbME3xc7a+RmKi6YyMSLQWLBmrTzYxmYMB3ej286xWCFh1ERS/YaX6qg==
 
-sm-vue@0.0.16:
-  version "0.0.16"
-  resolved "https://registry.yarnpkg.com/sm-vue/-/sm-vue-0.0.16.tgz#88c919d9d7f5fc3c9e210b57103c127023efd340"
-  integrity sha512-oIRolxudkHE9fuKBtOgTIRn/ALgMK+dXFKq8ZBhuVk90SKJIdvBfqlQqPYk/VR3cvYH7tKgw1NDbBXZdoUX8QA==
+sm-data@0.0.7:
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/sm-data/-/sm-data-0.0.7.tgz#95e3c7955a14b836edb507cee86541ae047c6c13"
+  integrity sha512-2XpA9SGE6AOduCpgcmb8440WmdA3UjgoCyInvx3JQwEh7Bd0FXkdarA/VtKbryPybCv9eGOC+JSCq5ft4IUlIQ==
+
+sm-vue@0.0.17:
+  version "0.0.17"
+  resolved "https://registry.yarnpkg.com/sm-vue/-/sm-vue-0.0.17.tgz#cdc9a70a433d878f9926f41b685b12c9dec5d671"
+  integrity sha512-SM+QNEBTQOxLfi8u0dnIXIooQrzMmaAHK4MDbDifS3kBmUrKvhiKnpGHr48qrGwKmkOat2XfiQXM81jk5rKTbg==
   dependencies:
     lodash.kebabcase "^4.1.1"
     sm-data "0.0.6"
