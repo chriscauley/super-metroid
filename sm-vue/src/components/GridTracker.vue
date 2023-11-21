@@ -1,3 +1,4 @@
+
 <template>
   <div :class="`grid-tracker smi-tracker ${controlled ? '-controlled' : ''}`" :style="style">
     <div v-for="(row, i) in prepped_rows" :key="i" class="grid-tracker__row">
@@ -88,17 +89,6 @@ export default {
     width: Number,
     objective_order: Array, // optional (intenally tracked if missing)
   },
-  watch: {
-    objectives() {
-      const keys = Object.keys(this.objectives)
-      keys.forEach((key) => {
-        if (this.objectives[key] && !this.orders.includes(key)) {
-          this.orders.push(key)
-        }
-      })
-      this.orders = this.orders.filter(k => this.objectives[k])
-    },
-  },
   emits: ['add-item', 'toggle-item', 'toggle-objective'],
   data() {
     return { targets: {}, orders: [] }
@@ -106,7 +96,7 @@ export default {
   computed: {
     vanilla_objectives() {
       const ids = Object.keys(this.objectives || {})
-      return [0,4].includes(ids.length) && !ids.find((o) => !VANILLA[o])
+      return [0, 4].includes(ids.length) && !ids.find((o) => !VANILLA[o])
     },
     row_slugs() {
       if (this.rows) {
@@ -203,6 +193,17 @@ export default {
       // number of columns + 2*padding + (columns-1)*gap
       const total_columns = this.columns + 2 * 0.2 + (this.columns - 1) * 0.1
       return { fontSize: `${width / total_columns}px` }
+    },
+  },
+  watch: {
+    objectives() {
+      const keys = Object.keys(this.objectives)
+      keys.forEach((key) => {
+        if (this.objectives[key] && !this.orders.includes(key)) {
+          this.orders.push(key)
+        }
+      })
+      this.orders = this.orders.filter((k) => this.objectives[k])
     },
   },
   methods: {
