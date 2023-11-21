@@ -111,6 +111,30 @@ $items: list.join($beams, $other_items);
   }
   &.-no-chrome {
     background-image: none;
+    .smv-objective.-inactive {
+      animation-duration: 0.4s;
+      animation-iteration-count: 6;
+      animation-name: flicker-objective;
+    }
+  }
+}
+
+@keyframes flicker-objective {
+  0% {
+    opacity: 0.75;
+    filter: grayscale(1) brightness(0.75);
+  }
+  49.9% {
+    opacity: 0.75;
+    filter: grayscale(1) brightness(0.75);
+  }
+  50% {
+    opacity: 1;
+    filter: none;
+  }
+  100% {
+    opacity: 1;
+    filter: none;
   }
 }
 
