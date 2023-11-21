@@ -1,7 +1,7 @@
 <template>
   <teleport to="#objectivePortal">
     <bootstrap-modal v-if="open" title="Select Objectives" @close="open = false">
-      <objective-selector
+      <sm-objective-selector
         :categories="randomizer.objective.getCategories()"
         :is_random="randomizer.isRandom('objective')"
         @toggle-category="randomizer.objective.toggleCategory"

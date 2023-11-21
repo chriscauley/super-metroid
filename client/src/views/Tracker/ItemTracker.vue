@@ -33,7 +33,7 @@
         You can override objectives in the tracker by selecting them below. If no objectives are
         selected, the tracker will default to the seed used to initialize the tracker.
       </p>
-      <objective-selector :categories="categories" @toggle-objective="toggleSelectedObjective" />
+      <sm-objective-selector :categories="categories" @toggle-objective="toggleSelectedObjective" />
       <template #actions>
         <button class="btn -danger" @click="resetObjectives">Reset Objectives</button>
         <div class="flex-grow" />
