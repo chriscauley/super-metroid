@@ -105,9 +105,11 @@ const varia = {
   // Objectives are currently taken from repo but will eventually be pulled in from server
   objective: {},
   loadObjectives: (by_id) => {
+    const start = /^(kill|collect|explore|clear|tickle|activate) (the )?/
     const by_category = {}
     Object.values(by_id).forEach((objective) => {
       objective.icon = `smv-objective -${slugifyObjective(objective.id)}`
+      objective.short = objective.id.replace(start, '')
       const { category } = objective
       by_category[category] = by_category[category] || []
       by_category[category].push(objective)
