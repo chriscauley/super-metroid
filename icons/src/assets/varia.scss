@@ -282,3 +282,20 @@ $objs: kill-one-g-4, kill-two-g-4, kill-three-g-4, kill-all-g-4,
     background-image: url('./images/fonts/white_e.png');
   }
 }
+
+.objective-selector {
+  @apply flex flex-wrap gap-4;
+  .checkbox label {
+    @apply flex items-center gap-2 cursor-pointer;
+    input {
+      display: none;
+      + .smv-objective {
+        font-size: 2em;
+      }
+      &:not(:checked) + .smv-objective {
+        filter: grayscale(1) brightness(0.75);
+        opacity: 0.25;
+      }
+    }
+  }
+}
