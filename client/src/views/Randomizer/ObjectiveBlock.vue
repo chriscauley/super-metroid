@@ -16,7 +16,10 @@
     </bootstrap-modal>
     <div @click="open = true" class="button-list">
       <div v-for="button in objective_buttons" :key="button.text" :class="button.class">
-        {{ button.text }}
+        <i :class="button.icon" />
+        <span>
+          {{ button.text }}
+        </span>
       </div>
       <i v-if="objective_buttons.length === 0">{{ none_text }}</i>
       <div v-if="!randomizer.state.readonly" class="faux-link">edit</div>
@@ -64,8 +67,9 @@ export default {
       return objective.map((o_id) => {
         const objective = varia.objective.by_id[o_id]
         return {
+          ...objective,
           text: o_id,
-          class: `btn btn-${cat_map[objective.category]} btn-xs`,
+          class: `btn btn-${cat_map[objective.category]} -objective`,
         }
       })
     },

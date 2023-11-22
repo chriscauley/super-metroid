@@ -12,28 +12,35 @@
         </label>
         <div v-else>{{ category.id }}</div>
       </h4>
-      <div
-        v-for="objective in category.objectives"
-        :key="objective.id"
-        :class="['checkbox', objective.disabled && '-disabled']"
-      >
-        <label :title="objective.disabled">
-          <input
-            type="checkbox"
-            @input="$emit('toggle-objective', objective.id)"
-            :checked="objective.selected"
-            :disabled="!!objective.disabled"
-            :name="objective.id"
-          />
+      <div class="objective-selector__button-list">
+        <button
+          v-for="objective in category.objectives"
+          :key="objective.id"
+          :class="getClass(objective)"
+          :title="objective.disabled"
+          @click="!objective.disabled && $emit('toggle-objective', objective.id)"
+          >
           <i :class="objective.icon" />
-          {{ short_names ? objective.short : objective.id }}
-        </label>
+          <span class="objective-selector__name">
+            {{ short_names ? objective.short : objective.id }}
+          </span>
+        </button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+// coppied from ObjectiveBlock in client repo
+const cat_map = {
+  bosses: 'danger',
+  minibosses: 'warning',
+  items: 'primary',
+  map: 'success',
+  memes: 'info',
+  enemies: 'default',
+}
+
 export default {
   props: {
     categories: Array,
@@ -41,5 +48,14 @@ export default {
     short_names: Boolean,
   },
   emits: ['toggle-objective', 'toggle-category'],
+  methods: {
+    getClass(objective) {
+      const btn = objective.selected ? cat_map[objective.category] : 'empty'
+      return [
+        `btn btn-${btn} -objective`,
+        objective.disabled && '-disabled',
+      ]
+    }
+  }
 }
 </script>

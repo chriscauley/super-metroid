@@ -77,12 +77,12 @@ export default (randomizer) => {
           disabled: disabled_map[o.id],
           selected: selected_map[o.id],
         }))
-        const checked = objectives.filter((o) => o.selected).length > 0
+        const checked = objectives.filter((o) => o.selected).length
         const partial = is_random && checked > 0 && checked < objectives.length
         return {
           id,
           objectives,
-          checked,
+          checked: !!checked,
           partial,
           is_random,
           class: ['checkbox', partial && '-partial'],

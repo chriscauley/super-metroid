@@ -285,17 +285,38 @@ $objs: kill-one-g-4, kill-two-g-4, kill-three-g-4, kill-all-g-4,
 
 .objective-selector {
   @apply flex flex-wrap gap-4;
-  .checkbox label {
-    @apply flex items-center gap-2 cursor-pointer;
-    input {
-      display: none;
-      + .smv-objective {
-        font-size: 2em;
-      }
-      &:not(:checked) + .smv-objective {
-        filter: grayscale(1) brightness(0.75);
-        opacity: 0.25;
-      }
+  &__button-list {
+    @apply flex flex-col;
+    gap: 8px;
+  }
+}
+
+.btn.-objective {
+  @apply flex items-center;
+  border-radius: 5px;
+  font-size: 12px;
+  gap: 4px;
+  line-height: 1;
+  margin: 0;
+  padding: 4px 5px;
+  text-transform: unset;
+  &.-disabled {
+    cursor: not-allowed;
+    filter: grayscale(1);
+    opacity: 0.5;
+  }
+  &.btn-empty {
+    /* custom button for unselected button */
+    &:hover,
+    &:focus {
+      /* bootstrap defaults this to white */
+      color: rgb(62, 63, 58);
     }
+  }
+  .smv-objective {
+    font-size: 2.5em;
+  }
+  &:focus {
+    outline: 0;
   }
 }
