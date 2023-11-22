@@ -19,7 +19,7 @@
           :class="getClass(objective)"
           :title="objective.disabled"
           @click="!objective.disabled && $emit('toggle-objective', objective.id)"
-          >
+        >
           <i :class="objective.icon" />
           <span class="objective-selector__name">
             {{ short_names ? objective.short : objective.id }}
@@ -51,11 +51,8 @@ export default {
   methods: {
     getClass(objective) {
       const btn = objective.selected ? cat_map[objective.category] : 'empty'
-      return [
-        `btn btn-${btn} -objective`,
-        objective.disabled && '-disabled',
-      ]
-    }
-  }
+      return [`btn btn-${btn} -objective`, objective.disabled && '-disabled']
+    },
+  },
 }
 </script>

@@ -1,4 +1,3 @@
-
 <template>
   <div :class="`grid-tracker smi-tracker ${controlled ? '-controlled' : ''}`" :style="style">
     <div v-for="(row, i) in prepped_rows" :key="i" class="grid-tracker__row">

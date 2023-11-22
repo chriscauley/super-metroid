@@ -6,99 +6,115 @@
     <div class="flex">
       <div>
         <h2>Grid + Cwisp</h2>
-        <sm-grid-tracker
-          :inventory="inventory"
-          @toggle-item="toggle"
-          @add-item="add"
-          :width="300"
-          :world="world"
-          mode="cwisp"
-        />
+        <div>
+          <sm-grid-tracker
+            :inventory="inventory"
+            @toggle-item="toggle"
+            @add-item="add"
+            :width="300"
+            :world="world"
+            mode="cwisp"
+          />
+        </div>
       </div>
       <div>
         <h2>Grid + Cwisp + 1 obj</h2>
-        <sm-grid-tracker
-          :inventory="inventory"
-          @toggle-objective="toggleObjective"
-          @toggle-item="toggle"
-          @add-item="add"
-          :width="300"
-          :world="world"
-          mode="cwisp"
-          :objectives="getObjectives(1)"
-        />
+        <div>
+          <sm-grid-tracker
+            :inventory="inventory"
+            @toggle-objective="toggleObjective"
+            @toggle-item="toggle"
+            @add-item="add"
+            :width="300"
+            :world="world"
+            mode="cwisp"
+            :objectives="getObjectives(1)"
+          />
+        </div>
       </div>
       <div>
         <h2>Grid + Cwisp + 8 obj</h2>
-        <sm-grid-tracker
-          :inventory="inventory"
-          @toggle-objective="toggleObjective"
-          @toggle-item="toggle"
-          @add-item="add"
-          :width="300"
-          :world="world"
-          mode="cwisp"
-          :objectives="getObjectives(8)"
-        />
+        <div>
+          <sm-grid-tracker
+            :inventory="inventory"
+            @toggle-objective="toggleObjective"
+            @toggle-item="toggle"
+            @add-item="add"
+            :width="300"
+            :world="world"
+            mode="cwisp"
+            :objectives="getObjectives(8)"
+          />
+        </div>
       </div>
       <div>
         <h2>Grid + Cwisp + 18 obj</h2>
-        <sm-grid-tracker
-          :inventory="inventory"
-          @toggle-objective="toggleObjective"
-          @toggle-item="toggle"
-          @add-item="add"
-          :width="300"
-          :world="world"
-          mode="cwisp"
-          :objectives="getObjectives(18)"
-        />
+        <div>
+          <sm-grid-tracker
+            :inventory="inventory"
+            @toggle-objective="toggleObjective"
+            @toggle-item="toggle"
+            @add-item="add"
+            :width="300"
+            :world="world"
+            mode="cwisp"
+            :objectives="getObjectives(18)"
+          />
+        </div>
       </div>
       <div>
         <h2>Grid</h2>
-        <sm-grid-tracker
-          mode="grid"
-          :inventory="inventory"
-          @toggle-item="toggle"
-          @toggle-objective="toggleObjective"
-          @add-item="add"
-          :width="300"
-          :world="world"
-          :objectives="getObjectives(18)"
-        />
+        <div>
+          <sm-grid-tracker
+            mode="grid"
+            :inventory="inventory"
+            @toggle-item="toggle"
+            @toggle-objective="toggleObjective"
+            @add-item="add"
+            :width="300"
+            :world="world"
+            :objectives="getObjectives(18)"
+          />
+        </div>
       </div>
     </div>
     <div>
       <h2>Grid + Compact</h2>
-      <sm-grid-tracker
-        mode="compact"
-        :inventory="inventory"
-        @toggle-item="toggle"
-        @add-item="add"
-        :width="300"
-        :world="world"
-      />
+      <div>
+        <sm-grid-tracker
+          mode="compact"
+          :inventory="inventory"
+          @toggle-item="toggle"
+          @add-item="add"
+          :width="300"
+          :world="world"
+        />
+      </div>
     </div>
     <div>
       <h2>Pause Inventory</h2>
-      <sm-pause-tracker
-        :inventory="inventory"
-        @toggle-item="toggle"
-        @add-item="add"
-        :width="300"
-        :world="world"
-      />
+      <div>
+        <sm-pause-tracker
+          :inventory="inventory"
+          @toggle-item="toggle"
+          @add-item="add"
+          :width="300"
+          :world="world"
+        />
+      </div>
     </div>
     <div>
       <h2>Pause Inventory + controlled</h2>
-      <sm-pause-tracker
-        :controlled="true"
-        :inventory="inventory"
-        @toggle-item="toggle"
-        @add-item="add"
-        :width="300"
-        :world="world"
-      />
+      <div>
+        <sm-pause-tracker
+          :controlled="true"
+          :inventory="inventory"
+          @toggle-item="toggle"
+          @add-item="add"
+          :width="300"
+          :world="world"
+        />
+      </div>
     </div>
   </div>
 </template>
