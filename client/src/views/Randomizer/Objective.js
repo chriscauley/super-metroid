@@ -6,7 +6,13 @@ import { getServerData } from '@/utils'
 varia.objective = reactive(varia.objective)
 
 getServerData().then(({ data }) => {
-  varia.loadObjectives(data.objective_by_id)
+  if (data.objective_by_id) {
+    varia.loadObjectives(data.objective_by_id)
+  } else {
+    // This is an endpoint on the master branch right now
+    // remove warning next time prod is merged with master
+    console.warn('randomizerData.json did not have objectives')
+  }
 })
 
 export default (randomizer) => {

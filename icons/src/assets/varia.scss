@@ -306,7 +306,9 @@ $objs: kill-one-g-4, kill-two-g-4, kill-three-g-4, kill-all-g-4,
     opacity: 0.5;
   }
   &.btn-empty {
+    background-color: #eeeeee;
     /* custom button for unselected button */
+    &,
     &:hover,
     &:focus {
       /* bootstrap defaults this to white */
