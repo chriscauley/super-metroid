@@ -17,6 +17,7 @@ module.exports = defineConfig({
       new CopyPlugin({
         patterns: [
           './layouts/**/*',
+          { from: '../icons/build/', to: 'icons' },
         ]
       }),
     ]

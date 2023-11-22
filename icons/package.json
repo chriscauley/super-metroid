@@ -10,7 +10,7 @@
     "build:smi": "./bin/build inventory",
     "build:smv": "./bin/build varia",
     "build:images": "rsync -a src/assets/images build/",
-    "build": "yarn build:client && yarn build:css && yarn build:images",
+    "build": "yarn build:css && yarn build:images",
     "lint": "eslint \"src/**/*\""
   },
   "devDependencies": {
