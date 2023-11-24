@@ -1351,10 +1351,10 @@
   resolved "https://registry.yarnpkg.com/@unrest/tailwind/-/tailwind-0.1.25.tgz#50943973cf031177980240e60974ad80f3a089d9"
   integrity sha512-N6yif38JjVNp/bqFBdpwHV7cF26zbenVoo0C6EetJD+vjupX/KGWM76rQyvD0NRewYbwmQNAMDF7CnsCsnAFAw==
 
-"@unrest/vue-form@0.0.20":
-  version "0.0.20"
-  resolved "https://registry.yarnpkg.com/@unrest/vue-form/-/vue-form-0.0.20.tgz#02e3fe1faea645b8fbc2b1ffcbecc8f25ee3e32d"
-  integrity sha512-pi+qx5g24UBANlxcZiH0xbV3qiNIyppE1HV+rRaaWISgOYD8voPQij0iJqiwIcurDQ8lAiYX/xxrWCYvjQ/0KQ==
+"@unrest/vue-form@0.0.21":
+  version "0.0.21"
+  resolved "https://registry.yarnpkg.com/@unrest/vue-form/-/vue-form-0.0.21.tgz#1675fb8cdfaee37fa0db697d71919b5a125b6eee"
+  integrity sha512-UdAAADOFhFrHiHZnTh466c6X5DrcvXSiNQ3MuWcP4Dw5+HXzLv6Mce5qwDlTbtmvk2599t4XDzZj38NkN/hKPg==
   dependencies:
     jsonschema "^1.4.0"
     lodash.clonedeep "^4.5.0"
@@ -5897,10 +5897,10 @@ sm-data@0.0.6:
   resolved "https://registry.yarnpkg.com/sm-data/-/sm-data-0.0.6.tgz#1ae68dd05caf8906039943aefb0d94c51352262c"
   integrity sha512-ZJ2aJTqtPVMWZ3X12Vk/F0S0PgY29mxbME3xc7a+RmKi6YyMSLQWLBmrTzYxmYMB3ej286xWCFh1ERS/YaX6qg==
 
-sm-data@0.0.7:
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/sm-data/-/sm-data-0.0.7.tgz#95e3c7955a14b836edb507cee86541ae047c6c13"
-  integrity sha512-2XpA9SGE6AOduCpgcmb8440WmdA3UjgoCyInvx3JQwEh7Bd0FXkdarA/VtKbryPybCv9eGOC+JSCq5ft4IUlIQ==
+sm-data@0.0.8:
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/sm-data/-/sm-data-0.0.8.tgz#8839b23b29b60e65beac54d37745112339e0e576"
+  integrity sha512-5Wd/dFXGpjzapBgpmyFEzruQ52wzKLoDZWhDmRwXS4qTc0MTWAY9hSybxIuCz7P5cWxOjVykmEYwqTtf9O1KZA==
 
 sm-vue@0.0.18:
   version "0.0.18"
