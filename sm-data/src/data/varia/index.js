@@ -116,6 +116,13 @@ const varia = {
     })
     varia.objective.by_id = by_id
     varia.objective.by_category = by_category
+    const { memes } = varia.objective.by_category
+    if (memes) {
+      // memes should be last, but it's easier to change here than in the backend
+      // TODO change in backendx
+      delete varia.objective.by_category.memes
+      varia.objective.by_category.memes = memes
+    }
   },
 }
 
