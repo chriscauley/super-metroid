@@ -18,7 +18,7 @@ export default {
   },
   computed: {
     show() {
-      return this.tool_storage.state.tracker_settings.item_tracker === 'area-counter'
+      return this.tool_storage.state.tracker_settings.tracker_mode === 'area-counter'
     },
     rows() {
       const counts = {}

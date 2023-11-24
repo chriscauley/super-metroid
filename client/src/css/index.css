@@ -52,26 +52,33 @@ html, body, #app {
       @apply relative;
     }
   }
-  &.-entity-filter-door, &.-entity-filter-item, &.-entity-filter-warp {
-    .location-marker, .area-warp, .area-door, .warp-connections {
-      display: none;
-    }
+  &.-doors-hide .area-door {
+    display: none;
   }
-  &.-entity-filter-door .area-door {
-    display: block;
+  &.-locations-hide .location-marker {
+    display: none;
   }
-  &.-entity-filter-item .location-marker {
-    display: block;
-  }
-  &.-entity-filter-warp .area-warp,
-  &.-entity-filter-warp .warp-connections {
-    display: block;
+  &.-warps-hide .area-warp,
+  &.-warps-hide .warp-connections {
+    display: none;
   }
 }
 
 .tracker-view__config {
   .dropdown-items {
-    width: 17rem;
+    min-width: 17rem;
+  }
+  .btn {
+    text-transform: unset;
+  }
+  .form-group {
+    &__doors,
+    &__locations,
+    &__warps,
+    &__compact,
+    &__warp-display {
+      justify-content: space-between;
+    }
   }
 }
 
@@ -143,10 +150,10 @@ html, body, #app {
     background: radial-gradient(farthest-side, #000, #000 33%, #7001ce 75%, #FF00FF);
     border-radius: 100%;
     content: '';
-    .large_warps & {
+    .tracker-view.-warps-large & {
       inset: -25%;
     }
-    .-layout-alt-streaming.large_warps & {
+    .-layout-alt-streaming.-warps-large & {
       inset: -10%;
     }
   }
@@ -167,7 +174,7 @@ html, body, #app {
     content: "";
     border: 2px solid #ddd;
     animation: borderBlink 0.5s linear infinite;
-    .large_locations & {
+    .tracker-view.-locations-large & {
       inset: -10%;
     }
   }
@@ -433,7 +440,7 @@ body {
     height: 40%;
     width: 100%;
   }
-  .large_doors & {
+  .tracker-view.-doors-large & {
     height: 150%;
     width: 60%;
     &.-rotated {

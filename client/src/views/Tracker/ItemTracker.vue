@@ -82,13 +82,13 @@ export default {
       return this.json_data ? 'varia' : undefined
     },
     config() {
-      const { item_tracker } = this.tool_storage.state.tracker_settings
-      if (!item_tracker) {
+      const { tracker_mode } = this.tool_storage.state.tracker_settings
+      if (!tracker_mode) {
         return {}
       }
       return {
-        tagName: item_tracker === 'pause-menu' ? 'sm-pause-tracker' : 'sm-grid-tracker',
-        mode: item_tracker,
+        tagName: tracker_mode === 'pause-menu' ? 'sm-pause-tracker' : 'sm-grid-tracker',
+        mode: tracker_mode,
         class: 'item-tracker__wrapper',
       }
     },

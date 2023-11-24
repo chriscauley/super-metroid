@@ -1,4 +1,4 @@
-.area-box {
+.tracker-view .area-box {
   @apply absolute left-0 top-0;
   &__gps {
     @apply absolute hidden h-full w-full;

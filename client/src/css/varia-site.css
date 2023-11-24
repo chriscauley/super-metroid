@@ -52,10 +52,6 @@ body.-site-varia {
     /* tailwind makes images display: block */
     img { display: inline-block; }
   }
-  .tracker-view__config .dropdown-items {
-    /* root font size makes this smaller than it should be */
-    width: 272px;
-  }
   .popover[class*="tour-"] {
     background: white;
     overflow: visible;

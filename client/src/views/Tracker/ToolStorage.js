@@ -11,16 +11,19 @@ const warn = unrest.ui.toast.warning
 
 const { TOGGLE } = toolbar.ToolStorage
 
+const size_field = {
+  type: 'string',
+  enum: ['small', 'large', 'hide'],
+  ui: { tagName: 'unrest-radio-buttons' },
+}
+
 const tracker_settings = {
   schema: {
     type: 'object',
     properties: {
-      large_doors: { type: 'boolean' },
-      large_locations: { type: 'boolean' },
-      large_warps: { type: 'boolean' },
-      show_objectives: {
-        type: 'boolean',
-      },
+      locations: size_field,
+      warps: size_field,
+      doors: size_field,
       // editor_mode: {
       //   title: 'Controls',
       //   type: 'string',
@@ -28,40 +31,48 @@ const tracker_settings = {
       //   enumNames: ['Google Maps', 'Photo Shop'],
       //   default: '',
       // },
-      item_tracker: {
+      compact: {
         type: 'string',
-        enum: ['', 'pause-menu', 'grid', 'compact', 'cwisp'],
-        enumNames: ['None', 'Pause Menu', 'Grid', 'Compact Grid', 'CWISP Grid'],
+        ui: { tagName: 'unrest-radio-buttons' },
+        enum: ['auto', 'never', 'always'],
+      },
+      warp_display: {
+        type: 'string',
+        ui: { tagName: 'unrest-radio-buttons' },
+        enum: ['dot', 'codes'],
       },
       room_visibility: {
         type: 'string',
         enum: ['highlight-open', 'hide-closed'],
       },
-      no_compact: {
-        title: 'Never Compact',
-        type: 'boolean',
-      },
-      show_grid: {
-        type: 'boolean',
+      tracker_mode: {
+        type: 'string',
+        enum: ['', 'pause-menu', 'grid', 'compact', 'cwisp'],
+        enumNames: ['None', 'Pause Menu', 'Grid', 'Compact Grid', 'CWISP Grid'],
       },
       tracker_grid: {
         type: 'boolean',
       },
-      warp_display: {
-        type: 'string',
-        enum: ['dot', 'codes'],
+      show_grid: {
+        type: 'boolean',
+        title: 'Map Grid',
+      },
+      popout_objectives: {
+        type: 'boolean',
+        title: 'Show Objectives',
       },
     },
   },
   initial: {
     warp_display: 'dot',
-    large_doors: false,
-    large_locations: false,
-    large_warps: false,
-    show_objectives: true,
-    item_tracker: 'pause-menu',
+    doors: 'small',
+    locations: 'small',
+    warps: 'small',
+
+    popout_objectives: false,
+    tracker_mode: 'cwisp',
     room_visibility: 'highlight-open',
-    no_compat: false,
+    compact: 'auto',
   },
 }
 

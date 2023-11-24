@@ -33,7 +33,7 @@ export default {
         delete schema.properties.show_grid
       }
       if (selected !== 'nordub') {
-        delete schema.properties.no_compact
+        delete schema.properties.compact
       }
       return schema
     },

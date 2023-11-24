@@ -17,7 +17,6 @@
         <tracker-settings />
         <rando-settings />
         <objective-settings />
-        <entity-filter v-if="is_plando" />
       </template>
     </unrest-toolbar>
     <div v-if="completed_objectives" class="objectivesPopup" @click="completed_objectives = null">
@@ -31,7 +30,7 @@
       <span v-if="selected_key"> {{ selected_key }} + </span>
       {{ tool_storage.state.key_stack.join(' ') }}
     </div>
-    <objective-checklist v-if="tool_storage.state.tracker_settings.show_objectives" />
+    <objective-checklist v-if="tool_storage.state.tracker_settings.popout_objectives" />
     <item-counter :game_state="game_state" :areas="areas" />
     <item-tracker :inventory="game_state.inventory" @add-item="addItem" @toggle-item="toggleItem" />
     <timer-widget v-if="!is_plando" />
@@ -52,7 +51,6 @@ import { computed } from 'vue'
 import { saveFile } from '@/utils'
 import { location_type_map, subarea_by_area, vanilla_warps, varia } from 'sm-data'
 import EditArea from './EditArea.vue'
-import EntityFilter from './EntityFilter.vue'
 import ItemCounter from './ItemCounter.vue'
 import ItemTracker from './ItemTracker.vue'
 import ObjectiveChecklist from './ObjectiveChecklist.vue'
@@ -68,7 +66,6 @@ export default {
   name: 'TrackerView',
   components: {
     EditArea,
-    EntityFilter,
     ItemCounter,
     ItemTracker,
     ObjectiveChecklist,
@@ -108,12 +105,20 @@ export default {
         return {}
       }
       const { areaRando, bossRando, escapeRando } = this.tool_storage.getRandoSettings()
-      const { no_compact } = this.tool_storage.state.tracker_settings
+      const { compact } = this.tool_storage.state.tracker_settings
+      if (compact === 'auto') {
+        return {
+          area: !areaRando,
+          sand: !areaRando,
+          escape: !escapeRando,
+          boss: !bossRando,
+        }
+      }
       return {
-        area: !no_compact && !areaRando,
-        sand: !no_compact && !areaRando,
-        escape: !no_compact && !escapeRando,
-        boss: !no_compact && !bossRando,
+        area: compact === 'always',
+        sand: compact === 'always',
+        escape: compact === 'always',
+        boss: compact === 'always',
       }
     },
     selected_layout() {
@@ -152,8 +157,7 @@ export default {
     },
     wrapper_class() {
       const { tracker_settings } = this.tool_storage.state
-      const { entity_filter } = this.$store.ui.state
-      const { large_warps, large_locations, large_doors } = tracker_settings
+      const { warps, locations, doors } = tracker_settings
       const { tool } = this.tool_storage.state.selected
       const layout = this.$store.layout.state.selected
       const { logic } = this.tool_storage.getRandoSettings()
@@ -161,8 +165,7 @@ export default {
       document.body.dataset.variaLogic = logic
       return [
         `tracker-view -layout-${layout} -tool-${tool} -logic-${logic}`,
-        { large_locations, large_warps, large_doors },
-        this.is_plando && entity_filter && `-entity-filter-${entity_filter}`,
+        `-locations-${locations} -warps-${warps} -doors-${doors}`,
         debug && `-debug-${debug}`,
         this.compact_settings.area && '-compact-area',
         this.compact_settings.boss && '-compact-boss',

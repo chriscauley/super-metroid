@@ -66,7 +66,7 @@ export default {
   watch: {
     'tool_storage.state.rando_settings.areaRando': 'resetZoom',
     'tool_storage.state.rando_settings.bossRando': 'resetZoom',
-    'tool_storage.state.tracker_settings.no_compact': 'resetZoom',
+    'tool_storage.state.tracker_settings.compact': 'resetZoom',
   },
   mounted() {
     this.$store.state.osd_store = this.osd_store

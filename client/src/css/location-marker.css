@@ -1,4 +1,4 @@
-.location-marker {
+.tracker-view .location-marker {
   @apply absolute cursor-pointer;
   width: 100%;
   height: 100%;
@@ -14,14 +14,14 @@
 }
 
 .tracker-view {
-  &.large_locations .location-marker,
+  &.-locations-large .location-marker,
   .location-marker:hover, .location-marker.-hover {
     width: 150%;
     height: 150%;
   }
 }
 
-.large_locations .location-marker {
+.tracker-view.-locations-large .location-marker {
   &:hover, &.-hover {
     width: 200%;
     height: 200%
@@ -52,7 +52,7 @@
   }
 }
 
-.-logic-mirror.large_locations .location-marker {
+.-logic-mirror.-large-locationslocations .location-marker {
   &.-align-right {
     transform: translate(-25%, -50%);
   }
