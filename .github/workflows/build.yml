@@ -33,6 +33,7 @@ jobs:
         run: |
           yarn install
           yarn build:release
+          rm dist/js/*.js.map
           mv dist client
           tar -czvf release.tar.gz client
 
