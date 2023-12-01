@@ -140,8 +140,7 @@ $items: list.join($beams, $other_items);
 
 .grid-tracker {
   @apply flex flex-wrap flex-col items-center justify-center;
-  gap: 0.2em;
-  padding: 0.2em;
+  gap: 0.1em;
   &.smi-tracker {
     image-rendering: unset;
   }
