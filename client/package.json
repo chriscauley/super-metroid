@@ -27,7 +27,7 @@
     "postcss-import": "^15.0.0",
     "postcss-simple-vars": "^7.0.1",
     "raw-loader": "^4.0.2",
-    "sm-data": "0.0.8",
+    "sm-data": "0.0.9",
     "sm-vue": "0.0.18",
     "url": "^0.11.0",
     "vue": "^3.2.13",

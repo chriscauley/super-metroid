@@ -130,6 +130,7 @@ export default {
           this.icon,
           this.hover && '-hover',
           is_major && '-is-major',
+          this.locData?.mayNotComeback && '-softlock',
         ],
       }
     },

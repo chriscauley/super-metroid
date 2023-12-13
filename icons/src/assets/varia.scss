@@ -106,6 +106,10 @@ $varia-levels: break easy medium hard harder hardcore mania;
         background-position: 0;
         background-image: url("./images/varia/marker_#{$name}_major.gif");
       }
+      &.-softlock {
+        background-position: 0;
+        background-image: url("./images/varia/maybe.png"), url("./images/varia/marker_#{$name}.gif");
+      }
     }
   }
   &:before {

@@ -5897,10 +5897,10 @@ sm-data@0.0.6:
   resolved "https://registry.yarnpkg.com/sm-data/-/sm-data-0.0.6.tgz#1ae68dd05caf8906039943aefb0d94c51352262c"
   integrity sha512-ZJ2aJTqtPVMWZ3X12Vk/F0S0PgY29mxbME3xc7a+RmKi6YyMSLQWLBmrTzYxmYMB3ej286xWCFh1ERS/YaX6qg==
 
-sm-data@0.0.8:
-  version "0.0.8"
-  resolved "https://registry.yarnpkg.com/sm-data/-/sm-data-0.0.8.tgz#8839b23b29b60e65beac54d37745112339e0e576"
-  integrity sha512-5Wd/dFXGpjzapBgpmyFEzruQ52wzKLoDZWhDmRwXS4qTc0MTWAY9hSybxIuCz7P5cWxOjVykmEYwqTtf9O1KZA==
+sm-data@0.0.9:
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/sm-data/-/sm-data-0.0.9.tgz#05278df6c708a1807a28499a755cfacbd4871c79"
+  integrity sha512-2WViLgi83NvdQM2lxG8y77O5TNjaGWtrdT198c+VP1EGcIRQd2bax8SreDtNbz9LO/Hse4SdlbY1kE5lrXmWqQ==
 
 sm-vue@0.0.18:
   version "0.0.18"
