@@ -57,8 +57,9 @@ const getNumbers = (value, multiplier, pad = 2) => {
     .map((n) => `smi-number -number-${n}`)
 }
 
+const minibosses = ['spore-spawn', 'crocomire', 'botwoon', 'golden-torizo']
 const getIcon = (slug, value) => {
-  if (['ridley', 'draygon', 'phantoon', 'kraid'].includes(slug)) {
+  if (VANILLA[slug] || minibosses.includes(slug)) {
     return [`sm-g4-head -${slug}`, value && '-inactive']
   }
   return [`sm-item -${slug}`, !value && '-has-not']
