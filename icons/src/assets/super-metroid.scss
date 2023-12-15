@@ -31,6 +31,9 @@
 }
 
 .sm-cwisp {
+  &:before {
+    background-image: url('./images/cwisp/cwisp-bg.png');
+  }
   &__cell {
     @apply absolute cursor-pointer;
     border-radius: 10%;
@@ -38,6 +41,7 @@
     height: math.div(7, 17) * 100%;
     image-rendering: pixelated;
     transition: 0.25s;
+    opacity: 0;
     width: math.div(7, 17) * 100%;
     &.-inactive {
       filter: grayscale(1) brightness(0.25);
@@ -47,12 +51,14 @@
       }
     }
     &.-active {
+      opacity: 1;
       z-index: 2;
       &.-charge-beam {
         z-index: 3;
       }
     }
     &:hover {
+      opacity: 1;
       scale: 1.2;
       z-index: 4;
     }
