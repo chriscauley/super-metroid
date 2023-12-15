@@ -134,11 +134,14 @@
   @each $name in spore-spawn crocomire botwoon golden-torizo {
     /* these are only used in the SMRAT tracker */
     &.-#{$name}:before {
-      background-size: conver;
       background-repeat: no-repeat;
       background-position: center;
       background-image: url(./images/bosses/#{$name}_head.png);
     }
+  }
+  &.-shaktool:before {
+      background-repeat: no-repeat;
+      background-image: url(./images/objectives/kill-shaktool.png);
   }
 }
 
