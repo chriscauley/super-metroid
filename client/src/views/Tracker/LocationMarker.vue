@@ -23,7 +23,7 @@
             </div>
             {{ items.length === 0 ? 'None' : '' }}
           </div>
-          <div v-if="locData.comeBack === false">
+          <div v-if="locData.mayNotComeback">
             {{ "WARNING: Can't come back" }}
           </div>
           <div v-if="locData.difficulty">Difficulty: {{ locData.difficulty[1] }}</div>
