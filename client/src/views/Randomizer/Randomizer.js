@@ -1,4 +1,5 @@
 import { startCase, cloneDeep } from 'lodash'
+import { varia } from 'sm-data'
 import { reactive } from 'vue'
 import Objective from './Objective'
 
@@ -37,6 +38,7 @@ export default (component) => {
       data.layout = data.layoutPatches
       delete data.layoutPatches
     }
+
     if (isTrue(data.objectiveRandom)) {
       data.objective = data.objectiveMultiSelect
     }
@@ -75,9 +77,6 @@ export default (component) => {
       changed && side_effects[key]?.()
     },
     init: (data) => {
-      if (data.readonly) {
-        data.objective = data.objective.split(',')
-      }
       const fixed_data = migratePreset(data)
       Object.keys(state).forEach((key) => delete state[key])
       Object.assign(state, fixed_data)

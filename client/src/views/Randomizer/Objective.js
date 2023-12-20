@@ -37,7 +37,7 @@ export default (randomizer) => {
     // disable/enable relevant inputs
     window.disableElement('hiddenObjectives', !value)
     window.disableElement('distributeObjectives', !value)
-    window.disableElement('nbObjective', !value)
+    window.disableElement('nbObjective', !value || window.isElemIdRandom('nbObjective'))
     window.$('#nbObjectiveRandom').attr('disabled', !value)
     const dice = document.getElementById('objectiveRandom')
     dice.classList[value ? 'add' : 'remove']('active')
