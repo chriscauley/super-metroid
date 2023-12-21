@@ -1,5 +1,4 @@
 import { startCase, cloneDeep } from 'lodash'
-import { varia } from 'sm-data'
 import { reactive } from 'vue'
 import Objective from './Objective'
 

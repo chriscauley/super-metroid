@@ -1,5 +1,5 @@
 <template>
-  <div class="area-box" :style="style">
+  <div :class="`area-box -area-${area.slug}`" :style="style">
     <div
       v-for="door in doors"
       :key="door.id"

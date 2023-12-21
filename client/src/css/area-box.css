@@ -25,7 +25,44 @@
       fill: rgba(0, 0, 0, 0.75);
     }
     &.-open {
-      fill: rgba(255, 255, 255, 0.25);
+      opacity: 0.5; /* 75 / 256) */
+      .-area-crater & {
+        fill: #4A7B6B;
+      }
+      .-area-green-brinstar & {
+        fill: #4AAD4A;
+      }
+      .-area-red-brinstar & {
+        fill: #AD4208;
+      }
+      .-area-phantoon &,
+      .-area-wrecked-ship & {
+        fill: #8E8E4E;
+      }
+      .-area-kraid &,
+      .-area-kraids-lair & {
+        fill: #CED63B;
+      }
+      .-area-upper-norfair & {
+        fill: #FF8C00;
+      }
+      .-area-crocomire & {
+        fill: #631532;
+      }
+      .-area-ridley &,
+      .-area-lower-norfair & {
+        fill: #FF3100;
+      }
+      .-area-west-maridia & {
+        fill: #008CFF;
+      }
+      .-area-draygon &,
+      .-area-east-maridia & {
+        fill: #E78CDE;
+      }
+      .-area-tourian & {
+        fill: #BC9898;
+      }
     }
   }
   .-editing-svg & { /* TODO when in editing mode, show svg and add this class */
