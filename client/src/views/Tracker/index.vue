@@ -31,7 +31,7 @@
       {{ tool_storage.state.key_stack.join(' ') }}
     </div>
     <objective-checklist v-if="tool_storage.state.tracker_settings.popout_objectives" />
-    <item-counter :game_state="game_state" :areas="areas" />
+    <area-counter :areas="areas" />
     <item-tracker :inventory="game_state.inventory" @add-item="addItem" @toggle-item="toggleItem" />
     <timer-widget v-if="!is_plando" />
     <seed-settings :json_data="json_data" />
@@ -50,8 +50,8 @@ import { computed } from 'vue'
 
 import { saveFile } from '@/utils'
 import { location_type_map, subarea_by_area, vanilla_warps, varia } from 'sm-data'
+import AreaCounter from './AreaCounter.vue'
 import EditArea from './EditArea.vue'
-import ItemCounter from './ItemCounter.vue'
 import ItemTracker from './ItemTracker.vue'
 import ObjectiveChecklist from './ObjectiveChecklist.vue'
 import ObjectiveSettings from './ObjectiveSettings.vue'
@@ -65,8 +65,8 @@ import SeedSettings from './SeedSettings.vue'
 export default {
   name: 'TrackerView',
   components: {
+    AreaCounter,
     EditArea,
-    ItemCounter,
     ItemTracker,
     ObjectiveChecklist,
     ObjectiveSettings,

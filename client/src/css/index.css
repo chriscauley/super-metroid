@@ -4,7 +4,7 @@
 @import './delete-me.css';
 @import './drop-list.css';
 @import './edit-area.css';
-@import './item-counter.css';
+@import './area-counter.css';
 @import './item-tracker.css';
 @import './grid-tracker.css';
 @import './golden-four.css';
@@ -367,23 +367,6 @@ body {
   font-size: 3rem;
   font-weight: bold;
   text-transform: uppercase;
-}
-
-.item-counter {
-  @apply absolute font-bold text-white;
-  pointer-events: none;
-  text-shadow: 0 0 2px black;
-  user-select: none;
-  .-complete {
-    opacity: 0.5;
-  }
-  td {
-    @apply pl-2;
-  }
-  td:first-child {
-    @apply border-r pr-2;
-    text-align: right;
-  }
 }
 
 .ur-toolbar .sm-icon{

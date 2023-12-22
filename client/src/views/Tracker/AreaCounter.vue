@@ -1,5 +1,5 @@
 <template>
-  <table class="item-counter" v-if="show">
+  <table class="area-counter" v-if="show">
     <tr v-for="row in rows" :key="row[0]" :class="row[2]">
       <td>{{ row[1] }}</td>
       <td>{{ row[0] }}</td>
@@ -18,7 +18,7 @@ export default {
   },
   computed: {
     show() {
-      return this.tool_storage.state.tracker_settings.tracker_mode === 'area-counter'
+      return this.tool_storage.state.tracker_settings.area_counter
     },
     rows() {
       const counts = {}

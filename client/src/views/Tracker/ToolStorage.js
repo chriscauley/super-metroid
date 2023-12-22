@@ -61,6 +61,10 @@ const tracker_settings = {
         type: 'boolean',
         title: 'Show Objectives',
       },
+      area_counter: {
+        type: 'boolean',
+        title: 'Area Counter',
+      },
     },
   },
   initial: {
@@ -73,6 +77,7 @@ const tracker_settings = {
     tracker_mode: 'cwisp',
     room_visibility: 'highlight-open',
     compact: 'auto',
+    area_counter: false,
   },
 }
 
