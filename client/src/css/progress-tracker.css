@@ -1,0 +1,7 @@
+.progress-tracker {
+  @apply absolute flex;
+  font-size: 40px;
+  &__item {
+    @apply flex;
+  }
+}

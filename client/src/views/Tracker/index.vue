@@ -32,6 +32,7 @@
     </div>
     <objective-checklist v-if="tool_storage.state.tracker_settings.popout_objectives" />
     <area-counter :areas="areas" />
+    <progress-tracker />
     <item-tracker :inventory="game_state.inventory" @add-item="addItem" @toggle-item="toggleItem" />
     <timer-widget v-if="!is_plando" />
     <seed-settings :json_data="json_data" />
@@ -55,6 +56,7 @@ import EditArea from './EditArea.vue'
 import ItemTracker from './ItemTracker.vue'
 import ObjectiveChecklist from './ObjectiveChecklist.vue'
 import ObjectiveSettings from './ObjectiveSettings.vue'
+import ProgressTracker from './ProgressTracker.vue'
 import RandoSettings from './RandoSettings.vue'
 import TimerWidget from '@/components/TimerWidget'
 import ToolStorage from './ToolStorage'
@@ -70,6 +72,7 @@ export default {
     ItemTracker,
     ObjectiveChecklist,
     ObjectiveSettings,
+    ProgressTracker,
     RandoSettings,
     SeedSettings,
     TimerWidget,

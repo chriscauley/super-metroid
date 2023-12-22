@@ -1,10 +1,13 @@
 <template>
-  <table class="area-counter" v-if="show">
-    <tr v-for="row in rows" :key="row[0]" :class="row[2]">
-      <td>{{ row[1] }}</td>
-      <td>{{ row[0] }}</td>
-    </tr>
-  </table>
+  <div class="area-counter" v-if="show" :style="style">
+    <resize-box @update="resizeBox" />
+    <table>
+      <tr v-for="row in rows" :key="row[0]" :class="row[2]">
+        <td>{{ row[1] }}</td>
+        <td>{{ row[0] }}</td>
+      </tr>
+    </table>
+  </div>
 </template>
 
 <script>
@@ -17,6 +20,16 @@ export default {
     areas: Array,
   },
   computed: {
+    style() {
+      const { x, y } = this.$store.config.state['area-counter'] || {}
+      if (x === undefined) {
+        return {
+          bottom: 'var(--settings-height)',
+          left: 0,
+        }
+      }
+      return { top: `${y}px`, left: `${x}px` }
+    },
     show() {
       return this.tool_storage.state.tracker_settings.area_counter
     },
@@ -40,5 +53,10 @@ export default {
       })
     },
   },
+  methods: {
+    resizeBox(values) {
+      this.$store.config.save({ 'area-counter': values })
+    }
+  }
 }
 </script>

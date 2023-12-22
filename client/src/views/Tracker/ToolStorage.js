@@ -65,6 +65,10 @@ const tracker_settings = {
         type: 'boolean',
         title: 'Area Counter',
       },
+      progress_tracker: {
+        type: 'boolean',
+        title: 'Progress Tracker',
+      },
     },
   },
   initial: {
@@ -78,6 +82,7 @@ const tracker_settings = {
     room_visibility: 'highlight-open',
     compact: 'auto',
     area_counter: false,
+    progress_tracker: false,
   },
 }
 
