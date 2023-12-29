@@ -15,7 +15,7 @@ import { subarea_by_area } from 'sm-data'
 import { prepName } from '@/layouts'
 
 export default {
-  inject: ['tool_storage', 'game_state'],
+  inject: ['tool_storage', 'game_state', 'json_data'],
   props: {
     areas: Array,
   },
@@ -26,13 +26,21 @@ export default {
     rows() {
       const counts = {}
       const hits = {}
+      const any_major = Object.values(this.json_data?.all_locations || {}).some((l) => l.major)
       this.areas.forEach((area) => {
-        const locations = this.tool_storage.filterVisibleLocations(area.locations)
+        if (area.slug === 'tourian' || area.slug.endsWith('__compact')) {
+          return
+        }
         const target_area = subarea_by_area[area.slug] || area.slug
-        locations.forEach((location) => {
-          counts[target_area] = (counts[target_area] || 0) + 1
-          hits[target_area] = hits[target_area] || 0
-          if (this.game_state.locations[location.slug]) {
+        hits[target_area] = 0
+        counts[target_area] = 0
+        area.locations.forEach(({ slug }) => {
+          const location = this.json_data?.all_locations[slug] || {}
+          if (any_major && !location.major) {
+            return
+          }
+          counts[target_area] += 1
+          if (this.json_data?.visitedLocations[slug]) {
             hits[target_area] += 1
           }
         })
