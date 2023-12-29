@@ -3,10 +3,10 @@
     <div style="font-size: 64px">
       <sm-cwisp-tracker :inventory="inventory" @toggle-item="toggle" />
     </div>
-    <div class="flex">
+    <div>
       <div>
         <h2>Grid + Cwisp</h2>
-        <div>
+        <div class="flex">
           <sm-grid-tracker
             :inventory="inventory"
             @toggle-item="toggle"
@@ -19,7 +19,7 @@
       </div>
       <div>
         <h2>Grid + Cwisp + 1 obj</h2>
-        <div>
+        <div class="flex">
           <sm-grid-tracker
             :inventory="inventory"
             @toggle-objective="toggleObjective"
@@ -34,7 +34,7 @@
       </div>
       <div>
         <h2>Grid + Cwisp + 8 obj</h2>
-        <div>
+        <div class="flex">
           <sm-grid-tracker
             :inventory="inventory"
             @toggle-objective="toggleObjective"
@@ -49,7 +49,7 @@
       </div>
       <div>
         <h2>Grid + Cwisp + 18 obj</h2>
-        <div>
+        <div class="flex">
           <sm-grid-tracker
             :inventory="inventory"
             @toggle-objective="toggleObjective"
@@ -64,7 +64,7 @@
       </div>
       <div>
         <h2>Grid</h2>
-        <div>
+        <div class="flex">
           <sm-grid-tracker
             mode="grid"
             :inventory="inventory"
@@ -80,7 +80,7 @@
     </div>
     <div>
       <h2>Grid + Compact</h2>
-      <div>
+      <div class="flex">
         <sm-grid-tracker
           mode="compact"
           :inventory="inventory"
@@ -93,7 +93,7 @@
     </div>
     <div>
       <h2>Pause Inventory</h2>
-      <div>
+      <div class="flex">
         <sm-pause-tracker
           :inventory="inventory"
           @toggle-item="toggle"
@@ -105,7 +105,7 @@
     </div>
     <div>
       <h2>Pause Inventory + controlled</h2>
-      <div>
+      <div class="flex">
         <sm-pause-tracker
           :controlled="true"
           :inventory="inventory"
@@ -167,3 +167,7 @@ export default {
   },
 }
 </script>
+
+<style>
+.flex { display: flex; }
+</style>

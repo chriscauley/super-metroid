@@ -8,6 +8,17 @@ const initial = {
 
 export default () => {
   const storage = ReactiveLocalStorage({ LS_KEY, initial })
+  storage.getPosition = (slug) => {
+    const { x, y } = storage.state[slug] || {}
+    return x === undefined
+      ? null
+      : {
+          top: `${y}px`,
+          left: `${x}px`,
+          right: 'unset',
+          bottom: 'unset',
+        }
+  }
 
   return storage
 }

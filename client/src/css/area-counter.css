@@ -3,9 +3,10 @@ body {
 }
 
 .area-counter {
-  @apply absolute font-bold text-white;
+  @apply absolute font-bold left-0 text-white;
   text-shadow: 0 0 2px black;
   user-select: none;
+  bottom: var(--settings-height);
   .-complete {
     opacity: 0.5;
   }

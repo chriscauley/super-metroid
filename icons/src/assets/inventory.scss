@@ -141,6 +141,7 @@ $items: list.join($beams, $other_items);
 .grid-tracker {
   @apply flex flex-wrap flex-col items-center justify-center;
   gap: 0.1em;
+  padding: 0.2em;
   &.smi-tracker {
     image-rendering: unset;
   }
@@ -157,6 +158,11 @@ $items: list.join($beams, $other_items);
 
   .sm-item, .smv-objective {
     @apply relative;
+  }
+  &.-controlled {
+    .sm-item, .sm-g4-head {
+      cursor: default;
+    }
   }
 }
 

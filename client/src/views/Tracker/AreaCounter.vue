@@ -1,6 +1,6 @@
 <template>
-  <div class="area-counter" v-if="show" :style="style">
-    <resize-box @update="resizeBox" />
+  <div class="area-counter" v-if="show" :style="$store.config.getPosition('area-counter')">
+    <resize-box @update="(values) => $store.config.save({ 'area-counter': values })" />
     <table>
       <tr v-for="row in rows" :key="row[0]" :class="row[2]">
         <td>{{ row[1] }}</td>
@@ -20,16 +20,6 @@ export default {
     areas: Array,
   },
   computed: {
-    style() {
-      const { x, y } = this.$store.config.state['area-counter'] || {}
-      if (x === undefined) {
-        return {
-          bottom: 'var(--settings-height)',
-          left: 0,
-        }
-      }
-      return { top: `${y}px`, left: `${x}px` }
-    },
     show() {
       return this.tool_storage.state.tracker_settings.area_counter
     },
@@ -53,10 +43,5 @@ export default {
       })
     },
   },
-  methods: {
-    resizeBox(values) {
-      this.$store.config.save({ 'area-counter': values })
-    }
-  }
 }
 </script>

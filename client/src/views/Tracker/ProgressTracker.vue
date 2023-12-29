@@ -1,5 +1,6 @@
 <template>
-  <div class="progress-tracker" :style="style" v-if="show">
+  <div class="progress-tracker" v-if="show" :style="$store.config.getPosition('progress-tracker')">
+    <resize-box @update="(values) => $store.config.save({ 'progress-tracker': values })" />
     <div v-for="(difficulty, item) in items" :key="item" class="progress-tracker__item">
       <i :class="`sm-item -${item} smva-difficulty -difficulty-${difficulty}`" />
     </div>
@@ -12,12 +13,6 @@ import { varia } from 'sm-data'
 export default {
   inject: ['tool_storage', 'json_data'],
   computed: {
-    style() {
-      return {
-        bottom: 0,
-        right: 0,
-      }
-    },
     show() {
       return this.tool_storage.state.tracker_settings.progress_tracker
     },

@@ -12,7 +12,7 @@
         <i class="fa fa-question-circle" />
       </button>
     </div>
-    <resize-box @update="resizeBox" />
+    <resize-box @update="resizeBox" title="Item Tracker" />
     <component
       :is="config.tagName"
       :inventory="inventory"
