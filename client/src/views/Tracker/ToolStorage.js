@@ -43,7 +43,8 @@ const tracker_settings = {
       },
       room_visibility: {
         type: 'string',
-        enum: ['highlight-open', 'hide-closed'],
+        enum: ['highlight-open', 'hide-closed', 'both', 'neither'],
+        enumNames: ['Highlight Open', 'Hide Closed', 'Both', 'Neither'],
       },
       tracker_mode: {
         type: 'string',
@@ -79,7 +80,7 @@ const tracker_settings = {
 
     popout_objectives: false,
     tracker_mode: 'cwisp',
-    room_visibility: 'highlight-open',
+    room_visibility: 'both',
     compact: 'auto',
     area_counter: false,
     progress_tracker: false,

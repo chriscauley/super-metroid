@@ -21,11 +21,11 @@
   top: -100%;
   pointer-events: none;
   path {
+    opacity: 0;
     &.-closed {
-      fill: rgba(0, 0, 0, 0.75);
+      fill: #000000;
     }
     &.-open {
-      opacity: 0.5; /* 75 / 256) */
       .-area-crater & {
         fill: #4A7B6B;
       }
@@ -75,11 +75,11 @@
       stroke: red;
     }
   }
-  &.-highlight-open path.-closed {
-    display: none;
+  &.-highlight-open path.-open {
+    opacity: 0.5;
   }
-  &.-hide-closed path.-open {
-    display: none;
+  &.-hide-closed path.-closed {
+    opacity: 0.75;
   }
   text {
     fill: white;

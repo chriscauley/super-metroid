@@ -35,14 +35,14 @@ export default {
     svg_attrs() {
       const width = this.area.width
       const height = this.area.height
-      const { room_visibility } = this.tool_storage.state.tracker_settings
+      const rv = this.tool_storage.state.tracker_settings.room_visibility
       return {
         viewBox: [-1, -1, width + 2, height + 2].join(' '),
         style: {
           height: `${100 * (height + 2)}%`,
           width: `${100 * (width + 2)}%`,
         },
-        class: `area-box__svg -${room_visibility}`,
+        class: ['area-box__svg', rv === 'both' ? '-highlight-open -hide-closed' : `-${rv}`],
       }
     },
     text_attrs() {
