@@ -123,7 +123,7 @@ export default (randomizer) => {
       })
 
       Object.values(varia.objective.by_id).forEach((objective) => {
-        if (objective.id.startsWith('clear ')) {
+        if (objective.canAutoClear) {
           if (tourian === 'Disabled') {
             const reason = 'Clear ojectives cannot be used with disabled tourian.'
             disabled_map[objective.id] = reason
