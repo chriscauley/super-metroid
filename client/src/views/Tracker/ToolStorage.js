@@ -53,6 +53,7 @@ const tracker_settings = {
       },
       tracker_grid: {
         type: 'boolean',
+        title: 'Tracker Grid BG',
       },
       show_grid: {
         type: 'boolean',

@@ -4,7 +4,7 @@
       <i class="fa fa-check-square-o" />
     </button>
     <template #content>
-      <div class="dropdown-items">
+      <div class="dropdown-items" @click.stop>
         <div v-if="json_data?.objectivesHidden">
           <h3 class="form-group">Objectives Hidden</h3>
           <div class="dropdown-item">
