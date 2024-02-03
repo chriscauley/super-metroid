@@ -1,4 +1,4 @@
-.progress-tracker {
+.progression-tracker {
   @apply absolute bottom-0 flex flex-wrap right-0;
   font-size: 40px;
   height: 120px;
