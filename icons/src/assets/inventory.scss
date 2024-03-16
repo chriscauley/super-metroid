@@ -114,29 +114,48 @@ $items: list.join($beams, $other_items);
   }
   .smv-objective.-inactive,
   .sm-item:not(.-has-not),
-  .sm-g4-head.-inactive {
+  .sm-g4-head.-inactive,
+  .sm-cwisp__cell.-active {
     animation-duration: 0.4s;
     animation-iteration-count: 6;
-    animation-name: flicker-objective;
+    animation-name: flicker-selection;
+  }
+  --active-opacity: 1;
+  --active-filter: none;
+  .smv-objective {
+    --inactive-opacity: 0.5;
+    --inactive-filter: grayscale(0.25) brightness(0.75);
+  }
+  .sm-item {
+    --inactive-opacity: 0.5;
+    --inactive-filter: grayscale(0.25) brightness(0.75) blur(1px);
+  }
+  .sm-g4-head {
+    --inactive-opacity: 1;
+    --inactive-filter: grayscale(1);
+  }
+  .sm-cwisp {
+    --inactive-opacity: 0.75;
+    --inactive-filter: grayscale(0.75) brightness(0.5);
   }
 }
 
-@keyframes flicker-objective {
+@keyframes flicker-selection {
   0% {
-    opacity: 0.75;
-    filter: grayscale(1) brightness(0.75);
+    opacity: var(--inactive-opacity);
+    filter: var(--inactive-filter);
   }
   49.9% {
-    opacity: 0.75;
-    filter: grayscale(1) brightness(0.75);
+    opacity: var(--inactive-opacity);
+    filter: var(--inactive-filter);
   }
   50% {
-    opacity: 1;
-    filter: none;
+    opacity: var(--active-opacity);
+    filter: var(--active-filter);
   }
   100% {
-    opacity: 1;
-    filter: none;
+    opacity: var(--active-opacity);
+    filter: var(--active-filter);
   }
 }
 

@@ -16,12 +16,10 @@
     inset: 0;
     position: absolute;
   }
+  &.-inactive,
   &.-has-not {
-    opacity: 0.75;
-    filter: grayscale(1) brightness(0.75);
-  }
-  &.-inactive {
-    filter: grayscale(1) brightness(0.75);
+    opacity: var(--inactive-opacity);
+    filter: var(--inactive-filter);
   }
 }
 
@@ -31,9 +29,6 @@
 }
 
 .sm-cwisp {
-  &:before {
-    background-image: url('./images/cwisp/cwisp-bg.png');
-  }
   &__cell {
     @apply absolute cursor-pointer;
     border-radius: 10%;
@@ -41,17 +36,16 @@
     height: math.div(7, 17) * 100%;
     image-rendering: pixelated;
     transition: 0.25s;
-    opacity: 0;
+    opacity: 1;
     width: math.div(7, 17) * 100%;
     &.-inactive {
-      filter: grayscale(1) brightness(0.25);
-      z-index: 1;
+      opacity: var(--inactive-opacity);
+      filter: var(--inactive-filter);
       &:hover {
-        filter: grayscale(0.5) brightness(0.75);
+        filter: grayscale(1) brightness(0.75);
       }
     }
     &.-active {
-      opacity: 1;
       z-index: 2;
       &.-charge-beam {
         z-index: 3;
@@ -126,9 +120,6 @@
     &.-#{"" + $name}:before {
       background-image: url(./images/g4-head.png);
       background-position: 0 $i * -100%;
-    }
-    &.-inactive.-#{"" + $name}:before {
-      background-position: 0 ($i+4) * -100%;
     }
   }
   @each $name in spore-spawn crocomire botwoon golden-torizo {
