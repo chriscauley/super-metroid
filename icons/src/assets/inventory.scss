@@ -111,11 +111,13 @@ $items: list.join($beams, $other_items);
   }
   &.-no-chrome {
     background-image: none;
-    .smv-objective.-inactive {
-      animation-duration: 0.4s;
-      animation-iteration-count: 6;
-      animation-name: flicker-objective;
-    }
+  }
+  .smv-objective.-inactive,
+  .sm-item:not(.-has-not),
+  .sm-g4-head.-inactive {
+    animation-duration: 0.4s;
+    animation-iteration-count: 6;
+    animation-name: flicker-objective;
   }
 }
 
