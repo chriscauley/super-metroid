@@ -52,6 +52,7 @@ $allbosses: kraid phantoon draygon ridley mother-brain spore-spawn crocomire bot
 }
 
 .smv-icon.-map-cursor{
+  pointer-events: none;
   &:before {
     background-image: url(./images/varia/map-cursor.png);
     inset: -50%;

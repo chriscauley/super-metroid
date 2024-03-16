@@ -20,15 +20,15 @@
   }
 }
 
-.location-marker {
-  z-index: 20;
+.area-box__gps {
+  z-index: 25;
 }
 
-.area-door {
+.location-marker {
   z-index: 30;
 }
 
-.area-box__gps {
+.area-door {
   z-index: 35;
 }
 
