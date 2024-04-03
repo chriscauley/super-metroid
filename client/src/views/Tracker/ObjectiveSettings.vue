@@ -1,6 +1,6 @@
 <template>
   <unrest-dropdown class="tracker-view__config" v-if="goals.list.length">
-    <button class="btn -primary" title="Randomizer Settings">
+    <button class="btn -primary" title="Objective Settings">
       <i class="fa fa-check-square-o" />
     </button>
     <template #content>
