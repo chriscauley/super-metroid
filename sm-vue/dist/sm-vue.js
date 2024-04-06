@@ -1,4 +1,4 @@
-import { openBlock as i, createElementBlock as o, Fragment as b, renderList as f, normalizeClass as p, resolveComponent as ne, normalizeStyle as V, createBlock as oe, mergeProps as Z, createCommentVNode as ae, createElementVNode as _, createTextVNode as ue, toDisplayString as k } from "vue";
+import { openBlock as i, createElementBlock as n, Fragment as b, renderList as f, normalizeClass as p, resolveComponent as oe, normalizeStyle as V, createBlock as ne, mergeProps as Z, createCommentVNode as ae, createElementVNode as _, createTextVNode as ue, toDisplayString as k } from "vue";
 const y = (e, t) => {
   const s = e.__vccOpts || e;
   for (const [a, u] of t)
@@ -18,9 +18,9 @@ const y = (e, t) => {
     }
   }
 }, de = { class: "sm-cwisp" }, me = ["onClick"];
-function pe(e, t, s, a, u, n) {
-  return i(), o("div", de, [
-    (i(!0), o(b, null, f(n.beams, (r) => (i(), o("div", {
+function pe(e, t, s, a, u, o) {
+  return i(), n("div", de, [
+    (i(!0), n(b, null, f(o.beams, (r) => (i(), n("div", {
       class: p(r.class),
       onClick: (l) => e.$emit("toggle-item", r.id),
       key: r.id
@@ -234,8 +234,8 @@ var fe = 1 / 0, he = "[object Symbol]", ge = /[^\x00-\x2f\x3a-\x40\x5b-\x60\x7b-
   ſ: "ss"
 }, Ve = typeof v == "object" && v && v.Object === Object && v, Ze = typeof self == "object" && self && self.Object === Object && self, De = Ve || Ze || Function("return this")();
 function Ge(e, t, s, a) {
-  var u = -1, n = e ? e.length : 0;
-  for (a && n && (s = e[++u]); ++u < n; )
+  var u = -1, o = e ? e.length : 0;
+  for (a && o && (s = e[++u]); ++u < o; )
     s = t(s, e[u], u, e);
   return s;
 }
@@ -287,7 +287,7 @@ function rt(e, t, s) {
   return e = te(e), t = s ? void 0 : t, t === void 0 ? Ke(e) ? Je(e) : Pe(e) : e.match(t) || [];
 }
 var it = st;
-const nt = /* @__PURE__ */ be(it), x = {
+const ot = /* @__PURE__ */ be(it), x = {
   default: {
     _packs: {
       missile: 5,
@@ -317,7 +317,7 @@ const nt = /* @__PURE__ */ be(it), x = {
     draygon: "weapons-tank",
     "x-ray": "shinespark"
   }
-}, ot = (e) => nt(e.toLowerCase().replace("'", "")), se = [
+}, nt = (e) => ot(e.toLowerCase().replace("'", "")), se = [
   ["energy-tank", "reserve-tank", "missile", "super-missile", "power-bomb"],
   ["charge-beam", "ice-beam", "wave-beam", "spazer-beam", "plasma-beam"],
   ["morph-ball", "varia-suit", "spring-ball", "hi-jump-boots", "space-jump"],
@@ -373,15 +373,17 @@ const nt = /* @__PURE__ */ be(it), x = {
     },
     prepped_rows() {
       var s;
-      const e = x[this.world] || x.default, t = this.row_slugs.map(
+      const e = x[this.world] || x.default;
+      console.log(this.row_slugs);
+      const t = this.row_slugs.map(
         (a) => a.map((u) => {
           var r;
-          const n = this.inventory[u];
+          const o = this.inventory[u];
           return {
             slug: u,
-            numbers: L(n, (r = e._packs) == null ? void 0 : r[u]),
+            numbers: L(o, (r = e._packs) == null ? void 0 : r[u]),
             attrs: {
-              class: [ct(u, n), n > 99 && "-three-digits"],
+              class: [ct(u, o), o > 99 && "-three-digits"],
               id: `grid-tracker__${u}`
             }
           };
@@ -390,14 +392,14 @@ const nt = /* @__PURE__ */ be(it), x = {
       if (!this.vanilla_objectives) {
         const a = Object.keys(this.objectives || {}), { columns: u } = this;
         this.mode || t[3].push(...t.pop());
-        let n = t.findIndex((r) => r.length < t[0].length);
-        for (n === -1 && (n = t.length); a.length > 0; ) {
-          for (; ((s = t[n]) == null ? void 0 : s.length) >= u; )
-            n++;
-          t[n] || t.push([]);
-          const r = a.shift(), l = ot(r), m = this.objective_order || this.orders;
+        let o = t.findIndex((r) => r.length < t[0].length);
+        for (o === -1 && (o = t.length); a.length > 0; ) {
+          for (; ((s = t[o]) == null ? void 0 : s.length) >= u; )
+            o++;
+          t[o] || t.push([]);
+          const r = a.shift(), l = nt(r), m = this.objective_order || this.orders;
           let d;
-          m != null && m.includes(r) && (d = m.indexOf(r) + 1), t[n].push({
+          m != null && m.includes(r) && (d = m.indexOf(r) + 1), t[o].push({
             // slug vs id is a bit confusing because the varia "ids" are human readable
             slug: r,
             type: "objective",
@@ -442,36 +444,36 @@ const nt = /* @__PURE__ */ be(it), x = {
   key: 3,
   class: "fa fa-crosshairs _targeted"
 };
-function bt(e, t, s, a, u, n) {
-  const r = ne("sm-cwisp-tracker");
-  return i(), o("div", {
+function bt(e, t, s, a, u, o) {
+  const r = oe("sm-cwisp-tracker");
+  return i(), n("div", {
     class: p(`grid-tracker smi-tracker ${s.controlled ? "-controlled" : ""}`),
-    style: V(n.style)
+    style: V(o.style)
   }, [
-    (i(!0), o(b, null, f(n.prepped_rows, (l, m) => (i(), o("div", {
+    (i(!0), n(b, null, f(o.prepped_rows, (l, m) => (i(), n("div", {
       key: m,
       class: "grid-tracker__row"
     }, [
-      (i(!0), o(b, null, f(l, (d) => (i(), o("div", {
+      (i(!0), n(b, null, f(l, (d) => (i(), n("div", {
         key: d.slug,
         class: "grid-tracker__cell"
       }, [
-        d.slug === "cwisp" ? (i(), oe(r, {
+        d.slug === "cwisp" ? (i(), ne(r, {
           key: 0,
           inventory: s.inventory,
           onToggleItem: (g) => !s.controlled && e.$emit("toggle-item", g)
-        }, null, 8, ["inventory", "onToggleItem"])) : (i(), o("div", Z({ key: 1 }, d.attrs, {
-          onClick: (g) => n.click(g, d)
+        }, null, 8, ["inventory", "onToggleItem"])) : (i(), n("div", Z({ key: 1 }, d.attrs, {
+          onClick: (g) => o.click(g, d)
         }), null, 16, mt)),
-        d.numbers ? (i(), o("div", {
+        d.numbers ? (i(), n("div", {
           key: 2,
           class: p(`grid-tracker__numbers -length-${d.numbers.length}`)
         }, [
-          (i(!0), o(b, null, f(d.numbers, (g, ie) => (i(), o("div", {
+          (i(!0), n(b, null, f(d.numbers, (g, ie) => (i(), n("div", {
             key: ie,
             class: p(g)
           }, null, 2))), 128))
-        ], 2)) : d.target ? (i(), o("i", pt)) : ae("", !0)
+        ], 2)) : d.target ? (i(), n("i", pt)) : ae("", !0)
       ]))), 128))
     ]))), 128))
   ], 6);
@@ -597,16 +599,16 @@ const re = (e) => Array(e || 0).fill().map((t, s) => s), z = (e, t) => ({
     }
   }
 };
-function _t(e, t, s, a, u, n) {
-  return i(), o("div", {
-    class: p(n.wrapper_class),
-    style: V(n.style)
+function _t(e, t, s, a, u, o) {
+  return i(), n("div", {
+    class: p(o.wrapper_class),
+    style: V(o.style)
   }, [
-    (i(!0), o(b, null, f(n.groups, (r) => (i(), o("div", {
+    (i(!0), n(b, null, f(o.groups, (r) => (i(), n("div", {
       key: r.name,
       class: p(r.class)
     }, [
-      (i(!0), o(b, null, f(r.children, (l, m) => (i(), o("div", Z({ key: m }, l), null, 16))), 128))
+      (i(!0), n(b, null, f(r.children, (l, m) => (i(), n("div", Z({ key: m }, l), null, 16))), 128))
     ], 2))), 128))
   ], 6);
 }
@@ -630,28 +632,28 @@ const M = /* @__PURE__ */ y(gt, [["render", _t]]), xt = {
     }
   }
 }, yt = { class: "objective-selector" }, kt = { key: 0 }, wt = ["checked", "onInput"], jt = { key: 1 }, $t = { class: "objective-selector__button-list" }, Ot = ["title", "onClick"], St = { class: "objective-selector__name" };
-function Ct(e, t, s, a, u, n) {
-  return i(), o("div", yt, [
-    (i(!0), o(b, null, f(s.categories, (r) => (i(), o("div", {
+function Ct(e, t, s, a, u, o) {
+  return i(), n("div", yt, [
+    (i(!0), n(b, null, f(s.categories, (r) => (i(), n("div", {
       class: "objective-selector__category",
       key: r.id
     }, [
       _("h4", {
         class: p(r.class)
       }, [
-        s.is_random ? (i(), o("label", kt, [
+        s.is_random ? (i(), n("label", kt, [
           _("input", {
             type: "checkbox",
             checked: r.checked,
             onInput: (l) => e.$emit("toggle-category", r)
           }, null, 40, wt),
           ue(" " + k(r.id), 1)
-        ])) : (i(), o("div", jt, k(r.id), 1))
+        ])) : (i(), n("div", jt, k(r.id), 1))
       ], 2),
       _("div", $t, [
-        (i(!0), o(b, null, f(r.objectives, (l) => (i(), o("button", {
+        (i(!0), n(b, null, f(r.objectives, (l) => (i(), n("button", {
           key: l.id,
-          class: p(n.getClass(l)),
+          class: p(o.getClass(l)),
           title: l.disabled,
           onClick: (m) => !l.disabled && e.$emit("toggle-objective", l.id)
         }, [

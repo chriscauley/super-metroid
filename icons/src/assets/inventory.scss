@@ -132,7 +132,7 @@ $items: list.join($beams, $other_items);
   }
   .sm-g4-head {
     --inactive-opacity: 1;
-    --inactive-filter: grayscale(1);
+    --inactive-filter: grayscale(1) brightness(0.5);
   }
   .sm-cwisp {
     --inactive-opacity: 0.75;
