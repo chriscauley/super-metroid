@@ -98,8 +98,16 @@
       <h3>Objective Tracker Limitations</h3>
       <ul class="browser-default">
         <li>Everything should work fine in seeded mode (objectives are loaded from the seed).</li>
-        <li>In seedless mode you can alter the objectives by clicking the <button class="btn -primary" type="button"><i class="fa fa-edit" /></button> edit button that appears when you hober over the grid tracker.</li>
-        <li>Clicking objectives will mark them as cleared them (seeded or seedless) and ctrl+click should mark them as "targeted" (useful for marking which objectives you plan on getting). You will need to do this unless you are using seeded + autotracker mode.</li>
+        <li>
+          In seedless mode you can alter the objectives by clicking the
+          <button class="btn -primary" type="button"><i class="fa fa-edit" /></button> edit button
+          that appears when you hober over the grid tracker.
+        </li>
+        <li>
+          Clicking objectives will mark them as cleared them (seeded or seedless) and ctrl+click
+          should mark them as "targeted" (useful for marking which objectives you plan on getting).
+          You will need to do this unless you are using seeded + autotracker mode.
+        </li>
         <li>Objective tracking is not supported in "pause menu" mode</li>
       </ul>
     </div>

@@ -1,5 +1,9 @@
 <template>
-  <div class="progression-tracker" v-if="show" :style="$store.config.getPosition('progression-tracker')">
+  <div
+    class="progression-tracker"
+    v-if="show"
+    :style="$store.config.getPosition('progression-tracker')"
+  >
     <resize-box @update="(values) => $store.config.save({ 'progression-tracker': values })" />
     <div v-for="(difficulty, item) in items" :key="item" class="progression-tracker__item">
       <i :class="`sm-item -${item} smva-difficulty -difficulty-${difficulty}`" />

@@ -20,7 +20,7 @@
       :key="location.slug"
       :location="location"
       :style="getEntityStyle(location.x, location.y)"
-      @click.stop="$emit('click-location', location.slug)"
+      @click.stop="clickLocation(location)"
     />
     <area-svg :area="area" :extra_path="extra_path" />
     <div v-for="item in misc_items" :key="item.id" v-bind="item" />
@@ -134,6 +134,12 @@ export default {
     },
   },
   methods: {
+    clickLocation(location) {
+      if (window.autoTrackInProgress) {
+        return
+      }
+      this.$emit('click-location', location.slug)
+    },
     getEntityStyle(x, y) {
       return {
         left: `${100 * x}%`,

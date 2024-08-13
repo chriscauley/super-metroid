@@ -76,7 +76,7 @@ export default {
     },
     controlled() {
       const { json_data } = this
-      return !json_data || json_data.seed !== 'seedless'
+      return !json_data || json_data.seed !== 'seedless' || window.autoTrackInProgress
     },
     world() {
       return this.json_data ? 'varia' : undefined
