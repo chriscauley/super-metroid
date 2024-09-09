@@ -36,11 +36,6 @@ export default {
     },
     colors() {
       const colors = Object.entries(door_item_by_color)
-      if (this.$route.path.includes('plando')) {
-        // remove blue and place brown in it's place
-        // plando can't make doors blue because of plm restrictions
-        colors[0] = colors.pop()
-      }
       return colors.map(([color, item], index) => ({
         value: color,
         class: [
